@@ -1,0 +1,105 @@
+\ProvidesPackage{tikzpenguins}
+ [2018/08/26 v0.7 Draw penguins in TikZ]
+
+\RequirePackage{tikz}
+
+\newcommand*{\penguin}[1][]{%
+	\begin{scope}%
+		\tikzset{/penguin/.cd,#1}%
+		\penguin@draw%
+	\end{scope}%
+}
+
+\newif\ifpenguin@name
+\newif\ifpenguin@threeD
+
+\tikzset{
+  %
+  % Pass unknown keys on to tikz
+  %
+  /penguin/.search also={/tikz,/pgf},
+  /penguin/.cd,
+  name/.code         = \penguin@nametrue \def\penguin@name{#1},
+  %
+  % body
+  %
+  body/.code         = \def\penguin@body{#1},
+  body               = black,
+  belly/.code        = \def\penguin@belly{#1},
+  belly              = white!95!black,
+  feet/.code         = \def\penguin@feet{#1},
+  feet               = yellow!50!orange,
+  bill/.code         = \def\penguin@bill{#1},
+  bill               = orange,  
+  eye/.code          = \def\penguin@eye{#1},
+  eye                = white!95!black,
+  pupil/.code        = \def\penguin@pupil{#1},
+	pupil              = black, 
+	%
+	% options
+	%
+	3D/.code			     = \penguin@threeDtrue, 
+}
+
+\def\penguin@draw{%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% minimal bounding box size 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\path (0.06,0.15) rectangle (1.8,2.13);
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% switch between 2D and 3D, from
+% https://chat.stackexchange.com/transcript/message/45991801#45991801
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifpenguin@threeD
+	\def\penguin@part@draw##1{\shade[ball color=##1]}
+\else
+	\def\penguin@part@draw##1{\fill[##1]}
+\fi
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Body parts
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\penguin@part@draw{\penguin@body,rotate around={-50:(1.5,1.2)}} (1.5,1.2) ellipse (0.38 and 0.1);
+\penguin@part@draw{\penguin@body,rotate around={50:(0.35,1.2)}} (0.35,1.2) ellipse (0.38 and 0.1);  
+%
+% Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\penguin@part@draw{\penguin@body} (1.52,0.92) .. controls (1.52,0.26) and (1.28,0.18) .. (0.95,0.18) .. controls (0.61,0.18) and (0.32,0.26) .. (0.32,0.92) .. controls (0.32,1.58) and (0.59,2.11) .. (0.92,2.11) .. controls (1.25,2.11) and (1.52,1.58) .. (1.52,0.92) -- cycle;
+%
+% Belly %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\penguin@part@draw{\penguin@belly} (0.925,0.6) ellipse (0.48 and 0.35);
+%
+% Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{scope}[xshift=4]
+	\penguin@part@draw{\penguin@feet} (0.5319,0.3941) .. controls (0.5138,0.4505) and (0.4245,0.6014) .. (0.3275,0.6533) .. controls (0.2261,0.7075) and (0.2214,0.6369) .. (0.2428,0.5960) .. controls (0.2712,0.5416) and (0.2237,0.5302) .. (0.1952,0.5384) .. controls (0.1022,0.5653) and (0.0298,0.5169) .. (0.1131,0.4340) .. controls (0.1335,0.4137) and (0.2100,0.3557) .. (0.0982,0.3492) .. controls (0.0250,0.3450) and (0.0181,0.2680) .. (0.1082,0.2445) .. controls (0.2000,0.2206) and (0.3206,0.2043) .. (0.4571,0.2096) .. controls (0.5454,0.2131) and (0.5602,0.3059) .. (0.5319,0.3941) -- cycle;
+\end{scope}
+\begin{scope}[xshift=49,xscale=-1]
+	\penguin@part@draw{\penguin@feet} (0.5319,0.3941) .. controls (0.5138,0.4505) and (0.4245,0.6014) .. (0.3275,0.6533) .. controls (0.2261,0.7075) and (0.2214,0.6369) .. (0.2428,0.5960) .. controls (0.2712,0.5416) and (0.2237,0.5302) .. (0.1952,0.5384) .. controls (0.1022,0.5653) and (0.0298,0.5169) .. (0.1131,0.4340) .. controls (0.1335,0.4137) and (0.2100,0.3557) .. (0.0982,0.3492) .. controls (0.0250,0.3450) and (0.0181,0.2680) .. (0.1082,0.2445) .. controls (0.2000,0.2206) and (0.3206,0.2043) .. (0.4571,0.2096) .. controls (0.5454,0.2131) and (0.5602,0.3059) .. (0.5319,0.3941) -- cycle;
+\end{scope}
+%
+% Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{scope}[xshift=2,yshift=-1]
+\fill[\penguin@eye, rotate=-10] 
+  (0.38,1.7675) ellipse (0.1 and 0.15);
+\penguin@part@draw{\penguin@pupil, rotate=-10} 
+  (0.41,1.7575) ellipse (0.0357 and 0.0714);
+\end{scope}
+\begin{scope}[xshift=-2,yshift=-1]
+\fill[\penguin@eye, rotate=10]
+  (1.43,1.44) ellipse (0.1 and 0.15);
+\penguin@part@draw{\penguin@pupil, rotate=10}
+  (1.4,1.43) ellipse (0.0357 and 0.0714);
+\end{scope}  
+%
+% Bill %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\penguin@part@draw{\penguin@bill} (1.2480,1.4591) .. controls (1.0717,1.3257) and (1.0316,1.4365) .. (0.9225,1.4358) .. controls (0.8205,1.4353) and (0.7596,1.3468) .. (0.6178,1.4542) .. controls (0.8470,0.9682) and (1.1004,1.1827) .. (1.2480,1.4591) -- cycle;
+%
+}
