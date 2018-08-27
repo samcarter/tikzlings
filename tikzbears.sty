@@ -1,3 +1,20 @@
+% !TeX root = bear.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% The tikzbears package (part of the tikzzoo collection)
+% A package to bring little teddy bears into tikz 
+% Maintained by samcarter
+%
+% Project repository and bug tracker:
+% https://github.com/samcarter8/tikzzoo
+%
+% Released under the LaTeX Project Public License v1.3c or later
+% See http://www.latex-project.org/lppl.txt
+%
+% Version 0.1
+% Aug 27, 2018  
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ProvidesPackage{tikzbears}
  [2018/08/26 v0.7 Draw teddy bears in TikZ]
 
@@ -25,16 +42,6 @@
   %
   body/.code         = \def\bear@body{#1},
   body               = brown,
-%  belly/.code        = \def\bear@belly{#1},
-%  belly              = white!95!black,
-%  feet/.code         = \def\bear@feet{#1},
-%  feet               = yellow!50!orange,
-%  bill/.code         = \def\bear@bill{#1},
-%  bill               = orange,  
-%  eye/.code          = \def\bear@eye{#1},
-%  eye                = white!95!black,
-%  pupil/.code        = \def\bear@pupil{#1},
-%	pupil              = black, 
 	%
 	% options
 	%
@@ -63,10 +70,9 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Body parts
+% Body parts (center: x=0.925)
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  mitte: x=0.925
 %
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bear@part@draw{\bear@body!70!black,rotate around={-50:(1.45,0.9)}} (1.45,0.9) ellipse (0.35 and 0.15);
