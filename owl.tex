@@ -1,0 +1,154 @@
+\documentclass{standalone}
+
+\makeatletter
+\RequirePackage{tikz}
+\usetikzlibrary{shadows.blur}
+
+\RequirePackage{ifluatex}
+\RequirePackage{ifxetex}
+
+\ifluatex
+  \let\pdfrandomseed\randomseed
+\fi
+
+\ifxetex
+  \pgfmathsetseed{\time}
+\else
+  \pgfmathsetseed{\number\pdfrandomseed}
+\fi
+
+\newcommand*{\owl}[1][]{%
+	\begin{scope}%
+		\tikzset{/owl/.cd,#1}%
+		\owl@draw%
+	\end{scope}%
+}
+
+\newif\ifowl@name
+\newif\ifowl@blush
+\newif\ifowl@whiskers
+\newif\ifowl@teeth
+\newif\ifowl@threeD
+\newif\ifowl@shadow
+\newif\ifowl@askphil
+
+\tikzset{
+  %
+  % Pass unknown keys on to tikz
+  %
+  /owl/.search also={/tikz,/pgf},
+  /owl/.cd,
+  name/.code         = \owl@nametrue \def\owl@name{#1},
+  %
+  % body
+  %
+  body/.code         = \def\owl@body{#1},
+  body               = brown!70!black,
+  %
+  % options
+  %
+  blush/.code		     = \owl@blushtrue,
+  whiskers/.code     = \owl@whiskerstrue \def\owl@whiskers{#1},
+  whiskers/.default  = gray,
+  teeth/.code        = \owl@teethtrue, 
+  3D/.code			     = \owl@threeDtrue,
+  shadow/.code       = \owl@shadowtrue,
+  askphil/.code      = \owl@askphiltrue,
+  ask phil/.forward to=/owl/askphil,
+}
+
+\def\owl@draw{%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% minimal bounding box size 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\path (0.17,0.03) rectangle (1.67,2.17);
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% switch between 2D and 3D, from
+% https://chat.stackexchange.com/transcript/message/45991801#45991801
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifowl@threeD
+	\def\owl@part@draw##1{\shade[ball color=##1]}
+\else
+	\def\owl@part@draw##1{\fill[##1]}
+\fi
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Body parts (center: x=0.925)
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{scope}[yshift=0]
+\owl@part@draw{\owl@body,rotate around={-80:(1.5,0.8)}} (1.5,0.8) ellipse (0.38 and 0.1);
+\owl@part@draw{\owl@body,rotate around={80:(0.35,0.8)}} (0.35,0.8) ellipse (0.38 and 0.1); 
+\end{scope} 
+%
+% Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{scope}[yshift=-2]
+\owl@part@draw{\owl@body} (1.52,0.92) .. controls (1.52,0.26) and (1.28,0.18) .. (0.95,0.18) .. controls (0.61,0.18) and (0.32,0.26) .. (0.32,0.92) .. controls (0.32,1.58) and (0.59,2.11) .. (0.92,2.11) .. controls (1.25,2.11) and (1.52,1.58) .. (1.52,0.92) -- cycle;
+\end{scope}
+%
+% Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{scope}[yshift=-2,xshift=-1]
+	\owl@part@draw{\owl@body} 
+	(0.2889,1.7770) .. controls (0.2889,1.7770) and (0.1664,1.9603) .. (0.2491,2.2145) .. controls (0.6002,1.9120) and (1.4216,1.8940) .. (1.6213,2.2344) .. controls (1.7712,1.9484) and (1.6213,1.7571) .. (1.6213,1.7571);
+\end{scope}
+%
+% Belly %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{scope}[yshift=-3,yscale=0.85]
+\owl@part@draw{\owl@body!50!white}
+ (1.35,0.71) .. controls (1.35,0.41) and (1.17,0.37) .. (0.92,0.37) .. controls (0.69,0.37) and (0.48,0.41) .. (0.48,0.71) .. controls (0.48,1.01) and (0.67,1.26) .. (0.91,1.26) .. controls (1.15,1.26) and (1.35,1.01) .. (1.35,0.71) -- cycle;
+\end{scope}
+%
+% head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\owl@part@draw{\owl@body}(0.925,1.5) ellipse (0.7 and 0.55);
+%
+% Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fill[white!90!gray] (0.64,1.57) circle (0.24);
+\owl@part@draw{brown!30!black} (0.64,1.57) circle (0.18);
+\fill[white!90!gray] (1.21,1.57) circle (0.24);
+\owl@part@draw{brown!30!black} (1.21,1.57) circle (0.18);
+\owl@part@draw{white} (1.16,1.59) circle (0.03);
+\owl@part@draw{white} (0.59,1.59) circle (0.03);
+%
+% Bill %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\owl@part@draw{orange} (0.925,1.4) -- (0.825,1.3) -- (0.925,1.15) -- (1.025,1.3) -- cycle;
+%
+% Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{scope}[yshift=-2]
+\owl@part@draw{orange} (1.1,0.2) ellipse (0.03 and 0.1);
+\owl@part@draw{orange,rotate around={20:(1.15,0.21)}} (1.15,0.21) ellipse (0.03 and 0.1);
+\owl@part@draw{orange,rotate around={40:(1.2,0.23)}} (1.2,0.23) ellipse (0.03 and 0.1);
+\end{scope}
+
+\begin{scope}[xscale=-1,xshift=-53,yshift=-2]
+\owl@part@draw{orange} (1.1,0.2) ellipse (0.03 and 0.1);
+\owl@part@draw{orange,rotate around={20:(1.15,0.21)}} (1.15,0.21) ellipse (0.03 and 0.1);
+\owl@part@draw{orange,rotate around={40:(1.2,0.23)}} (1.2,0.23) ellipse (0.03 and 0.1);
+\end{scope}
+}
+\makeatother
+
+\usepackage{tikzducks}
+
+\begin{document}
+\begin{tikzpicture}
+\owl
+\duck[invisible,
+%crown
+%tophat
+]
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\owl[3D]
+\end{tikzpicture}
+
+
+\end{document}
