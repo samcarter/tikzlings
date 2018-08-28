@@ -1,0 +1,59 @@
+% !TeX root = zoo.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% The tikzzoo-things package (part of the tikzzoo collection)
+% A package to draw litlle things with tikz 
+% Maintained by samcarter
+%
+% Project repository and bug tracker:
+% https://github.com/samcarter8/tikzzoo
+%
+% Released under the LaTeX Project Public License v1.3c or later
+% See http://www.latex-project.org/lppl.txt
+%
+% Version 0.1
+% Aug 27, 2018  
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{tikzzoo-things}
+ [2018/08/26 v0.7 Draw teddy bears in TikZ]
+
+\RequirePackage{tikz}
+
+\newcommand*{\thing}[1][]{%
+	\begin{scope}%
+		\tikzset{/thing/.cd,#1}%
+		\thing@draw%
+	\end{scope}%
+}
+
+\newif\ifthing@tophat
+
+\tikzset{
+  %
+  % Pass unknown keys on to tikz
+  %
+  /thing/.search also={/tikz,/pgf},
+  /thing/.cd,
+  %
+  % items
+  %
+  tophat/.code        = \thing@tophattrue      \def\thing@tophat{#1},
+  top hat/.forward to =/thing/tophat,
+  tophat/.default     = black,
+}
+
+\def\thing@draw{%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% items
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% tophat %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifthing@tophat
+  \fill[\thing@tophat,rotate around={-15:(0.1,1.94)}] (0.1,1.94) ellipse (0.48 and 0.1);
+  \fill[\thing@tophat,rotate around={-15:(0.15,2.165)}] (-0.17, 1.94) -- (0.46, 1.94) -- (0.52, 2.39) -- (-0.22, 2.39) -- cycle;
+  \fill[\thing@tophat,rotate around={-15:(0.2,2.39)}] (0.2,2.39) ellipse (0.37 and 0.08);  
+\fi
+}
