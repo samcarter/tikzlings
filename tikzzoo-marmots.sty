@@ -1,4 +1,4 @@
-% !TeX root = ./marmot.tex
+% !TeX root = ./ViewingPlatform/marmot.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % The tikzzoo-marmots package (part of the tikzzoo collection)
@@ -148,7 +148,7 @@
 \marmot@part@draw{\marmot@body!50!black} (0.155,1.77) circle (0.05); 
 %
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\draw[\marmot@body!50!black] (0.145,1.51) arc [start angle=-20, end angle=-160, radius=0.16];
+\fill[\marmot@body!50!black] (0.145,1.51) arc [start angle=-20, end angle=-160, radius=0.16] -- (-0.14,1.51) -- (-0.14,1.51) arc [start angle=-160, end angle=-20, radius=0.144] -- cycle ;
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -165,14 +165,15 @@
 % Wiskers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifmarmot@whiskers
 	\foreach \X in {10,20,33}{%
-		\filldraw[line width=0pt,\marmot@whiskers] (0,1.6) + (\X:0.08) to[out=\X,in={180-\X}] ++({\X-20}:0.3) --++(0,0.005) to[out={180-\X},in=\X] cycle (0,1.6) + ({180-\X}:0.08) to[out={180-\X},in=\X] ++({200-\X}:0.3) --++(0,0.005) to[out=\X,in={180-\X}] cycle;
+		\fill[\marmot@whiskers] (0,1.6) + (\X:0.08) to[out=\X,in={180-\X}] ++({\X-20}:0.3) --++(0,0.005) to[out={180-\X},in=\X] cycle (0,1.6) + ({180-\X}:0.08) to[out={180-\X},in=\X] ++({200-\X}:0.3) --++(0,0.005) to[out=\X,in={180-\X}] cycle;
 	}
 \fi
 %
 % Teeth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifmarmot@teeth
-	\draw[very thin,fill=white] (-0.045,1.41) -- (-0.045,1.38) to[out=-5,in=-175] (0.045,1.38) -- (0.045,1.41) to[out=-170,in=-10] cycle;
-	\draw[very thin] (0,1.405) -- (0,1.38);
+	\fill[\marmot@body!50!black] (0.048,1.413) rectangle (-0.048,1.373);
+	\fill[white] (-0.045,1.407) rectangle (-0.004,1.376);
+	\fill[white] (0.045,1.407) rectangle (0.004,1.376);	
 \fi
 %
 }
