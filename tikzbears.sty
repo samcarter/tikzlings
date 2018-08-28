@@ -27,7 +27,6 @@
 	\end{scope}%
 }
 
-\newif\ifbear@name
 \newif\ifbear@threeD
 
 \tikzset{
@@ -36,7 +35,6 @@
   %
   /bear/.search also={/tikz,/pgf},
   /bear/.cd,
-  name/.code         = \bear@nametrue \def\bear@name{#1},
   %
   % body
   %

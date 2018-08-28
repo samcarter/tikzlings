@@ -2,20 +2,6 @@
 
 \makeatletter
 \RequirePackage{tikz}
-\usetikzlibrary{shadows.blur}
-
-\RequirePackage{ifluatex}
-\RequirePackage{ifxetex}
-
-\ifluatex
-  \let\pdfrandomseed\randomseed
-\fi
-
-\ifxetex
-  \pgfmathsetseed{\time}
-\else
-  \pgfmathsetseed{\number\pdfrandomseed}
-\fi
 
 \newcommand*{\owl}[1][]{%
 	\begin{scope}%
@@ -24,13 +10,7 @@
 	\end{scope}%
 }
 
-\newif\ifowl@name
-\newif\ifowl@blush
-\newif\ifowl@whiskers
-\newif\ifowl@teeth
 \newif\ifowl@threeD
-\newif\ifowl@shadow
-\newif\ifowl@askphil
 
 \tikzset{
   %
@@ -38,7 +18,6 @@
   %
   /owl/.search also={/tikz,/pgf},
   /owl/.cd,
-  name/.code         = \owl@nametrue \def\owl@name{#1},
   %
   % body
   %
@@ -47,14 +26,7 @@
   %
   % options
   %
-  blush/.code		     = \owl@blushtrue,
-  whiskers/.code     = \owl@whiskerstrue \def\owl@whiskers{#1},
-  whiskers/.default  = gray,
-  teeth/.code        = \owl@teethtrue, 
   3D/.code			     = \owl@threeDtrue,
-  shadow/.code       = \owl@shadowtrue,
-  askphil/.code      = \owl@askphiltrue,
-  ask phil/.forward to=/owl/askphil,
 }
 
 \def\owl@draw{%

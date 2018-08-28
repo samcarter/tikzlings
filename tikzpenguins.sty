@@ -27,7 +27,6 @@
 	\end{scope}%
 }
 
-\newif\ifpenguin@name
 \newif\ifpenguin@threeD
 
 \tikzset{
@@ -36,7 +35,6 @@
   %
   /penguin/.search also={/tikz,/pgf},
   /penguin/.cd,
-  name/.code         = \penguin@nametrue \def\penguin@name{#1},
   %
   % body
   %
@@ -108,5 +106,4 @@
 %
 % Bill %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \penguin@part@draw{\penguin@bill} (1.2480,1.4591) .. controls (1.0717,1.3257) and (1.0316,1.4365) .. (0.9225,1.4358) .. controls (0.8205,1.4353) and (0.7596,1.3468) .. (0.6178,1.4542) .. controls (0.8470,0.9682) and (1.1004,1.1827) .. (1.2480,1.4591) -- cycle;
-
 }
