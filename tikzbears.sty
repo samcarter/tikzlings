@@ -52,7 +52,7 @@
 % minimal bounding box size 
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\path (0.06,0.15) rectangle (1.8,2.13);
+\path (-0.865, 0.15) rectangle (0.875, 2.13);
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 
@@ -73,37 +73,37 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\bear@part@draw{\bear@body!70!black,rotate around={-50:(1.45,0.9)}} (1.45,0.9) ellipse (0.35 and 0.15);
-\bear@part@draw{\bear@body!70!black,rotate around={50:(0.4,0.9)}} (0.4,0.9) ellipse (0.35 and 0.15);
+\bear@part@draw{\bear@body!70!black,rotate around={-50:(0.525,0.9)}} (0.525,0.9) ellipse (0.35 and 0.15);
+\bear@part@draw{\bear@body!70!black,rotate around={50:(-0.525,0.9)}} (-0.525,0.9) ellipse (0.35 and 0.15);
 %
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\bear@part@draw{\bear@body!70!black} (0.925,0.75) ellipse (0.55 and 0.65); 
-\bear@part@draw{\bear@body!50!white} (0.925,0.7) ellipse (0.35 and 0.4); 
+\bear@part@draw{\bear@body!70!black} (0,0.75) ellipse (0.55 and 0.65); 
+\bear@part@draw{\bear@body!50!white} (0,0.7) ellipse (0.35 and 0.4); 
 %
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\bear@part@draw{\bear@body!70!black} (1.35,0.3) circle (0.28); 
-\bear@part@draw{\bear@body!70!black} (0.50,0.3) circle (0.28);
-\bear@part@draw{\bear@body!50!white} (1.35,0.3) circle (0.17); 
-\bear@part@draw{\bear@body!50!white} (0.50,0.3) circle (0.17);
+\bear@part@draw{\bear@body!70!black} (0.425, 0.3) circle (0.28); 
+\bear@part@draw{\bear@body!70!black} (-0.425, 0.3) circle (0.28);
+\bear@part@draw{\bear@body!50!white} (0.425, 0.3) circle (0.17); 
+\bear@part@draw{\bear@body!50!white} (-0.425, 0.3) circle (0.17);
 %
 % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\bear@part@draw{\bear@body!70!black} (1.30,1.95) circle (0.15);
-\bear@part@draw{\bear@body!70!black} (0.55,1.95) circle (0.15);
-\bear@part@draw{\bear@body!50!white} (1.30,1.95) circle (0.1);
-\bear@part@draw{\bear@body!50!white} (0.55,1.95) circle (0.1);
+\bear@part@draw{\bear@body!70!black} (0.375, 1.95) circle (0.15);
+\bear@part@draw{\bear@body!70!black} (-0.375, 1.95) circle (0.15);
+\bear@part@draw{\bear@body!50!white} (0.375, 1.95) circle (0.1);
+\bear@part@draw{\bear@body!50!white} (-0.375, 1.95) circle (0.1);
 %
 % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\bear@part@draw{\bear@body!70!black} (0.925,1.55) circle (0.5); 
+\bear@part@draw{\bear@body!70!black} (0, 1.55) circle (0.5); 
 %
 % Muzzle %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\bear@part@draw{\bear@body!50!white} (0.925,1.4) ellipse (0.28 and 0.2); 
-\bear@part@draw{\bear@body!70!white!80!red} (0.925,1.5) ellipse (0.15 and 0.08); 
+\bear@part@draw{\bear@body!50!white} (0, 1.4) ellipse (0.28 and 0.2); 
+\bear@part@draw{\bear@body!70!white!80!red} (0, 1.5) ellipse (0.15 and 0.08); 
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\bear@part@draw{\bear@body!30!black} (0.77,1.7) circle (0.05); 
-\bear@part@draw{\bear@body!30!black} (1.08,1.7) circle (0.05); 
+\bear@part@draw{\bear@body!30!black} (-0.155, 1.7) circle (0.05); 
+\bear@part@draw{\bear@body!30!black} (0.155, 1.7) circle (0.05); 
 %
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\draw[\bear@body!30!black] (1.07,1.38) arc [start angle=-20, end angle=-160, radius=0.16];
+\draw[\bear@body!30!black] (0.145,1.38) arc [start angle=-20, end angle=-160, radius=0.16];
 %
 }
