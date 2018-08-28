@@ -23,6 +23,14 @@
   %
   body/.code         = \def\owl@body{#1},
   body               = brown!70!black,
+  eye/.code          = \def\owl@eye{#1},
+  eye                = white!90!gray,
+  pupil/.code        = \def\owl@pupil{#1},
+  pupil              = brown!30!black,
+  bill/.code         = \def\owl@bill{#1},
+  bill               = orange,
+  feet/.code         = \def\owl@feet{#1},
+  feet               = orange,  
   %
   % options
   %
@@ -72,23 +80,23 @@
 \owl@part@draw{\owl@body}(0,1.55) ellipse (0.7 and 0.55);
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\fill[white!90!gray] 						(-0.28, 1.6) circle (0.22);
-\owl@part@draw{brown!30!black} 	(-0.28, 1.6) circle (0.15);
-\fill[white!90!gray] 						(0.28, 1.6) circle (0.22);
-\owl@part@draw{brown!30!black} 	(0.28, 1.6) circle (0.15);
+\fill[\owl@eye] 						(-0.28, 1.6) circle (0.22);
+\owl@part@draw{\owl@pupil} 	(-0.28, 1.6) circle (0.15);
+\fill[\owl@eye] 						(0.28, 1.6) circle (0.22);
+\owl@part@draw{\owl@pupil} 	(0.28, 1.6) circle (0.15);
 \owl@part@draw{white} (0.25, 1.64) circle (0.03);
 \owl@part@draw{white} (-0.31, 1.64) circle (0.03);
 %
 % Bill %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\owl@part@draw{orange} (0, 1.4) -- (-0.1, 1.3) -- (0, 1.15) -- (0.1, 1.3) -- cycle;
+\owl@part@draw{\owl@bill} (0, 1.4) -- (-0.1, 1.3) -- (0, 1.15) -- (0.1, 1.3) -- cycle;
 %
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\owl@part@draw{orange} (0.175,0.2) ellipse (0.03 and 0.1);
-\owl@part@draw{orange,rotate around={20:(0.225,0.21)}} (0.225,0.21) ellipse (0.03 and 0.1);
-\owl@part@draw{orange,rotate around={40:(0.275,0.23)}} (0.275,0.23) ellipse (0.03 and 0.1);
-\owl@part@draw{orange} (-0.175,0.2) ellipse (0.03 and 0.1);
-\owl@part@draw{orange,rotate around={-20:(-0.225,0.21)}} (-0.225,0.21) ellipse (0.03 and 0.1);
-\owl@part@draw{orange,rotate around={-40:(-0.275,0.23)}} (-0.275,0.23) ellipse (0.03 and 0.1);
+\owl@part@draw{\owl@feet} (0.175,0.2) ellipse (0.03 and 0.1);
+\owl@part@draw{\owl@feet,rotate around={20:(0.225,0.21)}} (0.225,0.21) ellipse (0.03 and 0.1);
+\owl@part@draw{\owl@feet,rotate around={40:(0.275,0.23)}} (0.275,0.23) ellipse (0.03 and 0.1);
+\owl@part@draw{\owl@feet} (-0.175,0.2) ellipse (0.03 and 0.1);
+\owl@part@draw{\owl@feet,rotate around={-20:(-0.225,0.21)}} (-0.225,0.21) ellipse (0.03 and 0.1);
+\owl@part@draw{\owl@feet,rotate around={-40:(-0.275,0.23)}} (-0.275,0.23) ellipse (0.03 and 0.1);
 }
 \makeatother
 
