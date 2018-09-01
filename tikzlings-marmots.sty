@@ -87,9 +87,9 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifmarmot@threeD
-	\def\marmot@part@draw##1{\shade[ball color=##1]}
+	\def\marmot@part@draw[##1]{\shade[ball color=##1]}
 \else
-	\def\marmot@part@draw##1{\fill[##1]}
+	\def\marmot@part@draw[##1]{\fill[##1]}
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -117,35 +117,35 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\marmot@part@draw{\marmot@body!50!black} (0.255,0.2) ellipse (0.23 and 0.09); 
-\marmot@part@draw{\marmot@body!50!black} (-0.255,0.2) ellipse (0.23 and 0.09);
+\marmot@part@draw[\marmot@body!50!black] (0.255,0.2) ellipse (0.23 and 0.09); 
+\marmot@part@draw[\marmot@body!50!black] (-0.255,0.2) ellipse (0.23 and 0.09);
 %
 % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\marmot@part@draw{\marmot@body!50!black} (0.255,2.03) ellipse (0.09 and 0.13);
-\marmot@part@draw{\marmot@body!50!black} (-0.255,2.03) ellipse (0.09 and 0.13);
+\marmot@part@draw[\marmot@body!50!black] (0.255,2.03) ellipse (0.09 and 0.13);
+\marmot@part@draw[\marmot@body!50!black] (-0.255,2.03) ellipse (0.09 and 0.13);
 %
 % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\marmot@part@draw{\marmot@body!50!black} (0.885, 0.67) .. controls (0.865, 0.4) and (0.345, 0.24) .. (0.335, 0.44) .. controls (0.315, 0.56) and (0.445, 0.51) .. (0.575, 0.53) .. controls (0.695, 0.54) and (0.885, 0.72) .. (0.885, 0.67) -- cycle;
+\marmot@part@draw[\marmot@body!50!black] (0.885, 0.67) .. controls (0.865, 0.4) and (0.345, 0.24) .. (0.335, 0.44) .. controls (0.315, 0.56) and (0.445, 0.51) .. (0.575, 0.53) .. controls (0.695, 0.54) and (0.885, 0.72) .. (0.885, 0.67) -- cycle;
 %
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\marmot@part@draw{\marmot@body} (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
+\marmot@part@draw[\marmot@body] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
 %
 % Belly %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\marmot@part@draw{\marmot@body!50!white} (0.425, 0.71) .. controls (0.425, 0.41) and (0.245, 0.37) .. (0, 0.37) .. controls (-0.245, 0.37) and (-0.425, 0.41) .. (-0.425, 0.71) .. controls (-0.425, 1.01) and (-0.225, 1.26) .. (0, 1.26) .. controls (0.225, 1.26) and (0.425, 1.01) .. (0.425, 0.71) -- cycle;
+\marmot@part@draw[\marmot@body!50!white] (0.425, 0.71) .. controls (0.425, 0.41) and (0.245, 0.37) .. (0, 0.37) .. controls (-0.245, 0.37) and (-0.425, 0.41) .. (-0.425, 0.71) .. controls (-0.425, 1.01) and (-0.225, 1.26) .. (0, 1.26) .. controls (0.225, 1.26) and (0.425, 1.01) .. (0.425, 0.71) -- cycle;
 %
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\marmot@part@draw{\marmot@body!50!black,rotate around={70:(0.385,0.93)}} (0.385,0.93) ellipse (0.24 and 0.13);
-\marmot@part@draw{\marmot@body!50!black,rotate around={-70:(-0.385,0.93)}} (-0.385,0.93) ellipse (0.24 and 0.13);
+\marmot@part@draw[\marmot@body!50!black,rotate around={70:(0.385,0.93)}] (0.385,0.93) ellipse (0.24 and 0.13);
+\marmot@part@draw[\marmot@body!50!black,rotate around={-70:(-0.385,0.93)}] (-0.385,0.93) ellipse (0.24 and 0.13);
 %
 % Muzzle %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\marmot@part@draw{\marmot@body!50!white} (0,1.47) ellipse (0.23 and 0.13); 
+\marmot@part@draw[\marmot@body!50!white] (0,1.47) ellipse (0.23 and 0.13); 
 %
 % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\marmot@part@draw{\marmot@body!50!black} (0,1.6) circle (0.08);
+\marmot@part@draw[\marmot@body!50!black] (0,1.6) circle (0.08);
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\marmot@part@draw{\marmot@body!50!black} (-0.155,1.77) circle (0.05); 
-\marmot@part@draw{\marmot@body!50!black} (0.155,1.77) circle (0.05); 
+\marmot@part@draw[\marmot@body!50!black] (-0.155,1.77) circle (0.05); 
+\marmot@part@draw[\marmot@body!50!black] (0.155,1.77) circle (0.05); 
 %
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \fill[\marmot@body!50!black] (0.145,1.51) arc [start angle=-20, end angle=-160, radius=0.16] -- (-0.14,1.51) -- (-0.14,1.51) arc [start angle=-160, end angle=-20, radius=0.144] -- cycle ;
