@@ -20,6 +20,12 @@
 
 \RequirePackage{tikz}
 \usetikzlibrary{shadows.blur}
+\usetikzlibrary{fadings} 
+
+\tikzfading[name=marmot@blush,
+inner color=transparent!50,
+outer color=transparent!100]
+
 
 \RequirePackage{ifluatex}
 \RequirePackage{ifxetex}
@@ -158,8 +164,8 @@
 %
 % Blushed %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifmarmot@blush
-	\shade[inner color=red!30!\marmot@body,outer color=\marmot@body] (-0.295,1.6) circle (0.1); 
-	\shade[inner color=red!30!\marmot@body,outer color=\marmot@body] (0.295,1.6) circle (0.1); 
+	\fill[red,path fading=marmot@blush] (-0.295,1.6) circle (0.1); 
+	\fill[red,path fading=marmot@blush] (0.295,1.6) circle (0.1); 
 \fi
 %
 % Wiskers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
