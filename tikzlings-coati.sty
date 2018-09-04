@@ -16,15 +16,9 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ProvidesPackage{tikzlings-coati}
- [2018/08/28 v0.2 Drawing coatis in TikZ]
+ [2018/09/04 v0.2 Drawing coatis in TikZ]
 
 \RequirePackage{tikz}
-\usetikzlibrary{shadows.blur}
-\usetikzlibrary{fadings} 
-
-\tikzfading[name=coati@blush,
-inner color=transparent!50,
-outer color=transparent!100]
 
 \newcommand*{\coati}[1][]{%
 	\begin{scope}%
@@ -33,8 +27,6 @@ outer color=transparent!100]
 	\end{scope}%
 }
 
-\newif\ifcoati@blush
-\newif\ifcoati@sleeping
 \newif\ifcoati@threeD
 
 \tikzset{
@@ -48,11 +40,11 @@ outer color=transparent!100]
   %
   body/.code         = \def\coati@body{#1},
   body               = brown!50!darkgray!97!yellow,
+  rotatehead/.code   = \def\coati@rotatehead{#1},
+  rotatehead         = 0,
   %
   % options
   %
-  blush/.code		     = \coati@blushtrue,
-  sleeping/.code     = \coati@sleepingtrue, 
   3D/.code			     = \coati@threeDtrue,  
 }
 
@@ -106,7 +98,7 @@ outer color=transparent!100]
 \coati@part@draw[\coati@body!50!darkgray] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
 %
 % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{scope}[rotate around={-15:(0,1.68)}]
+\begin{scope}[rotate around={\coati@rotatehead:(0,1.68)}]
 	% Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\fill[\coati@body!45!white!95!orange] (0.5, 1.8) .. controls (0.5, 1.58) and (0.2, 1.25) .. (0, 1.16) .. controls (-0.2, 1.25) and (-0.5, 1.58) .. (-0.5, 1.8) .. controls (-0.34, 2.3) and (0.34, 2.3) .. (0.5, 1.8) -- cycle;
 	%
