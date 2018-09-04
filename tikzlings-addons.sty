@@ -30,6 +30,68 @@
 \newif\ifthing@tophat
 \newif\ifthing@hat
 \newif\ifthing@crown
+\newif\ifthing@alien
+
+
+
+
+\newif\ifthing@hat
+\newif\ifthing@cap
+\newif\ifthing@santa
+\newif\ifthing@unicorn
+\newif\ifthing@magichat
+\newif\ifthing@chef
+\newif\ifthing@witch
+\newif\ifthing@graduate
+\newif\ifthing@beret
+\newif\ifthing@crown
+\newif\ifthing@queencrown
+\newif\ifthing@kingcrown
+\newif\ifthing@peakedcap
+\newif\ifthing@bunny
+\newif\ifthing@tophat
+\newif\ifthing@darthvader
+\newif\ifthing@harlequin
+\newif\ifthing@strawhat
+% Accessories %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newif\ifthing@glasses
+\newif\ifthing@sunglasses
+\newif\ifthing@squareglasses
+\newif\ifthing@icecream
+\newif\ifthing@book
+\newif\ifthing@magicwand
+\newif\ifthing@cricket
+\newif\ifthing@rollingpin
+\newif\ifthing@signpost
+\newif\ifthing@lightsaber
+\newif\ifthing@cake
+\newif\ifthing@pizza
+\newif\ifthing@hockey
+\newif\ifthing@baguette
+\newif\ifthing@football
+\newif\ifthing@mask
+\newif\ifthing@necklace
+\newif\ifthing@milkshake
+\newif\ifthing@wine
+\newif\ifthing@prison
+\newif\ifthing@speech
+\newif\ifthing@think
+\newif\ifthing@torch
+\newif\ifthing@easter
+\newif\ifthing@basket
+\newif\ifthing@buttons
+\newif\ifthing@sheep
+\newif\ifthing@horsetail
+\newif\ifthing@crozier
+\newif\ifthing@davidlikespineapplepizza
+\newif\ifthing@wing
+\newif\ifthing@stethoscope
+\newif\ifthing@neckerchief
+\newif\ifthing@snowduck
+\newif\ifthing@vampire
+\newif\ifthing@crystalball
+
+
 
 \tikzset{
   %
@@ -47,13 +109,196 @@
   hat/.default        = blue!40!black,  
   crown/.code         = \thing@crowntrue       \def\thing@crown{#1},
   crown/.default      = yellow!90!orange,    
+  alien/.code         = \thing@alientrue       \def\thing@alien{#1},
+  alien/.default      = green,   
+%  
+%  
+%  
+%  
+%  
+  hat/.code          = \thing@hattrue         \def\thing@hat{#1},
+  cap/.code          = \thing@captrue         \def\thing@cap{#1},
+  santa/.code        = \thing@santatrue       \def\thing@santa{#1},
+  chef/.code         = \thing@cheftrue        \def\thing@chef{#1},
+  graduate/.code     = \thing@graduatetrue    \def\thing@graduate{#1},
+  tassel/.code       =                       \def\thing@tassel{#1},
+  beret/.code        = \thing@berettrue       \def\thing@beret{#1},
+  unicorn/.code      = \thing@unicorntrue     \def\thing@unicorn{#1},
+  magichat/.code     = \thing@magichattrue    \def\thing@magichat{#1},
+  magic hat/.forward to=/thing/magichat,
+  magicstars/.code   =                       \def\thing@magicstars{#1},
+  magic stars/.forward to=/thing/magicstars,
+  witch/.code        = \thing@witchtrue       \def\thing@witch{#1},
+  crown/.code        = \thing@crowntrue       \def\thing@crown{#1},
+  queencrown/.code   = \thing@queencrowntrue  \def\thing@queencrown{#1},
+  queen crown/.forward to=/thing/queencrown,
+  kingcrown/.code    = \thing@kingcrowntrue   \def\thing@kingcrown{#1},
+  king crown/.forward to=/thing/kingcrown,
+  bunny/.code        = \thing@bunnytrue       \def\thing@bunny{#1},
+  inear/.code        =                       \def\thing@inear{#1},
+  in ear/.forward to=/thing/inear,
+  peakedcap/.code    = \thing@peakedcaptrue   \def\thing@peakedcap{#1},
+  peaked cap/.forward to=/thing/peakedcap,
+  tophat/.code       = \thing@tophattrue      \def\thing@tophat{#1},
+  top hat/.forward to=/thing/tophat,
+  darthvader/.code   = \thing@darthvadertrue  \def\thing@darthvader{#1},
+  darth vader/.forward to=/thing/darthvader,
+  harlequin/.code    = \thing@harlequintrue   \def\thing@harlequin{#1},
+  niuqelrah/.code	   =                       \def\thing@niuqelrah{#1},
+  strawhat/.code     = \thing@strawhattrue    \def\thing@strawhat{#1},
+  straw hat/.forward to=/thing/strawhat,
+  ribbon/.code       =                       \def\thing@ribbon{#1},
+  % setting defaults %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+  hat/.default       = brown,
+  cap/.default       = blue,
+  santa/.default     = red!80!black,
+  chef/.default      = gray!20!white,
+  graduate/.default  = black,
+  tassel             = red,
+  beret/.default     = black,      
+  unicorn/.default   = pink,
+  magichat/.default  = violet,
+  magicstars         = yellow!80!brown,
+  witch/.default     = black,    
+  crown/.default     = yellow,
+  queencrown/.default= yellow,
+  kingcrown/.default = gray,
+  bunny/.default     = \thing@body,
+  inear              = \thing@bunny!50!white,
+  peakedcap/.default = blue,
+  tophat/.default    = black,
+  darthvader/.default= black,
+  harlequin/.default = blue,
+  niuqelrah          = red,
+  strawhat/.default  = gray!30!white,
+  ribbon             = black,
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Accessories
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  glasses/.code      = \thing@glassestrue     \def\thing@glasses{#1},
+  sunglasses/.code   = \thing@sunglassestrue  \def\thing@sunglasses{#1},
+  squareglasses/.code = \thing@squareglassestrue \def\thing@squareglasses{#1},
+  square glasses/.forward to=/thing/squareglasses,
+  icecream/.code     = \thing@icecreamtrue    \def\thing@cone{#1},
+  ice cream/.forward to=/thing/icecream,
+  flavoura/.code     =                       \def\thing@flavoura{#1},
+  flavour a/.forward to=/thing/flavoura,
+  flavourb/.code     =                       \def\thing@flavourb{#1},
+  flavour b/.forward to=/thing/flavourb,
+  flavourc/.code     =                       \def\thing@flavourc{#1},
+  flavour c/.forward to=/thing/flavourc,
+  book/.code         = \thing@booktrue        \def\thing@book{#1},
+  bookcolour/.code   =                       \def\thing@bookcolour{#1},
+  book colour/.forward to=/thing/bookcolour,
+  book color/.forward to=/thing/bookcolour,
+  bookcolor/.forward to=/thing/bookcolour,
+  signpost/.code     = \thing@signposttrue    \def\thing@signpost{#1},
+  sign post/.forward to=/thing/signpost,
+  signcolour/.code   =                       \def\thing@signcolour{#1},
+  sign colour/.forward to=/thing/signcolour,
+  sign color/.forward to=/thing/signcolour,
+  signcolor/.forward to=/thing/signcolour,  
+  signback/.code     =                       \def\thing@signback{#1},
+  sign back/.forward to=/thing/signback,
+  magicwand/.code    = \thing@magicwandtrue,
+  magic want/.forward to=/thing/magicwand,
+  cricket/.code      = \thing@crickettrue     \def\thing@cricket{#1},
+  rollingpin/.code   = \thing@rollingpintrue  \def\thing@rollingpin{#1},
+  rolling pin/.forward to=/thing/rollingpin,
+  lightsaber/.code   = \thing@lightsabertrue  \def\thing@lightsaber{#1},
+  light saber/.forward to=/thing/lightsaber,
+  cake/.code         = \thing@caketrue        \def\thing@cake{#1},
+  pizza/.code        = \thing@pizzatrue,
+  hockey/.code       = \thing@hockeytrue      \def\thing@hockey{#1},
+  baguette/.code     = \thing@baguettetrue    \def\thing@baguette{#1},
+  football/.code     = \thing@footballtrue    \def\thing@football{#1},
+  mask/.code         = \thing@masktrue        \def\thing@mask{#1},
+  necklace/.code     = \thing@necklacetrue    \def\thing@necklace{#1},
+  milkshake/.code    = \thing@milkshaketrue   \def\thing@milkshake{#1},
+  wine/.code         = \thing@winetrue        \def\thing@wine{#1},  
+  prison/.code       = \thing@prisontrue      \def\thing@prison{#1},
+  speech/.code       = \thing@speechtrue      \def\thing@speech{#1},
+  think/.code        = \thing@thinktrue       \def\thing@think{#1},
+  bubblecolour/.code =                     \def\thing@bubblecolour{#1},
+  bubble colour/.forward to=/thing/bubblecolour,
+  bubble color/.forward to=/thing/bubblecolour,
+  bubblecolor/.forward to=/thing/bubblecolour,  
+  torch/.code        = \thing@torchtrue       \def\thing@torch{#1},
+  basket/.code       = \thing@baskettrue      \def\thing@basket{#1},
+  easter/.code       = \thing@eastertrue
+                       \thing@baskettrue      \def\thing@basket{#1},
+  egga/.code         =                       \def\thing@egga{#1},
+  egg a/.forward to=/thing/egga,
+  eggb/.code         =                       \def\thing@eggb{#1},
+  egg b/.forward to=/thing/eggb,
+  eggc/.code         =                       \def\thing@eggc{#1},
+  egg c/.forward to=/thing/eggc,
+  buttons/.code      = \thing@buttonstrue     \def\thing@buttons{#1},
+  sheep/.code        = \thing@sheeptrue       \def\thing@sheep{#1},
+  horsetail/.code    = \thing@horsetailtrue   \def\thing@horsetail{#1},
+  crozier/.code      = \thing@croziertrue     \def\thing@crozier{#1},
+  davidlikespineapplepizza/.code = \thing@davidlikespineapplepizzatrue
+  \thing@speechtrue \def\thing@speech{\scalebox{\yscalefactor}{\scalebox{0.9}{\tiny ih, che schifo!}}},
+  david likes pineapple pizza/.forward to=/thing/davidlikespineapplepizza,
+  wing/.code    = \thing@wingtrue      \def\thing@wing{#1},
+  stethoscope/.code = \thing@stethoscopetrue \def\thing@stethoscope{#1},
+  neckerchief/.code = \thing@neckerchieftrue \def\thing@neckerchief{#1},
+  woggle/.code			=												\def\thing@woggle{#1},
+  snowthing/.code 		= \thing@snowthingtrue \def\thing@snowthing{#1}
+  										\def\thing@eye{#1}  \def\thing@body{#1}
+										  \thing@tophattrue   \def\thing@tophat{black}
+  										\thing@buttonstrue  \def\thing@buttons{black},
+  snow thing/.forward to=/thing/snowthing,
+  vampire/.code     = \thing@vampiretrue  \def\thing@vampire{#1},
+  crystalball/.code = \thing@crystalballtrue \def\thing@crystalball{#1},
+  crystal ball/.forward to=/thing/crystalball,
+  % setting defaults %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  glasses/.default   = black,  
+  sunglasses/.default= black,  
+  squareglasses/.default = black,
+  icecream/.default  = brown!60!gray,
+  flavoura           = brown!50!black,
+  flavourb           = white!70!brown,
+  flavourc           = red!50!white,
+  bookcolour         = brown,
+  signcolour         = brown!50!black,
+  signback           = green!40!black,  
+  cricket/.default   = brown,
+  rollingpin/.default= brown,
+  lightsaber/.default= green,
+  cake/.default      = violet,
+  hockey/.default    = brown,
+  baguette/.default  = brown,
+  football/.default  = white,
+  mask/.default      = black,
+  necklace/.default  = white!80!gray,
+  milkshake/.default = red!20!white,
+  wine/.default      = red!70!black,
+  prison/.default    = gray,
+  bubblecolour       = gray!30!white,
+  torch/.default     = gray,
+  basket/.default    = brown!70!gray,
+  easter/.default    = brown!70!gray,
+  egga               = blue,
+  eggb               = green,
+  eggc               = red,
+  buttons/.default   = black,
+  sheep/.default     = \thing@body,
+  horsetail/.default = brown,
+  crozier/.default   = brown,
+  wing/.default      = yellow!50!brown,
+  stethoscope/.default = gray,
+  neckerchief/.default = brown,
+  woggle 						   = brown!50!black,
+  snowduck/.default  = gray!15!white,
+  vampire/.default   = white!85!yellow,
+  crystalball/.default = cyan,  
 }
 
 \def\thing@draw{%
-
-%	\begin{scope}[xshift=-26]
-%  \end{scope} 
-
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Headgear
@@ -71,46 +316,33 @@
 \ifthing@hat
   \fill[\thing@hat,rotate around={-15:(-0.3,2.01)}] (-0.3,2.01) rectangle (0.46,2.31);
   \fill[\thing@hat,rotate around={-15:(0.05,1.92)}] (0.05,1.92) ellipse (0.6 and 0.1); 
-  \fill[\thing@hat,,rotate around={-15:(0.14,2.2)}] (0.14,2.2) ellipse (0.37 and 0.08); 
+  \fill[\thing@hat,rotate around={-15:(0.14,2.2)}] (0.14,2.2) ellipse (0.37 and 0.08); 
 \fi
+%
 % crown %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@crown
 	\fill[\thing@crown] (-0.1885,2.0616) .. controls (-0.1885,2.0616) and (-0.1479,2.1763) .. (-0.2291,2.465) -- (-0.0355,2.2378) -- (0.1141,2.3943) -- (0.201,2.1961) -- (0.4688,2.3318) .. controls (0.2677,2.1132) and (0.2944,1.9764) .. (0.2944, 1.9764) .. controls (0.1524,1.9202) and (-0.0743,1.9601) .. (-0.1885,2.0616) -- cycle;
 \fi
+%
+% alien %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifthing@alien
+	\fill[\thing@alien,rotate around={15:(-0.175,2.115)}] (-0.2,1.93) rectangle (-0.15,2.3);
+	\fill[\thing@alien,rotate around={-15:(0.175,2.115)}] (0.2,1.93) rectangle (0.15,2.3);
+	\fill[\thing@alien] (-0.22,2.30) circle (0.07);
+	\fill[\thing@alien] (0.22,2.30) circle (0.07);
+\fi
+%
+ 
+\begin{scope}[xshift=-26]
 
 
-
-
-
-
-
-
-
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%
-%% Headgear
-%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%\begin{pgfonlayer}{hatlayer}
-%% 
-%% alien %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\ifthing@alien
-%  \fill[\thing@alien,rotate=-25] (0.09,2.1) rectangle (0.16,2.6);
-%  \fill[\thing@alien,rotate=5] (0.79,1.86) rectangle (0.86,2.25);
-%  \fill[\thing@alien] (1.20,2.30) circle (0.07);
-%  \fill[\thing@alien] (0.62,2.35) circle (0.07);
-%\fi
-%%
-%% cap %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\ifthing@cap
-%  \fill[\thing@cap, start angle=0, end angle=150, radius=0.5] (1.4,1.75) arc;
 %  \fill[\thing@cap,rotate=-15] (0.3,2.05) ellipse (0.6 and 0.15);
-%\fi  
-%%
+
+
+
+%
+
+%
 %% Santa %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\ifthing@santa
 %  \fill[\thing@santa] 
@@ -542,5 +774,7 @@
 %\ifthing@wing
 %	\fill[\thing@wing] \thingpathwing;
 %\fi
+
+\end{scope}
 
 }
