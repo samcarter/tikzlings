@@ -20,6 +20,7 @@
  [2018/08/28 v0.2 Drawing koalas in TikZ]
 
 \RequirePackage{tikz}
+\RequirePackage{tikzlings-addons}
 \usetikzlibrary{shadows.blur}
 \usetikzlibrary{fadings} 
 
@@ -32,6 +33,7 @@ outer color=transparent!100]
 		\tikzset{/koala/.cd,#1}%
 		\koala@draw%
 	\end{scope}%
+	\thing[#1]%
 }
 
 \newif\ifkoala@blush

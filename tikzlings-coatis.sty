@@ -19,12 +19,14 @@
  [2018/09/04 v0.2 Drawing coatis in TikZ]
 
 \RequirePackage{tikz}
+\RequirePackage{tikzlings-addons}
 
 \newcommand*{\coati}[1][]{%
 	\begin{scope}%
 		\tikzset{/coati/.cd,#1}%
 		\coati@draw%
 	\end{scope}%
+	\thing[#1]%
 }
 
 \newif\ifcoati@threeD

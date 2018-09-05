@@ -19,12 +19,14 @@
  [2018/08/26 v0.7 Draw teddy bears in TikZ]
 
 \RequirePackage{tikz}
+\RequirePackage{tikzlings-addons}
 
 \newcommand*{\owl}[1][]{%
 	\begin{scope}%
 		\tikzset{/owl/.cd,#1}%
 		\owl@draw%
 	\end{scope}%
+	\thing[#1]%
 }
 
 \newif\ifowl@threeD

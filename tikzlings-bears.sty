@@ -19,12 +19,14 @@
  [2018/08/26 v0.7 Draw teddy bears in TikZ]
 
 \RequirePackage{tikz}
+\RequirePackage{tikzlings-addons}
 
 \newcommand*{\bear}[1][]{%
 	\begin{scope}%
 		\tikzset{/bear/.cd,#1}%
 		\bear@draw%
 	\end{scope}%
+	\thing[#1]%
 }
 
 \newif\ifbear@threeD
@@ -33,7 +35,7 @@
   %
   % Pass unknown keys on to tikz
   %
-  /bear/.search also={/tikz,/pgf},
+  /bear/.search also={/tikz,/pgf,/thing},
   /bear/.cd,
   %
   % body

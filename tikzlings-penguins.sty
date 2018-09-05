@@ -19,12 +19,14 @@
  [2018/08/26 v0.7 Draw penguins in TikZ]
 
 \RequirePackage{tikz}
+\RequirePackage{tikzlings-addons}
 
 \newcommand*{\penguin}[1][]{%
 	\begin{scope}%
 		\tikzset{/penguin/.cd,#1}%
 		\penguin@draw%
 	\end{scope}%
+	\thing[#1]%
 }
 
 \newif\ifpenguin@threeD

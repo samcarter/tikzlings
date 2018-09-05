@@ -19,6 +19,7 @@
  [2018/08/28 v0.2 Drawing marmots in TikZ]
 
 \RequirePackage{tikz}
+\RequirePackage{tikzlings-addons}
 \usetikzlibrary{shadows.blur}
 \usetikzlibrary{fadings} 
 
@@ -45,6 +46,7 @@ outer color=transparent!100]
 		\tikzset{/marmot/.cd,#1}%
 		\marmot@draw%
 	\end{scope}%
+	\thing[#1]%
 }
 
 \newif\ifmarmot@blush
