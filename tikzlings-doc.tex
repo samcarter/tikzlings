@@ -1,0 +1,424 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Documentation for the tikzlings package
+% A collection of packages to draw animals in tikz
+% Maintained by samcarter
+%
+% Project repository and bug tracker:
+% https://github.com/samcarter8/tikzlings
+%
+% Released under the LaTeX Project Public License v1.3c or later
+% See http://www.latex-project.org/lppl.txt
+%
+% Version 0.1
+% Sep 5, 2018 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[parskip=half]{scrartcl}
+
+% packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[T1]{fontenc}	
+\usepackage[utf8]{inputenc}		
+\usepackage[english]{babel}
+\usepackage[svgnames]{xcolor}
+\usepackage[bitstream-charter]{mathdesign}
+\usepackage{tikzducks}
+\usepackage{tikzlings}
+\usetikzlibrary{ducks}
+\usepackage[most]{tcolorbox}
+\usepackage[paper=a4paper,margin=3cm]{geometry}
+\usepackage{url}
+\usepackage{xspace}
+\usepackage{scrlayer-scrpage} 
+\usepackage{marvosym}
+\usepackage{fontawesome}
+\usepackage[hang,flushmargin,bottom]{footmisc}
+\usepackage{imakeidx}
+\usepackage[colorlinks=true,breaklinks=true,urlcolor=duckblue,linkcolor=duckblue,citecolor=duckblue,filecolor=duckblue]{hyperref}
+
+% macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\CTAN}{\textsc{CTAN}\xspace}
+\newcommand{\TikZ}{Ti\emph{k}Z\xspace}
+\newcommand{\tikzducks}{Ti\emph{k}Zducks\xspace}
+\newcommand{\tikzlings}{Ti\emph{k}Zlings\xspace}
+\newcommand{\tikzling}{Ti\emph{k}Zling\xspace}
+\newcommand{\miktex}{MiK\TeX\xspace}
+\newcommand{\texlive}{\TeX{}Live\xspace}
+
+% customisation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\colorlet{duckblue}{SteelBlue}
+\addtokomafont{sectioning}{\color{duckblue}}
+
+
+\makeatletter
+\renewcommand{\sectionlinesformat}[4]{%
+\ifstr{#1}{section}{%
+    \parbox[t]{\linewidth}{%
+      \raggedsection\@hangfrom{\hskip #2#3}{#4}\par%
+      \kern-.75\ht\strutbox\rule{\linewidth}{.8pt}%
+    }%
+  }{%
+    \@hangfrom{\hskip #2#3}{#4}}% 
+}
+\makeatother
+
+\addtokomafont{date}{\normalsize}
+\addtokomafont{author}{\normalsize}
+\setlength{\footnotemargin}{0.7em}
+
+\lstdefinestyle{duckstyle}{%
+	language={[latex]TeX},
+	tabsize=2,
+	breaklines,
+	basicstyle=\ttfamily,
+	commentstyle={\color{green!50!black}\slshape}, 
+	columns=fullflexible,
+	emphstyle=\color{orange!70!black},
+	emph=[1]{water,body,head,eye,pupil,bill,grumpy,tshirt,jacket,tie,cape,shorthair,longhair,crazyhair,recedinghair,eyebrow,beard,glasses,sunglasses,alien,hat,cap,santa,chef,graduate,tassel,beret,crown,unicorn,icecream,flavoura,flavourb,flavourc,book,bookcolour,signpost,signcolour,signback,magichat,magicstars,magicwand,witch,cricket,rollingpin,lightsaber,torch,cake,pizza,hockey,baguette,wing,football,mask,bunny,inear,necklace,milkshake,wine,peakedcap,prison,tophat,speech,bubblecolour,think,buttons,sheep,squareglasses,tail,basket,easter,egga,eggb,eggc,mohican,mullet,horsetail,darthvader,crozier,queencrown,kingcrown,wing,laughing,parrot,stethoscope,niuqelrah,harlequin,neckerchief,woggle,snowduck,invisible,strawhat,ribbon,vampire,parting,crystalball},
+	texcsstyle=*\color{duckblue}\bfseries,
+	keywordstyle=\color{red!60!black}\bfseries,
+	morekeywords={tikzpicture,scope,patterns,calc,pgfinterruptboundingbox},
+	moretexcs={duck,path,definecolor,duckpathjacket,duckpathbody,duckpathgrumpybill,duckpathbill,duckpathtshirt,duckpathcape,duckpathshorthair,duckpathlonghair,duckpathcrazyhair,duckpathrecedinghair,duckpathcrown,scalebox,foreach,node,draw,PassOptionsToPackage,usetikzlibrary,selectcolormodel,colorlet,insignia,stripes,color,includegraphics,mcap,setboardfontcolors,setboardfontencoding,WhiteQueenOnWhite,WhiteKingOnWhite,superstripes,shuffleducks,randuck,randomhead,randomaccessories,duckpathmohican,duckpathmullet,duckpathqueencrown,duckpathkingcrown,duckpathdarthvader,duckpathhorsetail,tikzset,duckpathwing,shade},
+	delim ={[s][\ttfamily\color{green!50!black}]{$}{$}},
+	moredelim=[is][\footnotesize\ttfamily\color{orange!70!black}]{|}{|},
+	index=[1][emph]
+}
+
+\tcbset{%
+	colframe=duckblue,
+	arc=0mm,
+	fonttitle=\bfseries,
+	sidebyside,
+	listing options={style=duckstyle},
+	center lower,
+	righthand width=6.5cm,
+	bottom=0pt, 
+	top=0pt,
+	tikz lower,
+	height plus=3cm
+}
+
+\lstset{style=duckstyle}
+\pgfkeys{/duck/|stripes|/.style={stripes={#1}}}
+
+\pgfmathsetseed{1}
+\setlength{\footheight}{45pt}
+\newlength{\duckoffset}
+
+\cfoot{%
+	\tikzset{external/export=false}%
+	\shuffleducks
+	\begin{tikzpicture}[scale=0.5] 
+	    \duck[signpost=\scalebox{0.6}{\thepage},\randomhead]
+	\end{tikzpicture}
+} 
+\pagestyle{scrheadings}
+\indexsetup{firstpagestyle=scrheadings}
+\makeindex
+
+\usetikzlibrary{external}
+\ifnum\pdfshellescape=1
+	\tikzexternalize[prefix=./tikzducks-doc-figures/]
+\fi
+
+% meta %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{The \texorpdfstring{\tikzlings}{tikzlings} package}
+\subtitle{drawing animals and beings in \TikZ}
+\author{%
+	\texorpdfstring{\texttt{samcarter} (alias 
+		\tikzset{external/export=false}%
+		\begin{tikzpicture}[scale=0.3,baseline=3pt]
+			\duck[body=yellow!50!brown!50!white,
+					longhair=red!50!brown, 
+					jacket=blue!50!black]
+		\end{tikzpicture})\\[0.8em]
+		\url{https://github.com/samcarter8/tikzlings}
+%		\url{https://www.ctan.org/pkg/tikzducks}
+	}{samcarter}}
+\date{Version 0.7 -- \today}
+
+\renewcommand*{\subsectionformat}{}
+\renewcommand*{\sectionformat}{}
+
+\begin{document}
+\maketitle
+\thispagestyle{scrheadings}
+
+\subsection*{Introduction}
+\label{intro}
+
+\section{Der B\"ar -- a teddy bear}
+
+\subsection{Package name}
+
+\begin{tcolorbox}
+\vspace*{0.5cm}
+\lstinline|\usepackage{tikzlings-bears}|
+\vspace*{0.5cm}
+\end{tcolorbox}
+
+\subsection{Basic Usage}
+
+\begin{tcblisting}{}
+\bear
+\end{tcblisting}
+
+\subsection{Options}
+
+\begin{tcblisting}{}
+\bear[body=SteelBlue]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\bear[3D]
+\end{tcblisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Der B\"ar -- a teddy bear}
+
+\subsection{Package name}
+
+\begin{tcolorbox}
+\vspace*{0.5cm}
+\lstinline|\usepackage{tikzlings-bears}|
+\vspace*{0.5cm}
+\end{tcolorbox}
+
+\subsection{Basic Usage}
+
+\begin{tcblisting}{}
+\bear
+\end{tcblisting}
+
+\subsection{Options}
+
+\begin{tcblisting}{}
+\bear[body=SteelBlue]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\bear[3D]
+\end{tcblisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
+\section{007 -- a coati}
+
+\subsection{Package name}
+
+\begin{tcolorbox}
+\vspace*{0.5cm}
+\lstinline|\usepackage{tikzlings-coatis}|
+\vspace*{0.5cm}
+\end{tcolorbox}
+
+\subsection{Basic Usage}
+
+\begin{tcblisting}{}
+\coati
+\end{tcblisting}
+
+\subsection{Options}
+
+\begin{tcblisting}{}
+\coati[body=SteelBlue]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\coati[rotatehead=-15]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\coati[sideward]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\coati[3D]
+\end{tcblisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
+\section{Will -- a koala}
+
+\subsection{Package name}
+
+\begin{tcolorbox}
+\vspace*{0.5cm}
+\lstinline|\usepackage{tikzlings-koalas}|
+\vspace*{0.5cm}
+\end{tcolorbox}
+
+\subsection{Basic Usage}
+
+\begin{tcblisting}{}
+\koala
+\end{tcblisting}
+
+\subsection{Options}
+
+\begin{tcblisting}{}
+\koala[body=SteelBlue]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\koala[blush]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\koala[sleeping]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\koala[3D]
+\end{tcblisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
+\section{Phil -- a marmot}
+
+\subsection{Package name}
+
+\begin{tcolorbox}
+\vspace*{0.5cm}
+\lstinline|\usepackage{tikzlings-marmots}|
+\vspace*{0.5cm}
+\end{tcolorbox}
+
+\subsection{Basic Usage}
+
+\begin{tcblisting}{}
+\marmot
+\end{tcblisting}
+
+\subsection{Options}
+
+\begin{tcblisting}{}
+\marmot[body=SteelBlue]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\marmot[blush]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\marmot[whiskers=gray]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\marmot[teeth]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\marmot[shadow]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\marmot[askphil]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\marmot[3D]
+\end{tcblisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
+\section{Jake -- a owl}
+
+\subsection{Package name}
+
+\begin{tcolorbox}
+\vspace*{0.5cm}
+\lstinline|\usepackage{tikzlings-owls}|
+\vspace*{0.5cm}
+\end{tcolorbox}
+
+\subsection{Basic Usage}
+
+\begin{tcblisting}{}
+\owl
+\end{tcblisting}
+
+\subsection{Options}
+
+\begin{tcblisting}{}
+\owl[body=SteelBlue]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\owl[eye=red]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\owl[pupil=red]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\owl[bill=red]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\owl[feet=red]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\owl[3D]
+\end{tcblisting}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
+\section{Tux -- a penguin}
+
+\subsection{Package name}
+
+\begin{tcolorbox}
+\vspace*{0.5cm}
+\lstinline|\usepackage{tikzlings-\penguins}|
+\vspace*{0.5cm}
+\end{tcolorbox}
+
+\subsection{Basic Usage}
+
+\begin{tcblisting}{}
+\penguin
+\end{tcblisting}
+
+\subsection{Options}
+
+\begin{tcblisting}{}
+\penguin[body=SteelBlue]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\penguin[belly=red]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\penguin[feet=red]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\penguin[bill=red]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\penguin[eye=red]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\penguin[pupil=red]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\penguin[3D]
+\end{tcblisting}
+
+
+\end{document}
