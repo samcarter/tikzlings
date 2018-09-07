@@ -60,7 +60,7 @@ outer color=transparent!100]
   %
   % Pass unknown keys on to tikz
   %
-  /marmot/.search also={/tikz,/pgf},
+  /marmot/.search also={/tikz,/pgf,/thing},
   /marmot/.cd,
   %
   % body
@@ -73,7 +73,8 @@ outer color=transparent!100]
   blush/.code		     = \marmot@blushtrue,
   whiskers/.code     = \marmot@whiskerstrue \def\marmot@whiskers{#1},
   whiskers/.default  = gray,
-  teeth/.code        = \marmot@teethtrue, 
+  teeth/.code        = \marmot@teethtrue    \def\marmot@teeth{#1}, 
+  teeth/.default     = white,
   3D/.code			     = \marmot@threeDtrue,
   shadow/.code       = \marmot@shadowtrue,
   askphil/.code      = \marmot@askphiltrue,
@@ -180,8 +181,8 @@ outer color=transparent!100]
 % Teeth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifmarmot@teeth
 	\fill[\marmot@body!50!black] (0.048,1.413) rectangle (-0.048,1.373);
-	\fill[white] (-0.045,1.407) rectangle (-0.004,1.376);
-	\fill[white] (0.045,1.407) rectangle (0.004,1.376);	
+	\fill[\marmot@teeth] (-0.045,1.407) rectangle (-0.004,1.376);
+	\fill[\marmot@teeth] (0.045,1.407) rectangle (0.004,1.376);	
 \fi
 %
 }
