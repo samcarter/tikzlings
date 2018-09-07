@@ -1,4 +1,4 @@
-% !TeX root = ./ViewingPlatform/test.tex
+% !TeX root = ./testing/test.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % The tikzlings-addons package (part of the tikzlings collection)
@@ -328,6 +328,11 @@
 	\fill[\thing@alien] (0.22,2.30) circle (0.07);
 \fi
 %
+% crystal ball %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifthing@crystalball
+	\shade[ball color=\thing@crystalball,opacity=0.7] (0,0.8) circle (0.33);
+\fi
+
  
 \begin{scope}[xshift=-26]
 
@@ -761,10 +766,7 @@
 %	\fi
 %\fi
 %%
-%% crystal ball %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\ifthing@crystalball
-%	\shade[ball color=\thing@crystalball,opacity=0.7] (0.93,0.5) circle (0.33);
-%\fi
+
 %%
 %% wing %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\ifthing@wing
