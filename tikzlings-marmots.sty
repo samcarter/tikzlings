@@ -55,6 +55,8 @@ outer color=transparent!100]
 \newif\ifmarmot@threeD
 \newif\ifmarmot@shadow
 \newif\ifmarmot@askphil
+\newif\ifmarmot@leftstep
+\newif\ifmarmot@rightstep
 
 \tikzset{
   %
@@ -79,6 +81,8 @@ outer color=transparent!100]
   shadow/.code       = \marmot@shadowtrue,
   askphil/.code      = \marmot@askphiltrue,
   ask phil/.forward to=/marmot/askphil,
+  leftstep/.code     = \marmot@leftsteptrue,
+  rightstep/.code    = \marmot@rightsteptrue,
 }
 
 \def\marmot@draw{%
@@ -126,8 +130,17 @@ outer color=transparent!100]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\marmot@part@draw[\marmot@body!50!black] (0.255,0.2) ellipse (0.23 and 0.09); 
-\marmot@part@draw[\marmot@body!50!black] (-0.255,0.2) ellipse (0.23 and 0.09);
+\ifmarmot@leftstep
+	\marmot@part@draw[\marmot@body!50!black] (-0.255,0.25) ellipse (0.23 and 0.09);	
+\else
+	\marmot@part@draw[\marmot@body!50!black] (-0.255,0.2) ellipse (0.23 and 0.09);	
+\fi
+
+\ifmarmot@rightstep
+	\marmot@part@draw[\marmot@body!50!black] (0.255,0.25) ellipse (0.23 and 0.09); 
+\else
+	\marmot@part@draw[\marmot@body!50!black] (0.255,0.2) ellipse (0.23 and 0.09); 
+\fi
 %
 % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \marmot@part@draw[\marmot@body!50!black] (0.255,2.03) ellipse (0.09 and 0.13);
