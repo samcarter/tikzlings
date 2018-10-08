@@ -34,7 +34,7 @@
 \usepackage{fontawesome}
 \usepackage[hang,flushmargin,bottom]{footmisc}
 \usepackage{imakeidx}
-\usepackage[colorlinks=true,breaklinks=true,urlcolor=duckblue,linkcolor=duckblue,citecolor=duckblue,filecolor=duckblue]{hyperref}
+\usepackage[colorlinks=true,breaklinks=true,urlcolor=duckblue!50!black,linkcolor=duckblue!50!black,citecolor=duckblue!50!black,filecolor=duckblue!50!black]{hyperref}
 
 % macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\CTAN}{\textsc{CTAN}\xspace}
@@ -50,7 +50,6 @@
 \colorlet{duckblue}{SteelBlue}
 \addtokomafont{sectioning}{\color{duckblue}}
 
-
 \makeatletter
 \renewcommand{\sectionlinesformat}[4]{%
 \ifstr{#1}{section}{%
@@ -63,6 +62,9 @@
 }
 \makeatother
 
+\KOMAoption{sectionentrydots}{true}
+\deftocheading{toc}{}%
+\setcounter{tocdepth}{1}
 \addtokomafont{date}{\normalsize}
 \addtokomafont{author}{\normalsize}
 \setlength{\footnotemargin}{0.7em}
@@ -74,12 +76,22 @@
 	basicstyle=\ttfamily,
 	commentstyle={\color{green!50!black}\slshape}, 
 	columns=fullflexible,
+	alsodigit={-},
+	alsoletter={3},
 	emphstyle=\color{orange!70!black},
-	emph=[1]{water,body,head,eye,pupil,bill,grumpy,tshirt,jacket,tie,cape,shorthair,longhair,crazyhair,recedinghair,eyebrow,beard,glasses,sunglasses,alien,hat,cap,santa,chef,graduate,tassel,beret,crown,unicorn,icecream,flavoura,flavourb,flavourc,book,bookcolour,signpost,signcolour,signback,magichat,magicstars,magicwand,witch,cricket,rollingpin,lightsaber,torch,cake,pizza,hockey,baguette,wing,football,mask,bunny,inear,necklace,milkshake,wine,peakedcap,prison,tophat,speech,bubblecolour,think,buttons,sheep,squareglasses,tail,basket,easter,egga,eggb,eggc,mohican,mullet,horsetail,darthvader,crozier,queencrown,kingcrown,wing,laughing,parrot,stethoscope,niuqelrah,harlequin,neckerchief,woggle,snowduck,invisible,strawhat,ribbon,vampire,parting,crystalball},
-	texcsstyle=*\color{duckblue}\bfseries,
+	emph=[1]{
+		tikzlings,
+		tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins,
+		body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, pupil, bill, feet, belly, ask, phil,
+		hat, crown, tophat,  
+		scale, yshift, xshift, rotate
+	},
+	texcsstyle=*\color{duckblue!50!black}\bfseries,
 	keywordstyle=\color{red!60!black}\bfseries,
-	morekeywords={tikzpicture,scope,patterns,calc,pgfinterruptboundingbox},
-	moretexcs={duck,path,definecolor,duckpathjacket,duckpathbody,duckpathgrumpybill,duckpathbill,duckpathtshirt,duckpathcape,duckpathshorthair,duckpathlonghair,duckpathcrazyhair,duckpathrecedinghair,duckpathcrown,scalebox,foreach,node,draw,PassOptionsToPackage,usetikzlibrary,selectcolormodel,colorlet,insignia,stripes,color,includegraphics,mcap,setboardfontcolors,setboardfontencoding,WhiteQueenOnWhite,WhiteKingOnWhite,superstripes,shuffleducks,randuck,randomhead,randomaccessories,duckpathmohican,duckpathmullet,duckpathqueencrown,duckpathkingcrown,duckpathdarthvader,duckpathhorsetail,tikzset,duckpathwing,shade},
+	morekeywords={tikzpicture},
+	moretexcs={
+		usepackage, usetikzlibrary, marmot, coati, bear, koala, owl, penguin, thing
+	},
 	delim ={[s][\ttfamily\color{green!50!black}]{$}{$}},
 	moredelim=[is][\footnotesize\ttfamily\color{orange!70!black}]{|}{|},
 	index=[1][emph]
@@ -107,11 +119,12 @@
 \newlength{\duckoffset}
 
 \cfoot{%
-	\tikzset{external/export=false}%
-	\shuffleducks
-	\begin{tikzpicture}[scale=0.5] 
-	    \duck[signpost=\scalebox{0.6}{\thepage},\randomhead]
-	\end{tikzpicture}
+	\thepage
+%	\tikzset{external/export=false}%
+%	\shuffleducks
+%	\begin{tikzpicture}[scale=0.5] 
+%	    \duck[signpost=\scalebox{0.6}{\thepage},\randomhead]
+%	\end{tikzpicture}
 } 
 \pagestyle{scrheadings}
 \indexsetup{firstpagestyle=scrheadings}
@@ -126,18 +139,13 @@
 \title{The \texorpdfstring{\tikzlings}{tikzlings} package}
 \subtitle{drawing animals and beings in \TikZ}
 \author{%
-	\texorpdfstring{\texttt{samcarter} (alias 
-		\tikzset{external/export=false}%
-		\begin{tikzpicture}[scale=0.3,baseline=3pt]
-			\duck[body=yellow!50!brown!50!white,
-					longhair=red!50!brown, 
-					jacket=blue!50!black]
-		\end{tikzpicture})\\[0.8em]
+	\texorpdfstring{\texttt{samcarter}\\[0.8em]
 		\url{https://github.com/samcarter/tikzlings}
 %		\url{https://www.ctan.org/pkg/tikzlings}
 	}{samcarter}}
-\date{Version 0.7 -- \today}
+\date{Version 0.1 -- \today}
 
+\renewcommand*{\subsectionformat}{}
 \renewcommand*{\subsectionformat}{}
 \renewcommand*{\sectionformat}{}
 
@@ -145,7 +153,7 @@
 \maketitle
 \thispagestyle{scrheadings}
 
-\section{Introduction}
+\section*{Introduction}
 \label{intro}
 
 The \tikzlings are a collection of little animals (and beings) drawn in \TikZ. It is the next evolutionary phase of the \tikzmarmots package extending it with further animals (and beings) and also adding the ability to natively use many of the accessories known from the \tikzducks package. 
@@ -154,64 +162,47 @@ This package is work in progress, therefore I would be happy to hear your feedba
 The head version of the source code can be found on \url{github.com/samcarter/tikzlings}, including a bug tracker -- please make constructive use of it! 
 %A more stable package version can be found on \CTAN (\url{www.ctan.org/pkg/tikzlings}) and is included in both \miktex and \texlive as \tikzlings. 
 
-\subsection{Acknowledgements}
+\subsection*{Acknowledgements}
 
-I'd like to thank the friendly and helpful community of \href{https://tex.stackexchange.com/}{TeX.Stackexchange} for their suggestions, feedback and help to create this package and find a suitable name for it. As a thank you the \tikzlings in the following each have a name which is in some way or another connected to the users of TeX.Stackexchange.
+I'd like to thank the friendly and helpful community of \href{https://tex.stackexchange.com/}{TeX.Stackexchange} for their suggestions, feedback and help to create this package and find a suitable name for it. As a thank you all the \tikzlings have a name which is in some way or another connected to the users of TeX.SE.
 
-\subsection{License}
+\subsection*{License}
 
 Copyright \raisebox{0.2em}{\tiny\fontfamily{cmr}\selectfont\textcopyright}
 \texttt{samcarter}. Permission is granted to copy, distribute and\slash or modify this software under the terms of the LaTeX project public licence, version 1.3c or later \url{http://www.latex-project.org/lppl.txt}.
 
-\section{The \tikzlings}
+\clearpage
+\section*{The \tikzlings}
 
-The \tikzlings package is a collection of packages. It can either be loaded as a whole with \lstinline|\usepackage{tikzlings}| (or \lstinline|\usetikzlibrary{tikzlings}|) or the subpackages containing the individual animals (and beings) can be used separately, e.g.\ by loading \lstinline|\usepackage{tikzlings-marmots}|.
+The \tikzlings package is a collection of packages. It can either be loaded as a whole with \lstinline|\usepackage{tikzlings}| (or \lstinline|\usetikzlibrary{tikzlings}|) or the subpackages containing the individual animals (and beings) can be used separately, for example by loading \lstinline|\usepackage{tikzlings-marmots}|.
 
-The basic usage is the same for all animals (and beings). Inside a \lstinline|tikzpicture|, the \tikzlings can be added via \lstinline|\<name of the tikzling>|. For example
+The basic usage is the same for all animals (and beings). Inside a \lstinline|tikzpicture|, the \tikzlings can be added via \color{duckblue!50!black}\lstinline|\<name_of_the_tikzling>|\color{black}. For example
 
 \begin{tcblisting}{}
 \marmot
 \end{tcblisting}
 
-will produce a marmot. All usual \TikZ keys can be passed as optional argument to change the appearance. For example scaling, shifting and rotating the \tikzlings can be done by
+will produce a marmot. All usual \TikZ keys can be passed as optional argument to change the appearance. For example scaling and rotating the \tikzlings can be done by
 
 \begin{tcblisting}{}
-\coati[rotate=30,scale=0.7,xshift=0.1cm]
+\coati[rotate=30,scale=0.5]
 \end{tcblisting}
 
-In addition to the standard options provided by \TikZ each \tikzlings also comes with some addition options which are listed in the following sections.
+In addition to the standard options provided by \TikZ each \tikzlings also comes with some addition options which are listed in the following sections. If these additional options consist of multiple words they are available both with and without spaces, e.g.\ \lstinline|askphil| and \lstinline|ask phil| will be treated as the same.
 
-\subsection{Der B\"ar -- a teddy bear}
+\subsection*{List of all \tikzlings:}
 
-\subsubsection{Package name}
-
-\begin{tcolorbox}
-\vspace*{0.5cm}
-\lstinline|\usepackage{tikzlings-bears}|
-\vspace*{0.5cm}
-\end{tcolorbox}
-
-\subsubsection{Basic Usage}
-
-\begin{tcblisting}{}
-\bear
-\end{tcblisting}
-
-\subsubsection{Options}
-
-\begin{tcblisting}{}
-\bear[body=SteelBlue]
-\end{tcblisting}
-
-\begin{tcblisting}{}
-\bear[3D]
-\end{tcblisting}
+\begingroup
+	\hypersetup{hidelinks}
+	\tableofcontents
+\endgroup
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Der B\"ar -- a teddy bear}
+\clearpage
+\section[\textbackslash bear]{B\"ar, the teddy bear}
 
-\subsubsection{Package name}
+\subsection{Package name}
 
 \begin{tcolorbox}
 \vspace*{0.5cm}
@@ -219,13 +210,13 @@ In addition to the standard options provided by \TikZ each \tikzlings also comes
 \vspace*{0.5cm}
 \end{tcolorbox}
 
-\subsubsection{Basic Usage}
+\subsection{Basic Usage}
 
 \begin{tcblisting}{}
 \bear
 \end{tcblisting}
 
-\subsubsection{Options}
+\subsection{Options}
 
 \begin{tcblisting}{}
 \bear[body=SteelBlue]
@@ -238,9 +229,9 @@ In addition to the standard options provided by \TikZ each \tikzlings also comes
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
-\subsection{007 -- a coati}
+\section[\textbackslash coati]{007, the coati}
 
-\subsubsection{Package name}
+\subsection{Package name}
 
 \begin{tcolorbox}
 \vspace*{0.5cm}
@@ -248,13 +239,13 @@ In addition to the standard options provided by \TikZ each \tikzlings also comes
 \vspace*{0.5cm}
 \end{tcolorbox}
 
-\subsubsection{Basic Usage}
+\subsection{Basic Usage}
 
 \begin{tcblisting}{}
 \coati
 \end{tcblisting}
 
-\subsubsection{Options}
+\subsection{Options}
 
 \begin{tcblisting}{}
 \coati[body=SteelBlue]
@@ -275,9 +266,9 @@ In addition to the standard options provided by \TikZ each \tikzlings also comes
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
-\subsection{Will -- a koala}
+\section[\textbackslash koala]{Will, the koala}
 
-\subsubsection{Package name}
+\subsection{Package name}
 
 \begin{tcolorbox}
 \vspace*{0.5cm}
@@ -285,13 +276,13 @@ In addition to the standard options provided by \TikZ each \tikzlings also comes
 \vspace*{0.5cm}
 \end{tcolorbox}
 
-\subsubsection{Basic Usage}
+\subsection{Basic Usage}
 
 \begin{tcblisting}{}
 \koala
 \end{tcblisting}
 
-\subsubsection{Options}
+\subsection{Options}
 
 \begin{tcblisting}{}
 \koala[body=SteelBlue]
@@ -312,9 +303,9 @@ In addition to the standard options provided by \TikZ each \tikzlings also comes
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
-\subsection{Phil -- a marmot}
+\section[\textbackslash marmot]{Phil, the marmot}
 
-\subsubsection{Package name}
+\subsection{Package name}
 
 \begin{tcolorbox}
 \vspace*{0.5cm}
@@ -322,13 +313,13 @@ In addition to the standard options provided by \TikZ each \tikzlings also comes
 \vspace*{0.5cm}
 \end{tcolorbox}
 
-\subsubsection{Basic Usage}
+\subsection{Basic Usage}
 
 \begin{tcblisting}{}
 \marmot
 \end{tcblisting}
 
-\subsubsection{Options}
+\subsection{Options}
 
 \begin{tcblisting}{}
 \marmot[body=SteelBlue]
@@ -369,9 +360,9 @@ In addition to the standard options provided by \TikZ each \tikzlings also comes
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
-\subsection{Jake -- a owl}
+\section[\textbackslash owl]{Jake, the owl}
 
-\subsubsection{Package name}
+\subsection{Package name}
 
 \begin{tcolorbox}
 \vspace*{0.5cm}
@@ -379,13 +370,13 @@ In addition to the standard options provided by \TikZ each \tikzlings also comes
 \vspace*{0.5cm}
 \end{tcolorbox}
 
-\subsubsection{Basic Usage}
+\subsection{Basic Usage}
 
 \begin{tcblisting}{}
 \owl
 \end{tcblisting}
 
-\subsubsection{Options}
+\subsection{Options}
 
 \begin{tcblisting}{}
 \owl[body=SteelBlue]
@@ -416,23 +407,23 @@ In addition to the standard options provided by \TikZ each \tikzlings also comes
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
-\subsection{Tux -- a penguin}
+\section[\textbackslash penguin]{Tux, the penguin}
 
-\subsubsection{Package name}
+\subsection{Package name}
 
 \begin{tcolorbox}
 \vspace*{0.5cm}
-\lstinline|\usepackage{tikzlings-\penguins}|
+\lstinline|\usepackage{tikzlings-penguins}|
 \vspace*{0.5cm}
 \end{tcolorbox}
 
-\subsubsection{Basic Usage}
+\subsection{Basic Usage}
 
 \begin{tcblisting}{}
 \penguin
 \end{tcblisting}
 
-\subsubsection{Options}
+\subsection{Options}
 
 \begin{tcblisting}{}
 \penguin[body=SteelBlue]
@@ -471,5 +462,20 @@ To customise the \tikzlings the package provides a number of accessories which c
 \bear[hat]
 \end{tcblisting}
  
+For most of these items, the colour can be customised:
+
+\begin{tcblisting}{}
+\koala[crown=orange!50!yellow]
+\end{tcblisting}
+
+Unfortunately it is very difficult to create accessories that will fit all the different shapes of the \tikzlings. Therefore it is also possible to add them separately as optional argument of the \lstinline|\thing| macro, which allows more control of their size and placement:
+
+\begin{tcblisting}{}
+\owl
+\thing[tophat,scale=1.5,yshift=-0.6cm,xshift=-0.05cm]
+\end{tcblisting}
+
+\subsection{List of available accessories}
+
 
 \end{document}
