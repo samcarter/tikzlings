@@ -40,6 +40,7 @@
 \newcommand{\CTAN}{\textsc{CTAN}\xspace}
 \newcommand{\TikZ}{Ti\emph{k}Z\xspace}
 \newcommand{\tikzducks}{Ti\emph{k}Zducks\xspace}
+\newcommand{\tikzmarmots}{Ti\emph{k}Zmarmots\xspace}
 \newcommand{\tikzlings}{Ti\emph{k}Zlings\xspace}
 \newcommand{\tikzling}{Ti\emph{k}Zling\xspace}
 \newcommand{\miktex}{MiK\TeX\xspace}
@@ -133,7 +134,7 @@
 					jacket=blue!50!black]
 		\end{tikzpicture})\\[0.8em]
 		\url{https://github.com/samcarter/tikzlings}
-%		\url{https://www.ctan.org/pkg/tikzducks}
+%		\url{https://www.ctan.org/pkg/tikzlings}
 	}{samcarter}}
 \date{Version 0.7 -- \today}
 
@@ -144,12 +145,45 @@
 \maketitle
 \thispagestyle{scrheadings}
 
-\subsection*{Introduction}
+\section{Introduction}
 \label{intro}
 
-\section{Der B\"ar -- a teddy bear}
+The \tikzlings are a collection of little animals (and beings) drawn in \TikZ. It is the next evolutionary phase of the \tikzmarmots package extending it with further animals (and beings) and also adding the ability to natively use many of the accessories known from the \tikzducks package. 
 
-\subsection{Package name}
+This package is work in progress, therefore I would be happy to hear your feedback and ideas how to improve the package. 
+The head version of the source code can be found on \url{github.com/samcarter/tikzlings}, including a bug tracker -- please make constructive use of it! 
+%A more stable package version can be found on \CTAN (\url{www.ctan.org/pkg/tikzlings}) and is included in both \miktex and \texlive as \tikzlings. 
+
+\subsection{Acknowledgements}
+
+I'd like to thank the friendly and helpful community of \href{https://tex.stackexchange.com/}{TeX.Stackexchange} for their suggestions, feedback and help to create this package and find a suitable name for it. As a thank you the \tikzlings in the following each have a name which is in some way or another connected to the users of TeX.Stackexchange.
+
+\subsection{License}
+
+Copyright \raisebox{0.2em}{\tiny\fontfamily{cmr}\selectfont\textcopyright}
+\texttt{samcarter}. Permission is granted to copy, distribute and\slash or modify this software under the terms of the LaTeX project public licence, version 1.3c or later \url{http://www.latex-project.org/lppl.txt}.
+
+\section{The \tikzlings}
+
+The \tikzlings package is a collection of packages. It can either be loaded as a whole with \lstinline|\usepackage{tikzlings}| (or \lstinline|\usetikzlibrary{tikzlings}|) or the subpackages containing the individual animals (and beings) can be used separately, e.g.\ by loading \lstinline|\usepackage{tikzlings-marmots}|.
+
+The basic usage is the same for all animals (and beings). Inside a \lstinline|tikzpicture|, the \tikzlings can be added via \lstinline|\<name of the tikzling>|. For example
+
+\begin{tcblisting}{}
+\marmot
+\end{tcblisting}
+
+will produce a marmot. All usual \TikZ keys can be passed as optional argument to change the appearance. For example scaling, shifting and rotating the \tikzlings can be done by
+
+\begin{tcblisting}{}
+\coati[rotate=30,scale=0.7,xshift=0.1cm]
+\end{tcblisting}
+
+In addition to the standard options provided by \TikZ each \tikzlings also comes with some addition options which are listed in the following sections.
+
+\subsection{Der B\"ar -- a teddy bear}
+
+\subsubsection{Package name}
 
 \begin{tcolorbox}
 \vspace*{0.5cm}
@@ -157,13 +191,13 @@
 \vspace*{0.5cm}
 \end{tcolorbox}
 
-\subsection{Basic Usage}
+\subsubsection{Basic Usage}
 
 \begin{tcblisting}{}
 \bear
 \end{tcblisting}
 
-\subsection{Options}
+\subsubsection{Options}
 
 \begin{tcblisting}{}
 \bear[body=SteelBlue]
@@ -175,9 +209,9 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Der B\"ar -- a teddy bear}
+\subsection{Der B\"ar -- a teddy bear}
 
-\subsection{Package name}
+\subsubsection{Package name}
 
 \begin{tcolorbox}
 \vspace*{0.5cm}
@@ -185,13 +219,13 @@
 \vspace*{0.5cm}
 \end{tcolorbox}
 
-\subsection{Basic Usage}
+\subsubsection{Basic Usage}
 
 \begin{tcblisting}{}
 \bear
 \end{tcblisting}
 
-\subsection{Options}
+\subsubsection{Options}
 
 \begin{tcblisting}{}
 \bear[body=SteelBlue]
@@ -204,9 +238,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
-\section{007 -- a coati}
+\subsection{007 -- a coati}
 
-\subsection{Package name}
+\subsubsection{Package name}
 
 \begin{tcolorbox}
 \vspace*{0.5cm}
@@ -214,13 +248,13 @@
 \vspace*{0.5cm}
 \end{tcolorbox}
 
-\subsection{Basic Usage}
+\subsubsection{Basic Usage}
 
 \begin{tcblisting}{}
 \coati
 \end{tcblisting}
 
-\subsection{Options}
+\subsubsection{Options}
 
 \begin{tcblisting}{}
 \coati[body=SteelBlue]
@@ -241,9 +275,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
-\section{Will -- a koala}
+\subsection{Will -- a koala}
 
-\subsection{Package name}
+\subsubsection{Package name}
 
 \begin{tcolorbox}
 \vspace*{0.5cm}
@@ -251,13 +285,13 @@
 \vspace*{0.5cm}
 \end{tcolorbox}
 
-\subsection{Basic Usage}
+\subsubsection{Basic Usage}
 
 \begin{tcblisting}{}
 \koala
 \end{tcblisting}
 
-\subsection{Options}
+\subsubsection{Options}
 
 \begin{tcblisting}{}
 \koala[body=SteelBlue]
@@ -278,9 +312,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
-\section{Phil -- a marmot}
+\subsection{Phil -- a marmot}
 
-\subsection{Package name}
+\subsubsection{Package name}
 
 \begin{tcolorbox}
 \vspace*{0.5cm}
@@ -288,13 +322,13 @@
 \vspace*{0.5cm}
 \end{tcolorbox}
 
-\subsection{Basic Usage}
+\subsubsection{Basic Usage}
 
 \begin{tcblisting}{}
 \marmot
 \end{tcblisting}
 
-\subsection{Options}
+\subsubsection{Options}
 
 \begin{tcblisting}{}
 \marmot[body=SteelBlue]
@@ -328,7 +362,6 @@
 \marmot[rightstep]
 \end{tcblisting}
 
-
 \begin{tcblisting}{}
 \marmot[3D]
 \end{tcblisting}
@@ -336,9 +369,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
-\section{Jake -- a owl}
+\subsection{Jake -- a owl}
 
-\subsection{Package name}
+\subsubsection{Package name}
 
 \begin{tcolorbox}
 \vspace*{0.5cm}
@@ -346,13 +379,13 @@
 \vspace*{0.5cm}
 \end{tcolorbox}
 
-\subsection{Basic Usage}
+\subsubsection{Basic Usage}
 
 \begin{tcblisting}{}
 \owl
 \end{tcblisting}
 
-\subsection{Options}
+\subsubsection{Options}
 
 \begin{tcblisting}{}
 \owl[body=SteelBlue]
@@ -383,9 +416,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
-\section{Tux -- a penguin}
+\subsection{Tux -- a penguin}
 
-\subsection{Package name}
+\subsubsection{Package name}
 
 \begin{tcolorbox}
 \vspace*{0.5cm}
@@ -393,13 +426,13 @@
 \vspace*{0.5cm}
 \end{tcolorbox}
 
-\subsection{Basic Usage}
+\subsubsection{Basic Usage}
 
 \begin{tcblisting}{}
 \penguin
 \end{tcblisting}
 
-\subsection{Options}
+\subsubsection{Options}
 
 \begin{tcblisting}{}
 \penguin[body=SteelBlue]
@@ -429,5 +462,14 @@
 \penguin[3D]
 \end{tcblisting}
 
+\clearpage
+\section{Accessories}
+
+To customise the \tikzlings the package provides a number of accessories which can be added to all the \tikzlings simply by adding the respective keyword as optional argument:
+
+\begin{tcblisting}{}
+\bear[hat]
+\end{tcblisting}
+ 
 
 \end{document}
