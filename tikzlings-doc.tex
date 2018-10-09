@@ -42,7 +42,7 @@
 \newcommand{\tikzducks}{Ti\emph{k}Zducks\xspace}
 \newcommand{\tikzmarmots}{Ti\emph{k}Zmarmots\xspace}
 \newcommand{\tikzlings}{Ti\emph{k}Zlings\xspace}
-\newcommand{\tikzling}{Ti\emph{k}Zling\xspace}
+%\newcommand{\tikzlingdoc}{Ti\emph{k}Zling\xspace}
 \newcommand{\miktex}{MiK\TeX\xspace}
 \newcommand{\texlive}{\TeX{}Live\xspace}
 
@@ -204,7 +204,7 @@ In addition to the standard options provided by \TikZ each \tikzlings also comes
 
 \subsection{Package name}
 
-\begin{tcolorbox}
+\begin{tcolorbox}[lower separated=false]
 \vspace*{0.5cm}
 \lstinline|\usepackage{tikzlings-bears}|
 \vspace*{0.5cm}
@@ -218,9 +218,13 @@ In addition to the standard options provided by \TikZ each \tikzlings also comes
 
 \subsection{Options}
 
+The basic teddy bear can be modified by changing it's colour
+
 \begin{tcblisting}{}
 \bear[body=SteelBlue]
 \end{tcblisting}
+
+The key \lstinline|3D| will make the teddy bear 3-dimensional:
 
 \begin{tcblisting}{}
 \bear[3D]
@@ -233,7 +237,7 @@ In addition to the standard options provided by \TikZ each \tikzlings also comes
 
 \subsection{Package name}
 
-\begin{tcolorbox}
+\begin{tcolorbox}[lower separated=false]
 \vspace*{0.5cm}
 \lstinline|\usepackage{tikzlings-coatis}|
 \vspace*{0.5cm}
@@ -247,17 +251,25 @@ In addition to the standard options provided by \TikZ each \tikzlings also comes
 
 \subsection{Options}
 
+The basic coati can be modified by changing it's colour
+
 \begin{tcblisting}{}
 \coati[body=SteelBlue]
 \end{tcblisting}
+
+The head of the \lstinlin|\coati| can be rotated, but please don't overdo this, otherwise his neck might break.
 
 \begin{tcblisting}{}
 \coati[rotatehead=-15]
 \end{tcblisting}
 
+For the head an alternative sidewards facing head is available. It can be combined with the \lstinline|rotatehead| option.
+
 \begin{tcblisting}{}
 \coati[sideward]
 \end{tcblisting}
+
+Finally the key \lstinline|3D| will make the coati 3-dimensional:
 
 \begin{tcblisting}{}
 \coati[3D]
@@ -270,7 +282,7 @@ In addition to the standard options provided by \TikZ each \tikzlings also comes
 
 \subsection{Package name}
 
-\begin{tcolorbox}
+\begin{tcolorbox}[lower separated=false]
 \vspace*{0.5cm}
 \lstinline|\usepackage{tikzlings-koalas}|
 \vspace*{0.5cm}
@@ -284,17 +296,25 @@ In addition to the standard options provided by \TikZ each \tikzlings also comes
 
 \subsection{Options}
 
+The basic koala can be modified by changing it's colour
+
 \begin{tcblisting}{}
 \koala[body=SteelBlue]
 \end{tcblisting}
+
+making it blush
 
 \begin{tcblisting}{}
 \koala[blush]
 \end{tcblisting}
 
+If it is tired, it can sleep:
+
 \begin{tcblisting}{}
 \koala[sleeping]
 \end{tcblisting}
+
+Finally the key \lstinline|3D| will make the koala 3-dimensional:
 
 \begin{tcblisting}{}
 \koala[3D]
@@ -307,7 +327,7 @@ In addition to the standard options provided by \TikZ each \tikzlings also comes
 
 \subsection{Package name}
 
-\begin{tcolorbox}
+\begin{tcolorbox}[lower separated=false]
 \vspace*{0.5cm}
 \lstinline|\usepackage{tikzlings-marmots}|
 \vspace*{0.5cm}
@@ -321,37 +341,50 @@ In addition to the standard options provided by \TikZ each \tikzlings also comes
 
 \subsection{Options}
 
+The basic marmot can be modified by changing it's colour
+
 \begin{tcblisting}{}
 \marmot[body=SteelBlue]
 \end{tcblisting}
+
+making it blush
 
 \begin{tcblisting}{}
 \marmot[blush]
 \end{tcblisting}
 
+or adding whiskers
+
 \begin{tcblisting}{}
 \marmot[whiskers=gray]
 \end{tcblisting}
 
+Some marmots even show their chisel teeth:
+
 \begin{tcblisting}{}
-\marmot[teeth]
+\marmot[teeth=white]
 \end{tcblisting}
+
+The marmots also can cast a shadow:
 
 \begin{tcblisting}{}
 \marmot[shadow]
 \end{tcblisting}
 
+This ability is important if you want to ask Punxsutawney Phil\footnote{\url{https://en.wikipedia.org/wiki/Punxsutawney_Phil}} on Groundhog Day how the weather is going to be. With a probability derived from the statistics of 120 Groundhog Days\footnote{\url{https://www.livescience.com/32974-punxsutawney-phil-weather-prediction-accuracy.html}} the option \lstinline|askphil| might or might not result in a shadow.
+
 \begin{tcblisting}{}
 \marmot[askphil]
 \end{tcblisting}
 
-\begin{tcblisting}{}
-\marmot[leftstep]
-\end{tcblisting}
+If a good weather prognosis is derived, the happy marmot can dance by lifting up it's left and right foot: 
 
 \begin{tcblisting}{}
-\marmot[rightstep]
+\marmot[leftstep]
+\marmot[rightstep,xshift=2cm]
 \end{tcblisting}
+
+Finally the key \lstinline|3D| will make the marmot 3-dimensional:
 
 \begin{tcblisting}{}
 \marmot[3D]
@@ -364,7 +397,7 @@ In addition to the standard options provided by \TikZ each \tikzlings also comes
 
 \subsection{Package name}
 
-\begin{tcolorbox}
+\begin{tcolorbox}[lower separated=false]
 \vspace*{0.5cm}
 \lstinline|\usepackage{tikzlings-owls}|
 \vspace*{0.5cm}
@@ -378,25 +411,37 @@ In addition to the standard options provided by \TikZ each \tikzlings also comes
 
 \subsection{Options}
 
+The basic owl can be modified by changing it's colour
+
 \begin{tcblisting}{}
 \owl[body=SteelBlue]
 \end{tcblisting}
+
+In addition to the colour of the body, the colour of various body parts can be adjusted. In detail these are the eyes:
 
 \begin{tcblisting}{}
 \owl[eye=red]
 \end{tcblisting}
 
+the pupils:
+
 \begin{tcblisting}{}
 \owl[pupil=red]
 \end{tcblisting}
+
+the bill:
 
 \begin{tcblisting}{}
 \owl[bill=red]
 \end{tcblisting}
 
+and the feet:
+
 \begin{tcblisting}{}
 \owl[feet=red]
 \end{tcblisting}
+
+Finally the key \lstinline|3D| will make the owl 3-dimensional:
 
 \begin{tcblisting}{}
 \owl[3D]
@@ -411,7 +456,7 @@ In addition to the standard options provided by \TikZ each \tikzlings also comes
 
 \subsection{Package name}
 
-\begin{tcolorbox}
+\begin{tcolorbox}[lower separated=false]
 \vspace*{0.5cm}
 \lstinline|\usepackage{tikzlings-penguins}|
 \vspace*{0.5cm}
@@ -425,29 +470,74 @@ In addition to the standard options provided by \TikZ each \tikzlings also comes
 
 \subsection{Options}
 
+The basic penguin can be modified by changing it's colour
+
 \begin{tcblisting}{}
 \penguin[body=SteelBlue]
 \end{tcblisting}
 
-\begin{tcblisting}{}
-\penguin[belly=red]
-\end{tcblisting}
-
-\begin{tcblisting}{}
-\penguin[feet=red]
-\end{tcblisting}
-
-\begin{tcblisting}{}
-\penguin[bill=red]
-\end{tcblisting}
+In addition to the colour of the body, the colour of various body parts can be adjusted. In detail these are the eyes:
 
 \begin{tcblisting}{}
 \penguin[eye=red]
 \end{tcblisting}
 
+the pupils:
+
 \begin{tcblisting}{}
 \penguin[pupil=red]
 \end{tcblisting}
+
+the bill:
+
+\begin{tcblisting}{}
+\penguin[bill=red]
+\end{tcblisting}
+
+the belly:
+
+\begin{tcblisting}{}
+\penguin[belly=red]
+\end{tcblisting}
+
+and the feet:
+
+\begin{tcblisting}{}
+\penguin[feet=red]
+\end{tcblisting}
+
+Finally the key \lstinline|3D| will make the penguin 3-dimensional:
+
+\begin{tcblisting}{}
+\penguin[3D]
+\end{tcblisting}
+
+\clearpage
+\section[\textbackslash tikzling]{some name, the tikzling}
+
+\subsection{Package name}
+
+\begin{tcolorbox}[lower separated=false]
+\vspace*{0.5cm}
+\lstinline|\usepackage{tikzlings}|
+\vspace*{0.5cm}
+\end{tcolorbox}
+
+\subsection{Basic Usage}
+
+\begin{tcblisting}{}
+\tikzling
+\end{tcblisting}
+
+\subsection{Options}
+
+Only options common for all \tikzlings are supported for the \lstinline|\tikzling|. At the moment these are: 
+
+\begin{tcblisting}{}
+\penguin[body=SteelBlue]
+\end{tcblisting}
+
+The key \lstinline|3D| will make the tikzling 3-dimensional:
 
 \begin{tcblisting}{}
 \penguin[3D]
@@ -477,5 +567,24 @@ Unfortunately it is very difficult to create accessories that will fit all the d
 
 \subsection{List of available accessories}
 
+\begin{tcblisting}{}
+\tikzling[tophat]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\tikzling[hat]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\tikzling[crown]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\tikzling[alien]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\tikzling[crystalball]
+\end{tcblisting}
 
 \end{document}
