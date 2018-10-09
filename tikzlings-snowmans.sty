@@ -1,0 +1,115 @@
+% !TeX root = ./examples/snowman.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% The tikzlings-snowmans package (part of the tikzlings collection)
+% A package to bring snowmans into tikz 
+% Maintained by samcarter
+%
+% Project repository and bug tracker:
+% https://github.com/samcarter/tikzlings
+%
+% Released under the LaTeX Project Public License v1.3c or later
+% See http://www.latex-project.org/lppl.txt
+%
+% Version 0.1
+% Oct 10, 2018  
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{tikzlings-snowmans}
+ [2018/10/10 v0.7 Draw snowmans in TikZ]
+
+\RequirePackage{tikz}
+\RequirePackage{tikzlings-addons}
+
+\newcommand*{\snowman}[1][]{%
+	\begin{scope}%
+		\tikzset{/snowman/.cd,#1}%
+		\snowman@draw%
+	\end{scope}%
+	\thing[#1]%
+}
+
+\newif\ifsnowman@threeD
+
+\tikzset{
+  %
+  % Pass unknown keys on to tikz
+  %
+  /snowman/.search also={/tikz,/pgf,/thing},
+  /snowman/.cd,
+  %
+  % body
+  %
+  body/.code         = \def\snowman@body{#1},
+  body               = white!95!black,
+  eye/.code          = \def\snowman@eye{#1},
+  eye                = black,
+  nose/.code         = \def\snowman@nose{#1},
+  nose               = orange,
+  mouth/.code        = \def\snowman@mouth{#1},
+  mouth              = black,
+	buttons/.code      = \def\snowman@buttons{#1},
+	buttons            = black, 
+	%
+	% options
+	%
+	3D/.code			     = \snowman@threeDtrue, 
+}
+
+\def\snowman@draw{%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% minimal bounding box size 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\path (-0.75, 0.0) rectangle (0.75, 2.13);
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% switch between 2D and 3D, from
+% https://chat.stackexchange.com/transcript/message/45991801#45991801
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifsnowman@threeD
+	\def\snowman@part@draw[##1]{\shade[ball color=##1]}
+\else
+	\def\snowman@part@draw[##1]{\fill[##1]}
+\fi
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Body parts (center: x=0.925)
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\snowman@part@draw[\snowman@body,rotate around={-50:(0.5,1.1)}] (0.5,1.1) ellipse (0.3 and 0.12);
+\snowman@part@draw[\snowman@body,rotate around={50:(-0.5,1.1)}] (-0.5,1.1) ellipse (0.3 and 0.12);
+%
+% Body + Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\snowman@part@draw[\snowman@body] (0,0.5) ellipse (0.6 and 0.5);
+\snowman@part@draw[\snowman@body] (0,1.1) ellipse (0.5 and 0.4);
+\snowman@part@draw[\snowman@body] (0,1.7) circle (0.4);	
+%
+% Mouth% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fill[\snowman@mouth] (0,1.5) circle (0.016);
+\fill[\snowman@mouth] (0.04,1.507) circle (0.016);
+\fill[\snowman@mouth] (-0.04,1.507) circle (0.016);
+\fill[\snowman@mouth] (0.08,1.522) circle (0.016);
+\fill[\snowman@mouth] (-0.08,1.522) circle (0.016);
+\fill[\snowman@mouth] (0.12,1.543) circle (0.016);
+\fill[\snowman@mouth] (-0.12,1.543) circle (0.016);
+%
+% Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\snowman@part@draw[\snowman@eye] (-0.155,1.8) circle (0.04); 
+\snowman@part@draw[\snowman@eye] (0.155,1.8) circle (0.04); 
+%
+% Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\snowman@part@draw[\snowman@nose] (0,1.67) circle (0.05) (0,1.72) -- (0,1.62) -- (0.15,1.64) -- cycle;
+%
+% buttons %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\snowman@part@draw[\snowman@buttons] (0,1.15) circle (0.04); 
+\snowman@part@draw[\snowman@buttons] (0,0.95) circle (0.04); 
+\snowman@part@draw[\snowman@buttons] (0,0.75) circle (0.04); 
+%
+}

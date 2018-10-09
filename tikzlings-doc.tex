@@ -50,6 +50,7 @@
 \colorlet{duckblue}{SteelBlue}
 \addtokomafont{sectioning}{\color{duckblue}}
 
+
 \makeatletter
 \renewcommand{\sectionlinesformat}[4]{%
 \ifstr{#1}{section}{%
@@ -62,7 +63,13 @@
 }
 \makeatother
 
-\KOMAoption{sectionentrydots}{true}
+\RedeclareSectionCommand[
+  toclinefill=\TOCLineLeaderFill,
+  tocnumwidth=0pt,
+  tocentrynumberformat=\gobbleentrynumber
+]{section}
+\newcommand*\gobbleentrynumber[1]{}
+
 \deftocheading{toc}{}%
 \setcounter{tocdepth}{1}
 \addtokomafont{date}{\normalsize}
@@ -78,10 +85,10 @@
 	columns=fullflexible,
 	alsodigit={-},
 	alsoletter={3},
-	emphstyle=\color{orange!70!black},
+	emphstyle=\color{red!60!black},
 	emph=[1]{
 		tikzlings,
-		tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins,
+		tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmans,
 		body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, pupil, bill, feet, belly, ask, phil,
 		hat, crown, tophat,  
 		scale, yshift, xshift, rotate
@@ -90,7 +97,7 @@
 	keywordstyle=\color{red!60!black}\bfseries,
 	morekeywords={tikzpicture},
 	moretexcs={
-		usepackage, usetikzlibrary, marmot, coati, bear, koala, owl, penguin, thing
+		usepackage, usetikzlibrary, marmot, coati, bear, koala, owl, penguin, thing, tikzling, snowman
 	},
 	delim ={[s][\ttfamily\color{green!50!black}]{$}{$}},
 	moredelim=[is][\footnotesize\ttfamily\color{orange!70!black}]{|}{|},
@@ -108,7 +115,8 @@
 	bottom=0pt, 
 	top=0pt,
 	tikz lower,
-	height plus=3cm
+	height plus=3cm,
+	colback=duckblue!30!white
 }
 
 \lstset{style=duckstyle}
@@ -145,7 +153,6 @@
 	}{samcarter}}
 \date{Version 0.1 -- \today}
 
-\renewcommand*{\subsectionformat}{}
 \renewcommand*{\subsectionformat}{}
 \renewcommand*{\sectionformat}{}
 
@@ -194,6 +201,7 @@ In addition to the standard options provided by \TikZ each \tikzlings also comes
 
 \begingroup
 	\hypersetup{hidelinks}
+	\addtokomafont{section}{\color{black}}
 	\tableofcontents
 \endgroup
 
@@ -204,7 +212,7 @@ In addition to the standard options provided by \TikZ each \tikzlings also comes
 
 \subsection{Package name}
 
-\begin{tcolorbox}[lower separated=false]
+\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
 \vspace*{0.5cm}
 \lstinline|\usepackage{tikzlings-bears}|
 \vspace*{0.5cm}
@@ -237,7 +245,7 @@ The key \lstinline|3D| will make the teddy bear 3-dimensional:
 
 \subsection{Package name}
 
-\begin{tcolorbox}[lower separated=false]
+\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
 \vspace*{0.5cm}
 \lstinline|\usepackage{tikzlings-coatis}|
 \vspace*{0.5cm}
@@ -257,7 +265,7 @@ The basic coati can be modified by changing it's colour
 \coati[body=SteelBlue]
 \end{tcblisting}
 
-The head of the \lstinlin|\coati| can be rotated, but please don't overdo this, otherwise his neck might break.
+The head of the \lstinline|\coati| can be rotated, but please don't overdo this, otherwise his neck might break.
 
 \begin{tcblisting}{}
 \coati[rotatehead=-15]
@@ -282,7 +290,7 @@ Finally the key \lstinline|3D| will make the coati 3-dimensional:
 
 \subsection{Package name}
 
-\begin{tcolorbox}[lower separated=false]
+\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
 \vspace*{0.5cm}
 \lstinline|\usepackage{tikzlings-koalas}|
 \vspace*{0.5cm}
@@ -327,7 +335,7 @@ Finally the key \lstinline|3D| will make the koala 3-dimensional:
 
 \subsection{Package name}
 
-\begin{tcolorbox}[lower separated=false]
+\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
 \vspace*{0.5cm}
 \lstinline|\usepackage{tikzlings-marmots}|
 \vspace*{0.5cm}
@@ -397,7 +405,7 @@ Finally the key \lstinline|3D| will make the marmot 3-dimensional:
 
 \subsection{Package name}
 
-\begin{tcolorbox}[lower separated=false]
+\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
 \vspace*{0.5cm}
 \lstinline|\usepackage{tikzlings-owls}|
 \vspace*{0.5cm}
@@ -447,8 +455,6 @@ Finally the key \lstinline|3D| will make the owl 3-dimensional:
 \owl[3D]
 \end{tcblisting}
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
@@ -456,7 +462,7 @@ Finally the key \lstinline|3D| will make the owl 3-dimensional:
 
 \subsection{Package name}
 
-\begin{tcolorbox}[lower separated=false]
+\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
 \vspace*{0.5cm}
 \lstinline|\usepackage{tikzlings-penguins}|
 \vspace*{0.5cm}
@@ -512,12 +518,70 @@ Finally the key \lstinline|3D| will make the penguin 3-dimensional:
 \penguin[3D]
 \end{tcblisting}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
+\section[\textbackslash snowman]{Yuki, the snowman}
+
+\subsection{Package name}
+
+\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
+\vspace*{0.5cm}
+\lstinline|\usepackage{tikzlings-snowmans}|
+\vspace*{0.5cm}
+\end{tcolorbox}
+
+\subsection{Basic Usage}
+
+\begin{tcblisting}{}
+\snowman
+\end{tcblisting}
+
+\subsection{Options}
+
+The basic snowman can be modified by changing it's colour
+
+\begin{tcblisting}{}
+\snowman[body=SteelBlue]
+\end{tcblisting}
+
+In addition to the colour of the body, the colour of various body parts can be adjusted. In detail these are the eyes:
+
+\begin{tcblisting}{}
+\snowman[eye=red]
+\end{tcblisting}
+
+the nose:
+
+\begin{tcblisting}{}
+\snowman[nose=red]
+\end{tcblisting}
+
+the mouth:
+
+\begin{tcblisting}{}
+\snowman[mouth=red]
+\end{tcblisting}
+
+and the buttons:
+
+\begin{tcblisting}{}
+\snowman[buttons=red]
+\end{tcblisting}
+
+Finally the key \lstinline|3D| will make the snowman 3-dimensional:
+
+\begin{tcblisting}{}
+\snowman[3D]
+\end{tcblisting}
+
 \clearpage
 \section[\textbackslash tikzling]{some name, the tikzling}
 
 \subsection{Package name}
 
-\begin{tcolorbox}[lower separated=false]
+\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
 \vspace*{0.5cm}
 \lstinline|\usepackage{tikzlings}|
 \vspace*{0.5cm}
@@ -534,13 +598,13 @@ Finally the key \lstinline|3D| will make the penguin 3-dimensional:
 Only options common for all \tikzlings are supported for the \lstinline|\tikzling|. At the moment these are: 
 
 \begin{tcblisting}{}
-\penguin[body=SteelBlue]
+\tikzling[body=SteelBlue]
 \end{tcblisting}
 
 The key \lstinline|3D| will make the tikzling 3-dimensional:
 
 \begin{tcblisting}{}
-\penguin[3D]
+\tikzling[3D]
 \end{tcblisting}
 
 \clearpage
@@ -576,11 +640,11 @@ Unfortunately it is very difficult to create accessories that will fit all the d
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\tikzling[crown]
+\tikzling[alien]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\tikzling[alien]
+\tikzling[crown]
 \end{tcblisting}
 
 \begin{tcblisting}{}

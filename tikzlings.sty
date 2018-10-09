@@ -1,4 +1,4 @@
-% !TeX root = ./ViewingPlatform/tikzlings.tex
+% !TeX root = ./examples/tikzlings.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % The tikzlings
@@ -30,6 +30,7 @@
 \RequirePackage{tikzlings-owls}
 \RequirePackage{tikzlings-koala}
 \RequirePackage{tikzlings-coatis}
+\RequirePackage{tikzlings-snowmans}
 \RequirePackage{tikzlings-addons}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -50,7 +51,7 @@
   \pgfmathsetseed{\number\pdfrandomseed}
 \fi
 
-\pgfmathdeclarerandomlist{tikzlings}{{\bear}{\penguin}{\marmot}{\owl}{\koala}{\coati}}
+\pgfmathdeclarerandomlist{tikzlings}{{\bear}{\penguin}{\marmot}{\owl}{\koala}{\coati}{\snowman}}
 
 \newcommand{\tikzling}[1][]{%
 	\pgfmathrandomitem{\tikzling@random}{tikzlings}%
