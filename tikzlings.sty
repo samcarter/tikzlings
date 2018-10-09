@@ -18,6 +18,11 @@
 \ProvidesPackage{tikzlings}
  [2018/08/26 v0.7 Collection of packages to draw animals and other beings in TikZ]
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% load sub-packages
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{tikz}
 \RequirePackage{tikzlings-bears}
 \RequirePackage{tikzlings-penguins}
@@ -26,3 +31,29 @@
 \RequirePackage{tikzlings-koala}
 \RequirePackage{tikzlings-coatis}
 \RequirePackage{tikzlings-addons}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Drawing a random tikzling
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{ifluatex}
+\RequirePackage{ifxetex}
+
+\ifluatex
+  \let\pdfrandomseed\randomseed
+\fi
+
+\ifxetex
+  \pgfmathsetseed{\time}
+\else
+  \pgfmathsetseed{\number\pdfrandomseed}
+\fi
+
+\pgfmathdeclarerandomlist{tikzlings}{{\bear}{\penguin}{\marmot}{\owl}{\koala}{\coati}}
+
+\newcommand{\tikzling}[1][]{%
+	\pgfmathrandomitem{\tikzling@random}{tikzlings}%
+	\tikzling@random[#1]
+}
+
