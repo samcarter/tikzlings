@@ -54,6 +54,11 @@
 \pgfmathdeclarerandomlist{tikzlings}{{\bear}{\penguin}{\marmot}{\owl}{\koala}{\coati}{\snowman}}
 
 \newcommand{\tikzling}[1][]{%
+	\tikzset{%
+		% Pass unknown keys on to tikz
+	  %
+	  /thing/.search also={/tikz,/pgf,/bear,/penguin,/marmot,/owl,/koala,/coati,/snowman}
+	 }
 	\pgfmathrandomitem{\tikzling@random}{tikzlings}%
 	\tikzling@random[#1]
 }
