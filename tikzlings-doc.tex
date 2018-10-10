@@ -22,19 +22,18 @@
 \usepackage[english]{babel}
 \usepackage[svgnames]{xcolor}
 \usepackage[bitstream-charter]{mathdesign}
-\usepackage{tikzducks}
 \usepackage{tikzlings}
-\usetikzlibrary{ducks}
 \usepackage[most]{tcolorbox}
 \usepackage[paper=a4paper,margin=3cm]{geometry}
 \usepackage{url}
 \usepackage{xspace}
 \usepackage{scrlayer-scrpage} 
-\usepackage{marvosym}
-\usepackage{fontawesome}
 \usepackage[hang,flushmargin,bottom]{footmisc}
-\usepackage{imakeidx}
-\usepackage[colorlinks=true,breaklinks=true,urlcolor=duckblue!50!black,linkcolor=duckblue!50!black,citecolor=duckblue!50!black,filecolor=duckblue!50!black]{hyperref}
+\usepackage[%
+	colorlinks=true,
+	breaklinks=true,
+	allcolors=SteelBlue!50!black
+]{hyperref}
 
 % macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\CTAN}{\textsc{CTAN}\xspace}
@@ -42,13 +41,29 @@
 \newcommand{\tikzducks}{Ti\emph{k}Zducks\xspace}
 \newcommand{\tikzmarmots}{Ti\emph{k}Zmarmots\xspace}
 \newcommand{\tikzlings}{Ti\emph{k}Zlings\xspace}
-%\newcommand{\tikzlingdoc}{Ti\emph{k}Zling\xspace}
 \newcommand{\miktex}{MiK\TeX\xspace}
 \newcommand{\texlive}{\TeX{}Live\xspace}
 
 % customisation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\colorlet{duckblue}{SteelBlue}
-\addtokomafont{sectioning}{\color{duckblue}}
+\addtokomafont{sectioning}{\color{SteelBlue}}
+\addtokomafont{date}{\normalsize}
+\addtokomafont{author}{\normalsize}
+
+\deftocheading{toc}{}%
+\setcounter{tocdepth}{1}
+
+\newcommand*\gobbleentrynumber[1]{}
+\newcommand*\mytocformat[1]{#1}
+\newcommand*\mytocpageformat[1]{#1}
+\RedeclareSectionCommand[
+  toclinefill=\TOCLineLeaderFill,
+  tocnumwidth=0pt,
+  tocentrynumberformat=\gobbleentrynumber,
+  tocentryformat=\mytocformat,
+  tocpagenumberformat=\mytocpageformat,
+  tocbeforeskip=0.8ex plus 1pt minus 1pt
+]{section}
+
 
 
 \makeatletter
@@ -63,17 +78,9 @@
 }
 \makeatother
 
-\RedeclareSectionCommand[
-  toclinefill=\TOCLineLeaderFill,
-  tocnumwidth=0pt,
-  tocentrynumberformat=\gobbleentrynumber
-]{section}
-\newcommand*\gobbleentrynumber[1]{}
+\renewcommand*{\subsectionformat}{}
+\renewcommand*{\sectionformat}{}
 
-\deftocheading{toc}{}%
-\setcounter{tocdepth}{1}
-\addtokomafont{date}{\normalsize}
-\addtokomafont{author}{\normalsize}
 \setlength{\footnotemargin}{0.7em}
 
 \lstdefinestyle{duckstyle}{%
@@ -93,7 +100,7 @@
 		hat, crown, tophat,  
 		scale, yshift, xshift, rotate
 	},
-	texcsstyle=*\color{duckblue!50!black}\bfseries,
+	texcsstyle=*\color{SteelBlue!50!black}\bfseries,
 	keywordstyle=\color{red!60!black}\bfseries,
 	morekeywords={tikzpicture},
 	moretexcs={
@@ -105,7 +112,7 @@
 }
 
 \tcbset{%
-	colframe=duckblue,
+	colframe=SteelBlue!50!black,
 	arc=0mm,
 	fonttitle=\bfseries,
 	sidebyside,
@@ -116,32 +123,16 @@
 	top=0pt,
 	tikz lower,
 	height plus=3cm,
-	colback=duckblue!30!white
+	colback=SteelBlue!30!white
 }
 
 \lstset{style=duckstyle}
-\pgfkeys{/duck/|stripes|/.style={stripes={#1}}}
 
 \pgfmathsetseed{1}
-\setlength{\footheight}{45pt}
-\newlength{\duckoffset}
+%\setlength{\footheight}{45pt}
 
-\cfoot{%
-	\thepage
-%	\tikzset{external/export=false}%
-%	\shuffleducks
-%	\begin{tikzpicture}[scale=0.5] 
-%	    \duck[signpost=\scalebox{0.6}{\thepage},\randomhead]
-%	\end{tikzpicture}
-} 
+\cfoot{\thepage} 
 \pagestyle{scrheadings}
-\indexsetup{firstpagestyle=scrheadings}
-\makeindex
-
-\usetikzlibrary{external}
-\ifnum\pdfshellescape=1
-	\tikzexternalize[prefix=./tikzducks-doc-figures/]
-\fi
 
 % meta %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{The \texorpdfstring{\tikzlings}{tikzlings} package}
@@ -152,9 +143,6 @@
 %		\url{https://www.ctan.org/pkg/tikzlings}
 	}{samcarter}}
 \date{Version 0.1 -- \today}
-
-\renewcommand*{\subsectionformat}{}
-\renewcommand*{\sectionformat}{}
 
 \begin{document}
 \maketitle
@@ -183,7 +171,7 @@ Copyright \raisebox{0.2em}{\tiny\fontfamily{cmr}\selectfont\textcopyright}
 
 The \tikzlings package is a collection of packages. It can either be loaded as a whole with \lstinline|\usepackage{tikzlings}| (or \lstinline|\usetikzlibrary{tikzlings}|) or the subpackages containing the individual animals (and beings) can be used separately, for example by loading \lstinline|\usepackage{tikzlings-marmots}|.
 
-The basic usage is the same for all animals (and beings). Inside a \lstinline|tikzpicture|, the \tikzlings can be added via \color{duckblue!50!black}\lstinline|\<name_of_the_tikzling>|\color{black}. For example
+The basic usage is the same for all animals (and beings). Inside a \lstinline|tikzpicture|, the \tikzlings can be added via \color{SteelBlue!50!black}\lstinline|\<name_of_the_tikzling>|\color{black}. For example
 
 \begin{tcblisting}{}
 \marmot
@@ -195,20 +183,19 @@ will produce a marmot. All usual \TikZ keys can be passed as optional argument t
 \coati[rotate=30,scale=0.5]
 \end{tcblisting}
 
-In addition to the standard options provided by \TikZ each \tikzlings also comes with some addition options which are listed in the following sections. If these additional options consist of multiple words they are available both with and without spaces, e.g.\ \lstinline|askphil| and \lstinline|ask phil| will be treated as the same.
+In addition to the standard options provided by \TikZ each \tikzlings also comes with some addition options which are listed in the following sections. If these additional options consist of multiple words they are available both with and without spaces, for example \lstinline|askphil| and \lstinline|ask phil| will be treated as the same.
 
 \subsection*{List of all \tikzlings:}
 
 \begingroup
 	\hypersetup{hidelinks}
-	\addtokomafont{section}{\color{black}}
 	\tableofcontents
 \endgroup
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
-\section[\textbackslash bear]{B\"ar, the teddy bear}
+\section[Bear]{B\"ar, the teddy bear}
 
 \subsection{Package name}
 
@@ -241,7 +228,7 @@ The key \lstinline|3D| will make the teddy bear 3-dimensional:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
-\section[\textbackslash coati]{007, the coati}
+\section[Coati]{007, the coati}
 
 \subsection{Package name}
 
@@ -260,25 +247,21 @@ The key \lstinline|3D| will make the teddy bear 3-dimensional:
 \subsection{Options}
 
 The basic coati can be modified by changing it's colour
-
 \begin{tcblisting}{}
 \coati[body=SteelBlue]
 \end{tcblisting}
 
 The head of the \lstinline|\coati| can be rotated, but please don't overdo this, otherwise his neck might break.
-
 \begin{tcblisting}{}
 \coati[rotatehead=-15]
 \end{tcblisting}
 
 For the head an alternative sidewards facing head is available. It can be combined with the \lstinline|rotatehead| option.
-
 \begin{tcblisting}{}
 \coati[sideward]
 \end{tcblisting}
 
 Finally the key \lstinline|3D| will make the coati 3-dimensional:
-
 \begin{tcblisting}{}
 \coati[3D]
 \end{tcblisting}
@@ -286,7 +269,7 @@ Finally the key \lstinline|3D| will make the coati 3-dimensional:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
-\section[\textbackslash koala]{Will, the koala}
+\section[Koala]{Will, the koala}
 
 \subsection{Package name}
 
@@ -331,7 +314,7 @@ Finally the key \lstinline|3D| will make the koala 3-dimensional:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
-\section[\textbackslash marmot]{Phil, the marmot}
+\section[Marmot]{Phil, the marmot}
 
 \subsection{Package name}
 
@@ -401,7 +384,7 @@ Finally the key \lstinline|3D| will make the marmot 3-dimensional:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
-\section[\textbackslash owl]{Jake, the owl}
+\section[Owl]{Jake, the owl}
 
 \subsection{Package name}
 
@@ -458,7 +441,7 @@ Finally the key \lstinline|3D| will make the owl 3-dimensional:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
-\section[\textbackslash penguin]{Tux, the penguin}
+\section[Penguin]{Tux, the penguin}
 
 \subsection{Package name}
 
@@ -522,7 +505,7 @@ Finally the key \lstinline|3D| will make the penguin 3-dimensional:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
-\section[\textbackslash snowman]{Yuki, the snowman}
+\section[Snowman]{Yuki, the snowman}
 
 \subsection{Package name}
 
@@ -577,7 +560,7 @@ Finally the key \lstinline|3D| will make the snowman 3-dimensional:
 \end{tcblisting}
 
 \clearpage
-\section[\textbackslash tikzling]{some name, the tikzling}
+\section[Ti\emph{k}Zlings]{some name, the tikzling}
 
 \subsection{Package name}
 
@@ -601,7 +584,7 @@ Only options common for all \tikzlings are supported for the \lstinline|\tikzlin
 \tikzling[body=SteelBlue]
 \end{tcblisting}
 
-The key \lstinline|3D| will make the tikzling 3-dimensional:
+The key \lstinline|3D| will make the Ti\emph{k}Zlings 3-dimensional:
 
 \begin{tcblisting}{}
 \tikzling[3D]
