@@ -21,7 +21,9 @@
 \RequirePackage{tikz}
 \usetikzlibrary{patterns} % for the wizard hat
 
+
 \newcommand*{\thing}[1][]{%
+	\pgfkeys{/thing/.unknown/.code=\relax}
 	\begin{scope}%
 		\tikzset{/thing/.cd,#1}%
 		\thing@draw%
@@ -97,7 +99,7 @@
   %
   % Pass unknown keys on to tikz
   %
-  /thing/.search also={/tikz,/pgf,/bear,/penguin,/marmot,/owl,/koala,/coati,/snowman},
+  /thing/.search also={/tikz,/pgf},
   /thing/.cd,
   %
   % items
