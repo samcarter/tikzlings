@@ -384,6 +384,39 @@ Finally the key \lstinline|3D| will make the marmot 3-dimensional:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
+\section[Mouse]{Tokz, the mouse}
+
+\subsection{Package name}
+
+\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
+\vspace*{0.5cm}
+\lstinline|\usepackage{tikzlings-mice}|
+\vspace*{0.5cm}
+\end{tcolorbox}
+
+\subsection{Basic Usage}
+
+\begin{tcblisting}{}
+\mouse
+\end{tcblisting}
+
+\subsection{Options}
+
+The basic mouse can be modified by changing it's colour
+
+\begin{tcblisting}{}
+\mouse[body=SteelBlue]
+\end{tcblisting}
+
+Finally the key \lstinline|3D| will make the mouse 3-dimensional:
+
+\begin{tcblisting}{}
+\mouse[3D]
+\end{tcblisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
 \section[Owl]{Jake, the owl}
 
 \subsection{Package name}
@@ -632,6 +665,10 @@ Unfortunately it is very difficult to create accessories that will fit all the d
 
 \begin{tcblisting}{}
 \marmot[crystalball]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\mouse[cheese]
 \end{tcblisting}
 
 \end{document}
