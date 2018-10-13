@@ -1,0 +1,116 @@
+% !TeX root = ./examples/mouse.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% The tikzlings-mice package (part of the tikzlings collection)
+% A package to bring little mice into tikz
+% Maintained by samcarter
+%
+% Project repository and bug tracker:
+% https://github.com/samcarter/tikzlings
+%
+% Released under the LaTeX Project Public License v1.3c or later
+% See http://www.latex-project.org/lppl.txt
+%
+% Version 0.2
+% Aug 28, 2018  
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{tikzlings-mice}
+ [2018/08/28 v0.2 Drawing mice in TikZ]
+
+\RequirePackage{tikz}
+\RequirePackage{tikzlings-addons}
+
+\newcommand*{\mouse}[1][]{%
+	\begin{scope}%
+		\tikzset{/mouse/.cd,#1}%
+		\mouse@draw%
+	\end{scope}%
+	\thing[#1]%
+}
+
+\newif\ifmouse@threeD
+\newif\ifmouse@rotatearms
+
+\tikzset{
+  %
+  % Pass unknown keys on to tikz
+  %
+  /mouse/.search also={/tikz,/pgf,/thing},
+  /mouse/.cd,
+  %
+  % body
+  %
+  body/.code         = \def\mouse@body{#1},
+  body               = gray!90!white,
+  %
+  % options
+  %
+  3D/.code			     = \mouse@threeDtrue,
+  rotatearms/.code   = \mouse@rotatearmstrue,
+  rotate arms/.forward to=/mouse/rotatearms,
+}
+
+\def\mouse@draw{%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% minimal bounding box size 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\path (-0.625,0.1) rectangle (0.905, 2.17);
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% switch between 2D and 3D, from
+% https://chat.stackexchange.com/transcript/message/45991801#45991801
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifmouse@threeD
+	\def\mouse@part@draw[##1]{\shade[ball color=##1]}
+\else
+	\def\mouse@part@draw[##1]{\fill[##1]}
+\fi
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Body parts (center: x=0)
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mouse@part@draw[\mouse@body!65!white] (-0.255,0.2) ellipse (0.23 and 0.09);	
+\mouse@part@draw[\mouse@body!65!white] (0.255,0.2) ellipse (0.23 and 0.09); 
+%
+% Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mouse@part@draw[\mouse@body!65!white] (0.36, 2.17) circle (0.28);
+\mouse@part@draw[\mouse@body] (0.36, 2.17) circle (0.15);
+\mouse@part@draw[\mouse@body!65!white] (-0.36, 2.17) circle (0.28);
+\mouse@part@draw[\mouse@body] (-0.36, 2.17) circle (0.15);
+%
+% Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mouse@part@draw[\mouse@body!65!white] (0.348, 0.475) .. controls (0.598, 0.844) and (0.778, 1.475) .. (1.099, 1.625) .. controls (1.369, 1.745) and (1.677, 1.309) .. (1.609, 1.305) .. controls (0.933, 2.178) and (0.771, 0.676) .. (0.411, 0.446) -- cycle;
+%
+% Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mouse@part@draw[\mouse@body] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
+%
+% Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mouse@part@draw[\mouse@body!65!white] (0.5, 1.8) .. controls (0.5, 1.58) and (0.2, 1.25) .. (0, 1.16) .. controls (-0.2, 1.25) and (-0.5, 1.58) .. (-0.5, 1.8) .. controls (-0.34, 2.3) and (0.34, 2.3) .. (0.5, 1.8) -- cycle;
+%
+% Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mouse@part@draw[\mouse@body!65!white,rotate around={70:(0.385,0.93)}] (0.385,0.93) ellipse (0.24 and 0.13);
+\mouse@part@draw[\mouse@body!65!white,rotate around={-70:(-0.385,0.93)}] (-0.385,0.93) ellipse (0.24 and 0.13);
+%
+% Wiskers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\foreach \X in {10,20,33}{%
+	\fill[\mouse@body!50!black] (0,1.2) + (\X:0.08) to[out=\X,in={180-\X}] ++({\X-20}:0.3) --++(0,0.01) to[out={180-\X},in=\X] cycle (0,1.2) + ({180-\X}:0.08) to[out={180-\X},in=\X] ++({200-\X}:0.3) --++(0,0.01) to[out=\X,in={180-\X}] cycle;
+}
+%
+% Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mouse@part@draw[\mouse@body!50!black] (0, 1.248) circle (0.09);
+%
+% Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mouse@part@draw[\mouse@body!50!black] (0.23, 1.68) circle (0.05);
+\mouse@part@draw[\mouse@body!50!black] (-0.23, 1.68) circle (0.05);
+%
+}
+
