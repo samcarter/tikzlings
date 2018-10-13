@@ -95,16 +95,16 @@
 	emphstyle=\color{red!60!black},
 	emph=[1]{
 		tikzlings,
-		tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmans,
-		body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, pupil, bill, feet, belly, ask, phil,
-		hat, crown, tophat,  
-		scale, yshift, xshift, rotate
+		tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmans, tikzlings-mice,
+		body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, pupil, bill, feet, belly, ask, phil, mouth, buttons, 
+		hat, crown, tophat, alien, cheese, crystalball,
+		scale, yshift, xshift, rotate, 
 	},
 	texcsstyle=*\color{SteelBlue!50!black}\bfseries,
 	keywordstyle=\color{red!60!black}\bfseries,
 	morekeywords={tikzpicture},
 	moretexcs={
-		usepackage, usetikzlibrary, marmot, coati, bear, koala, owl, penguin, thing, tikzling, snowman
+		usepackage, usetikzlibrary, marmot, coati, bear, koala, owl, penguin, thing, tikzling, snowman, mouse
 	},
 	delim ={[s][\ttfamily\color{green!50!black}]{$}{$}},
 	moredelim=[is][\footnotesize\ttfamily\color{orange!70!black}]{|}{|},
@@ -169,7 +169,7 @@ Copyright \raisebox{0.2em}{\tiny\fontfamily{cmr}\selectfont\textcopyright}
 \clearpage
 \section*{The \tikzlings}
 
-The \tikzlings package is a collection of packages. It can either be loaded as a whole with \lstinline|\usepackage{tikzlings}| or the subpackages containing the individual animals (and beings) can be used separately, for example by loading \lstinline|\usepackage{tikzlings-marmots}|.
+The \tikzlings package is a collection of packages. It can either be loaded as a whole with \lstinline|\usepackage{tikzlings}| or the subpackages containing the individual animals (and beings) can be used separately, e.g.\ by loading \lstinline|\usepackage{tikzlings-marmots}|.
 
 The basic usage is the same for all animals (and beings). Inside a \lstinline|tikzpicture|, the \tikzlings can be added via \color{SteelBlue!50!black}\lstinline|\<name_of_the_tikzling>|\color{black}. For example
 
