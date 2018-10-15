@@ -64,8 +64,6 @@
   tocbeforeskip=0.8ex plus 1pt minus 1pt
 ]{section}
 
-
-
 \makeatletter
 \renewcommand{\sectionlinesformat}[4]{%
 \ifstr{#1}{section}{%
@@ -177,13 +175,13 @@ The basic usage is the same for all animals (and beings). Inside a \lstinline|ti
 \marmot
 \end{tcblisting}
 
-will produce a marmot. All usual \TikZ keys can be passed as optional argument to change the appearance. For example scaling and rotating the \tikzlings can be done by
+will produce a marmot. All usual \TikZ and \lstinline|pgf| keys can be passed as optional argument to change the appearance. For example scaling and rotating the \tikzlings can be done by
 
 \begin{tcblisting}{}
 \coati[rotate=30,scale=0.5]
 \end{tcblisting}
 
-In addition to the standard options provided by \TikZ each \tikzlings also comes with some addition options which are listed in the following sections. If these additional options consist of multiple words they are available both with and without spaces, for example \lstinline|askphil| and \lstinline|ask phil| will be treated as the same.
+In addition to the standard options provided by \TikZ each \tikzlings also comes with some additional options which are listed in the following sections. If these additional options consist of multiple words they are available both with and without spaces, for example \lstinline|askphil| and \lstinline|ask phil| will be treated as the same.
 
 \subsection*{List of all \tikzlings:}
 
@@ -213,14 +211,12 @@ In addition to the standard options provided by \TikZ each \tikzlings also comes
 
 \subsection{Options}
 
-The basic teddy bear can be modified by changing it's colour
-
+The basic teddy bear can be modified by changing its colour:
 \begin{tcblisting}{}
 \bear[body=SteelBlue]
 \end{tcblisting}
 
 The key \lstinline|3D| will make the teddy bear 3-dimensional:
-
 \begin{tcblisting}{}
 \bear[3D]
 \end{tcblisting}
@@ -246,12 +242,12 @@ The key \lstinline|3D| will make the teddy bear 3-dimensional:
 
 \subsection{Options}
 
-The basic coati can be modified by changing it's colour
+The basic coati can be modified by changing its colour:
 \begin{tcblisting}{}
 \coati[body=SteelBlue]
 \end{tcblisting}
 
-The head of the \lstinline|\coati| can be rotated, but please don't overdo this, otherwise his neck might break.
+The head of the coati can be rotated, but please don't overdo this, otherwise his neck might break!
 \begin{tcblisting}{}
 \coati[rotatehead=-15]
 \end{tcblisting}
@@ -287,26 +283,22 @@ Finally the key \lstinline|3D| will make the coati 3-dimensional:
 
 \subsection{Options}
 
-The basic koala can be modified by changing it's colour
-
+The basic koala can be modified by changing its colour:
 \begin{tcblisting}{}
 \koala[body=SteelBlue]
 \end{tcblisting}
 
-making it blush
-
+It can also blush
 \begin{tcblisting}{}
 \koala[blush]
 \end{tcblisting}
 
-If it is tired, it can sleep:
-
+and if tired, it is going to take a nap:
 \begin{tcblisting}{}
 \koala[sleeping]
 \end{tcblisting}
 
 Finally the key \lstinline|3D| will make the koala 3-dimensional:
-
 \begin{tcblisting}{}
 \koala[3D]
 \end{tcblisting}
@@ -332,51 +324,43 @@ Finally the key \lstinline|3D| will make the koala 3-dimensional:
 
 \subsection{Options}
 
-The basic marmot can be modified by changing it's colour
-
+The basic marmot can be modified by changing its colour:
 \begin{tcblisting}{}
 \marmot[body=SteelBlue]
 \end{tcblisting}
 
-making it blush
-
+It can also blush
 \begin{tcblisting}{}
 \marmot[blush]
 \end{tcblisting}
 
-or adding whiskers
-
+and whiskers can be added:
 \begin{tcblisting}{}
 \marmot[whiskers=gray]
 \end{tcblisting}
 
 Some marmots even show their chisel teeth:
-
 \begin{tcblisting}{}
 \marmot[teeth=white]
 \end{tcblisting}
 
-The marmots also can cast a shadow:
-
+or can cast a shadow:
 \begin{tcblisting}{}
 \marmot[shadow]
 \end{tcblisting}
 
 This ability is important if you want to ask Punxsutawney Phil\footnote{\url{https://en.wikipedia.org/wiki/Punxsutawney_Phil}} on Groundhog Day how the weather is going to be. With a probability derived from the statistics of 120 Groundhog Days\footnote{\url{https://www.livescience.com/32974-punxsutawney-phil-weather-prediction-accuracy.html}} the option \lstinline|askphil| might or might not result in a shadow.
-
 \begin{tcblisting}{}
 \marmot[askphil]
 \end{tcblisting}
 
-If a good weather prognosis is derived, the happy marmot can dance by lifting up it's left and right foot: 
-
+If a good weather prognosis is derived, the happy marmot can dance by lifting up its left and right foot: 
 \begin{tcblisting}{}
 \marmot[leftstep]
 \marmot[rightstep,xshift=2cm]
 \end{tcblisting}
 
 Finally the key \lstinline|3D| will make the marmot 3-dimensional:
-
 \begin{tcblisting}{}
 \marmot[3D]
 \end{tcblisting}
@@ -402,14 +386,12 @@ Finally the key \lstinline|3D| will make the marmot 3-dimensional:
 
 \subsection{Options}
 
-The basic mouse can be modified by changing it's colour
-
+The basic mouse can be modified by changing its colour:
 \begin{tcblisting}{}
 \mouse[body=SteelBlue]
 \end{tcblisting}
 
-Finally the key \lstinline|3D| will make the mouse 3-dimensional:
-
+The key \lstinline|3D| will make the mouse 3-dimensional:
 \begin{tcblisting}{}
 \mouse[3D]
 \end{tcblisting}
@@ -435,38 +417,26 @@ Finally the key \lstinline|3D| will make the mouse 3-dimensional:
 
 \subsection{Options}
 
-The basic owl can be modified by changing it's colour
-
+The basic owl can be modified by changing its colour:
 \begin{tcblisting}{}
 \owl[body=SteelBlue]
 \end{tcblisting}
 
-In addition to the colour of the body, the colour of various body parts can be adjusted. In detail these are the eyes:
-
+In addition to the colour of the body, the colour of various body parts can be adjusted:
 \begin{tcblisting}{}
 \owl[eye=red]
 \end{tcblisting}
-
-the pupils:
-
 \begin{tcblisting}{}
 \owl[pupil=red]
 \end{tcblisting}
-
-the bill:
-
 \begin{tcblisting}{}
 \owl[bill=red]
 \end{tcblisting}
-
-and the feet:
-
 \begin{tcblisting}{}
 \owl[feet=red]
 \end{tcblisting}
 
 Finally the key \lstinline|3D| will make the owl 3-dimensional:
-
 \begin{tcblisting}{}
 \owl[3D]
 \end{tcblisting}
@@ -492,48 +462,32 @@ Finally the key \lstinline|3D| will make the owl 3-dimensional:
 
 \subsection{Options}
 
-The basic penguin can be modified by changing it's colour
-
+The basic penguin can be modified by changing its colour:
 \begin{tcblisting}{}
 \penguin[body=SteelBlue]
 \end{tcblisting}
 
-In addition to the colour of the body, the colour of various body parts can be adjusted. In detail these are the eyes:
-
+In addition to the colour of the body, the colour of various body parts can be adjusted:
 \begin{tcblisting}{}
 \penguin[eye=red]
 \end{tcblisting}
-
-the pupils:
-
 \begin{tcblisting}{}
 \penguin[pupil=red]
 \end{tcblisting}
-
-the bill:
-
 \begin{tcblisting}{}
 \penguin[bill=red]
 \end{tcblisting}
-
-the belly:
-
 \begin{tcblisting}{}
 \penguin[belly=red]
 \end{tcblisting}
-
-and the feet:
-
 \begin{tcblisting}{}
 \penguin[feet=red]
 \end{tcblisting}
 
 Finally the key \lstinline|3D| will make the penguin 3-dimensional:
-
 \begin{tcblisting}{}
 \penguin[3D]
 \end{tcblisting}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -556,32 +510,21 @@ Finally the key \lstinline|3D| will make the penguin 3-dimensional:
 
 \subsection{Options}
 
-The basic snowman can be modified by changing it's colour
-
+The basic snowman can be modified by changing its colour:
 \begin{tcblisting}{}
 \snowman[body=SteelBlue]
 \end{tcblisting}
 
-In addition to the colour of the body, the colour of various body parts can be adjusted. In detail these are the eyes:
-
+In addition to the colour of the body, the colour of various body parts can be adjusted:
 \begin{tcblisting}{}
 \snowman[eye=red]
 \end{tcblisting}
-
-the nose:
-
 \begin{tcblisting}{}
 \snowman[nose=red]
 \end{tcblisting}
-
-the mouth:
-
 \begin{tcblisting}{}
 \snowman[mouth=red]
 \end{tcblisting}
-
-and the buttons:
-
 \begin{tcblisting}{}
 \snowman[buttons=red]
 \end{tcblisting}
@@ -611,17 +554,19 @@ Finally the key \lstinline|3D| will make the snowman 3-dimensional:
 
 \subsection{Options}
 
-Only options common for all \tikzlings are supported for the \lstinline|\tikzling|. At the moment these are: 
-
+Only options common for all \tikzlings are supported for the \lstinline|\tikzling|. These are the ability to change the body colour
 \begin{tcblisting}{}
 \tikzling[body=SteelBlue]
 \end{tcblisting}
 
-The key \lstinline|3D| will make the Ti\emph{k}Zlings 3-dimensional:
-
+and the \lstinline|3D| key, which will make the Ti\emph{k}Zlings 3-dimensional:
 \begin{tcblisting}{}
 \tikzling[3D]
 \end{tcblisting}
+
+If an option of a specific tikzlings is used (for example \lstinline|sleeping| which only the koala can do) this only works if your are lucky and the koala is drawn, in all other cases it will result in an error. 
+
+In addition all usual \TikZ and \lstinline|pgf| keys can be used in the optional argument as well as the accessories presented in the following section.
 
 \clearpage
 \section{Accessories}
