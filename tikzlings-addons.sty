@@ -21,7 +21,6 @@
 \RequirePackage{tikz}
 \usetikzlibrary{patterns} % for the wizard hat
 
-
 \newcommand*{\thing}[1][]{%
 	\begin{scope}%
 		\tikzset{/thing/.cd,#1}%
@@ -29,84 +28,62 @@
 	\end{scope}%
 }
 
+% Hats %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newif\ifthing@hat
 \newif\ifthing@tophat
-\newif\ifthing@hat
-\newif\ifthing@crown
-\newif\ifthing@alien
-\newif\ifthing@cheese
-
-
-
-
-\newif\ifthing@hat
-\newif\ifthing@cap
-\newif\ifthing@santa
-\newif\ifthing@unicorn
-\newif\ifthing@magichat
-\newif\ifthing@chef
-\newif\ifthing@witch
-\newif\ifthing@graduate
 \newif\ifthing@beret
+\newif\ifthing@strawhat
+\newif\ifthing@harlequin
+\newif\ifthing@witch
+\newif\ifthing@magichat
 \newif\ifthing@crown
 \newif\ifthing@queencrown
 \newif\ifthing@kingcrown
-\newif\ifthing@peakedcap
-\newif\ifthing@bunny
-\newif\ifthing@tophat
-\newif\ifthing@darthvader
-\newif\ifthing@harlequin
-\newif\ifthing@strawhat
-% Accessories %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newif\ifthing@glasses
-\newif\ifthing@sunglasses
-\newif\ifthing@squareglasses
-\newif\ifthing@icecream
+\newif\ifthing@santa
+\newif\ifthing@chef
+\newif\ifthing@graduate
+\newif\ifthing@alien
+% Communication %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifthing@book
-\newif\ifthing@magicwand
-\newif\ifthing@cricket
-\newif\ifthing@rollingpin
 \newif\ifthing@signpost
-\newif\ifthing@lightsaber
-\newif\ifthing@cake
-\newif\ifthing@pizza
-\newif\ifthing@hockey
-\newif\ifthing@baguette
-\newif\ifthing@football
-\newif\ifthing@mask
-\newif\ifthing@necklace
-\newif\ifthing@milkshake
-\newif\ifthing@wine
-\newif\ifthing@prison
 \newif\ifthing@speech
 \newif\ifthing@think
-\newif\ifthing@torch
-\newif\ifthing@easter
-\newif\ifthing@basket
-\newif\ifthing@buttons
-\newif\ifthing@sheep
-\newif\ifthing@horsetail
-\newif\ifthing@crozier
+% Food %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newif\ifthing@pizza
 \newif\ifthing@davidlikespineapplepizza
-\newif\ifthing@wing
-\newif\ifthing@stethoscope
-\newif\ifthing@neckerchief
-\newif\ifthing@vampire
+\newif\ifthing@cheese
+\newif\ifthing@baguette
+\newif\ifthing@cake
+\newif\ifthing@icecream
+\newif\ifthing@milkshake
+\newif\ifthing@wine
+% Sport %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newif\ifthing@cricket
+\newif\ifthing@hockey
+\newif\ifthing@football
+% Other %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifthing@crystalball
+\newif\ifthing@magicwand
+\newif\ifthing@rollingpin
+\newif\ifthing@lightsaber
+\newif\ifthing@torch
+\newif\ifthing@basket
+\newif\ifthing@easter
+\newif\ifthing@crozier
 
-
-
-\tikzset{
-  %
-  % Pass unknown keys on to tikz
-  %
-  /thing/.search also={/tikz,/pgf,
+\tikzset{%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % General
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  /thing/.search also={%
+  	/tikz,/pgf,
   	/bear,/coati,/koala,/marmot,/mouse,/owl,/penguin,/snowman,
   },
-%  /thing/.unknown/.code=\relax,
+	%/thing/.unknown/.code=\relax, % bad idea, prevents tikz/pgf keys
   /thing/.cd,
-  %
-  % items
-  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % Hats
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   tophat/.code        = \thing@tophattrue      \def\thing@tophat{#1},
   top hat/.forward to =/thing/tophat,
   tophat/.default     = black!90!white,
@@ -238,7 +215,6 @@
   egg b/.forward to=/thing/eggb,
   eggc/.code         =                       \def\thing@eggc{#1},
   egg c/.forward to=/thing/eggc,
-  buttons/.code      = \thing@buttonstrue     \def\thing@buttons{#1},
   sheep/.code        = \thing@sheeptrue       \def\thing@sheep{#1},
   horsetail/.code    = \thing@horsetailtrue   \def\thing@horsetail{#1},
   crozier/.code      = \thing@croziertrue     \def\thing@crozier{#1},
@@ -282,7 +258,6 @@
   egga               = blue,
   eggb               = green,
   eggc               = red,
-  buttons/.default   = black,
   sheep/.default     = \thing@body,
   horsetail/.default = brown,
   crozier/.default   = brown,
@@ -295,6 +270,16 @@
 }
 
 \def\thing@draw{%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% store the current scale factor
+% from https://tex.stackexchange.com/a/86900/36296
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pgfgettransformentries{\myxscale}{\@tempa}{\@tempa}{\myyscale}{\@tempa}{\@tempa}
+\gdef\yscalefactor{\myyscale}
+\gdef\xscalefactor{\myxscale}
+%
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -329,36 +314,6 @@
 	\fill[\thing@alien] (0.22,2.30) circle (0.07);
 \fi
 %
-% crystal ball %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifthing@crystalball
-	\shade[ball color=\thing@crystalball,opacity=0.7] (0,0.8) circle (0.33);
-\fi
-% 
-% Cheese %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifthing@cheese
-	\fill[\thing@cheese] (-0.3200,0.8058) -- (0.0608,0.7220) -- (0.0608,0.6366) -- (-0.3200,0.5410) -- (0.2143,0.4236) .. controls (0.3395,0.4810) and (0.4241,0.5627) .. (0.4117,0.6253) -- (0.4117,0.7634) .. controls (0.4261,0.8618) and (0.2607,0.8954) .. (0.1907,0.8962) -- cycle;
-	\fill[\thing@cheese!35!white] (-0.3200,0.8057) -- (-0.3200,0.5410) -- (0.2143,0.4236) -- (0.2143,0.7381) -- cycle;
-	\fill[\thing@cheese] (-0.23,0.71) circle (0.04);
-	\fill[\thing@cheese] (0.0,0.55) circle (0.04);
-	\fill[\thing@cheese] (-0.23,0.58) circle (0.02);
-	\fill[\thing@cheese] (-0.15,0.6) circle (0.02);
-	\fill[\thing@cheese] (-0.1,0.7) circle (0.02);
-	\fill[\thing@cheese] (0.1,0.65) circle (0.02);
-	\fill[\thing@cheese] (0,0.65) circle (0.02);
-	\fill[\thing@cheese] (0.1,0.5) circle (0.02);
-	\fill[\thing@cheese] (0.07,0.55) circle (0.01);
-	\fill[\thing@cheese] (0.12,0.6) circle (0.01);	
-	\fill[\thing@cheese] (-0.08,0.54) circle (0.01);
-\fi
-
-
-
-
-
-
-
-
-
 % Santa %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@santa
 	\begin{scope}[xshift=-26]
@@ -402,18 +357,10 @@
 %
 % beret %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@beret
-	\begin{scope}[xshift=-26]
+	\begin{scope}[xshift=-19,yshift=-2,rotate=10]
   \fill[\thing@beret,rotate=-25] (0.13,2.15) ellipse (0.5 and 0.17);
   \fill[\thing@beret,rotate=-25] (0.13,2.25) ellipse (0.55 and 0.17);
   \fill[\thing@beret,rotate=-25] (0.13,2.4) circle (0.08);
-  \end{scope}
-\fi
-%
-% unicorn %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifthing@unicorn
-	\begin{scope}[xshift=-26]
-  \fill[\thing@unicorn,rotate=25] (1.48,1.4375)--(1.60,1.9)--(1.72,1.4375);
-  \fill[\thing@body!100,rotate=25] (1.50,1.43)--(1.60,1.8375)--(1.70,1.43);  
   \end{scope}
 \fi
 %
@@ -434,60 +381,62 @@
   \end{scope}
 \fi
 %
-
-%
 % Queen crown %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@queencrown
 	\begin{scope}[xshift=-26]
-  \fill[\thing@queencrown] \thingpathqueencrown;
+  \fill[\thing@queencrown] (0.7370,2.0732) .. controls (0.6966,2.2091) and (0.6769,2.3503) ..
+  (0.6354,2.4859) .. controls (0.6149,2.5164) and (0.5958,2.5732) ..
+  (0.6498,2.5808) .. controls (0.6973,2.5907) and (0.7091,2.5350) ..
+  (0.6926,2.5016) .. controls (0.6967,2.4544) and (0.7188,2.4109) ..
+  (0.7340,2.3665) .. controls (0.7415,2.3472) and (0.7619,2.2862) ..
+  (0.7676,2.3381) .. controls (0.7755,2.3852) and (0.7871,2.4329) ..
+  (0.7833,2.4808) .. controls (0.7597,2.5148) and (0.7834,2.5720) ..
+  (0.8294,2.5570) .. controls (0.8775,2.5457) and (0.8536,2.4937) ..
+  (0.8436,2.4638) .. controls (0.8502,2.3973) and (0.8640,2.3313) ..
+  (0.8798,2.2664) .. controls (0.9047,2.2750) and (0.9168,2.3261) ..
+  (0.9342,2.3514) .. controls (0.9492,2.3853) and (0.9714,2.4171) ..
+  (0.9773,2.4540) .. controls (0.9645,2.4873) and (0.9766,2.5358) ..
+  (1.0204,2.5303) .. controls (1.0646,2.5298) and (1.0691,2.4725) ..
+  (1.0443,2.4460) .. controls (1.0440,2.3935) and (1.0580,2.3419) ..
+  (1.0671,2.2905) .. controls (1.0706,2.2719) and (1.0788,2.2126) ..
+  (1.0985,2.2554) .. controls (1.1269,2.3087) and (1.1558,2.3623) ..
+  (1.1772,2.4187) .. controls (1.1697,2.4515) and (1.1716,2.5081) ..
+  (1.2210,2.5018) .. controls (1.2706,2.4969) and (1.2686,2.4403) ..
+  (1.2406,2.4126) .. controls (1.2279,2.3600) and (1.2211,2.3057) ..
+  (1.2172,2.2518) .. controls (1.2296,2.2439) and (1.2538,2.2943) ..
+  (1.2693,2.3112) .. controls (1.2908,2.3467) and (1.3228,2.3784) ..
+  (1.3316,2.4200) .. controls (1.3203,2.4624) and (1.3708,2.5014) ..
+  (1.4051,2.4678) .. controls (1.4448,2.4342) and (1.3945,2.3994) ..
+  (1.3765,2.3710) .. controls (1.3022,2.2536) and (1.2440,2.1265) ..
+  (1.1686,2.0097) .. controls (0.9649,1.9465) and (0.8367,1.9955) ..
+  (0.7370,2.0732) -- cycle;
   \end{scope}
 \fi
 %
 % King crown %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@kingcrown
 	\begin{scope}[xshift=-26]
-  \fill[\thing@kingcrown] \thingpathkingcrown;
+  \fill[\thing@kingcrown]   (0.6572,2.0396) .. controls (0.6637,2.0838) and (0.6716,2.1289) ..
+  (0.6684,2.1735) .. controls (0.6481,2.2496) and (0.5923,2.3131) ..
+  (0.5818,2.3921) .. controls (0.5738,2.4607) and (0.6167,2.5343) ..
+  (0.6862,2.5502) .. controls (0.7548,2.5703) and (0.8210,2.5304) ..
+  (0.8720,2.4881) .. controls (0.8984,2.4712) and (0.9239,2.4324) ..
+  (0.9486,2.4249) .. controls (0.9524,2.4691) and (0.9566,2.5158) ..
+  (0.9844,2.5527) .. controls (1.0052,2.5845) and (1.0390,2.6282) ..
+  (1.0820,2.6127) .. controls (1.1212,2.5899) and (1.1378,2.5421) ..
+  (1.1478,2.5003) .. controls (1.1576,2.4639) and (1.1336,2.4180) ..
+  (1.1349,2.3906) .. controls (1.2050,2.4269) and (1.2847,2.4629) ..
+  (1.3654,2.4429) .. controls (1.4292,2.4285) and (1.4864,2.3679) ..
+  (1.4793,2.2998) .. controls (1.4859,2.2404) and (1.4407,2.1925) ..
+  (1.4006,2.1551) .. controls (1.3681,2.1232) and (1.3290,2.0951) ..
+  (1.3072,2.0544) .. controls (1.2904,2.0121) and (1.2805,1.9674) ..
+  (1.2738,1.9225) .. controls (1.1221,1.8892) and (0.9586,1.8836) ..
+  (0.8112,1.9386) .. controls (0.7535,1.9608) and (0.6999,1.9945) ..
+  (0.6572,2.0396) -- cycle;
   \end{scope}
 \fi
 %
-% Bunny ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifthing@bunny
-	\begin{scope}[xshift=-26]
-  \path (0.55,1.9) rectangle (1.2,2.55);
-  \begin{pgfinterruptboundingbox}
-  \begin{scope}
-    \clip[rotate=-5] (0.68,2.38) ellipse (0.3 and 0.4);
-    \fill[\thing@bunny,rotate=-5] (1.06,2.2) ellipse (0.3 and 0.4) (0.28,2.26) ellipse (0.3 and 0.4);
-  \end{scope}
-  
-  \begin{scope}
-    \clip[rotate=-5] (0.68,2.38) ellipse (0.25 and 0.35);
-    \fill[\thing@inear,rotate=-5] (1.06,2.2) ellipse (0.25 and 0.35) (0.28,2.26) ellipse (0.25 and 0.35);
-  \end{scope}
-  \end{pgfinterruptboundingbox}
-  \end{scope}
-\fi
-%
-% peaked cap %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifthing@peakedcap
-	\begin{scope}[xshift=-26]
-  \fill[\thing@peakedcap,rotate=-15] (0.35,2.05) ellipse (0.5 and 0.15);
-  \fill[\thing@peakedcap,rotate=-25] (0.13,2.15) ellipse (0.5 and 0.17);
-  \fill[\thing@peakedcap,rotate=-35] (-0.25,2.2) ellipse (0.55 and 0.17);
-  \end{scope}
-\fi
-%
-% darth vader %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifthing@darthvader
-	\begin{scope}[xshift=-26]
-  \path (0.1,0.1) rectangle (2.1,2.22);
-  \begin{pgfinterruptboundingbox}
-    \fill[\thing@darthvader] \thingpathdarthvader;
-  \end{pgfinterruptboundingbox}
-  \end{scope}
-\fi
-%
-% Harlequin thing %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Harlequin %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@harlequin
 	\begin{scope}[xshift=-26]
 	\path (0.19,1.85) rectangle (1.85,2.67);
@@ -502,7 +451,7 @@
 %
 % Straw hat %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@strawhat
-	\begin{scope}[xshift=-26]
+	\begin{scope}[xshift=-16,rotate=12,yshift=-1]
   \fill[\thing@strawhat,rotate=-15] (0.44,2.0) ellipse (0.75 and 0.1);  
   \fill[\thing@strawhat,rotate=-15] (0.1,2.05) rectangle (0.78,2.5);
   \fill[\thing@strawhat,rotate=-15] (0.44,2.5) ellipse (0.34 and 0.08);  
@@ -513,41 +462,32 @@
 	\end{scope}
 \fi
 %
-%\end{pgfonlayer}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Accessories
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% crystal ball %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifthing@crystalball
+	\shade[ball color=\thing@crystalball,opacity=0.7] (0,0.8) circle (0.33);
+\fi
 % 
-% sunglasses %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifthing@sunglasses
-	\begin{scope}[xshift=-26]
-  \fill[\thing@sunglasses,rotate=-17] (0.42,1.8) rectangle (0.8,1.84);
-  \fill[\thing@sunglasses,rotate=-17] (0.12,1.8) rectangle (0.22,1.84);
-  \fill[\thing@sunglasses,rotate=-20] (0.23,1.7675) circle (0.14);
-  \fill[\thing@sunglasses,rotate=-20] (-0.06,1.74) circle (0.13);    
-  \end{scope}    
-\fi
-%
-% glasses %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifthing@glasses
-	\begin{scope}[xshift=-26]
-  \fill[\thing@glasses,rotate=-17] (0.42,1.8) rectangle (0.8,1.84);
-  \fill[\thing@glasses,rotate=-17] (0.12,1.8) rectangle (0.22,1.84);
-  \fill[\thing@glasses,rotate=-20,even odd rule] (0.23,1.7675) circle (0.14) (0.23,1.7675) circle (0.11);
-  \fill[\thing@glasses,rotate=-20,even odd rule] (-0.06,1.74) circle (0.13) (-0.06,1.74) circle (0.095);    
-  \end{scope}
-\fi
-%
-% square glasses
-\ifthing@squareglasses
-	\begin{scope}[xshift=-26]
-  \fill[\thing@squareglasses,rotate=-17] (0.43,1.8) rectangle (0.8,1.84);
-  \fill[\thing@squareglasses,rotate=-17] (0.12,1.8) rectangle (0.22,1.84);
-  \fill[\thing@squareglasses,rotate=-20,rounded corners=\yscalefactor*2,even odd rule] (-0.16,1.62) -- (-0.18,1.85) -- (0.05,1.87) -- (0.04,1.62) -- cycle [rounded corners=\yscalefactor*1.5] (-0.14,1.64) -- (-0.16,1.83) -- (0.03,1.85) -- (0.02,1.64) -- cycle;
-  \fill[\thing@squareglasses,rotate=-20,rounded corners=\yscalefactor*2,even odd rule] (0.12,1.63) -- (0.10,1.88) -- (0.36,1.90) -- (0.35,1.65) -- cycle  [rounded corners=\yscalefactor*1.5] (0.14,1.65) -- (0.12,1.86) -- (0.34,1.88) -- (0.33,1.67) -- cycle;
-  \end{scope}
+% Cheese %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifthing@cheese
+	\fill[\thing@cheese] (-0.3200,0.8058) -- (0.0608,0.7220) -- (0.0608,0.6366) -- (-0.3200,0.5410) -- (0.2143,0.4236) .. controls (0.3395,0.4810) and (0.4241,0.5627) .. (0.4117,0.6253) -- (0.4117,0.7634) .. controls (0.4261,0.8618) and (0.2607,0.8954) .. (0.1907,0.8962) -- cycle;
+	\fill[\thing@cheese!35!white] (-0.3200,0.8057) -- (-0.3200,0.5410) -- (0.2143,0.4236) -- (0.2143,0.7381) -- cycle;
+	\fill[\thing@cheese] (-0.23,0.71) circle (0.04);
+	\fill[\thing@cheese] (0.0,0.55) circle (0.04);
+	\fill[\thing@cheese] (-0.23,0.58) circle (0.02);
+	\fill[\thing@cheese] (-0.15,0.6) circle (0.02);
+	\fill[\thing@cheese] (-0.1,0.7) circle (0.02);
+	\fill[\thing@cheese] (0.1,0.65) circle (0.02);
+	\fill[\thing@cheese] (0,0.65) circle (0.02);
+	\fill[\thing@cheese] (0.1,0.5) circle (0.02);
+	\fill[\thing@cheese] (0.07,0.55) circle (0.01);
+	\fill[\thing@cheese] (0.12,0.6) circle (0.01);	
+	\fill[\thing@cheese] (-0.08,0.54) circle (0.01);
 \fi
 %
 % icecream %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -562,7 +502,7 @@
 %
 % book %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@book
-	\begin{scope}[xshift=-26]
+	\begin{scope}[xshift=-25,yshift=1]
   \fill[\thing@bookcolour,rotate=-20] 
     (0.40,1.20) rectangle (0.80,0.60);
   \node[rotate=-20*\yscalefactor/\xscalefactor, color=white] at (0.88,0.70) {\thing@book};%
@@ -571,7 +511,7 @@
 %
 % signpost %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@signpost
-	\begin{scope}[xshift=-26]
+	\begin{scope}[scale=1.7,xshift=-26,yshift=-7]
   \fill[\thing@signcolour, rounded corners=\yscalefactor*1, rotate=-20] (0.8,0.75) rectangle (0.9,1.75);
   \fill[\thing@signcolour, rounded corners=\yscalefactor*1, rotate=-20] (0.4,1.7) rectangle (1.3,2.4);
   \fill[\thing@signback, rounded corners=\yscalefactor*1, rotate=-20] (0.45,1.75) rectangle (1.25,2.35);
@@ -599,7 +539,7 @@
 %
 % magic wand %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@magicwand
-	\begin{scope}[xshift=-26]
+	\begin{scope}[xshift=-16,yshift=2]
   \fill[black,rotate=-30] (0.27,1.23) rectangle (0.37,0.65);
   \fill[white,rotate=-30] (0.27,1.13) rectangle (0.37,1.03);
   \end{scope}
@@ -615,7 +555,7 @@
 %
 % rollingpin %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@rollingpin
-	\begin{scope}[xshift=-26]
+	\begin{scope}[xshift=-30,yshift=2]
   \fill[\thing@rollingpin, rounded corners=\yscalefactor*2, rotate=-60] (-0.18,0.85) rectangle (0.08,1.75);
   \fill[\thing@rollingpin, rounded corners=\yscalefactor*1, rotate=-60] (-0.1,0.65) rectangle (0.0,1.95);
   \end{scope}
@@ -631,7 +571,7 @@
 %
 % cake %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@cake
-	\begin{scope}[xshift=-26]
+	\begin{scope}[xshift=-28]
   \fill[\thing@cake] (1.00,0.50) ellipse (0.4 and 0.2);
   \fill[\thing@cake] (0.6,0.5) rectangle (1.4,0.7);
   \fill[\thing@cake] (1.00,0.70) ellipse (0.4 and 0.2);
@@ -646,7 +586,7 @@
 %
 % pizza %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@pizza
-	\begin{scope}[xshift=-26]
+	\begin{scope}[xshift=-28,yshift=2]
   \fill[brown] (1.00,0.60) ellipse (0.4 and 0.2);
   \fill[red!70!black] (1.00,0.60) ellipse (0.34 and 0.16);
   \fill[white!85!yellow] (1.15,0.65) ellipse (0.065 and 0.04);  
@@ -661,7 +601,7 @@
 \fi
 % no pizza %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@davidlikespineapplepizza
-	\begin{scope}[xshift=-26]
+	\begin{scope}[xshift=-28,yshift=2]
   \fill[brown] (1.00,0.60) ellipse (0.4 and 0.2);
   \fill[red!70!black] (1.00,0.60) ellipse (0.34 and 0.16);
   \fill[yellow!70!brown] (1.15,0.65) ellipse (0.08 and 0.06);  
@@ -679,11 +619,9 @@
   \end{scope}
 \fi
 %
-%
-%
 % Hockey stick %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@hockey
-	\begin{scope}[xshift=-26]
+	\begin{scope}[xshift=-22]
   \fill[\thing@hockey, rounded corners=\yscalefactor*1, rotate=-30] (0.5,0.6) rectangle (0.6,2.1);
   \fill[\thing@hockey, rounded corners=\yscalefactor*3] (0.2,0.2) rectangle (0.85,0.4);
   \end{scope}
@@ -691,7 +629,7 @@
 %
 % baguette %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@baguette
-	\begin{scope}[xshift=-26]
+	\begin{scope}[xshift=-38,yshift=7,rotate=-20]
   \fill[\thing@baguette!70!white, rounded corners=\yscalefactor*4, rotate=-30] (0.4,0.72) rectangle (0.7,2.0);
   \fill[\thing@baguette!80!black, rotate=5] (1.44,1.1) ellipse (0.1 and 0.03) (1.30,0.9) ellipse (0.1 and 0.03) (1.16,0.7) ellipse (0.1 and 0.03) (1.02,0.5) ellipse (0.1 and 0.03);
   \end{scope}
@@ -728,7 +666,7 @@
 % 
 % wine %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@wine
-	\begin{scope}[xshift=-26]
+	\begin{scope}[xshift=-26,yshift=2]
   \fill[cyan!10!white, rotate=-10] (0.8,0.50) ellipse (0.17 and 0.05);
   \fill[cyan!10!white, rotate=-10] (0.8,0.55) ellipse (0.12 and 0.03);
   \fill[cyan!10!white, rotate=-10] (0.8,0.7) ellipse (0.03 and 0.2);
@@ -743,46 +681,36 @@
   \end{scope}
 \fi
 %
-% prison thing %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifthing@prison
-	\begin{scope}[xshift=-26]
-  \fill[\thing@prison] (1.5,0.25) circle (0.3);
-  \fill[\thing@prison, even odd rule] (1.2,0.1) ellipse (0.10 and 0.07) (1.2,0.1) ellipse (0.06 and 0.04) (1.05,-0.05) ellipse (0.10 and 0.07) (1.05,-0.05) ellipse (0.06 and 0.04) (0.87,-0.2) ellipse (0.10 and 0.07) (0.87,-0.2) ellipse (0.06 and 0.04);
-  \fill[\thing@prison, even odd rule] (0.72,-0.2) ellipse (0.10 and 0.07) (0.72,-0.2) ellipse (0.06 and 0.04);  
-  \fill[\thing@prison,even odd rule,rotate=70](0.4,-1.05) ellipse (0.1 and 0.07) (0.4,-1.05) ellipse (0.06 and 0.04) (0.2,-0.95) ellipse (0.1 and 0.07) (0.2,-0.95) ellipse (0.06 and 0.04) (0.22,-0.58) ellipse (0.1 and 0.07) (0.22,-0.58) ellipse (0.06 and 0.04);
-  \fill[\thing@prison,even odd rule,rotate=110](-0.33,-0.55) ellipse (0.1 and 0.07) (-0.33,-0.55) ellipse (0.06 and 0.04);  
-  \begin{scope}
-    \clip[rotate=-12] (0.45,0.15) rectangle (0.63,0.25);  
-    \fill[\thing@prison,even odd rule,rotate=110](-0.07,-0.6) ellipse (0.1 and 0.07) (-0.07,-0.6) ellipse (0.06 and 0.04);  
-  \end{scope}
-  \end{scope}
-\fi
-%
 % torch %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@torch
 	\begin{scope}[xshift=-26]
-  \fill[red!50!yellow] \thingpathtorch;
-  \fill[red!25!yellow, scale=0.67, xshift=17, yshift=15] \thingpathtorch;
-  \fill[white!50!yellow, scale=0.4, xshift=53.5, yshift=45.3] \thingpathtorch;
+  \fill[red!50!yellow]   
+  	(1.4338,1.025) .. controls (1.4308,0.8877) and (1.3468,0.8997) .. 
+    (1.2447,0.748) .. controls (1.1427,0.8982) and (1.0721,0.8892) .. 
+    (1.0646,1.024) .. controls (1.0541,1.1714) and (1.2642,1.1654) .. 
+    (1.2492,1.386) .. controls (1.3093,1.3110) and (1.4383,1.2705) .. 
+    (1.4338,1.025) -- cycle;
+  \fill[red!25!yellow, scale=0.67, xshift=17, yshift=15]   			
+  	(1.4338,1.025) .. controls (1.4308,0.8877) and (1.3468,0.8997) .. 
+    (1.2447,0.748) .. controls (1.1427,0.8982) and (1.0721,0.8892) .. 
+    (1.0646,1.024) .. controls (1.0541,1.1714) and (1.2642,1.1654) .. 
+    (1.2492,1.386) .. controls (1.3093,1.3110) and (1.4383,1.2705) .. 
+    (1.4338,1.025) -- cycle;;
+  \fill[white!50!yellow, scale=0.4, xshift=53.5, yshift=45.3]   	
+  	(1.4338,1.025) .. controls (1.4308,0.8877) and (1.3468,0.8997) .. 
+    (1.2447,0.748) .. controls (1.1427,0.8982) and (1.0721,0.8892) .. 
+    (1.0646,1.024) .. controls (1.0541,1.1714) and (1.2642,1.1654) .. 
+    (1.2492,1.386) .. controls (1.3093,1.3110) and (1.4383,1.2705) .. 
+    (1.4338,1.025) -- cycle;;
   \fill[\thing@torch,rounded corners=\yscalefactor*1] 
       (1.1,0.96) -- (0.77,0.25) -- (0.83,0.25) -- (1.3,0.86) -- cycle;
   \fill[\thing@torch,rotate=-28] (0.62,1.32) ellipse (0.2 and 0.08);
   \end{scope}
 \fi%
 % 
-% sheep %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifthing@sheep
-	\begin{scope}[xshift=-26]
-  \begin{scope}
-    \clip[rotate=-5] (1.2,1.7) ellipse (0.3 and 0.4);
-    \fill[\thing@bill,rotate=-5] (0.8,1.5) ellipse (0.3 and 0.4);
-  \end{scope}
-  \end{scope}
-\fi
-%
 % basket %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@basket
-	\begin{scope}[xshift=-26]
+	\begin{scope}[xshift=-28.5]
   \fill[\thing@basket, start angle=180, end angle=360, x radius=0.35, y radius=0.35] (0.65,0.61) arc  -- cycle;
   \fill[\thing@basket, start angle=180, end angle=0, even odd rule] [x radius=0.35, y radius=0.5] (0.65,0.6) arc  -- cycle [x radius=0.3, y radius=0.45] (0.7,0.6) arc  -- cycle;
   \fill[\thing@basket, even odd rule] (1,0.6) ellipse (0.35 and 0.1) (1,0.6) ellipse (0.3 and 0.07);  
@@ -792,7 +720,7 @@
 %
 % easter basket %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@easter
-	\begin{scope}[xshift=-26]
+	\begin{scope}[xshift=-28.5]
   \begin{scope}
     \clip [start angle=180, end angle=0, x radius=0.3, y radius=0.45] (0.7,0.6) arc  -- cycle [start angle=180, end angle=360, x radius=0.3, y radius=0.07] (0.7,0.6) arc  -- cycle;  
     \fill[\thing@eggb, rotate=-5]  (0.95,0.72) ellipse (0.09 and 0.13);
@@ -800,25 +728,11 @@
     \fill[\thing@eggc, rotate=-30] (0.7,1.08) ellipse (0.09 and 0.13);
   \end{scope}
   \end{scope}  
-\fi%
-%
-% horse tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pgfkeys{/thing/horsetail/.@def/.get=\thing@test}
-\ifx\thing@horsetail\thing@test
-  \ifdefined\thing@hair\let\thing@horsetail=\thing@hair\fi
-\fi%
-\ifthing@horsetail
-	\begin{scope}[xshift=-26]
-  \path (0.1,0.1) rectangle (2.82,2.14);
-  \begin{pgfinterruptboundingbox}  
-    \fill[\thing@horsetail] \thingpathhorsetail;
-  \end{pgfinterruptboundingbox}
-  \end{scope}
-\fi  
+\fi% 
 %
 % crozier %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@crozier
-	\begin{scope}[xshift=-26]
+	\begin{scope}[xshift=-20]
 	\begin{scope}
 		\clip [rotate=-20] (0.6,2.3) rectangle (1.1,1.999);
 		\fill[even odd rule,\thing@crozier] (1.5,1.6) circle (0.2) (1.5,1.6) circle (0.1);
@@ -827,19 +741,4 @@
 	\end{scope}
 \fi
 %
-% stethoscope
-\ifthing@stethoscope
-	\begin{scope}[xshift=-26]
-	\fill[\thing@stethoscope,rounded corners=\yscalefactor*0.5,rotate=-18] (0.08,0.7) rectangle (0.13,1.24);
-	\fill[\thing@stethoscope] (0.35,0.7) circle (0.1); 
-	\begin{scope}
-		\fill[\thing@stethoscope,rounded corners=\yscalefactor*0.5,rotate=-30] (0.53,1.3) rectangle (0.58,1.72);
-		\clip[rotate=-30] (0.36,0.89) -- (0.36,1.36) -- (0.79,1.36) -- (0.79,0.89) -- (0.65,0.89) -- (0.65,0.96) -- (0.5,0.96) -- (0.5,0.89) -- cycle ;
-		\fill [\thing@stethoscope,rounded corners=\yscalefactor*3,rotate=-30,even odd rule] (0.775,1.35) rectangle (0.375,0.9) [rounded corners=\yscalefactor*2] (0.725,1.3) rectangle (0.425,0.95);
-	\end{scope}
-	\end{scope}
-\fi
-
-
-
 }

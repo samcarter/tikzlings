@@ -97,8 +97,8 @@
 		tikzlings,
 		tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmans, tikzlings-mice,
 		body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, pupil, bill, feet, belly, ask, phil, mouth, buttons, 
-		hat, crown, tophat, alien, cheese, crystalball,
 		scale, yshift, xshift, rotate, 
+		hat, tophat, beret, strawhat, harlequin, witch, magichat, crown, queencrown, kingcrown, santa, chef, graduate, alien, book, signpost, speech, think, pizza, cheese, baguette, cake, icecream, milkshake, wine, cricket, hockey, football, crystalball, magicwand, rollingpin, lightsaber, torch, basket, easter, crozier, 
 	},
 	texcsstyle=*\color{SteelBlue!50!black}\bfseries,
 	keywordstyle=\color{red!60!black}\bfseries,
@@ -133,6 +133,26 @@
 
 \cfoot{\thepage} 
 \pagestyle{scrheadings}
+
+\makeatletter
+\renewcommand*{\coati}[1][]{%
+	\begin{scope}%
+		\path (-1.63,0.1) rectangle (1.63,2.26);
+		\tikzset{/coati/.cd,#1}%
+		\coati@draw%
+	\end{scope}%
+	\thing[#1]%
+}
+
+\renewcommand*{\mouse}[1][]{%
+	\begin{scope}%
+		\path (-1.6,0.1) rectangle (0.905, 2.17);
+		\tikzset{/mouse/.cd,#1}%
+		\mouse@draw%
+	\end{scope}%
+	\thing[#1]%
+}
+\makeatother
 
 % meta %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{The \texorpdfstring{\tikzlings}{tikzlings} package}
@@ -180,7 +200,7 @@ The basic usage is the same for all animals (and beings). Inside a \lstinline|ti
 will produce a marmot. All usual \TikZ and \lstinline|pgf| keys can be passed as optional argument to change the appearance. For example scaling and rotating the \tikzlings can be done by
 
 \begin{tcblisting}{}
-\coati[rotate=30,scale=0.5]
+\penguin[rotate=30,scale=0.5]
 \end{tcblisting}
 
 In addition to the standard options provided by \TikZ each \tikzlings also comes with some additional options which are listed in the following sections. If these additional options consist of multiple words they are available both with and without spaces, for example \lstinline|askphil| and \lstinline|ask phil| will be treated as the same.
@@ -626,18 +646,34 @@ Unfortunately it is very difficult to create accessories that will fit all the d
 \thing[tophat,scale=1.5,yshift=-0.6cm,xshift=-0.05cm]
 \end{tcblisting}
 
-\subsection{List of available accessories}
+\subsection{Hats}
+
+\begin{tcblisting}{}
+\penguin[hat]
+\end{tcblisting}
 
 \begin{tcblisting}{}
 \snowman[tophat]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\owl[hat]
+\mouse[beret]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\koala[alien]
+\owl[strawhat]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\coati[harlequin]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\owl[witch]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\bear[magichat]
 \end{tcblisting}
 
 \begin{tcblisting}{}
@@ -645,11 +681,123 @@ Unfortunately it is very difficult to create accessories that will fit all the d
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\marmot[crystalball]
+\koala[queencrown]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\marmot[kingcrown]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\mouse[santa]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\bear[chef]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\snowman[graduate]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\penguin[alien]
+\end{tcblisting}
+
+\subsection{Communication}
+
+\begin{tcblisting}{}
+\coati[book]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\mouse[signpost]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\bear[speech]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\penguin[think]
+\end{tcblisting}
+
+\subsection{Food}
+
+\begin{tcblisting}{}
+\koala[pizza]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \mouse[cheese]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\coati[baguette]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\koala[cake]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\marmot[icecream]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\penguin[milkshake]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\owl[wine]
+\end{tcblisting}
+
+\subsection{Sports}
+
+\begin{tcblisting}{}
+\coati[cricket]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\mouse[hockey]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\koala[football]
+\end{tcblisting}
+
+\subsection{Other items}
+
+\begin{tcblisting}{}
+\marmot[crystalball]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\bear[magicwand]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\coati[rollingpin]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\penguin[lightsaber]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\snowman[torch]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\mouse[basket]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\koala[easter]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\coati[crozier]
 \end{tcblisting}
 
 \end{document}
