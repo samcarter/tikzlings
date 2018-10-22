@@ -98,7 +98,7 @@
 		tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmans, tikzlings-mice,
 		body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, pupil, bill, feet, belly, ask, phil, mouth, buttons, 
 		scale, yshift, xshift, rotate, 
-		hat, tophat, beret, strawhat, harlequin, witch, magichat, crown, queencrown, kingcrown, santa, chef, graduate, alien, book, signpost, speech, think, pizza, cheese, baguette, cake, icecream, milkshake, wine, cricket, hockey, football, crystalball, magicwand, rollingpin, lightsaber, torch, basket, easter, crozier, 
+		hat, tophat, beret, strawhat, ribbon, harlequin, niuqelrah, witch, magichat, magicstars, crown, queencrown, kingcrown, santa, chef, graduate, tassel, alien, book, bookcolour, signpost, signcolour, signback, speech, think, bubblecolour, pizza, cheese, baguette, cake, icecream, flavoura, flavourb, flavourc, milkshake, wine, cricket, hockey, football, crystalball, magicwand, rollingpin, lightsaber, torch, basket, easter, egga, eggb, eggc, crozier, 
 	},
 	texcsstyle=*\color{SteelBlue!50!black}\bfseries,
 	keywordstyle=\color{red!60!black}\bfseries,
@@ -129,7 +129,7 @@
 \lstset{style=duckstyle}
 
 \pgfmathsetseed{1}
-%\setlength{\footheight}{45pt}
+\setlength{\footheight}{50pt}
 
 \cfoot{\thepage} 
 \pagestyle{scrheadings}
@@ -153,6 +153,12 @@
 	\thing[#1]%
 }
 \makeatother
+
+\cfoot{%
+	\begin{tikzpicture}[scale=0.5] 
+	    \tikzling[signpost={\thepage}]
+	\end{tikzpicture}
+} 
 
 % meta %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{The \texorpdfstring{\tikzlings}{tikzlings} package}
@@ -646,158 +652,247 @@ Unfortunately it is very difficult to create accessories that will fit all the d
 \thing[tophat,scale=1.5,yshift=-0.6cm,xshift=-0.05cm]
 \end{tcblisting}
 
+A list of all available accessories is given below. For completeness the default colours for each key are shown, but unless the colour should be changed, it is not necessary to specify them. In case more than one key is shown, all but the first are optional.
+
 \subsection{Hats}
 
 \begin{tcblisting}{}
-\penguin[hat]
+\penguin[
+	hat=blue!40!black
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\snowman[tophat]
+\snowman[
+	tophat=black!90!white
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\mouse[beret]
+\mouse[
+	beret=black
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\owl[strawhat]
+\owl[
+	strawhat=gray!30!white,
+	ribbon=black
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\coati[harlequin]
+\coati[
+	harlequin=blue,
+	niuqelrah=red
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\owl[witch]
+\owl[
+	witch=black
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\bear[magichat]
+\bear[
+	magichat=violet,
+	magicstars=yellow!80!brown
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\penguin[crown]
+\penguin[
+	crown=yellow!90!orange
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\koala[queencrown]
+\koala[
+	queencrown=yellow
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\marmot[kingcrown]
+\marmot[
+	kingcrown=gray
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\mouse[santa]
+\mouse[
+	santa=red!80!black
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\bear[chef]
+\bear[
+	chef=gray!20!white
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\snowman[graduate]
+\snowman[
+	graduate=black,
+	tassel=red
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\penguin[alien]
+\penguin[
+	alien=green
+]
 \end{tcblisting}
 
 \subsection{Communication}
 
 \begin{tcblisting}{}
-\coati[book]
+\coati[
+	book={\tiny\TeX},
+	bookcolour=brown
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\mouse[signpost]
+\mouse[
+	signpost={\TeX},
+	signcolour= brown!50!black,
+	signback=green!40!black
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\bear[speech]
+\bear[
+	speech={\TeX},
+	bubblecolour=gray!30!white
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\penguin[think]
+\penguin[
+	think={\TeX},
+	bubblecolour=gray!30!white
+]
 \end{tcblisting}
 
 \subsection{Food}
 
 \begin{tcblisting}{}
-\koala[pizza]
+\koala[
+	pizza
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\mouse[cheese]
+\mouse[
+	cheese=yellow!30!orange!60!white
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\coati[baguette]
+\coati[
+	baguette=brown
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\koala[cake]
+\koala[
+	cake=violet
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\marmot[icecream]
+\marmot[
+	icecream=brown!60!gray,
+	flavoura=brown!50!black,
+	flavourb=white!70!brown,
+	flavourc=red!50!white
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\penguin[milkshake]
+\penguin[
+	milkshake=red!20!white
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\owl[wine]
+\owl[
+	wine=red!70!black
+]
 \end{tcblisting}
 
 \subsection{Sports}
 
 \begin{tcblisting}{}
-\coati[cricket]
+\coati[
+	cricket=brown
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\mouse[hockey]
+\mouse[
+	hockey=brown
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\koala[football]
+\koala[
+	football=white
+]
 \end{tcblisting}
 
 \subsection{Other items}
 
 \begin{tcblisting}{}
-\marmot[crystalball]
+\marmot[
+	crystalball=cyan
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\bear[magicwand]
+\bear[
+	magicwand
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\coati[rollingpin]
+\coati[
+	rollingpin=brown
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\penguin[lightsaber]
+\penguin[
+	lightsaber=green
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\snowman[torch]
+\snowman[
+	torch=gray
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\mouse[basket]
+\mouse[
+	basket=brown!70!gray
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\koala[easter]
+\koala[
+	easter=brown!70!gray,
+	egga=blue,
+	eggb=green,
+	eggc=red
+]
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\coati[crozier]
+\coati[
+	crozier=brown
+]
 \end{tcblisting}
 
 \end{document}
