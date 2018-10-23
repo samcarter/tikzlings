@@ -96,7 +96,7 @@
 	emph=[1]{
 		tikzlings,
 		tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmans, tikzlings-mice,
-		body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, nose, pupil, bill, feet, belly, ask, phil, mouth, buttons, 
+		body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, nose, pupil, bill, feet, belly, ask, phil, mouth, buttons, rotatearms, 
 		scale, yshift, xshift, rotate, 
 		hat, tophat, beret, strawhat, ribbon, harlequin, niuqelrah, witch, magichat, magicstars, crown, queencrown, kingcrown, santa, chef, graduate, tassel, alien, book, bookcolour, signpost, signcolour, signback, speech, think, bubblecolour, pizza, cheese, baguette, cake, icecream, flavoura, flavourb, flavourc, milkshake, wine, cricket, hockey, football, crystalball, magicwand, rollingpin, lightsaber, torch, basket, easter, egga, eggb, eggc, crozier, 
 	},
@@ -432,6 +432,11 @@ Finally the key \lstinline|3D| will make the marmot 3-dimensional:
 The basic mouse can be modified by changing its colour:
 \begin{tcblisting}{}
 \mouse[body=blue]
+\end{tcblisting}
+
+The rotation angle of its arms can be adjusted:
+\begin{tcblisting}{}
+\mouse[rotatearms=40]
 \end{tcblisting}
 
 The key \lstinline|3D| will make the mouse 3-dimensional:

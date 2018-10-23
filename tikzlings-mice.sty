@@ -47,8 +47,9 @@
   % options
   %
   3D/.code			     = \mouse@threeDtrue,
-  rotatearms/.code   = \mouse@rotatearmstrue,
+  rotatearms/.code   = \mouse@rotatearmstrue \def\mouse@rotatearms{#1},
   rotate arms/.forward to=/mouse/rotatearms,
+  rotatearms         = 20,
 }
 
 \def\mouse@draw{%
@@ -97,8 +98,8 @@
 \mouse@part@draw[\mouse@body!65!white] (0.5, 1.8) .. controls (0.5, 1.58) and (0.2, 1.25) .. (0, 1.16) .. controls (-0.2, 1.25) and (-0.5, 1.58) .. (-0.5, 1.8) .. controls (-0.34, 2.3) and (0.34, 2.3) .. (0.5, 1.8) -- cycle;
 %
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mouse@part@draw[\mouse@body!65!white,rotate around={70:(0.385,0.93)}] (0.385,0.93) ellipse (0.24 and 0.13);
-\mouse@part@draw[\mouse@body!65!white,rotate around={-70:(-0.385,0.93)}] (-0.385,0.93) ellipse (0.24 and 0.13);
+\mouse@part@draw[\mouse@body!65!white,rotate around={-\mouse@rotatearms:(0.47,1.15)}] (0.47,0.93) ellipse (0.13 and 0.24);
+\mouse@part@draw[\mouse@body!65!white,rotate around={\mouse@rotatearms:(-0.47,1.15)}] (-0.47,0.93) ellipse (0.13 and 0.24);
 %
 % Wiskers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \foreach \X in {10,20,33}{%
