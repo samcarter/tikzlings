@@ -39,11 +39,11 @@
 \fi
 
 \newcommand*{\marmot}[1][]{%
-	\begin{scope}%
-		\tikzset{/marmot/.cd,#1}%
-		\marmot@draw%
-	\end{scope}%
-	\thing[#1]%
+  \begin{scope}%
+    \tikzset{/marmot/.cd,#1}%
+    \marmot@draw%
+  \end{scope}%
+  \thing[#1]%
 }
 
 \newif\ifmarmot@blush
@@ -71,18 +71,18 @@
   body/.code         = \def\marmot@body{#1},
   body               = brown,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%
-	% options
-	%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  blush/.code		     = \marmot@blushtrue,
+  %
+  % options
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  blush/.code        = \marmot@blushtrue,
   whiskers/.code     = \marmot@whiskerstrue 
                        \def\marmot@whiskers{#1},
   whiskers/.default  = gray,
   teeth/.code        = \marmot@teethtrue    
                        \def\marmot@teeth{#1}, 
   teeth/.default     = white,
-  3D/.code			     = \marmot@threeDtrue,
+  3D/.code           = \marmot@threeDtrue,
   shadow/.code       = \marmot@shadowtrue,
   askphil/.code      = \marmot@askphiltrue,
   ask phil/.forward to = /marmot/askphil,
@@ -107,9 +107,9 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifmarmot@threeD
-	\def\marmot@part@draw[##1]{\shade[ball color=##1]}
+  \def\marmot@part@draw[##1]{\shade[ball color=##1]}
 \else
-	\def\marmot@part@draw[##1]{\fill[##1]}
+  \def\marmot@part@draw[##1]{\fill[##1]}
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -119,15 +119,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 \ifmarmot@askphil
-	\pgfmathparse{int(random(1,120))}
-	\let\marmot@random=\pgfmathresult
-	\ifnum\marmot@random>17
-		\marmot@shadowtrue
-	\fi
+  \pgfmathparse{int(random(1,120))}
+  \let\marmot@random=\pgfmathresult
+  \ifnum\marmot@random>17
+    \marmot@shadowtrue
+  \fi
 \fi
 %
 \ifmarmot@shadow
-	\fill[opacity=0,blur shadow,rotate around={-80:(0.3,0.5)}] (0.3,0.5) ellipse (0.28 and 0.8);
+  \fill[opacity=0,blur shadow,rotate around={-80:(0.3,0.5)}] (0.3,0.5) ellipse (0.28 and 0.8);
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -138,15 +138,15 @@
 %
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifmarmot@leftstep
-	\marmot@part@draw[\marmot@body!50!black] (-0.255,0.25) ellipse (0.23 and 0.09);	
+  \marmot@part@draw[\marmot@body!50!black] (-0.255,0.25) ellipse (0.23 and 0.09);  
 \else
-	\marmot@part@draw[\marmot@body!50!black] (-0.255,0.2) ellipse (0.23 and 0.09);	
+  \marmot@part@draw[\marmot@body!50!black] (-0.255,0.2) ellipse (0.23 and 0.09);  
 \fi
 
 \ifmarmot@rightstep
-	\marmot@part@draw[\marmot@body!50!black] (0.255,0.25) ellipse (0.23 and 0.09); 
+  \marmot@part@draw[\marmot@body!50!black] (0.255,0.25) ellipse (0.23 and 0.09); 
 \else
-	\marmot@part@draw[\marmot@body!50!black] (0.255,0.2) ellipse (0.23 and 0.09); 
+  \marmot@part@draw[\marmot@body!50!black] (0.255,0.2) ellipse (0.23 and 0.09); 
 \fi
 %
 % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -187,22 +187,22 @@
 %
 % Blushed %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifmarmot@blush
-	\fill[red,path fading=marmot@blush] (-0.295,1.6) circle (0.1); 
-	\fill[red,path fading=marmot@blush] (0.295,1.6) circle (0.1); 
+  \fill[red,path fading=marmot@blush] (-0.295,1.6) circle (0.1); 
+  \fill[red,path fading=marmot@blush] (0.295,1.6) circle (0.1); 
 \fi
 %
 % Wiskers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifmarmot@whiskers
-	\foreach \X in {10,20,33}{%
-		\fill[\marmot@whiskers] (0,1.6) + (\X:0.08) to[out=\X,in={180-\X}] ++({\X-20}:0.3) --++(0,0.005) to[out={180-\X},in=\X] cycle (0,1.6) + ({180-\X}:0.08) to[out={180-\X},in=\X] ++({200-\X}:0.3) --++(0,0.005) to[out=\X,in={180-\X}] cycle;
-	}
+  \foreach \X in {10,20,33}{%
+    \fill[\marmot@whiskers] (0,1.6) + (\X:0.08) to[out=\X,in={180-\X}] ++({\X-20}:0.3) --++(0,0.005) to[out={180-\X},in=\X] cycle (0,1.6) + ({180-\X}:0.08) to[out={180-\X},in=\X] ++({200-\X}:0.3) --++(0,0.005) to[out=\X,in={180-\X}] cycle;
+  }
 \fi
 %
 % Teeth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifmarmot@teeth
-	\fill[\marmot@body!50!black] (0.048,1.413) rectangle (-0.048,1.373);
-	\fill[\marmot@teeth] (-0.045,1.407) rectangle (-0.004,1.376);
-	\fill[\marmot@teeth] (0.045,1.407) rectangle (0.004,1.376);	
+  \fill[\marmot@body!50!black] (0.048,1.413) rectangle (-0.048,1.373);
+  \fill[\marmot@teeth] (-0.045,1.407) rectangle (-0.004,1.376);
+  \fill[\marmot@teeth] (0.045,1.407) rectangle (0.004,1.376);  
 \fi
 %
 }

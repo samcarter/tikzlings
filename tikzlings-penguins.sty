@@ -22,11 +22,11 @@
 \RequirePackage{tikzlings-addons}
 
 \newcommand*{\penguin}[1][]{%
-	\begin{scope}%
-		\tikzset{/penguin/.cd,#1}%
-		\penguin@draw%
-	\end{scope}%
-	\thing[#1]%
+  \begin{scope}%
+    \tikzset{/penguin/.cd,#1}%
+    \penguin@draw%
+  \end{scope}%
+  \thing[#1]%
 }
 
 \newif\ifpenguin@threeD
@@ -55,13 +55,13 @@
   eye/.code          = \def\penguin@eye{#1},
   eye                = white!95!black,
   pupil/.code        = \def\penguin@pupil{#1},
-	pupil              = black, 
+  pupil              = black, 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%
-	% options
-	%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	3D/.code			     = \penguin@threeDtrue, 
+  %
+  % options
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  3D/.code           = \penguin@threeDtrue, 
 }
 
 \def\penguin@draw{%
@@ -79,9 +79,9 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifpenguin@threeD
-	\def\penguin@part@draw[##1]{\shade[ball color=##1]}
+  \def\penguin@part@draw[##1]{\shade[ball color=##1]}
 \else
-	\def\penguin@part@draw[##1]{\fill[##1]}
+  \def\penguin@part@draw[##1]{\fill[##1]}
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

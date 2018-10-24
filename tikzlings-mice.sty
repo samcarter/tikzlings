@@ -22,11 +22,11 @@
 \RequirePackage{tikzlings-addons}
 
 \newcommand*{\mouse}[1][]{%
-	\begin{scope}%
-		\tikzset{/mouse/.cd,#1}%
-		\mouse@draw%
-	\end{scope}%
-	\thing[#1]%
+  \begin{scope}%
+    \tikzset{/mouse/.cd,#1}%
+    \mouse@draw%
+  \end{scope}%
+  \thing[#1]%
 }
 
 \newif\ifmouse@threeD
@@ -48,11 +48,11 @@
   body/.code         = \def\mouse@body{#1},
   body               = gray!90!white,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%
-	% options
-	%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  3D/.code			     = \mouse@threeDtrue,
+  %
+  % options
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  3D/.code           = \mouse@threeDtrue,
   rotatearms/.code   = \mouse@rotatearmstrue
                        \def\mouse@rotatearms{#1},
   rotate arms/.forward to = /mouse/rotatearms,
@@ -74,9 +74,9 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifmouse@threeD
-	\def\mouse@part@draw[##1]{\shade[ball color=##1]}
+  \def\mouse@part@draw[##1]{\shade[ball color=##1]}
 \else
-	\def\mouse@part@draw[##1]{\fill[##1]}
+  \def\mouse@part@draw[##1]{\fill[##1]}
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -86,7 +86,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mouse@part@draw[\mouse@body!65!white] (-0.255,0.2) ellipse (0.23 and 0.09);	
+\mouse@part@draw[\mouse@body!65!white] (-0.255,0.2) ellipse (0.23 and 0.09);  
 \mouse@part@draw[\mouse@body!65!white] (0.255,0.2) ellipse (0.23 and 0.09); 
 %
 % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -110,7 +110,7 @@
 %
 % Wiskers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \foreach \X in {10,20,33}{%
-	\fill[\mouse@body!50!black] (0,1.2) + (\X:0.08) to[out=\X,in={180-\X}] ++({\X-20}:0.3) --++(0,0.01) to[out={180-\X},in=\X] cycle (0,1.2) + ({180-\X}:0.08) to[out={180-\X},in=\X] ++({200-\X}:0.3) --++(0,0.01) to[out=\X,in={180-\X}] cycle;
+  \fill[\mouse@body!50!black] (0,1.2) + (\X:0.08) to[out=\X,in={180-\X}] ++({\X-20}:0.3) --++(0,0.01) to[out={180-\X},in=\X] cycle (0,1.2) + ({180-\X}:0.08) to[out={180-\X},in=\X] ++({200-\X}:0.3) --++(0,0.01) to[out=\X,in={180-\X}] cycle;
 }
 %
 % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -22,11 +22,11 @@
 \RequirePackage{tikzlings-addons}
 
 \newcommand*{\bear}[1][]{%
-	\begin{scope}%
-		\tikzset{/bear/.cd,#1}%
-		\bear@draw%
-	\end{scope}%
-	\thing[#1]%
+  \begin{scope}%
+    \tikzset{/bear/.cd,#1}%
+    \bear@draw%
+  \end{scope}%
+  \thing[#1]%
 }
 
 \newif\ifbear@threeD
@@ -47,11 +47,11 @@
   body/.code         = \def\bear@body{#1},
   body               = brown,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%
-	% options
-	%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	3D/.code			     = \bear@threeDtrue, 
+  %
+  % options
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  3D/.code           = \bear@threeDtrue, 
 }
 
 \def\bear@draw{%
@@ -69,9 +69,9 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifbear@threeD
-	\def\bear@part@draw[##1]{\shade[ball color=##1]}
+  \def\bear@part@draw[##1]{\shade[ball color=##1]}
 \else
-	\def\bear@part@draw[##1]{\fill[##1]}
+  \def\bear@part@draw[##1]{\fill[##1]}
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

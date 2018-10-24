@@ -22,11 +22,11 @@
 \RequirePackage{tikzlings-addons}
 
 \newcommand*{\snowman}[1][]{%
-	\begin{scope}%
-		\tikzset{/snowman/.cd,#1}%
-		\snowman@draw%
-	\end{scope}%
-	\thing[#1]%
+  \begin{scope}%
+    \tikzset{/snowman/.cd,#1}%
+    \snowman@draw%
+  \end{scope}%
+  \thing[#1]%
 }
 
 \newif\ifsnowman@threeD
@@ -52,14 +52,14 @@
   nose               = orange,
   mouth/.code        = \def\snowman@mouth{#1},
   mouth              = black,
-	buttons/.code      = \def\snowman@buttons{#1},
-	buttons            = black, 
+  buttons/.code      = \def\snowman@buttons{#1},
+  buttons            = black, 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%
-	% options
-	%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	3D/.code			     = \snowman@threeDtrue, 
+  %
+  % options
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  3D/.code           = \snowman@threeDtrue, 
 }
 
 \def\snowman@draw{%
@@ -77,9 +77,9 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifsnowman@threeD
-	\def\snowman@part@draw[##1]{\shade[ball color=##1]}
+  \def\snowman@part@draw[##1]{\shade[ball color=##1]}
 \else
-	\def\snowman@part@draw[##1]{\fill[##1]}
+  \def\snowman@part@draw[##1]{\fill[##1]}
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -95,7 +95,7 @@
 % Body + Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \snowman@part@draw[\snowman@body] (0,0.5) ellipse (0.6 and 0.5);
 \snowman@part@draw[\snowman@body] (0,1.1) ellipse (0.5 and 0.4);
-\snowman@part@draw[\snowman@body] (0,1.7) circle (0.4);	
+\snowman@part@draw[\snowman@body] (0,1.7) circle (0.4);  
 %
 % Mouth% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \fill[\snowman@mouth] (0,1.5) circle (0.016);

@@ -27,11 +27,11 @@
 \tikzfading[name=koala@blush,inner color=transparent!50,outer color=transparent!100]
 
 \newcommand*{\koala}[1][]{%
-	\begin{scope}%
-		\tikzset{/koala/.cd,#1}%
-		\koala@draw%
-	\end{scope}%
-	\thing[#1]%
+  \begin{scope}%
+    \tikzset{/koala/.cd,#1}%
+    \koala@draw%
+  \end{scope}%
+  \thing[#1]%
 }
 
 \newif\ifkoala@blush
@@ -54,13 +54,13 @@
   body/.code         = \def\koala@body{#1},
   body               = gray!75!white,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%
-	% options
-	%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  blush/.code		     = \koala@blushtrue,
+  %
+  % options
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  blush/.code        = \koala@blushtrue,
   sleeping/.code     = \koala@sleepingtrue, 
-  3D/.code			     = \koala@threeDtrue,  
+  3D/.code           = \koala@threeDtrue,  
 }
 
 \def\koala@draw{%
@@ -78,9 +78,9 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifkoala@threeD
-	\def\koala@part@draw[##1]{\shade[ball color=##1]}
+  \def\koala@part@draw[##1]{\shade[ball color=##1]}
 \else
-	\def\koala@part@draw[##1]{\fill[##1]}
+  \def\koala@part@draw[##1]{\fill[##1]}
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -119,30 +119,30 @@
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifkoala@sleeping
-	\fill[\koala@body!50!black] (0.2534, 1.675) rectangle ++(0.005, 0.03);
-	\fill[\koala@body!50!black,rotate around={20:(0.2925, 1.6925)}] (0.29, 1.68) rectangle ++(0.005, 0.03);
-	\fill[\koala@body!50!black,rotate around={-20:(0.2143, 1.6925)}] (0.2168, 1.68) rectangle ++(0.005, 0.03);
-	\fill[\koala@body!50!black,rotate around={40:(0.3255, 1.7025)}] (0.323, 1.69) rectangle ++(0.005, 0.03);
-	\fill[\koala@body!50!black,rotate around={-40:(0.1813, 1.7025)}] (0.1838, 1.69) rectangle ++(0.005, 0.03);
-	\fill[\koala@body!50!black] (-0.2534, 1.675) rectangle ++(-0.005, 0.03);
-	\fill[\koala@body!50!black,rotate around={-20:(-0.2925, 1.6925)}] (-0.29, 1.68) rectangle ++(-0.005, 0.03);
-	\fill[\koala@body!50!black,rotate around={20:(-0.2143, 1.6925)}] (-0.2168, 1.68) rectangle ++(-0.005, 0.03);
-	\fill[\koala@body!50!black,rotate around={-40:(-0.3255, 1.7025)}] (-0.323, 1.69) rectangle ++(-0.005, 0.03);
-	\fill[\koala@body!50!black,rotate around={40:(-0.1813, 1.7025)}] (-0.1838, 1.69) rectangle ++(-0.005, 0.03);	
-	\fill[\koala@body!50!black, even odd rule] (0.3331, 1.741) ..  controls (0.3331, 1.685) and (0.1737, 1.685) .. (0.1737, 1.741) .. controls (0.1737, 1.848) and (0.3331, 1.848) .. (0.3331, 1.741) -- cycle (0.328, 1.741) .. controls 	(0.323, 1.705) and 	(0.184, 1.705) .. (0.179, 1.741) .. controls 	(0.184, 1.843) and 	(0.323, 1.843) .. (0.328, 1.741) -- cycle;
-	\fill[\koala@body!50!black, even odd rule] (-0.3331, 1.741) ..  controls (-0.3331, 1.685) and (-0.1737, 1.685) .. (-0.1737, 1.741) .. controls (-0.1737, 1.848) and (-0.3331, 1.848) .. (-0.3331, 1.741) -- cycle 	(-0.328, 1.741) .. controls 		(-0.323, 1.705) and 		(-0.184, 1.705) .. 		(-0.179, 1.741) .. controls (-0.184, 1.843) and (-0.323, 1.843) .. (-0.328, 1.741) -- cycle;
+  \fill[\koala@body!50!black] (0.2534, 1.675) rectangle ++(0.005, 0.03);
+  \fill[\koala@body!50!black,rotate around={20:(0.2925, 1.6925)}] (0.29, 1.68) rectangle ++(0.005, 0.03);
+  \fill[\koala@body!50!black,rotate around={-20:(0.2143, 1.6925)}] (0.2168, 1.68) rectangle ++(0.005, 0.03);
+  \fill[\koala@body!50!black,rotate around={40:(0.3255, 1.7025)}] (0.323, 1.69) rectangle ++(0.005, 0.03);
+  \fill[\koala@body!50!black,rotate around={-40:(0.1813, 1.7025)}] (0.1838, 1.69) rectangle ++(0.005, 0.03);
+  \fill[\koala@body!50!black] (-0.2534, 1.675) rectangle ++(-0.005, 0.03);
+  \fill[\koala@body!50!black,rotate around={-20:(-0.2925, 1.6925)}] (-0.29, 1.68) rectangle ++(-0.005, 0.03);
+  \fill[\koala@body!50!black,rotate around={20:(-0.2143, 1.6925)}] (-0.2168, 1.68) rectangle ++(-0.005, 0.03);
+  \fill[\koala@body!50!black,rotate around={-40:(-0.3255, 1.7025)}] (-0.323, 1.69) rectangle ++(-0.005, 0.03);
+  \fill[\koala@body!50!black,rotate around={40:(-0.1813, 1.7025)}] (-0.1838, 1.69) rectangle ++(-0.005, 0.03);  
+  \fill[\koala@body!50!black, even odd rule] (0.3331, 1.741) ..  controls (0.3331, 1.685) and (0.1737, 1.685) .. (0.1737, 1.741) .. controls (0.1737, 1.848) and (0.3331, 1.848) .. (0.3331, 1.741) -- cycle (0.328, 1.741) .. controls   (0.323, 1.705) and   (0.184, 1.705) .. (0.179, 1.741) .. controls   (0.184, 1.843) and   (0.323, 1.843) .. (0.328, 1.741) -- cycle;
+  \fill[\koala@body!50!black, even odd rule] (-0.3331, 1.741) ..  controls (-0.3331, 1.685) and (-0.1737, 1.685) .. (-0.1737, 1.741) .. controls (-0.1737, 1.848) and (-0.3331, 1.848) .. (-0.3331, 1.741) -- cycle   (-0.328, 1.741) .. controls     (-0.323, 1.705) and     (-0.184, 1.705) ..     (-0.179, 1.741) .. controls (-0.184, 1.843) and (-0.323, 1.843) .. (-0.328, 1.741) -- cycle;
 \else
-	\koala@part@draw[black] (-0.255, 1.74) circle (0.08); 
-	\koala@part@draw[black] (0.255, 1.74) circle (0.08); 
-	\fill[white] (-0.27, 1.76) circle (0.015); 
-	\fill[white] (0.24, 1.76) circle (0.015); 
+  \koala@part@draw[black] (-0.255, 1.74) circle (0.08); 
+  \koala@part@draw[black] (0.255, 1.74) circle (0.08); 
+  \fill[white] (-0.27, 1.76) circle (0.015); 
+  \fill[white] (0.24, 1.76) circle (0.015); 
 \fi
 %
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifkoala@threeD
-	\fill[black] (0.115, 1.39) arc [start angle=-40, end angle=-140, radius=0.16] -- (-0.1, 1.39) -- (-0.1, 1.39) arc [start angle=-130, end angle=-50, radius=0.144] -- cycle;
+  \fill[black] (0.115, 1.39) arc [start angle=-40, end angle=-140, radius=0.16] -- (-0.1, 1.39) -- (-0.1, 1.39) arc [start angle=-130, end angle=-50, radius=0.144] -- cycle;
 \else   
-	\fill[\koala@body!40!black] (0.115, 1.39) arc [start angle=-40, end angle=-140, radius=0.16] -- (-0.1, 1.39) -- (-0.1, 1.39) arc [start angle=-130, end angle=-50, radius=0.144] -- cycle;
+  \fill[\koala@body!40!black] (0.115, 1.39) arc [start angle=-40, end angle=-140, radius=0.16] -- (-0.1, 1.39) -- (-0.1, 1.39) arc [start angle=-130, end angle=-50, radius=0.144] -- cycle;
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -153,8 +153,8 @@
 %
 % Blushed %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifkoala@blush
-	\fill[red,path fading=koala@blush] (-0.3, 1.52) circle (0.1); 
-	\fill[red,path fading=koala@blush] (0.3, 1.52) circle (0.1);
+  \fill[red,path fading=koala@blush] (-0.3, 1.52) circle (0.1); 
+  \fill[red,path fading=koala@blush] (0.3, 1.52) circle (0.1);
 \fi
 %
 }
