@@ -33,22 +33,29 @@
 \newif\ifmouse@rotatearms
 
 \tikzset{
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Pass unknown keys on to tikz
   %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   /mouse/.search also={/tikz,/pgf,/thing},
   /mouse/.cd,
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % body
   %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.code         = \def\mouse@body{#1},
   body               = gray!90!white,
-  %
-  % options
-  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%
+	% options
+	%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   3D/.code			     = \mouse@threeDtrue,
-  rotatearms/.code   = \mouse@rotatearmstrue \def\mouse@rotatearms{#1},
-  rotate arms/.forward to=/mouse/rotatearms,
+  rotatearms/.code   = \mouse@rotatearmstrue
+                       \def\mouse@rotatearms{#1},
+  rotate arms/.forward to = /mouse/rotatearms,
   rotatearms         = 20,
 }
 

@@ -32,14 +32,18 @@
 \newif\ifsnowman@threeD
 
 \tikzset{
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Pass unknown keys on to tikz
   %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   /snowman/.search also={/tikz,/pgf,/thing},
   /snowman/.cd,
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % body
   %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.code         = \def\snowman@body{#1},
   body               = white!95!black,
   eye/.code          = \def\snowman@eye{#1},
@@ -50,9 +54,11 @@
   mouth              = black,
 	buttons/.code      = \def\snowman@buttons{#1},
 	buttons            = black, 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%
 	% options
 	%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	3D/.code			     = \snowman@threeDtrue, 
 }
 

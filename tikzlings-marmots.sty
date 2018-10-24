@@ -56,32 +56,40 @@
 \newif\ifmarmot@rightstep
 
 \tikzset{
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Pass unknown keys on to tikz
   %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   /marmot/.search also={/tikz,/pgf,/thing},
   /marmot/.cd,
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % body
   %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.code         = \def\marmot@body{#1},
   body               = brown,
-  %
-  % options
-  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%
+	% options
+	%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   blush/.code		     = \marmot@blushtrue,
-  whiskers/.code     = \marmot@whiskerstrue \def\marmot@whiskers{#1},
+  whiskers/.code     = \marmot@whiskerstrue 
+                       \def\marmot@whiskers{#1},
   whiskers/.default  = gray,
-  teeth/.code        = \marmot@teethtrue    \def\marmot@teeth{#1}, 
+  teeth/.code        = \marmot@teethtrue    
+                       \def\marmot@teeth{#1}, 
   teeth/.default     = white,
   3D/.code			     = \marmot@threeDtrue,
   shadow/.code       = \marmot@shadowtrue,
   askphil/.code      = \marmot@askphiltrue,
-  ask phil/.forward to=/marmot/askphil,
+  ask phil/.forward to = /marmot/askphil,
   leftstep/.code     = \marmot@leftsteptrue,
-  left step/.forward to=/marmot/leftstep,
+  left step/.forward to = /marmot/leftstep,
   rightstep/.code    = \marmot@rightsteptrue,
-  right step/.forward to=/marmot/rightstep,  
+  right step/.forward to = /marmot/rightstep,  
 }
 
 \def\marmot@draw{%

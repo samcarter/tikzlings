@@ -33,22 +33,28 @@
 \newif\ifcoati@sideward
 
 \tikzset{
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Pass unknown keys on to tikz
   %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   /coati/.search also={/tikz,/pgf,/thing},
   /coati/.cd,
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % body
   %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.code         = \def\coati@body{#1},
   body               = brown!50!darkgray!97!yellow,
   rotatehead/.code   = \def\coati@rotatehead{#1},
-  rotate head/.forward to=/coati/rotatehead,
+  rotate head/.forward to = /coati/rotatehead,
   rotatehead         = 0,
-  %
-  % options
-  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%
+	% options
+	%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   3D/.code			     = \coati@threeDtrue,  
   sideward/.code     = \coati@sidewardtrue,
 }
