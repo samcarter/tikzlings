@@ -32,6 +32,7 @@
 \RequirePackage{tikzlings-coatis}
 \RequirePackage{tikzlings-snowmans}
 \RequirePackage{tikzlings-mice}
+\RequirePackage{tikzlings-moles}
 \RequirePackage{tikzlings-addons}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -52,7 +53,7 @@
   \pgfmathsetseed{\number\pdfrandomseed}
 \fi
 
-\pgfmathdeclarerandomlist{tikzlings}{{\bear}{\penguin}{\marmot}{\owl}{\koala}{\coati}{\snowman}{\mouse}}
+\pgfmathdeclarerandomlist{tikzlings}{{\bear}{\penguin}{\marmot}{\owl}{\koala}{\coati}{\snowman}{\mouse}{\mole}}
 
 \newcommand{\tikzling}[1][]{%
 	\pgfmathrandomitem{\tikzling@random}{tikzlings}%

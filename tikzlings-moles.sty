@@ -1,0 +1,133 @@
+% !TeX root = ./examples/mole.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% The tikzlings-moles package (part of the tikzlings collection)
+% A package to bring little moles into tikz
+% Maintained by samcarter
+%
+% Project repository and bug tracker:
+% https://github.com/samcarter/tikzlings
+%
+% Released under the LaTeX Project Public License v1.3c or later
+% See http://www.latex-project.org/lppl.txt
+%
+% Version 0.1
+% Oct 19, 2018  
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{tikzlings-moles}
+ [2018/10/19 v0.1 Drawing moles in TikZ]
+
+\RequirePackage{tikz}
+\RequirePackage{tikzlings-addons}
+
+\newcommand*{\mole}[1][]{%
+  \begin{scope}%
+    \tikzset{/mole/.cd,#1}%
+    \mole@draw%
+  \end{scope}%
+  \thing[#1]%
+}
+
+\newif\ifmole@threeD
+
+\tikzset{
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Pass unknown keys on to tikz
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  /mole/.search also={/tikz,/pgf,/thing},
+  /mole/.cd,
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % body
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  body/.code         = \def\mole@body{#1},
+  body               = gray,
+  feet/.code         = \def\mole@feet{#1},
+  feet               = red!20!white!50!brown,
+  hands/.code        = \def\mole@hands{#1},
+  hands              = red!20!white!50!brown,  
+  muzzle/.code       = \def\mole@muzzle{#1},
+  muzzle             = red!20!white!50!brown, 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % options
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  3D/.code           = \mole@threeDtrue,       
+}
+
+\def\mole@draw{%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% minimal bounding box size 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\path (-0.625,0.1) rectangle (0.905, 2.17);
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% switch between 2D and 3D, from
+% https://chat.stackexchange.com/transcript/message/45991801#45991801
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifmole@threeD
+  \def\mole@part@draw[##1]{\shade[ball color=##1]}
+\else
+  \def\mole@part@draw[##1]{\fill[##1]}
+\fi
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Body parts (center: x=0)
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mole@part@draw[\mole@feet] (-0.255,0.2) ellipse (0.23 and 0.09);  
+\mole@part@draw[\mole@feet] (0.255,0.2) ellipse (0.23 and 0.09); 
+%
+% Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mole@part@draw[\mole@body] (0.885, 0.67) .. controls (0.865, 0.4) and (0.345, 0.24) .. (0.335, 0.44) .. controls (0.315, 0.56) and (0.445, 0.51) .. (0.575, 0.53) .. controls (0.695, 0.54) and (0.885, 0.72) .. (0.885, 0.67) -- cycle;
+%
+% Hair %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mole@part@draw[\mole@body] (-0.09, 2.06) .. controls (-0.09, 2.06) and (-0.13, 2.25) .. (-0.07, 2.27) .. controls (-0.09, 2.13) and (0.04, 2.08) .. (0.04, 2.08) .. controls (0.04, 2.08) and (0.02, 2.20) .. (0.06, 2.21) .. controls (0.06, 2.11) and (0.13, 2.08) .. (0.13, 2.08) -- cycle;
+%
+% Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mole@part@draw[\mole@body] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
+%
+% Belly %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mole@part@draw[\mole@body!50!white] (0.425, 0.71) .. controls (0.425, 0.41) and (0.245, 0.37) .. (0, 0.37) .. controls (-0.245, 0.37) and (-0.425, 0.41) .. (-0.425, 0.71) .. controls (-0.425, 1.01) and (-0.225, 1.26) .. (0, 1.26) .. controls (0.225, 1.26) and (0.425, 1.01) .. (0.425, 0.71) -- cycle;
+%
+% Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mole@part@draw[\mole@body,rotate around={70:(0.37,0.86)}] (0.37,0.86) ellipse (0.27 and 0.13);
+\mole@part@draw[\mole@body,rotate around={-70:(-0.37,0.86)}] (-0.37,0.86) ellipse (0.27 and 0.13);
+%
+% Hands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fill[white] (-0.37,0.6) -- (-0.32,0.53) -- (-0.3,0.6) -- (-0.23,0.55) -- (-0.23,0.64) -- (-0.16,0.59) -- (-0.18,0.67) -- cycle;
+\fill[white] (0.37,0.6) -- (0.32,0.53) -- (0.3,0.6) -- (0.23,0.55) -- (0.23,0.64) -- (0.16,0.59) -- (0.18,0.67) -- cycle;
+\mole@part@draw[\mole@hands,rotate around={70:(0.285,0.65)}] (0.285,0.65) ellipse (0.08 and 0.13);
+\mole@part@draw[\mole@hands,rotate around={-70:(-0.285,0.65)}] (-0.285,0.65) ellipse (0.08 and 0.13);
+%
+% Muzzle %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mole@part@draw[\mole@muzzle] ( 0.22, 1.46) .. controls ( 0.22, 1.50) and ( 0.22, 1.53) .. ( 0.17, 1.56) .. controls ( 0.11, 1.58) and ( 0.05, 1.66) .. ( 0.00, 1.66) .. controls (-0.05, 1.66) and (-0.11, 1.58) .. (-0.17, 1.56) .. controls (-0.22, 1.53) and (-0.22, 1.50) .. (-0.22, 1.46) .. controls (-0.22, 1.39) and (-0.14, 1.33) .. ( 0.00, 1.33) .. controls ( 0.14, 1.33) and ( 0.22, 1.39) .. ( 0.22, 1.46) -- cycle;
+%
+% Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mole@part@draw[\mole@body!60!black] (0,1.67) circle (0.055);
+%
+% Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifmole@threeD
+	\fill[\mole@body!60!black,rotate around={-15:(-0.165,1.79)}] (-0.165,1.79) ellipse (0.055 and 0.015); 
+	\fill[\mole@body!30!black,rotate around={15:(0.165,1.79)}] (0.165,1.79) ellipse (0.055 and 0.015); 
+\else   
+	\fill[\mole@body!60!black,rotate around={-15:(-0.165,1.79)}] (-0.165,1.79) ellipse (0.055 and 0.015); 
+	\fill[\mole@body!60!black,rotate around={15:(0.165,1.79)}] (0.165,1.79) ellipse (0.055 and 0.015); 
+\fi
+%
+% Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fill[\mole@body!60!black] (0.145,1.51) arc [start angle=-20, end angle=-160, radius=0.16] -- (-0.14,1.51) -- (-0.14,1.51) arc [start angle=-160, end angle=-20, radius=0.144] -- cycle ;
+%
+}
