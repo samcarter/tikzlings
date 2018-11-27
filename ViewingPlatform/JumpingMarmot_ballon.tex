@@ -1,0 +1,33 @@
+\documentclass{beamer}
+
+\usepackage{tikz}
+\setbeamertemplate{navigation symbols}{}
+\usetikzlibrary{overlay-beamer-styles}
+\usepackage{tikzlings}
+
+\begin{document}
+	
+\begin{frame}
+
+	\begin{tikzpicture}[remember picture, overlay]
+		\foreach \x in {0,5,...,180}{
+			
+			\only<+>{
+			
+			\begin{scope}[yshift=sin(\x)*1cm]
+				\marmot[xshift=4.8cm,yshift=-2.8cm]
+			\end{scope}
+			
+			\draw[thick] 
+			(2.3, 0.6) .. controls 
+			(2.3, 0.6) and 
+			(2.5, -0.5) .. 
+			(4.5, {sin(\x)-2});
+
+		}	}
+		
+		\shade[ball color=red] (2.3,1.4) ellipse (0.5 and 0.9);		
+	\end{tikzpicture}
+\end{frame}	
+	
+\end{document}
