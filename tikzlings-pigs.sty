@@ -1,0 +1,136 @@
+% !TeX root = ./examples/pig.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% The tikzlings-pigs package (part of the tikzlings collection)
+% A package to bring little pigs into tikz
+% Maintained by samcarter
+%
+% Project repository and bug tracker:
+% https://github.com/samcarter/tikzlings
+%
+% Released under the LaTeX Project Public License v1.3c or later
+% See http://www.latex-project.org/lppl.txt
+%
+% Version 0.1
+% Feb 5, 2019    
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{tikzlings-pigs}
+ [2019/02/05 v0.1 Drawing pigs in TikZ]
+
+\RequirePackage{tikz}
+\RequirePackage{tikzlings-addons}
+\definecolor{pigdark}{RGB}{241,164,142}
+
+\newcommand*{\pig}[1][]{%
+  \begin{scope}%
+    \tikzset{/pig/.cd,#1}%
+    \pig@draw%
+  \end{scope}%
+  \thing[#1]%
+}
+
+\newif\ifpig@threeD
+
+\tikzset{
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Pass unknown keys on to tikz
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  /pig/.search also={/tikz,/pgf,/thing},
+  /pig/.cd,
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % body
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  body/.code         = \def\pig@body{#1},
+  body               = pigdark,
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % options
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  3D/.code           = \pig@threeDtrue, 
+}
+
+\def\pig@draw{%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% minimal bounding box size 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\path (-0.625,0.1) rectangle (0.905, 2.27);
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% store the current scale factor
+% from https://tex.stackexchange.com/a/86900/36296
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pgfgettransformentries{\myxscale}{\@tempa}{\@tempa}{\myyscale}{\@tempa}{\@tempa}
+\gdef\yscalefactor{\myyscale}
+\gdef\xscalefactor{\myxscale}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% switch between 2D and 3D, from
+% https://chat.stackexchange.com/transcript/message/45991801#45991801
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifpig@threeD
+  \def\pig@part@draw[##1]{\shade[ball color=##1]}
+\else
+  \def\pig@part@draw[##1]{\fill[##1]}
+\fi
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Body parts (center: x=0)
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\draw[\pig@body,line width=\myxscale*0.8pt] (0.8471, 0.5927) .. controls (0.8549, 0.4832) and (0.8046, 0.4105) .. (0.7319, 0.4079) .. controls (0.6592, 0.4052) and (0.6142, 0.4365) .. (0.5964, 0.5024) .. controls (0.5786, 0.5682) and (0.6252, 0.6291) .. (0.6794, 0.6342) .. controls (0.7335, 0.6394) and (0.7561, 0.6114) .. (0.7663, 0.5661) .. controls (0.7765, 0.5208) and (0.746, 0.458) .. (0.7192, 0.4319) .. controls (0.6924, 0.4058) and (0.7073, 0.4182) .. (0.6604, 0.3859) .. controls (0.6134, 0.3536) and (0.4367, 0.3643) .. (0.3877, 0.5055);
+%
+% Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pig@part@draw[\pig@body!55!white] ( 0.6,  0.8 ) .. controls ( 0.6 , 0.4) and ( 0.35, 0.16) .. ( 0.0,  0.16) .. controls (-0.35, 0.16) and (-0.6 , 0.4) .. (-0.6,  0.8 ) .. controls (-0.6 , 1.3) and (-0.35, 1.5) .. ( 0.0,  1.5) .. controls ( 0.35, 1.5) and ( 0.6 , 1.3) .. ( 0.6,  0.75) -- cycle;
+%
+% Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pig@part@draw[\pig@body,rotate around={70:(0.33,0.9)}] (0.33,0.9) ellipse (0.18 and 0.13);
+\pig@part@draw[\pig@body,rotate around={-70:(-0.33,0.9)}] (-0.33,0.9) ellipse (0.18 and 0.13);
+%
+% Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pig@part@draw[\pig@body!55!white] (0,1.64) ellipse (.5 and .5);
+%
+% Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pig@part@draw[gray] (-0.09, 1.82) circle (0.02);
+\pig@part@draw[gray] ( 0.09, 1.82) circle (0.02);
+%
+% Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pig@part@draw[\pig@body]  (0, 1.62) ellipse (0.18 and 0.14);
+\pig@part@draw[gray]  (-0.06, 1.62) circle (0.035);
+\pig@part@draw[gray]  ( 0.06, 1.62) circle (0.035);
+%
+% Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifpig@threeD
+	\draw[gray!70!black,line width=\myxscale*0.4pt] (0.105, 1.46) arc [start angle=-50, end angle=-130, radius=0.16] ;
+\else
+	\draw[gray,line width=\myxscale*0.4pt] (0.105, 1.46) arc [start angle=-50, end angle=-130, radius=0.16] ;
+\fi
+%
+% Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pig@part@draw[\pig@body] (0.22, 2.0392) .. controls 	(0.22, 2.1584) and 	(0.49460, 2.255) .. 	(0.49460, 2.255) .. controls 	(0.49460, 2.255) and (0.5300, 1.86) .. (0.3721, 1.86) .. controls (0.2891, 1.86) and 	(0.22, 1.9201) .. (0.22, 2.0392) -- cycle;
+\pig@part@draw[\pig@body!55!white] (0.22, 2.0392) .. controls (0.26, 2.1584) and (0.47, 2.22) .. (0.47, 2.20) .. controls (0.47, 2.2) and (0.49, 1.9) .. (0.3721, 1.9) .. controls (0.2891, 1.88) and (0.22, 1.88) .. (0.22, 2.0392) -- cycle;	
+\pig@part@draw[\pig@body] (-0.22, 2.0392) .. controls 	(-0.22, 2.1584) and 	(-0.49460, 2.255) .. 	(-0.49460, 2.255) .. controls 	(-0.49460, 2.255) and (-0.5300, 1.86) .. (-0.3721, 1.86) .. controls (-0.2891, 1.86) and 	(-0.22, 1.9201) .. (-0.22, 2.0392) -- cycle;
+\pig@part@draw[\pig@body!55!white] (-0.22, 2.0392) .. controls (-0.26, 2.1584) and (-0.47, 2.22) .. (-0.47, 2.20) .. controls (-0.47, 2.2) and (-0.49, 1.9) .. (-0.3721, 1.9) .. controls (-0.2891, 1.88) and (-0.22, 1.88) .. (-0.22, 2.0392) -- cycle;	
+%	
+% Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{scope}
+	\clip (-0.5,0.4) rectangle (0.5,0.13);
+	\pig@part@draw[\pig@body] (-0.22,0.17) circle (0.15);
+	\pig@part@draw[\pig@body] (0.22,0.17) circle (0.15);
+\end{scope}
+%
+}
