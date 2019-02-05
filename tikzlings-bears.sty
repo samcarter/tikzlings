@@ -63,6 +63,16 @@
 \path (-0.8, 0.0) rectangle (0.8, 2.13);
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% store the current scale factor
+% from https://tex.stackexchange.com/a/86900/36296
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pgfgettransformentries{\myxscale}{\@tempa}{\@tempa}{\myyscale}{\@tempa}{\@tempa}
+\gdef\yscalefactor{\myyscale}
+\gdef\xscalefactor{\myxscale}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 
 % switch between 2D and 3D, from
 % https://chat.stackexchange.com/transcript/message/45991801#45991801
@@ -112,6 +122,6 @@
 \bear@part@draw[\bear@body!30!black] (0.155, 1.7) circle (0.05); 
 %
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\fill[\bear@body!30!black] (0.145, 1.38) arc [start angle=-20, end angle=-160, radius=0.16] -- (-0.14, 1.38) -- (-0.14, 1.38) arc [start angle=-160, end angle=-20, radius=0.144] -- cycle;
+\draw[\bear@body!30!black,line width=\xscalefactor*0.4pt] (0.145, 1.38) arc [start angle=-20, end angle=-160, radius=0.16];
 %
 }

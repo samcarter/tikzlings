@@ -72,6 +72,16 @@
 \path (-0.88,0.1) rectangle (0.88, 2.35);
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% store the current scale factor
+% from https://tex.stackexchange.com/a/86900/36296
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pgfgettransformentries{\myxscale}{\@tempa}{\@tempa}{\myyscale}{\@tempa}{\@tempa}
+\gdef\yscalefactor{\myyscale}
+\gdef\xscalefactor{\myxscale}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 
 % switch between 2D and 3D, from
 % https://chat.stackexchange.com/transcript/message/45991801#45991801
@@ -115,7 +125,7 @@
 \koala@part@draw[\koala@body] (0,1.67) ellipse (0.55 and 0.45);
 %
 % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\koala@part@draw[\koala@body!40!black] (-0.15, 1.57) to [out=-110,in=180] (0, 1.42) to[out=0,in=-70] (0.15, 1.57) to [out=110,in=-45] (0.075, 1.71) to[out=135,in=45] (-0.075, 1.71) to[out=-135,in=70] cycle;
+\koala@part@draw[\koala@body!40!black] (-0.1501, 1.5609) .. controls (-0.1784, 1.4833) and (-0.0827, 1.4108) .. ( 0.0000, 1.4108) .. controls ( 0.0827, 1.4108) and ( 0.1784, 1.4833) .. ( 0.1501, 1.5609) .. controls ( 0.1290, 1.6191) and ( 0.1187, 1.6573) .. ( 0.0750, 1.7010) .. controls ( 0.0336, 1.7424) and (-0.0336, 1.7424) .. (-0.0750, 1.7010) .. controls (-0.1187, 1.6573) and (-0.1290, 1.6191) .. (-0.1501, 1.5609) -- cycle;
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifkoala@sleeping
@@ -140,9 +150,9 @@
 %
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifkoala@threeD
-  \fill[black] (0.115, 1.39) arc [start angle=-40, end angle=-140, radius=0.16] -- (-0.1, 1.39) -- (-0.1, 1.39) arc [start angle=-130, end angle=-50, radius=0.144] -- cycle;
+	\draw[black,line width=\xscalefactor*0.4pt] (0.115, 1.39) arc [start angle=-40, end angle=-140, radius=0.16];
 \else   
-  \fill[\koala@body!40!black] (0.115, 1.39) arc [start angle=-40, end angle=-140, radius=0.16] -- (-0.1, 1.39) -- (-0.1, 1.39) arc [start angle=-130, end angle=-50, radius=0.144] -- cycle;
+  \draw[\koala@body!40!black,line width=\xscalefactor*0.4pt] (0.115, 1.39) arc [start angle=-40, end angle=-140, radius=0.16];
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

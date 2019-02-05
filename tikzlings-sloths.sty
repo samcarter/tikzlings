@@ -67,6 +67,16 @@
 \path (-0.7,0.12) rectangle (0.7, 2.27);
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% store the current scale factor
+% from https://tex.stackexchange.com/a/86900/36296
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pgfgettransformentries{\myxscale}{\@tempa}{\@tempa}{\myyscale}{\@tempa}{\@tempa}
+\gdef\yscalefactor{\myyscale}
+\gdef\xscalefactor{\myxscale}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 
 % switch between 2D and 3D, from
 % https://chat.stackexchange.com/transcript/message/45991801#45991801
@@ -127,7 +137,7 @@
 \sloth@part@draw[\sloth@body!40!black] (0,1.665) ellipse (0.078 and 0.048);
 %
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\fill[\sloth@body!40!black]  (0.115, 1.54) arc [start angle=-40, end angle=-140, radius=0.16] -- (-0.1, 1.54) -- (-0.1, 1.54) arc [start angle=-130, end angle=-50, radius=0.144] -- cycle;
+\draw[\sloth@body!40!black,line width=\xscalefactor*0.4pt]  (0.115, 1.55) arc [start angle=-40, end angle=-140, radius=0.16];
 %
 % Hair %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \sloth@part@draw[\sloth@body] (-0.1128,2.0724) .. controls (-0.1128,2.0724) and (-0.1499,2.2329) .. (-0.0972,2.2525) .. controls (-0.1082,2.1318) and (-0.0047,2.0839) .. (-0.0047,2.0839) .. controls (-0.0047,2.0839) and (-0.0219,2.1866) .. (0.0145,2.1933) .. controls (0.0142,2.1159) and (0.0770,2.0884) .. (0.0770,2.0884) -- cycle;

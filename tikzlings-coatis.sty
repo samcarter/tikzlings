@@ -68,6 +68,16 @@
 \path (-0.84,0.1) rectangle (1.63,2.26);
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% store the current scale factor
+% from https://tex.stackexchange.com/a/86900/36296
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pgfgettransformentries{\myxscale}{\@tempa}{\@tempa}{\myyscale}{\@tempa}{\@tempa}
+\gdef\yscalefactor{\myyscale}
+\gdef\xscalefactor{\myxscale}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 
 % switch between 2D and 3D, from
 % https://chat.stackexchange.com/transcript/message/45991801#45991801
