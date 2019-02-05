@@ -95,8 +95,8 @@
 	emphstyle=\color{red!60!black},
 	emph=[1]{
 		tikzlings,
-		tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmans, tikzlings-mice, tikzlings-moles, tikzlings-sloths, tikzlings-pigs,
-		body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, nose, pupil, bill, feet, belly, ask, phil, mouth, buttons, rotatearms, 
+		tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmans, tikzlings-mice, tikzlings-moles, tikzlings-sloths, tikzlings-pigs, tikzlings-cats, tikzlings-hippos,
+		body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, nose, pupil, bill, feet, belly, ask, phil, mouth, buttons, rotatearms, eyes, paws,
 		scale, yshift, xshift, rotate, hands, muzzle,
 		hat, tophat, beret, strawhat, ribbon, harlequin, niuqelrah, witch, magichat, magicstars, crown, queencrown, kingcrown, santa, chef, graduate, tassel, alien, book, bookcolour, signpost, signcolour, signback, speech, think, bubblecolour, pizza, cheese, baguette, cake, icecream, flavoura, flavourb, flavourc, milkshake, wine, cricket, hockey, football, crystalball, magicwand, rollingpin, lightsaber, torch, basket, easter, egga, eggb, eggc, crozier, shovel, pickaxe, umbrella, umbrellaclosed, handbag, cocktail,
 	},
@@ -104,7 +104,7 @@
 	keywordstyle=\color{red!60!black}\bfseries,
 	morekeywords={tikzpicture},
 	moretexcs={
-		usepackage, usetikzlibrary, marmot, coati, bear, koala, owl, penguin, thing, tikzling, snowman, mouse, moles, sloth, pigs,
+		usepackage, usetikzlibrary, marmot, coati, bear, koala, owl, penguin, thing, tikzling, snowman, mouse, moles, sloth, pig, cat, hippo,
 	},
 	delim ={[s][\ttfamily\color{green!50!black}]{$}{$}},
 	moredelim=[is][\footnotesize\ttfamily\color{orange!70!black}]{|}{|},
@@ -149,6 +149,15 @@
 		\path (-1.6,0.1) rectangle (0.905, 2.17);
 		\tikzset{/mouse/.cd,#1}%
 		\mouse@draw%
+	\end{scope}%
+	\thing[#1]%
+}
+
+\renewcommand*{\cat}[1][]{%
+	\begin{scope}%
+		\path (-1.6,0.1) rectangle (0.905, 2.17);
+		\tikzset{/cat/.cd,#1}%
+		\cat@draw%
 	\end{scope}%
 	\thing[#1]%
 }
@@ -256,6 +265,56 @@ The key \lstinline|3D| will make the teddy bear 3-dimensional:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+% Cat
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section[Cat]{MisTi$k$zelees, the cat}
+
+\emph{Named after the worlds best singing cat}
+
+\subsection{Package name}
+
+\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
+\vspace*{0.5cm}
+\lstinline|\usepackage{tikzlings-cats}| 
+\vspace*{0.5cm}
+\end{tcolorbox}
+
+\subsection{Basic Usage}
+
+\begin{tcblisting}{}
+\cat
+\end{tcblisting}
+
+\subsection{Options}
+
+The basic cat can be modified by changing its colour:
+\begin{tcblisting}{}
+\cat[body=blue]
+\end{tcblisting}
+
+In addition to the colour of the body, the colour of various body parts can be adjusted:
+\begin{tcblisting}{}
+\cat[eyes=green]
+\end{tcblisting}
+\begin{tcblisting}{}
+\cat[nose=red]
+\end{tcblisting}
+\begin{tcblisting}{}
+\cat[whiskers=red]
+\end{tcblisting}
+\begin{tcblisting}{}
+\cat[paws=red]
+\end{tcblisting}
+
+Finally the key \lstinline|3D| will make the cat 3-dimensional:
+\begin{tcblisting}{}
+\cat[3D]
+\end{tcblisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 % Coati 
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -298,6 +357,42 @@ For the head an alternative sidewards facing head is available. It can be combin
 Finally the key \lstinline|3D| will make the coati 3-dimensional:
 \begin{tcblisting}{}
 \coati[3D]
+\end{tcblisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Hippo
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section[Hippo]{Sieglinde, the hippo}
+
+\emph{For the winner of the 2019 Groundhog Challenge}
+
+\subsection{Package name}
+
+\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
+\vspace*{0.5cm}
+\lstinline|\usepackage{tikzlings-hippos}| 
+\vspace*{0.5cm}
+\end{tcolorbox}
+
+\subsection{Basic Usage}
+
+\begin{tcblisting}{}
+\hippo
+\end{tcblisting}
+
+\subsection{Options}
+
+The basic penguin can be modified by changing its colour:
+\begin{tcblisting}{}
+\hippo[body=blue]
+\end{tcblisting}
+
+The key \lstinline|3D| will make the hippo 3-dimensional:
+\begin{tcblisting}{}
+\hippo[3D]
 \end{tcblisting}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -506,7 +601,7 @@ The key \lstinline|3D| will make the mouse 3-dimensional:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Jake 
+% Owl 
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
@@ -610,7 +705,7 @@ Finally the key \lstinline|3D| will make the penguin 3-dimensional:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Ms Piggy 
+% Pig 
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
