@@ -97,7 +97,7 @@
 		tikzlings,
 		tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmans, tikzlings-mice, tikzlings-moles, tikzlings-sloths, tikzlings-pigs, tikzlings-cats, tikzlings-hippos,
 		body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, nose, pupil, bill, feet, belly, ask, phil, mouth, buttons, rotatearms, eyes, paws,
-		scale, yshift, xshift, rotate, hands, muzzle,
+		scale, yshift, xshift, rotate, hands, muzzle, schroedinger,
 		hat, tophat, beret, strawhat, ribbon, harlequin, niuqelrah, witch, magichat, magicstars, crown, queencrown, kingcrown, santa, chef, graduate, tassel, alien, book, bookcolour, signpost, signcolour, signback, speech, think, bubblecolour, pizza, cheese, baguette, cake, icecream, flavoura, flavourb, flavourc, milkshake, wine, cricket, hockey, football, crystalball, magicwand, rollingpin, lightsaber, torch, basket, easter, egga, eggb, eggc, crozier, shovel, pickaxe, umbrella, umbrellaclosed, handbag, cocktail,
 	},
 	texcsstyle=*\color{SteelBlue!50!black}\bfseries,
@@ -306,6 +306,11 @@ In addition to the colour of the body, the colour of various body parts can be a
 \end{tcblisting}
 \begin{tcblisting}{}
 \cat[paws=red]
+\end{tcblisting}
+
+There is also the special option \lstinline|schroedinger| which results in either an alive or a death cat, but you will only know which one it is after you compiled the document:
+\begin{tcblisting}{}
+\cat[schroedinger]
 \end{tcblisting}
 
 Finally the key \lstinline|3D| will make the cat 3-dimensional:

@@ -21,6 +21,19 @@
 \RequirePackage{tikz}
 \RequirePackage{tikzlings-addons}
 
+\RequirePackage{ifluatex}
+\RequirePackage{ifxetex}
+
+\ifluatex
+  \let\pdfrandomseed\randomseed
+\fi
+
+\ifxetex
+  \pgfmathsetseed{\time}
+\else
+  \pgfmathsetseed{\number\pdfrandomseed}
+\fi
+
 \newcommand*{\cat}[1][]{%
   \begin{scope}%
     \tikzset{/cat/.cd,#1}%
@@ -30,6 +43,7 @@
 }
 
 \newif\ifcat@threeD
+\newif\ifcat@schroedinger
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -60,9 +74,25 @@
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   3D/.code           = \cat@threeDtrue,
+  schroedinger/.code = \cat@schroedingertrue,
 }
 
 \def\cat@draw{%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Opening Schr"odingers Box
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\cat@rotate{0}
+\ifcat@schroedinger
+  \pgfmathparse{int(random(0,1))}
+  \let\cat@random=\pgfmathresult
+  \ifnum\cat@random=1
+    \def\cat@rotate{90}
+  \fi
+\fi
+%
+\begin{scope}[rotate=\cat@rotate]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % minimal bounding box size 
@@ -136,4 +166,6 @@
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \cat@part@draw[\cat@paws] (-0.255,0.3) circle (0.18);  
 \cat@part@draw[\cat@paws] (0.255,0.3) circle (0.18); 
+%
+\end{scope}% from the Schroedinger Cat
 }
