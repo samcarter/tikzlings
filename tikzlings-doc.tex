@@ -95,16 +95,16 @@
 	emphstyle=\color{red!60!black},
 	emph=[1]{
 		tikzlings,
-		tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmans, tikzlings-mice, tikzlings-moles, tikzlings-sloths, tikzlings-pigs, tikzlings-cats, tikzlings-hippos,
+		tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmans, tikzlings-mice, tikzlings-moles, tikzlings-sloths, tikzlings-pigs, tikzlings-cats, tikzlings-hippos, tikzlings-rhinos,
 		body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, nose, pupil, bill, feet, belly, ask, phil, mouth, buttons, rotatearms, eyes, paws,
-		scale, yshift, xshift, rotate, hands, muzzle, schroedinger,
+		scale, yshift, xshift, rotate, hands, muzzle, schroedinger, toes,
 		hat, tophat, beret, strawhat, ribbon, harlequin, niuqelrah, witch, magichat, magicstars, crown, queencrown, kingcrown, santa, chef, graduate, tassel, alien, book, bookcolour, signpost, signcolour, signback, speech, think, bubblecolour, pizza, cheese, baguette, cake, icecream, flavoura, flavourb, flavourc, milkshake, wine, cricket, hockey, football, crystalball, magicwand, rollingpin, lightsaber, torch, basket, easter, egga, eggb, eggc, crozier, shovel, pickaxe, umbrella, umbrellaclosed, handbag, cocktail,
 	},
 	texcsstyle=*\color{SteelBlue!50!black}\bfseries,
 	keywordstyle=\color{red!60!black}\bfseries,
 	morekeywords={tikzpicture},
 	moretexcs={
-		usepackage, usetikzlibrary, marmot, coati, bear, koala, owl, penguin, thing, tikzling, snowman, mouse, moles, sloth, pig, cat, hippo,
+		usepackage, usetikzlibrary, marmot, coati, bear, koala, owl, penguin, thing, tikzling, snowman, mouse, moles, sloth, pig, cat, hippo, rhino,
 	},
 	delim ={[s][\ttfamily\color{green!50!black}]{$}{$}},
 	moredelim=[is][\footnotesize\ttfamily\color{orange!70!black}]{|}{|},
@@ -391,9 +391,14 @@ Finally the key \lstinline|3D| will make the coati 3-dimensional:
 
 \subsection{Options}
 
-The basic penguin can be modified by changing its colour:
+The basic hippo can be modified by changing its colour:
 \begin{tcblisting}{}
 \hippo[body=blue]
+\end{tcblisting}
+
+The hippo can also do its nails:
+\begin{tcblisting}{}
+\hippo[toes=red]
 \end{tcblisting}
 
 The key \lstinline|3D| will make the hippo 3-dimensional:
@@ -747,6 +752,48 @@ The key \lstinline|3D| will make the pig 3-dimensional:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+% Rhino
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section[Rhino]{D\"urer, the rhino}
+
+\emph{Named after Albert D\"urer who painted an amazing rhino merely based on stories}
+
+\subsection{Package name}
+
+\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
+\vspace*{0.5cm}
+\lstinline|\usepackage{tikzlings-rhinos}| 
+\vspace*{0.5cm}
+\end{tcolorbox}
+
+\subsection{Basic Usage}
+
+\begin{tcblisting}{}
+\rhino
+\end{tcblisting}
+
+\subsection{Options}
+
+The basic rhino can be modified by changing its colour:
+\begin{tcblisting}{}
+\rhino[body=blue]
+\end{tcblisting}
+
+The hippo can also do its nails:
+\begin{tcblisting}{}
+\rhino[toes=red]
+\end{tcblisting}
+
+The key \lstinline|3D| will make the rhino 3-dimensional:
+\begin{tcblisting}{}
+\rhino[3D]
+\end{tcblisting}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 % Sloth 
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -942,8 +989,8 @@ A list of all available accessories is given below. For completeness the default
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\owl[
-	witch=black
+\cat[
+	witch=gray
 ]
 \end{tcblisting}
 
@@ -1007,7 +1054,7 @@ A list of all available accessories is given below. For completeness the default
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\mouse[
+\pig[
 	signpost={\TeX},
 	signcolour= brown!50!black,
 	signback=green!40!black
@@ -1084,7 +1131,7 @@ A list of all available accessories is given below. For completeness the default
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\mouse[
+\hippo[
 	hockey=brown
 ]
 \end{tcblisting}
@@ -1161,7 +1208,7 @@ A list of all available accessories is given below. For completeness the default
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\sloth[
+\rhino[
 	umbrella=cyan
 ]
 \end{tcblisting}
