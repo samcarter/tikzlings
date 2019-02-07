@@ -190,7 +190,7 @@
   pizza/.code             = \thing@pizzatrue,
   davidlikespineapplepizza/.code = \thing@davidlikespineapplepizzatrue
                             \thing@speechtrue 
-                            \def\thing@speech{\scalebox{\yscalefactor}{\scalebox{0.9}{\tiny ih, che schifo!}}},
+                            \def\thing@speech{\scalebox{\scalingfactor}{\scalebox{0.9}{\tiny ih, che schifo!}}},
   david likes pineapple pizza/.forward to = /thing/davidlikespineapplepizza,
   cheese/.code            = \thing@cheesetrue
                             \def\thing@cheese{#1},
@@ -295,15 +295,17 @@
 }
 
 \def\thing@draw{%
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % store the current scale factor
-% from https://tex.stackexchange.com/a/86900/36296
+% from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pgfgettransformentries{\myxscale}{\@tempa}{\@tempa}{\myyscale}{\@tempa}{\@tempa}
-\gdef\yscalefactor{\myyscale}
-\gdef\xscalefactor{\myxscale}
+\pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
+\pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))}%
+\pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
+\pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -473,7 +475,7 @@
   \fill[\thing@graduate,rotate=-15] (0.44,2.1) ellipse (0.37 and 0.1);  
   \fill[\thing@graduate,rotate=-15] (0.07,2.1) rectangle (0.81,2.3);
   \fill[\thing@graduate] (0.3,2.25) -- (1.05,2.35) -- (1.7,1.95) -- (0.92,1.85) -- cycle;
-  \fill[\thing@tassel,rounded corners=\yscalefactor*1] (1.12,1.89) -- (1.01,2.1) -- (1.09,2.11) -- (1.2,1.9) -- (1.2,1.3) -- (1.12,1.3) -- cycle;
+  \fill[\thing@tassel,rounded corners=\scalingfactor*1] (1.12,1.89) -- (1.01,2.1) -- (1.09,2.11) -- (1.2,1.9) -- (1.2,1.3) -- (1.12,1.3) -- cycle;
   \fill[\thing@tassel] (1.16,1.3) ellipse (0.06 and 0.12);
   \end{scope}
 \fi
@@ -504,9 +506,9 @@
 % signpost %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@signpost
   \begin{scope}[scale=1.7,xshift=-26,yshift=-7]
-  \fill[\thing@signcolour, rounded corners=\yscalefactor*1, rotate=-20] (0.8,0.75) rectangle (0.9,1.75);
-  \fill[\thing@signcolour, rounded corners=\yscalefactor*1, rotate=-20] (0.4,1.7) rectangle (1.3,2.4);
-  \fill[\thing@signback, rounded corners=\yscalefactor*1, rotate=-20] (0.45,1.75) rectangle (1.25,2.35);
+  \fill[\thing@signcolour, rounded corners=\scalingfactor*1, rotate=-20] (0.8,0.75) rectangle (0.9,1.75);
+  \fill[\thing@signcolour, rounded corners=\scalingfactor*1, rotate=-20] (0.4,1.7) rectangle (1.3,2.4);
+  \fill[\thing@signback, rounded corners=\scalingfactor*1, rotate=-20] (0.45,1.75) rectangle (1.25,2.35);
    \node[rotate=-20*\yscalefactor/\xscalefactor, color=white] at (1.5,1.65) {\thing@signpost};
    \end{scope}
 \fi
@@ -580,7 +582,7 @@
 % baguette %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@baguette
   \begin{scope}[xshift=-38,yshift=7,rotate=-20]
-  \fill[\thing@baguette!70!white, rounded corners=\yscalefactor*4, rotate=-30] (0.4,0.72) rectangle (0.7,2.0);
+  \fill[\thing@baguette!70!white, rounded corners=\scalingfactor*4, rotate=-30] (0.4,0.72) rectangle (0.7,2.0);
   \fill[\thing@baguette!80!black, rotate=5] (1.44,1.1) ellipse (0.1 and 0.03) (1.30,0.9) ellipse (0.1 and 0.03) (1.16,0.7) ellipse (0.1 and 0.03) (1.02,0.5) ellipse (0.1 and 0.03);
   \end{scope}
 \fi
@@ -667,16 +669,16 @@
 % cricket bat %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@cricket
   \begin{scope}[xshift=-26]
-  \fill[\thing@cricket, rounded corners=\yscalefactor*2, rotate=-30] (0.4,1.2) rectangle (0.7,2.2);
-  \fill[\thing@cricket, rounded corners=\yscalefactor*1, rotate=-30] (0.5,0.8) rectangle (0.6,1.3);
+  \fill[\thing@cricket, rounded corners=\scalingfactor*2, rotate=-30] (0.4,1.2) rectangle (0.7,2.2);
+  \fill[\thing@cricket, rounded corners=\scalingfactor*1, rotate=-30] (0.5,0.8) rectangle (0.6,1.3);
   \end{scope}
 \fi
 %
 % Hockey stick %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@hockey
   \begin{scope}[xshift=-22]
-  \fill[\thing@hockey, rounded corners=\yscalefactor*1, rotate=-30] (0.5,0.6) rectangle (0.6,2.1);
-  \fill[\thing@hockey, rounded corners=\yscalefactor*3] (0.2,0.2) rectangle (0.85,0.4);
+  \fill[\thing@hockey, rounded corners=\scalingfactor*1, rotate=-30] (0.5,0.6) rectangle (0.6,2.1);
+  \fill[\thing@hockey, rounded corners=\scalingfactor*3] (0.2,0.2) rectangle (0.85,0.4);
   \end{scope}
 \fi
 %
@@ -713,16 +715,16 @@
 % rollingpin %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@rollingpin
   \begin{scope}[xshift=-30,yshift=2]
-  \fill[\thing@rollingpin, rounded corners=\yscalefactor*2, rotate=-60] (-0.18,0.85) rectangle (0.08,1.75);
-  \fill[\thing@rollingpin, rounded corners=\yscalefactor*1, rotate=-60] (-0.1,0.65) rectangle (0.0,1.95);
+  \fill[\thing@rollingpin, rounded corners=\scalingfactor*2, rotate=-60] (-0.18,0.85) rectangle (0.08,1.75);
+  \fill[\thing@rollingpin, rounded corners=\scalingfactor*1, rotate=-60] (-0.1,0.65) rectangle (0.0,1.95);
   \end{scope}
 \fi
 %
 % lightsaber %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@lightsaber
   \begin{scope}[xshift=-26]
-  \fill[\thing@lightsaber, rounded corners=\yscalefactor*1, rotate=-30] (0.5,0.9) rectangle (0.6,2.5);
-  \fill[gray!80!black, rounded corners=\yscalefactor*1, rotate=-30] (0.47,0.7) rectangle (0.63,1.2);
+  \fill[\thing@lightsaber, rounded corners=\scalingfactor*1, rotate=-30] (0.5,0.9) rectangle (0.6,2.5);
+  \fill[gray!80!black, rounded corners=\scalingfactor*1, rotate=-30] (0.47,0.7) rectangle (0.63,1.2);
   \end{scope}
 \fi
 %
@@ -747,7 +749,7 @@
     (1.0646,1.024) .. controls (1.0541,1.1714) and (1.2642,1.1654) .. 
     (1.2492,1.386) .. controls (1.3093,1.3110) and (1.4383,1.2705) .. 
     (1.4338,1.025) -- cycle;;
-  \fill[\thing@torch,rounded corners=\yscalefactor*1] 
+  \fill[\thing@torch,rounded corners=\scalingfactor*1] 
       (1.1,0.96) -- (0.77,0.25) -- (0.83,0.25) -- (1.3,0.86) -- cycle;
   \fill[\thing@torch,rotate=-28] (0.62,1.32) ellipse (0.2 and 0.08);
   \end{scope}

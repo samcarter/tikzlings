@@ -74,12 +74,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % store the current scale factor
-% from https://tex.stackexchange.com/a/86900/36296
+% from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pgfgettransformentries{\myxscale}{\@tempa}{\@tempa}{\myyscale}{\@tempa}{\@tempa}
-\gdef\yscalefactor{\myyscale}
-\gdef\xscalefactor{\myxscale}
+\pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
+\pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))}%
+\pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
+\pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 
@@ -150,9 +151,9 @@
 %
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifkoala@threeD
-	\draw[black,line width=\xscalefactor*0.4pt] (0.115, 1.39) arc [start angle=-40, end angle=-140, radius=0.16];
+	\draw[black,line width=\scalingfactor*0.4pt] (0.115, 1.39) arc [start angle=-40, end angle=-140, radius=0.16];
 \else   
-  \draw[\koala@body!40!black,line width=\xscalefactor*0.4pt] (0.115, 1.39) arc [start angle=-40, end angle=-140, radius=0.16];
+  \draw[\koala@body!40!black,line width=\scalingfactor*0.4pt] (0.115, 1.39) arc [start angle=-40, end angle=-140, radius=0.16];
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
