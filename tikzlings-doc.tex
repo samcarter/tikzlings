@@ -95,7 +95,7 @@
 	emphstyle=\color{red!60!black},
 	emph=[1]{
 		tikzlings,
-		tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmans, tikzlings-mice, tikzlings-moles, tikzlings-sloths, tikzlings-pigs, tikzlings-cats, tikzlings-hippos, tikzlings-rhinos,
+		tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmans, tikzlings-mice, tikzlings-moles, tikzlings-sloths, tikzlings-pigs, tikzlings-cats, tikzlings-hippos, tikzlings-rhinos, tikzlings-squirrels, tikzlings-pandas,
 		body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, nose, pupil, bill, feet, belly, ask, phil, mouth, buttons, rotatearms, eyes, paws,
 		scale, yshift, xshift, rotate, hands, muzzle, schroedinger, toes,
 		hat, tophat, beret, strawhat, ribbon, harlequin, niuqelrah, witch, magichat, magicstars, crown, queencrown, kingcrown, santa, chef, graduate, tassel, alien, book, bookcolour, signpost, signcolour, signback, speech, think, bubblecolour, pizza, cheese, baguette, cake, icecream, flavoura, flavourb, flavourc, milkshake, wine, cricket, hockey, football, crystalball, magicwand, rollingpin, lightsaber, torch, basket, easter, egga, eggb, eggc, crozier, shovel, pickaxe, umbrella, umbrellaclosed, handbag, cocktail,
@@ -104,7 +104,7 @@
 	keywordstyle=\color{red!60!black}\bfseries,
 	morekeywords={tikzpicture},
 	moretexcs={
-		usepackage, usetikzlibrary, marmot, coati, bear, koala, owl, penguin, thing, tikzling, snowman, mouse, moles, sloth, pig, cat, hippo, rhino,
+		usepackage, usetikzlibrary, marmot, coati, bear, koala, owl, penguin, thing, tikzling, snowman, mouse, moles, sloth, pig, cat, hippo, rhino, squirrel, panda,
 	},
 	delim ={[s][\ttfamily\color{green!50!black}]{$}{$}},
 	moredelim=[is][\footnotesize\ttfamily\color{orange!70!black}]{|}{|},
@@ -658,6 +658,42 @@ In addition to the colour of the body, the colour of various body parts can be a
 Finally the key \lstinline|3D| will make the owl 3-dimensional:
 \begin{tcblisting}{}
 \owl[3D]
+\end{tcblisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Panda
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section[Panda]{..., the panda}
+
+\emph{....}
+
+\subsection{Package name}
+
+\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
+\vspace*{0.5cm}
+\lstinline|\usepackage{tikzlings-pandas}| 
+\vspace*{0.5cm}
+\end{tcolorbox}
+
+\subsection{Basic Usage}
+
+\begin{tcblisting}{}
+\panda
+\end{tcblisting}
+
+\subsection{Options}
+
+The basic panda can be modified by changing its colour:
+\begin{tcblisting}{}
+\panda[body=blue]
+\end{tcblisting}
+
+The key \lstinline|3D| will make the panda 3-dimensional:
+\begin{tcblisting}{}
+\panda[3D]
 \end{tcblisting}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

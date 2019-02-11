@@ -1,0 +1,128 @@
+% !TeX root = ./examples/panda.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% The tikzlings-pandas package (part of the tikzlings collection)
+% A package to bring little pandas into tikz
+% Maintained by samcarter
+%
+% Project repository and bug tracker:
+% https://github.com/samcarter/tikzlings
+%
+% Released under the LaTeX Project Public License v1.3c or later
+% See http://www.latex-project.org/lppl.txt
+%
+% Version 0.1
+% Feb 5, 2019    
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{tikzlings-pandas}
+ [2019/02/05 v0.1 Drawing pandas in TikZ]
+
+\RequirePackage{tikz}
+\RequirePackage{tikzlings-addons}
+
+\newcommand*{\panda}[1][]{%
+  \begin{scope}%
+    \tikzset{/panda/.cd,#1}%
+    \panda@draw%
+  \end{scope}%
+  \thing[#1]%
+}
+
+\newif\ifpanda@threeD
+
+\tikzset{
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Pass unknown keys on to tikz
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  /panda/.search also={/tikz,/pgf,/thing},
+  /panda/.cd,
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % body
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  body/.code         = \def\panda@body{#1},
+  body               = white!90!black,
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % options
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  3D/.code           = \panda@threeDtrue, 
+}
+
+\def\panda@draw{%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% minimal bounding box size 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\path (-0.625,0.1) rectangle (0.905, 2.27);
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% store the current scale factor
+% from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
+\pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))}%
+\pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
+\pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% switch between 2D and 3D, from
+% https://chat.stackexchange.com/transcript/message/45991801#45991801
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifpanda@threeD
+  \def\panda@part@draw[##1]{\shade[ball color=##1]}
+\else
+  \def\panda@part@draw[##1]{\fill[##1]}
+\fi
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Body parts (center: x=0)
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\panda@part@draw[\panda@body!55!white] (0,0.78) ellipse (0.57 and 0.65);
+%
+% Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{scope}[yshift=-0.08cm]
+\panda@part@draw[black,rotate around={70:(0.28,0.93)}] (0.28,0.93) ellipse (0.24 and 0.13);
+\panda@part@draw[black,rotate around={-70:(-0.28,0.93)}] (-0.28,0.93) ellipse (0.24 and 0.13);
+\end{scope}
+%
+% Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\panda@part@draw[black] (0.32, 0.27) circle (0.2); 
+\panda@part@draw[black] (-0.32, 0.27) circle (0.2);
+%
+% Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\panda@part@draw[black] (0.32, 2) circle (0.15);
+\panda@part@draw[black] (-0.32, 2) circle (0.15);
+%
+% Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\panda@part@draw[\panda@body!55!white] (0.4897, 1.5886) .. controls (0.4614, 1.8238) and (0.25, 2.1172) .. (0, 2.1134) .. controls (-0.25, 2.1172) and (-0.4614, 1.8238) .. (-0.4897, 1.5886) .. controls (-0.5261, 1.3269) and (-0.2748, 1.2377) .. (0, 1.2377) .. controls (0.2748, 1.2377) and (0.5261, 1.3269) .. (0.4897, 1.5886) -- cycle;
+%
+% Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\panda@part@draw[black] (0.3732, 1.6905) .. controls (0.3498, 1.767) and (0.2032, 1.8059) .. (0.0944, 1.7715) .. controls (-0.0145, 1.7371) and (0.173, 1.5479) .. (0.2508, 1.5443) .. controls (0.3286, 1.5407) and (0.3965, 1.614) .. (0.3732, 1.6905) -- cycle;
+\panda@part@draw[black] (-0.3732, 1.6905) .. controls (-0.3498, 1.767) and (-0.2032, 1.8059) .. (-0.0944, 1.7715) .. controls (0.0145, 1.7371) and (-0.173, 1.5479) .. (-0.2508, 1.5443) .. controls (-0.3286, 1.5407) and (-0.3965, 1.614) .. (-0.3732, 1.6905) -- cycle;
+\panda@part@draw[white] (-0.18, 1.7) circle (0.05);
+\panda@part@draw[white] (0.18, 1.7) circle (0.05);
+\panda@part@draw[black] (0.17, 1.695) circle (0.02);
+\panda@part@draw[black] (-0.17, 1.695) circle (0.02);
+%
+% Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\draw[black,line width=\scalingfactor*0.2pt] (-0.16, 1.477) .. controls (-0.16, 1.477) and (-0.062, 1.37) .. (0, 1.506)  .. controls (0.062, 1.37) and (0.16, 1.477) .. (0.16, 1.477);
+%
+% Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\panda@part@draw[black] (0,1.55) ellipse (0.07 and 0.04);
+%
+}
