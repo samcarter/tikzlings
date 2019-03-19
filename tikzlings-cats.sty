@@ -58,18 +58,24 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.code         = \def\cat@body{#1},
-  body               = gray!30!black,
-  whiskers/.code     = \def\cat@whiskers{#1},
-  whiskers           = gray!50!white,
-  eyes/.code         = \def\cat@eyes{#1},
-  eyes               = yellow!80!orange,
-  pupil/.code        = \def\cat@pupil{#1},
-  pupil              = black,
-  paws/.code         = \def\cat@paws{#1},
-  paws               = \cat@body,
-  nose/.code         = \def\cat@nose{#1},
-  nose               = red!40!white!80!gray,      
+  body/.code              = \def\cat@body{#1},
+  body                    = gray!30!black,
+  whiskers/.code          = \def\cat@whiskers{#1},
+  whiskers                = gray!50!white,
+  eyes/.code              = \def\cat@eyes{#1},
+  eyes                    = yellow!80!orange,
+  pupil/.code             = \def\cat@pupil{#1},
+  pupil                   = black,
+  pupil width/.code       = \def\cat@pupil@width{#1}\edef\cat@pupil@offset{\strip@pt\dimexpr#1pt/4},
+  narrow pupils/.style    = {pupil width = 0.005},
+  medium pupils/.style    = {pupil width = 0.015},
+  wide pupils/.style      = {pupil width = 0.025},
+  very wide pupils/.style = {pupil width = 0.050},
+  pupil width             = 0.015,
+  paws/.code              = \def\cat@paws{#1},
+  paws                    = \cat@body,
+  nose/.code              = \def\cat@nose{#1},
+  nose                    = red!40!white!80!gray,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
@@ -133,7 +139,7 @@
 %
 % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{pgfinterruptboundingbox}
-	\cat@part@draw[\cat@body] (0.3, 0.5) .. controls (0.55, 0.87) and (0.73, 1.50) .. (1.05, 1.65) .. controls (1.32, 1.77) and (1.76, 1.34) .. (1.56,1.33) .. controls (0.92, 2.03) and (0.86, 0.60) .. (0.5, 0.37) -- cycle;
+  \cat@part@draw[\cat@body] (0.3, 0.5) .. controls (0.55, 0.87) and (0.73, 1.50) .. (1.05, 1.65) .. controls (1.32, 1.77) and (1.76, 1.34) .. (1.56,1.33) .. controls (0.92, 2.03) and (0.86, 0.60) .. (0.5, 0.37) -- cycle;
 \end{pgfinterruptboundingbox}
 %
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -141,7 +147,7 @@
 %
 % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \cat@part@draw[\cat@body] 
-(0.12, 2.0392) .. controls (0.16, 2.1584) and (0.37, 2.22) .. (0.37, 2.20) .. controls (0.37, 2.2) and (0.39, 1.9) .. (0.2721, 1.9) .. controls (0.1891, 1.88) and (0.12, 1.88) .. (0.12, 2.0392) -- cycle;	
+(0.12, 2.0392) .. controls (0.16, 2.1584) and (0.37, 2.22) .. (0.37, 2.20) .. controls (0.37, 2.2) and (0.39, 1.9) .. (0.2721, 1.9) .. controls (0.1891, 1.88) and (0.12, 1.88) .. (0.12, 2.0392) -- cycle; 
 \cat@part@draw[\cat@body] 
 (-0.12, 2.0392) .. controls (-0.16, 2.1584) and (-0.37, 2.22) .. (-0.37, 2.20) .. controls (-0.37, 2.2) and (-0.39, 1.9) .. (-0.2721, 1.9) .. controls (-0.1891, 1.88) and (-0.12, 1.88) .. (-0.12, 2.0392) -- cycle;
 %
@@ -153,8 +159,16 @@
 \cat@part@draw[\cat@eyes] (0.1014, 1.7491) .. controls (0.1014, 1.7491) and (0.1451, 1.7171) .. (0.1841, 1.7284) .. controls (0.2231, 1.7397) and (0.2427, 1.79) .. (0.2427, 1.79) .. controls (0.2427, 1.79) and (0.1992, 1.8221) .. (0.1602, 1.8108) .. controls (0.1212, 1.7995) and (0.1014, 1.7491) .. (0.1014, 1.7491) -- cycle;
 %
 % Pupils %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\cat@part@draw[\cat@pupil] (-0.1720, 1.8071) .. controls (-0.1820, 1.7827) and (-0.1820, 1.7584) .. (-0.1720, 1.7341) .. controls (-0.1620, 1.7584) and (-0.1620, 1.7827) .. (-0.1720, 1.8071) -- cycle;
-\cat@part@draw[\cat@pupil] ( 0.1720, 1.8071) .. controls ( 0.1820, 1.7827) and ( 0.1820, 1.7584) .. ( 0.1720, 1.7341) .. controls ( 0.1620, 1.7584) and ( 0.1620, 1.7827) .. ( 0.1720, 1.8071) -- cycle;
+\cat@part@draw[\cat@pupil]
+  (-0.1720, 1.8071)
+    .. controls (-0.1720+\cat@pupil@width, 1.7827+\cat@pupil@offset) and (-0.1720+\cat@pupil@width, 1.7584-\cat@pupil@offset) .. (-0.1720, 1.7341)
+    .. controls (-0.1720-\cat@pupil@width, 1.7584-\cat@pupil@offset) and (-0.1720-\cat@pupil@width, 1.7827+\cat@pupil@offset) .. (-0.1720, 1.8071)
+  -- cycle;
+\cat@part@draw[\cat@pupil]
+  ( 0.1720, 1.8071)
+    .. controls ( 0.1720+\cat@pupil@width, 1.7827+\cat@pupil@offset) and ( 0.1720+\cat@pupil@width, 1.7584-\cat@pupil@offset) .. ( 0.1720, 1.7341)
+    .. controls ( 0.1720-\cat@pupil@width, 1.7584-\cat@pupil@offset) and ( 0.1720-\cat@pupil@width, 1.7827+\cat@pupil@offset) .. ( 0.1720, 1.8071)
+  -- cycle;
 %
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \draw[\cat@whiskers,line width=\scalingfactor*0.2pt] (-0.16, 1.527) .. controls (-0.16, 1.527) and (-0.062, 1.420) .. ( 0.000, 1.556)  .. controls ( 0.062, 1.420) and ( 0.16, 1.527) .. ( 0.16, 1.527);
