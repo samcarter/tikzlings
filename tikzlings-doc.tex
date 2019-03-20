@@ -98,7 +98,7 @@
 		tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmans, tikzlings-mice, tikzlings-moles, tikzlings-sloths, tikzlings-pigs, tikzlings-cats, tikzlings-hippos, tikzlings-rhinos, tikzlings-squirrels, tikzlings-pandas,
 		body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, nose, pupil, bill, feet, belly, ask, phil, mouth, buttons, rotatearms, eyes, paws,
 		scale, yshift, xshift, rotate, hands, muzzle, schroedinger, toes,
-		hat, tophat, beret, strawhat, ribbon, harlequin, niuqelrah, witch, magichat, magicstars, crown, queencrown, kingcrown, santa, chef, graduate, tassel, alien, book, bookcolour, signpost, signcolour, signback, speech, think, bubblecolour, pizza, cheese, baguette, cake, icecream, flavoura, flavourb, flavourc, milkshake, wine, cricket, hockey, football, crystalball, magicwand, rollingpin, lightsaber, torch, basket, easter, egga, eggb, eggc, crozier, shovel, pickaxe, umbrella, umbrellaclosed, handbag, cocktail,
+		hat, tophat, beret, strawhat, ribbon, harlequin, niuqelrah, witch, magichat, magicstars, crown, queencrown, kingcrown, santa, chef, graduate, tassel, alien, book, bookcolour, signpost, signcolour, signback, speech, think, bubblecolour, pizza, cheese, baguette, cake, icecream, flavoura, flavourb, flavourc, milkshake, wine, cricket, hockey, football, crystalball, magicwand, rollingpin, lightsaber, torch, basket, easter, egga, eggb, eggc, crozier, shovel, pickaxe, umbrella, umbrellaclosed, handbag, cocktail, pupilwidth,
 	},
 	texcsstyle=*\color{SteelBlue!50!black}\bfseries,
 	keywordstyle=\color{red!60!black}\bfseries,
@@ -310,6 +310,33 @@ In addition to the colour of the body, the colour of various body parts can be a
 \begin{tcblisting}{}
 \cat[paws=red]
 \end{tcblisting}
+
+The shape of the \lstinline|pupil| can be changed with the \lstinline|pupilwidth| option:
+\begin{tcblisting}{}
+\cat[pupilwidth=0.015]
+\end{tcblisting}
+
+Additionally several predefined widths exist:
+\begin{tcolorbox}
+\begin{lstlisting}[morekeywords={narrow,medium,wide,very,pupils}]
+\cat[narrow pupils]
+
+\cat[medium pupils]
+
+\cat[wide pupils]
+
+\cat[very wide pupils]
+\end{lstlisting} 
+
+\tcblower
+\begin{tikzpicture}[yshift=2.4cm,xshift=1.8cm]
+\cat[narrow pupils]
+\cat[medium pupils,xshift=2.5cm]
+\cat[wide pupils,yshift=-2.5cm]
+\cat[very wide pupils,xshift=2.5cm,yshift=-2.5cm]
+\end{tikzpicture}
+\end{tcolorbox}
+
 
 There is also the special option \lstinline|schroedinger|. This cat is both alive and death as long as you did not compile your document.
 Be prepared for a possibly disturbing scene when you open the pdf, this option is not suited for sensitive \tikzlings.
