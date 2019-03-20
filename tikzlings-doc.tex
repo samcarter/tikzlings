@@ -154,12 +154,23 @@
 }
 
 \renewcommand*{\cat}[1][]{%
-	\begin{scope}%
-		\path (-1.6,0.1) rectangle (0.905, 2.17);
-		\tikzset{/cat/.cd,#1}%
-		\cat@draw%
-	\end{scope}%
-	\thing[#1]%
+  \begin{scope}%
+    \tikzset{/cat/.cd,#1}%
+    \ifcat@schroedinger
+      \pgfmathparse{int(random(0,1))}
+      \let\cat@random=\pgfmathresult
+      \ifnum\cat@random=1
+				\cat@tombstone%
+       \else%
+     		\path (-1.6,0.1) rectangle (0.905, 2.17);
+       	\cat@draw%
+      \fi%
+    \else%
+   		\path (-1.6,0.1) rectangle (0.905, 2.17);
+    	\cat@draw%
+    \fi
+  \end{scope}%
+  \thing[#1]%
 }
 \makeatother
 

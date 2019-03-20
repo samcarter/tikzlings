@@ -37,7 +37,17 @@
 \newcommand*{\cat}[1][]{%
   \begin{scope}%
     \tikzset{/cat/.cd,#1}%
-    \cat@draw%
+    \ifcat@schroedinger
+      \pgfmathparse{int(random(0,1))}
+      \let\cat@random=\pgfmathresult
+      \ifnum\cat@random=1
+				\cat@tombstone%
+       \else
+       	\cat@draw%
+      \fi
+    \else
+    	\cat@draw%
+    \fi
   \end{scope}%
   \thing[#1]%
 }
@@ -87,21 +97,7 @@
 }
 
 \def\cat@draw{%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Opening Schr"odingers Box
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\def\cat@rotate{0}
-\ifcat@schroedinger
-  \pgfmathparse{int(random(0,1))}
-  \let\cat@random=\pgfmathresult
-  \ifnum\cat@random=1
-    \def\cat@rotate{90}
-  \fi
-\fi
-%
-\begin{scope}[rotate=\cat@rotate]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % minimal bounding box size 
@@ -189,5 +185,36 @@
 \cat@part@draw[\cat@paws] (-0.255,0.3) circle (0.18);  
 \cat@part@draw[\cat@paws] (0.255,0.3) circle (0.18); 
 %
-\end{scope}% from the Schroedinger Cat
+}
+
+\def\cat@tombstone{%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% minimal bounding box size 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\path (-0.55,0.39) rectangle (0.55, 2.06);
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% store the current scale factor
+% from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
+\pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))}%
+\pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
+\pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% Drawing the tomebstone
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fill[gray] (-0.55,0.4) rectangle (0.55,1.5);
+\fill[gray] (0,1.5) circle (0.55);
+\node[scale=\scalingfactor] at (0,1.3) {R.I.P.};
+\fill[brown!65!black] (1,0.15) arc [start angle=50, end angle=130, radius=1.56] -- cycle;
+%
 }
