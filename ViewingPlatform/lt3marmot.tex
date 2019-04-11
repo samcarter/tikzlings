@@ -1,0 +1,104 @@
+\documentclass{standalone}
+
+\usepackage{l3draw}
+
+\begin{document}
+
+\ExplSyntaxOn
+\draw_begin: 
+
+	\draw_path_ellipse:nnn
+		{ 1.25cm , -0.95cm }
+		{ 0.25cm , 0cm } 
+		{ 0cm , 0.1cm }
+	\draw_color_fill:n { yellow!70!blue!40!black }
+	\draw_path_use_clear:n { fill } 	
+
+	\draw_path_ellipse:nnn
+		{ 0.75cm , -0.95cm }
+		{ 0.25cm , 0cm } 
+		{ 0cm , 0.1cm }
+	\draw_color_fill:n { yellow!70!blue!40!black }
+	\draw_path_use_clear:n { fill } 
+
+	\draw_path_ellipse:nnn
+		{ 1.2cm , 0.95cm }
+		{ 0.1cm , 0cm } 
+		{ 0cm , 0.15cm }
+	\draw_color_fill:n { yellow!70!blue!40!black }
+	\draw_path_use_clear:n { fill } 	
+	
+	\draw_path_ellipse:nnn
+		{ 0.8cm , 0.95cm }
+		{ 0.1cm , 0cm } 
+		{ 0cm , 0.15cm }
+	\draw_color_fill:n { yellow!70!blue!40!black }
+	\draw_path_use_clear:n { fill } 
+
+	\draw_path_ellipse:nnn
+		{ 1cm , 0cm }
+		{ 0.6cm , 0cm } 
+		{ 0cm , 1cm }
+	\draw_color_fill:n { yellow!70!blue!90!white!80!red }
+	\draw_path_use_clear:n { fill } 
+
+	\draw_path_ellipse:nnn
+		{ 1cm , -0.35cm }
+		{ 0.4cm , 0cm } 
+		{ 0cm , 0.4cm }
+	\draw_color_fill:n { yellow!70!blue!30!white!90!red }
+	\draw_path_use_clear:n { fill } 
+	
+	\draw_path_ellipse:nnn
+		{ 1cm , 0.3cm }
+		{ 0.2cm , 0cm } 
+		{ 0cm , 0.15cm }
+	\draw_color_fill:n { yellow!70!blue!30!white!90!red }
+	\draw_path_use_clear:n { fill } 	
+	
+	\draw_path_ellipse:nnn
+		{ 1cm , 0.43cm }
+		{ 0.08cm , 0cm } 
+		{ 0cm , 0.08cm }
+	\draw_color_fill:n { yellow!70!blue!40!black }
+	\draw_path_use_clear:n { fill } 		
+	
+	\draw_path_ellipse:nnn
+		{ 0.85cm , 0.6cm }
+		{ 0.05cm , 0cm } 
+		{ 0cm , 0.05cm }
+	\draw_color_fill:n { yellow!70!blue!40!black }
+	\draw_path_use_clear:n { fill } 	
+
+	\draw_path_ellipse:nnn
+		{ 1.15cm , 0.6cm }
+		{ 0.05cm , 0cm } 
+		{ 0cm , 0.05cm }
+	\draw_color_fill:n { yellow!70!blue!40!black }
+	\draw_path_use_clear:n { fill } 	
+	
+	\draw_path_ellipse:nnn
+		{ 1.3cm , -0.2cm }
+		{ 0.2cm , 0.15cm } 
+		{ 0cm , 0.15cm }
+	\draw_color_fill:n { yellow!70!blue!40!black }
+	\draw_path_use_clear:n { fill } 	
+	
+	\draw_path_ellipse:nnn
+		{ 0.7cm , -0.2cm }
+		{ 0.2cm , -0.15cm } 
+		{ 0cm , 0.15cm }
+	\draw_color_fill:n { yellow!70!blue!40!black }
+	\draw_path_use_clear:n { fill } 		
+
+	\draw_path_moveto:n { 0.875cm , 0.3cm } 
+	\draw_path_curveto:nn
+		{ 1cm , 0.175cm }
+		{ 1.125cm , 0.3cm }
+	\draw_color_fill:n {  yellow!70!blue!40!black } 
+	\draw_path_use_clear:n { stroke }
+	
+\draw_end:
+\ExplSyntaxOff 
+
+\end{document}
