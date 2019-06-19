@@ -1,0 +1,19 @@
+\documentclass{standalone}
+
+\usepackage{tikzlings}
+\usepackage{tikzducks}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+\fill[black] (0,0) circle (1.25);
+\foreach \x in {0,40,...,360}{
+\mouse[rotate=\x,scale=0.18,yshift=120]
+\sloth[rotate=\x+20,scale=0.25,yshift=70]
+\marmot[rotate=\x,scale=0.15,yshift=80]
+\snowman[rotate=\x+20,scale=0.15,yshift=47]
+}
+\duck[scale=0.2,xshift=-30,yshift=-30]
+\end{tikzpicture}
+
+\end{document}
