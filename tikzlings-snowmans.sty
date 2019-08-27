@@ -30,6 +30,7 @@
 }
 
 \newif\ifsnowman@threeD
+\newif\ifsnowman@back
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -60,6 +61,7 @@
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   3D/.code           = \snowman@threeDtrue, 
+  back/.code         = \snowman@backtrue,
 }
 
 \def\snowman@draw{%
@@ -108,6 +110,9 @@
 \snowman@part@draw[\snowman@body] (0,1.1) ellipse (0.5 and 0.4);
 \snowman@part@draw[\snowman@body] (0,1.7) circle (0.4);  
 %
+% Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifsnowman@back\else
+%
 % Mouth% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \fill[\snowman@mouth] (0,1.5) circle (0.016);
 \fill[\snowman@mouth] (0.04,1.507) circle (0.016);
@@ -129,4 +134,5 @@
 \snowman@part@draw[\snowman@buttons] (0,0.95) circle (0.04); 
 \snowman@part@draw[\snowman@buttons] (0,0.75) circle (0.04); 
 %
+\fi
 }

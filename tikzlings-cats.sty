@@ -54,6 +54,7 @@
 
 \newif\ifcat@threeD
 \newif\ifcat@schroedinger
+\newif\ifcat@back
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -94,6 +95,7 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   3D/.code           = \cat@threeDtrue,
   schroedinger/.code = \cat@schroedingertrue,
+  back/.code         = \cat@backtrue,  
 }
 
 \def\cat@draw{%
@@ -139,6 +141,12 @@
   \cat@part@draw[\cat@body] (0.3, 0.5) .. controls (0.55, 0.87) and (0.73, 1.50) .. (1.05, 1.65) .. controls (1.32, 1.77) and (1.76, 1.34) .. (1.56,1.33) .. controls (0.92, 2.03) and (0.86, 0.60) .. (0.5, 0.37) -- cycle;
 \end{pgfinterruptboundingbox}
 %
+% Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifcat@back
+	\cat@part@draw[\cat@paws] (-0.255,0.3) circle (0.18);  
+	\cat@part@draw[\cat@paws] (0.255,0.3) circle (0.18);
+\fi 
+%
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \cat@part@draw[\cat@body] (0.5462, 0.7155) .. controls (0.5462, 0.1823) and (0.3259, 0.17) .. (0, 0.17) .. controls (-0.3259, 0.17) and (-0.5462, 0.1823) .. (-0.5462, 0.7155) .. controls (-0.5554, 1.2487) and (-0.3075, 1.6768) .. (0, 1.6768) .. controls (0.3075, 1.6768) and (0.5554, 1.2487) .. (0.5462, 0.7155) -- cycle;
 %
@@ -150,6 +158,9 @@
 %
 % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \cat@part@draw[\cat@body] (0,1.64) circle (0.44);
+%
+% Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifcat@back\else
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \cat@part@draw[\cat@eyes] (-0.1014, 1.7491) .. controls (-0.1014, 1.7491) and (-0.1451, 1.7171) .. (-0.1841, 1.7284) .. controls (-0.2231, 1.7397) and (-0.2427, 1.79) .. (-0.2427, 1.79) .. controls (-0.2427, 1.79) and (-0.1992, 1.8221) .. (-0.1602, 1.8108) .. controls (-0.1212, 1.7995) and (-0.1014, 1.7491) .. (-0.1014, 1.7491) -- cycle;
@@ -185,6 +196,7 @@
 \cat@part@draw[\cat@paws] (-0.255,0.3) circle (0.18);  
 \cat@part@draw[\cat@paws] (0.255,0.3) circle (0.18); 
 %
+\fi
 }
 
 \def\cat@tombstone{%

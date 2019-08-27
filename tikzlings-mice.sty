@@ -31,6 +31,7 @@
 
 \newif\ifmouse@threeD
 \newif\ifmouse@rotatearms
+\newif\ifmouse@back
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -57,6 +58,7 @@
                        \def\mouse@rotatearms{#1},
   rotate arms/.forward to = /mouse/rotatearms,
   rotatearms         = 20,
+  back/.code         = \mouse@backtrue,  
 }
 
 \def\mouse@draw{%
@@ -102,18 +104,38 @@
 %
 % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mouse@part@draw[\mouse@body!65!white] (0.36, 2.17) circle (0.28);
-\mouse@part@draw[\mouse@body] (0.36, 2.17) circle (0.15);
 \mouse@part@draw[\mouse@body!65!white] (-0.36, 2.17) circle (0.28);
-\mouse@part@draw[\mouse@body] (-0.36, 2.17) circle (0.15);
+\ifmouse@back\else
+	\mouse@part@draw[\mouse@body] (0.36, 2.17) circle (0.15);
+	\mouse@part@draw[\mouse@body] (-0.36, 2.17) circle (0.15);
+\fi
 %
 % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mouse@part@draw[\mouse@body!65!white] (0.348, 0.475) .. controls (0.598, 0.844) and (0.778, 1.475) .. (1.099, 1.625) .. controls (1.369, 1.745) and (1.677, 1.309) .. (1.609, 1.305) .. controls (0.933, 2.178) and (0.771, 0.676) .. (0.411, 0.446) -- cycle;
+\ifmouse@back\else
+	\mouse@part@draw[\mouse@body!65!white] (1.0825, 1.6326) .. controls (1.3527, 1.7527) and (1.6609, 1.3164) .. (1.5928, 1.3124) .. controls (0.9164, 2.186) and (0.8338, 0.6325) .. (0.3708, 0.4451) .. controls (0.2529, 0.3974) and (-0.0064, 0.3874) .. (-0.0064, 0.3874) .. controls (-0.0776, 0.3765) and (-0.0862, 0.5026) .. (-0.0092, 0.5034) .. controls (-0.0092, 0.5034) and (0.0363, 0.4591) .. (0.3516, 0.54360) .. controls (0.6710, 0.6988) and (0.7613, 1.4825) .. (1.0825, 1.6326) -- cycle;
+\fi
 %
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mouse@part@draw[\mouse@body] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
 %
+% Tailif back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifmouse@back
+	\mouse@part@draw[\mouse@body!65!white] (1.0825, 1.6326) .. controls (1.3527, 1.7527) and (1.6609, 1.3164) .. (1.5928, 1.3124) .. controls (0.9164, 2.186) and (0.8338, 0.6325) .. (0.3708, 0.4451) .. controls (0.2529, 0.3974) and (-0.0064, 0.3874) .. (-0.0064, 0.3874) .. controls (-0.0776, 0.3765) and (-0.0862, 0.5026) .. (-0.0092, 0.5034) .. controls (-0.0092, 0.5034) and (0.0363, 0.4591) .. (0.3516, 0.54360) .. controls (0.6710, 0.6988) and (0.7613, 1.4825) .. (1.0825, 1.6326) -- cycle;
+\fi
+
 % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mouse@part@draw[\mouse@body!65!white] (0.5, 1.8) .. controls (0.5, 1.58) and (0.2, 1.25) .. (0, 1.16) .. controls (-0.2, 1.25) and (-0.5, 1.58) .. (-0.5, 1.8) .. controls (-0.34, 2.3) and (0.34, 2.3) .. (0.5, 1.8) -- cycle;
+\ifmouse@back
+		\mouse@part@draw[\mouse@body!65!white] 
+		(0.5, 1.8) .. controls (0.5, 1.58) and (0.2, 1.35) .. 
+		(0, 1.35) .. controls (-0.2, 1.35) and (-0.5, 1.58) .. 
+		(-0.5, 1.8) .. controls (-0.34, 2.3) and (0.34, 2.3) .. 
+		(0.5, 1.8) -- cycle;
+\else
+	\mouse@part@draw[\mouse@body!65!white] (0.5, 1.8) .. controls (0.5, 1.58) and (0.2, 1.25) .. (0, 1.16) .. controls (-0.2, 1.25) and (-0.5, 1.58) .. (-0.5, 1.8) .. controls (-0.34, 2.3) and (0.34, 2.3) .. (0.5, 1.8) -- cycle;
+\fi
+%
+% Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifmouse@back\else
 %
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mouse@part@draw[\mouse@body!65!white,rotate around={-\mouse@rotatearms:(0.47,1.15)}] (0.47,0.93) ellipse (0.13 and 0.24);
@@ -134,5 +156,6 @@
 \mouse@part@draw[\mouse@body!50!black] (0.23, 1.68) circle (0.05);
 \mouse@part@draw[\mouse@body!50!black] (-0.23, 1.68) circle (0.05);
 %
+\fi
 }
 

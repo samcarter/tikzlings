@@ -37,6 +37,7 @@
 \newif\ifkoala@blush
 \newif\ifkoala@sleeping
 \newif\ifkoala@threeD
+\newif\ifkoala@back
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -61,6 +62,7 @@
   blush/.code        = \koala@blushtrue,
   sleeping/.code     = \koala@sleepingtrue, 
   3D/.code           = \koala@threeDtrue,  
+  back/.code         = \koala@backtrue,  
 }
 
 \def\koala@draw{%
@@ -106,9 +108,11 @@
 %
 % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \koala@part@draw[\koala@body] (0.405, 2.1) ellipse (0.3 and 0.23);
-\koala@part@draw[\koala@body!40!white] (0.405, 2.1) ellipse (0.15 and 0.12);
 \koala@part@draw[\koala@body] (-0.405, 2.1) ellipse (0.3 and 0.23);
-\koala@part@draw[\koala@body!40!white] (-0.405, 2.1) ellipse (0.15 and 0.12);
+\ifkoala@back\else
+	\koala@part@draw[\koala@body!40!white] (-0.405, 2.1) ellipse (0.15 and 0.12);
+	\koala@part@draw[\koala@body!40!white] (0.405, 2.1) ellipse (0.15 and 0.12);
+\fi
 %
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \koala@part@draw[\koala@body,rotate around={70:(-0.625,1)}] (-0.625,1) ellipse (0.42 and 0.13);
@@ -120,10 +124,15 @@
 \koala@part@draw[\koala@body] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
 %
 % Belly %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\koala@part@draw[\koala@body!40!white] ( 0.425, 0.71) .. controls ( 0.425, 0.41) and ( 0.255, 0.27) .. ( 0    , 0.27) .. controls (-0.255, 0.27) and (-0.425, 0.41) .. (-0.425, 0.71) .. controls (-0.425, 1.01) and (-0.255, 1.20) .. ( 0    , 1.20) .. controls ( 0.225, 1.20) and ( 0.425, 1.01) .. ( 0.425, 0.71) -- cycle;
+\ifkoala@back\else
+	\koala@part@draw[\koala@body!40!white] ( 0.425, 0.71) .. controls ( 0.425, 0.41) and ( 0.255, 0.27) .. ( 0    , 0.27) .. controls (-0.255, 0.27) and (-0.425, 0.41) .. (-0.425, 0.71) .. controls (-0.425, 1.01) and (-0.255, 1.20) .. ( 0    , 1.20) .. controls ( 0.225, 1.20) and ( 0.425, 1.01) .. ( 0.425, 0.71) -- cycle;
+\fi
 %
 % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \koala@part@draw[\koala@body] (0,1.67) ellipse (0.55 and 0.45);
+%
+% Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifkoala@back\else
 %
 % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \koala@part@draw[\koala@body!40!black] (-0.1501, 1.5609) .. controls (-0.1784, 1.4833) and (-0.0827, 1.4108) .. ( 0.0000, 1.4108) .. controls ( 0.0827, 1.4108) and ( 0.1784, 1.4833) .. ( 0.1501, 1.5609) .. controls ( 0.1290, 1.6191) and ( 0.1187, 1.6573) .. ( 0.0750, 1.7010) .. controls ( 0.0336, 1.7424) and (-0.0336, 1.7424) .. (-0.0750, 1.7010) .. controls (-0.1187, 1.6573) and (-0.1290, 1.6191) .. (-0.1501, 1.5609) -- cycle;
@@ -168,5 +177,6 @@
   \fill[red,path fading=koala@blush] (0.3, 1.52) circle (0.1);
 \fi
 %
+\fi
 }
 
