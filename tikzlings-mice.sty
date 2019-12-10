@@ -31,6 +31,8 @@
 
 \newif\ifmouse@threeD
 \newif\ifmouse@rotatearms
+\newif\ifmouse@leftstep
+\newif\ifmouse@rightstep
 \newif\ifmouse@back
 
 \tikzset{
@@ -58,6 +60,10 @@
                        \def\mouse@rotatearms{#1},
   rotate arms/.forward to = /mouse/rotatearms,
   rotatearms         = 20,
+  leftstep/.code     = \mouse@leftsteptrue,
+  left step/.forward to = /mouse/leftstep,
+  rightstep/.code    = \mouse@rightsteptrue,
+  right step/.forward to = /mouse/rightstep,    
   back/.code         = \mouse@backtrue,  
 }
 
@@ -99,8 +105,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mouse@part@draw[\mouse@body!65!white] (-0.255,0.2) ellipse (0.23 and 0.09);  
-\mouse@part@draw[\mouse@body!65!white] (0.255,0.2) ellipse (0.23 and 0.09); 
+\ifmouse@leftstep
+	\mouse@part@draw[\mouse@body!65!white] (-0.255,0.25) ellipse (0.23 and 0.09);  
+\else
+	\mouse@part@draw[\mouse@body!65!white] (-0.255,0.2) ellipse (0.23 and 0.09);  
+\fi
+%
+\ifmouse@rightstep
+	\mouse@part@draw[\mouse@body!65!white] (0.255,0.25) ellipse (0.23 and 0.09); 
+\else
+	\mouse@part@draw[\mouse@body!65!white] (0.255,0.2) ellipse (0.23 and 0.09); 
+\fi
 %
 % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mouse@part@draw[\mouse@body!65!white] (0.36, 2.17) circle (0.28);
