@@ -7,97 +7,145 @@
 \ExplSyntaxOn
 \draw_begin: 
 
+	% feet
 	\draw_path_ellipse:nnn
-		{ 1.25cm , -0.95cm }
-		{ 0.25cm , 0cm } 
-		{ 0cm , 0.1cm }
-	\draw_color_fill:n { yellow!70!blue!40!black }
-	\draw_path_use_clear:n { fill } 	
-
+		{ -0.255cm, 0.2cm }
+		{ 0.23cm , 0cm } 
+		{ 0cm , 0.09cm }
 	\draw_path_ellipse:nnn
-		{ 0.75cm , -0.95cm }
-		{ 0.25cm , 0cm } 
-		{ 0cm , 0.1cm }
-	\draw_color_fill:n { yellow!70!blue!40!black }
-	\draw_path_use_clear:n { fill } 
-
-	\draw_path_ellipse:nnn
-		{ 1.2cm , 0.95cm }
-		{ 0.1cm , 0cm } 
-		{ 0cm , 0.15cm }
-	\draw_color_fill:n { yellow!70!blue!40!black }
-	\draw_path_use_clear:n { fill } 	
+		{ 0.255cm, 0.2cm }
+		{ 0.23cm , 0cm } 
+		{ 0cm , 0.09cm }
+	\draw_color_fill:n { red!45!black!55!yellow!90!white!50!black }
+	\draw_path_use_clear:n { fill }
 	
+	% ears
 	\draw_path_ellipse:nnn
-		{ 0.8cm , 0.95cm }
-		{ 0.1cm , 0cm } 
-		{ 0cm , 0.15cm }
-	\draw_color_fill:n { yellow!70!blue!40!black }
-	\draw_path_use_clear:n { fill } 
-
+		{ -0.255cm, 2.03cm }
+		{ 0.09cm , 0cm } 
+		{ 0cm , 0.13cm }
 	\draw_path_ellipse:nnn
-		{ 1cm , 0cm }
-		{ 0.6cm , 0cm } 
-		{ 0cm , 1cm }
-	\draw_color_fill:n { yellow!70!blue!90!white!80!red }
-	\draw_path_use_clear:n { fill } 
-
-	\draw_path_ellipse:nnn
-		{ 1cm , -0.35cm }
-		{ 0.4cm , 0cm } 
-		{ 0cm , 0.4cm }
-	\draw_color_fill:n { yellow!70!blue!30!white!90!red }
-	\draw_path_use_clear:n { fill } 
-	
-	\draw_path_ellipse:nnn
-		{ 1cm , 0.3cm }
-		{ 0.2cm , 0cm } 
-		{ 0cm , 0.15cm }
-	\draw_color_fill:n { yellow!70!blue!30!white!90!red }
-	\draw_path_use_clear:n { fill } 	
-	
-	\draw_path_ellipse:nnn
-		{ 1cm , 0.43cm }
-		{ 0.08cm , 0cm } 
-		{ 0cm , 0.08cm }
-	\draw_color_fill:n { yellow!70!blue!40!black }
+		{ 0.255cm, 2.03cm }
+		{ 0.09cm , 0cm } 
+		{ 0cm , 0.13cm }
+	\draw_color_fill:n { red!45!black!55!yellow!90!white!50!black }
 	\draw_path_use_clear:n { fill } 		
 	
+	% Tail
+	\draw_path_moveto:n
+		{0.8856cm, 0.6504cm}
+	\draw_path_curveto:nnn
+		{0.8656cm, 0.3803cm}
+		{0.0267cm, 0.2202cm}
+		{0.0167cm, 0.4203cm}
+	\draw_path_curveto:nnn
+		{-0.0033cm, 0.5404cm}
+		{0.1104cm, 0.4397cm}
+		{0.3951cm, 0.4803cm}
+	\draw_path_curveto:nnn
+		{0.6557cm, 0.5175cm}
+		{0.8856cm, 0.7005cm}
+		{0.8856cm, 0.6504cm}	
+	\draw_path_close:
+	\draw_color_fill:n { red!45!black!55!yellow!90!white!50!black }
+	\draw_path_use_clear:n { fill }
+	
+	% Body
+	\draw_path_moveto:n
+		{0.595cm, 0.92cm} 
+	\draw_path_curveto:nnn
+		{0.595cm, 0.26cm}
+		{0.355cm, 0.18cm}
+		{0cm, 0.18cm} 
+	\draw_path_curveto:nnn
+		{-0.355cm, 0.18cm}
+		{-0.595cm, 0.26cm}
+		{-0.595cm, 0.92cm}
+	\draw_path_curveto:nnn
+		{-0.605cm, 1.58cm}
+		{-0.335cm, 2.11cm}
+		{0cm, 2.11cm} 
+	\draw_path_curveto:nnn
+		{0.335cm, 2.11cm}
+		{0.605cm, 1.58cm}
+		{0.595cm, 0.92cm}
+	\draw_path_close:
+	\draw_color_fill:n { red!45!black!55!yellow!90!white  }
+	\draw_path_use_clear:n { fill }		
+	
+	% Belly
+	\draw_path_moveto:n
+		{0.425cm, 0.71cm}
+	\draw_path_curveto:nnn
+		{0.425cm, 0.41cm}
+		{0.245cm, 0.37cm}
+		{0cm, 0.37cm}
+	\draw_path_curveto:nnn
+		{-0.245cm, 0.37cm}
+		{-0.425cm, 0.41cm}
+		{-0.425cm, 0.71cm}
+	\draw_path_curveto:nnn
+		{-0.425cm, 1.01cm}
+		{-0.225cm, 1.26cm}
+		{0cm, 1.26cm}
+	\draw_path_curveto:nnn
+		{0.225cm, 1.26cm}
+		{0.425cm, 1.01cm}
+		{0.425cm, 0.71cm}
+	\draw_path_close:
+	\draw_color_fill:n { red!45!black!55!yellow!90!white!50!white  }
+	\draw_path_use_clear:n { fill }		
+	
+	% left arm
 	\draw_path_ellipse:nnn
-		{ 0.85cm , 0.6cm }
-		{ 0.05cm , 0cm } 
-		{ 0cm , 0.05cm }
-	\draw_color_fill:n { yellow!70!blue!40!black }
-	\draw_path_use_clear:n { fill } 	
+		{ -0.385cm,0.93cm }
+		{ 0.082cm , -0.226cm } % 0.24*cos(70), 0.24*sin(70)
+		{ 0.122cm , 0.044cm } % 0.13*cos(20), 0.13*sin(20)
+	\draw_color_fill:n { red!45!black!55!yellow!90!white!50!black }
+	\draw_path_use_clear:n { fill } 
 
+	% right arm
 	\draw_path_ellipse:nnn
-		{ 1.15cm , 0.6cm }
-		{ 0.05cm , 0cm } 
-		{ 0cm , 0.05cm }
-	\draw_color_fill:n { yellow!70!blue!40!black }
+		{ 0.385cm,0.93cm }
+		{ -0.082cm , -0.226cm } % 0.24*cos(70), 0.24*sin(70)
+		{ -0.122cm , 0.044cm } % 0.13*cos(20), 0.13*sin(20)
+	\draw_color_fill:n { red!45!black!55!yellow!90!white!50!black }
+	\draw_path_use_clear:n { fill }
+	
+	% Muzzle
+	\draw_path_ellipse:nnn
+		{ 0cm, 1.47cm }
+		{ 0.23cm , 0cm } 
+		{ 0cm , 0.13cm }
+	\draw_color_fill:n { red!45!black!55!yellow!90!white!50!white }
 	\draw_path_use_clear:n { fill } 	
 	
-	\draw_path_ellipse:nnn
-		{ 1.3cm , -0.2cm }
-		{ 0.2cm , 0.15cm } 
-		{ 0cm , 0.15cm }
-	\draw_color_fill:n { yellow!70!blue!40!black }
-	\draw_path_use_clear:n { fill } 	
+	% Nose
+	\draw_path_circle:nn 
+		{0cm,1.6cm}
+		{0.08cm}
+	\draw_color_fill:n { red!45!black!55!yellow!90!white!50!black }
+	\draw_path_use_clear:n { fill }
 	
-	\draw_path_ellipse:nnn
-		{ 0.7cm , -0.2cm }
-		{ 0.2cm , -0.15cm } 
-		{ 0cm , 0.15cm }
-	\draw_color_fill:n { yellow!70!blue!40!black }
-	\draw_path_use_clear:n { fill } 		
-
-	\draw_path_moveto:n { 0.875cm , 0.3cm } 
+	% eyes
+	\draw_path_circle:nn 
+		{-0.155cm,1.77cm}
+		{0.05cm}
+	\draw_path_circle:nn 
+		{0.155cm,1.77cm}
+		{0.05cm}		
+	\draw_color_fill:n { red!45!black!55!yellow!90!white!50!black }
+	\draw_path_use_clear:n { fill }
+	
+	% mouth
+	\draw_path_moveto:n 
+		{ 0.145cm , 1.51cm } 
 	\draw_path_curveto:nn
-		{ 1cm , 0.175cm }
-		{ 1.125cm , 0.3cm }
-	\draw_color_fill:n {  yellow!70!blue!40!black } 
+		{ 0cm , 1.3cm }
+		{ -0.145cm , 1.51cm }
+	\draw_color:n { red!45!black!55!yellow!90!white!50!black }		
 	\draw_path_use_clear:n { stroke }
-	
+
 \draw_end:
 \ExplSyntaxOff 
 
