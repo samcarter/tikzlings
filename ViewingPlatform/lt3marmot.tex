@@ -99,16 +99,16 @@
 	% left arm
 	\draw_path_ellipse:nnn
 		{ -0.385cm,0.93cm }
-		{ 0.082cm , -0.226cm } % 0.24*cos(70), 0.24*sin(70)
-		{ 0.122cm , 0.044cm } % 0.13*cos(20), 0.13*sin(20)
+		{ 0.082cm , -0.226cm } % rx = (x' cos a , x' sin a)
+		{ 0.122cm , 0.044cm } % ry = (-y' sin a, y' cos a)
 	\draw_color_fill:n { red!45!black!55!yellow!90!white!50!black }
 	\draw_path_use_clear:n { fill } 
 
 	% right arm
 	\draw_path_ellipse:nnn
 		{ 0.385cm,0.93cm }
-		{ -0.082cm , -0.226cm } % 0.24*cos(70), 0.24*sin(70)
-		{ -0.122cm , 0.044cm } % 0.13*cos(20), 0.13*sin(20)
+		{ -0.082cm , -0.226cm } % rx = (x' cos a , x' sin a)
+		{ -0.122cm , 0.044cm } % ry = (-y' sin a, y' cos a)
 	\draw_color_fill:n { red!45!black!55!yellow!90!white!50!black }
 	\draw_path_use_clear:n { fill }
 	
