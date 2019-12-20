@@ -9,11 +9,12 @@ This project is licensed under the LaTeX Project Public License v1.3c or later, 
 
 ### TikZlings in action
 
-Several TikZlings are featured in the following video:
+Several TikZlings are featured in the following videos:
 
-[![The great TikZlings Christmas Extravaganza 2018](https://user-images.githubusercontent.com/43832342/49704004-3cd27500-fc0d-11e8-9002-319a8e71aca7.png)](https://vimeo.com/305374856)
+<a href="https://vimeo.com/305374856"><img src="https://user-images.githubusercontent.com/43832342/49704004-3cd27500-fc0d-11e8-9002-319a8e71aca7.png" alt="The great TikZlings Christmas Extravaganza 2018" title="The great TikZlings Christmas Extravaganza 2018" height="128"></a>
+<a href="https://vimeo.com/380684973"><img src="https://user-images.githubusercontent.com/43832342/71256276-8382a100-2330-11ea-8996-e87132c6ad29.png" alt="The great TikZlings Christmas Extravaganza 2019" title="The great TikZlings Christmas Extravaganza 2019" height="128"></a>
 
-The source code for the "The great TikZlings Christmas Extravaganza 2018" can be found at https://github.com/samcarter/Extravanganza2018 .
+The source code of the movies is available from [The great TikZlings Christmas Extravaganza 2018](https://github.com/samcarter/Extravanganza2018) and [The great TikZlings Christmas Extravaganza 2019](https://github.com/samcarter/Extravanganza2019).
 
 
 
