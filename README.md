@@ -1,13 +1,55 @@
 # TikZlings
-A collection of animals and other beings from the tikz world
 
-Current version: 2019/04/07 v0.2
+[![GitHub](https://img.shields.io/github/license/samcarter/tikzlings.svg?color=blue)](http://www.latex-project.org/lppl.txt)
+[![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/samcarter/tikzlings.svg?label=current%20version)](https://github.com/samcarter/tikzlings/releases/latest)
+[![CTAN](https://img.shields.io/ctan/v/tikzlings.svg)](https://ctan.org/pkg/tikzlings)
 
-This project is licensed under the LaTeX Project Public License v1.3c or later, see http://www.latex-project.org/lppl.txt
+A collection of animals and other beings from the tikz world.
 
-![tikzlings](https://github.com/samcarter/tikzlings/blob/master/Examples/tikzlings.png)
+A big thank you to all the people who contributed with code, ideas or feedback to the package! Without this package would not exist!
 
-### TikZlings in action
+## Available TikZlings
+
+> <a href="./Examples/bear.tex"><img src="./Examples/bear.svg" alt="Bear" height="64"></a>
+<a href="./Examples/cat.tex"><img src="./Examples/cat.svg" alt="Cat" height="64"></a>
+<a href="./Examples/coati.tex"><img src="./Examples/coati.svg" alt="Coati" height="64"></a>
+<a href="./Examples/hippo.tex"><img src="./Examples/hippo.svg" alt="Hippo" height="64"></a>
+<a href="./Examples/koala.tex"><img src="./Examples/koala.svg" alt="Koala" height="64"></a>
+<a href="./Examples/marmot.tex"><img src="./Examples/marmot.svg" alt="Marmot" height="64"></a>
+<a href="./Examples/mole.tex"><img src="./Examples/mole.svg" alt="Mole" height="64"></a>
+<a href="./Examples/mouse.tex"><img src="./Examples/mouse.svg" alt="Mouse" height="64"></a>
+<a href="./Examples/owl.tex"><img src="./Examples/owl.svg" alt="Owl" height="64"></a>
+<a href="./Examples/panda.tex"><img src="./Examples/panda.svg" alt="Panda" height="64"></a>
+<a href="./Examples/pingu.tex"><img src="./Examples/pingu.svg" alt="Penguin" height="64"></a>
+<a href="./Examples/pig.tex"><img src="./Examples/pig.svg" alt="Pig" height="64"></a>
+<a href="./Examples/rhino.tex"><img src="./Examples/rhino.svg" alt="Rhino" height="64"></a>
+<a href="./Examples/sloth.tex"><img src="./Examples/sloth.svg" alt="Sloth" height="64"></a>
+<a href="./Examples/snowman.tex"><img src="./Examples/snowman.svg" alt="Snowman" height="64"></a>
+
+## Usage
+
+A short example to demonstrate the use of the TikZlings:
+
+```
+\documentclass{standalone}
+
+\usepackage{tikzlings}
+
+\begin{document}
+
+\begin{tikzpicture}
+\marmot
+\end{tikzpicture}	
+	
+\end{document}
+```
+
+An exhaustive list of possible options can be found in [package documentation](./documentation.pdf)
+
+## Examples
+
+
+## TikZlings in action
 
 Several TikZlings are featured in the following videos:
 
