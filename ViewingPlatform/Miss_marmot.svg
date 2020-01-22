@@ -15,7 +15,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06"
-   sodipodi:docname="MissMarmot.svg">
+   sodipodi:docname="Miss_marmot.svg">
   <defs
      id="defs2">
     <clipPath
@@ -82,9 +82,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.86395541"
+     inkscape:zoom="2.0215207"
      inkscape:cx="245.21245"
-     inkscape:cy="63.226728"
+     inkscape:cy="59.51665"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -102,7 +102,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -111,6 +111,13 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-81.585408,-134.55038)">
+    <rect
+       style="opacity:1;fill:#f5f5f5;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect70"
+       width="40.050297"
+       height="44.892979"
+       x="79.491272"
+       y="133.02223" />
     <g
        style="stroke-width:2.87361789"
        id="g110"

@@ -15,7 +15,7 @@
    width="274.85416"
    height="131.16899"
    viewBox="0 0 274.85416 131.16899"
-   sodipodi:docname="fly_bear.svg"
+   sodipodi:docname="Hang_gliding_bear.svg"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06"><metadata
      id="metadata8"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
@@ -33,9 +33,9 @@
      inkscape:window-height="480"
      id="namedview4"
      showgrid="false"
-     inkscape:zoom="9.3788269"
-     inkscape:cx="172.83793"
-     inkscape:cy="69.201971"
+     inkscape:zoom="1.9489947"
+     inkscape:cx="101.5032"
+     inkscape:cy="6.0454875"
      inkscape:current-layer="g10"
      fit-margin-top="1"
      fit-margin-left="1"
@@ -44,7 +44,14 @@
      id="g10"
      inkscape:groupmode="layer"
      inkscape:label="document"
-     transform="matrix(1.3333333,0,0,-1.3333333,299.35677,142.61729)"><g
+     transform="matrix(1.3333333,0,0,-1.3333333,299.35677,142.61729)"><rect
+       style="opacity:1;fill:#e6e6e6;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:5.6692915;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect48"
+       width="227.42494"
+       height="110.44155"
+       x="-230.28978"
+       y="-113.25557"
+       transform="scale(1,-1)" /><g
        id="g163"
        transform="matrix(-1,0,0,1,-242.89453,0)"><path
          sodipodi:nodetypes="cccccccccc"
