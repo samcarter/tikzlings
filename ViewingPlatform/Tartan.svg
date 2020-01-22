@@ -89,13 +89,13 @@
       <image
          sodipodi:absref="/Users/sraab/Desktop/OTSW-outlander_mackenzie_tartan_swatch-Celtic-Croft-1500px_93ra-g1.jpg"
          xlink:href="OTSW-outlander_mackenzie_tartan_swatch-Celtic-Croft-1500px_93ra-g1.jpg"
-         style="stroke-width:5.63065004"
-         width="71.039757"
-         height="71.039757"
-         preserveAspectRatio="none"
-         id="image998"
+         y="0"
          x="0"
-         y="0" />
+         id="image998"
+         preserveAspectRatio="none"
+         height="71.039757"
+         width="71.039757"
+         style="stroke-width:5.63065004" />
     </pattern>
     <clipPath
        id="clipPath402"
@@ -4256,36 +4256,7 @@
          width="92.236816"
          height="92.236816"
          preserveAspectRatio="none"
-         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAcAAAAHABAMAAADHC6VAAAAAElBMVEXIAAAAAGQATAD//////8gA
-ACikWlhhAAAGAElEQVR4nO2cS44dKxAFy/YGut0b8LveQH/2v7cHg5ZT6DBFN7LiMCpjQGQorlGV
-xXVd12tpM4/SdvkabZd1/Dr/6fV+vPxr8/nnn39tN+ev91/vu751/Dr/6fXaA7zKhn/M51KQn7tJ
-R0F/7frW8ev8h9cb+6yZz4/Srk37Gm3Xt45f5z+63thvfZ67/v3fv1arUdvbx9vHrm8dv85/dr2r
-OcDX8ZtT/2CWpBTk96ZoL6Ogb7u+dfw6/9n1dFAHnxugDuIR6iAcoA7iEeogHKAO4hHqIBygDuIR
-6iAc4A0cDK+Cu73artWYz36buFgAu3+bCFvuhlAHQ0gAuzs49l3PAvO55tq0r9F2fev4df6j6439
-15PArEL9+7U6tf39/Pu561vHr/OfXe9qDvAxfoPqaXyWpA7YFO3PKOjfXd86fp3/7Ho6qIPPDVAH
-8Qh1EA5QB/EIdRAOUAfxCHUQDlAH8Qh1EA7wBg6GV8G1PruQXm37bSKEBLD7t4mw5W4IdTCEBFAH
-Y0gIdTCEBFAHY0gIdTCEBFAHY0gIdTCEBFAHY0gIdTCEBFAHY0gIdTCEBFAHY0gIdTCEBFAHY0gI
-dTCEBFAHY0gIdTCEBFAHY0gIdTCEBFAHY0gIdTCEBLC7g6M2r6XN50dp16bN7PrW8ev8R9cbtZm3
-7Xy3Wan5v2u/23xOba6361vHr/OfXe9qDvBr/D6VDX/MkpSCfG6K9j4X3PWt49f5z66ngzr43ABv
-4GD4p7/bUcazaAgJYPezaNhyN4Q6GEICqIMxJIQ6GEICqIMxJIQ6GEICqIMxJIQ6GEICqIMxJIQ6
-GEICqIMxJIQ6GEICqIMxJIQ6GEICqIMxJIQ6GEICqIMxJIQ6GEICqIMxJIQ6GEICqIMxJIQ6GEIC
-2N3BR/Or0r3rHg7wBnfd66AOPjVAHcQj1EE4QB3EI9RBOEAdxCPUQThAHcQj1EE4wBs4GF4F1/rs
-Qnq17beJEBLA7t8mwpa7IdTBEBLA7g6OfdbM53oWuDZt3rez61vHr/MfXW/stz7PXdeTQK1GbfO2
-nV3fOn6d/+x6V3OAr+M3p/7BLEk9jW+K9jIvTNr1rePX+c+up4M6+NwAdRCPUAfhAHUQj1AH4QB1
-EI9QB+EAdRCPUAfhAG/gYHgV3O3Vdq3GfPbbxMUC2P3bRNhyN4Q6GEIC2N3B80eLs+t5FoUDvMFZ
-VAd18KkB6iAeoQ7CAeogHqEOwgHqIB6hDsIB6iAeoQ7CAd7AwfAquNur7VqN+ey3iYsFsPu3ibDl
-bgh1MIQEsLuDj+ZXIXiXBRzgDe6y0EEdfGqAOohHqINwgDqIR6iDcIA6iEeog3CAOohHqINwgDdw
-MLwKrvXZhfRq228TISSA3b9NhC13Q6iDISSAOhhDQqiDISSAOhhDQqiDISSAOhhDQqiDISSAOhhD
-QqiDISSAOhhDQqiDISSAOhhDQqiDISSAOhhDQqiDISSAOhhDQqiDISSAOhhDQqiDISSAOhhDQqiD
-ISSA3R0ctXktbT4/Srs2bWbXt45f5z+63qjNvG3nu81Kzf9d+93mc2pzvV3fOn6d/+x6V3OAX+P3
-qWz4Y5akFORzU7T3ueCubx2/zn92PR3UwecGeAMHwz/93Y4ynkVDSAC7n0XDlrsh1MEQEkAdjCEh
-1MEQEkAdjCEh1MEQEkAdjCEh1MEQEkAdjCEh1MEQEkAdjCEh1MEQEkAdjCEh1MEQEkAdjCEh1MEQ
-EkAdjCEh1MEQEkAdjCEh1MEQEkAdjCEh1MEQEsDuDj6aX5XuXfdwgDe4614HdfCpAeogHqEOwgHq
-IB6hDsIB6iAeoQ7CAeogHqEOwgHewMHwKrjWZxfSq22/TYSQAHb/NhG23A2hDoaQAHZ3cOyzZj7X
-s8C1afO+nV3fOn6d/+h6Y7/1ee66ngRqNWqbt+3s+tbx6/xn17uaA3wdvzn1D2ZJ6ml8U7SXeWHS
-rm8dv85/dj0d1MHnBqiDeIQ6CAeog3iEOggHqIN4hDoIB6iDeIQ6CAd4AwfDq+Bur7ZrNeaz3yYu
-FsDm3yb+Bw4whx5ea78eAAAAAElFTkSuQmCC
-"
+         xlink:href="data:image/png;base64,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 FsDm3yb+Bw4whx5ea78eAAAAAElFTkSuQmCC "
          id="image2558"
          x="0"
          y="0" />
@@ -4298,9 +4269,9 @@ FsDm3yb+Bw4whx5ea78eAAAAAElFTkSuQmCC
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.9497755"
-     inkscape:cx="54.272637"
-     inkscape:cy="47.377673"
+     inkscape:zoom="6.9020138"
+     inkscape:cx="25.295587"
+     inkscape:cy="86.858904"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -4318,7 +4289,7 @@ FsDm3yb+Bw4whx5ea78eAAAAAElFTkSuQmCC
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -4327,6 +4298,13 @@ FsDm3yb+Bw4whx5ea78eAAAAAElFTkSuQmCC
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-54.268554,-150.07167)">
+    <rect
+       style="opacity:1;fill:#f5f5f5;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect991"
+       width="20.585478"
+       height="24.457233"
+       x="53.501869"
+       y="148.80473" />
     <g
        style="stroke-width:2.87361789"
        id="g110"
