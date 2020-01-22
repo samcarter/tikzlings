@@ -102,37 +102,37 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\snowman@part@draw[\snowman@body,rotate around={-50:(0.5,1.1)}] (0.5,1.1) ellipse (0.3 and 0.12);
-\snowman@part@draw[\snowman@body,rotate around={50:(-0.5,1.1)}] (-0.5,1.1) ellipse (0.3 and 0.12);
+\snowman@part@draw[\snowman@body,rotate around={-50:(0.5,1.1)}] (0.5,1.1) ellipse[x radius=0.3, y radius=0.12];
+\snowman@part@draw[\snowman@body,rotate around={50:(-0.5,1.1)}] (-0.5,1.1) ellipse[x radius=0.3, y radius=0.12];
 %
 % Body + Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\snowman@part@draw[\snowman@body] (0,0.5) ellipse (0.6 and 0.5);
-\snowman@part@draw[\snowman@body] (0,1.1) ellipse (0.5 and 0.4);
-\snowman@part@draw[\snowman@body] (0,1.7) circle (0.4);  
+\snowman@part@draw[\snowman@body] (0,0.5) ellipse[x radius=0.6, y radius=0.5];
+\snowman@part@draw[\snowman@body] (0,1.1) ellipse[x radius=0.5, y radius=0.4];
+\snowman@part@draw[\snowman@body] (0,1.7) circle[radius=0.4];  
 %
 % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifsnowman@back\else
 %
 % Mouth% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\fill[\snowman@mouth] (0,1.5) circle (0.016);
-\fill[\snowman@mouth] (0.04,1.507) circle (0.016);
-\fill[\snowman@mouth] (-0.04,1.507) circle (0.016);
-\fill[\snowman@mouth] (0.08,1.522) circle (0.016);
-\fill[\snowman@mouth] (-0.08,1.522) circle (0.016);
-\fill[\snowman@mouth] (0.12,1.543) circle (0.016);
-\fill[\snowman@mouth] (-0.12,1.543) circle (0.016);
+\fill[\snowman@mouth] (0,1.5) circle[radius=0.016];
+\fill[\snowman@mouth] (0.04,1.507) circle[radius=0.016];
+\fill[\snowman@mouth] (-0.04,1.507) circle[radius=0.016];
+\fill[\snowman@mouth] (0.08,1.522) circle[radius=0.016];
+\fill[\snowman@mouth] (-0.08,1.522) circle[radius=0.016];
+\fill[\snowman@mouth] (0.12,1.543) circle[radius=0.016];
+\fill[\snowman@mouth] (-0.12,1.543) circle[radius=0.016];
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\snowman@part@draw[\snowman@eye] (-0.155,1.8) circle (0.04); 
-\snowman@part@draw[\snowman@eye] (0.155,1.8) circle (0.04); 
+\snowman@part@draw[\snowman@eye] (-0.155,1.8) circle[radius=0.04]; 
+\snowman@part@draw[\snowman@eye] (0.155,1.8) circle[radius=0.04]; 
 %
 % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\snowman@part@draw[\snowman@nose] (0,1.67) circle (0.05) (0,1.72) -- (0,1.62) -- (0.15,1.64) -- cycle;
+\snowman@part@draw[\snowman@nose] (0,1.67) circle[radius=0.05] (0,1.72) -- (0,1.62) -- (0.15,1.64) -- cycle;
 %
 % buttons %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\snowman@part@draw[\snowman@buttons] (0,1.15) circle (0.04); 
-\snowman@part@draw[\snowman@buttons] (0,0.95) circle (0.04); 
-\snowman@part@draw[\snowman@buttons] (0,0.75) circle (0.04); 
+\snowman@part@draw[\snowman@buttons] (0,1.15) circle[radius=0.04]; 
+\snowman@part@draw[\snowman@buttons] (0,0.95) circle[radius=0.04]; 
+\snowman@part@draw[\snowman@buttons] (0,0.75) circle[radius=0.04]; 
 %
 \fi
 }

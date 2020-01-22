@@ -102,17 +102,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\owl@part@draw[\owl@body,rotate around={-80:(0.575,0.8)}] (0.575,0.8) ellipse (0.38 and 0.1);
-\owl@part@draw[\owl@body,rotate around={80:(-0.575,0.8)}] (-0.575,0.8) ellipse (0.38 and 0.1); 
+\owl@part@draw[\owl@body,rotate around={-80:(0.575,0.8)}] (0.575,0.8) ellipse[x radius=0.38, y radius=0.1];
+\owl@part@draw[\owl@body,rotate around={80:(-0.575,0.8)}] (-0.575,0.8) ellipse[x radius=0.38, y radius=0.1]; 
 %
 % Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifowl@back
-	\owl@part@draw[\owl@feet] (0.175,0.2) ellipse (0.03 and 0.1);
-	\owl@part@draw[\owl@feet,rotate around={20:(0.225,0.21)}] (0.225,0.21) ellipse (0.03 and 0.1);
-	\owl@part@draw[\owl@feet,rotate around={40:(0.275,0.23)}] (0.275,0.23) ellipse (0.03 and 0.1);
-	\owl@part@draw[\owl@feet] (-0.175,0.2) ellipse (0.03 and 0.1);
-	\owl@part@draw[\owl@feet,rotate around={-20:(-0.225,0.21)}] (-0.225,0.21) ellipse (0.03 and 0.1);
-	\owl@part@draw[\owl@feet,rotate around={-40:(-0.275,0.23)}] (-0.275,0.23) ellipse (0.03 and 0.1);
+	\owl@part@draw[\owl@feet] (0.175,0.2) ellipse[x radius=0.03, y radius=0.1];
+	\owl@part@draw[\owl@feet,rotate around={20:(0.225,0.21)}] (0.225,0.21) ellipse[x radius=0.03, y radius=0.1];
+	\owl@part@draw[\owl@feet,rotate around={40:(0.275,0.23)}] (0.275,0.23) ellipse[x radius=0.03, y radius=0.1];
+	\owl@part@draw[\owl@feet] (-0.175,0.2) ellipse[x radius=0.03, y radius=0.1];
+	\owl@part@draw[\owl@feet,rotate around={-20:(-0.225,0.21)}] (-0.225,0.21) ellipse[x radius=0.03, y radius=0.1];
+	\owl@part@draw[\owl@feet,rotate around={-40:(-0.275,0.23)}] (-0.275,0.23) ellipse[x radius=0.03, y radius=0.1];
 \fi
 %
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -127,16 +127,16 @@
 \fi
 %
 % head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\owl@part@draw[\owl@body] (0,1.55) ellipse (0.7 and 0.55);
+\owl@part@draw[\owl@body] (0,1.55) ellipse[x radius=0.7, y radius=0.55];
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifowl@back\else
-	\fill[\owl@eye] (-0.28, 1.6) circle (0.22);
-	\owl@part@draw[\owl@pupil]   (-0.28, 1.6) circle (0.15);
-	\fill[\owl@eye] (0.28, 1.6) circle (0.22);
-	\owl@part@draw[\owl@pupil]   (0.28, 1.6) circle (0.15);
-	\owl@part@draw[white] (0.25, 1.64) circle (0.03);
-	\owl@part@draw[white] (-0.31, 1.64) circle (0.03);
+	\fill[\owl@eye] (-0.28, 1.6) circle[radius=0.22];
+	\owl@part@draw[\owl@pupil]   (-0.28, 1.6) circle[radius=0.15];
+	\fill[\owl@eye] (0.28, 1.6) circle[radius=0.22];
+	\owl@part@draw[\owl@pupil]   (0.28, 1.6) circle[radius=0.15];
+	\owl@part@draw[white] (0.25, 1.64) circle[radius=0.03];
+	\owl@part@draw[white] (-0.31, 1.64) circle[radius=0.03];
 \fi
 %
 % Bill %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -146,11 +146,11 @@
 %
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifowl@back\else
-	\owl@part@draw[\owl@feet] (0.175,0.2) ellipse (0.03 and 0.1);
-	\owl@part@draw[\owl@feet,rotate around={20:(0.225,0.21)}] (0.225,0.21) ellipse (0.03 and 0.1);
-	\owl@part@draw[\owl@feet,rotate around={40:(0.275,0.23)}] (0.275,0.23) ellipse (0.03 and 0.1);
-	\owl@part@draw[\owl@feet] (-0.175,0.2) ellipse (0.03 and 0.1);
-	\owl@part@draw[\owl@feet,rotate around={-20:(-0.225,0.21)}] (-0.225,0.21) ellipse (0.03 and 0.1);
-	\owl@part@draw[\owl@feet,rotate around={-40:(-0.275,0.23)}] (-0.275,0.23) ellipse (0.03 and 0.1);
+	\owl@part@draw[\owl@feet] (0.175,0.2) ellipse[x radius=0.03, y radius=0.1];
+	\owl@part@draw[\owl@feet,rotate around={20:(0.225,0.21)}] (0.225,0.21) ellipse[x radius=0.03, y radius=0.1];
+	\owl@part@draw[\owl@feet,rotate around={40:(0.275,0.23)}] (0.275,0.23) ellipse[x radius=0.03, y radius=0.1];
+	\owl@part@draw[\owl@feet] (-0.175,0.2) ellipse[x radius=0.03, y radius=0.1];
+	\owl@part@draw[\owl@feet,rotate around={-20:(-0.225,0.21)}] (-0.225,0.21) ellipse[x radius=0.03, y radius=0.1];
+	\owl@part@draw[\owl@feet,rotate around={-40:(-0.275,0.23)}] (-0.275,0.23) ellipse[x radius=0.03, y radius=0.1];
 \fi
 }

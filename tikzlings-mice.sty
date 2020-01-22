@@ -106,23 +106,23 @@
 %
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifmouse@leftstep
-	\mouse@part@draw[\mouse@body!65!white] (-0.255,0.25) ellipse (0.23 and 0.09);  
+	\mouse@part@draw[\mouse@body!65!white] (-0.255,0.25) ellipse[x radius=0.23, y radius=0.09];  
 \else
-	\mouse@part@draw[\mouse@body!65!white] (-0.255,0.2) ellipse (0.23 and 0.09);  
+	\mouse@part@draw[\mouse@body!65!white] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];  
 \fi
 %
 \ifmouse@rightstep
-	\mouse@part@draw[\mouse@body!65!white] (0.255,0.25) ellipse (0.23 and 0.09); 
+	\mouse@part@draw[\mouse@body!65!white] (0.255,0.25) ellipse[x radius=0.23, y radius=0.09]; 
 \else
-	\mouse@part@draw[\mouse@body!65!white] (0.255,0.2) ellipse (0.23 and 0.09); 
+	\mouse@part@draw[\mouse@body!65!white] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
 \fi
 %
 % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mouse@part@draw[\mouse@body!65!white] (0.36, 2.17) circle (0.28);
-\mouse@part@draw[\mouse@body!65!white] (-0.36, 2.17) circle (0.28);
+\mouse@part@draw[\mouse@body!65!white] (0.36, 2.17) circle[radius=0.28];
+\mouse@part@draw[\mouse@body!65!white] (-0.36, 2.17) circle[radius=0.28];
 \ifmouse@back\else
-	\mouse@part@draw[\mouse@body] (0.36, 2.17) circle (0.15);
-	\mouse@part@draw[\mouse@body] (-0.36, 2.17) circle (0.15);
+	\mouse@part@draw[\mouse@body] (0.36, 2.17) circle[radius=0.15];
+	\mouse@part@draw[\mouse@body] (-0.36, 2.17) circle[radius=0.15];
 \fi
 %
 % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -153,8 +153,8 @@
 \ifmouse@back\else
 %
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mouse@part@draw[\mouse@body!65!white,rotate around={-\mouse@rotatearms:(0.47,1.15)}] (0.47,0.93) ellipse (0.13 and 0.24);
-\mouse@part@draw[\mouse@body!65!white,rotate around={\mouse@rotatearms:(-0.47,1.15)}] (-0.47,0.93) ellipse (0.13 and 0.24);
+\mouse@part@draw[\mouse@body!65!white,rotate around={-\mouse@rotatearms:(0.47,1.15)}] (0.47,0.93) ellipse[x radius=0.13, y radius=0.24];
+\mouse@part@draw[\mouse@body!65!white,rotate around={\mouse@rotatearms:(-0.47,1.15)}] (-0.47,0.93) ellipse[x radius=0.13, y radius=0.24];
 %
 % Wiskers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \fill[\mouse@body!50!black] (0.0788, 1.2046) .. controls (0.1658, 1.2199) and (0.2086, 1.1539) .. (0.2956, 1.1386) -- (0.2956, 1.1486) .. controls (0.2097, 1.1637) and (0.1648, 1.2197) .. (0.0788, 1.2046) -- cycle;
@@ -165,11 +165,11 @@
 \fill[\mouse@body!50!black] (-0.0671, 1.2343) .. controls (-0.1414, 1.2825) and (-0.2182, 1.3064) .. (-0.2925, 1.2582) -- (-0.2925, 1.2682) .. controls (-0.2179, 1.3166) and (-0.1417, 1.2827) .. (-0.0671, 1.2343) -- cycle;
 %
 % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mouse@part@draw[\mouse@body!50!black] (0, 1.248) circle (0.09);
+\mouse@part@draw[\mouse@body!50!black] (0, 1.248) circle[radius=0.09];
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mouse@part@draw[\mouse@body!50!black] (0.23, 1.68) circle (0.05);
-\mouse@part@draw[\mouse@body!50!black] (-0.23, 1.68) circle (0.05);
+\mouse@part@draw[\mouse@body!50!black] (0.23, 1.68) circle[radius=0.05];
+\mouse@part@draw[\mouse@body!50!black] (-0.23, 1.68) circle[radius=0.05];
 %
 \fi
 }

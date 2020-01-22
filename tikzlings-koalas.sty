@@ -103,22 +103,22 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\koala@part@draw[\koala@body!50!black] (0.255,0.2) ellipse (0.23 and 0.09); 
-\koala@part@draw[\koala@body!50!black] (-0.255,0.2) ellipse (0.23 and 0.09);
+\koala@part@draw[\koala@body!50!black] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
+\koala@part@draw[\koala@body!50!black] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
 %
 % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\koala@part@draw[\koala@body] (0.405, 2.1) ellipse (0.3 and 0.23);
-\koala@part@draw[\koala@body] (-0.405, 2.1) ellipse (0.3 and 0.23);
+\koala@part@draw[\koala@body] (0.405, 2.1) ellipse[x radius=0.3, y radius=0.23];
+\koala@part@draw[\koala@body] (-0.405, 2.1) ellipse[x radius=0.3, y radius=0.23];
 \ifkoala@back\else
-	\koala@part@draw[\koala@body!40!white] (-0.405, 2.1) ellipse (0.15 and 0.12);
-	\koala@part@draw[\koala@body!40!white] (0.405, 2.1) ellipse (0.15 and 0.12);
+	\koala@part@draw[\koala@body!40!white] (-0.405, 2.1) ellipse[x radius=0.15, y radius=0.12];
+	\koala@part@draw[\koala@body!40!white] (0.405, 2.1) ellipse[x radius=0.15, y radius=0.12];
 \fi
 %
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\koala@part@draw[\koala@body,rotate around={70:(-0.625,1)}] (-0.625,1) ellipse (0.42 and 0.13);
-\koala@part@draw[\koala@body!50!black,rotate around={-20:(-0.745,0.65)}] (-0.745,0.65) ellipse (0.12 and 0.08);
-\koala@part@draw[\koala@body,rotate around={-70:(0.625,1)}] (0.625,1) ellipse (0.42 and 0.13);
-\koala@part@draw[\koala@body!50!black,rotate around={20:(0.745,0.65)}] (0.745,0.65) ellipse (0.12 and 0.08);
+\koala@part@draw[\koala@body,rotate around={70:(-0.625,1)}] (-0.625,1) ellipse[x radius=0.42, y radius=0.13];
+\koala@part@draw[\koala@body!50!black,rotate around={-20:(-0.745,0.65)}] (-0.745,0.65) ellipse[x radius=0.12, y radius=0.08];
+\koala@part@draw[\koala@body,rotate around={-70:(0.625,1)}] (0.625,1) ellipse[x radius=0.42, y radius=0.13];
+\koala@part@draw[\koala@body!50!black,rotate around={20:(0.745,0.65)}] (0.745,0.65) ellipse[x radius=0.12, y radius=0.08];
 %
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \koala@part@draw[\koala@body] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
@@ -129,7 +129,7 @@
 \fi
 %
 % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\koala@part@draw[\koala@body] (0,1.67) ellipse (0.55 and 0.45);
+\koala@part@draw[\koala@body] (0,1.67) ellipse[x radius=0.55, y radius=0.45];
 %
 % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifkoala@back\else
@@ -152,10 +152,10 @@
   \fill[\koala@body!50!black, even odd rule] (0.3331, 1.741) ..  controls (0.3331, 1.685) and (0.1737, 1.685) .. (0.1737, 1.741) .. controls (0.1737, 1.848) and (0.3331, 1.848) .. (0.3331, 1.741) -- cycle (0.328, 1.741) .. controls   (0.323, 1.705) and   (0.184, 1.705) .. (0.179, 1.741) .. controls   (0.184, 1.843) and   (0.323, 1.843) .. (0.328, 1.741) -- cycle;
   \fill[\koala@body!50!black, even odd rule] (-0.3331, 1.741) ..  controls (-0.3331, 1.685) and (-0.1737, 1.685) .. (-0.1737, 1.741) .. controls (-0.1737, 1.848) and (-0.3331, 1.848) .. (-0.3331, 1.741) -- cycle   (-0.328, 1.741) .. controls     (-0.323, 1.705) and     (-0.184, 1.705) ..     (-0.179, 1.741) .. controls (-0.184, 1.843) and (-0.323, 1.843) .. (-0.328, 1.741) -- cycle;
 \else
-  \koala@part@draw[black] (-0.255, 1.74) circle (0.08); 
-  \koala@part@draw[black] (0.255, 1.74) circle (0.08); 
-  \fill[white] (-0.27, 1.76) circle (0.015); 
-  \fill[white] (0.24, 1.76) circle (0.015); 
+  \koala@part@draw[black] (-0.255, 1.74) circle[radius=0.08]; 
+  \koala@part@draw[black] (0.255, 1.74) circle[radius=0.08]; 
+  \fill[white] (-0.27, 1.76) circle[radius=0.015]; 
+  \fill[white] (0.24, 1.76) circle[radius=0.015]; 
 \fi
 %
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -173,8 +173,8 @@
 %
 % Blushed %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifkoala@blush
-  \fill[red,path fading=koala@blush] (-0.3, 1.52) circle (0.1); 
-  \fill[red,path fading=koala@blush] (0.3, 1.52) circle (0.1);
+  \fill[red,path fading=koala@blush] (-0.3, 1.52) circle[radius=0.1]; 
+  \fill[red,path fading=koala@blush] (0.3, 1.52) circle[radius=0.1];
 \fi
 %
 \fi

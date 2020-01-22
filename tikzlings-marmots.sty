@@ -140,7 +140,7 @@
 \fi
 %
 \ifmarmot@shadow
-  \fill[opacity=0,blur shadow,rotate around={-80:(0.3,0.5)}] (0.3,0.5) ellipse (0.28 and 0.8);
+  \fill[opacity=0,blur shadow,rotate around={-80:(0.3,0.5)}] (0.3,0.5) ellipse[x radius=0.28, y radius=0.8];
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -151,20 +151,20 @@
 %
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifmarmot@leftstep
-  \marmot@part@draw[\marmot@body!50!black] (-0.255,0.25) ellipse (0.23 and 0.09);  
+  \marmot@part@draw[\marmot@body!50!black] (-0.255,0.25) ellipse[x radius=0.23, y radius=0.09];  
 \else
-  \marmot@part@draw[\marmot@body!50!black] (-0.255,0.2) ellipse (0.23 and 0.09);  
+  \marmot@part@draw[\marmot@body!50!black] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];  
 \fi
 
 \ifmarmot@rightstep
-  \marmot@part@draw[\marmot@body!50!black] (0.255,0.25) ellipse (0.23 and 0.09); 
+  \marmot@part@draw[\marmot@body!50!black] (0.255,0.25) ellipse[x radius=0.23, y radius=0.09]; 
 \else
-  \marmot@part@draw[\marmot@body!50!black] (0.255,0.2) ellipse (0.23 and 0.09); 
+  \marmot@part@draw[\marmot@body!50!black] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
 \fi
 %
 % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\marmot@part@draw[\marmot@body!50!black] (0.255,2.03) ellipse (0.09 and 0.13);
-\marmot@part@draw[\marmot@body!50!black] (-0.255,2.03) ellipse (0.09 and 0.13);
+\marmot@part@draw[\marmot@body!50!black] (0.255,2.03) ellipse[x radius=0.09, y radius=0.13];
+\marmot@part@draw[\marmot@body!50!black] (-0.255,2.03) ellipse[x radius=0.09, y radius=0.13];
 %
 % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifmarmot@back\else
@@ -186,18 +186,18 @@
 \marmot@part@draw[\marmot@body!50!white] (0.425, 0.71) .. controls (0.425, 0.41) and (0.245, 0.37) .. (0, 0.37) .. controls (-0.245, 0.37) and (-0.425, 0.41) .. (-0.425, 0.71) .. controls (-0.425, 1.01) and (-0.225, 1.26) .. (0, 1.26) .. controls (0.225, 1.26) and (0.425, 1.01) .. (0.425, 0.71) -- cycle;
 %
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\marmot@part@draw[\marmot@body!50!black,rotate around={70:(0.385,0.93)}] (0.385,0.93) ellipse (0.24 and 0.13);
-\marmot@part@draw[\marmot@body!50!black,rotate around={-70:(-0.385,0.93)}] (-0.385,0.93) ellipse (0.24 and 0.13);
+\marmot@part@draw[\marmot@body!50!black,rotate around={70:(0.385,0.93)}] (0.385,0.93) ellipse[x radius=0.24, y radius=0.13];
+\marmot@part@draw[\marmot@body!50!black,rotate around={-70:(-0.385,0.93)}] (-0.385,0.93) ellipse[x radius=0.24, y radius=0.13];
 %
 % Muzzle %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\marmot@part@draw[\marmot@body!50!white] (0,1.47) ellipse (0.23 and 0.13); 
+\marmot@part@draw[\marmot@body!50!white] (0,1.47) ellipse[x radius=0.23, y radius=0.13]; 
 %
 % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\marmot@part@draw[\marmot@body!50!black] (0,1.6) circle (0.08);
+\marmot@part@draw[\marmot@body!50!black] (0,1.6) circle[radius=0.08];
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\marmot@part@draw[\marmot@body!50!black] (-0.155,1.77) circle (0.05); 
-\marmot@part@draw[\marmot@body!50!black] (0.155,1.77) circle (0.05); 
+\marmot@part@draw[\marmot@body!50!black] (-0.155,1.77) circle[radius=0.05]; 
+\marmot@part@draw[\marmot@body!50!black] (0.155,1.77) circle[radius=0.05]; 
 %
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \fill[\marmot@body!50!black] (0.145,1.51) arc [start angle=-20, end angle=-160, radius=0.16] -- (-0.14,1.51) -- (-0.14,1.51) arc [start angle=-160, end angle=-20, radius=0.144] -- cycle ;
@@ -210,8 +210,8 @@
 %
 % Blushed %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifmarmot@blush
-  \fill[red,path fading=marmot@blush] (-0.295,1.6) circle (0.1); 
-  \fill[red,path fading=marmot@blush] (0.295,1.6) circle (0.1); 
+  \fill[red,path fading=marmot@blush] (-0.295,1.6) circle[radius=0.1]; 
+  \fill[red,path fading=marmot@blush] (0.295,1.6) circle[radius=0.1]; 
 \fi
 %
 % Wiskers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

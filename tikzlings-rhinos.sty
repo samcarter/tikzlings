@@ -103,14 +103,14 @@
 \ifrhino@back
 	\begin{scope}
 		\clip (-0.5,0.4) rectangle (0.5,0.13);
-		\rhino@part@draw[\rhino@body] (-0.25,0.15) ellipse (0.16 and 0.17);
-		\rhino@part@draw[\rhino@body] (0.25,0.15) ellipse (0.16 and 0.17);	
+		\rhino@part@draw[\rhino@body] (-0.25,0.15) ellipse[x radius=0.16, y radius=0.17];
+		\rhino@part@draw[\rhino@body] (0.25,0.15) ellipse[x radius=0.16, y radius=0.17];	
 	\end{scope}
 \fi
 %
 % Nose if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifrhino@back
-	\rhino@part@draw[\rhino@body!80!white] (0, 1.55) ellipse (0.36 and 0.2);
+	\rhino@part@draw[\rhino@body!80!white] (0, 1.55) ellipse[x radius=0.36, y radius=0.2];
 \fi
 %
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -118,24 +118,24 @@
 %
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifrhino@back\else
-	\rhino@part@draw[\rhino@body,rotate around={90:(0.3,1.0)}] (0.3,1.0) ellipse (0.24 and 0.13);
-	\rhino@part@draw[\rhino@body,rotate around={-90:(-0.3,1.0)}] (-0.3,1.0) ellipse (0.24 and 0.13);
+	\rhino@part@draw[\rhino@body,rotate around={90:(0.3,1.0)}] (0.3,1.0) ellipse[x radius=0.24, y radius=0.13];
+	\rhino@part@draw[\rhino@body,rotate around={-90:(-0.3,1.0)}] (-0.3,1.0) ellipse[x radius=0.24, y radius=0.13];
 \fi
 %
 % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\rhino@part@draw[\rhino@body!55!white] (0, 1.76) circle (0.36);
+\rhino@part@draw[\rhino@body!55!white] (0, 1.76) circle[radius=0.36];
 %
 % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifrhino@back\else
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\fill[white] (-0.11, 1.83) ellipse (0.08 and 0.12);
-\fill[white] (0.11, 1.83) ellipse (0.08 and 0.12);
-\fill[black] (-0.105, 1.78) ellipse (0.04 and 0.07);
-\fill[black] (0.105, 1.78) ellipse (0.04 and 0.07);
+\fill[white] (-0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
+\fill[white] (0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
+\fill[black] (-0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
+\fill[black] (0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
 %
 % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\rhino@part@draw[\rhino@body!80!white] (0, 1.55) ellipse (0.36 and 0.2);
+\rhino@part@draw[\rhino@body!80!white] (0, 1.55) ellipse[x radius=0.36, y radius=0.2];
 %
 % Horn %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \rhino@part@draw[white!95!yellow] (0, 1.7911) .. controls (-0.0231, 1.7372) and (-0.0463, 1.6832) .. (-0.0642, 1.6274) .. controls (-0.0687, 1.6132) and (-0.0724, 1.5981) .. (-0.0678, 1.5834) .. controls (-0.0603, 1.552) and (-0.0287, 1.5287) .. (0, 1.531) .. controls (0.0287, 1.5287) and (0.0603, 1.552) .. (0.0678, 1.5834) .. controls (0.0724, 1.5981) and (0.0687, 1.6132) .. (0.0642, 1.6274) .. controls (0.0463, 1.6832) and (0.0231, 1.7372) .. (0, 1.7911) -- cycle;
@@ -150,14 +150,14 @@
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{scope}
 	\clip (-0.5,0.4) rectangle (0.5,0.13);
-	\rhino@part@draw[\rhino@body] (-0.25,0.15) ellipse (0.16 and 0.17);
-	\rhino@part@draw[\rhino@body] (0.25,0.15) ellipse (0.16 and 0.17);
-	\rhino@part@draw[\rhino@toes] (0.25,0.13) ellipse (0.05 and 0.1);
-	\rhino@part@draw[\rhino@toes] (0.13,0.11) ellipse (0.05 and 0.1);
-	\rhino@part@draw[\rhino@toes] (0.37,0.11) ellipse (0.05 and 0.1);
-	\rhino@part@draw[\rhino@toes] (-0.25,0.13) ellipse (0.05 and 0.1);
-	\rhino@part@draw[\rhino@toes] (-0.13,0.11) ellipse (0.05 and 0.1);
-	\rhino@part@draw[\rhino@toes] (-0.37,0.11) ellipse (0.05 and 0.1);	
+	\rhino@part@draw[\rhino@body] (-0.25,0.15) ellipse[x radius=0.16, y radius=0.17];
+	\rhino@part@draw[\rhino@body] (0.25,0.15) ellipse[x radius=0.16, y radius=0.17];
+	\rhino@part@draw[\rhino@toes] (0.25,0.13) ellipse[x radius=0.05, y radius=0.1];
+	\rhino@part@draw[\rhino@toes] (0.13,0.11) ellipse[x radius=0.05, y radius=0.1];
+	\rhino@part@draw[\rhino@toes] (0.37,0.11) ellipse[x radius=0.05, y radius=0.1];
+	\rhino@part@draw[\rhino@toes] (-0.25,0.13) ellipse[x radius=0.05, y radius=0.1];
+	\rhino@part@draw[\rhino@toes] (-0.13,0.11) ellipse[x radius=0.05, y radius=0.1];
+	\rhino@part@draw[\rhino@toes] (-0.37,0.11) ellipse[x radius=0.05, y radius=0.1];	
 \end{scope}
 %
 \fi

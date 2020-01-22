@@ -100,8 +100,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mole@part@draw[\mole@feet] (-0.255,0.2) ellipse (0.23 and 0.09);  
-\mole@part@draw[\mole@feet] (0.255,0.2) ellipse (0.23 and 0.09); 
+\mole@part@draw[\mole@feet] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];  
+\mole@part@draw[\mole@feet] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
 %
 % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifmole@back\else
@@ -126,28 +126,28 @@
 \mole@part@draw[\mole@body!50!white] (0.425, 0.71) .. controls (0.425, 0.41) and (0.245, 0.37) .. (0, 0.37) .. controls (-0.245, 0.37) and (-0.425, 0.41) .. (-0.425, 0.71) .. controls (-0.425, 1.01) and (-0.225, 1.26) .. (0, 1.26) .. controls (0.225, 1.26) and (0.425, 1.01) .. (0.425, 0.71) -- cycle;
 %
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mole@part@draw[\mole@body,rotate around={70:(0.37,0.86)}] (0.37,0.86) ellipse (0.27 and 0.13);
-\mole@part@draw[\mole@body,rotate around={-70:(-0.37,0.86)}] (-0.37,0.86) ellipse (0.27 and 0.13);
+\mole@part@draw[\mole@body,rotate around={70:(0.37,0.86)}] (0.37,0.86) ellipse[x radius=0.27, y radius=0.13];
+\mole@part@draw[\mole@body,rotate around={-70:(-0.37,0.86)}] (-0.37,0.86) ellipse[x radius=0.27, y radius=0.13];
 %
 % Hands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \fill[white] (-0.37,0.6) -- (-0.32,0.53) -- (-0.3,0.6) -- (-0.23,0.55) -- (-0.23,0.64) -- (-0.16,0.59) -- (-0.18,0.67) -- cycle;
 \fill[white] (0.37,0.6) -- (0.32,0.53) -- (0.3,0.6) -- (0.23,0.55) -- (0.23,0.64) -- (0.16,0.59) -- (0.18,0.67) -- cycle;
-\mole@part@draw[\mole@hands,rotate around={70:(0.285,0.65)}] (0.285,0.65) ellipse (0.08 and 0.13);
-\mole@part@draw[\mole@hands,rotate around={-70:(-0.285,0.65)}] (-0.285,0.65) ellipse (0.08 and 0.13);
+\mole@part@draw[\mole@hands,rotate around={70:(0.285,0.65)}] (0.285,0.65) ellipse[x radius=0.08, y radius=0.13];
+\mole@part@draw[\mole@hands,rotate around={-70:(-0.285,0.65)}] (-0.285,0.65) ellipse[x radius=0.08, y radius=0.13];
 %
 % Muzzle %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mole@part@draw[\mole@muzzle] ( 0.22, 1.46) .. controls ( 0.22, 1.50) and ( 0.22, 1.53) .. ( 0.17, 1.56) .. controls ( 0.11, 1.58) and ( 0.05, 1.66) .. ( 0.00, 1.66) .. controls (-0.05, 1.66) and (-0.11, 1.58) .. (-0.17, 1.56) .. controls (-0.22, 1.53) and (-0.22, 1.50) .. (-0.22, 1.46) .. controls (-0.22, 1.39) and (-0.14, 1.33) .. ( 0.00, 1.33) .. controls ( 0.14, 1.33) and ( 0.22, 1.39) .. ( 0.22, 1.46) -- cycle;
 %
 % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mole@part@draw[\mole@body!60!black] (0,1.67) circle (0.055);
+\mole@part@draw[\mole@body!60!black] (0,1.67) circle[radius=0.055];
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifmole@threeD
-	\fill[\mole@body!60!black,rotate around={-15:(-0.165,1.79)}] (-0.165,1.79) ellipse (0.055 and 0.015); 
-	\fill[\mole@body!30!black,rotate around={15:(0.165,1.79)}] (0.165,1.79) ellipse (0.055 and 0.015); 
+	\fill[\mole@body!60!black,rotate around={-15:(-0.165,1.79)}] (-0.165,1.79) ellipse[x radius=0.055, y radius=0.015]; 
+	\fill[\mole@body!30!black,rotate around={15:(0.165,1.79)}] (0.165,1.79) ellipse[x radius=0.055, y radius=0.015]; 
 \else   
-	\fill[\mole@body!60!black,rotate around={-15:(-0.165,1.79)}] (-0.165,1.79) ellipse (0.055 and 0.015); 
-	\fill[\mole@body!60!black,rotate around={15:(0.165,1.79)}] (0.165,1.79) ellipse (0.055 and 0.015); 
+	\fill[\mole@body!60!black,rotate around={-15:(-0.165,1.79)}] (-0.165,1.79) ellipse[x radius=0.055, y radius=0.015]; 
+	\fill[\mole@body!60!black,rotate around={15:(0.165,1.79)}] (0.165,1.79) ellipse[x radius=0.055, y radius=0.015]; 
 \fi
 %
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

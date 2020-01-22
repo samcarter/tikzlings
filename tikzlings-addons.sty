@@ -316,36 +316,36 @@
 % Hat %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@hat
   \fill[\thing@hat,rotate around={-15:(-0.3,2.01)}] (-0.3,2.01) rectangle (0.46,2.31);
-  \fill[\thing@hat,rotate around={-15:(0.05,1.92)}] (0.05,1.92) ellipse (0.6 and 0.1); 
-  \fill[\thing@hat,rotate around={-15:(0.14,2.2)}] (0.14,2.2) ellipse (0.37 and 0.08); 
+  \fill[\thing@hat,rotate around={-15:(0.05,1.92)}] (0.05,1.92) ellipse[x radius=0.6, y radius=0.1]; 
+  \fill[\thing@hat,rotate around={-15:(0.14,2.2)}] (0.14,2.2) ellipse[x radius=0.37, y radius=0.08]; 
 \fi
 %
 % Tophat %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@tophat
-  \fill[\thing@tophat,rotate around={-15:(0.1,1.94)}] (0.1,1.94) ellipse (0.48 and 0.1);
+  \fill[\thing@tophat,rotate around={-15:(0.1,1.94)}] (0.1,1.94) ellipse[x radius=0.48, y radius=0.1];
   \fill[\thing@tophat,rotate around={-15:(0.15,2.165)}] (-0.17, 1.94) -- (0.46, 1.94) -- (0.52, 2.39) -- (-0.22, 2.39) -- cycle;
-  \fill[\thing@tophat,rotate around={-15:(0.21,2.385)}] (0.21,2.385) ellipse (0.37 and 0.08);  
+  \fill[\thing@tophat,rotate around={-15:(0.21,2.385)}] (0.21,2.385) ellipse[x radius=0.37, y radius=0.08];  
 \fi
 %
 % Beret %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@beret
   \begin{scope}[xshift=-19,yshift=-2,rotate=10]
-  \fill[\thing@beret,rotate=-25] (0.13,2.15) ellipse (0.5 and 0.17);
-  \fill[\thing@beret,rotate=-25] (0.13,2.25) ellipse (0.55 and 0.17);
-  \fill[\thing@beret,rotate=-25] (0.13,2.4) circle (0.08);
+  \fill[\thing@beret,rotate=-25] (0.13,2.15) ellipse[x radius=0.5, y radius=0.17];
+  \fill[\thing@beret,rotate=-25] (0.13,2.25) ellipse[x radius=0.55, y radius=0.17];
+  \fill[\thing@beret,rotate=-25] (0.13,2.4) circle[radius=0.08];
   \end{scope}
 \fi
 %
 % Straw hat %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@strawhat
   \begin{scope}[xshift=-16,rotate=12,yshift=-1]
-  \fill[\thing@strawhat,rotate=-15] (0.44,2.0) ellipse (0.75 and 0.1);  
+  \fill[\thing@strawhat,rotate=-15] (0.44,2.0) ellipse[x radius=0.75, y radius=0.1];  
   \fill[\thing@strawhat,rotate=-15] (0.1,2.05) rectangle (0.78,2.5);
-  \fill[\thing@strawhat,rotate=-15] (0.44,2.5) ellipse (0.34 and 0.08);  
+  \fill[\thing@strawhat,rotate=-15] (0.44,2.5) ellipse[x radius=0.34, y radius=0.08];  
   \fill[\thing@strawhat,rotate=-15] (-0.3,2.02) -- (1.18,2.02) -- (0.78,2.2) -- (0.1,2.2) -- cycle;
-  \fill[\thing@ribbon,rotate=-15] (0.44,2.2) ellipse (0.34 and 0.08);   
+  \fill[\thing@ribbon,rotate=-15] (0.44,2.2) ellipse[x radius=0.34, y radius=0.08];   
   \fill[\thing@ribbon,rotate=-15] (0.1,2.2) rectangle (0.78,2.3);
-  \fill[\thing@strawhat,rotate=-15] (0.44,2.3) ellipse (0.34 and 0.08);  
+  \fill[\thing@strawhat,rotate=-15] (0.44,2.3) ellipse[x radius=0.34, y radius=0.08];  
   \end{scope}
 \fi
 %
@@ -357,15 +357,15 @@
   \fill[\thing@harlequin] (0.6006,1.9719) .. controls (0.7432,1.8954) and (0.9320,1.8698) .. (0.9320,1.8698) -- (1.0404,2.3839) .. controls (0.9223,2.8873) and (0.1755,2.5634) .. (0.3019,2.2958) .. controls (0.5807,2.5024) and (0.7251,2.3376) .. (0.6006,1.9719) -- cycle;
   \fill[\thing@niuqelrah] (1.2853,1.8902) .. controls (1.1177,1.8507) and (0.9278,1.8703) .. (0.9278,1.8703) -- (1.0404,2.3839) .. controls (1.3637,2.8347) and (1.9373,2.3532) .. (1.7049,2.1284) .. controls (1.5267,2.3895) and (1.3204,2.2666) .. (1.2853,1.8902) -- cycle;
   \end{pgfinterruptboundingbox}
-  \fill[\thing@harlequin] (1.7,2.07) circle (0.1);
-  \fill[\thing@niuqelrah] (0.3,2.23) circle (0.1);
+  \fill[\thing@harlequin] (1.7,2.07) circle[radius=0.1];
+  \fill[\thing@niuqelrah] (0.3,2.23) circle[radius=0.1];
   \end{scope}
 \fi
 %
 % witch %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@witch
   \begin{scope}[xshift=-26] 
-  \fill[\thing@witch,rotate=-15] (0.44,2.13) ellipse (0.75 and 0.17);  
+  \fill[\thing@witch,rotate=-15] (0.44,2.13) ellipse[x radius=0.75, y radius=0.17];  
   \fill[\thing@witch,rotate=-15] (0.05,2.2)--(0.45,3.2)--(0.82,2.2);
   \end{scope}
 \fi
@@ -453,30 +453,30 @@
     (1.456,1.759) .. controls (1.534,1.637) and (1.480,1.545) .. 
     (1.400,1.566) .. controls (1.265,1.714) and (0.577,2.267) .. 
     (0.44,1.733) -- cycle;
-  \fill[white!80!brown] (1.6,1.0) circle (0.17);
+  \fill[white!80!brown] (1.6,1.0) circle[radius=0.17];
   \end{scope}
 \fi
 %
 % Chef hat %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@chef
   \begin{scope}[xshift=-26]
-  \fill[\thing@chef,rotate=-15] (0.44,2.1) ellipse (0.37 and 0.08);  
+  \fill[\thing@chef,rotate=-15] (0.44,2.1) ellipse[x radius=0.37, y radius=0.08];  
   \fill[\thing@chef,rotate=-15] (0.07,2.1) rectangle (0.81,2.55);
-  \fill[\thing@chef] (1.01,2.47) circle (0.17);
-  \fill[\thing@chef] (1.24,2.35) circle (0.15);
-  \fill[\thing@chef] (0.77,2.40) circle (0.12);
-  \fill[\thing@chef] (1.39,2.20) circle (0.12);
+  \fill[\thing@chef] (1.01,2.47) circle[radius=0.17];
+  \fill[\thing@chef] (1.24,2.35) circle[radius=0.15];
+  \fill[\thing@chef] (0.77,2.40) circle[radius=0.12];
+  \fill[\thing@chef] (1.39,2.20) circle[radius=0.12];
   \end{scope}
 \fi
 %
 % graduate hat %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@graduate
   \begin{scope}[xshift=-26]
-  \fill[\thing@graduate,rotate=-15] (0.44,2.1) ellipse (0.37 and 0.1);  
+  \fill[\thing@graduate,rotate=-15] (0.44,2.1) ellipse[x radius=0.37, y radius=0.1];  
   \fill[\thing@graduate,rotate=-15] (0.07,2.1) rectangle (0.81,2.3);
   \fill[\thing@graduate] (0.3,2.25) -- (1.05,2.35) -- (1.7,1.95) -- (0.92,1.85) -- cycle;
   \fill[\thing@tassel,rounded corners=\scalingfactor*1] (1.12,1.89) -- (1.01,2.1) -- (1.09,2.11) -- (1.2,1.9) -- (1.2,1.3) -- (1.12,1.3) -- cycle;
-  \fill[\thing@tassel] (1.16,1.3) ellipse (0.06 and 0.12);
+  \fill[\thing@tassel] (1.16,1.3) ellipse[x radius=0.06, y radius=0.12];
   \end{scope}
 \fi
 %
@@ -484,8 +484,8 @@
 \ifthing@alien
   \fill[\thing@alien,rotate around={15:(-0.175,2.115)}] (-0.2,1.93) rectangle (-0.15,2.3);
   \fill[\thing@alien,rotate around={-15:(0.175,2.115)}] (0.2,1.93) rectangle (0.15,2.3);
-  \fill[\thing@alien] (-0.22,2.30) circle (0.07);
-  \fill[\thing@alien] (0.22,2.30) circle (0.07);
+  \fill[\thing@alien] (-0.22,2.30) circle[radius=0.07];
+  \fill[\thing@alien] (0.22,2.30) circle[radius=0.07];
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -516,7 +516,7 @@
 % speech bubble %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@speech
   \begin{scope}[xshift=-26]
-  \fill[\thing@bubblecolour] (-0.5,1.8) ellipse (0.7 and 0.3);
+  \fill[\thing@bubblecolour] (-0.5,1.8) ellipse[x radius=0.7, y radius=0.3];
   \fill[\thing@bubblecolour] (-0.2,1.54) -- (0.2,1.35) -- (0.0,1.6) -- cycle;
   \node at (-0.5,1.8) {\thing@speech};
   \end{scope}
@@ -525,8 +525,8 @@
 % think bubble %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@think
   \begin{scope}[xshift=-26]
-  \fill[\thing@bubblecolour] (2,2.4) ellipse (0.7 and 0.35); 
-  \fill[\thing@bubblecolour] (1.55,2.35) circle (0.25) (2.0,2.15) circle (0.25) (2.4,2.25) circle (0.25) (1.6,2.55) circle (0.25) (2.0,2.6) circle (0.25) (2.35,2.5) circle (0.25) (1.65,1.95) circle (0.1) (1.55,1.80) circle (0.06) (1.47,1.70) circle (0.03);
+  \fill[\thing@bubblecolour] (2,2.4) ellipse[x radius=0.7, y radius=0.35]; 
+  \fill[\thing@bubblecolour] (1.55,2.35) circle[radius=0.25] (2.0,2.15) circle[radius=0.25] (2.4,2.25) circle[radius=0.25] (1.6,2.55) circle[radius=0.25] (2.0,2.6) circle[radius=0.25] (2.35,2.5) circle[radius=0.25] (1.65,1.95) circle[radius=0.1] (1.55,1.80) circle[radius=0.06] (1.47,1.70) circle[radius=0.03];
   \node at (2,2.4) {\thing@think};
   \end{scope}
 \fi
@@ -540,35 +540,35 @@
 % pizza %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@pizza
   \begin{scope}[xshift=-28,yshift=2]
-  \fill[brown] (1.00,0.60) ellipse (0.4 and 0.2);
-  \fill[red!70!black] (1.00,0.60) ellipse (0.34 and 0.16);
-  \fill[white!85!yellow] (1.15,0.65) ellipse (0.065 and 0.04);  
-  \fill[white!85!yellow] (0.81,0.57) ellipse (0.065 and 0.04);  
-  \fill[white!85!yellow] (0.95,0.68) ellipse (0.065 and 0.04);  
-  \fill[white!85!yellow] (1.02,0.54) ellipse (0.065 and 0.04);
-  \fill[green!40!brown] (1.09,0.54) ellipse (0.07 and 0.02);
-  \fill[green!40!brown,rotate=20] (1.0,0.34) ellipse (0.07 and 0.02);
-  \fill[green!40!brown,rotate=-20] (0.9,1.05) ellipse (0.07 and 0.02);
-  \fill[green!40!brown] (1.00,0.60) ellipse (0.03 and 0.06);
+  \fill[brown] (1.00,0.60) ellipse[x radius=0.4, y radius=0.2];
+  \fill[red!70!black] (1.00,0.60) ellipse[x radius=0.34, y radius=0.16];
+  \fill[white!85!yellow] (1.15,0.65) ellipse[x radius=0.065, y radius=0.04];  
+  \fill[white!85!yellow] (0.81,0.57) ellipse[x radius=0.065, y radius=0.04];  
+  \fill[white!85!yellow] (0.95,0.68) ellipse[x radius=0.065, y radius=0.04];  
+  \fill[white!85!yellow] (1.02,0.54) ellipse[x radius=0.065, y radius=0.04];
+  \fill[green!40!brown] (1.09,0.54) ellipse[x radius=0.07, y radius=0.02];
+  \fill[green!40!brown,rotate=20] (1.0,0.34) ellipse[x radius=0.07, y radius=0.02];
+  \fill[green!40!brown,rotate=-20] (0.9,1.05) ellipse[x radius=0.07, y radius=0.02];
+  \fill[green!40!brown] (1.00,0.60) ellipse[x radius=0.03, y radius=0.06];
   \end{scope}
 \fi
 % no pizza %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@davidlikespineapplepizza
   \begin{scope}[xshift=-28,yshift=2]
-  \fill[brown] (1.00,0.60) ellipse (0.4 and 0.2);
-  \fill[red!70!black] (1.00,0.60) ellipse (0.34 and 0.16);
-  \fill[yellow!70!brown] (1.15,0.65) ellipse (0.08 and 0.06);  
-  \fill[red!70!black] (1.15,0.65) ellipse (0.04 and 0.03); 
-  \fill[yellow!70!brown] (0.81,0.57) ellipse (0.08 and 0.06);  
-  \fill[red!70!black] (0.81,0.57) ellipse (0.04 and 0.03); 
-  \fill[yellow!70!brown] (0.95,0.68) ellipse (0.08 and 0.06);  
-  \fill[red!70!black] (0.95,0.68) ellipse (0.04 and 0.03); 
-  \fill[yellow!70!brown] (1.02,0.54) ellipse (0.08 and 0.06);
-  \fill[red!70!black] (1.02,0.54) ellipse (0.04 and 0.03); 
-  \fill[green!40!brown] (1.09,0.54) ellipse (0.07 and 0.02);
-  \fill[green!40!brown,rotate=20] (1.0,0.34) ellipse (0.07 and 0.02);
-  \fill[green!40!brown,rotate=-20] (0.9,1.05) ellipse (0.07 and 0.02);
-  \fill[green!40!brown] (1.00,0.60) ellipse (0.03 and 0.06);  
+  \fill[brown] (1.00,0.60) ellipse[x radius=0.4, y radius=0.2];
+  \fill[red!70!black] (1.00,0.60) ellipse[x radius=0.34, y radius=0.16];
+  \fill[yellow!70!brown] (1.15,0.65) ellipse[x radius=0.08, y radius=0.06];  
+  \fill[red!70!black] (1.15,0.65) ellipse[x radius=0.04, y radius=0.03]; 
+  \fill[yellow!70!brown] (0.81,0.57) ellipse[x radius=0.08, y radius=0.06];  
+  \fill[red!70!black] (0.81,0.57) ellipse[x radius=0.04, y radius=0.03]; 
+  \fill[yellow!70!brown] (0.95,0.68) ellipse[x radius=0.08, y radius=0.06];  
+  \fill[red!70!black] (0.95,0.68) ellipse[x radius=0.04, y radius=0.03]; 
+  \fill[yellow!70!brown] (1.02,0.54) ellipse[x radius=0.08, y radius=0.06];
+  \fill[red!70!black] (1.02,0.54) ellipse[x radius=0.04, y radius=0.03]; 
+  \fill[green!40!brown] (1.09,0.54) ellipse[x radius=0.07, y radius=0.02];
+  \fill[green!40!brown,rotate=20] (1.0,0.34) ellipse[x radius=0.07, y radius=0.02];
+  \fill[green!40!brown,rotate=-20] (0.9,1.05) ellipse[x radius=0.07, y radius=0.02];
+  \fill[green!40!brown] (1.00,0.60) ellipse[x radius=0.03, y radius=0.06];  
   \end{scope}
 \fi
 %
@@ -576,29 +576,29 @@
 \ifthing@cheese
   \fill[\thing@cheese] (-0.3200,0.8058) -- (0.0608,0.7220) -- (0.0608,0.6366) -- (-0.3200,0.5410) -- (0.2143,0.4236) .. controls (0.3395,0.4810) and (0.4241,0.5627) .. (0.4117,0.6253) -- (0.4117,0.7634) .. controls (0.4261,0.8618) and (0.2607,0.8954) .. (0.1907,0.8962) -- cycle;
   \fill[\thing@cheese!35!white] (-0.3200,0.8057) -- (-0.3200,0.5410) -- (0.2143,0.4236) -- (0.2143,0.7381) -- cycle;
-  \fill[\thing@cheese] (-0.23,0.71) circle (0.04) (0.0,0.55) circle (0.04) (-0.23,0.58) circle (0.02) (-0.15,0.6) circle (0.02) (-0.1,0.7) circle (0.02) (0.1,0.65) circle (0.02) (0,0.65) circle (0.02) (0.1,0.5) circle (0.02) (0.07,0.55) circle (0.01) (0.12,0.6) circle (0.01) (-0.08,0.54) circle (0.01);
+  \fill[\thing@cheese] (-0.23,0.71) circle[radius=0.04] (0.0,0.55) circle[radius=0.04] (-0.23,0.58) circle[radius=0.02] (-0.15,0.6) circle[radius=0.02] (-0.1,0.7) circle[radius=0.02] (0.1,0.65) circle[radius=0.02] (0,0.65) circle[radius=0.02] (0.1,0.5) circle[radius=0.02] (0.07,0.55) circle[radius=0.01] (0.12,0.6) circle[radius=0.01] (-0.08,0.54) circle[radius=0.01];
 \fi
 %
 % baguette %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@baguette
   \begin{scope}[xshift=-38,yshift=7,rotate=-20]
   \fill[\thing@baguette!70!white, rounded corners=\scalingfactor*4, rotate=-30] (0.4,0.72) rectangle (0.7,2.0);
-  \fill[\thing@baguette!80!black, rotate=5] (1.44,1.1) ellipse (0.1 and 0.03) (1.30,0.9) ellipse (0.1 and 0.03) (1.16,0.7) ellipse (0.1 and 0.03) (1.02,0.5) ellipse (0.1 and 0.03);
+  \fill[\thing@baguette!80!black, rotate=5] (1.44,1.1) ellipse[x radius=0.1, y radius=0.03] (1.30,0.9) ellipse[x radius=0.1, y radius=0.03] (1.16,0.7) ellipse[x radius=0.1, y radius=0.03] (1.02,0.5) ellipse[x radius=0.1, y radius=0.03];
   \end{scope}
 \fi
 %
 % cake %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@cake
   \begin{scope}[xshift=-28]
-  \fill[\thing@cake] (1.00,0.50) ellipse (0.4 and 0.2);
+  \fill[\thing@cake] (1.00,0.50) ellipse[x radius=0.4, y radius=0.2];
   \fill[\thing@cake] (0.6,0.5) rectangle (1.4,0.7);
-  \fill[\thing@cake] (1.00,0.70) ellipse (0.4 and 0.2);
+  \fill[\thing@cake] (1.00,0.70) ellipse[x radius=0.4, y radius=0.2];
   \fill[\thing@cake!50!white] (0.75,0.75) rectangle (0.8,0.95);
   \fill[\thing@cake!50!white] (1.2,0.75) rectangle (1.25,0.95);
   \fill[\thing@cake!50!white] (0.975,0.65) rectangle (1.025,0.85);
-  \fill[white!85!yellow] (1.0,0.93) ellipse (0.03 and 0.06);
-  \fill[white!85!yellow] (1.225,1.03) ellipse (0.03 and 0.06);
-  \fill[white!85!yellow] (0.775,1.03) ellipse (0.03 and 0.06);
+  \fill[white!85!yellow] (1.0,0.93) ellipse[x radius=0.03, y radius=0.06];
+  \fill[white!85!yellow] (1.225,1.03) ellipse[x radius=0.03, y radius=0.06];
+  \fill[white!85!yellow] (0.775,1.03) ellipse[x radius=0.03, y radius=0.06];
   \end{scope}
 \fi
 %
@@ -606,26 +606,26 @@
 \ifthing@icecream
   \begin{scope}[xshift=-26]
   \fill[\thing@cone,rotate=-20] (0.35,1.20)--(0.50,0.60)--(0.75,1.20);
-  \fill[\thing@flavoura] (0.85,1.03) circle (0.12);
-  \fill[\thing@flavourb] (1.05,0.95) circle (0.12);
-  \fill[\thing@flavourc] (0.95,1.1) circle (0.12);    
+  \fill[\thing@flavoura] (0.85,1.03) circle[radius=0.12];
+  \fill[\thing@flavourb] (1.05,0.95) circle[radius=0.12];
+  \fill[\thing@flavourc] (0.95,1.1) circle[radius=0.12];    
   \end{scope}
 \fi
 %
 % milkshake %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@milkshake
   \begin{scope}[xshift=-26]
-  \fill[cyan!10!white, rotate=-10] (0.8,0.50) ellipse (0.17 and 0.05);
-  \fill[cyan!10!white, rotate=-10] (0.8,0.55) ellipse (0.12 and 0.03);
+  \fill[cyan!10!white, rotate=-10] (0.8,0.50) ellipse[x radius=0.17, y radius=0.05];
+  \fill[cyan!10!white, rotate=-10] (0.8,0.55) ellipse[x radius=0.12, y radius=0.03];
   \begin{scope}
     \clip[rotate=-10] (0.58,0.5) rectangle (1.02,1.03); 
-    \fill[cyan!10!white, rotate=-10] (0.8,0.94) ellipse (0.18 and 0.4);
-    \fill[\thing@milkshake, rotate=-10] (0.8,0.94) ellipse (0.15 and 0.36);
+    \fill[cyan!10!white, rotate=-10] (0.8,0.94) ellipse[x radius=0.18, y radius=0.4];
+    \fill[\thing@milkshake, rotate=-10] (0.8,0.94) ellipse[x radius=0.15, y radius=0.36];
   \end{scope}
-  \fill[white!85!yellow] (0.83,0.92) circle (0.05) (0.88,0.9) circle (0.05) (0.93,0.92) circle (0.05) (0.99,0.91) circle (0.05) (1.06,0.86) circle (0.05) (1.13,0.87) circle (0.05) (0.85,0.99) circle (0.05) (0.9,0.98) circle (0.07) (1.0,0.98) circle (0.07) (1.1,0.95) circle (0.07);
-  \fill[red!90!black] (1.0,1.1) circle (0.05);
-  \fill[white!85!yellow] (0.94,1.05) circle (0.05) (1.03,1.03) circle (0.05);
-  \fill[cyan!10!white, rotate=-10] (0.8,0.50) ellipse (0.17 and 0.05);
+  \fill[white!85!yellow] (0.83,0.92) circle[radius=0.05] (0.88,0.9) circle[radius=0.05] (0.93,0.92) circle[radius=0.05] (0.99,0.91) circle[radius=0.05] (1.06,0.86) circle[radius=0.05] (1.13,0.87) circle[radius=0.05] (0.85,0.99) circle[radius=0.05] (0.9,0.98) circle[radius=0.07] (1.0,0.98) circle[radius=0.07] (1.1,0.95) circle[radius=0.07];
+  \fill[red!90!black] (1.0,1.1) circle[radius=0.05];
+  \fill[white!85!yellow] (0.94,1.05) circle[radius=0.05] (1.03,1.03) circle[radius=0.05];
+  \fill[cyan!10!white, rotate=-10] (0.8,0.50) ellipse[x radius=0.17, y radius=0.05];
   \fill[red!90!black,rotate=20] (1.2,0.58) rectangle (1.22,0.85); 
   \end{scope}
 \fi
@@ -633,16 +633,16 @@
 % wine %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@wine
   \begin{scope}[xshift=-26,yshift=2]
-  \fill[cyan!10!white, rotate=-10] (0.8,0.50) ellipse (0.17 and 0.05);
-  \fill[cyan!10!white, rotate=-10] (0.8,0.55) ellipse (0.12 and 0.03);
-  \fill[cyan!10!white, rotate=-10] (0.8,0.7) ellipse (0.03 and 0.2);
+  \fill[cyan!10!white, rotate=-10] (0.8,0.50) ellipse[x radius=0.17, y radius=0.05];
+  \fill[cyan!10!white, rotate=-10] (0.8,0.55) ellipse[x radius=0.12, y radius=0.03];
+  \fill[cyan!10!white, rotate=-10] (0.8,0.7) ellipse[x radius=0.03, y radius=0.2];
   \begin{scope}
     \clip[rotate=-10] (0.58,0.5) rectangle (1.02,1.03); 
-    \fill[cyan!10!white, rotate=-10] (0.8,1.1) ellipse (0.18 and 0.4);
+    \fill[cyan!10!white, rotate=-10] (0.8,1.1) ellipse[x radius=0.18, y radius=0.4];
   \end{scope}
   \begin{scope}
     \clip[rotate=-10] (0.58,0.5) rectangle (1.02,0.87); 
-    \fill[\thing@wine, rotate=-10] (0.8,1.1) ellipse (0.15 and 0.36);
+    \fill[\thing@wine, rotate=-10] (0.8,1.1) ellipse[x radius=0.15, y radius=0.36];
   \end{scope}
   \end{scope}
 \fi
@@ -650,13 +650,13 @@
 % cocktail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@cocktail
 \begin{scope}[xshift=-26,yshift=3]
-  \fill[cyan!10!white, rotate=-10] (0.8,0.50) ellipse (0.17 and 0.05);
-  \fill[cyan!10!white, rotate=-10] (0.8,0.55) ellipse (0.12 and 0.03);
-  \fill[cyan!10!white, rotate=-10] (0.8,0.7) ellipse (0.03 and 0.2);
+  \fill[cyan!10!white, rotate=-10] (0.8,0.50) ellipse[x radius=0.17, y radius=0.05];
+  \fill[cyan!10!white, rotate=-10] (0.8,0.55) ellipse[x radius=0.12, y radius=0.03];
+  \fill[cyan!10!white, rotate=-10] (0.8,0.7) ellipse[x radius=0.03, y radius=0.2];
   \fill[cyan!10!white] (0.92,0.6) -- (0.75,0.9) -- (1.18,0.83) -- cycle;
   \fill[gray!60!white] (0.928,0.64) -- (0.85,0.77) -- (1.08,0.77) -- cycle;
-  \fill[green!40!brown!60!white] (0.94,0.71) circle (0.04);
-  \fill[red!80!black] (0.94,0.72) circle (0.01);
+  \fill[green!40!brown!60!white] (0.94,0.71) circle[radius=0.04];
+  \fill[red!80!black] (0.94,0.72) circle[radius=0.01];
   \end{scope}
 \fi
 %
@@ -685,9 +685,9 @@
 % football %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@football
   \begin{scope}[xshift=-26]
-  \fill[\thing@football] (1.2,0.33) circle (0.32);
+  \fill[\thing@football] (1.2,0.33) circle[radius=0.32];
   \begin{scope}
-    \clip (1.2,0.33) circle (0.32);
+    \clip (1.2,0.33) circle[radius=0.32];
     \fill[black] (1.06,0.30) -- (1.01,0.17) -- (1.14,0.08) -- (1.26,0.14) -- (1.20,0.28) -- cycle (1.37,0.14) -- (1.46,0.27) -- (1.59,0.27) -- (1.41,0.04) -- cycle (1.28,0.38) -- (1.22,0.52) -- (1.33,0.61) -- (1.45,0.51) -- (1.43,0.37) -- cycle (0.87,0.44) -- (1.02,0.40) -- (1.10,0.53) -- (1.07,0.62) -- (0.94,0.57) -- cycle;
   \end{scope}
   \end{scope}
@@ -701,7 +701,7 @@
 %
 % crystal ball %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@crystalball
-  \shade[ball color=\thing@crystalball,opacity=0.7] (0,0.8) circle (0.33);
+  \shade[ball color=\thing@crystalball,opacity=0.7] (0,0.8) circle[radius=0.33];
 \fi
 % 
 % magic wand %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -751,7 +751,7 @@
     (1.4338,1.025) -- cycle;
   \fill[\thing@torch,rounded corners=\scalingfactor*1]
     (1.1,0.96) -- (0.77,0.25) -- (0.83,0.25) -- (1.3,0.86) -- cycle;
-  \fill[\thing@torch,rotate=-28] (0.62,1.32) ellipse (0.2 and 0.08);
+  \fill[\thing@torch,rotate=-28] (0.62,1.32) ellipse[x radius=0.2, y radius=0.08];
   \end{scope}
 \fi%
 % 
@@ -760,8 +760,8 @@
   \begin{scope}[xshift=-28.5]
   \fill[\thing@basket, start angle=180, end angle=360, x radius=0.35, y radius=0.35] (0.65,0.61) arc  -- cycle;
   \fill[\thing@basket, start angle=180, end angle=0, even odd rule] [x radius=0.35, y radius=0.5] (0.65,0.6) arc  -- cycle [x radius=0.3, y radius=0.45] (0.7,0.6) arc  -- cycle;
-  \fill[\thing@basket, even odd rule] (1,0.6) ellipse (0.35 and 0.1) (1,0.6) ellipse (0.3 and 0.07);  
-  \fill[\thing@basket!75!black] (1,0.6) ellipse (0.3 and 0.07);
+  \fill[\thing@basket, even odd rule] (1,0.6) ellipse[x radius=0.35, y radius=0.1] (1,0.6) ellipse[x radius=0.3, y radius=0.07];  
+  \fill[\thing@basket!75!black] (1,0.6) ellipse[x radius=0.3, y radius=0.07];
   \end{scope}  
 \fi%  
 %
@@ -770,9 +770,9 @@
   \begin{scope}[xshift=-28.5]
   \begin{scope}
     \clip [start angle=180, end angle=0, x radius=0.3, y radius=0.45] (0.7,0.6) arc  -- cycle [start angle=180, end angle=360, x radius=0.3, y radius=0.07] (0.7,0.6) arc  -- cycle;  
-    \fill[\thing@eggb, rotate=-5]  (0.95,0.72) ellipse (0.09 and 0.13);
-    \fill[\thing@egga, rotate=10]  (0.94,0.42) ellipse (0.09 and 0.13);
-    \fill[\thing@eggc, rotate=-30] (0.7,1.08) ellipse (0.09 and 0.13);
+    \fill[\thing@eggb, rotate=-5]  (0.95,0.72) ellipse[x radius=0.09, y radius=0.13];
+    \fill[\thing@egga, rotate=10]  (0.94,0.42) ellipse[x radius=0.09, y radius=0.13];
+    \fill[\thing@eggc, rotate=-30] (0.7,1.08) ellipse[x radius=0.09, y radius=0.13];
   \end{scope}
   \end{scope}  
 \fi% 
@@ -782,7 +782,7 @@
   \begin{scope}[xshift=-20]
   \begin{scope}
     \clip [rotate=-20] (0.6,2.3) rectangle (1.1,1.999);
-    \fill[even odd rule,\thing@crozier] (1.5,1.6) circle (0.2) (1.5,1.6) circle (0.1);
+    \fill[even odd rule,\thing@crozier] (1.5,1.6) circle[radius=0.2] (1.5,1.6) circle[radius=0.1];
   \end{scope}
   \fill[\thing@crozier,rotate=-20] (0.663,0.5) rectangle (0.763,2.0);  
   \end{scope}

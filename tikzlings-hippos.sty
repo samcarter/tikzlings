@@ -96,21 +96,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\hippo@part@draw[\hippo@body,rotate around={-30:(0.23,2.03)}] (0.23,2.03) ellipse (0.09 and 0.13);
-\hippo@part@draw[\hippo@body,rotate around={30:(-0.23,2.03)}] (-0.23,2.03) ellipse (0.09 and 0.13);
+\hippo@part@draw[\hippo@body,rotate around={-30:(0.23,2.03)}] (0.23,2.03) ellipse[x radius=0.09, y radius=0.13];
+\hippo@part@draw[\hippo@body,rotate around={30:(-0.23,2.03)}] (-0.23,2.03) ellipse[x radius=0.09, y radius=0.13];
 %
 % Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifhippo@back
 	\begin{scope}
 		\clip (-0.5,0.4) rectangle (0.5,0.13);
-		\hippo@part@draw[\hippo@body] (-0.25,0.15) ellipse (0.16 and 0.17);
-		\hippo@part@draw[\hippo@body] (0.25,0.15) ellipse (0.16 and 0.17);
+		\hippo@part@draw[\hippo@body] (-0.25,0.15) ellipse[x radius=0.16, y radius=0.17];
+		\hippo@part@draw[\hippo@body] (0.25,0.15) ellipse[x radius=0.16, y radius=0.17];
 	\end{scope}
 \fi
 %
 % Nose if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifhippo@back
-	\hippo@part@draw[\hippo@body!80!white] (0, 1.55) ellipse (0.42 and 0.2);
+	\hippo@part@draw[\hippo@body!80!white] (0, 1.55) ellipse[x radius=0.42, y radius=0.2];
 \fi
 %
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -118,26 +118,26 @@
 %
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifhippo@back\else
-	\hippo@part@draw[\hippo@body,rotate around={90:(0.35,1.0)}] (0.35,1.0) ellipse (0.24 and 0.13);
-	\hippo@part@draw[\hippo@body,rotate around={-90:(-0.35,1.0)}] (-0.35,1.0) ellipse (0.24 and 0.13);
+	\hippo@part@draw[\hippo@body,rotate around={90:(0.35,1.0)}] (0.35,1.0) ellipse[x radius=0.24, y radius=0.13];
+	\hippo@part@draw[\hippo@body,rotate around={-90:(-0.35,1.0)}] (-0.35,1.0) ellipse[x radius=0.24, y radius=0.13];
 \fi
 %
 % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\hippo@part@draw[\hippo@body!55!white] (0, 1.76) circle (0.36);
+\hippo@part@draw[\hippo@body!55!white] (0, 1.76) circle[radius=0.36];
 %
 % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifhippo@back\else
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\fill[white] (-0.11, 1.83) ellipse (0.08 and 0.12);
-\fill[white] (0.11, 1.83) ellipse (0.08 and 0.12);
-\fill[black] (-0.105, 1.78) ellipse (0.04 and 0.07);
-\fill[black] (0.105, 1.78) ellipse (0.04 and 0.07);
+\fill[white] (-0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
+\fill[white] (0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
+\fill[black] (-0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
+\fill[black] (0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
 %
 % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\hippo@part@draw[\hippo@body!80!white] (0, 1.55) ellipse (0.42 and 0.2);
-\hippo@part@draw[\hippo@body!70!black]  (-0.07, 1.63) circle (0.035);
-\hippo@part@draw[\hippo@body!70!black]  (0.07, 1.63) circle (0.035);
+\hippo@part@draw[\hippo@body!80!white] (0, 1.55) ellipse[x radius=0.42, y radius=0.2];
+\hippo@part@draw[\hippo@body!70!black]  (-0.07, 1.63) circle[radius=0.035];
+\hippo@part@draw[\hippo@body!70!black]  (0.07, 1.63) circle[radius=0.035];
 %
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifhippo@threeD
@@ -149,14 +149,14 @@
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{scope}
 	\clip (-0.5,0.4) rectangle (0.5,0.13);
-	\hippo@part@draw[\hippo@body] (-0.25,0.15) ellipse (0.16 and 0.17);
-	\hippo@part@draw[\hippo@body] (0.25,0.15) ellipse (0.16 and 0.17);
-	\hippo@part@draw[\hippo@toes] (0.25,0.13) ellipse (0.05 and 0.1);
-	\hippo@part@draw[\hippo@toes] (0.13,0.11) ellipse (0.05 and 0.1);
-	\hippo@part@draw[\hippo@toes] (0.37,0.11) ellipse (0.05 and 0.1);
-	\hippo@part@draw[\hippo@toes] (-0.25,0.13) ellipse (0.05 and 0.1);
-	\hippo@part@draw[\hippo@toes] (-0.13,0.11) ellipse (0.05 and 0.1);
-	\hippo@part@draw[\hippo@toes] (-0.37,0.11) ellipse (0.05 and 0.1);	
+	\hippo@part@draw[\hippo@body] (-0.25,0.15) ellipse[x radius=0.16, y radius=0.17];
+	\hippo@part@draw[\hippo@body] (0.25,0.15) ellipse[x radius=0.16, y radius=0.17];
+	\hippo@part@draw[\hippo@toes] (0.25,0.13) ellipse[x radius=0.05, y radius=0.1];
+	\hippo@part@draw[\hippo@toes] (0.13,0.11) ellipse[x radius=0.05, y radius=0.1];
+	\hippo@part@draw[\hippo@toes] (0.37,0.11) ellipse[x radius=0.05, y radius=0.1];
+	\hippo@part@draw[\hippo@toes] (-0.25,0.13) ellipse[x radius=0.05, y radius=0.1];
+	\hippo@part@draw[\hippo@toes] (-0.13,0.11) ellipse[x radius=0.05, y radius=0.1];
+	\hippo@part@draw[\hippo@toes] (-0.37,0.11) ellipse[x radius=0.05, y radius=0.1];	
 \end{scope}
 %
 \fi

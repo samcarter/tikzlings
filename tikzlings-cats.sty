@@ -143,8 +143,8 @@
 %
 % Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifcat@back
-	\cat@part@draw[\cat@paws] (-0.255,0.3) circle (0.18);  
-	\cat@part@draw[\cat@paws] (0.255,0.3) circle (0.18);
+	\cat@part@draw[\cat@paws] (-0.255,0.3) circle[radius=0.18];  
+	\cat@part@draw[\cat@paws] (0.255,0.3) circle[radius=0.18];
 \fi 
 %
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -157,7 +157,7 @@
 (-0.12, 2.0392) .. controls (-0.16, 2.1584) and (-0.37, 2.22) .. (-0.37, 2.20) .. controls (-0.37, 2.2) and (-0.39, 1.9) .. (-0.2721, 1.9) .. controls (-0.1891, 1.88) and (-0.12, 1.88) .. (-0.12, 2.0392) -- cycle;
 %
 % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\cat@part@draw[\cat@body] (0,1.64) circle (0.44);
+\cat@part@draw[\cat@body] (0,1.64) circle[radius=0.44];
 %
 % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifcat@back\else
@@ -193,8 +193,8 @@
 \fill[\cat@whiskers] (-0.0671, 1.6243) .. controls (-0.1414, 1.6725) and (-0.2182, 1.6964) .. (-0.2925, 1.6482) -- (-0.2925, 1.6582) .. controls (-0.2179, 1.7066) and (-0.1417, 1.6727) .. (-0.0671, 1.6243) -- cycle;
 %
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\cat@part@draw[\cat@paws] (-0.255,0.3) circle (0.18);  
-\cat@part@draw[\cat@paws] (0.255,0.3) circle (0.18); 
+\cat@part@draw[\cat@paws] (-0.255,0.3) circle[radius=0.18];  
+\cat@part@draw[\cat@paws] (0.255,0.3) circle[radius=0.18]; 
 %
 \fi
 }
@@ -227,7 +227,7 @@
 %
 % Stone %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \fill[gray] (-0.55,0.4) rectangle (0.55,1.5);
-\fill[gray] (0,1.5) circle (0.55);
+\fill[gray] (0,1.5) circle[radius=0.55];
 \node[scale=\scalingfactor] at (0,1.3) {R.I.P.};
 %
 % soil %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

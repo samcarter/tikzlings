@@ -114,19 +114,19 @@
 \fi
 %
 % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pig@part@draw[\pig@body!55!white] (0,1.64) ellipse (.5 and .5);
+\pig@part@draw[\pig@body!55!white] (0,1.64) ellipse[x radius=.5, y radius=.5];
 %
 % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifpig@back\else
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pig@part@draw[gray] (-0.09, 1.82) circle (0.02);
-\pig@part@draw[gray] ( 0.09, 1.82) circle (0.02);
+\pig@part@draw[gray] (-0.09, 1.82) circle[radius=0.02];
+\pig@part@draw[gray] ( 0.09, 1.82) circle[radius=0.02];
 %
 % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pig@part@draw[\pig@body]  (0, 1.62) ellipse (0.18 and 0.14);
-\pig@part@draw[gray]  (-0.06, 1.62) circle (0.035);
-\pig@part@draw[gray]  ( 0.06, 1.62) circle (0.035);
+\pig@part@draw[\pig@body]  (0, 1.62) ellipse[x radius=0.18, y radius=0.14];
+\pig@part@draw[gray]  (-0.06, 1.62) circle[radius=0.035];
+\pig@part@draw[gray]  ( 0.06, 1.62) circle[radius=0.035];
 %
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifpig@threeD

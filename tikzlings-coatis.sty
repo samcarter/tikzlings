@@ -99,8 +99,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\coati@part@draw[\coati@body!80!white] (0.255,0.2) ellipse (0.23 and 0.09); 
-\coati@part@draw[\coati@body!80!white] (-0.255,0.2) ellipse (0.23 and 0.09);
+\coati@part@draw[\coati@body!80!white] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
+\coati@part@draw[\coati@body!80!white] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
 %
 % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifcoati@back\else
@@ -120,8 +120,8 @@
 \fi
 %
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\coati@part@draw[\coati@body!80!white,rotate around={70:(-0.625,1)}] (-0.625,1) ellipse (0.42 and 0.13);
-\coati@part@draw[\coati@body!80!white,rotate around={-70:(0.625,1)}] (0.625,1) ellipse (0.42 and 0.13);
+\coati@part@draw[\coati@body!80!white,rotate around={70:(-0.625,1)}] (-0.625,1) ellipse[x radius=0.42, y radius=0.13];
+\coati@part@draw[\coati@body!80!white,rotate around={-70:(0.625,1)}] (0.625,1) ellipse[x radius=0.42, y radius=0.13];
 %
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \coati@part@draw[\coati@body!50!darkgray] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
@@ -133,9 +133,9 @@
 \ifcoati@sideward
   %  
   % Left Ear %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-16:(-0.212, 2.135)}] (-0.212, 2.135) ellipse (0.09 and 0.12);
+  \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-16:(-0.212, 2.135)}] (-0.212, 2.135) ellipse[x radius=0.09, y radius=0.12];
   \ifcoati@back\else
-	  \coati@part@draw[\coati@body!80!white,rotate around={-16:(-0.212, 2.135)}] (-0.212, 2.135) ellipse (0.065 and 0.09);
+	  \coati@part@draw[\coati@body!80!white,rotate around={-16:(-0.212, 2.135)}] (-0.212, 2.135) ellipse[x radius=0.065, y radius=0.09];
 	\fi
   %  
   % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -152,19 +152,19 @@
   \fi
   % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifcoati@back\else
-	  \coati@part@draw[\coati@body!50!black] (-0.605, 1.453) circle (0.09);
+	  \coati@part@draw[\coati@body!50!black] (-0.605, 1.453) circle[radius=0.09];
 	\fi
   %
   % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifcoati@back\else
-	  \coati@part@draw[\coati@body!50!black] (0.007, 1.624) ellipse (0.04 and 0.06);
-	  \coati@part@draw[\coati@body!50!black] (-0.38, 1.865) ellipse (0.035 and 0.055);
+	  \coati@part@draw[\coati@body!50!black] (0.007, 1.624) ellipse[x radius=0.04, y radius=0.06];
+	  \coati@part@draw[\coati@body!50!black] (-0.38, 1.865) ellipse[x radius=0.035, y radius=0.055];
 	\fi
   %
   % Right Ear %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-16:(0.417, 1.875)}] (0.417, 1.875) ellipse (0.1 and 0.14);
+  \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-16:(0.417, 1.875)}] (0.417, 1.875) ellipse[x radius=0.1, y radius=0.14];
   \ifcoati@back\else
-	  \coati@part@draw[\coati@body!80!white,rotate around={-16:(0.417, 1.875)}] (0.417, 1.875) ellipse (0.07 and 0.10);
+	  \coati@part@draw[\coati@body!80!white,rotate around={-16:(0.417, 1.875)}] (0.417, 1.875) ellipse[x radius=0.07, y radius=0.10];
 	\fi
 %
 % Normal Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -185,21 +185,21 @@
   %
   % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifcoati@back\else  
-	  \coati@part@draw[\coati@body!50!black] (0, 1.248) circle (0.09);
+	  \coati@part@draw[\coati@body!50!black] (0, 1.248) circle[radius=0.09];
 	\fi
   %
   % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifcoati@back\else
-	  \coati@part@draw[\coati@body!50!black] (0.23, 1.62) circle (0.05);
-  	\coati@part@draw[\coati@body!50!black] (-0.23, 1.62) circle (0.05);
+	  \coati@part@draw[\coati@body!50!black] (0.23, 1.62) circle[radius=0.05];
+  	\coati@part@draw[\coati@body!50!black] (-0.23, 1.62) circle[radius=0.05];
   \fi
   %
   % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \coati@part@draw[\coati@body!45!white!95!orange] (0.44, 2.02) circle (0.12);
-  \coati@part@draw[\coati@body!45!white!95!orange] (-0.44, 2.02) circle (0.12);
+  \coati@part@draw[\coati@body!45!white!95!orange] (0.44, 2.02) circle[radius=0.12];
+  \coati@part@draw[\coati@body!45!white!95!orange] (-0.44, 2.02) circle[radius=0.12];
   \ifcoati@back\else  
-	  \coati@part@draw[\coati@body!80!white] (0.44, 2.02) circle (0.09);  
-  	\coati@part@draw[\coati@body!80!white] (-0.44, 2.02) circle (0.09);
+	  \coati@part@draw[\coati@body!80!white] (0.44, 2.02) circle[radius=0.09];  
+  	\coati@part@draw[\coati@body!80!white] (-0.44, 2.02) circle[radius=0.09];
   \fi
   %  
 \fi
