@@ -67,7 +67,7 @@
 
 \makeatletter
 \renewcommand{\sectionlinesformat}[4]{%
-\ifstr{#1}{section}{%
+\Ifstr{#1}{section}{%
     \parbox[t]{\linewidth}{%
       \raggedsection\@hangfrom{\hskip #2#3}{#4}\par%
       \kern-.75\ht\strutbox\rule{\linewidth}{.8pt}%
