@@ -68,6 +68,8 @@ An exhaustive list of possible options can be found in [package documentation](.
 <a href="./ViewingPLatform/Hang_gliding_bear.svg"><img src="./ViewingPlatform/Hang_gliding_bear.svg" alt="Hang gliding bear" height="64"></a>
 <a href="./ViewingPLatform/Tartan.svg"><img src="./ViewingPlatform/Tartan.png" alt="Tartan" height="64"></a>
 <a href="./ViewingPLatform/Haggis.svg"><img src="./ViewingPlatform/Haggis.png" alt="Haggis" height="64"></a>
+<a href="./ViewingPLatform/Marmot_cupid.tex"><img src="./ViewingPlatform/Marmot_cupid.svg" alt="Marmot cupid" height="64"></a>
+
 
 <a href="./ViewingPLatform/Bruegel.svg"><img src="./ViewingPlatform/Bruegel.png" alt="Bruegel" height="64"></a>
 <a href="./ViewingPLatform/ElGreco.svg"><img src="./ViewingPlatform/ElGreco.png" alt="ElGreco" height="64"></a>

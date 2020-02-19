@@ -1,0 +1,35 @@
+ % !TeX TS-program = txs:///duck
+\documentclass{standalone}
+\usepackage{tikzlings}
+\usepackage{fontawesome5}
+
+\begin{document}
+
+  
+\begin{tikzpicture}
+
+  \fill[brown!10!white] (-0.5,0.9) circle[radius=0.3] (-0.45,1.2) circle[radius=0.3] (0.5,0.9) circle[radius=0.3] (0.45,1.2) circle[radius=0.3];
+
+  \marmot
+  
+  \begin{scope}[yshift=-1.5cm,xshift=-1.0cm,scale=0.5]
+  
+    % bow
+    \path[fill=pink!50!red] (2.3671,3.6028) .. controls (2.8360,4.0984) and (2.6217,4.3820) .. (2.5614,4.6753) .. controls (2.6693,5.0301) and (2.8249,5.3243) .. (2.3827,5.7245) .. controls (2.6589,5.1687) and (2.5253,5.0156) .. (2.4604,4.6598) .. controls (2.5432,4.3450) and (2.6150,4.1629) .. (2.3671,3.6028) -- cycle;
+  
+    % arrow
+    \path[draw=pink,line width=1pt] (1.1936,4.6598) -- (3.0821,4.6753);
+
+    % bowstring
+    \path[draw=white,line width=0.5pt] (2.3671,3.6028) -- (1.4578,4.6520) -- (2.3827,5.7245);
+    
+    \node[scale=0.8] at (1.1936,4.6598) {\color{pink}$\gg$};
+    \node[scale=0.8] at (3.0821,4.6753) {\color{pink}\rotatebox{90}{\faHeart}};
+    
+    
+  \end{scope}
+  
+\end{tikzpicture}  
+  
+  
+\end{document}
