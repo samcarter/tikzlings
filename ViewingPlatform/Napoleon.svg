@@ -19,7 +19,7 @@
    inkscape:version="0.92.2 5c3e80d, 2017-08-06"><metadata
      id="metadata8"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
      id="defs6"><clipPath
        clipPathUnits="userSpaceOnUse"
        id="clipPath38"><path
@@ -39,9 +39,9 @@
      id="namedview4"
      showgrid="false"
      inkscape:snap-global="false"
-     inkscape:zoom="2.9890867"
+     inkscape:zoom="7.0407003"
      inkscape:cx="113.85135"
-     inkscape:cy="47.215506"
+     inkscape:cy="46.150271"
      inkscape:current-layer="g10"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -51,7 +51,7 @@
      inkscape:groupmode="layer"
      inkscape:label="napoleon"
      transform="matrix(1.3333333,0,0,-1.3333333,-66.979302,142.78116)"><rect
-       style="opacity:1;fill:#f5f5f5;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:5.6692915;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="opacity:1;fill:#e6e6e6;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:5.6692915;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1642"
        width="83.30304"
        height="82.04847"

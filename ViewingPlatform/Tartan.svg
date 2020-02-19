@@ -87,15 +87,15 @@
        patternTransform="matrix(0.26458333,0,0,0.26458333,126.83123,144.76192)"
        id="pattern1001">
       <image
-         sodipodi:absref="/Users/sraab/Desktop/OTSW-outlander_mackenzie_tartan_swatch-Celtic-Croft-1500px_93ra-g1.jpg"
+         sodipodi:absref="/Users/sraab/PhD/latex/texmf/tex/latex/tikzlings/ViewingPlatform/OTSW-outlander_mackenzie_tartan_swatch-Celtic-Croft-1500px_93ra-g1.jpg"
          xlink:href="OTSW-outlander_mackenzie_tartan_swatch-Celtic-Croft-1500px_93ra-g1.jpg"
-         y="0"
-         x="0"
-         id="image998"
-         preserveAspectRatio="none"
-         height="71.039757"
+         style="stroke-width:5.63065004"
          width="71.039757"
-         style="stroke-width:5.63065004" />
+         height="71.039757"
+         preserveAspectRatio="none"
+         id="image998"
+         x="0"
+         y="0" />
     </pattern>
     <clipPath
        id="clipPath402"
@@ -4269,9 +4269,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="6.9020138"
+     inkscape:zoom="16.149634"
      inkscape:cx="25.295587"
-     inkscape:cy="86.858904"
+     inkscape:cy="86.394497"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -4299,7 +4299,7 @@
      id="layer1"
      transform="translate(-54.268554,-150.07167)">
     <rect
-       style="opacity:1;fill:#f5f5f5;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="opacity:1;fill:#e6e6e6;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect991"
        width="20.585478"
        height="24.457233"
