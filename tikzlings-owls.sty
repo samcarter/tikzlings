@@ -27,6 +27,10 @@
     \owl@draw%
   \end{scope}%
   \thing[#1]%
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname owlhookforeground\endcsname
+  \csname tikzlinghookforeground\endcsname
+  %  
 }
 
 \newif\ifowl@threeD
@@ -101,6 +105,10 @@
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname owlhookbackground\endcsname
+\csname tikzlinghookbackground\endcsname
+%
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \owl@part@draw[\owl@body,rotate around={-80:(0.575,0.8)}] (0.575,0.8) ellipse[x radius=0.38, y radius=0.1];
 \owl@part@draw[\owl@body,rotate around={80:(-0.575,0.8)}] (-0.575,0.8) ellipse[x radius=0.38, y radius=0.1]; 
@@ -125,6 +133,10 @@
 \ifowl@back\else
 	\owl@part@draw[\owl@body!50!white] (0.425,0.5) .. controls (0.425,0.31) and (0.245,0.27) .. (0,0.27) .. controls (-0.245,0.27) and (-0.425,0.31) .. (-0.425,0.5) .. controls (-0.425,0.81) and (-0.225,0.98) .. (0,0.98) .. controls (0.225,0.98) and (0.425,0.81) .. (0.425,0.5) -- cycle;
 \fi
+%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname owlhookbelly\endcsname
+\csname tikzlinghookbelly\endcsname
 %
 % head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \owl@part@draw[\owl@body] (0,1.55) ellipse[x radius=0.7, y radius=0.55];

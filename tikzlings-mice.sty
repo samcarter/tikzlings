@@ -27,6 +27,10 @@
     \mouse@draw%
   \end{scope}%
   \thing[#1]%
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname mousehookforeground\endcsname
+  \csname tikzlinghookforeground\endcsname
+  %  
 }
 
 \newif\ifmouse@threeD
@@ -104,6 +108,10 @@
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname mousehookbackground\endcsname
+\csname tikzlinghookbackground\endcsname
+% 
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifmouse@leftstep
 	\mouse@part@draw[\mouse@body!65!white] (-0.255,0.25) ellipse[x radius=0.23, y radius=0.09];  
@@ -133,6 +141,10 @@
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mouse@part@draw[\mouse@body] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
 %
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname mousehookbelly\endcsname
+\csname tikzlinghookbelly\endcsname
+% 
 % Tail if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifmouse@back
 	\mouse@part@draw[\mouse@body!65!white] (1.0825, 1.6326) .. controls (1.3527, 1.7527) and (1.6609, 1.3164) .. (1.5928, 1.3124) .. controls (0.9164, 2.186) and (0.8338, 0.6325) .. (0.3708, 0.4451) .. controls (0.2529, 0.3974) and (-0.0064, 0.3874) .. (-0.0064, 0.3874) .. controls (-0.0776, 0.3765) and (-0.0862, 0.5026) .. (-0.0092, 0.5034) .. controls (-0.0092, 0.5034) and (0.0363, 0.4591) .. (0.3516, 0.54360) .. controls (0.6710, 0.6988) and (0.7613, 1.4825) .. (1.0825, 1.6326) -- cycle;
@@ -172,5 +184,9 @@
 \mouse@part@draw[\mouse@body!50!black] (-0.23, 1.68) circle[radius=0.05];
 %
 \fi
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname mousehookbody\endcsname
+\csname tikzlinghookbody\endcsname
+% 
 }
 

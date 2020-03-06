@@ -27,6 +27,9 @@
     \coati@draw%
   \end{scope}%
   \thing[#1]%
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname coatihookforeground\endcsname
+  \csname tikzlinghookforeground\endcsname
 }
 
 \newif\ifcoati@threeD
@@ -98,6 +101,10 @@
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname coatihookbackground\endcsname
+\csname tikzlinghookbackground\endcsname
+%  
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \coati@part@draw[\coati@body!80!white] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
 \coati@part@draw[\coati@body!80!white] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
@@ -126,6 +133,10 @@
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \coati@part@draw[\coati@body!50!darkgray] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
 %
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname coatihookbelly\endcsname
+\csname tikzlinghookbelly\endcsname
+%  
 % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{scope}[rotate around={\coati@rotatehead:(0,1.68)}]
 %
@@ -221,5 +232,9 @@
 
 \fi
 %
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname coatihookbody\endcsname
+\csname tikzlinghookbody\endcsname
+%  
 }
 

@@ -50,6 +50,9 @@
     \fi
   \end{scope}%
   \thing[#1]%
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname cathookforeground\endcsname
+  \csname tikzlinghookforeground\endcsname
 }
 
 \newif\ifcat@threeD
@@ -136,6 +139,10 @@
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname cathookbackground\endcsname
+\csname tikzlinghookbackground\endcsname
+%
 % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{pgfinterruptboundingbox}
   \cat@part@draw[\cat@body] (0.3, 0.5) .. controls (0.55, 0.87) and (0.73, 1.50) .. (1.05, 1.65) .. controls (1.32, 1.77) and (1.76, 1.34) .. (1.56,1.33) .. controls (0.92, 2.03) and (0.86, 0.60) .. (0.5, 0.37) -- cycle;
@@ -149,6 +156,10 @@
 %
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \cat@part@draw[\cat@body] (0.5462, 0.7155) .. controls (0.5462, 0.1823) and (0.3259, 0.17) .. (0, 0.17) .. controls (-0.3259, 0.17) and (-0.5462, 0.1823) .. (-0.5462, 0.7155) .. controls (-0.5554, 1.2487) and (-0.3075, 1.6768) .. (0, 1.6768) .. controls (0.3075, 1.6768) and (0.5554, 1.2487) .. (0.5462, 0.7155) -- cycle;
+%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname cathookbelly\endcsname
+\csname tikzlinghookbelly\endcsname
 %
 % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \cat@part@draw[\cat@body] 
@@ -197,6 +208,10 @@
 \cat@part@draw[\cat@paws] (0.255,0.3) circle[radius=0.18]; 
 %
 \fi
+%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname cathookbody\endcsname
+\csname tikzlinghookbody\endcsname
 }
 
 \def\cat@tombstone{%
@@ -225,10 +240,18 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname cathookbackground\endcsname
+\csname tikzlinghookbackground\endcsname
+%
 % Stone %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \fill[gray] (-0.55,0.4) rectangle (0.55,1.5);
 \fill[gray] (0,1.5) circle[radius=0.55];
 \node[scale=\scalingfactor] at (0,1.3) {R.I.P.};
+%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname cathookbelly\endcsname
+\csname tikzlinghookbelly\endcsname
 %
 % soil %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \fill[brown!65!black] (1,0.15) arc [start angle=50, end angle=130, radius=1.56] -- cycle;
@@ -240,5 +263,9 @@
 \foreach \i in {0,51.42857,...,359}{
 	\fill[yellow!50!white,rotate around={\i:(-0.0865, 0.8219)}] (-0.087, 0.822) .. controls (-0.087, 0.822) and (-0.1635, 0.6638) .. (-0.0818, 0.6653) .. controls (-0.0066, 0.6646) and (-0.087, 0.822) .. (-0.087, 0.822) -- cycle;
 }
+%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname cathookbody\endcsname
+\csname tikzlinghookbody\endcsname
 %
 }

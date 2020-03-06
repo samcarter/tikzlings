@@ -27,6 +27,9 @@
     \bear@draw%
   \end{scope}%
   \thing[#1]%
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname bearhookforeground\endcsname
+  \csname tikzlinghookforeground\endcsname
 }
 
 \newif\ifbear@threeD
@@ -93,6 +96,10 @@
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname bearhookbackground\endcsname
+\csname tikzlinghookbackground\endcsname
+%
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bear@part@draw[\bear@body!70!black,rotate around={-50:(0.525,0.9)}] (0.525,0.9) ellipse[x radius=0.35, y radius=0.15];
 \bear@part@draw[\bear@body!70!black,rotate around={50:(-0.525,0.9)}] (-0.525,0.9) ellipse[x radius=0.35, y radius=0.15];
@@ -107,6 +114,10 @@
 \ifbear@back\else
 	\bear@part@draw[\bear@body!50!white] (0,0.7) ellipse[x radius=0.35, y radius=0.4];
 \fi 
+%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname bearhookbelly\endcsname
+\csname tikzlinghookbelly\endcsname
 %
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifbear@back\else
@@ -142,4 +153,9 @@
 \draw[\bear@body!30!black,line width=\scalingfactor*0.4pt] (0.145, 1.38) arc [start angle=-20, end angle=-160, radius=0.16];
 %
 \fi
+%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname bearhookbody\endcsname
+\csname tikzlinghookbody\endcsname
+%
 }

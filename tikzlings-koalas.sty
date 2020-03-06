@@ -32,6 +32,10 @@
     \koala@draw%
   \end{scope}%
   \thing[#1]%
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname koalahookforeground\endcsname
+  \csname tikzlinghookforeground\endcsname
+  %
 }
 
 \newif\ifkoala@blush
@@ -102,6 +106,10 @@
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname koalahookbackground\endcsname
+\csname tikzlinghookbackground\endcsname
+%
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \koala@part@draw[\koala@body!50!black] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
 \koala@part@draw[\koala@body!50!black] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
@@ -127,6 +135,10 @@
 \ifkoala@back\else
 	\koala@part@draw[\koala@body!40!white] ( 0.425, 0.71) .. controls ( 0.425, 0.41) and ( 0.255, 0.27) .. ( 0    , 0.27) .. controls (-0.255, 0.27) and (-0.425, 0.41) .. (-0.425, 0.71) .. controls (-0.425, 1.01) and (-0.255, 1.20) .. ( 0    , 1.20) .. controls ( 0.225, 1.20) and ( 0.425, 1.01) .. ( 0.425, 0.71) -- cycle;
 \fi
+%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname koalahookbelly\endcsname
+\csname tikzlinghookbelly\endcsname
 %
 % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \koala@part@draw[\koala@body] (0,1.67) ellipse[x radius=0.55, y radius=0.45];
@@ -178,5 +190,9 @@
 \fi
 %
 \fi
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname koalahookbody\endcsname
+\csname tikzlinghookbody\endcsname
+%
 }
 

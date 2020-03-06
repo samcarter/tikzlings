@@ -27,6 +27,10 @@
     \panda@draw%
   \end{scope}%
   \thing[#1]%
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname pandahookforeground\endcsname
+  \csname tikzlinghookforeground\endcsname
+  %  
 }
 
 \newif\ifpanda@threeD
@@ -93,6 +97,10 @@
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname pandahookbackground\endcsname
+\csname tikzlinghookbackground\endcsname
+%
 % Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifpanda@back
 	\panda@part@draw[black] (0.32, 0.27) circle[radius=0.2]; 
@@ -101,6 +109,10 @@
 %
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \panda@part@draw[\panda@body!55!white] (0,0.78) ellipse[x radius=0.57, y radius=0.65];
+%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname pandahookbelly\endcsname
+\csname tikzlinghookbelly\endcsname
 %
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifpanda@back\else
@@ -141,4 +153,8 @@
 \panda@part@draw[black] (0,1.55) ellipse[x radius=0.07, y radius=0.04];
 %
 \fi
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname pandahookbody\endcsname
+\csname tikzlinghookbody\endcsname
+%
 }

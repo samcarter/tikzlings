@@ -27,6 +27,10 @@
     \snowman@draw%
   \end{scope}%
   \thing[#1]%
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname snowmanhookforeground\endcsname
+  \csname tikzlinghookforeground\endcsname
+  %  
 }
 
 \newif\ifsnowman@threeD
@@ -106,6 +110,10 @@
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname snowmanhookbackground\endcsname
+\csname tikzlinghookbackground\endcsname
+%
 % Global warming %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifsnowman@globalwarming
 	%
@@ -171,4 +179,8 @@
 	\snowman@part@draw[\snowman@buttons] (0,0.75) circle[radius=0.04]; 
 	%
 \fi\fi
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname snowmanhookbody\endcsname
+\csname tikzlinghookbody\endcsname
+%
 }
