@@ -220,7 +220,7 @@
   wine/.code              = \thing@winetrue
                             \def\thing@wine{#1},  
   wine/.default           = red!70!black,  
-	cocktail/.code          = \thing@cocktailtrue,   
+  cocktail/.code          = \thing@cocktailtrue,   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Sport
@@ -285,13 +285,13 @@
   umbrella/.code          = \thing@umbrellatrue
                             \def\thing@umbrella{#1},
   umbrella/.default       = cyan,      
-	umbrellaclosed/.code    = \thing@umbrellaclosedtrue
-	                          \def\thing@umbrellaclosed{#1},
-	umbrellaclosed/.default = cyan,    
-	umbrella closed/.forward to = /thing/umbrellaclosed,
-	handbag/.code           = \thing@handbagtrue
+  umbrellaclosed/.code    = \thing@umbrellaclosedtrue
+                            \def\thing@umbrellaclosed{#1},
+  umbrellaclosed/.default = cyan,    
+  umbrella closed/.forward to = /thing/umbrellaclosed,
+  handbag/.code           = \thing@handbagtrue
                             \def\thing@handbag{#1},
-	handbag/.default        = red!70!black,  
+  handbag/.default        = red!70!black,  
 }
 
 \def\thing@draw{%
@@ -790,35 +790,35 @@
 %
 % shovel %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@shovel
-	\fill[brown!80!black,rotate around={-23:(0.11, 0.8)}] (0.07,0.2) rectangle ++(0.1,1.4);
-	\fill[\thing@shovel] (-0.21, 0.86) .. controls (0.02, 0.72) and (0.11, 0.66) .. (0.38, 0.58) -- (0.01, 0.04) .. controls (-0.17, 0.02) and (-0.28, 0.07) .. (-0.37, 0.21) -- cycle;
+  \fill[brown!80!black,rotate around={-23:(0.11, 0.8)}] (0.07,0.2) rectangle ++(0.1,1.4);
+  \fill[\thing@shovel] (-0.21, 0.86) .. controls (0.02, 0.72) and (0.11, 0.66) .. (0.38, 0.58) -- (0.01, 0.04) .. controls (-0.17, 0.02) and (-0.28, 0.07) .. (-0.37, 0.21) -- cycle;
 \fi
 %
 % pickaxe %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@pickaxe
-	\fill[brown!80!black,rotate around={-23:(0.11, 0.8)}] (0.07,0.2) rectangle ++(0.1,1.4);
-	\fill[\thing@pickaxe] (-0.77, 0.57) .. controls (-0.14, 0.25) and (-0.02, 0.21) .. (0.60, 0.02) .. controls (-0.12, 0.03) and (-0.22, 0.10) .. (-0.77, 0.57) -- cycle;
+  \fill[brown!80!black,rotate around={-23:(0.11, 0.8)}] (0.07,0.2) rectangle ++(0.1,1.4);
+  \fill[\thing@pickaxe] (-0.77, 0.57) .. controls (-0.14, 0.25) and (-0.02, 0.21) .. (0.60, 0.02) .. controls (-0.12, 0.03) and (-0.22, 0.10) .. (-0.77, 0.57) -- cycle;
 \fi
 %
 % umbrella %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@umbrella
-	\path (-0.8, 0.4) rectangle (1.2200000000000002, 2.7);
-	\begin{pgfinterruptboundingbox}
-		\fill[gray] (-0.3078, 0.5942) -- (-0.2574, 0.6103) .. controls (-0.1724, 0.3884) and (-0.1145, 0.4523) .. (-0.0667, 0.6543) -- (-0.0666, 0.6545) -- (-0.0665, 0.6547) .. controls (0.0347, 1.0671) and (0.2906, 1.9565) .. (0.2906, 1.9565) -- (0.3415, 1.9419) .. controls (0.3415, 1.9419) and (0.0855, 1.0519) .. (-0.0151, 0.6423) -- (-0.0152, 0.642) .. controls (-0.076, 0.3633) and (-0.2126, 0.3312) .. (-0.3078, 0.5942) -- cycle;
-		\fill[\thing@umbrella] (-0.7815, 1.9927) .. controls (-0.6441, 2.1962) and (-0.3163, 2.072) .. (-0.3239, 1.824) .. controls (-0.1602, 2.0111) and (0.1891, 1.9216) .. (0.1685, 1.6915) .. controls (0.3000, 1.8765) and (0.6639, 1.7626) .. (0.6607, 1.5356) .. controls (0.7865, 1.7271) and (1.135, 1.695) .. (1.1626, 1.4589) .. controls (1.4996, 2.5771) and (-0.4356, 3.2631) .. (-0.7815, 1.9927) -- cycle;
-	\end{pgfinterruptboundingbox}
+  \path (-0.8, 0.4) rectangle (1.2200000000000002, 2.7);
+  \begin{pgfinterruptboundingbox}
+    \fill[gray] (-0.3078, 0.5942) -- (-0.2574, 0.6103) .. controls (-0.1724, 0.3884) and (-0.1145, 0.4523) .. (-0.0667, 0.6543) -- (-0.0666, 0.6545) -- (-0.0665, 0.6547) .. controls (0.0347, 1.0671) and (0.2906, 1.9565) .. (0.2906, 1.9565) -- (0.3415, 1.9419) .. controls (0.3415, 1.9419) and (0.0855, 1.0519) .. (-0.0151, 0.6423) -- (-0.0152, 0.642) .. controls (-0.076, 0.3633) and (-0.2126, 0.3312) .. (-0.3078, 0.5942) -- cycle;
+    \fill[\thing@umbrella] (-0.7815, 1.9927) .. controls (-0.6441, 2.1962) and (-0.3163, 2.072) .. (-0.3239, 1.824) .. controls (-0.1602, 2.0111) and (0.1891, 1.9216) .. (0.1685, 1.6915) .. controls (0.3000, 1.8765) and (0.6639, 1.7626) .. (0.6607, 1.5356) .. controls (0.7865, 1.7271) and (1.135, 1.695) .. (1.1626, 1.4589) .. controls (1.4996, 2.5771) and (-0.4356, 3.2631) .. (-0.7815, 1.9927) -- cycle;
+  \end{pgfinterruptboundingbox}
 \fi
 %
 % closed umbrella %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@umbrellaclosed
   \fill[gray] (0.5401, 0.7996) -- (0.4872, 0.8019) .. controls (0.484, 1.0395) and (0.4076, 0.9995) .. (0.293, 0.8264) -- (0.2929, 0.8262) -- (0.2928, 0.8261) .. controls (0.0555, 0.4739) and (0.1223, 0.5608) .. (0.1223, 0.5608) -- (0.0795, 0.592) .. controls (0.0795, 0.592) and (0.0131, 0.5057) .. (0.2488, 0.8554) -- (0.2489, 0.8556) .. controls (0.4022, 1.0963) and (0.5414, 1.0793) .. (0.5401, 0.7996) -- cycle;
- 	\fill[\thing@umbrellaclosed] (-0.1173, 0.2263) -- (0.0038, 0.7188) -- (0.1548, 0.7494) -- (0.152, 0.9231) -- (0.3945, 0.7529) -- (0.2218, 0.6885) -- (0.2465, 0.5566) -- cycle;
+   \fill[\thing@umbrellaclosed] (-0.1173, 0.2263) -- (0.0038, 0.7188) -- (0.1548, 0.7494) -- (0.152, 0.9231) -- (0.3945, 0.7529) -- (0.2218, 0.6885) -- (0.2465, 0.5566) -- cycle;
 \fi
 %
 % handbag %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@handbag
-	\fill[\thing@handbag] (0.5189, 0.1751) -- (-0.1913, 0.3097) -- (-0.0315, 0.7086) -- (0.5168, 0.6152) -- cycle;
-	\fill[\thing@handbag!70!black] (0.4143, 0.4354) .. controls (0.5139, 0.9811) and (0.1204, 1.0719) .. (0.0134, 0.5155) -- (0.0957, 0.4996) .. controls (0.1753, 0.8952) and (0.3949, 0.8883) .. (0.3324, 0.4536) -- cycle;
+  \fill[\thing@handbag] (0.5189, 0.1751) -- (-0.1913, 0.3097) -- (-0.0315, 0.7086) -- (0.5168, 0.6152) -- cycle;
+  \fill[\thing@handbag!70!black] (0.4143, 0.4354) .. controls (0.5139, 0.9811) and (0.1204, 1.0719) .. (0.0134, 0.5155) -- (0.0957, 0.4996) .. controls (0.1753, 0.8952) and (0.3949, 0.8883) .. (0.3324, 0.4536) -- cycle;
 \fi
 %
 }

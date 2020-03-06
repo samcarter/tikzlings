@@ -107,20 +107,20 @@
 %
 % Arms if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifsloth@back
-	\sloth@part@draw[\sloth@body,rotate around={10:(0.53,0.95)}] (0.53,0.95) ellipse[x radius=0.1, y radius=0.27];
-	\sloth@part@draw[\sloth@body,rotate around={-10:(-0.53,0.95)}] (-0.53,0.95) ellipse[x radius=0.1, y radius=0.27];	
+  \sloth@part@draw[\sloth@body,rotate around={10:(0.53,0.95)}] (0.53,0.95) ellipse[x radius=0.1, y radius=0.27];
+  \sloth@part@draw[\sloth@body,rotate around={-10:(-0.53,0.95)}] (-0.53,0.95) ellipse[x radius=0.1, y radius=0.27];  
 \fi
 %
 % Feet if back%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifsloth@back
-	\fill[\sloth@body!50!black,rotate around={-10:(-0.125,0.265)}] (-0.125,0.265) ellipse[x radius=0.07, y radius=0.019];
-	\fill[\sloth@body!50!black,rotate around={-16:(-0.14,0.21)}] (-0.14,0.21) ellipse[x radius=0.07, y radius=0.017];
-	\fill[\sloth@body!50!black,rotate around={-22:(-0.16,0.165)}] (-0.16,0.165) ellipse[x radius=0.07, y radius=0.015];
-	\fill[\sloth@body!50!black,rotate around={10:(0.125,0.265)}] (0.125,0.265) ellipse[x radius=0.07, y radius=0.019];
-	\fill[\sloth@body!50!black,rotate around={16:(0.14,0.21)}] (0.14,0.21) ellipse[x radius=0.07, y radius=0.017];
-	\fill[\sloth@body!50!black,rotate around={22:(0.16,0.165)}] (0.16,0.165) ellipse[x radius=0.07, y radius=0.015];
-	\sloth@part@draw[\sloth@body,rotate around={25:(0.33,0.31)}] (0.33,0.31) ellipse[x radius=0.25, y radius=0.13];
-	\sloth@part@draw[\sloth@body,rotate around={-25:(-0.33,0.31)}] (-0.33,0.31) ellipse[x radius=0.25, y radius=0.13];
+  \fill[\sloth@body!50!black,rotate around={-10:(-0.125,0.265)}] (-0.125,0.265) ellipse[x radius=0.07, y radius=0.019];
+  \fill[\sloth@body!50!black,rotate around={-16:(-0.14,0.21)}] (-0.14,0.21) ellipse[x radius=0.07, y radius=0.017];
+  \fill[\sloth@body!50!black,rotate around={-22:(-0.16,0.165)}] (-0.16,0.165) ellipse[x radius=0.07, y radius=0.015];
+  \fill[\sloth@body!50!black,rotate around={10:(0.125,0.265)}] (0.125,0.265) ellipse[x radius=0.07, y radius=0.019];
+  \fill[\sloth@body!50!black,rotate around={16:(0.14,0.21)}] (0.14,0.21) ellipse[x radius=0.07, y radius=0.017];
+  \fill[\sloth@body!50!black,rotate around={22:(0.16,0.165)}] (0.16,0.165) ellipse[x radius=0.07, y radius=0.015];
+  \sloth@part@draw[\sloth@body,rotate around={25:(0.33,0.31)}] (0.33,0.31) ellipse[x radius=0.25, y radius=0.13];
+  \sloth@part@draw[\sloth@body,rotate around={-25:(-0.33,0.31)}] (-0.33,0.31) ellipse[x radius=0.25, y radius=0.13];
 \fi
 %
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -157,25 +157,25 @@
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifsloth@sleeping
-	\fill[\sloth@body!50!white] (0.237, 1.743) .. controls (0.237, 1.712) and (0.157, 1.712) .. (0.157, 1.743) .. controls (0.157, 1.802) and (0.237, 1.802) .. (0.237, 1.743) -- cycle;
-	\fill[\sloth@body!50!white] (-0.237, 1.743) .. controls (-0.237, 1.712) and (-0.157, 1.712) .. (-0.157, 1.743) .. controls (-0.157, 1.802) and (-0.237, 1.802) .. (-0.237, 1.743) -- cycle;
-	%
-	\fill[\sloth@body!50!white] (0.195, 1.705) rectangle ++(0.005, 0.02);  
-	\fill[\sloth@body!50!white,rotate around={22:(0.195, 1.76)}] (0.195, 1.705) rectangle ++(0.005, 0.02); 
-	\fill[\sloth@body!50!white,rotate around={44:(0.195, 1.76)}] (0.195, 1.701) rectangle ++(0.005, 0.02); 	
-	\fill[\sloth@body!50!white,rotate around={-22:(0.195, 1.76)}] (0.195, 1.705) rectangle ++(0.005, 0.02); 
-	\fill[\sloth@body!50!white,rotate around={-44:(0.195, 1.76)}] (0.195, 1.705) rectangle ++(0.005, 0.02); 		
-	%
-	\fill[\sloth@body!50!white] (-0.195, 1.705) rectangle ++(0.005, 0.02);  
-	\fill[\sloth@body!50!white,rotate around={22:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02); 
-	\fill[\sloth@body!50!white,rotate around={44:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02); 	
-	\fill[\sloth@body!50!white,rotate around={-22:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02); 
-	\fill[\sloth@body!50!white,rotate around={-44:(-0.195, 1.76)}] (-0.195, 1.701) rectangle ++(0.005, 0.02); 	
+  \fill[\sloth@body!50!white] (0.237, 1.743) .. controls (0.237, 1.712) and (0.157, 1.712) .. (0.157, 1.743) .. controls (0.157, 1.802) and (0.237, 1.802) .. (0.237, 1.743) -- cycle;
+  \fill[\sloth@body!50!white] (-0.237, 1.743) .. controls (-0.237, 1.712) and (-0.157, 1.712) .. (-0.157, 1.743) .. controls (-0.157, 1.802) and (-0.237, 1.802) .. (-0.237, 1.743) -- cycle;
+  %
+  \fill[\sloth@body!50!white] (0.195, 1.705) rectangle ++(0.005, 0.02);  
+  \fill[\sloth@body!50!white,rotate around={22:(0.195, 1.76)}] (0.195, 1.705) rectangle ++(0.005, 0.02); 
+  \fill[\sloth@body!50!white,rotate around={44:(0.195, 1.76)}] (0.195, 1.701) rectangle ++(0.005, 0.02);   
+  \fill[\sloth@body!50!white,rotate around={-22:(0.195, 1.76)}] (0.195, 1.705) rectangle ++(0.005, 0.02); 
+  \fill[\sloth@body!50!white,rotate around={-44:(0.195, 1.76)}] (0.195, 1.705) rectangle ++(0.005, 0.02);     
+  %
+  \fill[\sloth@body!50!white] (-0.195, 1.705) rectangle ++(0.005, 0.02);  
+  \fill[\sloth@body!50!white,rotate around={22:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02); 
+  \fill[\sloth@body!50!white,rotate around={44:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02);   
+  \fill[\sloth@body!50!white,rotate around={-22:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02); 
+  \fill[\sloth@body!50!white,rotate around={-44:(-0.195, 1.76)}] (-0.195, 1.701) rectangle ++(0.005, 0.02);   
 \else
-	\sloth@part@draw[black] (0.193,1.75) circle[radius=0.04];
-	\sloth@part@draw[black] (-0.193,1.75) circle[radius=0.04];
-	\fill[white] (-0.2  ,1.765) circle[radius=0.006];
-	\fill[white] ( 0.186,1.765) circle[radius=0.006];
+  \sloth@part@draw[black] (0.193,1.75) circle[radius=0.04];
+  \sloth@part@draw[black] (-0.193,1.75) circle[radius=0.04];
+  \fill[white] (-0.2  ,1.765) circle[radius=0.006];
+  \fill[white] ( 0.186,1.765) circle[radius=0.006];
 \fi
 %
 % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

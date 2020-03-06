@@ -41,12 +41,12 @@
       \pgfmathparse{int(random(0,1))}
       \let\cat@random=\pgfmathresult
       \ifnum\cat@random=1
-				\cat@tombstone%
+        \cat@tombstone%
        \else
-       	\cat@draw%
+         \cat@draw%
       \fi
     \else
-    	\cat@draw%
+      \cat@draw%
     \fi
   \end{scope}%
   \thing[#1]%
@@ -150,8 +150,8 @@
 %
 % Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifcat@back
-	\cat@part@draw[\cat@paws] (-0.255,0.3) circle[radius=0.18];  
-	\cat@part@draw[\cat@paws] (0.255,0.3) circle[radius=0.18];
+  \cat@part@draw[\cat@paws] (-0.255,0.3) circle[radius=0.18];  
+  \cat@part@draw[\cat@paws] (0.255,0.3) circle[radius=0.18];
 \fi 
 %
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -261,7 +261,7 @@
 \fill[green!50!brown] (-0.1377, 0.7384) .. controls (-0.1775, 0.5828) and (-0.1479, 0.4649) .. (0.0072, 0.4246) .. controls (0.0570, 0.5636) and (-0.1529, 0.6447) .. (-0.1377, 0.7384) -- cycle;
 \fill[green!50!brown] (0.1527, 0.7334) .. controls (0.1925, 0.5778) and (0.1629, 0.4599) .. (0.0178, 0.4196) .. controls (-0.0420, 0.5586) and (0.1679, 0.6397) .. (0.1527, 0.7334) -- cycle;
 \foreach \i in {0,51.42857,...,359}{
-	\fill[yellow!50!white,rotate around={\i:(-0.0865, 0.8219)}] (-0.087, 0.822) .. controls (-0.087, 0.822) and (-0.1635, 0.6638) .. (-0.0818, 0.6653) .. controls (-0.0066, 0.6646) and (-0.087, 0.822) .. (-0.087, 0.822) -- cycle;
+  \fill[yellow!50!white,rotate around={\i:(-0.0865, 0.8219)}] (-0.087, 0.822) .. controls (-0.087, 0.822) and (-0.1635, 0.6638) .. (-0.0818, 0.6653) .. controls (-0.0066, 0.6646) and (-0.087, 0.822) .. (-0.087, 0.822) -- cycle;
 }
 %
 % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

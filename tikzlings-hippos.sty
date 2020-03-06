@@ -108,16 +108,16 @@
 %
 % Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifhippo@back
-	\begin{scope}
-		\clip (-0.5,0.4) rectangle (0.5,0.13);
-		\hippo@part@draw[\hippo@body] (-0.25,0.15) ellipse[x radius=0.16, y radius=0.17];
-		\hippo@part@draw[\hippo@body] (0.25,0.15) ellipse[x radius=0.16, y radius=0.17];
-	\end{scope}
+  \begin{scope}
+    \clip (-0.5,0.4) rectangle (0.5,0.13);
+    \hippo@part@draw[\hippo@body] (-0.25,0.15) ellipse[x radius=0.16, y radius=0.17];
+    \hippo@part@draw[\hippo@body] (0.25,0.15) ellipse[x radius=0.16, y radius=0.17];
+  \end{scope}
 \fi
 %
 % Nose if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifhippo@back
-	\hippo@part@draw[\hippo@body!80!white] (0, 1.55) ellipse[x radius=0.42, y radius=0.2];
+  \hippo@part@draw[\hippo@body!80!white] (0, 1.55) ellipse[x radius=0.42, y radius=0.2];
 \fi
 %
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -129,8 +129,8 @@
 %    
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifhippo@back\else
-	\hippo@part@draw[\hippo@body,rotate around={90:(0.35,1.0)}] (0.35,1.0) ellipse[x radius=0.24, y radius=0.13];
-	\hippo@part@draw[\hippo@body,rotate around={-90:(-0.35,1.0)}] (-0.35,1.0) ellipse[x radius=0.24, y radius=0.13];
+  \hippo@part@draw[\hippo@body,rotate around={90:(0.35,1.0)}] (0.35,1.0) ellipse[x radius=0.24, y radius=0.13];
+  \hippo@part@draw[\hippo@body,rotate around={-90:(-0.35,1.0)}] (-0.35,1.0) ellipse[x radius=0.24, y radius=0.13];
 \fi
 %
 % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -152,22 +152,22 @@
 %
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifhippo@threeD
-	\draw[black,line width=\scalingfactor*0.4pt] (0.125, 1.5) arc [start angle=-50, end angle=-130, radius=0.2] ;
+  \draw[black,line width=\scalingfactor*0.4pt] (0.125, 1.5) arc [start angle=-50, end angle=-130, radius=0.2] ;
 \else
-	\draw[\hippo@body!70!black,line width=\scalingfactor*0.4pt] (0.125, 1.5) arc [start angle=-50, end angle=-130, radius=0.2];
+  \draw[\hippo@body!70!black,line width=\scalingfactor*0.4pt] (0.125, 1.5) arc [start angle=-50, end angle=-130, radius=0.2];
 \fi
 %
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{scope}
-	\clip (-0.5,0.4) rectangle (0.5,0.13);
-	\hippo@part@draw[\hippo@body] (-0.25,0.15) ellipse[x radius=0.16, y radius=0.17];
-	\hippo@part@draw[\hippo@body] (0.25,0.15) ellipse[x radius=0.16, y radius=0.17];
-	\hippo@part@draw[\hippo@toes] (0.25,0.13) ellipse[x radius=0.05, y radius=0.1];
-	\hippo@part@draw[\hippo@toes] (0.13,0.11) ellipse[x radius=0.05, y radius=0.1];
-	\hippo@part@draw[\hippo@toes] (0.37,0.11) ellipse[x radius=0.05, y radius=0.1];
-	\hippo@part@draw[\hippo@toes] (-0.25,0.13) ellipse[x radius=0.05, y radius=0.1];
-	\hippo@part@draw[\hippo@toes] (-0.13,0.11) ellipse[x radius=0.05, y radius=0.1];
-	\hippo@part@draw[\hippo@toes] (-0.37,0.11) ellipse[x radius=0.05, y radius=0.1];	
+  \clip (-0.5,0.4) rectangle (0.5,0.13);
+  \hippo@part@draw[\hippo@body] (-0.25,0.15) ellipse[x radius=0.16, y radius=0.17];
+  \hippo@part@draw[\hippo@body] (0.25,0.15) ellipse[x radius=0.16, y radius=0.17];
+  \hippo@part@draw[\hippo@toes] (0.25,0.13) ellipse[x radius=0.05, y radius=0.1];
+  \hippo@part@draw[\hippo@toes] (0.13,0.11) ellipse[x radius=0.05, y radius=0.1];
+  \hippo@part@draw[\hippo@toes] (0.37,0.11) ellipse[x radius=0.05, y radius=0.1];
+  \hippo@part@draw[\hippo@toes] (-0.25,0.13) ellipse[x radius=0.05, y radius=0.1];
+  \hippo@part@draw[\hippo@toes] (-0.13,0.11) ellipse[x radius=0.05, y radius=0.1];
+  \hippo@part@draw[\hippo@toes] (-0.37,0.11) ellipse[x radius=0.05, y radius=0.1];  
 \end{scope}
 %
 \fi

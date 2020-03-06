@@ -106,13 +106,14 @@
 %
 % Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifbear@back
-	\bear@part@draw[\bear@body!70!black] (0.425, 0.3) circle[radius=0.28]; 
-	\bear@part@draw[\bear@body!70!black] (-0.425, 0.3) circle[radius=0.28];
+  \bear@part@draw[\bear@body!70!black] (0.425, 0.3) circle[radius=0.28]; 
+  \bear@part@draw[\bear@body!70!black] (-0.425, 0.3) circle[radius=0.28];
 \fi
+%
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bear@part@draw[\bear@body!70!black] (0,0.75) ellipse[x radius=0.55, y radius=0.65]; 
 \ifbear@back\else
-	\bear@part@draw[\bear@body!50!white] (0,0.7) ellipse[x radius=0.35, y radius=0.4];
+  \bear@part@draw[\bear@body!50!white] (0,0.7) ellipse[x radius=0.35, y radius=0.4];
 \fi 
 %
 % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -121,18 +122,18 @@
 %
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifbear@back\else
-	\bear@part@draw[\bear@body!70!black] (0.425, 0.3) circle[radius=0.28]; 
-	\bear@part@draw[\bear@body!70!black] (-0.425, 0.3) circle[radius=0.28];
-	\bear@part@draw[\bear@body!50!white] (0.425, 0.3) circle[radius=0.17]; 
-	\bear@part@draw[\bear@body!50!white] (-0.425, 0.3) circle[radius=0.17];
+  \bear@part@draw[\bear@body!70!black] (0.425, 0.3) circle[radius=0.28]; 
+  \bear@part@draw[\bear@body!70!black] (-0.425, 0.3) circle[radius=0.28];
+  \bear@part@draw[\bear@body!50!white] (0.425, 0.3) circle[radius=0.17]; 
+  \bear@part@draw[\bear@body!50!white] (-0.425, 0.3) circle[radius=0.17];
 \fi
 %
 % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bear@part@draw[\bear@body!70!black] (0.375, 1.95) circle[radius=0.15];
 \bear@part@draw[\bear@body!70!black] (-0.375, 1.95) circle[radius=0.15];
 \ifbear@back\else
-	\bear@part@draw[\bear@body!50!white] (0.375, 1.95) circle[radius=0.1];
-	\bear@part@draw[\bear@body!50!white] (-0.375, 1.95) circle[radius=0.1];
+  \bear@part@draw[\bear@body!50!white] (0.375, 1.95) circle[radius=0.1];
+  \bear@part@draw[\bear@body!50!white] (-0.375, 1.95) circle[radius=0.1];
 \fi
 %
 % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

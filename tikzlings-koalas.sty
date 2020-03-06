@@ -118,8 +118,8 @@
 \koala@part@draw[\koala@body] (0.405, 2.1) ellipse[x radius=0.3, y radius=0.23];
 \koala@part@draw[\koala@body] (-0.405, 2.1) ellipse[x radius=0.3, y radius=0.23];
 \ifkoala@back\else
-	\koala@part@draw[\koala@body!40!white] (-0.405, 2.1) ellipse[x radius=0.15, y radius=0.12];
-	\koala@part@draw[\koala@body!40!white] (0.405, 2.1) ellipse[x radius=0.15, y radius=0.12];
+  \koala@part@draw[\koala@body!40!white] (-0.405, 2.1) ellipse[x radius=0.15, y radius=0.12];
+  \koala@part@draw[\koala@body!40!white] (0.405, 2.1) ellipse[x radius=0.15, y radius=0.12];
 \fi
 %
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -133,7 +133,7 @@
 %
 % Belly %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifkoala@back\else
-	\koala@part@draw[\koala@body!40!white] ( 0.425, 0.71) .. controls ( 0.425, 0.41) and ( 0.255, 0.27) .. ( 0    , 0.27) .. controls (-0.255, 0.27) and (-0.425, 0.41) .. (-0.425, 0.71) .. controls (-0.425, 1.01) and (-0.255, 1.20) .. ( 0    , 1.20) .. controls ( 0.225, 1.20) and ( 0.425, 1.01) .. ( 0.425, 0.71) -- cycle;
+  \koala@part@draw[\koala@body!40!white] ( 0.425, 0.71) .. controls ( 0.425, 0.41) and ( 0.255, 0.27) .. ( 0    , 0.27) .. controls (-0.255, 0.27) and (-0.425, 0.41) .. (-0.425, 0.71) .. controls (-0.425, 1.01) and (-0.255, 1.20) .. ( 0    , 1.20) .. controls ( 0.225, 1.20) and ( 0.425, 1.01) .. ( 0.425, 0.71) -- cycle;
 \fi
 %
 % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -172,7 +172,7 @@
 %
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifkoala@threeD
-	\draw[black,line width=\scalingfactor*0.4pt] (0.115, 1.39) arc [start angle=-40, end angle=-140, radius=0.16];
+  \draw[black,line width=\scalingfactor*0.4pt] (0.115, 1.39) arc [start angle=-40, end angle=-140, radius=0.16];
 \else   
   \draw[\koala@body!40!black,line width=\scalingfactor*0.4pt] (0.115, 1.39) arc [start angle=-40, end angle=-140, radius=0.16];
 \fi

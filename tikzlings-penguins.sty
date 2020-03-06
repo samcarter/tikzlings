@@ -128,7 +128,7 @@
 %
 % Belly %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifpenguin@back\else
-	\penguin@part@draw[\penguin@belly] (0, 0.6) ellipse[x radius=0.48, y radius=0.35];
+  \penguin@part@draw[\penguin@belly] (0, 0.6) ellipse[x radius=0.48, y radius=0.35];
 \fi
 %
 % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -145,15 +145,15 @@
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifpenguin@back\else
-	\fill[\penguin@eye,rotate around={-10:(-0.175,1.64)}] (-0.175,1.64) ellipse[x radius=0.1, y radius=0.15];
-	\fill[\penguin@pupil,rotate around={-3:(-0.145,1.625)}] (-0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714];
-	\fill[\penguin@eye,rotate around={10:(0.175,1.64)}] (0.175,1.64) ellipse[x radius=0.1, y radius=0.15];
-	\fill[\penguin@pupil,rotate around={3:(0.145,1.625)}] (0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714];
+  \fill[\penguin@eye,rotate around={-10:(-0.175,1.64)}] (-0.175,1.64) ellipse[x radius=0.1, y radius=0.15];
+  \fill[\penguin@pupil,rotate around={-3:(-0.145,1.625)}] (-0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714];
+  \fill[\penguin@eye,rotate around={10:(0.175,1.64)}] (0.175,1.64) ellipse[x radius=0.1, y radius=0.15];
+  \fill[\penguin@pupil,rotate around={3:(0.145,1.625)}] (0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714];
 \fi
 %
 % Bill %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifpenguin@back\else
-	\penguin@part@draw[\penguin@bill] (0.323, 1.4591) .. controls (0.1467, 1.3257) and (0.1066, 1.4365) .. (0, 1.4358) .. controls (-0.1066, 1.4365) and (-0.1467, 1.3257) .. (-0.323, 1.4591) .. controls (-0.1267, 1.075) and (0.1267, 1.075) .. (0.323, 1.4591) -- cycle;
+  \penguin@part@draw[\penguin@bill] (0.323, 1.4591) .. controls (0.1467, 1.3257) and (0.1066, 1.4365) .. (0, 1.4358) .. controls (-0.1066, 1.4365) and (-0.1467, 1.3257) .. (-0.323, 1.4591) .. controls (-0.1267, 1.075) and (0.1267, 1.075) .. (0.323, 1.4591) -- cycle;
 \fi
 % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname penguinhookbody\endcsname
