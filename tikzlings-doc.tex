@@ -17,8 +17,8 @@
 \documentclass[parskip=half]{scrartcl}
 
 % packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage[T1]{fontenc}	
-\usepackage[utf8]{inputenc}		
+\usepackage[T1]{fontenc}  
+\usepackage[utf8]{inputenc}    
 \usepackage[english]{babel}
 \usepackage[svgnames]{xcolor}
 \usepackage[bitstream-charter]{mathdesign}
@@ -31,9 +31,9 @@
 \usepackage{scrlayer-scrpage} 
 \usepackage[hang,flushmargin,bottom]{footmisc}
 \usepackage[%
-	colorlinks=true,
-	breaklinks=true,
-	allcolors=SteelBlue!50!black
+  colorlinks=true,
+  breaklinks=true,
+  allcolors=SteelBlue!50!black
 ]{hyperref}
 \usetikzlibrary{3d}
 
@@ -86,46 +86,46 @@
 \colorlet{blue}{SteelBlue}
 
 \lstdefinestyle{duckstyle}{%
-	language={[latex]TeX},
-	tabsize=2,
-	breaklines,
-	basicstyle=\ttfamily,
-	commentstyle={\color{green!50!black}\slshape}, 
-	columns=fullflexible,
-	alsodigit={-},
-	alsoletter={3},
-	emphstyle=\color{red!60!black},
-	emph=[1]{
-		tikzlings,
-		tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmans, tikzlings-mice, tikzlings-moles, tikzlings-sloths, tikzlings-pigs, tikzlings-cats, tikzlings-hippos, tikzlings-rhinos, tikzlings-pandas,
-		body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, nose, pupil, bill, feet, belly, ask, phil, mouth, buttons, rotatearms, eyes, paws, back,
-		scale, yshift, xshift, rotate, hands, muzzle, schroedinger, toes,
-		hat, tophat, beret, strawhat, ribbon, harlequin, niuqelrah, witch, magichat, magicstars, crown, queencrown, kingcrown, santa, chef, graduate, tassel, alien, book, bookcolour, signpost, signcolour, signback, speech, think, bubblecolour, pizza, cheese, baguette, cake, icecream, flavoura, flavourb, flavourc, milkshake, wine, cricket, hockey, football, crystalball, magicwand, rollingpin, lightsaber, torch, basket, easter, egga, eggb, eggc, crozier, shovel, pickaxe, umbrella, umbrellaclosed, handbag, cocktail, pupilwidth, globalwarming,
-	},
-	texcsstyle=*\color{SteelBlue!50!black}\bfseries,
-	keywordstyle=\color{red!60!black}\bfseries,
-	morekeywords={tikzpicture},
-	moretexcs={
-		usepackage, usetikzlibrary, marmot, coati, bear, koala, owl, penguin, thing, tikzling, snowman, mouse, moles, sloth, pig, cat, hippo, rhino, panda, bearwear
-	},
-	delim ={[s][\ttfamily\color{green!50!black}]{$}{$}},
-	moredelim=[is][\footnotesize\ttfamily\color{orange!70!black}]{|}{|},
-	index=[1][emph]
+  language={[latex]TeX},
+  tabsize=2,
+  breaklines,
+  basicstyle=\ttfamily,
+  commentstyle={\color{green!50!black}\slshape}, 
+  columns=fullflexible,
+  alsodigit={-},
+  alsoletter={3},
+  emphstyle=\color{red!60!black},
+  emph=[1]{
+    tikzlings,
+    tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmans, tikzlings-mice, tikzlings-moles, tikzlings-sloths, tikzlings-pigs, tikzlings-cats, tikzlings-hippos, tikzlings-rhinos, tikzlings-pandas,
+    body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, nose, pupil, bill, feet, belly, ask, phil, mouth, buttons, rotatearms, eyes, paws, back,
+    scale, yshift, xshift, rotate, hands, muzzle, schroedinger, toes,
+    hat, tophat, beret, strawhat, ribbon, harlequin, niuqelrah, witch, magichat, magicstars, crown, queencrown, kingcrown, santa, chef, graduate, tassel, alien, book, bookcolour, signpost, signcolour, signback, speech, think, bubblecolour, pizza, cheese, baguette, cake, icecream, flavoura, flavourb, flavourc, milkshake, wine, cricket, hockey, football, crystalball, magicwand, rollingpin, lightsaber, torch, basket, easter, egga, eggb, eggc, crozier, shovel, pickaxe, umbrella, umbrellaclosed, handbag, cocktail, pupilwidth, globalwarming,
+  },
+  texcsstyle=*\color{SteelBlue!50!black}\bfseries,
+  keywordstyle=\color{red!60!black}\bfseries,
+  morekeywords={tikzpicture},
+  moretexcs={
+    usepackage, usetikzlibrary, marmot, coati, bear, koala, owl, penguin, thing, tikzling, snowman, mouse, moles, sloth, pig, cat, hippo, rhino, panda, bearwear, tikzlinghookbackground, tikzlinghookbelly, tikzlinghookbody, tikzlinghookforeground, mousehookbelly
+  },
+  delim ={[s][\ttfamily\color{green!50!black}]{$}{$}},
+  moredelim=[is][\footnotesize\ttfamily\color{orange!70!black}]{|}{|},
+  index=[1][emph]
 }
 
 \tcbset{%
-	colframe=SteelBlue!50!black,
-	arc=0mm,
-	fonttitle=\bfseries,
-	sidebyside,
-	listing options={style=duckstyle},
-	center lower,
-	righthand width=6.5cm,
-	bottom=0pt, 
-	top=0pt,
-	tikz lower,
-	height plus=3cm,
-	colback=SteelBlue!30!white
+  colframe=SteelBlue!50!black,
+  arc=0mm,
+  fonttitle=\bfseries,
+  sidebyside,
+  listing options={style=duckstyle},
+  center lower,
+  righthand width=6.5cm,
+  bottom=0pt, 
+  top=0pt,
+  tikz lower,
+  height plus=3cm,
+  colback=SteelBlue!30!white
 }
 
 \lstset{style=duckstyle}
@@ -141,19 +141,19 @@
 \newcommand{\cathookbackground}{\path (-1.6,0.1) rectangle (0.905, 2.17);}
 
 \cfoot{%
-	\begin{tikzpicture}[scale=0.5] 
-	    \tikzling[signpost={\thepage}]
-	\end{tikzpicture}
+  \begin{tikzpicture}[scale=0.5] 
+      \tikzling[signpost={\thepage}]
+  \end{tikzpicture}
 } 
 
 % meta %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{The \texorpdfstring{\tikzlings}{tikzlings} package}
 \subtitle{drawing animals and beings in \TikZ}
 \author{%
-	\texorpdfstring{\texttt{samcarter}\\[0.8em]
-		\url{https://github.com/samcarter/tikzlings}\\
-		\url{https://www.ctan.org/pkg/tikzlings}
-	}{samcarter}}
+  \texorpdfstring{\texttt{samcarter}\\[0.8em]
+    \url{https://github.com/samcarter/tikzlings}\\
+    \url{https://www.ctan.org/pkg/tikzlings}
+  }{samcarter}}
 \date{Version 0.2 -- \today}
 
 \begin{document}
@@ -290,8 +290,8 @@ A short example how the hooks can be used:
 \subsection*{List of all \tikzlings:}
 
 \begingroup
-	\hypersetup{hidelinks}
-	\tableofcontents
+  \hypersetup{hidelinks}
+  \tableofcontents
 \endgroup
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -345,8 +345,8 @@ A short example:
 %\usepackage{bearwear}
 \bear
 \bearwear[
-	long sleeves, 
-	shirt=red!80!black
+  long sleeves, 
+  shirt=red!80!black
 ]
 \end{tcblisting}
 
@@ -425,7 +425,6 @@ Additionally several predefined widths exist:
 \cat[very wide pupils,xshift=2.5cm,yshift=-2.5cm]
 \end{tikzpicture}
 \end{tcolorbox}
-
 
 There is also the special option \lstinline|schroedinger|. This cat is both alive and dead as long as you did not compile your document.
 Be prepared for a possibly disturbing scene when you open the pdf, this option is not suited for sensitive \tikzlings.
@@ -1136,7 +1135,7 @@ Finally the key \lstinline|3D| will make the snowman 3-dimensional:
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
-\section[Ti\emph{k}Zlings]{... , the Ti\emph{k}Zling}
+\section[Ti\emph{k}Zling]{... , the Ti\emph{k}Zling}
 
 \emph{The inventor of the word \tikzlings has yet to come up with a name for the Ti\emph{k}Zling}
 
@@ -1208,89 +1207,89 @@ A list of all available accessories is given below. For completeness the default
 
 \begin{tcblisting}{}
 \penguin[
-	hat=blue!40!black
+  hat=blue!40!black
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \snowman[
-	tophat=black!90!white
+  tophat=black!90!white
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \mouse[
-	beret=black
+  beret=black
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \owl[
-	strawhat=gray!30!white,
-	ribbon=black
+  strawhat=gray!30!white,
+  ribbon=black
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \coati[
-	harlequin=blue,
-	niuqelrah=red
+  harlequin=blue,
+  niuqelrah=red
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \cat[
-	witch=gray
+  witch=gray
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \bear[
-	magichat=violet,
-	magicstars=yellow!80!brown
+  magichat=violet,
+  magicstars=yellow!80!brown
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \penguin[
-	crown=yellow!90!orange
+  crown=yellow!90!orange
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \koala[
-	queencrown=yellow
+  queencrown=yellow
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \marmot[
-	kingcrown=gray
+  kingcrown=gray
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \mouse[
-	santa=red!80!black
+  santa=red!80!black
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \bear[
-	chef=gray!20!white
+  chef=gray!20!white
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \snowman[
-	graduate=black,
-	tassel=red
+  graduate=black,
+  tassel=red
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \penguin[
-	alien=green
+  alien=green
 ]
 \end{tcblisting}
 
@@ -1298,30 +1297,30 @@ A list of all available accessories is given below. For completeness the default
 
 \begin{tcblisting}{}
 \coati[
-	book={\tiny\TeX},
-	bookcolour=brown
+  book={\tiny\TeX},
+  bookcolour=brown
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \pig[
-	signpost={\TeX},
-	signcolour= brown!50!black,
-	signback=green!40!black
+  signpost={\TeX},
+  signcolour= brown!50!black,
+  signback=green!40!black
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \bear[
-	speech={\TeX},
-	bubblecolour=gray!30!white
+  speech={\TeX},
+  bubblecolour=gray!30!white
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \penguin[
-	think={\TeX},
-	bubblecolour=gray!30!white
+  think={\TeX},
+  bubblecolour=gray!30!white
 ]
 \end{tcblisting}
 
@@ -1329,46 +1328,46 @@ A list of all available accessories is given below. For completeness the default
 
 \begin{tcblisting}{}
 \koala[
-	pizza
+  pizza
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \mouse[
-	cheese=yellow!30!orange!60!white
+  cheese=yellow!30!orange!60!white
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \coati[
-	baguette=brown
+  baguette=brown
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \moles[
-	cake=violet
+  cake=violet
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \marmot[
-	icecream=brown!60!gray,
-	flavoura=brown!50!black,
-	flavourb=white!70!brown,
-	flavourc=red!50!white
+  icecream=brown!60!gray,
+  flavoura=brown!50!black,
+  flavourb=white!70!brown,
+  flavourc=red!50!white
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \penguin[
-	milkshake=red!20!white
+  milkshake=red!20!white
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \owl[
-	wine=red!70!black
+  wine=red!70!black
 ]
 \end{tcblisting}
 
@@ -1376,19 +1375,19 @@ A list of all available accessories is given below. For completeness the default
 
 \begin{tcblisting}{}
 \coati[
-	cricket=brown
+  cricket=brown
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \hippo[
-	hockey=brown
+  hockey=brown
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \koala[
-	football=white
+  football=white
 ]
 \end{tcblisting}
 
@@ -1396,88 +1395,88 @@ A list of all available accessories is given below. For completeness the default
 
 \begin{tcblisting}{}
 \marmot[
-	crystalball=cyan
+  crystalball=cyan
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \bear[
-	magicwand
+  magicwand
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \coati[
-	rollingpin=brown
+  rollingpin=brown
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \penguin[
-	lightsaber=green
+  lightsaber=green
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \snowman[
-	torch=gray
+  torch=gray
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \mouse[
-	basket=brown!70!gray
+  basket=brown!70!gray
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \sloth[
-	easter=brown!70!gray,
-	egga=blue,
-	eggb=green,
-	eggc=red
+  easter=brown!70!gray,
+  egga=blue,
+  eggb=green,
+  eggc=red
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \koala[
-	crozier=brown
+  crozier=brown
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \snowman[
-	shovel=gray
+  shovel=gray
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \penguin[
-	pickaxe=gray
+  pickaxe=gray
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \rhino[
-	umbrella=cyan
+  umbrella=cyan
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \marmot[
-	umbrellaclosed=cyan
+  umbrellaclosed=cyan
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \mouse[
-	handbag=red!70!black
+  handbag=red!70!black
 ]
 \end{tcblisting}
 
 \begin{tcblisting}{}
 \bear[
-	cocktail
+  cocktail
 ]
 \end{tcblisting}
 
