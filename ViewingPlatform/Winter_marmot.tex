@@ -1,0 +1,27 @@
+% !TeX TS-program = txs:///duck
+\documentclass{standalone}
+\usepackage{tikzlings}
+\usepackage{helvet}
+
+\begin{document}
+	
+\begin{tikzpicture}
+	\marmot
+  
+  \begin{pgfinterruptboundingbox}
+    \begin{scope}[xshift=-0.715cm]
+      \fill[blue!60!black] (0.1937,1.3858) .. controls (0.3533,1.5543) and (0.3897,1.8127) .. (0.3897,1.8127) .. controls (0.5699,1.9315) and (0.8689,1.9428) .. (1.0508,1.8263) .. controls (1.0508,1.8263) and (1.1163,1.5095) .. (1.2677,1.3846) .. controls (1.2179,2.7121) and (0.1524,2.6856) .. (0.1937,1.3858) -- cycle;
+    \end{scope}
+  \end{pgfinterruptboundingbox}
+  
+  \fill[blue!60!black!50!white] (0.6,1.35) circle[radius=0.1]; 
+  \fill[blue!60!black!30!white] (0.5,1.35) circle[radius=0.1]; 
+  
+  \fill[blue!60!black!50!white] (-0.6,1.35) circle[radius=0.1]; 
+  \fill[blue!60!black!30!white] (-0.5,1.35) circle[radius=0.1];   
+  
+  \fill[blue!60!black!30!white] (0,2.4) circle[radius=0.15]; 
+  
+\end{tikzpicture}	
+	
+\end{document}
