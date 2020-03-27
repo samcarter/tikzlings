@@ -110,17 +110,17 @@
 \csname tikzlinghookbackground\endcsname
 %
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\owl@part@draw[\owl@body,rotate around={-80:(0.575,0.8)}] (0.575,0.8) ellipse[x radius=0.38, y radius=0.1];
-\owl@part@draw[\owl@body,rotate around={80:(-0.575,0.8)}] (-0.575,0.8) ellipse[x radius=0.38, y radius=0.1]; 
+\owl@part@draw[\owl@body] (0.575,0.8) ellipse[x radius=0.38, y radius=0.1, rotate=-80];
+\owl@part@draw[\owl@body] (-0.575,0.8) ellipse[x radius=0.38, y radius=0.1, rotate=80]; 
 %
 % Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifowl@back
   \owl@part@draw[\owl@feet] (0.175,0.2) ellipse[x radius=0.03, y radius=0.1];
-  \owl@part@draw[\owl@feet,rotate around={20:(0.225,0.21)}] (0.225,0.21) ellipse[x radius=0.03, y radius=0.1];
-  \owl@part@draw[\owl@feet,rotate around={40:(0.275,0.23)}] (0.275,0.23) ellipse[x radius=0.03, y radius=0.1];
+  \owl@part@draw[\owl@feet] (0.225,0.21) ellipse[x radius=0.03, y radius=0.1, rotate=20];
+  \owl@part@draw[\owl@feet] (0.275,0.23) ellipse[x radius=0.03, y radius=0.1, rotate=40];
   \owl@part@draw[\owl@feet] (-0.175,0.2) ellipse[x radius=0.03, y radius=0.1];
-  \owl@part@draw[\owl@feet,rotate around={-20:(-0.225,0.21)}] (-0.225,0.21) ellipse[x radius=0.03, y radius=0.1];
-  \owl@part@draw[\owl@feet,rotate around={-40:(-0.275,0.23)}] (-0.275,0.23) ellipse[x radius=0.03, y radius=0.1];
+  \owl@part@draw[\owl@feet] (-0.225,0.21) ellipse[x radius=0.03, y radius=0.1, rotate=-20];
+  \owl@part@draw[\owl@feet] (-0.275,0.23) ellipse[x radius=0.03, y radius=0.1, rotate=-40];
 \fi
 %
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -159,11 +159,11 @@
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifowl@back\else
   \owl@part@draw[\owl@feet] (0.175,0.2) ellipse[x radius=0.03, y radius=0.1];
-  \owl@part@draw[\owl@feet,rotate around={20:(0.225,0.21)}] (0.225,0.21) ellipse[x radius=0.03, y radius=0.1];
-  \owl@part@draw[\owl@feet,rotate around={40:(0.275,0.23)}] (0.275,0.23) ellipse[x radius=0.03, y radius=0.1];
+  \owl@part@draw[\owl@feet] (0.225,0.21) ellipse[x radius=0.03, y radius=0.1, rotate=20];
+  \owl@part@draw[\owl@feet] (0.275,0.23) ellipse[x radius=0.03, y radius=0.1, rotate=40];
   \owl@part@draw[\owl@feet] (-0.175,0.2) ellipse[x radius=0.03, y radius=0.1];
-  \owl@part@draw[\owl@feet,rotate around={-20:(-0.225,0.21)}] (-0.225,0.21) ellipse[x radius=0.03, y radius=0.1];
-  \owl@part@draw[\owl@feet,rotate around={-40:(-0.275,0.23)}] (-0.275,0.23) ellipse[x radius=0.03, y radius=0.1];
+  \owl@part@draw[\owl@feet] (-0.225,0.21) ellipse[x radius=0.03, y radius=0.1, rotate=-20];
+  \owl@part@draw[\owl@feet] (-0.275,0.23) ellipse[x radius=0.03, y radius=0.1, rotate=-40];
 \fi
 % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname owlhookbody\endcsname

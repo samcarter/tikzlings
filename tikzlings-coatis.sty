@@ -127,8 +127,8 @@
 \fi
 %
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\coati@part@draw[\coati@body!80!white,rotate around={70:(-0.625,1)}] (-0.625,1) ellipse[x radius=0.42, y radius=0.13];
-\coati@part@draw[\coati@body!80!white,rotate around={-70:(0.625,1)}] (0.625,1) ellipse[x radius=0.42, y radius=0.13];
+\coati@part@draw[\coati@body!80!white] (-0.625,1) ellipse[x radius=0.42, y radius=0.13, rotate=70];
+\coati@part@draw[\coati@body!80!white] (0.625,1) ellipse[x radius=0.42, y radius=0.13, rotate=-70];
 %
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \coati@part@draw[\coati@body!50!darkgray] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
@@ -144,9 +144,9 @@
 \ifcoati@sideward
   %  
   % Left Ear %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-16:(-0.212, 2.135)}] (-0.212, 2.135) ellipse[x radius=0.09, y radius=0.12];
+  \coati@part@draw[\coati@body!45!white!95!orange] (-0.212, 2.135) ellipse[x radius=0.09, y radius=0.12, rotate=-16];
   \ifcoati@back\else
-    \coati@part@draw[\coati@body!80!white,rotate around={-16:(-0.212, 2.135)}] (-0.212, 2.135) ellipse[x radius=0.065, y radius=0.09];
+    \coati@part@draw[\coati@body!80!white] (-0.212, 2.135) ellipse[x radius=0.065, y radius=0.09, rotate=-16];
   \fi
   %  
   % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -172,9 +172,9 @@
   \fi
   %
   % Right Ear %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-16:(0.417, 1.875)}] (0.417, 1.875) ellipse[x radius=0.1, y radius=0.14];
+  \coati@part@draw[\coati@body!45!white!95!orange] (0.417, 1.875) ellipse[x radius=0.1, y radius=0.14, rotate=-16];
   \ifcoati@back\else
-    \coati@part@draw[\coati@body!80!white,rotate around={-16:(0.417, 1.875)}] (0.417, 1.875) ellipse[x radius=0.07, y radius=0.10];
+    \coati@part@draw[\coati@body!80!white] (0.417, 1.875) ellipse[x radius=0.07, y radius=0.10, rotate=-16];
   \fi
 %
 % Normal Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

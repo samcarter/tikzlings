@@ -123,10 +123,10 @@
 \fi
 %
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\koala@part@draw[\koala@body,rotate around={70:(-0.625,1)}] (-0.625,1) ellipse[x radius=0.42, y radius=0.13];
-\koala@part@draw[\koala@body!50!black,rotate around={-20:(-0.745,0.65)}] (-0.745,0.65) ellipse[x radius=0.12, y radius=0.08];
-\koala@part@draw[\koala@body,rotate around={-70:(0.625,1)}] (0.625,1) ellipse[x radius=0.42, y radius=0.13];
-\koala@part@draw[\koala@body!50!black,rotate around={20:(0.745,0.65)}] (0.745,0.65) ellipse[x radius=0.12, y radius=0.08];
+\koala@part@draw[\koala@body] (-0.625,1) ellipse[x radius=0.42, y radius=0.13, rotate=70];
+\koala@part@draw[\koala@body!50!black] (-0.745,0.65) ellipse[x radius=0.12, y radius=0.08, rotate=-20];
+\koala@part@draw[\koala@body] (0.625,1) ellipse[x radius=0.42, y radius=0.13, rotate=-70];
+\koala@part@draw[\koala@body!50!black] (0.745,0.65) ellipse[x radius=0.12, y radius=0.08, rotate=20];
 %
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \koala@part@draw[\koala@body] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;

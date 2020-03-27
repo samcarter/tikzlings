@@ -316,15 +316,15 @@
 % Hat %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@hat
   \fill[\thing@hat,rotate around={-15:(-0.3,2.01)}] (-0.3,2.01) rectangle (0.46,2.31);
-  \fill[\thing@hat,rotate around={-15:(0.05,1.92)}] (0.05,1.92) ellipse[x radius=0.6, y radius=0.1]; 
-  \fill[\thing@hat,rotate around={-15:(0.14,2.2)}] (0.14,2.2) ellipse[x radius=0.37, y radius=0.08]; 
+  \fill[\thing@hat] (0.05,1.92) ellipse[x radius=0.6, y radius=0.1, rotate=-15]; 
+  \fill[\thing@hat] (0.14,2.2) ellipse[x radius=0.37, y radius=0.08, rotate=-15]; 
 \fi
 %
 % Tophat %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@tophat
-  \fill[\thing@tophat,rotate around={-15:(0.1,1.94)}] (0.1,1.94) ellipse[x radius=0.48, y radius=0.1];
+  \fill[\thing@tophat] (0.1,1.94) ellipse[x radius=0.48, y radius=0.1, rotate=-15];
   \fill[\thing@tophat,rotate around={-15:(0.15,2.165)}] (-0.17, 1.94) -- (0.46, 1.94) -- (0.52, 2.39) -- (-0.22, 2.39) -- cycle;
-  \fill[\thing@tophat,rotate around={-15:(0.21,2.385)}] (0.21,2.385) ellipse[x radius=0.37, y radius=0.08];  
+  \fill[\thing@tophat] (0.21,2.385) ellipse[x radius=0.37, y radius=0.08, rotate=-15];  
 \fi
 %
 % Beret %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

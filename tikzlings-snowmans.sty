@@ -150,8 +150,8 @@
 \else
   %
   % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \snowman@part@draw[\snowman@body,rotate around={-50:(0.5,1.1)}] (0.5,1.1) ellipse[x radius=0.3, y radius=0.12];
-  \snowman@part@draw[\snowman@body,rotate around={50:(-0.5,1.1)}] (-0.5,1.1) ellipse[x radius=0.3, y radius=0.12];
+  \snowman@part@draw[\snowman@body] (0.5,1.1) ellipse[x radius=0.3, y radius=0.12, rotate=-50];
+  \snowman@part@draw[\snowman@body] (-0.5,1.1) ellipse[x radius=0.3, y radius=0.12, rotate=50];
   %
   % Body + Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \snowman@part@draw[\snowman@body] (0,0.5) ellipse[x radius=0.6, y radius=0.5];

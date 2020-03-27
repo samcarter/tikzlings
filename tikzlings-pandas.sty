@@ -117,8 +117,8 @@
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifpanda@back\else
   \begin{scope}[yshift=-0.08cm]
-  \panda@part@draw[black,rotate around={70:(0.28,0.93)}] (0.28,0.93) ellipse[x radius=0.24, y radius=0.13];
-  \panda@part@draw[black,rotate around={-70:(-0.28,0.93)}] (-0.28,0.93) ellipse[x radius=0.24, y radius=0.13];
+  \panda@part@draw[black] (0.28,0.93) ellipse[x radius=0.24, y radius=0.13, rotate=70];
+  \panda@part@draw[black] (-0.28,0.93) ellipse[x radius=0.24, y radius=0.13, rotate=-70];
   \end{scope}
 \fi
 %

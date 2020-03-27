@@ -130,8 +130,8 @@
 %
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifrhino@back\else
-  \rhino@part@draw[\rhino@body,rotate around={90:(0.3,1.0)}] (0.3,1.0) ellipse[x radius=0.24, y radius=0.13];
-  \rhino@part@draw[\rhino@body,rotate around={-90:(-0.3,1.0)}] (-0.3,1.0) ellipse[x radius=0.24, y radius=0.13];
+  \rhino@part@draw[\rhino@body] (0.3,1.0) ellipse[x radius=0.24, y radius=0.13, rotate=90];
+  \rhino@part@draw[\rhino@body] (-0.3,1.0) ellipse[x radius=0.24, y radius=0.13, rotate=-90];
 \fi
 %
 % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

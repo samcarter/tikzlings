@@ -112,8 +112,8 @@
 \csname tikzlinghookbackground\endcsname
 %
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\penguin@part@draw[\penguin@body,rotate around={-50:(0.575,1.2)}] (0.575,1.2) ellipse[x radius=0.38, y radius=0.1];
-\penguin@part@draw[\penguin@body,rotate around={50:(-0.575,1.2)}] (-0.575,1.2) ellipse[x radius=0.38, y radius=0.1];  
+\penguin@part@draw[\penguin@body] (0.575,1.2) ellipse[x radius=0.38, y radius=0.1, rotate=-50];
+\penguin@part@draw[\penguin@body] (-0.575,1.2) ellipse[x radius=0.38, y radius=0.1, rotate=50];  
 %
 % Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifpenguin@back
@@ -145,10 +145,10 @@
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifpenguin@back\else
-  \fill[\penguin@eye,rotate around={-10:(-0.175,1.64)}] (-0.175,1.64) ellipse[x radius=0.1, y radius=0.15];
-  \fill[\penguin@pupil,rotate around={-3:(-0.145,1.625)}] (-0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714];
-  \fill[\penguin@eye,rotate around={10:(0.175,1.64)}] (0.175,1.64) ellipse[x radius=0.1, y radius=0.15];
-  \fill[\penguin@pupil,rotate around={3:(0.145,1.625)}] (0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714];
+  \fill[\penguin@eye] (-0.175,1.64) ellipse[x radius=0.1, y radius=0.15, rotate=-10];
+  \fill[\penguin@pupil] (-0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714, rotate=-3];
+  \fill[\penguin@eye] (0.175,1.64) ellipse[x radius=0.1, y radius=0.15, rotate=10];
+  \fill[\penguin@pupil] (0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714, rotate=3];
 \fi
 %
 % Bill %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -101,8 +101,8 @@
 \csname tikzlinghookbackground\endcsname
 %
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\bear@part@draw[\bear@body!70!black,rotate around={-50:(0.525,0.9)}] (0.525,0.9) ellipse[x radius=0.35, y radius=0.15];
-\bear@part@draw[\bear@body!70!black,rotate around={50:(-0.525,0.9)}] (-0.525,0.9) ellipse[x radius=0.35, y radius=0.15];
+\bear@part@draw[\bear@body!70!black] (0.525,0.9) ellipse[x radius=0.35, y radius=0.15, rotate=-50];
+\bear@part@draw[\bear@body!70!black] (-0.525,0.9) ellipse[x radius=0.35, y radius=0.15, rotate=50];
 %
 % Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifbear@back

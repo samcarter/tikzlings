@@ -148,7 +148,7 @@
 \fi
 %
 \ifmarmot@shadow
-  \fill[opacity=0,blur shadow,rotate around={-80:(0.3,0.5)}] (0.3,0.5) ellipse[x radius=0.28, y radius=0.8];
+  \fill[opacity=0,blur shadow,] (0.3,0.5) ellipse[x radius=0.28, y radius=0.8, rotate=-80];
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -200,8 +200,8 @@
 \ifmarmot@back\else
 %
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\marmot@part@draw[\marmot@body!50!black,rotate around={70:(0.385,0.93)}] (0.385,0.93) ellipse[x radius=0.24, y radius=0.13];
-\marmot@part@draw[\marmot@body!50!black,rotate around={-70:(-0.385,0.93)}] (-0.385,0.93) ellipse[x radius=0.24, y radius=0.13];
+\marmot@part@draw[\marmot@body!50!black] (0.385,0.93) ellipse[x radius=0.24, y radius=0.13, rotate=70];
+\marmot@part@draw[\marmot@body!50!black] (-0.385,0.93) ellipse[x radius=0.24, y radius=0.13, rotate=-70];
 %
 % Muzzle %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \marmot@part@draw[\marmot@body!50!white] (0,1.47) ellipse[x radius=0.23, y radius=0.13]; 

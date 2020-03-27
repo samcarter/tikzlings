@@ -103,8 +103,8 @@
 \csname tikzlinghookbackground\endcsname 
 %
 % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\hippo@part@draw[\hippo@body,rotate around={-30:(0.23,2.03)}] (0.23,2.03) ellipse[x radius=0.09, y radius=0.13];
-\hippo@part@draw[\hippo@body,rotate around={30:(-0.23,2.03)}] (-0.23,2.03) ellipse[x radius=0.09, y radius=0.13];
+\hippo@part@draw[\hippo@body] (0.23,2.03) ellipse[x radius=0.09, y radius=0.13, rotate=-30];
+\hippo@part@draw[\hippo@body] (-0.23,2.03) ellipse[x radius=0.09, y radius=0.13, rotate=30];
 %
 % Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifhippo@back
@@ -129,8 +129,8 @@
 %    
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifhippo@back\else
-  \hippo@part@draw[\hippo@body,rotate around={90:(0.35,1.0)}] (0.35,1.0) ellipse[x radius=0.24, y radius=0.13];
-  \hippo@part@draw[\hippo@body,rotate around={-90:(-0.35,1.0)}] (-0.35,1.0) ellipse[x radius=0.24, y radius=0.13];
+  \hippo@part@draw[\hippo@body] (0.35,1.0) ellipse[x radius=0.24, y radius=0.13, rotate=90];
+  \hippo@part@draw[\hippo@body] (-0.35,1.0) ellipse[x radius=0.24, y radius=0.13, rotate=-90];
 \fi
 %
 % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
