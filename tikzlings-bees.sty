@@ -1,0 +1,173 @@
+% !TeX root = ./examples/bee.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% The tikzlings-bees package (part of the tikzlings collection)
+% A package to bring little bees into tikz
+% Maintained by samcarter
+%
+% Project repository and bug tracker:
+% https://github.com/samcarter/tikzlings
+%
+% Released under the LaTeX Project Public License v1.3c or later
+% See http://www.latex-project.org/lppl.txt
+%
+% Version 0.2
+% April 7, 2019    
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{tikzlings-bees}
+ [2020/04/19 v0.2 Drawing bees in TikZ]
+
+\RequirePackage{tikz}
+\RequirePackage{tikzlings-addons}
+
+\newcommand*{\bee}[1][]{%
+  \begin{scope}%
+    \tikzset{/bee/.cd,#1}%
+    \bee@draw%
+  \end{scope}%
+  \thing[#1]%
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname beehookforeground\endcsname
+  \csname tikzlinghookforeground\endcsname
+  %   
+}
+
+\newif\ifbee@threeD
+\newif\ifbee@back
+
+\tikzset{
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Pass unknown keys on to tikz
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  /bee/.search also={/tikz,/pgf,/thing},
+  /bee/.cd,
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % body
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  body/.code         = \def\bee@body{#1},
+  body               = yellow!70!orange,
+  hands/.code        = \def\bee@hands{#1},
+  hands              = black,  
+  wings/.code        = \def\bee@wings{#1},
+  wings              = blue!20!cyan!30!white, 
+  stripes/.code      = \def\bee@stripes{#1},
+  stripes            = black,     
+  antennas/.code     = \def\bee@antennas{#1},
+  antennas           = black,     
+  eye/.code         = \def\bee@eye{#1},
+  eye               = black,   
+  mouth/.code        = \def\bee@mouth{#1},
+  mouth              = black,      
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % options
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  3D/.code           = \bee@threeDtrue,  
+  back/.code         = \bee@backtrue,       
+}
+
+\def\bee@draw{%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% minimal bounding box size 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\path (-0.88,0.1) rectangle (0.88, 2.4);
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% store the current scale factor
+% from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
+\pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))}%
+\pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
+\pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% switch between 2D and 3D, from
+% https://chat.stackexchange.com/transcript/message/45991801#45991801
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifbee@threeD
+  \def\bee@part@draw[##1]{\shade[ball color=##1]}
+\else
+  \def\bee@part@draw[##1]{\fill[##1]}
+\fi
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Body parts (center: x=0)
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname beeshookbackground\endcsname
+\csname tikzlinghookbackground\endcsname
+%
+\ifbee@back
+  % Antenna %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \fill[\bee@antennas,rotate around={15:(-0.175,2.115)}] (-0.2,1.93) rectangle (-0.15,2.3);
+  \fill[\bee@antennas,rotate around={-15:(0.175,2.115)}] (0.2,1.93) rectangle (0.15,2.3);
+  \bee@part@draw[\bee@antennas] (-0.22,2.30) circle[radius=0.07];
+  \bee@part@draw[\bee@antennas] (0.22,2.30) circle[radius=0.07];
+\else
+  % Wings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \fill[\bee@wings] (0.45,1.25) circle[radius=0.35] (0.5,0.8) circle[radius=0.35];
+  \fill[\bee@wings] (-0.45,1.25) circle[radius=0.35](-0.5,0.8) circle[radius=0.35];
+\fi
+%
+% Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{scope}
+  \clip (0,2.1) to[out=180,in=140,looseness=1.2] (-0.3,1.5) to[out=-110,in=180,looseness=1.2] (0,0.15) to[out=00,in=-65,looseness=1.2] (0.3,1.5) to[out=40,in=0,looseness=1.2] cycle;
+  \bee@part@draw[\bee@body] (0,2.1) to[out=180,in=140,looseness=1.2] (-0.3,1.5) to[out=-110,in=180,looseness=1.2] (0,0.15) to[out=00,in=-65,looseness=1.2] (0.3,1.5) to[out=40,in=0,looseness=1.2] cycle;
+  % stripes
+  \bee@part@draw[\bee@stripes] (-0.475,1.3) arc(180:360:0.5 and 0.1) -- ++ (0,-0.15) arc(360:180:0.5 and 0.1) -- cycle
+  (-0.475,1.0) arc(180:360:0.5 and 0.1) -- ++ (0,-0.15) arc(360:180:0.5 and 0.1) -- cycle
+  (-0.475,0.65) arc(180:360:0.5 and 0.1) -- ++ (0,-0.15) arc(360:180:0.5 and 0.1) -- cycle
+  (-0.475,0.35) arc(180:360:0.5 and 0.1) -- ++ (0,-0.15) arc(360:180:0.5 and 0.1) -- cycle;
+\end{scope}
+%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname beeshookbelly\endcsname
+\csname tikzlinghookbelly\endcsname
+%
+% Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifbee@back
+  %
+  % Wings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \fill[\bee@wings] (0.45,1.25) circle[radius=0.35] (0.5,0.8) circle[radius=0.35];
+  \fill[\bee@wings] (-0.45,1.25) circle[radius=0.35](-0.5,0.8) circle[radius=0.35];
+\else
+  %
+  % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \bee@part@draw[\bee@eye] (-0.15,1.8) circle[radius=0.05]; 
+  \bee@part@draw[\bee@eye] (0.15,1.8) circle[radius=0.05]; 
+  %
+  % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \bee@part@draw[\bee@hands] (-0.25,0.88) circle[x radius=0.07,y radius=0.2, rotate=25];
+  \bee@part@draw[\bee@hands] (0.25,0.88) circle[x radius=0.07,y radius=0.2, rotate=-25];
+  %
+  % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \draw[\bee@mouth,line width=\scalingfactor*0.4pt] (0.115, 1.6) arc [start angle=-40, end angle=-140, radius=0.16];
+  % 
+  % Antenna %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \fill[\bee@antennas,rotate around={15:(-0.175,2.115)}] (-0.2,1.93) rectangle (-0.15,2.3);
+  \fill[\bee@antennas,rotate around={-15:(0.175,2.115)}] (0.2,1.93) rectangle (0.15,2.3);
+  \bee@part@draw[\bee@antennas] (-0.22,2.30) circle[radius=0.07];
+  \bee@part@draw[\bee@antennas] (0.22,2.30) circle[radius=0.07];
+  %
+\fi
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname beeshookbody\endcsname
+\csname tikzlinghookbody\endcsname
+%
+}

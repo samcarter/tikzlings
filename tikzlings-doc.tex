@@ -97,16 +97,16 @@
   emphstyle=\color{red!60!black},
   emph=[1]{
     tikzlings,
-    tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmans, tikzlings-mice, tikzlings-moles, tikzlings-sloths, tikzlings-pigs, tikzlings-cats, tikzlings-hippos, tikzlings-rhinos, tikzlings-pandas,
-    body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, nose, pupil, bill, feet, belly, ask, phil, mouth, buttons, rotatearms, eyes, paws, back,
+    tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmans, tikzlings-mice, tikzlings-moles, tikzlings-sloths, tikzlings-pigs, tikzlings-cats, tikzlings-hippos, tikzlings-rhinos, tikzlings-pandas, tikzlings-bees,
+    body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, nose, pupil, bill, feet, belly, ask, phil, mouth, buttons, rotatearms, eyes, paws, back, pupilwidth, globalwarming, wings, antennas, stripes,
     scale, yshift, xshift, rotate, hands, muzzle, schroedinger, toes,
-    hat, tophat, beret, strawhat, ribbon, harlequin, niuqelrah, witch, magichat, magicstars, crown, queencrown, kingcrown, santa, chef, graduate, tassel, alien, book, bookcolour, signpost, signcolour, signback, speech, think, bubblecolour, pizza, cheese, baguette, cake, icecream, flavoura, flavourb, flavourc, milkshake, wine, cricket, hockey, football, crystalball, magicwand, rollingpin, lightsaber, torch, basket, easter, egga, eggb, eggc, crozier, shovel, pickaxe, umbrella, umbrellaclosed, handbag, cocktail, pupilwidth, globalwarming,
+    hat, tophat, beret, strawhat, ribbon, harlequin, niuqelrah, witch, magichat, magicstars, crown, queencrown, kingcrown, santa, chef, graduate, tassel, alien, book, bookcolour, signpost, signcolour, signback, speech, think, bubblecolour, pizza, cheese, baguette, cake, icecream, flavoura, flavourb, flavourc, milkshake, wine, cricket, hockey, football, crystalball, magicwand, rollingpin, lightsaber, torch, basket, easter, egga, eggb, eggc, crozier, shovel, pickaxe, umbrella, umbrellaclosed, handbag, cocktail,
   },
   texcsstyle=*\color{SteelBlue!50!black}\bfseries,
   keywordstyle=\color{red!60!black}\bfseries,
   morekeywords={tikzpicture},
   moretexcs={
-    usepackage, usetikzlibrary, marmot, coati, bear, koala, owl, penguin, thing, tikzling, snowman, mouse, moles, sloth, pig, cat, hippo, rhino, panda, bearwear, tikzlinghookbackground, tikzlinghookbelly, tikzlinghookbody, tikzlinghookforeground, mousehookbelly
+    usepackage, usetikzlibrary, marmot, coati, bear, koala, owl, penguin, thing, tikzling, snowman, mouse, moles, sloth, pig, cat, hippo, rhino, panda, bee, bearwear, tikzlinghookbackground, tikzlinghookbelly, tikzlinghookbody, tikzlinghookforeground, mousehookbelly
   },
   delim ={[s][\ttfamily\color{green!50!black}]{$}{$}},
   moredelim=[is][\footnotesize\ttfamily\color{orange!70!black}]{|}{|},
@@ -344,6 +344,69 @@ Many more options and examples can be found in the package documentation \url{ht
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+% Bee 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section[Bee]{Beeing, the bee}
+
+\emph{The bee was kindly contributed by @marmot}
+
+\subsection{Package name}
+
+\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
+\vspace*{0.5cm}
+\lstinline|\usepackage{tikzlings-bees}| 
+\vspace*{0.5cm}
+\end{tcolorbox}
+
+\subsection{Basic Usage}
+
+\begin{tcblisting}{}
+\bee
+\end{tcblisting}
+
+\subsection{Options}
+
+The basic bee can be modified by changing its colour:
+\begin{tcblisting}{}
+\bee[body=blue]
+\end{tcblisting}
+
+In addition to the colour of the body, the colour of various body parts can be adjusted:
+\begin{tcblisting}{}
+\bee[antennas=red]
+\end{tcblisting}
+\begin{tcblisting}{}
+\bee[eye=red]
+\end{tcblisting}
+\begin{tcblisting}{}
+\bee[mouth=red]
+\end{tcblisting}
+\begin{tcblisting}{}
+\bee[wings=red]
+\end{tcblisting}
+\begin{tcblisting}{}
+\bee[hands=red]
+\end{tcblisting}
+\begin{tcblisting}{}
+\bee[stripes=red]
+\end{tcblisting}
+
+To view the bee from behind:
+\begin{tcblisting}{}
+\bee[back]
+\end{tcblisting}
+
+The key \lstinline|3D| will make the bee 3-dimensional:
+\begin{tcblisting}{}
+\bee[3D]
+\end{tcblisting}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 % Cat
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -546,7 +609,7 @@ The key \lstinline|3D| will make the hippo 3-dimensional:
 \clearpage
 \section[Koala]{Will, the koala}
 
-\emph{The koala was generously contributed by the @marmot and is named in honour of a \LaTeX{} developer from Down Under}
+\emph{The koala was generously contributed by @marmot and is named in honour of a \LaTeX{} developer from Down Under}
 
 \subsection{Package name}
 
@@ -1370,7 +1433,7 @@ A list of all available accessories is given below. For completeness the default
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\hippo[
+\bee[
   hockey=brown
 ]
 \end{tcblisting}
