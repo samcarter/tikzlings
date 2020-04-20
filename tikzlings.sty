@@ -40,6 +40,7 @@
 \RequirePackage{tikzlings-rhinos}
 \RequirePackage{tikzlings-pandas}
 \RequirePackage{tikzlings-bees}
+\RequirePackage{tikzlings-anteaters}
 \RequirePackage{tikzlings-addons}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -60,7 +61,7 @@
   \pgfmathsetseed{\number\pdfrandomseed}
 \fi
 
-\pgfmathdeclarerandomlist{tikzlings}{{\bear}{\penguin}{\marmot}{\owl}{\koala}{\coati}{\snowman}{\mouse}{\moles}{\sloth}{\pig}{\cat}{\hippo}{\rhino}{\bee}}
+\pgfmathdeclarerandomlist{tikzlings}{{\bear}{\penguin}{\marmot}{\owl}{\koala}{\coati}{\snowman}{\mouse}{\moles}{\sloth}{\pig}{\cat}{\hippo}{\rhino}{\bee}{\anteater}}
 
 \newcommand{\tikzling}[1][]{%
   \pgfmathrandomitem{\tikzling@random}{tikzlings}%

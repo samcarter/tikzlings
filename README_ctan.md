@@ -5,7 +5,7 @@ Current version: 2019/04/07 v0.2
 
 This project is licensed under the LaTeX Project Public License v1.3c or later, see http://www.latex-project.org/lppl.txt
 
-![tikzlings](https://github.com/samcarter/tikzlings/blob/master/Examples/tikzlings.png)
+![tikzlings](https://raw.githubusercontent.com/samcarter/tikzlings/master/Examples/tikzlings.png)
 
 ### TikZlings in action
 
