@@ -26,6 +26,7 @@ A big thank you to all the people who contributed with code, ideas or feedback t
 <a href="./Examples/pig.tex"><img src="./Examples/pig.svg" alt="Pig" height="64"></a>
 <a href="./Examples/rhino.tex"><img src="./Examples/rhino.svg" alt="Rhino" height="64"></a>
 <a href="./Examples/sloth.tex"><img src="./Examples/sloth.svg" alt="Sloth" height="64"></a>
+<a href="./Examples/squirrel.tex"><img src="./Examples/squirrel.svg" alt="Squirrel" height="64"></a>
 <a href="./Examples/snowman.tex"><img src="./Examples/snowman.svg" alt="Snowman" height="64"></a>
 
 ## Usage
