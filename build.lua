@@ -32,7 +32,7 @@ function git(...)
     table.insert(args, 1, 'git')
     local cmd = table.concat(args, ' ')
     print('Executing:', cmd)
---    os.execute(cmd)
+    os.execute(cmd)
 end
 
 -- replace version tags in .sty and -doc.tex files ===================
@@ -69,6 +69,7 @@ end
 function tag_hook(tagname)
 	git("add", "*.sty")
 	git("add", "*-doc.tex")
+    git("add", "README_ctan.md")
 	os.execute("latexmk " .. module .. "-doc")
 	os.execute("cp " .. module .. "-doc.pdf documentation.pdf")
 	git("add", "documentation.pdf")
