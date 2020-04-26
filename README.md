@@ -52,43 +52,43 @@ An exhaustive list of possible options can be found in [package documentation](.
 ## Some examples
 
 
-<a href="./ViewingPLatform/Napoleon.svg"><img src="./ViewingPlatform/Napoleon.svg" alt="Napoleon" height="64"></a>
-<a href="./ViewingPLatform/Alfred_the_mouse.svg"><img src="./ViewingPlatform/Alfred_the_mouse.svg" alt="Alfred the mouse" height="64"></a>
-<a href="./ViewingPLatform/Latex3_bear.svg"><img src="./ViewingPlatform/Latex3_bear.svg" alt="Latex3 bear" height="64"></a>
-<a href="./ViewingPLatform/Marmot_geek.svg"><img src="./ViewingPlatform/Marmot_geek.svg" alt="Marmot Geek" height="64"></a>
-<a href="./ViewingPLatform/Miss_marmot.svg"><img src="./ViewingPlatform/Miss_marmot.svg" alt="Miss Marmot" height="64"></a>
-<a href="./ViewingPLatform/Mouse_chocolate.svg"><img src="./ViewingPlatform/Mouse_chocolate.svg" alt="Mouse chocolate" height="64"></a>
-<a href="./ViewingPLatform/Winter_pig.svg"><img src="./ViewingPlatform/Winter_pig.svg" alt="Winter pig" height="64"></a>
-<a href="./ViewingPLatform/Winter_marmot.svg"><img src="./ViewingPlatform/Winter_marmot.svg" alt="Winter marmot" height="64"></a>
-<a href="./ViewingPLatform/Wild_west_marmot.svg"><img src="./ViewingPlatform/Wild_west_marmot.svg" alt="Wild west marmot" height="64"></a>
-<a href="./ViewingPLatform/Roller_skates_koala.svg"><img src="./ViewingPlatform/Roller_skates_koala.svg" alt="Roller skates koala" height="64"></a>
-<a href="./ViewingPLatform/Roller_skates_pig.svg"><img src="./ViewingPlatform/Roller_skates_pig.svg" alt="Roller skates pig" height="64"></a>
-<a href="./ViewingPLatform/Nurse.svg"><img src="./ViewingPlatform/Nurse.svg" alt="Nurse" height="64"></a>
-<a href="./ViewingPLatform/Aouda.svg"><img src="./ViewingPlatform/Aouda.svg" alt="Princess Aouda" height="64"></a>
-<a href="./ViewingPLatform/Phileas_Fogg.svg"><img src="./ViewingPlatform/Phileas_Fogg.svg" alt="Phileas Fogg" height="64"></a>
-<a href="./ViewingPLatform/Passepartout.svg"><img src="./ViewingPlatform/Passepartout.svg" alt="Passepartout" height="64"></a>
-<a href="./ViewingPLatform/Hang_gliding_pingu.svg"><img src="./ViewingPlatform/Hang_gliding_pingu.svg" alt="Hang gliding pingu" height="64"></a>
-<a href="./ViewingPLatform/Hang_gliding_bear.svg"><img src="./ViewingPlatform/Hang_gliding_bear.svg" alt="Hang gliding bear" height="64"></a>
-<a href="./ViewingPLatform/Tartan.svg"><img src="./ViewingPlatform/Tartan.png" alt="Tartan" height="64"></a>
-<a href="./ViewingPLatform/Haggis.svg"><img src="./ViewingPlatform/Haggis.png" alt="Haggis" height="64"></a>
-<a href="./ViewingPLatform/Marmot_cupid.tex"><img src="./ViewingPlatform/Marmot_cupid.svg" alt="Marmot cupid" height="64"></a>
+<a href="./ViewingPlatform/Napoleon.svg"><img src="./ViewingPlatform/Napoleon.svg" alt="Napoleon" height="64"></a>
+<a href="./ViewingPlatform/Alfred_the_mouse.svg"><img src="./ViewingPlatform/Alfred_the_mouse.svg" alt="Alfred the mouse" height="64"></a>
+<a href="./ViewingPlatform/Latex3_bear.svg"><img src="./ViewingPlatform/Latex3_bear.svg" alt="Latex3 bear" height="64"></a>
+<a href="./ViewingPlatform/Marmot_geek.svg"><img src="./ViewingPlatform/Marmot_geek.svg" alt="Marmot Geek" height="64"></a>
+<a href="./ViewingPlatform/Miss_marmot.svg"><img src="./ViewingPlatform/Miss_marmot.svg" alt="Miss Marmot" height="64"></a>
+<a href="./ViewingPlatform/Mouse_chocolate.svg"><img src="./ViewingPlatform/Mouse_chocolate.svg" alt="Mouse chocolate" height="64"></a>
+<a href="./ViewingPlatform/Winter_pig.svg"><img src="./ViewingPlatform/Winter_pig.svg" alt="Winter pig" height="64"></a>
+<a href="./ViewingPlatform/Winter_marmot.svg"><img src="./ViewingPlatform/Winter_marmot.svg" alt="Winter marmot" height="64"></a>
+<a href="./ViewingPlatform/Wild_west_marmot.svg"><img src="./ViewingPlatform/Wild_west_marmot.svg" alt="Wild west marmot" height="64"></a>
+<a href="./ViewingPlatform/Roller_skates_koala.svg"><img src="./ViewingPlatform/Roller_skates_koala.svg" alt="Roller skates koala" height="64"></a>
+<a href="./ViewingPlatform/Roller_skates_pig.svg"><img src="./ViewingPlatform/Roller_skates_pig.svg" alt="Roller skates pig" height="64"></a>
+<a href="./ViewingPlatform/Nurse.svg"><img src="./ViewingPlatform/Nurse.svg" alt="Nurse" height="64"></a>
+<a href="./ViewingPlatform/Aouda.svg"><img src="./ViewingPlatform/Aouda.svg" alt="Princess Aouda" height="64"></a>
+<a href="./ViewingPlatform/Phileas_Fogg.svg"><img src="./ViewingPlatform/Phileas_Fogg.svg" alt="Phileas Fogg" height="64"></a>
+<a href="./ViewingPlatform/Passepartout.svg"><img src="./ViewingPlatform/Passepartout.svg" alt="Passepartout" height="64"></a>
+<a href="./ViewingPlatform/Hang_gliding_pingu.svg"><img src="./ViewingPlatform/Hang_gliding_pingu.svg" alt="Hang gliding pingu" height="64"></a>
+<a href="./ViewingPlatform/Hang_gliding_bear.svg"><img src="./ViewingPlatform/Hang_gliding_bear.svg" alt="Hang gliding bear" height="64"></a>
+<a href="./ViewingPlatform/Tartan.svg"><img src="./ViewingPlatform/Tartan.png" alt="Tartan" height="64"></a>
+<a href="./ViewingPlatform/Haggis.svg"><img src="./ViewingPlatform/Haggis.png" alt="Haggis" height="64"></a>
+<a href="./ViewingPlatform/Marmot_cupid.tex"><img src="./ViewingPlatform/Marmot_cupid.svg" alt="Marmot cupid" height="64"></a>
 
 
-<a href="./ViewingPLatform/Bruegel.svg"><img src="./ViewingPlatform/Bruegel.png" alt="Bruegel" height="64"></a>
-<a href="./ViewingPLatform/ElGreco.svg"><img src="./ViewingPlatform/ElGreco.png" alt="ElGreco" height="64"></a>
-<a href="./ViewingPLatform/Last_supper.svg"><img src="./ViewingPlatform/Last_supper.png" alt="Last Supper" height="64"></a>
-<a href="./ViewingPLatform/Vitruvian_coati.svg"><img src="./ViewingPlatform/Vitruvian_coati.svg" alt="Vitruvian coati" height="64"></a>
+<a href="./ViewingPlatform/Bruegel.svg"><img src="./ViewingPlatform/Bruegel.png" alt="Bruegel" height="64"></a>
+<a href="./ViewingPlatform/ElGreco.svg"><img src="./ViewingPlatform/ElGreco.png" alt="ElGreco" height="64"></a>
+<a href="./ViewingPlatform/Last_supper.svg"><img src="./ViewingPlatform/Last_supper.png" alt="Last Supper" height="64"></a>
+<a href="./ViewingPlatform/Vitruvian_coati.svg"><img src="./ViewingPlatform/Vitruvian_coati.svg" alt="Vitruvian coati" height="64"></a>
 
 
-<a href="./ViewingPLatform/lt3marmot.tex"><img src="./ViewingPlatform/lt3marmot.svg" alt="lt3marmot" height="64"></a>
-<a href="./ViewingPLatform/coati_custom_body.tex"><img src="./ViewingPlatform/coati_custom_body.svg" alt="Custom Body Coati" height="64"></a>
-<a href="./ViewingPLatform/Jumping_marmot_ballon.tex"><img src="./ViewingPlatform/Jumping_marmot_ballon.png" alt="Jumping Ballon Marmot" height="64"></a>
-<a href="./ViewingPLatform/Mandala.tex"><img src="./ViewingPlatform/Mandala.svg" alt="Mandala" height="64"></a>
-<a href="./ViewingPLatform/Mandala2.tex"><img src="./ViewingPlatform/Mandala2.svg" alt="Mandala" height="64"></a>
-<a href="./ViewingPLatform/Marmobil.svg"><img src="./ViewingPlatform/Marmobil.svg" alt="Marmobil" height="64"></a>
-<a href="./ViewingPLatform/Marmot_side.svg"><img src="./ViewingPlatform/Marmot_side.svg" alt="Marmot side" height="64"></a>
-<a href="./ViewingPLatform/Spherical_pig.tex"><img src="./ViewingPlatform/Spherical_pig.png" alt="Spherical pig" height="64"></a>
-<a href="./ViewingPLatform/Rodent_Hood.tex"><img src="./ViewingPlatform/Rodent_Hood.svg" alt="Rodent Hood" height="64"></a>
+<a href="./ViewingPlatform/lt3marmot.tex"><img src="./ViewingPlatform/lt3marmot.svg" alt="lt3marmot" height="64"></a>
+<a href="./ViewingPlatform/coati_custom_body.tex"><img src="./ViewingPlatform/coati_custom_body.svg" alt="Custom Body Coati" height="64"></a>
+<a href="./ViewingPlatform/Jumping_marmot_ballon.tex"><img src="./ViewingPlatform/Jumping_marmot_ballon.png" alt="Jumping Ballon Marmot" height="64"></a>
+<a href="./ViewingPlatform/Mandala.tex"><img src="./ViewingPlatform/Mandala.svg" alt="Mandala" height="64"></a>
+<a href="./ViewingPlatform/Mandala2.tex"><img src="./ViewingPlatform/Mandala2.svg" alt="Mandala" height="64"></a>
+<a href="./ViewingPlatform/Marmobil.svg"><img src="./ViewingPlatform/Marmobil.svg" alt="Marmobil" height="64"></a>
+<a href="./ViewingPlatform/Marmot_side.svg"><img src="./ViewingPlatform/Marmot_side.svg" alt="Marmot side" height="64"></a>
+<a href="./ViewingPlatform/Spherical_pig.tex"><img src="./ViewingPlatform/Spherical_pig.png" alt="Spherical pig" height="64"></a>
+<a href="./ViewingPlatform/Rodent_Hood.tex"><img src="./ViewingPlatform/Rodent_Hood.svg" alt="Rodent Hood" height="64"></a>
 
 
 ## TikZlings in action
