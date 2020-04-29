@@ -81,7 +81,7 @@ An exhaustive list of possible options can be found in [package documentation](.
 
 
 <a href="./ViewingPlatform/lt3marmot.tex"><img src="./ViewingPlatform/lt3marmot.svg" alt="lt3marmot" height="64"></a>
-<a href="./ViewingPlatform/coati_custom_body.tex"><img src="./ViewingPlatform/coati_custom_body.svg" alt="Custom Body Coati" height="64"></a>
+<a href="./ViewingPlatform/Coati_custom_body.tex"><img src="./ViewingPlatform/Coati_custom_body.svg" alt="Custom Body Coati" height="64"></a>
 <a href="./ViewingPlatform/Jumping_marmot_ballon.tex"><img src="./ViewingPlatform/Jumping_marmot_ballon.png" alt="Jumping Ballon Marmot" height="64"></a>
 <a href="./ViewingPlatform/Mandala.tex"><img src="./ViewingPlatform/Mandala.svg" alt="Mandala" height="64"></a>
 <a href="./ViewingPlatform/Mandala2.tex"><img src="./ViewingPlatform/Mandala2.svg" alt="Mandala" height="64"></a>
