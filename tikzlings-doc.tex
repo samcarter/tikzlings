@@ -94,16 +94,16 @@
   emphstyle=\color{red!60!black},
   emph=[1]{
     tikzlings,
-    tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmans, tikzlings-mice, tikzlings-moles, tikzlings-sloths, tikzlings-pigs, tikzlings-cats, tikzlings-hippos, tikzlings-rhinos, tikzlings-pandas, tikzlings-bees, tikzlings-anteaters, tikzlings-squirrels,
+    tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmans, tikzlings-mice, tikzlings-moles, tikzlings-sloths, tikzlings-pigs, tikzlings-cats, tikzlings-hippos, tikzlings-rhinos, tikzlings-pandas, tikzlings-bees, tikzlings-anteaters, tikzlings-squirrels, tikzlings-sheep,
     body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, nose, pupil, bill, feet, belly, ask, phil, mouth, buttons, rotatearms, eyes, paws, back, pupilwidth, globalwarming, wings, antennas, stripes,
     scale, yshift, xshift, rotate, hands, muzzle, schroedinger, toes,
-    hat, tophat, beret, strawhat, ribbon, harlequin, niuqelrah, witch, magichat, magicstars, crown, queencrown, kingcrown, santa, chef, graduate, tassel, alien, book, bookcolour, signpost, signcolour, signback, speech, think, bubblecolour, pizza, cheese, baguette, cake, icecream, flavoura, flavourb, flavourc, milkshake, wine, cricket, hockey, football, crystalball, magicwand, rollingpin, lightsaber, torch, basket, easter, egga, eggb, eggc, crozier, shovel, pickaxe, umbrella, umbrellaclosed, handbag, cocktail,
+    hat, tophat, beret, strawhat, ribbon, harlequin, niuqelrah, witch, magichat, magicstars, crown, queencrown, kingcrown, santa, chef, graduate, tassel, alien, book, bookcolour, signpost, signcolour, signback, speech, think, bubblecolour, pizza, cheese, baguette, cake, icecream, flavoura, flavourb, flavourc, milkshake, wine, cricket, hockey, football, crystalball, magicwand, rollingpin, lightsaber, torch, basket, easter, egga, eggb, eggc, crozier, shovel, pickaxe, umbrella, umbrellaclosed, handbag, cocktail, monocle,
   },
   texcsstyle=*\color{SteelBlue!50!black}\bfseries,
   keywordstyle=\color{red!60!black}\bfseries,
   morekeywords={tikzpicture},
   moretexcs={
-    usepackage, usetikzlibrary, marmot, coati, bear, koala, owl, penguin, thing, tikzling, snowman, mouse, moles, sloth, pig, cat, hippo, rhino, panda, bee, anteater, squirrel, bearwear, tikzlinghookbackground, tikzlinghookbelly, tikzlinghookbody, tikzlinghookforeground, mousehookbelly
+    usepackage, usetikzlibrary, marmot, coati, bear, koala, owl, penguin, thing, tikzling, snowman, mouse, moles, sloth, pig, cat, hippo, rhino, panda, bee, anteater, squirrel, bearwear, sheep, tikzlinghookbackground, tikzlinghookbelly, tikzlinghookbody, tikzlinghookforeground, mousehookbelly
   },
   delim ={[s][\ttfamily\color{green!50!black}]{$}{$}},
   moredelim=[is][\footnotesize\ttfamily\color{orange!70!black}]{|}{|},
@@ -206,7 +206,7 @@ To make customisation  of the \tikzlings easier, some hooks are provided, which 
 
 With regard to the individual components of the \tikzlings, they are located in the following z order:
 \begin{center}
-\begin{tikzpicture}
+\begin{tikzpicture}[scale=1.05]
     \newcommand{\planes}{\fill[SteelBlue!30!white,opacity=0.9]  (-1.9,-0.1) rectangle (1.9,2.4);}
     \newcommand{\hooks}{\draw[SteelBlue!50!black, rounded corners=3pt, line width=1pt]  (-1.9,-0.1) rectangle (1.9,2.4);}
     \newcounter{layer}
@@ -263,7 +263,6 @@ With regard to the individual components of the \tikzlings, they are located in 
 In addition the hooks \lstinline|\tikzlinghookbackground|, \lstinline|\tikzlinghookbelly|, \lstinline|\tikzlinghookbody| and \lstinline|\tikzlinghookforeground| are available and will effect all \tikzlings.
 
 A short example how the hooks can be used:
-
 \begin{tcblisting}{}
 \newcommand{\mousehookbelly}{%
  \fill[red!80!black] 
@@ -1111,6 +1110,57 @@ The key \lstinline|3D| will make the rhino 3-dimensional:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+% Sheep
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section[Sheep]{Mókollur, the sheep}
+
+\emph{The sheep was kindly contributed by @Plergux. Mókollur is a bit silly and likes to goof off. This sheep's favourite food are boiled potatoes.}
+
+\subsection{Package name}
+
+\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
+\vspace*{0.5cm}
+\lstinline|\usepackage{tikzlings-sheep}| 
+\vspace*{0.5cm}
+\end{tcolorbox}
+
+\subsection{Basic Usage}
+
+\begin{tcblisting}{}
+\sheep
+\end{tcblisting}
+
+\subsection{Options}
+
+The basic sheep can be modified by changing its colour:
+\begin{tcblisting}{}
+\sheep[body=blue]
+\end{tcblisting}
+
+The sheep can also blush
+\begin{tcblisting}{}
+\sheep[blush]
+\end{tcblisting}
+
+and put on a monocle
+\begin{tcblisting}{}
+\sheep[monocle]
+\end{tcblisting}
+
+To view the sheep from behind:
+\begin{tcblisting}{}
+\sheep[back]
+\end{tcblisting}
+
+The key \lstinline|3D| will make the sheep 3-dimensional:
+\begin{tcblisting}{}
+\sheep[3D]
+\end{tcblisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 % Sloth 
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1380,7 +1430,7 @@ A list of all available accessories is given below. For completeness the default
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\penguin[
+\sheep[
   crown=yellow!90!orange
 ]
 \end{tcblisting}
