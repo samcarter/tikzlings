@@ -114,9 +114,10 @@
 \ifsheep@back
   \sheep@part@draw[\sheep@body] (0.3216,0.15) arc (-15:195:0.12) -- (0.16,0.15) to [bend left] (0.25,0.15) -- cycle;
   \sheep@part@draw[\sheep@body] (-0.3216,0.15) arc (195:-15:0.12) -- (-0.16,0.15) to[bend right] (-0.25,0.15) --cycle;
-\fi%
+\fi
+%
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\sheep@part@draw[\sheep@body!50!darkgray,decorate,decoration={bumps}] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
+\sheep@part@draw[\sheep@body!50!darkgray,decorate,decoration={bumps,amplitude=\scalingfactor*2.5pt,segment length=\scalingfactor*10pt}] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
 %
 %
 % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -137,14 +138,15 @@
   \filldraw[\sheep@body!45!white!95!orange,rounded corners=0.1pt] (0,0.7) -- (0.08, 0.3236) arc (0:-180:2pt) -- cycle;
 \fi
 %
-% Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifsheep@back\else
-  % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \ifsheep@back
-    \sheep@part@draw[\sheep@body!45!white!95!orange] (0.4, 1.8) .. controls (0.4, 1.5) and (0.2, 1.35) .. (0, 1.35) .. controls (-0.2, 1.35) and (-0.4, 1.5) .. (-0.4, 1.8) .. controls (-0.34, 2.3) and (0.34, 2.3) .. (0.4, 1.8) -- cycle;
-  \else
-    \sheep@part@draw[\sheep@body!45!white!95!orange] (0.4, 1.8) .. controls (0.4, 1.5) and (0.2, 1.25) .. (0, 1.16) .. controls (-0.2, 1.25) and (-0.4, 1.5) .. (-0.4, 1.8) .. controls (-0.34, 2.3) and (0.34, 2.3) .. (0.4, 1.8) -- cycle;
-  \fi
+%
+% Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifsheep@back
+  \sheep@part@draw[\sheep@body!45!white!95!orange] (0.4, 1.8) .. controls (0.4, 1.5) and (0.2, 1.35) .. (0, 1.35) .. controls (-0.2, 1.35) and (-0.4, 1.5) .. (-0.4, 1.8) .. controls (-0.34, 2.3) and (0.34, 2.3) .. (0.4, 1.8) -- cycle;
+\else
+  \sheep@part@draw[\sheep@body!45!white!95!orange] (0.4, 1.8) .. controls (0.4, 1.5) and (0.2, 1.25) .. (0, 1.16) .. controls (-0.2, 1.25) and (-0.4, 1.5) .. (-0.4, 1.8) .. controls (-0.34, 2.3) and (0.34, 2.3) .. (0.4, 1.8) -- cycle;
+\fi
 %
 % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \sheep@part@draw[\sheep@body] (0.22, 2.0392) .. controls   (0.22, 2.1584) and   (0.49460, 2.255) ..   (0.49460, 2.255) .. controls   (0.49460, 2.255) and (0.5300, 1.86) .. (0.3721, 1.86) .. controls (0.2891, 1.86) and   (0.22, 1.9201) .. (0.22, 2.0392) -- cycle;
@@ -159,14 +161,14 @@
 \fi
 %
 % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\draw[\sheep@body!50!black,thick] (0.16,1.43) arc [start angle=-30, end angle=-90, radius=0.16] -- (0,1.164) -- (0,1.3485) arc [start angle=-90, end angle=-150, radius=0.16]; 
+\draw[\sheep@body!50!black,line width=\scalingfactor*0.8pt,line cap=round] (0.16,1.43) arc [start angle=-30, end angle=-90, radius=0.16] -- (0,1.164) -- (0,1.3485) arc [start angle=-90, end angle=-150, radius=0.16]; 
 %
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \sheep@part@draw[\sheep@body!45!white!95!orange] (0.3216,0.13) arc (-15:195:0.10) -- (0.16,0.13) to [bend left] (0.25,0.13) -- cycle;
 \sheep@part@draw[\sheep@body!45!white!95!orange] (-0.3216,0.13) arc (195:-15:0.10) -- (-0.16,0.13) to[bend right] (-0.25,0.13) --cycle;
 %
 % Hair %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\sheep@part@draw[\sheep@body!50!darkgray,decorate,decoration={bumps}] (-0.275,1.98) -- (-0.2,2.2)  -- (-0.008,2.2) -- (0.2,2.2) -- (0.275,1.98) -- cycle;
+\sheep@part@draw[\sheep@body!50!darkgray,decorate,decoration={bumps,amplitude=\scalingfactor*2.5pt,segment length=\scalingfactor*10pt}] (-0.275,1.98) -- (-0.2,2.2)  -- (-0.008,2.2) -- (0.2,2.2) -- (0.275,1.98) -- cycle;
 %
 % Blush %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifsheep@blush
@@ -176,8 +178,8 @@
 %
 % monocle %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifsheep@monocle
-  \draw[black,thin] (0.2, 1.66) circle[radius=0.09];
-  \draw[black,thin,rounded corners=0.01pt] (0.26,1.6) .. controls (0.3,1.54) .. (0.3,1.5) .. controls (0.28,1.45) .. (0.35,1.4);
+  \draw[black,line width=\scalingfactor*0.4pt] (0.2, 1.66) circle[radius=0.09];
+  \draw[black,line width=\scalingfactor*0.4pt,rounded corners=\scalingfactor*0.01pt] (0.26,1.6) .. controls (0.3,1.54) .. (0.3,1.5) .. controls (0.28,1.45) .. (0.35,1.4);
 \fi
 %
 \fi % end showing details only for front
