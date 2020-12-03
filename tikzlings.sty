@@ -38,6 +38,7 @@
 \RequirePackage{tikzlings-bees}
 \RequirePackage{tikzlings-anteaters}
 \RequirePackage{tikzlings-squirrels}
+\RequirePackage{tikzlings-sheep}
 \RequirePackage{tikzlings-addons}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -62,7 +63,7 @@
 \fi
 \ExplSyntaxOff
 
-\pgfmathdeclarerandomlist{tikzlings}{{\bear}{\penguin}{\marmot}{\owl}{\koala}{\coati}{\snowman}{\mouse}{\moles}{\sloth}{\pig}{\cat}{\hippo}{\rhino}{\bee}{\anteater}}
+\pgfmathdeclarerandomlist{tikzlings}{{\bear}{\penguin}{\marmot}{\owl}{\koala}{\coati}{\snowman}{\mouse}{\moles}{\sloth}{\pig}{\cat}{\hippo}{\rhino}{\bee}{\anteater}{\sheep}}
 
 \newcommand{\tikzling}[1][]{%
   \pgfmathrandomitem{\tikzling@random}{tikzlings}%
