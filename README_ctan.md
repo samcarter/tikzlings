@@ -1,7 +1,7 @@
 # TikZlings
 A collection of animals and other beings from the tikz world
 
-Current version: 2020/04/22 version v0.3
+Current version: 2020/12/04 version v0.4
 
 This project is licensed under the LaTeX Project Public License v1.3c or later, see http://www.latex-project.org/lppl.txt
 
