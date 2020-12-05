@@ -46,6 +46,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.code         = \def\bear@body{#1},
   body               = brown,
+  eye/.code          = \def\bear@eye{#1},
+  eye                = \bear@body!30!black,  
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
@@ -143,8 +145,8 @@
 \bear@part@draw[\bear@body!70!white!80!red] (0, 1.5) ellipse[x radius=0.15, y radius=0.08]; 
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\bear@part@draw[\bear@body!30!black] (-0.155, 1.7) circle[radius=0.05]; 
-\bear@part@draw[\bear@body!30!black] (0.155, 1.7) circle[radius=0.05]; 
+\bear@part@draw[\bear@eye] (-0.155, 1.7) circle[radius=0.05]; 
+\bear@part@draw[\bear@eye] (0.155, 1.7) circle[radius=0.05]; 
 %
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \draw[\bear@body!30!black,line width=\scalingfactor*0.4pt] (0.145, 1.38) arc [start angle=-20, end angle=-160, radius=0.16];
