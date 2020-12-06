@@ -47,7 +47,9 @@
   body/.code         = \def\squirrel@body{#1},
   body               = brown!40!gray!90!red,
   eye/.code          = \def\squirrel@eye{#1},
-  eye                = white,   
+  eye                = white, 
+  pupil/.code        = \def\squirrel@pupil{#1},
+  pupil              = black,    
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
@@ -142,8 +144,8 @@
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \squirrel@part@draw[\squirrel@eye] (0.07,1.78) ellipse[x radius=0.05, y radius=0.07];
 \squirrel@part@draw[\squirrel@eye] (-0.07,1.78) ellipse[x radius=0.05, y radius=0.07];
-\squirrel@part@draw[black] (0.07,1.76) ellipse[x radius=0.017, y radius=0.027];
-\squirrel@part@draw[black] (-0.07,1.76) ellipse[x radius=0.017, y radius=0.027];
+\squirrel@part@draw[\squirrel@pupil] (0.07,1.76) ellipse[x radius=0.017, y radius=0.027];
+\squirrel@part@draw[\squirrel@pupil] (-0.07,1.76) ellipse[x radius=0.017, y radius=0.027];
 %
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \fill[white] (-0.025,1.567) rectangle ++(0.02,0.03);

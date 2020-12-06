@@ -48,6 +48,8 @@
   body               = gray,
   eye/.code          = \def\hippo@eye{#1},
   eye                = white,   
+  pupil/.code        = \def\hippo@pupil{#1},
+  pupil              = black,  
   toes/.code         = \def\hippo@toes{#1},
   toes               = \hippo@body!55!white,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -140,8 +142,8 @@
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \fill[\hippo@eye] (-0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
 \fill[\hippo@eye] (0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
-\fill[black] (-0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
-\fill[black] (0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
+\fill[\hippo@pupil] (-0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
+\fill[\hippo@pupil] (0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
 %
 % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hippo@part@draw[\hippo@body!80!white] (0, 1.55) ellipse[x radius=0.42, y radius=0.2];
