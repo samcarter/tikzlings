@@ -46,6 +46,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.code         = \def\anteater@body{#1},
   body               = red!55!green!75!blue!66!white,
+  eye/.code          = \def\anteater@eye{#1},
+  eye                = \anteater@body!70!brown!50!darkgray,   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
@@ -151,8 +153,8 @@
   \anteater@part@draw[\anteater@body!70!brown!50!darkgray] (0, 1.08) ellipse[x radius=0.08, y radius=0.05];
   %
   % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \anteater@part@draw[\anteater@body!70!brown!50!darkgray] (0.23, 1.7) circle[radius=0.05];
-  \anteater@part@draw[\anteater@body!70!brown!50!darkgray] (-0.23, 1.7) circle[radius=0.05];  
+  \anteater@part@draw[\anteater@eye] (0.23, 1.7) circle[radius=0.05];
+  \anteater@part@draw[\anteater@eye] (-0.23, 1.7) circle[radius=0.05];  
 \fi
 %
 % Tail if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

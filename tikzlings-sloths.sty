@@ -50,6 +50,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.code         = \def\sloth@body{#1},
   body               = slothcol,
+  eye/.code          = \def\sloth@eye{#1},
+  eye                = black,   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
@@ -168,8 +170,8 @@
   \fill[\sloth@body!50!white,rotate around={-22:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02); 
   \fill[\sloth@body!50!white,rotate around={-44:(-0.195, 1.76)}] (-0.195, 1.701) rectangle ++(0.005, 0.02);   
 \else
-  \sloth@part@draw[black] (0.193,1.75) circle[radius=0.04];
-  \sloth@part@draw[black] (-0.193,1.75) circle[radius=0.04];
+  \sloth@part@draw[\sloth@eye] (0.193,1.75) circle[radius=0.04];
+  \sloth@part@draw[\sloth@eye] (-0.193,1.75) circle[radius=0.04];
   \fill[white] (-0.2  ,1.765) circle[radius=0.006];
   \fill[white] ( 0.186,1.765) circle[radius=0.006];
 \fi

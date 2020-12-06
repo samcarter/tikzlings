@@ -52,6 +52,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.code         = \def\sheep@body{#1},
   body               = brown!50!darkgray!97!yellow,
+  eye/.code          = \def\sheep@eye{#1},
+  eye                = \sheep@body!50!black, 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
@@ -156,8 +158,8 @@
 % 
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifsheep@back\else
-  \sheep@part@draw[\sheep@body!50!black] (0.2, 1.66) circle[radius=0.06];
-  \sheep@part@draw[\sheep@body!50!black] (-0.2, 1.66) circle[radius=0.06];
+  \sheep@part@draw[\sheep@eye] (0.2, 1.66) circle[radius=0.06];
+  \sheep@part@draw[\sheep@eye] (-0.2, 1.66) circle[radius=0.06];
 \fi
 %
 % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

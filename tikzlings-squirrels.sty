@@ -46,6 +46,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.code         = \def\squirrel@body{#1},
   body               = brown!40!gray!90!red,
+  eye/.code          = \def\squirrel@eye{#1},
+  eye                = white,   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
@@ -138,8 +140,8 @@
 \squirrel@part@draw[\squirrel@body!70!brown!60!black] (0,1.66) ellipse[x radius=0.06, y radius=0.03];
 % 
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\squirrel@part@draw[white] (0.07,1.78) ellipse[x radius=0.05, y radius=0.07];
-\squirrel@part@draw[white] (-0.07,1.78) ellipse[x radius=0.05, y radius=0.07];
+\squirrel@part@draw[\squirrel@eye] (0.07,1.78) ellipse[x radius=0.05, y radius=0.07];
+\squirrel@part@draw[\squirrel@eye] (-0.07,1.78) ellipse[x radius=0.05, y radius=0.07];
 \squirrel@part@draw[black] (0.07,1.76) ellipse[x radius=0.017, y radius=0.027];
 \squirrel@part@draw[black] (-0.07,1.76) ellipse[x radius=0.017, y radius=0.027];
 %

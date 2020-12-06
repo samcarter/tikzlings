@@ -47,6 +47,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.code         = \def\coati@body{#1},
   body               = brown!50!darkgray!97!yellow,
+  eye/.code          = \def\coati@eye{#1},
+  eye                = \coati@body!50!black,   
   rotatehead/.code   = \def\coati@rotatehead{#1},
   rotate head/.forward to = /coati/rotatehead,
   rotatehead         = 0,
@@ -163,8 +165,8 @@
   %
   % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifcoati@back\else
-    \coati@part@draw[\coati@body!50!black] (0.007, 1.624) ellipse[x radius=0.04, y radius=0.06];
-    \coati@part@draw[\coati@body!50!black] (-0.38, 1.865) ellipse[x radius=0.035, y radius=0.055];
+    \coati@part@draw[\coati@eye] (0.007, 1.624) ellipse[x radius=0.04, y radius=0.06];
+    \coati@part@draw[\coati@eye] (-0.38, 1.865) ellipse[x radius=0.035, y radius=0.055];
   \fi
   %
   % Right Ear %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -195,8 +197,8 @@
   %
   % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifcoati@back\else
-    \coati@part@draw[\coati@body!50!black] (0.23, 1.62) circle[radius=0.05];
-    \coati@part@draw[\coati@body!50!black] (-0.23, 1.62) circle[radius=0.05];
+    \coati@part@draw[\coati@eye] (0.23, 1.62) circle[radius=0.05];
+    \coati@part@draw[\coati@eye] (-0.23, 1.62) circle[radius=0.05];
   \fi
   %
   % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

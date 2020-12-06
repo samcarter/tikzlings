@@ -46,6 +46,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.code         = \def\hippo@body{#1},
   body               = gray,
+  eye/.code          = \def\hippo@eye{#1},
+  eye                = white,   
   toes/.code         = \def\hippo@toes{#1},
   toes               = \hippo@body!55!white,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -136,8 +138,8 @@
 \ifhippo@back\else
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\fill[white] (-0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
-\fill[white] (0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
+\fill[\hippo@eye] (-0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
+\fill[\hippo@eye] (0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
 \fill[black] (-0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
 \fill[black] (0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
 %

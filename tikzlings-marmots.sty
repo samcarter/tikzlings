@@ -75,6 +75,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.code         = \def\marmot@body{#1},
   body               = brown,
+  eye/.code          = \def\marmot@eye{#1},
+  eye                = \marmot@body!50!black,   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
@@ -210,8 +212,8 @@
 \marmot@part@draw[\marmot@body!50!black] (0,1.6) circle[radius=0.08];
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\marmot@part@draw[\marmot@body!50!black] (-0.155,1.77) circle[radius=0.05]; 
-\marmot@part@draw[\marmot@body!50!black] (0.155,1.77) circle[radius=0.05]; 
+\marmot@part@draw[\marmot@eye] (-0.155,1.77) circle[radius=0.05]; 
+\marmot@part@draw[\marmot@eye] (0.155,1.77) circle[radius=0.05]; 
 %
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \fill[\marmot@body!50!black] (0.145,1.51) arc [start angle=-20, end angle=-160, radius=0.16] -- (-0.14,1.51) -- (-0.14,1.51) arc [start angle=-160, end angle=-20, radius=0.144] -- cycle ;

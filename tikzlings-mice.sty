@@ -50,6 +50,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.code         = \def\mouse@body{#1},
   body               = gray!90!white,
+  eye/.code          = \def\mouse@eye{#1},
+  eye                = \mouse@body!50!black,   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
@@ -176,8 +178,8 @@
 \mouse@part@draw[\mouse@body!50!black] (0, 1.248) circle[radius=0.09];
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mouse@part@draw[\mouse@body!50!black] (0.23, 1.68) circle[radius=0.05];
-\mouse@part@draw[\mouse@body!50!black] (-0.23, 1.68) circle[radius=0.05];
+\mouse@part@draw[\mouse@eye] (0.23, 1.68) circle[radius=0.05];
+\mouse@part@draw[\mouse@eye] (-0.23, 1.68) circle[radius=0.05];
 %
 \fi
 % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

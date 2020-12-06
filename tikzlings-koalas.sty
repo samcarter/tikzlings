@@ -53,6 +53,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.code         = \def\koala@body{#1},
   body               = gray!75!white,
+  eye/.code          = \def\koala@eye{#1},
+  eye                = black,   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
@@ -159,8 +161,8 @@
   \fill[\koala@body!50!black, even odd rule] (0.3331, 1.741) ..  controls (0.3331, 1.685) and (0.1737, 1.685) .. (0.1737, 1.741) .. controls (0.1737, 1.848) and (0.3331, 1.848) .. (0.3331, 1.741) -- cycle (0.328, 1.741) .. controls   (0.323, 1.705) and   (0.184, 1.705) .. (0.179, 1.741) .. controls   (0.184, 1.843) and   (0.323, 1.843) .. (0.328, 1.741) -- cycle;
   \fill[\koala@body!50!black, even odd rule] (-0.3331, 1.741) ..  controls (-0.3331, 1.685) and (-0.1737, 1.685) .. (-0.1737, 1.741) .. controls (-0.1737, 1.848) and (-0.3331, 1.848) .. (-0.3331, 1.741) -- cycle   (-0.328, 1.741) .. controls     (-0.323, 1.705) and     (-0.184, 1.705) ..     (-0.179, 1.741) .. controls (-0.184, 1.843) and (-0.323, 1.843) .. (-0.328, 1.741) -- cycle;
 \else
-  \koala@part@draw[black] (-0.255, 1.74) circle[radius=0.08]; 
-  \koala@part@draw[black] (0.255, 1.74) circle[radius=0.08]; 
+  \koala@part@draw[\koala@eye] (-0.255, 1.74) circle[radius=0.08]; 
+  \koala@part@draw[\koala@eye] (0.255, 1.74) circle[radius=0.08]; 
   \fill[white] (-0.27, 1.76) circle[radius=0.015]; 
   \fill[white] (0.24, 1.76) circle[radius=0.015]; 
 \fi

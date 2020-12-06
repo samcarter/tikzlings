@@ -47,6 +47,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.code         = \def\mole@body{#1},
   body               = gray,
+  eye/.code          = \def\mole@eye{#1},
+  eye                = \mole@body!60!black,   
   feet/.code         = \def\mole@feet{#1},
   feet               = red!20!white!50!brown,
   hands/.code        = \def\mole@hands{#1},
@@ -153,11 +155,11 @@
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifmole@threeD
-  \fill[\mole@body!60!black] (-0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=-15]; 
-  \fill[\mole@body!30!black] (0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=15]; 
+  \fill[\mole@eye] (-0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=-15]; 
+  \fill[\mole@eye!50!black] (0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=15]; 
 \else   
-  \fill[\mole@body!60!black] (-0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=-15]; 
-  \fill[\mole@body!60!black] (0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=15]; 
+  \fill[\mole@eye] (-0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=-15]; 
+  \fill[\mole@eye] (0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=15]; 
 \fi
 %
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -48,6 +48,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.code         = \def\pig@body{#1},
   body               = pigdark,
+  eye/.code          = \def\pig@eye{#1},
+  eye                = gray,   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
@@ -128,8 +130,8 @@
 \ifpig@back\else
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pig@part@draw[gray] (-0.09, 1.82) circle[radius=0.02];
-\pig@part@draw[gray] ( 0.09, 1.82) circle[radius=0.02];
+\pig@part@draw[\pig@eye] (-0.09, 1.82) circle[radius=0.02];
+\pig@part@draw[\pig@eye] ( 0.09, 1.82) circle[radius=0.02];
 %
 % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pig@part@draw[\pig@body]  (0, 1.62) ellipse[x radius=0.18, y radius=0.14];
