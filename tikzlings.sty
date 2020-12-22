@@ -85,9 +85,30 @@
   \fi
   \pgfmathsetseed{\number\pdfrandomseed} 
 \fi
+
+% from https://chat.stackexchange.com/transcript/message/56516469#56516469
+% To be able to x-expand \iterateTikzlings, it has to be expandable, so no 'protected'.  Also \clist_map_inline:Nn is not expandable, so we have to use \clist_map_function:NN instead.
+\cs_new:Npn \tikzlings_iterate:N #1 { 
+  \clist_map_function:NN #1 \__tikzlings_braced_items:n 
+}
+% \__tikzlings_braced_items:n will receive each clist item, then:
+\cs_new:Npn \__tikzlings_braced_items:n #1 {
+  { % leave an open brace
+  % we don't want the x-expansion to expand the tikzling command, so we prevent expansion with \exp_not:c.  The 'c' variant is used so it builds a csname from its argument, before preventing the expansion: and the argument is what's before the '/'
+  \exp_not:c { 
+    \__tikzlings_before_slash:w #1 / \s_stop 
+  }
+  } % leave a close brace
+}
+\cs_new:Npn \__tikzlings_before_slash:w #1 / #2 \s_stop {
+  \tl_trim_spaces:n {#1} % make sure there are no spaces around the string
+}
+\cs_new_eq:NN \tikzling@iteraterandom \tikzlings_iterate:N
+\cs_new_eq:NN \ExpArgsNnx \exp_args:Nnx
+
 \ExplSyntaxOff
 
-\pgfmathdeclarerandomlist{tikzlings}{{\bear}{\penguin}{\marmot}{\owl}{\koala}{\coati}{\snowman}{\mouse}{\moles}{\sloth}{\pig}{\cat}{\hippo}{\rhino}{\bee}{\anteater}{\sheep}}
+\ExpArgsNnx\pgfmathdeclarerandomlist{tikzlings}{\tikzling@iteraterandom\tikzling@list}
 
 \newcommand{\tikzling}[1][]{%
   \pgfmathrandomitem{\tikzling@random}{tikzlings}%
