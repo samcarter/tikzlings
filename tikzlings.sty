@@ -51,15 +51,14 @@
 
 % from https://chat.stackexchange.com/transcript/message/56515698#56515698
 \ExplSyntaxOn
-\cs_new_protected:Npn \tikzlings_load_packages:N #1
-  {
-    \clist_map_inline:Nn #1
-      {
-        \exp_args:Nx \RequirePackage
-          { tikzlings- \__tikzlings_after_slash:w ##1 / / \s_stop }
-      }
+\cs_new_protected:Npn \tikzlings_load_packages:N #1 {
+  \clist_map_inline:Nn #1 {
+    \exp_args:Nx \RequirePackage { 
+      tikzlings- \__tikzlings_after_slash:w ##1 / / \s_stop 
+    }
   }
-\cs_new:Npn \__tikzlings_after_slash:w #1 / #2 / #3 \s_stop {#2}
+}
+\cs_new:Npn \__tikzlings_after_slash:w #1 / #2 / #3 \s_stop { \tl_trim_spaces:n {#2} }
 \cs_new_eq:NN \tikzling@loadpackages \tikzlings_load_packages:N
 \ExplSyntaxOff
 \tikzling@loadpackages\tikzling@list
