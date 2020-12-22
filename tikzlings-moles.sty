@@ -19,8 +19,8 @@
 
 \newcommand*{\moles}[1][]{%
   \begin{scope}%
-    \tikzset{/mole/.cd,#1}%
-    \mole@draw%
+    \tikzset{/moles/.cd,#1}%
+    \moles@draw%
   \end{scope}%
   \thing[#1]%
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -29,8 +29,8 @@
   %   
 }
 
-\newif\ifmole@threeD
-\newif\ifmole@back
+\newif\ifmoles@threeD
+\newif\ifmoles@back
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -38,33 +38,33 @@
   % Pass unknown keys on to tikz
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  /mole/.search also={/tikz,/pgf,/thing},
-  /mole/.cd,
+  /moles/.search also={/tikz,/pgf,/thing},
+  /moles/.cd,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.code         = \def\mole@body{#1},
+  body/.code         = \def\moles@body{#1},
   body               = gray,
-  eye/.code          = \def\mole@eye{#1},
-  eye                = \mole@body!60!black,   
-  feet/.code         = \def\mole@feet{#1},
+  eye/.code          = \def\moles@eye{#1},
+  eye                = \moles@body!60!black,   
+  feet/.code         = \def\moles@feet{#1},
   feet               = red!20!white!50!brown,
-  hands/.code        = \def\mole@hands{#1},
+  hands/.code        = \def\moles@hands{#1},
   hands              = red!20!white!50!brown,  
-  muzzle/.code       = \def\mole@muzzle{#1},
+  muzzle/.code       = \def\moles@muzzle{#1},
   muzzle             = red!20!white!50!brown, 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  3D/.code           = \mole@threeDtrue,  
-  back/.code         = \mole@backtrue,       
+  3D/.code           = \moles@threeDtrue,  
+  back/.code         = \moles@backtrue,       
 }
 
-\def\mole@draw{%
+\def\moles@draw{%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % minimal bounding box size 
@@ -89,10 +89,10 @@
 % https://chat.stackexchange.com/transcript/message/45991801#45991801
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifmole@threeD
-  \def\mole@part@draw[##1]{\shade[ball color=##1]}
+\ifmoles@threeD
+  \def\moles@part@draw[##1]{\shade[ball color=##1]}
 \else
-  \def\mole@part@draw[##1]{\fill[##1]}
+  \def\moles@part@draw[##1]{\fill[##1]}
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -106,28 +106,28 @@
 \csname tikzlinghookbackground\endcsname
 %
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mole@part@draw[\mole@feet] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];  
-\mole@part@draw[\mole@feet] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
+\moles@part@draw[\moles@feet] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];  
+\moles@part@draw[\moles@feet] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
 %
 % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifmole@back\else
-  \mole@part@draw[\mole@body] (0.8856, 0.6504) .. controls (0.8656, 0.3803) and (0.0267, 0.2202) .. (0.0167, 0.4203) .. controls (-0.0033, 0.5404) and (0.1104, 0.4397) .. (0.3951, 0.4803) .. controls (0.6557, 0.5175) and (0.8856, 0.7005) .. (0.8856, 0.6504);
+\ifmoles@back\else
+  \moles@part@draw[\moles@body] (0.8856, 0.6504) .. controls (0.8656, 0.3803) and (0.0267, 0.2202) .. (0.0167, 0.4203) .. controls (-0.0033, 0.5404) and (0.1104, 0.4397) .. (0.3951, 0.4803) .. controls (0.6557, 0.5175) and (0.8856, 0.7005) .. (0.8856, 0.6504);
 \fi
 %
 % Hair %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mole@part@draw[\mole@body] (-0.09, 2.06) .. controls (-0.09, 2.06) and (-0.13, 2.25) .. (-0.07, 2.27) .. controls (-0.09, 2.13) and (0.04, 2.08) .. (0.04, 2.08) .. controls (0.04, 2.08) and (0.02, 2.20) .. (0.06, 2.21) .. controls (0.06, 2.11) and (0.13, 2.08) .. (0.13, 2.08) -- cycle;
+\moles@part@draw[\moles@body] (-0.09, 2.06) .. controls (-0.09, 2.06) and (-0.13, 2.25) .. (-0.07, 2.27) .. controls (-0.09, 2.13) and (0.04, 2.08) .. (0.04, 2.08) .. controls (0.04, 2.08) and (0.02, 2.20) .. (0.06, 2.21) .. controls (0.06, 2.11) and (0.13, 2.08) .. (0.13, 2.08) -- cycle;
 %
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mole@part@draw[\mole@body] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
+\moles@part@draw[\moles@body] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
 %
 % Tail if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifmole@back
-  \mole@part@draw[\mole@body] (0.8856, 0.6504) .. controls (0.8656, 0.3803) and (0.0267, 0.2202) .. (0.0167, 0.4203) .. controls (-0.0033, 0.5404) and (0.1104, 0.4397) .. (0.3951, 0.4803) .. controls (0.6557, 0.5175) and (0.8856, 0.7005) .. (0.8856, 0.6504) -- cycle;
+\ifmoles@back
+  \moles@part@draw[\moles@body] (0.8856, 0.6504) .. controls (0.8656, 0.3803) and (0.0267, 0.2202) .. (0.0167, 0.4203) .. controls (-0.0033, 0.5404) and (0.1104, 0.4397) .. (0.3951, 0.4803) .. controls (0.6557, 0.5175) and (0.8856, 0.7005) .. (0.8856, 0.6504) -- cycle;
 \fi
 %
 % Belly %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifmole@back\else
-  \mole@part@draw[\mole@body!50!white] (0.425, 0.71) .. controls (0.425, 0.41) and (0.245, 0.37) .. (0, 0.37) .. controls (-0.245, 0.37) and (-0.425, 0.41) .. (-0.425, 0.71) .. controls (-0.425, 1.01) and (-0.225, 1.26) .. (0, 1.26) .. controls (0.225, 1.26) and (0.425, 1.01) .. (0.425, 0.71) -- cycle;
+\ifmoles@back\else
+  \moles@part@draw[\moles@body!50!white] (0.425, 0.71) .. controls (0.425, 0.41) and (0.245, 0.37) .. (0, 0.37) .. controls (-0.245, 0.37) and (-0.425, 0.41) .. (-0.425, 0.71) .. controls (-0.425, 1.01) and (-0.225, 1.26) .. (0, 1.26) .. controls (0.225, 1.26) and (0.425, 1.01) .. (0.425, 0.71) -- cycle;
 \fi
 %
 % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -135,35 +135,35 @@
 \csname tikzlinghookbelly\endcsname
 %
 % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifmole@back\else
+\ifmoles@back\else
 %
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mole@part@draw[\mole@body] (0.37,0.86) ellipse[x radius=0.27, y radius=0.13, rotate=70];
-\mole@part@draw[\mole@body] (-0.37,0.86) ellipse[x radius=0.27, y radius=0.13, rotate=-70];
+\moles@part@draw[\moles@body] (0.37,0.86) ellipse[x radius=0.27, y radius=0.13, rotate=70];
+\moles@part@draw[\moles@body] (-0.37,0.86) ellipse[x radius=0.27, y radius=0.13, rotate=-70];
 %
 % Hands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \fill[white] (-0.37,0.6) -- (-0.32,0.53) -- (-0.3,0.6) -- (-0.23,0.55) -- (-0.23,0.64) -- (-0.16,0.59) -- (-0.18,0.67) -- cycle;
 \fill[white] (0.37,0.6) -- (0.32,0.53) -- (0.3,0.6) -- (0.23,0.55) -- (0.23,0.64) -- (0.16,0.59) -- (0.18,0.67) -- cycle;
-\mole@part@draw[\mole@hands] (0.285,0.65) ellipse[x radius=0.08, y radius=0.13, rotate=70];
-\mole@part@draw[\mole@hands] (-0.285,0.65) ellipse[x radius=0.08, y radius=0.13, rotate=-70];
+\moles@part@draw[\moles@hands] (0.285,0.65) ellipse[x radius=0.08, y radius=0.13, rotate=70];
+\moles@part@draw[\moles@hands] (-0.285,0.65) ellipse[x radius=0.08, y radius=0.13, rotate=-70];
 %
 % Muzzle %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mole@part@draw[\mole@muzzle] ( 0.22, 1.46) .. controls ( 0.22, 1.50) and ( 0.22, 1.53) .. ( 0.17, 1.56) .. controls ( 0.11, 1.58) and ( 0.05, 1.66) .. ( 0.00, 1.66) .. controls (-0.05, 1.66) and (-0.11, 1.58) .. (-0.17, 1.56) .. controls (-0.22, 1.53) and (-0.22, 1.50) .. (-0.22, 1.46) .. controls (-0.22, 1.39) and (-0.14, 1.33) .. ( 0.00, 1.33) .. controls ( 0.14, 1.33) and ( 0.22, 1.39) .. ( 0.22, 1.46) -- cycle;
+\moles@part@draw[\moles@muzzle] ( 0.22, 1.46) .. controls ( 0.22, 1.50) and ( 0.22, 1.53) .. ( 0.17, 1.56) .. controls ( 0.11, 1.58) and ( 0.05, 1.66) .. ( 0.00, 1.66) .. controls (-0.05, 1.66) and (-0.11, 1.58) .. (-0.17, 1.56) .. controls (-0.22, 1.53) and (-0.22, 1.50) .. (-0.22, 1.46) .. controls (-0.22, 1.39) and (-0.14, 1.33) .. ( 0.00, 1.33) .. controls ( 0.14, 1.33) and ( 0.22, 1.39) .. ( 0.22, 1.46) -- cycle;
 %
 % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mole@part@draw[\mole@body!60!black] (0,1.67) circle[radius=0.055];
+\moles@part@draw[\moles@body!60!black] (0,1.67) circle[radius=0.055];
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifmole@threeD
-  \fill[\mole@eye] (-0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=-15]; 
-  \fill[\mole@eye!50!black] (0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=15]; 
+\ifmoles@threeD
+  \fill[\moles@eye] (-0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=-15]; 
+  \fill[\moles@eye!50!black] (0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=15]; 
 \else   
-  \fill[\mole@eye] (-0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=-15]; 
-  \fill[\mole@eye] (0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=15]; 
+  \fill[\moles@eye] (-0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=-15]; 
+  \fill[\moles@eye] (0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=15]; 
 \fi
 %
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\draw[\mole@body!60!black, line width=\scalingfactor*0.4pt] (0.145,1.51) arc [start angle=-20, end angle=-160, radius=0.16] ;
+\draw[\moles@body!60!black, line width=\scalingfactor*0.4pt] (0.145,1.51) arc [start angle=-20, end angle=-160, radius=0.16] ;
 %
 \fi
 % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
