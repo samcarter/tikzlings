@@ -3,73 +3,43 @@
 
 \usepackage{tikzlings}
 
+\newcommand{\mole}{\moles}
 \newcommand{\tikzlinghookbackground}{\path (-0.9,0) rectangle (1.75,2.5);}
 
 \begin{document}
 
 \raggedright
 
-\tikz\bear;
-\tikz\penguin;
-\tikz\marmot;
-\tikz\koala;
-\tikz\owl;
-\tikz\coati;
-\tikz\snowman;
-\tikz\rhino;
-\tikz\moles;
-\tikz\sloth;
-\tikz\pig;
-\tikz\cat;
-\tikz\hippo;
-\tikz\panda;
-\tikz\mouse;
-\tikz\bee;
-\tikz\anteater;
-\tikz\squirrel;
-\tikz\sheep;
+\makeatletter
+\foreach \x/\y in \tikzling@list {
+  \begin{tikzpicture}
+    \csname\x\endcsname
+  \end{tikzpicture}
+}
+\makeatother
 
 \hrulefill
 
-\tikz\bear[3D];
-\tikz\penguin[3D];
-\tikz\marmot[3D];
-\tikz\koala[3D];
-\tikz\owl[3D];
-\tikz\coati[3D];
-\tikz\snowman[3D];
-\tikz\rhino[3D];
-\tikz\moles[3D];
-\tikz\sloth[3D];
-\tikz\pig[3D];
-\tikz\cat[3D];
-\tikz\hippo[3D];
-\tikz\panda[3D];
-\tikz\mouse[3D];
-\tikz\bee[3D];
-\tikz\anteater[3D];
-\tikz\squirrel[3D];
-\tikz\sheep[3D];
+\makeatletter
+\foreach \x/\y in \tikzling@list {
+  \begin{tikzpicture}
+    \csname\x\endcsname[
+      3D
+    ]
+  \end{tikzpicture}
+}
+\makeatother
 
 \hrulefill
 
-\tikz\bear[back];
-\tikz\penguin[back];
-\tikz\marmot[back];
-\tikz\koala[back];
-\tikz\owl[back];
-\tikz\coati[back];
-\tikz\snowman[back];
-\tikz\rhino[back];
-\tikz\moles[back];
-\tikz\sloth[back];
-\tikz\pig[back];
-\tikz\cat[back];
-\tikz\hippo[back];
-\tikz\panda[back];
-\tikz\mouse[back];
-\tikz\bee[back];
-\tikz\anteater[back];
-\tikz\squirrel[back];
-\tikz\sheep[back];
+\makeatletter
+\foreach \x/\y in \tikzling@list {
+  \begin{tikzpicture}
+    \csname\x\endcsname[
+      back
+    ]
+  \end{tikzpicture}
+}
+\makeatother
+
 \end{document}
