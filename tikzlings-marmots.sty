@@ -59,6 +59,7 @@
 \newif\ifmarmot@leftstep
 \newif\ifmarmot@rightstep
 \newif\ifmarmot@back
+\newif\ifmarmot@contour
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -98,6 +99,9 @@
   rightstep/.code    = \marmot@rightsteptrue,
   right step/.forward to = /marmot/rightstep,  
   back/.code         = \marmot@backtrue,  
+  contour/.code      = \marmot@contourtrue
+                       \def\marmot@contour{#1},
+  contour/.default   = black,  
 }
 
 \def\marmot@draw{%
@@ -121,14 +125,18 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 
-% switch between 2D and 3D, from
+% switch between 2D, 3D and contours, from
 % https://chat.stackexchange.com/transcript/message/45991801#45991801
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifmarmot@threeD
   \def\marmot@part@draw[##1]{\shade[ball color=##1]}
 \else
-  \def\marmot@part@draw[##1]{\fill[##1]}
+  \ifmarmot@contour
+    \def\marmot@part@draw[##1]{\draw[##1,\marmot@contour,fill=white]}
+  \else
+    \def\marmot@part@draw[##1]{\fill[##1]}
+  \fi
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -216,7 +224,11 @@
 \marmot@part@draw[\marmot@eye] (0.155,1.77) circle[radius=0.05]; 
 %
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\fill[\marmot@body!50!black] (0.145,1.51) arc [start angle=-20, end angle=-160, radius=0.16] -- (-0.14,1.51) -- (-0.14,1.51) arc [start angle=-160, end angle=-20, radius=0.144] -- cycle ;
+\ifmarmot@contour
+  \fill[\marmot@contour] (0.145,1.51) arc [start angle=-20, end angle=-160, radius=0.16] -- (-0.14,1.51) -- (-0.14,1.51) arc [start angle=-160, end angle=-20, radius=0.144] -- cycle ;
+\else
+  \fill[\marmot@body!50!black] (0.145,1.51) arc [start angle=-20, end angle=-160, radius=0.16] -- (-0.14,1.51) -- (-0.14,1.51) arc [start angle=-160, end angle=-20, radius=0.144] -- cycle ;
+\fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %

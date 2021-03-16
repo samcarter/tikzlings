@@ -31,6 +31,7 @@
 
 \newif\ifrhino@threeD
 \newif\ifrhino@back
+\newif\ifrhino@contour
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -59,7 +60,10 @@
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   3D/.code           = \rhino@threeDtrue, 
-  back/.code         = \rhino@backtrue,  
+  back/.code         = \rhino@backtrue, 
+  contour/.code      = \rhino@contourtrue
+                       \def\rhino@contour{#1},
+  contour/.default   = black,   
 }
 
 \def\rhino@draw{%
@@ -83,14 +87,18 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 
-% switch between 2D and 3D, from
+% switch between 2D, 3D and contours, from
 % https://chat.stackexchange.com/transcript/message/45991801#45991801
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifrhino@threeD
   \def\rhino@part@draw[##1]{\shade[ball color=##1]}
 \else
-  \def\rhino@part@draw[##1]{\fill[##1]}
+  \ifrhino@contour
+    \def\rhino@part@draw[##1]{\draw[##1,\rhino@contour,fill=white]}
+  \else
+    \def\rhino@part@draw[##1]{\fill[##1]}
+  \fi
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -141,10 +149,17 @@
 \ifrhino@back\else
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\fill[\rhino@eye] (-0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
-\fill[\rhino@eye] (0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
-\fill[\rhino@pupil] (-0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
-\fill[\rhino@pupil] (0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
+\ifrhino@contour
+  \draw[\rhino@contour,fill=white] (-0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
+  \draw[\rhino@contour,fill=white] (0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
+  \draw[\rhino@contour,fill=white] (-0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
+  \draw[\rhino@contour,fill=white] (0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
+\else
+  \fill[\rhino@eye] (-0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
+  \fill[\rhino@eye] (0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
+  \fill[\rhino@pupil] (-0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
+  \fill[\rhino@pupil] (0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
+\fi
 %
 % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \rhino@part@draw[\rhino@body!80!white] (0, 1.55) ellipse[x radius=0.36, y radius=0.2];
@@ -156,7 +171,11 @@
 \ifrhino@threeD
   \draw[black,line width=\scalingfactor*0.4pt] (0.125, 1.5) arc [start angle=-50, end angle=-130, radius=0.2] ;
 \else
-  \draw[\rhino@body!70!black,line width=\scalingfactor*0.4pt] (0.125, 1.5) arc [start angle=-50, end angle=-130, radius=0.2] ;
+  \ifrhino@contour
+    \draw[\rhino@contour,line width=\scalingfactor*0.4pt] (0.125, 1.5) arc [start angle=-50, end angle=-130, radius=0.2] ;
+  \else
+    \draw[\rhino@body!70!black,line width=\scalingfactor*0.4pt] (0.125, 1.5) arc [start angle=-50, end angle=-130, radius=0.2] ;
+  \fi
 \fi
 %
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

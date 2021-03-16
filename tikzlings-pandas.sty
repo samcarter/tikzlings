@@ -31,6 +31,7 @@
 
 \newif\ifpanda@threeD
 \newif\ifpanda@back
+\newif\ifpanda@contour
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -58,6 +59,9 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   3D/.code           = \panda@threeDtrue, 
   back/.code         = \panda@backtrue,  
+  contour/.code      = \panda@contourtrue
+                       \def\panda@contour{#1},
+  contour/.default   = black,  
 }
 
 \def\panda@draw{%
@@ -81,14 +85,18 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 
-% switch between 2D and 3D, from
+% switch between 2D, 3D and contours, from
 % https://chat.stackexchange.com/transcript/message/45991801#45991801
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifpanda@threeD
   \def\panda@part@draw[##1]{\shade[ball color=##1]}
 \else
-  \def\panda@part@draw[##1]{\fill[##1]}
+  \ifpanda@contour
+    \def\panda@part@draw[##1]{\draw[##1,\panda@contour,fill=white]}
+  \else
+    \def\panda@part@draw[##1]{\fill[##1]}
+  \fi
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -147,7 +155,11 @@
 \panda@part@draw[\panda@pupil] (-0.17, 1.695) circle[radius=0.02];
 %
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\draw[black,line width=\scalingfactor*0.2pt] (-0.16, 1.477) .. controls (-0.16, 1.477) and (-0.062, 1.37) .. (0, 1.506)  .. controls (0.062, 1.37) and (0.16, 1.477) .. (0.16, 1.477);
+\ifpanda@contour
+  \draw[\panda@contour,line width=\scalingfactor*0.2pt] (-0.16, 1.477) .. controls (-0.16, 1.477) and (-0.062, 1.37) .. (0, 1.506)  .. controls (0.062, 1.37) and (0.16, 1.477) .. (0.16, 1.477);
+\else
+  \draw[black,line width=\scalingfactor*0.2pt] (-0.16, 1.477) .. controls (-0.16, 1.477) and (-0.062, 1.37) .. (0, 1.506)  .. controls (0.062, 1.37) and (0.16, 1.477) .. (0.16, 1.477);
+\fi
 %
 % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \panda@part@draw[black] (0,1.55) ellipse[x radius=0.07, y radius=0.04];

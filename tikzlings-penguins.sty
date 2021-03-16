@@ -31,6 +31,7 @@
 
 \newif\ifpenguin@threeD
 \newif\ifpenguin@back
+\newif\ifpenguin@contour
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -63,7 +64,10 @@
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   3D/.code           = \penguin@threeDtrue, 
-  back/.code         = \penguin@backtrue,  
+  back/.code         = \penguin@backtrue, 
+  contour/.code      = \penguin@contourtrue
+                       \def\penguin@contour{#1},
+  contour/.default   = black,   
 }
 
 \def\penguin@draw{%
@@ -87,14 +91,18 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 
-% switch between 2D and 3D, from
+% switch between 2D, 3D and contours, from
 % https://chat.stackexchange.com/transcript/message/45991801#45991801
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifpenguin@threeD
   \def\penguin@part@draw[##1]{\shade[ball color=##1]}
 \else
-  \def\penguin@part@draw[##1]{\fill[##1]}
+  \ifpenguin@contour
+    \def\penguin@part@draw[##1]{\draw[##1,\penguin@contour,fill=white]}
+  \else
+    \def\penguin@part@draw[##1]{\fill[##1]}
+  \fi
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -141,10 +149,17 @@
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifpenguin@back\else
-  \fill[\penguin@eye] (-0.175,1.64) ellipse[x radius=0.1, y radius=0.15, rotate=-10];
-  \fill[\penguin@pupil] (-0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714, rotate=-3];
-  \fill[\penguin@eye] (0.175,1.64) ellipse[x radius=0.1, y radius=0.15, rotate=10];
-  \fill[\penguin@pupil] (0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714, rotate=3];
+  \ifpenguin@contour
+    \draw[\penguin@contour,fill=white] (-0.175,1.64) ellipse[x radius=0.1, y radius=0.15, rotate=-10];
+    \draw[\penguin@contour,fill=white] (-0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714, rotate=-3];
+    \draw[\penguin@contour,fill=white] (0.175,1.64) ellipse[x radius=0.1, y radius=0.15, rotate=10];
+    \draw[\penguin@contour,fill=white] (0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714, rotate=3];
+  \else
+    \fill[\penguin@eye] (-0.175,1.64) ellipse[x radius=0.1, y radius=0.15, rotate=-10];
+    \fill[\penguin@pupil] (-0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714, rotate=-3];
+    \fill[\penguin@eye] (0.175,1.64) ellipse[x radius=0.1, y radius=0.15, rotate=10];
+    \fill[\penguin@pupil] (0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714, rotate=3];
+  \fi
 \fi
 %
 % Bill %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -30,6 +30,7 @@
 
 \newif\ifsquirrel@threeD
 \newif\ifsquirrel@back
+\newif\ifsquirrel@contour
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -57,6 +58,9 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   3D/.code           = \squirrel@threeDtrue,  
   back/.code         = \squirrel@backtrue,  
+  contour/.code      = \squirrel@contourtrue
+                       \def\squirrel@contour{#1},
+  contour/.default   = black,
 }
 
 \def\squirrel@draw{%
@@ -81,17 +85,21 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 
-% switch between 2D and 3D, from
+% switch between 2D, 3D and contours, from
 % https://chat.stackexchange.com/transcript/message/45991801#45991801
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifsquirrel@threeD
   \def\squirrel@part@draw[##1]{\shade[ball color=##1]}
 \else
-  \def\squirrel@part@draw[##1]{\fill[##1]}
+  \ifsquirrel@contour
+    \def\squirrel@part@draw[##1]{\draw[##1,\squirrel@contour,fill=white]}
+  \else
+    \def\squirrel@part@draw[##1]{\fill[##1]}
+  \fi
 \fi
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Body parts (center: x=0)
 % 
@@ -130,7 +138,16 @@
 (-0.1920,1.9906) .. controls (-0.1657,2.0780) and (-0.1839,2.1332) .. (-0.1839,2.1332) .. controls (-0.1839,2.1332) and (-0.1123,2.1773) .. (-0.0941,2.0720) .. controls (-0.0716,2.0156) and (-0.0753,1.9519) .. (-0.1023,1.9293) .. controls (-0.1293,1.9068) and (-0.1696,1.9342) .. (-0.1920,1.9906) -- cycle;
 %
 % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\squirrel@part@draw[\squirrel@body] (0,1.75) circle[radius=0.3]  (0.2,1.6) circle[radius=0.15]  (-0.2,1.6) circle[radius=0.15];
+\ifsquirrel@contour
+  \squirrel@part@draw[\squirrel@body] (0,1.75) circle[radius=0.3]; 
+  \squirrel@part@draw[\squirrel@body] (0.2,1.6) circle[radius=0.15];  
+  \squirrel@part@draw[\squirrel@body] (-0.2,1.6) circle[radius=0.15];
+  \ifsquirrel@back
+    \squirrel@part@draw[\squirrel@body] (0,1.75) circle[radius=0.3]; 
+  \fi
+\else
+  \squirrel@part@draw[\squirrel@body] (0,1.75) circle[radius=0.3]  (0.2,1.6) circle[radius=0.15]  (-0.2,1.6) circle[radius=0.15];
+\fi
 %
 \ifsquirrel@back
   % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -148,9 +165,15 @@
 \squirrel@part@draw[\squirrel@pupil] (-0.07,1.76) ellipse[x radius=0.017, y radius=0.027];
 %
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\fill[white] (-0.025,1.567) rectangle ++(0.02,0.03);
-\fill[white] (0.025,1.567) rectangle ++(-0.02,0.03);
-\draw[\squirrel@body!70!brown!60!black,line width=\scalingfactor*0.4pt] (-0.15,1.61) .. controls (-0.15,1.61) and (-0.15,1.52) .. (0.0,1.61) .. controls (0.15,1.52) and (0.15,1.61) .. (0.15,1.61);
+\ifsquirrel@contour
+  \draw[\squirrel@contour,fill=white] (-0.025,1.567) rectangle ++(0.02,0.03);
+  \draw[\squirrel@contour,fill=white] (0.025,1.567) rectangle ++(-0.02,0.03);
+  \draw[\squirrel@contour,line width=\scalingfactor*0.4pt] (-0.15,1.61) .. controls (-0.15,1.61) and (-0.15,1.52) .. (0.0,1.61) .. controls (0.15,1.52) and (0.15,1.61) .. (0.15,1.61);
+\else
+  \fill[white] (-0.025,1.567) rectangle ++(0.02,0.03);
+  \fill[white] (0.025,1.567) rectangle ++(-0.02,0.03);
+  \draw[\squirrel@body!70!brown!60!black,line width=\scalingfactor*0.4pt] (-0.15,1.61) .. controls (-0.15,1.61) and (-0.15,1.52) .. (0.0,1.61) .. controls (0.15,1.52) and (0.15,1.61) .. (0.15,1.61);  
+\fi
 % 
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray] (0.2,0.85) ellipse[x radius=0.22, y radius=0.11, rotate=70];

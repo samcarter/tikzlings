@@ -31,6 +31,7 @@
 
 \newif\ifmoles@threeD
 \newif\ifmoles@back
+\newif\ifmoles@contour
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -61,7 +62,11 @@
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   3D/.code           = \moles@threeDtrue,  
-  back/.code         = \moles@backtrue,       
+  back/.code         = \moles@backtrue,  
+  contour/.code      = \moles@contourtrue
+                       \def\moles@contour{#1}
+                       \def\moles@eye{#1},
+  contour/.default   = black,       
 }
 
 \def\moles@draw{%
@@ -85,14 +90,18 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 
-% switch between 2D and 3D, from
+% switch between 2D, 3D and contours, from
 % https://chat.stackexchange.com/transcript/message/45991801#45991801
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifmoles@threeD
   \def\moles@part@draw[##1]{\shade[ball color=##1]}
 \else
-  \def\moles@part@draw[##1]{\fill[##1]}
+  \ifmoles@contour
+    \def\moles@part@draw[##1]{\draw[##1,\moles@contour,fill=white]}
+  \else
+    \def\moles@part@draw[##1]{\fill[##1]}
+  \fi
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -142,8 +151,13 @@
 \moles@part@draw[\moles@body] (-0.37,0.86) ellipse[x radius=0.27, y radius=0.13, rotate=-70];
 %
 % Hands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\fill[white] (-0.37,0.6) -- (-0.32,0.53) -- (-0.3,0.6) -- (-0.23,0.55) -- (-0.23,0.64) -- (-0.16,0.59) -- (-0.18,0.67) -- cycle;
-\fill[white] (0.37,0.6) -- (0.32,0.53) -- (0.3,0.6) -- (0.23,0.55) -- (0.23,0.64) -- (0.16,0.59) -- (0.18,0.67) -- cycle;
+\ifmoles@contour
+  \draw[\moles@contour,fill=white] (-0.37,0.6) -- (-0.32,0.53) -- (-0.3,0.6) -- (-0.23,0.55) -- (-0.23,0.64) -- (-0.16,0.59) -- (-0.18,0.67) -- cycle;
+  \draw[\moles@contour,fill=white] (0.37,0.6) -- (0.32,0.53) -- (0.3,0.6) -- (0.23,0.55) -- (0.23,0.64) -- (0.16,0.59) -- (0.18,0.67) -- cycle;
+\else
+  \fill[white] (-0.37,0.6) -- (-0.32,0.53) -- (-0.3,0.6) -- (-0.23,0.55) -- (-0.23,0.64) -- (-0.16,0.59) -- (-0.18,0.67) -- cycle;
+  \fill[white] (0.37,0.6) -- (0.32,0.53) -- (0.3,0.6) -- (0.23,0.55) -- (0.23,0.64) -- (0.16,0.59) -- (0.18,0.67) -- cycle;
+\fi
 \moles@part@draw[\moles@hands] (0.285,0.65) ellipse[x radius=0.08, y radius=0.13, rotate=70];
 \moles@part@draw[\moles@hands] (-0.285,0.65) ellipse[x radius=0.08, y radius=0.13, rotate=-70];
 %
@@ -163,7 +177,11 @@
 \fi
 %
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\draw[\moles@body!60!black, line width=\scalingfactor*0.4pt] (0.145,1.51) arc [start angle=-20, end angle=-160, radius=0.16] ;
+\ifmoles@contour
+  \draw[\moles@contour, line width=\scalingfactor*0.4pt] (0.145,1.51) arc [start angle=-20, end angle=-160, radius=0.16] ;
+\else
+  \draw[\moles@body!60!black, line width=\scalingfactor*0.4pt] (0.145,1.51) arc [start angle=-20, end angle=-160, radius=0.16] ;
+\fi
 %
 \fi
 % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

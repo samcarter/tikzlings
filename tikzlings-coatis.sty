@@ -31,6 +31,7 @@
 \newif\ifcoati@threeD
 \newif\ifcoati@sideward
 \newif\ifcoati@back
+\newif\ifcoati@contour
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -60,6 +61,9 @@
   3D/.code           = \coati@threeDtrue,  
   sideward/.code     = \coati@sidewardtrue,
   back/.code         = \coati@backtrue,  
+  contour/.code      = \coati@contourtrue
+                       \def\coati@contour{#1},
+  contour/.default   = black,  
 }
 
 \def\coati@draw{%
@@ -83,14 +87,18 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 
-% switch between 2D and 3D, from
+% switch between 2D, 3D and contours, from
 % https://chat.stackexchange.com/transcript/message/45991801#45991801
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifcoati@threeD
   \def\coati@part@draw[##1]{\shade[ball color=##1]}
 \else
-  \def\coati@part@draw[##1]{\fill[##1]}
+  \ifcoati@contour
+    \def\coati@part@draw[##1]{\draw[##1,\coati@contour,fill=white]}
+  \else
+    \def\coati@part@draw[##1]{\fill[##1]}
+  \fi
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

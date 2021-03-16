@@ -37,6 +37,7 @@
 \newif\ifkoala@sleeping
 \newif\ifkoala@threeD
 \newif\ifkoala@back
+\newif\ifkoala@contour
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -64,6 +65,9 @@
   sleeping/.code     = \koala@sleepingtrue, 
   3D/.code           = \koala@threeDtrue,  
   back/.code         = \koala@backtrue,  
+  contour/.code      = \koala@contourtrue
+                       \def\koala@contour{#1},
+  contour/.default   = black,  
 }
 
 \def\koala@draw{%
@@ -87,14 +91,18 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 
-% switch between 2D and 3D, from
+% switch between 2D, 3D and contours, from
 % https://chat.stackexchange.com/transcript/message/45991801#45991801
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifkoala@threeD
   \def\koala@part@draw[##1]{\shade[ball color=##1]}
 \else
-  \def\koala@part@draw[##1]{\fill[##1]}
+  \ifkoala@contour
+    \def\koala@part@draw[##1]{\draw[##1,\koala@contour,fill=white]}
+  \else
+    \def\koala@part@draw[##1]{\fill[##1]}
+  \fi
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -170,8 +178,12 @@
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifkoala@threeD
   \draw[black,line width=\scalingfactor*0.4pt] (0.115, 1.39) arc [start angle=-40, end angle=-140, radius=0.16];
-\else   
-  \draw[\koala@body!40!black,line width=\scalingfactor*0.4pt] (0.115, 1.39) arc [start angle=-40, end angle=-140, radius=0.16];
+\else  
+  \ifkoala@contour
+    \draw[\koala@contour,line width=\scalingfactor*0.4pt] (0.115, 1.39) arc [start angle=-40, end angle=-140, radius=0.16];
+  \else 
+    \draw[\koala@body!40!black,line width=\scalingfactor*0.4pt] (0.115, 1.39) arc [start angle=-40, end angle=-140, radius=0.16];
+  \fi
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

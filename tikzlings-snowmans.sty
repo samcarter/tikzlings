@@ -32,6 +32,7 @@
 \newif\ifsnowman@threeD
 \newif\ifsnowman@back
 \newif\ifsnowman@globalwarming
+\newif\ifsnowman@contour
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -67,6 +68,10 @@
                        \def\snowman@globalwarming{#1},
   globalwarming/.default = blue!10!white,                       
   global warming/.forward to = /snowman/globalwarming,
+  contour/.code      = \snowman@contourtrue
+                       \def\snowman@contour{#1}
+                       \def\snowman@mouth{#1},
+  contour/.default   = black,  
 }
 
 \def\snowman@draw{%
@@ -90,14 +95,18 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 
-% switch between 2D and 3D, from
+% switch between 2D, 3D and contours, from
 % https://chat.stackexchange.com/transcript/message/45991801#45991801
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifsnowman@threeD
   \def\snowman@part@draw[##1]{\shade[ball color=##1]}
 \else
-  \def\snowman@part@draw[##1]{\fill[##1]}
+  \ifsnowman@contour
+    \def\snowman@part@draw[##1]{\draw[##1,\snowman@contour,fill=white]}
+  \else
+    \def\snowman@part@draw[##1]{\fill[##1]}
+  \fi
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -114,7 +123,11 @@
 \ifsnowman@globalwarming
   %
   % Puddle %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \fill[\snowman@globalwarming] (0,1.15) ellipse[x radius=1.6,y radius=1.15];
+  \ifsnowman@contour
+    \draw[\snowman@contour,fill=white] (0,1.15) ellipse[x radius=1.6,y radius=1.15];
+  \else
+    \fill[\snowman@globalwarming] (0,1.15) ellipse[x radius=1.6,y radius=1.15];
+  \fi
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname snowmanhookbelly\endcsname
@@ -134,8 +147,7 @@
   \snowman@part@draw[\snowman@eye] (-0.1,1.55) circle[radius=0.06]; 
   %
   % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \snowman@part@draw[\snowman@nose] (-0.6,1.54) -- (-0.6,1.4) -- (-0.8,1.42) -- cycle;
-  \snowman@part@draw[\snowman@nose] (-0.6,1.47) circle[radius=0.07];
+  \snowman@part@draw[\snowman@nose] (-0.6,1.4) -- (-0.8,1.42) -- (-0.6,1.54) (-0.6,1.4) arc[radius=0.07, start angle=-90, end angle=90];  
   %
   % Buttons %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \snowman@part@draw[\snowman@buttons] (0.1,0.8) circle[radius=0.06];
@@ -175,7 +187,7 @@
   \snowman@part@draw[\snowman@eye] (0.155,1.8) circle[radius=0.04]; 
   %
   % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \snowman@part@draw[\snowman@nose] (0,1.67) circle[radius=0.05] (0,1.72) -- (0,1.62) -- (0.15,1.64) -- cycle;
+  \snowman@part@draw[\snowman@nose] (0,1.72) arc [radius=0.05, start angle=90, end angle=270] (0,1.62) -- (0.15,1.64) -- (0,1.72);
   %
   % Buttons %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \snowman@part@draw[\snowman@buttons] (0,1.15) circle[radius=0.04]; 

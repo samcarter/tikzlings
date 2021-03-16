@@ -36,6 +36,7 @@
 \newif\ifsheep@monocle
 \newif\ifsheep@blush
 \newif\ifsheep@back
+\newif\ifsheep@contour
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -63,6 +64,9 @@
   monocle/.code      = \sheep@monocletrue,
   3D/.code           = \sheep@threeDtrue, 
   back/.code         = \sheep@backtrue,  
+  contour/.code      = \sheep@contourtrue
+                       \def\sheep@contour{#1},
+  contour/.default   = black,  
 }
 
 \def\sheep@draw{%
@@ -86,14 +90,18 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 
-% switch between 2D and 3D, from
+% switch between 2D, 3D and contours, from
 % https://chat.stackexchange.com/transcript/message/45991801#45991801
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifsheep@threeD
   \def\sheep@part@draw[##1]{\shade[ball color=##1]}
 \else
-  \def\sheep@part@draw[##1]{\fill[##1]}
+  \ifsheep@contour
+    \def\sheep@part@draw[##1]{\draw[##1,\sheep@contour,fill=white]}
+  \else
+    \def\sheep@part@draw[##1]{\fill[##1]}
+  \fi
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -137,7 +145,7 @@
 %
 % Tail  if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifsheep@back
-  \filldraw[\sheep@body!45!white!95!orange,rounded corners=0.1pt] (0,0.7) -- (0.08, 0.3236) arc (0:-180:2pt) -- cycle;
+  \sheep@part@draw[\sheep@body!45!white!95!orange,rounded corners=0.1pt] (0,0.7) -- (0.08, 0.3236) arc (0:-180:2pt) -- cycle;
 \fi
 %
 % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -163,7 +171,11 @@
 \fi
 %
 % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\draw[\sheep@body!50!black,line width=\scalingfactor*0.8pt,line cap=round] (0.16,1.43) arc [start angle=-30, end angle=-90, radius=0.16] -- (0,1.164) -- (0,1.3485) arc [start angle=-90, end angle=-150, radius=0.16]; 
+\ifsheep@contour
+  \draw[\sheep@contour,line width=\scalingfactor*0.8pt,line cap=round] (0.16,1.43) arc [start angle=-30, end angle=-90, radius=0.16] -- (0,1.164) -- (0,1.3485) arc [start angle=-90, end angle=-150, radius=0.16];
+\else
+  \draw[\sheep@body!50!black,line width=\scalingfactor*0.8pt,line cap=round] (0.16,1.43) arc [start angle=-30, end angle=-90, radius=0.16] -- (0,1.164) -- (0,1.3485) arc [start angle=-90, end angle=-150, radius=0.16];
+\fi 
 %
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \sheep@part@draw[\sheep@body!45!white!95!orange] (0.3216,0.13) arc (-15:195:0.10) -- (0.16,0.13) to [bend left] (0.25,0.13) -- cycle;

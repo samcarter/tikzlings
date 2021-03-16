@@ -30,6 +30,7 @@
 
 \newif\ifanteater@threeD
 \newif\ifanteater@back
+\newif\ifanteater@contour
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -55,6 +56,9 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   3D/.code           = \anteater@threeDtrue,  
   back/.code         = \anteater@backtrue,  
+  contour/.code      = \anteater@contourtrue
+                       \def\anteater@contour{#1},
+  contour/.default   = black,  
 }
 
 \def\anteater@draw{%
@@ -79,14 +83,18 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 
-% switch between 2D and 3D, from
+% switch between 2D, 3D and contours, from
 % https://chat.stackexchange.com/transcript/message/45991801#45991801
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifanteater@threeD
   \def\anteater@part@draw[##1]{\shade[ball color=##1]}
 \else
-  \def\anteater@part@draw[##1]{\fill[##1]}
+  \ifanteater@contour
+    \def\anteater@part@draw[##1]{\draw[##1,\anteater@contour,fill=white]}
+  \else
+    \def\anteater@part@draw[##1]{\fill[##1]}
+  \fi
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

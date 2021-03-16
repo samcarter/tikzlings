@@ -31,6 +31,7 @@
 
 \newif\ifowl@threeD
 \newif\ifowl@back
+\newif\ifowl@contour
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -62,6 +63,9 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   3D/.code           = \owl@threeDtrue,
   back/.code         = \owl@backtrue,  
+  contour/.code      = \owl@contourtrue
+                       \def\owl@contour{#1},
+  contour/.default   = black,  
 }
 
 \def\owl@draw{%
@@ -85,14 +89,18 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 
-% switch between 2D and 3D, from
+% switch between 2D, 3D and contours, from
 % https://chat.stackexchange.com/transcript/message/45991801#45991801
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifowl@threeD
   \def\owl@part@draw[##1]{\shade[ball color=##1]}
 \else
-  \def\owl@part@draw[##1]{\fill[##1]}
+  \ifowl@contour
+    \def\owl@part@draw[##1]{\draw[##1,\owl@contour,fill=white]}
+  \else
+    \def\owl@part@draw[##1]{\fill[##1]}
+  \fi
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -139,9 +147,14 @@
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifowl@back\else
-  \fill[\owl@eye] (-0.28, 1.6) circle[radius=0.22];
+  \ifowl@contour
+    \draw[\owl@contour,fill=white] (-0.28, 1.6) circle[radius=0.22];
+    \draw[\owl@contour,fill=white] (0.28, 1.6) circle[radius=0.22];
+  \else
+    \fill[\owl@eye] (-0.28, 1.6) circle[radius=0.22];
+    \fill[\owl@eye] (0.28, 1.6) circle[radius=0.22];
+  \fi
   \owl@part@draw[\owl@pupil]   (-0.28, 1.6) circle[radius=0.15];
-  \fill[\owl@eye] (0.28, 1.6) circle[radius=0.22];
   \owl@part@draw[\owl@pupil]   (0.28, 1.6) circle[radius=0.15];
   \owl@part@draw[white] (0.25, 1.64) circle[radius=0.03];
   \owl@part@draw[white] (-0.31, 1.64) circle[radius=0.03];

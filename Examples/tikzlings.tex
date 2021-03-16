@@ -40,4 +40,16 @@
 }
 \makeatother
 
+\hrulefill
+
+\makeatletter
+\foreach \x/\y in \tikzling@list {
+  \begin{tikzpicture}
+    \csname\x\endcsname[
+      contour
+    ]
+  \end{tikzpicture}
+}
+\makeatother
+
 \end{document}
