@@ -96,7 +96,7 @@
   \def\coati@part@draw[##1]{\shade[ball color=##1]}
 \else
   \ifcoati@contour
-    \def\coati@part@draw[##1]{\draw[##1,\coati@contour,fill=white]}
+    \def\coati@part@draw[##1]{\draw[##1,\coati@contour,fill=white,line width=\scalingfactor*0.4pt]}
   \else
     \def\coati@part@draw[##1]{\fill[##1]}
   \fi

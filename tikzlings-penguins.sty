@@ -100,7 +100,7 @@
   \def\penguin@part@draw[##1]{\shade[ball color=##1]}
 \else
   \ifpenguin@contour
-    \def\penguin@part@draw[##1]{\draw[##1,\penguin@contour,fill=white]}
+    \def\penguin@part@draw[##1]{\draw[##1,\penguin@contour,fill=white,line width=\scalingfactor*0.4pt]}
   \else
     \def\penguin@part@draw[##1]{\fill[##1]}
   \fi
@@ -151,10 +151,10 @@
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifpenguin@back\else
   \ifpenguin@contour
-    \draw[\penguin@contour,fill=white] (-0.175,1.64) ellipse[x radius=0.1, y radius=0.15, rotate=-10];
-    \draw[\penguin@contour,fill=white] (-0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714, rotate=-3];
-    \draw[\penguin@contour,fill=white] (0.175,1.64) ellipse[x radius=0.1, y radius=0.15, rotate=10];
-    \draw[\penguin@contour,fill=white] (0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714, rotate=3];
+    \penguin@part@draw[\penguin@eye] (-0.175,1.64) ellipse[x radius=0.1, y radius=0.15, rotate=-10];
+    \penguin@part@draw[\penguin@pupil] (-0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714, rotate=-3];
+    \penguin@part@draw[\penguin@eye] (0.175,1.64) ellipse[x radius=0.1, y radius=0.15, rotate=10];
+    \penguin@part@draw[\penguin@pupil] (0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714, rotate=3];
   \else
     \fill[\penguin@eye] (-0.175,1.64) ellipse[x radius=0.1, y radius=0.15, rotate=-10];
     \fill[\penguin@pupil] (-0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714, rotate=-3];

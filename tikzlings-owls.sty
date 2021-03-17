@@ -98,7 +98,7 @@
   \def\owl@part@draw[##1]{\shade[ball color=##1]}
 \else
   \ifowl@contour
-    \def\owl@part@draw[##1]{\draw[##1,\owl@contour,fill=white]}
+    \def\owl@part@draw[##1]{\draw[##1,\owl@contour,fill=white,line width=\scalingfactor*0.4pt]}
   \else
     \def\owl@part@draw[##1]{\fill[##1]}
   \fi
@@ -149,8 +149,8 @@
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifowl@back\else
   \ifowl@contour
-    \draw[\owl@contour,fill=white] (-0.28, 1.6) circle[radius=0.22];
-    \draw[\owl@contour,fill=white] (0.28, 1.6) circle[radius=0.22];
+    \owl@part@draw[\owl@eye] (-0.28, 1.6) circle[radius=0.22];
+    \owl@part@draw[\owl@eye] (0.28, 1.6) circle[radius=0.22];
   \else
     \fill[\owl@eye] (-0.28, 1.6) circle[radius=0.22];
     \fill[\owl@eye] (0.28, 1.6) circle[radius=0.22];

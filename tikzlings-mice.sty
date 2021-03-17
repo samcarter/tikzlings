@@ -103,7 +103,7 @@
   \def\mouse@part@draw[##1]{\shade[ball color=##1]}
 \else
   \ifmouse@contour
-    \def\mouse@part@draw[##1]{\draw[##1,\mouse@contour,fill=white]}
+    \def\mouse@part@draw[##1]{\draw[##1,\mouse@contour,fill=white,line width=\scalingfactor*0.4pt]}
   \else
     \def\mouse@part@draw[##1]{\fill[##1]}
   \fi

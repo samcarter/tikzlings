@@ -94,7 +94,7 @@
   \def\squirrel@part@draw[##1]{\shade[ball color=##1]}
 \else
   \ifsquirrel@contour
-    \def\squirrel@part@draw[##1]{\draw[##1,\squirrel@contour,fill=white]}
+    \def\squirrel@part@draw[##1]{\draw[##1,\squirrel@contour,fill=white,line width=\scalingfactor*0.4pt]}
   \else
     \def\squirrel@part@draw[##1]{\fill[##1]}
   \fi
@@ -167,8 +167,8 @@
 %
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifsquirrel@contour
-  \draw[\squirrel@contour,fill=white] (-0.025,1.567) rectangle ++(0.02,0.03);
-  \draw[\squirrel@contour,fill=white] (0.025,1.567) rectangle ++(-0.02,0.03);
+  \draw[\squirrel@contour,fill=white,line width=\scalingfactor*0.4pt] (-0.025,1.567) rectangle ++(0.02,0.03);
+  \draw[\squirrel@contour,fill=white,line width=\scalingfactor*0.4pt] (0.025,1.567) rectangle ++(-0.02,0.03);
   \draw[\squirrel@contour,line width=\scalingfactor*0.4pt] (-0.15,1.61) .. controls (-0.15,1.61) and (-0.15,1.52) .. (0.0,1.61) .. controls (0.15,1.52) and (0.15,1.61) .. (0.15,1.61);
 \else
   \fill[white] (-0.025,1.567) rectangle ++(0.02,0.03);

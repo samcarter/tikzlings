@@ -94,7 +94,7 @@
   \def\panda@part@draw[##1]{\shade[ball color=##1]}
 \else
   \ifpanda@contour
-    \def\panda@part@draw[##1]{\draw[##1,\panda@contour,fill=white]}
+    \def\panda@part@draw[##1]{\draw[##1,\panda@contour,fill=white,line width=\scalingfactor*0.4pt]}
   \else
     \def\panda@part@draw[##1]{\fill[##1]}
   \fi

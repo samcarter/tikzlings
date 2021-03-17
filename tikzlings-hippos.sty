@@ -95,7 +95,7 @@
   \def\hippo@part@draw[##1]{\shade[ball color=##1]}
 \else
   \ifhippo@contour
-    \def\hippo@part@draw[##1]{\draw[##1,\hippo@contour,fill=white]}
+    \def\hippo@part@draw[##1]{\draw[##1,\hippo@contour,fill=white,line width=\scalingfactor*0.4pt]}
   \else
     \def\hippo@part@draw[##1]{\fill[##1]}
   \fi
@@ -150,10 +150,10 @@
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifhippo@contour
-  \draw[\hippo@contour,fill=white] (-0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
-  \draw[\hippo@contour,fill=white] (0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
-  \draw[\hippo@contour,fill=white] (-0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
-  \draw[\hippo@contour,fill=white] (0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
+  \hippo@part@draw[\hippo@eye] (-0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
+  \hippo@part@draw[\hippo@eye] (0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
+  \hippo@part@draw[\hippo@pupil] (-0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
+  \hippo@part@draw[\hippo@pupil] (0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
 \else
   \fill[\hippo@eye] (-0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
   \fill[\hippo@eye] (0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];

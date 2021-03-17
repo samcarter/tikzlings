@@ -96,7 +96,7 @@
   \def\rhino@part@draw[##1]{\shade[ball color=##1]}
 \else
   \ifrhino@contour
-    \def\rhino@part@draw[##1]{\draw[##1,\rhino@contour,fill=white]}
+    \def\rhino@part@draw[##1]{\draw[##1,\rhino@contour,fill=white,line width=\scalingfactor*0.4pt]}
   \else
     \def\rhino@part@draw[##1]{\fill[##1]}
   \fi
@@ -151,10 +151,10 @@
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifrhino@contour
-  \draw[\rhino@contour,fill=white] (-0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
-  \draw[\rhino@contour,fill=white] (0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
-  \draw[\rhino@contour,fill=white] (-0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
-  \draw[\rhino@contour,fill=white] (0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
+  \rhino@part@draw[\rhino@eye] (-0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
+  \rhino@part@draw[\rhino@eye] (0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
+  \rhino@part@draw[\rhino@pupil] (-0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
+  \rhino@part@draw[\rhino@pupil] (0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
 \else
   \fill[\rhino@eye] (-0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
   \fill[\rhino@eye] (0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
