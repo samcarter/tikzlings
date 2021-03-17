@@ -61,6 +61,7 @@
   contour/.code      = \squirrel@contourtrue
                        \def\squirrel@contour{#1},
   contour/.default   = black,
+  outline/.forward to = /squirrel/contour,
 }
 
 \def\squirrel@draw{%

@@ -71,6 +71,7 @@
   contour/.code      = \mouse@contourtrue
                        \def\mouse@contour{#1},
   contour/.default   = black,  
+  outline/.forward to = /mouse/contour,   
 }
 
 \def\mouse@draw{%

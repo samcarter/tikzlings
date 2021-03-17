@@ -67,7 +67,8 @@
   back/.code         = \penguin@backtrue, 
   contour/.code      = \penguin@contourtrue
                        \def\penguin@contour{#1},
-  contour/.default   = black,   
+  contour/.default   = black,  
+  outline/.forward to = /penguin/contour,    
 }
 
 \def\penguin@draw{%

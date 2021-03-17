@@ -64,6 +64,7 @@
   contour/.code      = \rhino@contourtrue
                        \def\rhino@contour{#1},
   contour/.default   = black,   
+  outline/.forward to = /rhino/contour,   
 }
 
 \def\rhino@draw{%

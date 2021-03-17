@@ -61,6 +61,7 @@
   contour/.code      = \pig@contourtrue
                        \def\pig@contour{#1},
   contour/.default   = black,  
+  outline/.forward to = /pig/contour,   
 }
 
 \def\pig@draw{%

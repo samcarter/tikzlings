@@ -67,6 +67,7 @@
   contour/.code      = \sheep@contourtrue
                        \def\sheep@contour{#1},
   contour/.default   = black,  
+  outline/.forward to = /sheep/contour,  
 }
 
 \def\sheep@draw{%

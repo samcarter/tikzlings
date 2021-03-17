@@ -102,6 +102,7 @@
   contour/.code      = \marmot@contourtrue
                        \def\marmot@contour{#1},
   contour/.default   = black,  
+  outline/.forward to = /marmot/contour,   
 }
 
 \def\marmot@draw{%

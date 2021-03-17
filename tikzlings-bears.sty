@@ -59,6 +59,7 @@
   contour/.code      = \bear@contourtrue
                        \def\bear@contour{#1},
   contour/.default   = black,  
+  outline/.forward to = /bear/contour,   
 }
 
 \def\bear@draw{%

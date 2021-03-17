@@ -59,6 +59,7 @@
   contour/.code      = \anteater@contourtrue
                        \def\anteater@contour{#1},
   contour/.default   = black,  
+  outline/.forward to = /anteater/contour,   
 }
 
 \def\anteater@draw{%
