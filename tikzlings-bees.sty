@@ -141,12 +141,8 @@
 %
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{scope}
+  \bee@part@draw[\bee@body] (0,2.1) to[out=180,in=140,looseness=1.2] (-0.3,1.5) to[out=-110,in=180,looseness=1.2] (0,0.15) to[out=00,in=-65,looseness=1.2] (0.3,1.5) to[out=40,in=0,looseness=1.2] cycle;
   \clip (0,2.1) to[out=180,in=140,looseness=1.2] (-0.3,1.5) to[out=-110,in=180,looseness=1.2] (0,0.15) to[out=00,in=-65,looseness=1.2] (0.3,1.5) to[out=40,in=0,looseness=1.2] cycle;
-  \ifbee@contour
-    \draw[\bee@contour,fill=white,line width=\scalingfactor*0.8pt] (0,2.1) to[out=180,in=140,looseness=1.2] (-0.3,1.5) to[out=-110,in=180,looseness=1.2] (0,0.15) to[out=00,in=-65,looseness=1.2] (0.3,1.5) to[out=40,in=0,looseness=1.2] cycle;
-  \else
-    \bee@part@draw[\bee@body] (0,2.1) to[out=180,in=140,looseness=1.2] (-0.3,1.5) to[out=-110,in=180,looseness=1.2] (0,0.15) to[out=00,in=-65,looseness=1.2] (0.3,1.5) to[out=40,in=0,looseness=1.2] cycle;
-  \fi
   % stripes
   \bee@part@draw[\bee@stripes] (-0.475,1.3) arc(180:360:0.5 and 0.1) -- ++ (0,-0.15) arc(360:180:0.5 and 0.1) -- cycle
   (-0.475,1.0) arc(180:360:0.5 and 0.1) -- ++ (0,-0.15) arc(360:180:0.5 and 0.1) -- cycle
