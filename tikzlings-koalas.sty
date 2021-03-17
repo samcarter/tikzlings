@@ -195,8 +195,13 @@
 %
 % Blushed %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifkoala@blush
-  \fill[red,path fading=koala@blush] (-0.3, 1.52) circle[radius=0.1]; 
-  \fill[red,path fading=koala@blush] (0.3, 1.52) circle[radius=0.1];
+  \ifkoala@contour
+    \fill[\koala@contour,path fading=koala@blush] (-0.3, 1.52) circle[radius=0.1]; 
+    \fill[\koala@contour,path fading=koala@blush] (0.3, 1.52) circle[radius=0.1];
+  \else
+    \fill[red,path fading=koala@blush] (-0.3, 1.52) circle[radius=0.1]; 
+    \fill[red,path fading=koala@blush] (0.3, 1.52) circle[radius=0.1];  
+  \fi
 \fi
 %
 \fi

@@ -187,8 +187,13 @@
 %
 % Blush %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifsheep@blush
-  \fill[red,path fading=sheep@blush] (-0.25, 1.5) circle[radius=0.1]; 
-  \fill[red,path fading=sheep@blush] (0.25, 1.5) circle[radius=0.1];
+  \ifsheep@contour
+    \fill[\sheep@contour,path fading=sheep@blush] (-0.25, 1.5) circle[radius=0.1]; 
+    \fill[\sheep@contour,path fading=sheep@blush] (0.25, 1.5) circle[radius=0.1];
+  \else
+    \fill[red,path fading=sheep@blush] (-0.25, 1.5) circle[radius=0.1]; 
+    \fill[red,path fading=sheep@blush] (0.25, 1.5) circle[radius=0.1];
+  \fi
 \fi
 %
 % monocle %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

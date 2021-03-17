@@ -169,20 +169,37 @@
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifsloth@sleeping
-  \fill[\sloth@body!50!white] (0.237, 1.743) .. controls (0.237, 1.712) and (0.157, 1.712) .. (0.157, 1.743) .. controls (0.157, 1.802) and (0.237, 1.802) .. (0.237, 1.743) -- cycle;
-  \fill[\sloth@body!50!white] (-0.237, 1.743) .. controls (-0.237, 1.712) and (-0.157, 1.712) .. (-0.157, 1.743) .. controls (-0.157, 1.802) and (-0.237, 1.802) .. (-0.237, 1.743) -- cycle;
-  %
-  \fill[\sloth@body!50!white] (0.195, 1.705) rectangle ++(0.005, 0.02);  
-  \fill[\sloth@body!50!white,rotate around={22:(0.195, 1.76)}] (0.195, 1.705) rectangle ++(0.005, 0.02); 
-  \fill[\sloth@body!50!white,rotate around={44:(0.195, 1.76)}] (0.195, 1.701) rectangle ++(0.005, 0.02);   
-  \fill[\sloth@body!50!white,rotate around={-22:(0.195, 1.76)}] (0.195, 1.705) rectangle ++(0.005, 0.02); 
-  \fill[\sloth@body!50!white,rotate around={-44:(0.195, 1.76)}] (0.195, 1.705) rectangle ++(0.005, 0.02);     
-  %
-  \fill[\sloth@body!50!white] (-0.195, 1.705) rectangle ++(0.005, 0.02);  
-  \fill[\sloth@body!50!white,rotate around={22:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02); 
-  \fill[\sloth@body!50!white,rotate around={44:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02);   
-  \fill[\sloth@body!50!white,rotate around={-22:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02); 
-  \fill[\sloth@body!50!white,rotate around={-44:(-0.195, 1.76)}] (-0.195, 1.701) rectangle ++(0.005, 0.02);   
+  \ifsloth@contour
+    \fill[\sloth@contour] (0.195, 1.705) rectangle ++(0.005, 0.02);  
+    \fill[\sloth@contour,rotate around={22:(0.195, 1.76)}] (0.195, 1.705) rectangle ++(0.005, 0.02); 
+    \fill[\sloth@contour,rotate around={44:(0.195, 1.76)}] (0.195, 1.701) rectangle ++(0.005, 0.02);   
+    \fill[\sloth@contour,rotate around={-22:(0.195, 1.76)}] (0.195, 1.705) rectangle ++(0.005, 0.02); 
+    \fill[\sloth@contour,rotate around={-44:(0.195, 1.76)}] (0.195, 1.705) rectangle ++(0.005, 0.02);     
+    %
+    \fill[\sloth@contour] (-0.195, 1.705) rectangle ++(0.005, 0.02);  
+    \fill[\sloth@contour,rotate around={22:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02); 
+    \fill[\sloth@contour,rotate around={44:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02);   
+    \fill[\sloth@contour,rotate around={-22:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02); 
+    \fill[\sloth@contour,rotate around={-44:(-0.195, 1.76)}] (-0.195, 1.701) rectangle ++(0.005, 0.02);  
+    %
+    \draw[\sloth@contour, fill=white] (0.237, 1.743) .. controls (0.237, 1.712) and (0.157, 1.712) .. (0.157, 1.743) .. controls (0.157, 1.802) and (0.237, 1.802) .. (0.237, 1.743) -- cycle;
+    \draw[\sloth@contour, fill=white] (-0.237, 1.743) .. controls (-0.237, 1.712) and (-0.157, 1.712) .. (-0.157, 1.743) .. controls (-0.157, 1.802) and (-0.237, 1.802) .. (-0.237, 1.743) -- cycle;  
+  \else
+    \fill[\sloth@body!50!white] (0.237, 1.743) .. controls (0.237, 1.712) and (0.157, 1.712) .. (0.157, 1.743) .. controls (0.157, 1.802) and (0.237, 1.802) .. (0.237, 1.743) -- cycle;
+    \fill[\sloth@body!50!white] (-0.237, 1.743) .. controls (-0.237, 1.712) and (-0.157, 1.712) .. (-0.157, 1.743) .. controls (-0.157, 1.802) and (-0.237, 1.802) .. (-0.237, 1.743) -- cycle;
+    %
+    \fill[\sloth@body!50!white] (0.195, 1.705) rectangle ++(0.005, 0.02);  
+    \fill[\sloth@body!50!white,rotate around={22:(0.195, 1.76)}] (0.195, 1.705) rectangle ++(0.005, 0.02); 
+    \fill[\sloth@body!50!white,rotate around={44:(0.195, 1.76)}] (0.195, 1.701) rectangle ++(0.005, 0.02);   
+    \fill[\sloth@body!50!white,rotate around={-22:(0.195, 1.76)}] (0.195, 1.705) rectangle ++(0.005, 0.02); 
+    \fill[\sloth@body!50!white,rotate around={-44:(0.195, 1.76)}] (0.195, 1.705) rectangle ++(0.005, 0.02);     
+    %
+    \fill[\sloth@body!50!white] (-0.195, 1.705) rectangle ++(0.005, 0.02);  
+    \fill[\sloth@body!50!white,rotate around={22:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02); 
+    \fill[\sloth@body!50!white,rotate around={44:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02);   
+    \fill[\sloth@body!50!white,rotate around={-22:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02); 
+    \fill[\sloth@body!50!white,rotate around={-44:(-0.195, 1.76)}] (-0.195, 1.701) rectangle ++(0.005, 0.02);   
+  \fi
 \else
   \sloth@part@draw[\sloth@eye] (0.193,1.75) circle[radius=0.04];
   \sloth@part@draw[\sloth@eye] (-0.193,1.75) circle[radius=0.04];

@@ -239,8 +239,13 @@
 %
 % Blushed %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifmarmot@blush
-  \fill[red,path fading=marmot@blush] (-0.295,1.6) circle[radius=0.1]; 
-  \fill[red,path fading=marmot@blush] (0.295,1.6) circle[radius=0.1]; 
+  \ifmarmot@contour
+    \fill[\marmot@contour,path fading=marmot@blush] (-0.295,1.6) circle[radius=0.1]; 
+    \fill[\marmot@contour,path fading=marmot@blush] (0.295,1.6) circle[radius=0.1];   
+  \else
+    \fill[red,path fading=marmot@blush] (-0.295,1.6) circle[radius=0.1]; 
+    \fill[red,path fading=marmot@blush] (0.295,1.6) circle[radius=0.1]; 
+  \fi
 \fi
 %
 % Wiskers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
