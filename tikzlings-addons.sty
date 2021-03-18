@@ -17,6 +17,44 @@
 \RequirePackage{tikz}
 \usetikzlibrary{patterns} % for the wizard hat
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% List of all TikZlings
+%
+% converting a list of the format
+%     bee/bees, marmot/marmots, ...
+% into a list of the format 
+%     /bee, /marmot, ...
+% for the also search option
+% usage: \tikzling@iteratesearch\tikzling@list
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{tikzlings-list}
+\RequirePackage{expl3}
+
+\ExplSyntaxOn
+\cs_new:Npn \tikzlings_iteratesearch:N #1 { 
+  \clist_map_function:NN #1 \__tikzlings_slashed_items:n 
+}
+\cs_new:Npn \__tikzlings_slashed_items:n #1 {
+  / 
+  \exp_not:N { 
+    \__tikzlings_before_slashsearch:w #1 / \s_stop 
+  }
+  , 
+}
+\cs_new:Npn \__tikzlings_before_slashsearch:w #1 / #2 \s_stop {
+  \tl_trim_spaces:n {#1} 
+}
+\cs_new_eq:NN \tikzling@iteratesearch \tikzlings_iteratesearch:N
+\ExplSyntaxOff
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Addons
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \newcommand*{\thing}[1][]{%
   \begin{scope}%
     \tikzset{/thing/.cd,#1}%
@@ -79,10 +117,7 @@
   % General
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  /thing/.search also={%
-    /tikz,/pgf,
-    /bear,/coati,/koala,/marmot,/mouse,/owl,/penguin,/snowman,/moles,/sloth,/pig,/cat,/hippo,/rhino,/panda,/bee,/anteater,/squirrel,/sheep,
-  },
+  /thing/.search also/.expanded={/tikz,/pgf,\tikzling@iteratesearch\tikzling@list}, 
   %/thing/.unknown/.code=\relax, % bad idea, prevents tikz/pgf keys
   /thing/.cd,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
