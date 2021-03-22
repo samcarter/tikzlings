@@ -94,7 +94,7 @@
   emphstyle=\color{red!60!black},
   emph=[1]{
     tikzlings,
-    tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmen, tikzlings-mice, tikzlings-moles, tikzlings-sloths, tikzlings-pigs, tikzlings-cats, tikzlings-hippos, tikzlings-rhinos, tikzlings-pandas, tikzlings-bees, tikzlings-anteaters, tikzlings-squirrels, tikzlings-sheep,
+    tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmen, tikzlings-mice, tikzlings-moles, tikzlings-sloths, tikzlings-pigs, tikzlings-cats, tikzlings-hippos, tikzlings-rhinos, tikzlings-pandas, tikzlings-bees, tikzlings-anteaters, tikzlings-squirrels, tikzlings-sheep, tikzlings-chickens,
     body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, nose, pupil, bill, feet, belly, ask, phil, mouth, buttons, rotatearms, paws, back, pupilwidth, globalwarming, wings, antennas, stripes,
     scale, yshift, xshift, rotate, hands, muzzle, schroedinger, toes,
     hat, tophat, beret, strawhat, ribbon, harlequin, niuqelrah, witch, magichat, magicstars, crown, queencrown, kingcrown, santa, chef, graduate, tassel, alien, book, bookcolour, signpost, signcolour, signback, speech, think, bubblecolour, pizza, cheese, baguette, cake, icecream, flavoura, flavourb, flavourc, milkshake, wine, cricket, hockey, football, crystalball, magicwand, rollingpin, lightsaber, torch, basket, easter, egga, eggb, eggc, crozier, shovel, pickaxe, umbrella, umbrellaclosed, handbag, cocktail, monocle, contour,
@@ -103,7 +103,7 @@
   keywordstyle=\color{red!60!black}\bfseries,
   morekeywords={tikzpicture},
   moretexcs={
-    usepackage, usetikzlibrary, marmot, coati, bear, koala, owl, penguin, thing, tikzling, snowman, mouse, moles, sloth, pig, cat, hippo, rhino, panda, bee, anteater, squirrel, bearwear, sheep, tikzlinghookbackground, tikzlinghookbelly, tikzlinghookbody, tikzlinghookforeground, mousehookbelly
+    usepackage, usetikzlibrary, marmot, coati, bear, koala, owl, penguin, thing, tikzling, snowman, mouse, moles, sloth, pig, cat, hippo, rhino, panda, bee, anteater, squirrel, bearwear, sheep, chicken, tikzlinghookbackground, tikzlinghookbelly, tikzlinghookbody, tikzlinghookforeground, mousehookbelly
   },
   delim ={[s][\ttfamily\color{green!50!black}]{$}{$}},
   moredelim=[is][\footnotesize\ttfamily\color{orange!70!black}]{|}{|},
@@ -565,6 +565,73 @@ Finally the key \lstinline|3D| will make the cat 3-dimensional:
 And finally the \lstinline|contour| key will only draw the outlines:
 \begin{tcblisting}{}
 \cat[contour=black]
+\end{tcblisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Chicken 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section[Chicken]{Polly, the chicken}
+
+\emph{Polly is named after the Italian word for chicken, \quote{pollo}}
+
+\subsection{Package name}
+
+\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
+\vspace*{0.5cm}
+\lstinline|\usepackage{tikzlings-chickens}| 
+\vspace*{0.5cm}
+\end{tcolorbox}
+
+\subsection{Basic Usage}
+
+\begin{tcblisting}{}
+\chicken
+\end{tcblisting}
+
+\subsection{Options}
+
+The basic chicken can be modified by changing its colour:
+\begin{tcblisting}{}
+\chicken[body=blue]
+\end{tcblisting}
+
+In addition to the colour of the body, the colour of various body parts can be adjusted:
+\begin{tcblisting}{}
+\chicken[comb=green]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\chicken[eye=red]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\chicken[pupil=red]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\chicken[bill=red]
+\end{tcblisting}
+
+\begin{tcblisting}{}
+\chicken[feet=red]
+\end{tcblisting}
+
+To view the chicken from behind:
+\begin{tcblisting}{}
+\chicken[back]
+\end{tcblisting}
+
+Finally the key \lstinline|3D| will make the chicken 3-dimensional:
+\begin{tcblisting}{}
+\chicken[3D]
+\end{tcblisting}
+
+And finally the \lstinline|contour| key will only draw the outlines:
+\begin{tcblisting}{}
+\chicken[contour=black]
 \end{tcblisting}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
