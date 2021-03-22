@@ -82,12 +82,17 @@
   eyes/.forward to        = /cat/eye,
   pupil/.code             = \def\cat@pupil{#1},
   pupil                   = black,
-  pupilwidth/.code        = \def\cat@pupil@width{#1}\edef\cat@pupil@offset{\strip@pt\dimexpr#1pt/4},
+  pupilwidth/.code        = \def\cat@pupil@width{#1}
+                            \edef\cat@pupil@offset{\strip@pt\dimexpr#1pt/4},
   pupil width/.forward to = /cat/pupilwidth,
-  narrow pupils/.style    = {pupil width = 0.005},
-  medium pupils/.style    = {pupil width = 0.015},
-  wide pupils/.style      = {pupil width = 0.025},
-  very wide pupils/.style = {pupil width = 0.050},
+  narrow pupils/.code     = \def\cat@pupil@width{0.005}
+                            \edef\cat@pupil@offset{\strip@pt\dimexpr 0.005pt/4},
+  medium pupils/.code     = \def\cat@pupil@width{0.015}
+                            \edef\cat@pupil@offset{\strip@pt\dimexpr 0.015pt/4},
+  wide pupils/.code       = \def\cat@pupil@width{0.025}
+                            \edef\cat@pupil@offset{\strip@pt\dimexpr 0.025pt/4},
+  very wide pupils/.code  = \def\cat@pupil@width{0.050}
+                            \edef\cat@pupil@offset{\strip@pt\dimexpr 0.050pt/4},
   pupil width             = 0.015,
   paws/.code              = \def\cat@paws{#1},
   paws                    = \cat@body,
