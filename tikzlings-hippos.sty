@@ -137,7 +137,7 @@
 \csname tikzlinghookbelly\endcsname
 %    
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifhippo@back\else
+\unless\ifhippo@back
   \hippo@part@draw[\hippo@body] (0.35,1.0) ellipse[x radius=0.24, y radius=0.13, rotate=90];
   \hippo@part@draw[\hippo@body] (-0.35,1.0) ellipse[x radius=0.24, y radius=0.13, rotate=-90];
 \fi
@@ -146,7 +146,7 @@
 \hippo@part@draw[\hippo@body!55!white] (0, 1.76) circle[radius=0.36];
 %
 % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifhippo@back\else
+\unless\ifhippo@back
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifhippo@contour

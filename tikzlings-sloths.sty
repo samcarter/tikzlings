@@ -135,7 +135,7 @@
 (-0.53,0.85) .. controls (-0.53,1.41) and (-0.32,1.87) .. (0,1.87) .. controls (0.33,1.87) and (0.53,1.41) .. (0.53,0.85) -- cycle;
 %
 % Belly %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifsloth@back\else
+\unless\ifsloth@back
   \sloth@part@draw[\sloth@body!70!white] (0.36, 0.74) .. controls (0.36, 0.49) and (0.22, 0.41) .. (0, 0.41) .. controls (-0.22, 0.41) and (-0.36, 0.49) .. (-0.36, 0.74) .. controls (-0.36, 1) and (-0.22, 1.16) .. (0, 1.16) .. controls (0.22, 1.16) and (0.36, 1) .. (0.36, 0.74) -- cycle;
 \fi
 %
@@ -154,7 +154,7 @@
 ( 0.50,1.67) -- cycle;
 %
 % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifsloth@back\else
+\unless\ifsloth@back
 %
 \sloth@part@draw[\sloth@body!50!white] ( 0.40,1.67) .. controls ( 0.40,1.90) and ( 0.12,2.09) .. ( 0.00,1.93) .. controls (-0.12,2.09) and (-0.40,1.90) .. (-0.40,1.67) .. controls (-0.40,1.45) and (-0.25,1.38) .. ( 0.00,1.38) .. controls ( 0.25,1.38) and ( 0.40,1.45) .. ( 0.40,1.67) -- cycle;
 %

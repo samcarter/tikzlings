@@ -115,7 +115,7 @@
 \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
 %
 % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifsquirrel@back\else
+\unless\ifsquirrel@back
   \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray]
    (0.9795, 1.089) .. controls (0.9795, 1.089) and (1.0684, 1.2135) .. (1.0837, 1.2877) .. controls (1.1483, 1.6164) and (0.7470, 1.8317) .. (0.5217, 1.7097) .. controls (0.3005, 1.5585) and (0.3397, 1.2578) .. (0.3951, 1.0501) .. controls (0.4419, 0.9023) and (0.5439, 0.6908) .. (0.4287, 0.5889) .. controls (0.3845, 0.5503) and (0.2295, 0.4255) .. (0.0123, 0.3869) .. controls (0.3032, 0.1931) and (1.0822, 0.6445) .. (0.8789, 1.0501) .. controls (0.8607, 1.114) and (0.8154, 1.1881) .. (0.8716, 1.2309) .. controls (0.9325, 1.2193) and (0.9536, 1.1463) .. (0.9795, 1.089) -- cycle;
 \fi
@@ -125,7 +125,7 @@
  (0.5,0.5) .. controls (0.5,0.09) and (-0.5,0.09) .. (-0.5,0.5) .. controls (-0.5,0.85) and (-0.25,1.6) .. (0,1.7) .. controls (0.25,1.6) and (0.5,0.85) .. (0.5,0.5) -- cycle;
 %
 % Belly %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifsquirrel@back\else
+\unless\ifsquirrel@back
   \squirrel@part@draw[\squirrel@body!85!white] (0.35,0.5) .. controls (0.35,0.22) and (-0.35,0.22) .. (-0.35,0.5) .. controls (-0.35,0.7) and (-0.17,1.2) .. (0,1.2) .. controls (0.17,1.2) and (0.35,0.7) .. (0.35,0.5) -- cycle;
 \fi 
 %

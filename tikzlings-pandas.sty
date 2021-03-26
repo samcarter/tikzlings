@@ -124,7 +124,7 @@
 \csname tikzlinghookbelly\endcsname
 %
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifpanda@back\else
+\unless\ifpanda@back
   \begin{scope}[yshift=-0.08cm]
   \panda@part@draw[black] (0.28,0.93) ellipse[x radius=0.24, y radius=0.13, rotate=70];
   \panda@part@draw[black] (-0.28,0.93) ellipse[x radius=0.24, y radius=0.13, rotate=-70];
@@ -132,7 +132,7 @@
 \fi
 %
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifpanda@back\else
+\unless\ifpanda@back
   \panda@part@draw[black] (0.32, 0.27) circle[radius=0.2]; 
   \panda@part@draw[black] (-0.32, 0.27) circle[radius=0.2];
 \fi
@@ -145,7 +145,7 @@
 \panda@part@draw[\panda@body!55!white] (0.4897, 1.5886) .. controls (0.4614, 1.8238) and (0.25, 2.1172) .. (0, 2.1134) .. controls (-0.25, 2.1172) and (-0.4614, 1.8238) .. (-0.4897, 1.5886) .. controls (-0.5261, 1.3269) and (-0.2748, 1.2377) .. (0, 1.2377) .. controls (0.2748, 1.2377) and (0.5261, 1.3269) .. (0.4897, 1.5886) -- cycle;
 %
 % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifpanda@back\else
+\unless\ifpanda@back
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \panda@part@draw[black] (0.3732, 1.6905) .. controls (0.3498, 1.767) and (0.2032, 1.8059) .. (0.0944, 1.7715) .. controls (-0.0145, 1.7371) and (0.173, 1.5479) .. (0.2508, 1.5443) .. controls (0.3286, 1.5407) and (0.3965, 1.614) .. (0.3732, 1.6905) -- cycle;

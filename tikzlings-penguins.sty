@@ -132,7 +132,7 @@
 \penguin@part@draw[\penguin@body] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
 %
 % Belly %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifpenguin@back\else
+\unless\ifpenguin@back
   \penguin@part@draw[\penguin@belly] (0, 0.6) ellipse[x radius=0.48, y radius=0.35];
 \fi
 %
@@ -141,7 +141,7 @@
 \csname tikzlinghookbelly\endcsname
 %
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifpenguin@back\else
+\unless\ifpenguin@back
   \penguin@part@draw[\penguin@feet] 
   (-0.265, 0.3941) .. controls (-0.283, 0.4505) and (-0.373, 0.6014) .. (-0.470, 0.6533) .. controls (-0.571, 0.7075) and (-0.576, 0.6369) .. (-0.554, 0.596) .. controls (-0.526, 0.5416) and (-0.573, 0.5302) .. (-0.602, 0.5384) .. controls (-0.695, 0.5653) and (-0.767, 0.5169) .. (-0.684, 0.434) .. controls (-0.664, 0.4137) and (-0.587, 0.3557) .. (-0.699, 0.3492) .. controls (-0.772, 0.345) and (-0.779, 0.268) .. (-0.689, 0.2445) .. controls (-0.597, 0.2206) and (-0.476, 0.2043) .. (-0.34, 0.2096) .. controls (-0.252, 0.2131) and (-0.237, 0.3059) .. (-0.265, 0.3941) -- cycle;
   \penguin@part@draw[\penguin@feet] 
@@ -149,7 +149,7 @@
 \fi
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifpenguin@back\else
+\unless\ifpenguin@back
   \ifpenguin@contour
     \penguin@part@draw[\penguin@eye] (-0.175,1.64) ellipse[x radius=0.1, y radius=0.15, rotate=-10];
     \penguin@part@draw[\penguin@pupil] (-0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714, rotate=-3];
@@ -164,7 +164,7 @@
 \fi
 %
 % Bill %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifpenguin@back\else
+\unless\ifpenguin@back
   \penguin@part@draw[\penguin@bill] (0.323, 1.4591) .. controls (0.1467, 1.3257) and (0.1066, 1.4365) .. (0, 1.4358) .. controls (-0.1066, 1.4365) and (-0.1467, 1.3257) .. (-0.323, 1.4591) .. controls (-0.1267, 1.075) and (0.1267, 1.075) .. (0.323, 1.4591) -- cycle;
 \fi
 % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

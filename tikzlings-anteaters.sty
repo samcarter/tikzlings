@@ -113,7 +113,7 @@
 \anteater@part@draw[\anteater@body!70!brown!50!darkgray] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
 %
 % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifanteater@back\else
+\unless\ifanteater@back
   \anteater@part@draw[\anteater@body!70!brown!50!darkgray] (1.0893, 1.5779) .. controls (0.3433, 1.6612) and (0.4863, 0.6062) .. (-0.0243, 0.348) .. controls (1.0671, 0.068) and (0.8133, 1.1808) .. (1.0893, 1.5779) -- cycle;
 \fi
 %

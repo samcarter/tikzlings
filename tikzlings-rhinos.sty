@@ -138,7 +138,7 @@
 \csname tikzlinghookbelly\endcsname
 %
 % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifrhino@back\else
+\unless\ifrhino@back
   \rhino@part@draw[\rhino@body] (0.3,1.0) ellipse[x radius=0.24, y radius=0.13, rotate=90];
   \rhino@part@draw[\rhino@body] (-0.3,1.0) ellipse[x radius=0.24, y radius=0.13, rotate=-90];
 \fi
@@ -147,7 +147,7 @@
 \rhino@part@draw[\rhino@body!55!white] (0, 1.76) circle[radius=0.36];
 %
 % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifrhino@back\else
+\unless\ifrhino@back
 %
 % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifrhino@contour

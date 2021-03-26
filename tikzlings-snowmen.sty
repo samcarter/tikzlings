@@ -172,7 +172,7 @@
   \csname tikzlinghookbelly\endcsname
   %
   % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \ifsnowman@back\else
+  \unless\ifsnowman@back
   %
   % Mouth% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \fill[\snowman@mouth] (0,1.5) circle[radius=0.016];
