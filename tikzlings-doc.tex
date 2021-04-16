@@ -94,7 +94,7 @@
   emphstyle=\color{red!60!black},
   emph=[1]{
     tikzlings,
-    tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmen, tikzlings-mice, tikzlings-moles, tikzlings-sloths, tikzlings-pigs, tikzlings-cats, tikzlings-hippos, tikzlings-rhinos, tikzlings-pandas, tikzlings-bees, tikzlings-anteaters, tikzlings-squirrels, tikzlings-sheep, tikzlings-chickens,
+    tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmen, tikzlings-mice, tikzlings-moles, tikzlings-sloths, tikzlings-pigs, tikzlings-cats, tikzlings-hippos, tikzlings-rhinos, tikzlings-pandas, tikzlings-bees, tikzlings-anteaters, tikzlings-squirrels, tikzlings-sheep, tikzlings-chickens, tikzlings-elephants,
     body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, nose, pupil, bill, feet, belly, ask, phil, mouth, buttons, rotatearms, paws, back, pupilwidth, globalwarming, wings, antennas, stripes,
     scale, yshift, xshift, rotate, hands, muzzle, schroedinger, toes,
     hat, tophat, beret, strawhat, ribbon, harlequin, niuqelrah, witch, magichat, magicstars, crown, queencrown, kingcrown, santa, chef, graduate, tassel, alien, book, bookcolour, signpost, signcolour, signback, speech, think, bubblecolour, pizza, cheese, baguette, cake, icecream, flavoura, flavourb, flavourc, milkshake, wine, cricket, hockey, football, crystalball, magicwand, rollingpin, lightsaber, torch, basket, easter, egga, eggb, eggc, crozier, shovel, pickaxe, umbrella, umbrellaclosed, handbag, cocktail, monocle, contour, comb, baby,
@@ -103,7 +103,7 @@
   keywordstyle=\color{red!60!black}\bfseries,
   morekeywords={tikzpicture},
   moretexcs={
-    usepackage, usetikzlibrary, marmot, coati, bear, koala, owl, penguin, thing, tikzling, snowman, mouse, moles, sloth, pig, cat, hippo, rhino, panda, bee, anteater, squirrel, bearwear, sheep, chicken, tikzlinghookbackground, tikzlinghookbelly, tikzlinghookbody, tikzlinghookforeground, mousehookbelly
+    usepackage, usetikzlibrary, marmot, coati, bear, koala, owl, penguin, thing, tikzling, snowman, mouse, moles, sloth, pig, cat, hippo, rhino, panda, bee, anteater, squirrel, bearwear, sheep, chicken, elephant, tikzlinghookbackground, tikzlinghookbelly, tikzlinghookbody, tikzlinghookforeground, mousehookbelly
   },
   delim ={[s][\ttfamily\color{green!50!black}]{$}{$}},
   moredelim=[is][\footnotesize\ttfamily\color{orange!70!black}]{|}{|},
@@ -557,7 +557,7 @@ To view the cat from behind:
 \cat[back]
 \end{tcblisting}
 
-Finally the key \lstinline|3D| will make the cat 3-dimensional:
+The key \lstinline|3D| will make the cat 3-dimensional:
 \begin{tcblisting}{}
 \cat[3D]
 \end{tcblisting}
@@ -629,7 +629,7 @@ To view the chicken from behind:
 \chicken[back]
 \end{tcblisting}
 
-Finally the key \lstinline|3D| will make the chicken 3-dimensional:
+The key \lstinline|3D| will make the chicken 3-dimensional:
 \begin{tcblisting}{}
 \chicken[3D]
 \end{tcblisting}
@@ -690,7 +690,7 @@ To view the coati from behind:
 \coati[back]
 \end{tcblisting}
 
-Finally the key \lstinline|3D| will make the coati 3-dimensional:
+The key \lstinline|3D| will make the coati 3-dimensional:
 \begin{tcblisting}{}
 \coati[3D]
 \end{tcblisting}
@@ -699,6 +699,58 @@ And finally the \lstinline|contour| key will only draw the outlines:
 \begin{tcblisting}{}
 \coati[contour=black]
 \end{tcblisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Chicken 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section[Elephant]{Johannes, the elephant}
+
+\emph{The namesake of Johannes loves elephants}
+
+\subsection{Package name}
+
+\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
+\vspace*{0.5cm}
+\lstinline|\usepackage{tikzlings-elephants}| 
+\vspace*{0.5cm}
+\end{tcolorbox}
+
+\subsection{Basic Usage}
+
+\begin{tcblisting}{}
+\elephant
+\end{tcblisting}
+
+\subsection{Options}
+
+The basic elephant can be modified by changing its colour:
+\begin{tcblisting}{}
+\elephant[body=blue]
+\end{tcblisting}
+
+In addition to the colour of the body, the colour of the eyes can be adjusted:
+\begin{tcblisting}{}
+\elephant[eye=red]
+\end{tcblisting}
+
+To view the elephant from behind:
+\begin{tcblisting}{}
+\elephant[back]
+\end{tcblisting}
+
+The key \lstinline|3D| will make the elephant 3-dimensional:
+\begin{tcblisting}{}
+\elephant[3D]
+\end{tcblisting}
+
+And finally the \lstinline|contour| key will only draw the outlines:
+\begin{tcblisting}{}
+\elephant[contour=black]
+\end{tcblisting}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -810,7 +862,7 @@ To view the koala from behind:
 \koala[back]
 \end{tcblisting}
 
-Finally the key \lstinline|3D| will make the koala 3-dimensional:
+The key \lstinline|3D| will make the koala 3-dimensional:
 \begin{tcblisting}{}
 \koala[3D]
 \end{tcblisting}
@@ -892,7 +944,7 @@ To view the marmot from behind:
 \marmot[back]
 \end{tcblisting}
 
-Finally the key \lstinline|3D| will make the marmot 3-dimensional:
+The key \lstinline|3D| will make the marmot 3-dimensional:
 \begin{tcblisting}{}
 \marmot[3D]
 \end{tcblisting}
@@ -1078,7 +1130,7 @@ To view the owl from behind:
 \owl[back]
 \end{tcblisting}
 
-Finally the key \lstinline|3D| will make the owl 3-dimensional:
+The key \lstinline|3D| will make the owl 3-dimensional:
 \begin{tcblisting}{}
 \owl[3D]
 \end{tcblisting}
@@ -1195,7 +1247,7 @@ To view the penguin from behind:
 \penguin[back]
 \end{tcblisting}
 
-Finally the key \lstinline|3D| will make the penguin 3-dimensional:
+The key \lstinline|3D| will make the penguin 3-dimensional:
 \begin{tcblisting}{}
 \penguin[3D]
 \end{tcblisting}
@@ -1422,7 +1474,7 @@ To view the sloth from behind:
 \sloth[back]
 \end{tcblisting}
 
-Finally the key \lstinline|3D| will make the sloth 3-dimensional:
+The key \lstinline|3D| will make the sloth 3-dimensional:
 \begin{tcblisting}{}
 \sloth[3D]
 \end{tcblisting}
@@ -1476,7 +1528,7 @@ To view the squirrel from behind:
 \squirrel[back]
 \end{tcblisting}
 
-Finally the key \lstinline|3D| will make the squirrel 3-dimensional:
+The key \lstinline|3D| will make the squirrel 3-dimensional:
 \begin{tcblisting}{}
 \squirrel[3D]
 \end{tcblisting}
@@ -1541,7 +1593,7 @@ To view the snowman from behind:
 \snowman[back]
 \end{tcblisting}
 
-Finally the key \lstinline|3D| will make the snowman 3-dimensional:
+The key \lstinline|3D| will make the snowman 3-dimensional:
 \begin{tcblisting}{}
 \snowman[3D]
 \end{tcblisting}
@@ -1813,7 +1865,7 @@ A list of all available accessories is given below. For completeness the default
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\squirrel[
+\elephant[
   football=white
 ]
 \end{tcblisting}

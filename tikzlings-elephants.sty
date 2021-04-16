@@ -1,0 +1,182 @@
+% !TeX root = ./examples/elephant.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% This package is part of the TikZlings package
+% A package to bring cute little animals and other beings into tikz
+% Maintained by samcarter
+%
+% Project repository and bug tracker:
+% https://github.com/samcarter/tikzlings
+%
+% Released under the LaTeX Project Public License v1.3c or later
+% See http://www.latex-project.org/lppl.txt
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{tikzlings-elephants}[2021/03/17 version v0.5 Draw teddy elephants in TikZ]
+
+\RequirePackage{tikz}
+\RequirePackage{tikzlings-addons}
+
+\newcommand*{\elephant}[1][]{%
+  \begin{scope}%
+    \tikzset{/elephant/.cd,#1}%
+    \elephant@draw%
+  \end{scope}%
+  \thing[#1]%
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname elephanthookforeground\endcsname
+  \csname tikzlinghookforeground\endcsname
+}
+
+\newif\ifelephant@threeD
+\newif\ifelephant@back
+\newif\ifelephant@contour
+
+\tikzset{
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Pass unknown keys on to tikz
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  /elephant/.search also={/tikz,/pgf,/thing},
+  /elephant/.cd,
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % body
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  body/.code         = \def\elephant@body{#1},
+  body               = gray,
+  eye/.code          = \def\elephant@eye{#1},
+  eye                = \elephant@body!30!black,  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % options
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  3D/.code           = \elephant@threeDtrue, 
+  back/.code         = \elephant@backtrue,  
+  contour/.code      = \elephant@contourtrue
+                       \def\elephant@contour{#1},
+  contour/.default   = black,  
+  outline/.forward to = /elephant/contour,   
+}
+
+\def\elephant@draw{%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% minimal bounding box size 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\path (-0.86, 0.0) rectangle (0.86, 2.17);
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% store the current scale factor
+% from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
+\pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
+\pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
+\pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% switch between 2D, 3D and contours, from
+% https://chat.stackexchange.com/transcript/message/45991801#45991801
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifelephant@threeD
+  \def\elephant@part@draw[##1]{\shade[ball color=##1]}
+\else
+  \ifelephant@contour
+    \def\elephant@part@draw[##1]{\draw[##1,\elephant@contour,fill=white,line width=\scalingfactor*0.4pt]}
+  \else
+    \def\elephant@part@draw[##1]{\fill[##1]}
+  \fi
+\fi
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Body parts (center: x=0.925)
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname elephanthookbackground\endcsname
+\csname tikzlinghookbackground\endcsname
+%
+% Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\elephant@part@draw[\elephant@body] (0.47,0.86) ellipse[x radius=0.35, y radius=0.25, rotate=-50];
+\elephant@part@draw[\elephant@body] (-0.47,0.86) ellipse[x radius=0.35, y radius=0.25, rotate=50];
+%
+% Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifelephant@back
+  \elephant@part@draw[\elephant@body] (0.425, 0.3) circle[radius=0.28]; 
+  \elephant@part@draw[\elephant@body] (-0.425, 0.3) circle[radius=0.28];
+  \elephant@part@draw[\elephant@body] (0.57,0.74) circle [radius=0.20];
+  \elephant@part@draw[\elephant@body] (-0.57,0.74) circle [radius=0.20];
+\fi
+%
+% Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\elephant@part@draw[\elephant@body] (0,0.75) ellipse[x radius=0.55, y radius=0.65]; 
+\unless\ifelephant@back
+  \elephant@part@draw[\elephant@body!30!white] (0,0.7) ellipse[x radius=0.35, y radius=0.4];
+\fi 
+%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname elephanthookbelly\endcsname
+\csname tikzlinghookbelly\endcsname
+%
+% Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\unless\ifelephant@back
+  \elephant@part@draw[\elephant@body] (0.425, 0.3) circle[radius=0.28]; 
+  \elephant@part@draw[\elephant@body] (-0.425, 0.3) circle[radius=0.28];
+  \elephant@part@draw[\elephant@body!30!white] (0.425, 0.3) circle[radius=0.17]; 
+  \elephant@part@draw[\elephant@body!30!white] (-0.425, 0.3) circle[radius=0.17];
+  \elephant@part@draw[\elephant@body] (0.57,0.75) circle [radius=0.20];  
+  \elephant@part@draw[\elephant@body!30!white] (0.57,0.74) circle [radius=0.12];
+  \elephant@part@draw[\elephant@body] (-0.57,0.74) circle [radius=0.20];
+  \elephant@part@draw[\elephant@body!30!white] (-0.57,0.74) circle [radius=0.12];    
+\fi
+%
+% Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\elephant@part@draw[\elephant@body] (0.5, 1.7) ellipse [x radius=0.35,y radius=0.45];
+\elephant@part@draw[\elephant@body] (-0.5, 1.7) ellipse [x radius=0.35,y radius=0.45];
+\unless\ifelephant@back
+  \elephant@part@draw[\elephant@body!30!white] (0.5, 1.7) ellipse [x radius=0.25,y radius=0.35];
+  \elephant@part@draw[\elephant@body!30!white] (-0.5, 1.7) ellipse [x radius=0.25,y radius=0.35];  
+\fi
+%
+% Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\elephant@part@draw[\elephant@body] (0, 1.55) circle[radius=0.5]; 
+%
+% Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\unless\ifelephant@back
+%
+% Trunk% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifelephant@threeD
+  \elephant@part@draw[\elephant@body,draw=\elephant@body!70!black,line width=\scalingfactor*0.6pt] (0.1428, 1.4375) .. controls (0.1607, 1.0411) and (0.3327, 1.1276) .. (0.6705, 1.355) -- (0.72, 1.22) .. controls (0.3327, 0.9) and (-0.1607, 0.8) .. (-0.1428, 1.4375) arc [start angle=160, end angle=20, radius=0.155] -- cycle;
+  \fill[\elephant@body!40!black] (0.7, 1.29) circle [radius=0.08];
+\else  
+  \elephant@part@draw[\elephant@body,draw=\elephant@body!70!black,line width=\scalingfactor*0.6pt] (0.1428, 1.4375) .. controls (0.1607, 1.0411) and (0.3327, 1.1276) .. (0.6705, 1.355) -- (0.72, 1.22) .. controls (0.3327, 0.9) and (-0.1607, 0.8) .. (-0.1428, 1.4375);
+  \elephant@part@draw[\elephant@body!70!black] (0.7, 1.29) circle [radius=0.08];
+\fi
+%
+% Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\elephant@part@draw[\elephant@eye] (-0.155, 1.7) circle[radius=0.05]; 
+\elephant@part@draw[\elephant@eye] (0.155, 1.7) circle[radius=0.05]; 
+%
+\fi
+% Tail  if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifelephant@back
+  \draw[\elephant@body!30!white,line width=\scalingfactor*0.6pt] (0, 0.5904) .. controls (-0.1619, 0.4147) and (0.203, 0.4157) .. (0.2422, 0.2712);
+  \elephant@part@draw[\elephant@body!30!white] (0.2008, 0.1949) .. controls (0.2452, 0.2121) and (0.2799, 0.242) .. (0.2691, 0.2755) .. controls (0.2611, 0.3005) and (0.2127, 0.3115) .. (0.1927, 0.2945) .. controls (0.1674, 0.2729) and (0.2082, 0.2383) .. (0.2008, 0.1949) -- cycle;
+\fi
+%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname elephanthookbody\endcsname
+\csname tikzlinghookbody\endcsname
+%
+}

@@ -16,6 +16,7 @@ A big thank you to all the people who contributed with code, ideas or feedback t
 <a href="./Examples/cat.tex"><img src="./Examples/cat.svg" alt="Cat" height="64"></a>
 <a href="./Examples/chicken.tex"><img src="./Examples/chicken.svg" alt="Chicken" height="64"></a>
 <a href="./Examples/coati.tex"><img src="./Examples/coati.svg" alt="Coati" height="64"></a>
+<a href="./Examples/elephant.tex"><img src="./Examples/elephant.svg" alt="Elephant" height="64"></a>
 <a href="./Examples/hippo.tex"><img src="./Examples/hippo.svg" alt="Hippo" height="64"></a>
 <a href="./Examples/koala.tex"><img src="./Examples/koala.svg" alt="Koala" height="64"></a>
 <a href="./Examples/marmot.tex"><img src="./Examples/marmot.svg" alt="Marmot" height="64"></a>
