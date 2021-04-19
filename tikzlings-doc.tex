@@ -94,8 +94,8 @@
   emphstyle=\color{red!60!black},
   emph=[1]{
     tikzlings,
-    tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmen, tikzlings-mice, tikzlings-moles, tikzlings-sloths, tikzlings-pigs, tikzlings-cats, tikzlings-hippos, tikzlings-rhinos, tikzlings-pandas, tikzlings-bees, tikzlings-anteaters, tikzlings-squirrels, tikzlings-sheep, tikzlings-chickens, tikzlings-elephants,
-    body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, nose, pupil, bill, feet, belly, ask, phil, mouth, buttons, rotatearms, paws, back, pupilwidth, globalwarming, wings, antennas, stripes,
+    tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmen, tikzlings-mice, tikzlings-moles, tikzlings-sloths, tikzlings-pigs, tikzlings-cats, tikzlings-hippos, tikzlings-rhinos, tikzlings-pandas, tikzlings-bees, tikzlings-anteaters, tikzlings-squirrels, tikzlings-sheep, tikzlings-chickens, tikzlings-elephants, tikzlings-bugs,
+    body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, nose, pupil, bill, feet, belly, ask, phil, mouth, buttons, rotatearms, paws, back, pupilwidth, globalwarming, wings, antennas, stripes, arms,
     scale, yshift, xshift, rotate, hands, muzzle, schroedinger, toes,
     hat, tophat, beret, strawhat, ribbon, harlequin, niuqelrah, witch, magichat, magicstars, crown, queencrown, kingcrown, santa, chef, graduate, tassel, alien, book, bookcolour, signpost, signcolour, signback, speech, think, bubblecolour, pizza, cheese, baguette, cake, icecream, flavoura, flavourb, flavourc, milkshake, wine, cricket, hockey, football, crystalball, magicwand, rollingpin, lightsaber, torch, basket, easter, egga, eggb, eggc, crozier, shovel, pickaxe, umbrella, umbrellaclosed, handbag, cocktail, monocle, contour, comb, baby,
   },
@@ -103,7 +103,7 @@
   keywordstyle=\color{red!60!black}\bfseries,
   morekeywords={tikzpicture},
   moretexcs={
-    usepackage, usetikzlibrary, marmot, coati, bear, koala, owl, penguin, thing, tikzling, snowman, mouse, moles, sloth, pig, cat, hippo, rhino, panda, bee, anteater, squirrel, bearwear, sheep, chicken, elephant, tikzlinghookbackground, tikzlinghookbelly, tikzlinghookbody, tikzlinghookforeground, mousehookbelly
+    usepackage, usetikzlibrary, marmot, coati, bear, koala, owl, penguin, thing, tikzling, snowman, mouse, moles, sloth, pig, cat, hippo, rhino, panda, bee, anteater, squirrel, bearwear, sheep, chicken, elephant, bug, tikzlinghookbackground, tikzlinghookbelly, tikzlinghookbody, tikzlinghookforeground, mousehookbelly
   },
   delim ={[s][\ttfamily\color{green!50!black}]{$}{$}},
   moredelim=[is][\footnotesize\ttfamily\color{orange!70!black}]{|}{|},
@@ -461,6 +461,75 @@ The key \lstinline|3D| will make the bee 3-dimensional:
 And finally the \lstinline|contour| key will only draw the outlines:
 \begin{tcblisting}{}
 \bee[contour=black]
+\end{tcblisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Bug 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section[Bug]{Marie, the bug}
+
+\emph{For the French girl who likes ladybugs}
+
+\subsection{Package name}
+
+\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
+\vspace*{0.5cm}
+\lstinline|\usepackage{tikzlings-bugs}| 
+\vspace*{0.5cm}
+\end{tcolorbox}
+
+\subsection{Basic Usage}
+
+\begin{tcblisting}{}
+\bug
+\end{tcblisting}
+
+\subsection{Options}
+
+The basic bug can be modified by changing its colour:
+\begin{tcblisting}{}
+\bug[body=blue]
+\end{tcblisting}
+
+In addition to the colour of the body, the colour of various body parts can be adjusted:
+\begin{tcblisting}{}
+\bug[antennas=blue]
+\end{tcblisting}
+\begin{tcblisting}{}
+\bug[eye=blue]
+\end{tcblisting}
+\begin{tcblisting}{}
+\bug[pupil=blue]
+\end{tcblisting}
+\begin{tcblisting}{}
+\bug[mouth=blue]
+\end{tcblisting}
+\begin{tcblisting}{}
+\bug[arms=blue]
+\end{tcblisting}
+\begin{tcblisting}{}
+\bug[wings=blue]
+\end{tcblisting}
+\begin{tcblisting}{}
+\bug[feet=blue]
+\end{tcblisting}
+
+To view the bug from behind:
+\begin{tcblisting}{}
+\bug[back]
+\end{tcblisting}
+
+The key \lstinline|3D| will make the bug 3-dimensional:
+\begin{tcblisting}{}
+\bug[3D]
+\end{tcblisting}
+
+And finally the \lstinline|contour| key will only draw the outlines:
+\begin{tcblisting}{}
+\bug[contour=black]
 \end{tcblisting}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1818,7 +1887,7 @@ A list of all available accessories is given below. For completeness the default
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\coati[
+\bug[
   baguette=brown
 ]
 \end{tcblisting}
@@ -1859,7 +1928,7 @@ A list of all available accessories is given below. For completeness the default
 \end{tcblisting}
 
 \begin{tcblisting}{}
-\bee[
+\bug[
   hockey=brown
 ]
 \end{tcblisting}
