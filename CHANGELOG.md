@@ -4,11 +4,15 @@
 
 ### New
 
-- Marie, the bug
-
 ### Changed
 
 ### Fixed
+
+## [v0.7]
+
+### New
+
+- Marie, the bug
 
 ## [v0.6]
 
@@ -79,7 +83,8 @@
 
 ------
 
-[Unreleased]: https://github.com/samcarter/tikzlings/compare/v0.6...HEAD
+[Unreleased]: https://github.com/samcarter/tikzlings/compare/v0.7...HEAD
+[v0.7]: https://github.com/samcarter/tikzlings/compare/v0.6...v0.7
 [v0.6]: https://github.com/samcarter/tikzlings/compare/v0.5...v0.6
 [v0.5]: https://github.com/samcarter/tikzlings/compare/v0.4...v0.5
 [v0.4]: https://github.com/samcarter/tikzlings/compare/v0.3...v0.4
