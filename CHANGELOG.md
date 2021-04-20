@@ -4,6 +4,8 @@
 
 ### New
 
+- Natalie, the bat
+
 ### Changed
 
 ### Fixed

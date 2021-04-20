@@ -1,0 +1,188 @@
+% !TeX root = ./examples/bat.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% This package is part of the TikZlings package
+% A package to bring cute little animals and other beings into tikz
+% Maintained by samcarter
+%
+% Project repository and bug tracker:
+% https://github.com/samcarter/tikzlings
+%
+% Released under the LaTeX Project Public License v1.3c or later
+% See http://www.latex-project.org/lppl.txt
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{tikzlings-bats}[2021/04/20 version v0.7 Drawing bats in TikZ]
+
+\RequirePackage{tikz}
+\RequirePackage{tikzlings-addons}
+
+\newcommand*{\bat}[1][]{%
+  \begin{scope}%
+    \tikzset{/bat/.cd,#1}%
+    \bat@draw%
+  \end{scope}%
+  \thing[#1]%
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname bathookforeground\endcsname
+  \csname tikzlinghookforeground\endcsname
+  %   
+}
+
+\newif\ifbat@threeD
+\newif\ifbat@back
+\newif\ifbat@contour
+\newif\ifbat@teeth
+
+\tikzset{
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Pass unknown keys on to tikz
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  /bat/.search also={/tikz,/pgf,/thing},
+  /bat/.cd,
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % body
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  body/.code         = \def\bat@body{#1},
+  body               = black!75!white,
+  ears/.code         = \def\bat@ears{#1},
+  ears               = \bat@body,     
+  eye/.code          = \def\bat@eye{#1},
+  eye                = white,
+  pupil/.code        = \def\bat@pupil{#1},
+  pupil              = black,
+  mouth/.code        = \def\bat@mouth{#1},
+  mouth              = black,     
+  feet/.code         = \def\bat@feet{#1},
+  feet               = orange, 
+  wings/.code        = \def\bat@wings{#1},
+  wings              = 1,  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % options
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  teeth/.code        = \bat@teethtrue    
+                       \def\bat@teeth{#1}, 
+  teeth/.default     = white,
+  3D/.code           = \bat@threeDtrue,  
+  back/.code         = \bat@backtrue,       
+  contour/.code      = \bat@contourtrue
+                       \def\bat@contour{#1}
+                       \def\bat@antennas{#1}
+                       \def\bat@mouth{#1},
+  contour/.default   = black,  
+  outline/.forward to = /bat/contour,   
+}
+
+\def\bat@draw{%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% minimal bounding box size 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\path (-0.44,0.0) rectangle (0.44, 2.2);
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% store the current scale factor
+% from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
+\pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
+\pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
+\pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% switch between 2D, 3D and contours, from
+% https://chat.stackexchange.com/transcript/message/45991801#45991801
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifbat@threeD
+  \def\bat@part@draw[##1]{\shade[ball color=##1]}
+\else
+  \ifbat@contour
+    \def\bat@part@draw[##1]{\draw[##1,\bat@contour,fill=white,line width=\scalingfactor*0.4pt]}
+  \else
+    \def\bat@part@draw[##1]{\fill[##1]}
+%    \def\bat@part@draw[##1]{\draw[green]}
+  \fi
+\fi
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Body parts (center: x=0)
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname batshookbackground\endcsname
+\csname tikzlinghookbackground\endcsname
+%
+% Wings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bat@part@draw[\bat@body] (-0.4147-\bat@wings*1.8711, 0.6377) .. controls (-0.4147-\bat@wings*2.0410, 1.1512) and (-0.4147-\bat@wings*1.1342, 1.5336) .. (-0.4147-\bat@wings*0.5687, 1.6054) .. controls (-0.4147-\bat@wings*0.3860, 1.4742) and (-0.4147-\bat@wings*0.0711, 1.3009) .. (-0.35, 1.2365) -- (-0.35, 0.5586) .. controls (-0.4147-\bat@wings*0.0890, 0.6892) and (-0.4147-\bat@wings*0.2882, 0.7333) .. (-0.4147-\bat@wings*0.4758, 0.6377) .. controls (-0.4147-\bat@wings*0.6753, 0.841) and (-0.4147-\bat@wings*0.9758, 0.8349) .. (-0.4147-\bat@wings*1.1476, 0.6377) .. controls (-0.4147-\bat@wings*1.2902, 0.8407) and (-0.4147-\bat@wings*1.72, 0.8553) .. (-0.4147-\bat@wings*1.8711, 0.6377) -- cycle;
+\bat@part@draw[\bat@body] (0.4147+\bat@wings*1.8711, 0.6377) .. controls (0.4147+\bat@wings*2.0410, 1.1512) and (0.4147+\bat@wings*1.1342, 1.5336) .. (0.4147+\bat@wings*0.5687, 1.6054) .. controls (0.4147+\bat@wings*0.3860, 1.4742) and (0.4147+\bat@wings*0.0711, 1.3009) .. (0.35, 1.2365) -- (0.35, 0.5586) .. controls (0.4147+\bat@wings*0.0890, 0.6892) and (0.4147+\bat@wings*0.2882, 0.7333) .. (0.4147+\bat@wings*0.4758, 0.6377) .. controls (0.4147+\bat@wings*0.6753, 0.841) and (0.4147+\bat@wings*0.9758, 0.8349) .. (0.4147+\bat@wings*1.1476, 0.6377) .. controls (0.4147+\bat@wings*1.2902, 0.8407) and (0.4147+\bat@wings*1.72, 0.8553) .. (0.4147+\bat@wings*1.8711, 0.6377) -- cycle;
+%
+% Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bat@part@draw[\bat@ears] (-0.3498, 1.7392) .. controls (-0.3498, 1.7392) and (-0.4724, 1.9226) .. (-0.3896, 2.177) .. controls (-0.2561, 2.2679) and (-0.0953, 1.9447) .. (0.0234, 1.9394) -- cycle;
+\bat@part@draw[\bat@ears] (0.3498, 1.7392) .. controls (0.3498, 1.7392) and (0.4724, 1.9226) .. (0.3896, 2.177) .. controls (0.2561, 2.2679) and (0.0953, 1.9447) .. (-0.0234, 1.9394) -- cycle;
+%
+\ifbat@back
+  % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \bat@part@draw[\bat@feet] (0.175,0.1) ellipse[x radius=0.03, y radius=0.1];
+  \bat@part@draw[\bat@feet] (0.225,0.11) ellipse[x radius=0.03, y radius=0.1, rotate=20];
+  \bat@part@draw[\bat@feet] (0.275,0.13) ellipse[x radius=0.03, y radius=0.1, rotate=40];
+  \bat@part@draw[\bat@feet] (-0.175,0.1) ellipse[x radius=0.03, y radius=0.1];
+  \bat@part@draw[\bat@feet] (-0.225,0.11) ellipse[x radius=0.03, y radius=0.1, rotate=-20];
+  \bat@part@draw[\bat@feet] (-0.275,0.13) ellipse[x radius=0.03, y radius=0.1, rotate=-40];
+\fi
+%
+% Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bat@part@draw[\bat@body] (0,0.8) ellipse [y radius=0.7, x radius=0.45];
+%
+% Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bat@part@draw[\bat@body] (0,1.55) circle [radius=0.43];
+%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname batshookbelly\endcsname
+\csname tikzlinghookbelly\endcsname
+%
+% Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\unless\ifbat@back
+  %
+  % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \bat@part@draw[\bat@feet] (0.175,0.1) ellipse[x radius=0.03, y radius=0.1];
+  \bat@part@draw[\bat@feet] (0.225,0.11) ellipse[x radius=0.03, y radius=0.1, rotate=20];
+  \bat@part@draw[\bat@feet] (0.275,0.13) ellipse[x radius=0.03, y radius=0.1, rotate=40];
+  \bat@part@draw[\bat@feet] (-0.175,0.1) ellipse[x radius=0.03, y radius=0.1];
+  \bat@part@draw[\bat@feet] (-0.225,0.11) ellipse[x radius=0.03, y radius=0.1, rotate=-20];
+  \bat@part@draw[\bat@feet] (-0.275,0.13) ellipse[x radius=0.03, y radius=0.1, rotate=-40];
+  %
+  % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \bat@part@draw[\bat@eye] (-0.18,1.66) ellipse[x radius=0.1, y radius=0.15, rotate=10];
+  \bat@part@draw[\bat@pupil] (-0.15,1.645) ellipse[x radius=0.0357, y radius=0.0714, rotate=3];
+  \bat@part@draw[\bat@eye] (0.18,1.66) ellipse[x radius=0.1, y radius=0.15, rotate=-10];
+  \bat@part@draw[\bat@pupil] (0.15,1.645) ellipse[x radius=0.0357, y radius=0.0714, rotate=-3];
+  %
+  % Teeth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifbat@teeth
+    \bat@part@draw[\bat@teeth] (-0.1,1.36) -- (-0.12,1.3) -- (-0.14,1.38) -- cycle;  
+    \bat@part@draw[\bat@teeth] (0.1,1.36) -- (0.12,1.3) -- (0.14,1.38) -- cycle;      
+  \fi
+  %
+  % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \draw[\bat@mouth,line width=\scalingfactor*0.4pt] (0.18, 1.42) arc [start angle=-40, end angle=-140, radius=0.23];
+  % 
+  %
+\fi
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\csname batshookbody\endcsname
+\csname tikzlinghookbody\endcsname
+%
+}
