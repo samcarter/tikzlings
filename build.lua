@@ -84,14 +84,14 @@ end
 
 -- committing retagged file and tag the commit =======================
 function tag_hook(tagname)
---	git("add", "*.sty")
---	git("add", "*-doc.tex")
---	git("add", "README_ctan.md")
---	os.execute("latexmk " .. module .. "-doc")
---	os.execute("cp " .. module .. "-doc.pdf documentation.pdf")
---	git("add", "documentation.pdf")
---	git("commit -m 'step version ", packageversion, "'" )
---	git("tag", packageversion)
+	git("add", "*.sty")
+	git("add", "*-doc.tex")
+	git("add", "README_ctan.md")
+	os.execute("latexmk " .. module .. "-doc")
+	os.execute("cp " .. module .. "-doc.pdf documentation.pdf")
+	git("add", "documentation.pdf")
+	git("commit -m 'step version ", packageversion, "'" )
+	git("tag", packageversion)
 end
 
 -- collecting files for ctan =========================================
