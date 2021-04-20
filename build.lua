@@ -16,6 +16,7 @@ local oldtag = handle:read("*a")
 handle:close()
 newsubtag = string.sub(oldtag, 4)
 newmajortag = string.sub(oldtag, 0, 3)
+previousversion = newmajortag .. math.floor(newsubtag)
 if ( options["target"] == "tag") then
 	newsubtag = newsubtag + 1
 end
@@ -36,7 +37,7 @@ function git(...)
 end
 
 -- replace version tags in .sty and -doc.tex files ===================
-tagfiles = {"*.sty", "*-doc.tex", "README_ctan.md"}
+tagfiles = {"*.sty", "*-doc.tex", "README_ctan.md", "CHANGELOG.md"}
 function update_tag (file,content,tagname,tagdate)
 	tagdate = string.gsub (packagedate,"-", "/")
 	if string.match (file, "%.sty$" ) then
@@ -60,6 +61,22 @@ function update_tag (file,content,tagname,tagdate)
 			"Current version: " .. tagdate.." version "..packageversion
 		)
 		return content
+    elseif string.match (file, "CHANGELOG.md$" ) then
+        local url = "https://github.com/samcarter/" .. module .. "/compare/"
+        local previous = string.match(content,"compare/(v%d%.%d)%.%.%.HEAD")
+        -- adding new unreleased heading at the top
+		content = string.gsub (
+			content,
+            "## %[Unreleased%]",
+            "## [Unreleased]\n\n### New\n\n### Changed\n\n### Fixed\n\n\n## [" .. packageversion .."]"        
+		)
+        -- adding new link at bottom
+		content = string.gsub (
+			content,
+            "v%d.%d%.%.%.HEAD",
+            packageversion .. "...HEAD\n[" .. packageversion .. "]: " .. url .. previousversion .. "..." .. packageversion
+		)
+		return content
         
 	end
 	return content
@@ -67,14 +84,14 @@ end
 
 -- committing retagged file and tag the commit =======================
 function tag_hook(tagname)
-	git("add", "*.sty")
-	git("add", "*-doc.tex")
-    git("add", "README_ctan.md")
-	os.execute("latexmk " .. module .. "-doc")
-	os.execute("cp " .. module .. "-doc.pdf documentation.pdf")
-	git("add", "documentation.pdf")
-	git("commit -m 'step version ", packageversion, "'" )
-	git("tag", packageversion)
+--	git("add", "*.sty")
+--	git("add", "*-doc.tex")
+--	git("add", "README_ctan.md")
+--	os.execute("latexmk " .. module .. "-doc")
+--	os.execute("cp " .. module .. "-doc.pdf documentation.pdf")
+--	git("add", "documentation.pdf")
+--	git("commit -m 'step version ", packageversion, "'" )
+--	git("tag", packageversion)
 end
 
 -- collecting files for ctan =========================================
