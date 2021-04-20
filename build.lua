@@ -64,12 +64,23 @@ function update_tag (file,content,tagname,tagdate)
     elseif string.match (file, "CHANGELOG.md$" ) then
         local url = "https://github.com/samcarter/" .. module .. "/compare/"
         local previous = string.match(content,"compare/(v%d%.%d)%.%.%.HEAD")
+        
+        -- copying current changelong to announcement.txt
+        -- finding start and end in changelog
+        i, startstring = string.find(content, "## %[Unreleased%]")
+        stopstring, i = string.find(content, "## %[" .. previousversion .. "%]")
+        -- opening file and writing substring
+        file = io.open("announcement.txt", "w")
+        file:write(string.sub(content, startstring+3, stopstring-1), "\n")
+        file:close()
+        
         -- adding new unreleased heading at the top
 		content = string.gsub (
 			content,
             "## %[Unreleased%]",
             "## [Unreleased]\n\n### New\n\n### Changed\n\n### Fixed\n\n\n## [" .. packageversion .."]"        
 		)
+        
         -- adding new link at bottom
 		content = string.gsub (
 			content,
@@ -77,7 +88,6 @@ function update_tag (file,content,tagname,tagdate)
             packageversion .. "...HEAD\n[" .. packageversion .. "]: " .. url .. previousversion .. "..." .. packageversion
 		)
 		return content
-        
 	end
 	return content
 end
