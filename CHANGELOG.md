@@ -2,8 +2,6 @@
 
 ## [Unreleased]
 
-[Unreleased]: https://github.com/samcarter/tikzlings/compare/v0.6...HEAD
-
 ### New
 
 - Marie, the bug
@@ -13,8 +11,6 @@
 ### Fixed
 
 ## [v0.6]
-
-[v0.6]: https://github.com/samcarter/tikzlings/compare/v0.5...v0.6
 
 ### New
 
@@ -28,16 +24,12 @@
 
 ## [v0.5]
 
-[v0.5]: https://github.com/samcarter/tikzlings/compare/v0.4...v0.5
-
 ### Changed
 
 - Adding option to change eye colour to all TikZlings (and where applicable pupil colour)
 - adding "contour" option
 
 ## [v0.4]
-
-[v0.4]: https://github.com/samcarter/tikzlings/compare/v0.3...v0.4
 
 ### New
 
@@ -48,8 +40,6 @@
 - engine independent random number seed
 
 ## [v0.3]
-
-[v0.3]: https://github.com/samcarter/tikzlings/compare/v0.2...v0.3
 
 ### New
 
@@ -70,8 +60,6 @@
 
 ## [v0.2]
 
-[v0.2]: https://github.com/samcarter/tikzlings/compare/v0.1...v0.2
-
 ### New
 
 - pig
@@ -85,8 +73,16 @@
 
 ## [v0.1]
 
-[v0.1]: https://github.com/samcarter/tikzlings/compare/v0.0...v0.1
-
 ### New
 
 - A collection of cute little animals and similar creatures
+
+------
+
+[Unreleased]: https://github.com/samcarter/tikzlings/compare/v0.6...HEAD
+[v0.6]: https://github.com/samcarter/tikzlings/compare/v0.5...v0.6
+[v0.5]: https://github.com/samcarter/tikzlings/compare/v0.4...v0.5
+[v0.4]: https://github.com/samcarter/tikzlings/compare/v0.3...v0.4
+[v0.3]: https://github.com/samcarter/tikzlings/compare/v0.2...v0.3
+[v0.2]: https://github.com/samcarter/tikzlings/compare/v0.1...v0.2
+[v0.1]: https://github.com/samcarter/tikzlings/compare/v0.0...v0.1
