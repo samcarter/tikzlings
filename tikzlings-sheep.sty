@@ -55,17 +55,23 @@
   body               = brown!50!darkgray!97!yellow,
   eye/.code          = \def\sheep@eye{#1},
   eye                = \sheep@body!50!black, 
+  nose/.code         = \def\sheep@nose{#1},
+  nose               = \sheep@body!50!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  blush/.code        = \sheep@blushtrue,
+  blush/.code        = \sheep@blushtrue
+                       \def\sheep@blushcolor{#1},
+  blush/.default     = red, 
   monocle/.code      = \sheep@monocletrue,
   3D/.code           = \sheep@threeDtrue, 
   back/.code         = \sheep@backtrue,  
   contour/.code      = \sheep@contourtrue
-                       \def\sheep@contour{#1},
+                       \def\sheep@contour{#1}
+                       \def\sheep@blushcolor{#1}
+                       \def\sheep@nose{#1},
   contour/.default   = black,  
   outline/.forward to = /sheep/contour,  
 }
@@ -167,11 +173,7 @@
   \fi% back
   %
   % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \ifsheep@contour
-    \draw[\sheep@contour,line width=\scalingfactor*0.8pt,line cap=round]  (0.16,1.43) arc [start angle=-30, end angle=-150, radius=0.185] (0.0,1.335) -- (0,1.175);
-  \else% contour
-    \draw[\sheep@body!50!black,line width=\scalingfactor*0.8pt,line cap=round]  (0.16,1.43) arc [start angle=-30, end angle=-150, radius=0.185] (0.0,1.335) -- (0,1.175);
-  \fi% contour
+  \draw[\sheep@nose,line width=\scalingfactor*0.8pt,line cap=round]  (0.16,1.43) arc [start angle=-30, end angle=-150, radius=0.185] (0.0,1.335) -- (0,1.175);
   %
   % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \sheep@part@draw[\sheep@body!45!white!95!orange] (0.3216,0.13) arc (-15:195:0.10) -- (0.16,0.13) to [bend left] (0.25,0.13) -- cycle;
@@ -182,13 +184,8 @@
   %
   % Blush %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifsheep@blush
-    \ifsheep@contour
-      \fill[\sheep@contour,path fading=sheep@blush] (-0.25, 1.5) circle[radius=0.1]; 
-      \fill[\sheep@contour,path fading=sheep@blush] (0.25, 1.5) circle[radius=0.1];
-    \else% contour
-      \fill[red,path fading=sheep@blush] (-0.25, 1.5) circle[radius=0.1]; 
-      \fill[red,path fading=sheep@blush] (0.25, 1.5) circle[radius=0.1];
-    \fi% contour
+    \fill[\sheep@blushcolor,path fading=sheep@blush] (-0.25, 1.5) circle[radius=0.1]; 
+    \fill[\sheep@blushcolor,path fading=sheep@blush] (0.25, 1.5) circle[radius=0.1];
   \fi% blush
   %
   % monocle %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

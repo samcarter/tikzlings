@@ -95,7 +95,7 @@
   emph=[1]{
     tikzlings,
     tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmen, tikzlings-mice, tikzlings-moles, tikzlings-sloths, tikzlings-pigs, tikzlings-cats, tikzlings-hippos, tikzlings-rhinos, tikzlings-pandas, tikzlings-bees, tikzlings-anteaters, tikzlings-squirrels, tikzlings-sheep, tikzlings-chickens, tikzlings-elephants, tikzlings-bugs, tikzlings-bats,
-    body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, nose, pupil, bill, feet, belly, ask, phil, mouth, buttons, rotatearms, paws, back, pupilwidth, globalwarming, wings, antennas, stripes, arms, ears,
+    body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, nose, pupil, bill, feet, belly, ask, phil, mouth, buttons, rotatearms, paws, back, pupilwidth, globalwarming, wings, antennas, stripes, arms, ears, mouth, tail, nose, eyelid,
     scale, yshift, xshift, rotate, hands, muzzle, schroedinger, toes,
     hat, tophat, beret, strawhat, ribbon, harlequin, niuqelrah, witch, magichat, magicstars, crown, queencrown, kingcrown, santa, chef, graduate, tassel, alien, book, bookcolour, signpost, signcolour, signback, speech, think, bubblecolour, pizza, cheese, baguette, cake, icecream, flavoura, flavourb, flavourc, milkshake, wine, cricket, hockey, football, crystalball, magicwand, rollingpin, lightsaber, torch, basket, easter, egga, eggb, eggc, crozier, shovel, pickaxe, umbrella, umbrellaclosed, handbag, cocktail, monocle, contour, comb, baby,
   },
@@ -433,9 +433,12 @@ The basic teddy bear can be modified by changing its colour:
 \bear[body=blue]
 \end{tcblisting}
 
-In addition to the colour of the body, the colour of the eyes can be adjusted:
+In addition to the colour of the body, the colour of various body parts can be adjusted:
 \begin{tcblisting}{}
 \bear[eye=red]
+\end{tcblisting}
+\begin{tcblisting}{}
+\bear[mouth=red]
 \end{tcblisting}
 
 To view the teddy bear from behind:
@@ -925,12 +928,15 @@ The basic hippo can be modified by changing its colour:
 \hippo[body=blue]
 \end{tcblisting}
 
-In addition to the colour of the body, the colour of the eyes can be adjusted:
+In addition to the colour of the body, the colour of various body parts can be adjusted:
 \begin{tcblisting}{}
 \hippo[eye=red]
 \end{tcblisting}
 \begin{tcblisting}{}
 \hippo[pupil=red]
+\end{tcblisting}
+\begin{tcblisting}{}
+\hippo[mouth=red]
 \end{tcblisting}
 
 The hippo can also do its nails:
@@ -984,14 +990,17 @@ The basic koala can be modified by changing its colour:
 \koala[body=blue]
 \end{tcblisting}
 
-In addition to the colour of the body, the colour of the eyes can be adjusted:
+In addition to the colour of the body, the colour of various body parts can be adjusted:
 \begin{tcblisting}{}
 \koala[eye=red]
+\end{tcblisting}
+\begin{tcblisting}{}
+\koala[mouth=red]
 \end{tcblisting}
 
 It can also blush
 \begin{tcblisting}{}
-\koala[blush]
+\koala[blush=red]
 \end{tcblisting}
 
 and if tired, it is going to take a nap:
@@ -1045,9 +1054,12 @@ The basic marmot can be modified by changing its colour:
 \marmot[body=blue]
 \end{tcblisting}
 
-In addition to the colour of the body, the colour of the eyes can be adjusted:
+In addition to the colour of the body, the colour of various body parts can be adjusted:
 \begin{tcblisting}{}
 \marmot[eye=red]
+\end{tcblisting}
+\begin{tcblisting}{}
+\marmot[mouth=red]
 \end{tcblisting}
 
 The marmot can also blush
@@ -1145,6 +1157,10 @@ In addition to the colour of the body, the colour of various body parts can be a
 \moles[feet=red]
 \end{tcblisting}
 
+\begin{tcblisting}{}
+\moles[mouth=red]
+\end{tcblisting}
+
 To view the mole from behind:
 \begin{tcblisting}{}
 \moles[back]
@@ -1191,9 +1207,12 @@ The basic mouse can be modified by changing its colour:
 \mouse[body=blue]
 \end{tcblisting}
 
-In addition to the colour of the body, the colour of the eyes can be adjusted:
+In addition to the colour of the body, the colour of various body parts can be adjusted:
 \begin{tcblisting}{}
 \mouse[eye=red]
+\end{tcblisting}
+\begin{tcblisting}{}
+\mouse[whiskers=red]
 \end{tcblisting}
 
 The rotation angle of its arms can be adjusted:
@@ -1313,12 +1332,15 @@ The basic panda can be modified by changing its colour:
 \panda[body=blue]
 \end{tcblisting}
 
-In addition to the colour of the body, the colour of the eyes can be adjusted:
+In addition to the colour of the body, the colour of various body parts can be adjusted:
 \begin{tcblisting}{}
 \panda[eye=red]
 \end{tcblisting}
 \begin{tcblisting}{}
 \panda[pupil=red]
+\end{tcblisting}
+\begin{tcblisting}{}
+\panda[mouth=red]
 \end{tcblisting}
 
 To view the panda from behind:
@@ -1430,9 +1452,15 @@ The basic pig can be modified by changing its colour:
 \pig[body=blue]
 \end{tcblisting}
 
-In addition to the colour of the body, the colour of the eyes can be adjusted:
+In addition to the colour of the body, the colour of various body parts can be adjusted:
 \begin{tcblisting}{}
 \pig[eye=red]
+\end{tcblisting}
+\begin{tcblisting}{}
+\pig[tail=red]
+\end{tcblisting}
+\begin{tcblisting}{}
+\pig[mouth=red]
 \end{tcblisting}
 
 To view the pig from behind:
@@ -1481,12 +1509,15 @@ The basic rhino can be modified by changing its colour:
 \rhino[body=blue]
 \end{tcblisting}
 
-In addition to the colour of the body, the colour of the eyes can be adjusted:
+In addition to the colour of the body, the colour of various body parts can be adjusted:
 \begin{tcblisting}{}
 \rhino[eye=red]
 \end{tcblisting}
 \begin{tcblisting}{}
 \rhino[pupil=red]
+\end{tcblisting}
+\begin{tcblisting}{}
+\rhino[mouth=red]
 \end{tcblisting}
 
 The hippo can also do its nails:
@@ -1540,14 +1571,17 @@ The basic sheep can be modified by changing its colour:
 \sheep[body=blue]
 \end{tcblisting}
 
-In addition to the colour of the body, the colour of the eyes can be adjusted:
+In addition to the colour of the body, the colour of various body parts can be adjusted:
 \begin{tcblisting}{}
 \sheep[eye=red]
+\end{tcblisting}
+\begin{tcblisting}{}
+\sheep[nose=red]
 \end{tcblisting}
 
 The sheep can also blush
 \begin{tcblisting}{}
-\sheep[blush]
+\sheep[blush=red]
 \end{tcblisting}
 
 and put on a monocle
@@ -1601,14 +1635,20 @@ The basic sloth can be modified by changing its colour:
 \sloth[body=blue]
 \end{tcblisting}
 
-In addition to the colour of the body, the colour of the eyes can be adjusted:
+In addition to the colour of the body, the colour of various body parts can be adjusted:
 \begin{tcblisting}{}
 \sloth[eye=red]
+\end{tcblisting}
+\begin{tcblisting}{}
+\sloth[mouth=red]
 \end{tcblisting}
 
 If tired, the sloth can take a nap:
 \begin{tcblisting}{}
 \sloth[sleeping]
+\end{tcblisting}
+\begin{tcblisting}{}
+\sloth[sleeping,eyelid=red]
 \end{tcblisting}
 
 To view the sloth from behind:

@@ -50,16 +50,23 @@
   body/.code         = \def\pig@body{#1},
   body               = pigdark,
   eye/.code          = \def\pig@eye{#1},
-  eye                = gray,   
+  eye                = gray,  
+  tail/.code         = \def\pig@tail{#1},
+  tail               = \pig@body, 
+  mouth/.code        = \def\pig@mouth{#1},
+  mouth              = gray,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  3D/.code           = \pig@threeDtrue, 
+  3D/.code           = \pig@threeDtrue
+                       \def\pig@mouth{gray!70!black}, 
   back/.code         = \pig@backtrue,  
   contour/.code      = \pig@contourtrue
-                       \def\pig@contour{#1},
+                       \def\pig@contour{#1}
+                       \def\pig@mouth{#1}
+                       \def\pig@tail{#1},
   contour/.default   = black,  
   outline/.forward to = /pig/contour,   
 }
@@ -111,11 +118,7 @@
 %
 % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \unless\ifpig@back
-  \ifpig@contour
-    \draw[\pig@contour,line width=\scalingfactor*0.8pt] (0.8431, 0.583) .. controls (0.8609, 0.4063) and (0.7006, 0.361) .. (0.6384, 0.4293) .. controls (0.5762, 0.4976) and (0.5613, 0.6052) .. (0.6551, 0.629) .. controls (0.7537, 0.6541) and (0.7759, 0.5628) .. (0.7455, 0.4948) .. controls (0.6412, 0.2697) and (0.3543, 0.356) .. (0.2638, 0.4238) .. controls (0.1967, 0.4779) and (0.1788, 0.6076) .. (0.3192, 0.633) .. controls (0.6000, 0.6836) and (0.5130, 0.3048) .. (0.2098, 0.3322) .. controls (0.0809, 0.3438) and (0.0809, 0.5236) .. (0.0809, 0.5236);  
-  \else% contour
-    \draw[\pig@body,line width=\scalingfactor*0.8pt] (0.8431, 0.583) .. controls (0.8609, 0.4063) and (0.7006, 0.361) .. (0.6384, 0.4293) .. controls (0.5762, 0.4976) and (0.5613, 0.6052) .. (0.6551, 0.629) .. controls (0.7537, 0.6541) and (0.7759, 0.5628) .. (0.7455, 0.4948) .. controls (0.6412, 0.2697) and (0.3543, 0.356) .. (0.2638, 0.4238) .. controls (0.1967, 0.4779) and (0.1788, 0.6076) .. (0.3192, 0.633) .. controls (0.6000, 0.6836) and (0.5130, 0.3048) .. (0.2098, 0.3322) .. controls (0.0809, 0.3438) and (0.0809, 0.5236) .. (0.0809, 0.5236);
-  \fi% contour
+  \draw[\pig@tail,line width=\scalingfactor*0.8pt] (0.8431, 0.583) .. controls (0.8609, 0.4063) and (0.7006, 0.361) .. (0.6384, 0.4293) .. controls (0.5762, 0.4976) and (0.5613, 0.6052) .. (0.6551, 0.629) .. controls (0.7537, 0.6541) and (0.7759, 0.5628) .. (0.7455, 0.4948) .. controls (0.6412, 0.2697) and (0.3543, 0.356) .. (0.2638, 0.4238) .. controls (0.1967, 0.4779) and (0.1788, 0.6076) .. (0.3192, 0.633) .. controls (0.6000, 0.6836) and (0.5130, 0.3048) .. (0.2098, 0.3322) .. controls (0.0809, 0.3438) and (0.0809, 0.5236) .. (0.0809, 0.5236);
 \fi% back
 %
 % Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -153,15 +156,7 @@
   \pig@part@draw[gray]  ( 0.06, 1.62) circle[radius=0.035];
   %
   % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \ifpig@threeD
-    \draw[gray!70!black,line width=\scalingfactor*0.4pt] (0.105, 1.46) arc [start angle=-50, end angle=-130, radius=0.16] ;
-  \else% 3D
-    \ifpig@contour
-      \draw[\pig@contour,line width=\scalingfactor*0.4pt] (0.105, 1.46) arc [start angle=-50, end angle=-130, radius=0.16] ;
-    \else% contour
-      \draw[gray,line width=\scalingfactor*0.4pt] (0.105, 1.46) arc [start angle=-50, end angle=-130, radius=0.16] ;
-    \fi% contour
-  \fi% 3D
+  \draw[\pig@mouth,line width=\scalingfactor*0.4pt] (0.105, 1.46) arc [start angle=-50, end angle=-130, radius=0.16] ;
   %
   % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \pig@part@draw[\pig@body] (0.3216,0.15) arc (-15:195:0.12) -- (0.16,0.15) to [bend left] (0.25,0.15) -- cycle;
@@ -177,11 +172,7 @@
 %  
 % Tail  if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifpig@back
-  \ifpig@contour
-    \draw[\pig@contour,line width=\scalingfactor*0.8pt] (0.8431, 0.583) .. controls (0.8609, 0.4063) and (0.7006, 0.361) .. (0.6384, 0.4293) .. controls (0.5762, 0.4976) and (0.5613, 0.6052) .. (0.6551, 0.629) .. controls (0.7537, 0.6541) and (0.7759, 0.5628) .. (0.7455, 0.4948) .. controls (0.6412, 0.2697) and (0.3543, 0.356) .. (0.2638, 0.4238) .. controls (0.1967, 0.4779) and (0.1788, 0.6076) .. (0.3192, 0.633) .. controls (0.6000, 0.6836) and (0.5130, 0.3048) .. (0.2098, 0.3322) .. controls (0.0809, 0.3438) and (0.0809, 0.5236) .. (0.0809, 0.5236);  
-  \else% contour
-    \draw[\pig@body,line width=\scalingfactor*0.8pt] (0.8431, 0.583) .. controls (0.8609, 0.4063) and (0.7006, 0.361) .. (0.6384, 0.4293) .. controls (0.5762, 0.4976) and (0.5613, 0.6052) .. (0.6551, 0.629) .. controls (0.7537, 0.6541) and (0.7759, 0.5628) .. (0.7455, 0.4948) .. controls (0.6412, 0.2697) and (0.3543, 0.356) .. (0.2638, 0.4238) .. controls (0.1967, 0.4779) and (0.1788, 0.6076) .. (0.3192, 0.633) .. controls (0.6000, 0.6836) and (0.5130, 0.3048) .. (0.2098, 0.3322) .. controls (0.0809, 0.3438) and (0.0809, 0.5236) .. (0.0809, 0.5236);
-  \fi% contour
+  \draw[\pig@tail,line width=\scalingfactor*0.8pt] (0.8431, 0.583) .. controls (0.8609, 0.4063) and (0.7006, 0.361) .. (0.6384, 0.4293) .. controls (0.5762, 0.4976) and (0.5613, 0.6052) .. (0.6551, 0.629) .. controls (0.7537, 0.6541) and (0.7759, 0.5628) .. (0.7455, 0.4948) .. controls (0.6412, 0.2697) and (0.3543, 0.356) .. (0.2638, 0.4238) .. controls (0.1967, 0.4779) and (0.1788, 0.6076) .. (0.3192, 0.633) .. controls (0.6000, 0.6836) and (0.5130, 0.3048) .. (0.2098, 0.3322) .. controls (0.0809, 0.3438) and (0.0809, 0.5236) .. (0.0809, 0.5236);  
 \fi% back
 %
 % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

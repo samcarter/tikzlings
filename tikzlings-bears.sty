@@ -49,6 +49,8 @@
   body               = brown,
   eye/.code          = \def\bear@eye{#1},
   eye                = \bear@body!30!black,  
+  mouth/.code        = \def\bear@mouth{#1},
+  mouth              = \bear@body!30!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
@@ -57,7 +59,8 @@
   3D/.code           = \bear@threeDtrue, 
   back/.code         = \bear@backtrue,  
   contour/.code      = \bear@contourtrue
-                       \def\bear@contour{#1},
+                       \def\bear@contour{#1}
+                       \def\bear@mouth{#1},
   contour/.default   = black,  
   outline/.forward to = /bear/contour,   
 }
@@ -158,11 +161,7 @@
   \bear@part@draw[\bear@eye] (0.155, 1.7) circle[radius=0.05]; 
   %
   % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \ifbear@contour
-    \draw[\bear@contour,line width=\scalingfactor*0.4pt] (0.145, 1.38) arc [start angle=-20, end angle=-160, radius=0.16];
-  \else% contour
-    \draw[\bear@body!30!black,line width=\scalingfactor*0.4pt] (0.145, 1.38) arc [start angle=-20, end angle=-160, radius=0.16];
-  \fi% contour
+  \draw[\bear@mouth,line width=\scalingfactor*0.4pt] (0.145, 1.38) arc [start angle=-20, end angle=-160, radius=0.16];
 %
 \fi% back
 %

@@ -56,6 +56,8 @@
   hands              = red!20!white!50!brown,  
   muzzle/.code       = \def\moles@muzzle{#1},
   muzzle             = red!20!white!50!brown, 
+  mouth/.code        = \def\moles@mouth{#1},
+  mouth              = \moles@body!60!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
@@ -65,6 +67,7 @@
   back/.code         = \moles@backtrue,  
   contour/.code      = \moles@contourtrue
                        \def\moles@contour{#1}
+                       \def\moles@mouth{#1}
                        \def\moles@eye{#1},
   contour/.default   = black,  
   outline/.forward to = /moles/contour,        
@@ -178,11 +181,7 @@
   \fi% 3D
   %
   % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \ifmoles@contour
-    \draw[\moles@contour, line width=\scalingfactor*0.4pt] (0.145,1.51) arc [start angle=-20, end angle=-160, radius=0.16] ;
-  \else% contour
-    \draw[\moles@body!60!black, line width=\scalingfactor*0.4pt] (0.145,1.51) arc [start angle=-20, end angle=-160, radius=0.16] ;
-  \fi% contour
+  \draw[\moles@mouth, line width=\scalingfactor*0.4pt] (0.145,1.51) arc [start angle=-20, end angle=-160, radius=0.16] ;
   %
 \fi% back
 %

@@ -53,6 +53,8 @@
   pupil              = black,  
   toes/.code         = \def\hippo@toes{#1},
   toes               = \hippo@body!55!white,
+  mouth/.code        = \def\hippo@mouth{#1},
+  mouth              = \hippo@body!70!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
@@ -61,7 +63,8 @@
   3D/.code           = \hippo@threeDtrue, 
   back/.code         = \hippo@backtrue,
   contour/.code      = \hippo@contourtrue
-                       \def\hippo@contour{#1},
+                       \def\hippo@contour{#1}
+                       \def\hippo@mouth{#1},
   contour/.default   = black,  
   outline/.forward to = /hippo/contour,   
 }
@@ -170,11 +173,7 @@
   \ifhippo@threeD
     \draw[black,line width=\scalingfactor*0.4pt] (0.125, 1.5) arc [start angle=-50, end angle=-130, radius=0.2] ;
   \else% 3D
-    \ifhippo@contour
-      \draw[\hippo@contour,line width=\scalingfactor*0.4pt] (0.125, 1.5) arc [start angle=-50, end angle=-130, radius=0.2];
-    \else% contour
-      \draw[\hippo@body!70!black,line width=\scalingfactor*0.4pt] (0.125, 1.5) arc [start angle=-50, end angle=-130, radius=0.2];
-    \fi% contour
+    \draw[\hippo@mouth,line width=\scalingfactor*0.4pt] (0.125, 1.5) arc [start angle=-50, end angle=-130, radius=0.2];
   \fi% 3D
   %
   % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

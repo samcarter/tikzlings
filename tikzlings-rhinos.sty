@@ -53,16 +53,20 @@
   eye/.code          = \def\rhino@eye{#1},
   eye                = white,  
   pupil/.code        = \def\rhino@pupil{#1},
-  pupil              = black,   
+  pupil              = black,  
+  mouth/.code        = \def\rhino@mouth{#1},
+  mouth              = \rhino@body!70!black, 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  3D/.code           = \rhino@threeDtrue, 
+  3D/.code           = \rhino@threeDtrue
+                       \def\rhino@mouth{black}, 
   back/.code         = \rhino@backtrue, 
   contour/.code      = \rhino@contourtrue
-                       \def\rhino@contour{#1},
+                       \def\rhino@contour{#1}
+                       \def\rhino@mouth{#1},
   contour/.default   = black,   
   outline/.forward to = /rhino/contour,   
 }
@@ -169,15 +173,7 @@
   \rhino@part@draw[white!95!yellow] (0, 1.7911) .. controls (-0.0231, 1.7372) and (-0.0463, 1.6832) .. (-0.0642, 1.6274) .. controls (-0.0687, 1.6132) and (-0.0724, 1.5981) .. (-0.0678, 1.5834) .. controls (-0.0603, 1.552) and (-0.0287, 1.5287) .. (0, 1.531) .. controls (0.0287, 1.5287) and (0.0603, 1.552) .. (0.0678, 1.5834) .. controls (0.0724, 1.5981) and (0.0687, 1.6132) .. (0.0642, 1.6274) .. controls (0.0463, 1.6832) and (0.0231, 1.7372) .. (0, 1.7911) -- cycle;
   %
   % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \ifrhino@threeD
-    \draw[black,line width=\scalingfactor*0.4pt] (0.125, 1.5) arc [start angle=-50, end angle=-130, radius=0.2] ;
-  \else% 3D
-    \ifrhino@contour
-      \draw[\rhino@contour,line width=\scalingfactor*0.4pt] (0.125, 1.5) arc [start angle=-50, end angle=-130, radius=0.2] ;
-    \else% contour
-      \draw[\rhino@body!70!black,line width=\scalingfactor*0.4pt] (0.125, 1.5) arc [start angle=-50, end angle=-130, radius=0.2] ;
-    \fi% contour
-  \fi% 3D
+  \draw[\rhino@mouth,line width=\scalingfactor*0.4pt] (0.125, 1.5) arc [start angle=-50, end angle=-130, radius=0.2] ;
   %
   % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \begin{scope}

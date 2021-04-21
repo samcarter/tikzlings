@@ -51,7 +51,9 @@
   eye/.code          = \def\panda@eye{#1},
   eye                = white, 
   pupil/.code        = \def\panda@pupil{#1},
-  pupil              = black,    
+  pupil              = black, 
+  mouth/.code        = \def\panda@mouth{#1},
+  mouth              = black,   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
@@ -60,7 +62,8 @@
   3D/.code           = \panda@threeDtrue, 
   back/.code         = \panda@backtrue,  
   contour/.code      = \panda@contourtrue
-                       \def\panda@contour{#1},
+                       \def\panda@contour{#1}
+                       \def\panda@mouth{#1},
   contour/.default   = black,  
   outline/.forward to = /panda/contour,   
 }
@@ -156,11 +159,7 @@
   \panda@part@draw[\panda@pupil] (-0.17, 1.695) circle[radius=0.02];
   %
   % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \ifpanda@contour
-    \draw[\panda@contour,line width=\scalingfactor*0.2pt] (-0.16, 1.477) .. controls (-0.16, 1.477) and (-0.062, 1.37) .. (0, 1.506)  .. controls (0.062, 1.37) and (0.16, 1.477) .. (0.16, 1.477);
-  \else% contour
-    \draw[black,line width=\scalingfactor*0.2pt] (-0.16, 1.477) .. controls (-0.16, 1.477) and (-0.062, 1.37) .. (0, 1.506)  .. controls (0.062, 1.37) and (0.16, 1.477) .. (0.16, 1.477);
-  \fi% contour
+  \draw[\panda@mouth,line width=\scalingfactor*0.2pt] (-0.16, 1.477) .. controls (-0.16, 1.477) and (-0.062, 1.37) .. (0, 1.506)  .. controls (0.062, 1.37) and (0.16, 1.477) .. (0.16, 1.477);
   %
   % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \panda@part@draw[black] (0,1.55) ellipse[x radius=0.07, y radius=0.04];
