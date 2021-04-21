@@ -93,17 +93,27 @@
   alsoletter={3},
   emphstyle=\color{red!60!black},
   emph=[1]{
-    tikzlings,
-    tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmen, tikzlings-mice, tikzlings-moles, tikzlings-sloths, tikzlings-pigs, tikzlings-cats, tikzlings-hippos, tikzlings-rhinos, tikzlings-pandas, tikzlings-bees, tikzlings-anteaters, tikzlings-squirrels, tikzlings-sheep, tikzlings-chickens, tikzlings-elephants, tikzlings-bugs, tikzlings-bats,
-    body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, nose, pupil, bill, feet, belly, ask, phil, mouth, buttons, rotatearms, paws, back, pupilwidth, globalwarming, wings, antennas, stripes, arms, ears, mouth, tail, nose, eyelid,
-    scale, yshift, xshift, rotate, hands, muzzle, schroedinger, toes,
-    hat, tophat, beret, strawhat, ribbon, harlequin, niuqelrah, witch, magichat, magicstars, crown, queencrown, kingcrown, santa, chef, graduate, tassel, alien, book, bookcolour, signpost, signcolour, signback, speech, think, bubblecolour, pizza, cheese, baguette, cake, icecream, flavoura, flavourb, flavourc, milkshake, wine, cricket, hockey, football, crystalball, magicwand, rollingpin, lightsaber, torch, basket, easter, egga, eggb, eggc, crozier, shovel, pickaxe, umbrella, umbrellaclosed, handbag, cocktail, monocle, contour, comb, baby,
+    % package names
+    tikzlings, tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmen, tikzlings-mice, tikzlings-moles, tikzlings-sloths, tikzlings-pigs, tikzlings-cats, tikzlings-hippos, tikzlings-rhinos, tikzlings-pandas, tikzlings-bees, tikzlings-anteaters, tikzlings-squirrels, tikzlings-sheep, tikzlings-chickens, tikzlings-elephants, tikzlings-bugs, tikzlings-bats,
+    % tikzlings options
+    body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, nose, pupil, bill, feet, belly, ask, phil, mouth, rotatearms, paws, back, pupilwidth, globalwarming, wings, antennas, stripes, arms, ears, tail, eyelid, hands, muzzle, schroedinger, toes, monocle, contour, comb, baby,
+    % acessoires
+    buttons, hat, tophat, beret, strawhat, ribbon, harlequin, niuqelrah, witch, magichat, magicstars, crown, queencrown, kingcrown, santa, chef, graduate, tassel, alien, book, bookcolour, signpost, signcolour, signback, speech, think, bubblecolour, pizza, cheese, baguette, cake, icecream, flavoura, flavourb, flavourc, milkshake, wine, cricket, hockey, football, crystalball, magicwand, rollingpin, lightsaber, torch, basket, easter, egga, eggb, eggc, crozier, shovel, pickaxe, umbrella, umbrellaclosed, handbag, cocktail,
+    % tikz options
+    scale, yshift, xshift, rotate,
+    % other
+    figchild, standalone, document,  
   },
   texcsstyle=*\color{SteelBlue!50!black}\bfseries,
   keywordstyle=\color{red!60!black}\bfseries,
   morekeywords={tikzpicture},
   moretexcs={
-    usepackage, usetikzlibrary, marmot, coati, bear, koala, owl, penguin, thing, tikzling, snowman, mouse, moles, sloth, pig, cat, hippo, rhino, panda, bee, anteater, squirrel, bearwear, sheep, chicken, elephant, bug, bat, tikzlinghookbackground, tikzlinghookbelly, tikzlinghookbody, tikzlinghookforeground, mousehookbelly
+    % latex keywords
+    usepackage, usetikzlibrary, 
+    % tikzlings names
+    marmot, coati, bear, koala, owl, penguin, thing, tikzling, snowman, mouse, moles, sloth, pig, cat, hippo, rhino, panda, bee, anteater, squirrel, bearwear, sheep, chicken, elephant, bug, bat,
+    % other
+    tikzlinghookbackground, tikzlinghookbelly, tikzlinghookbody, tikzlinghookforeground, mousehookbelly
   },
   delim ={[s][\ttfamily\color{green!50!black}]{$}{$}},
   moredelim=[is][\footnotesize\ttfamily\color{orange!70!black}]{|}{|},
@@ -260,7 +270,7 @@ With regard to the individual components of the \tikzlings, they are located in 
   \end{tikzpicture}
 \end{center}
 
-In addition the hooks \lstinline|\tikzlinghookbackground|, \lstinline|\tikzlinghookbelly|, \lstinline|\tikzlinghookbody| and \lstinline|\tikzlinghookforeground| are available and will effect all \tikzlings.
+{\raggedright In addition, the hooks \lstinline|\tikzlinghookbackground|, \lstinline|\tikzlinghookbelly|,\newline \lstinline|\tikzlinghookbody| and \lstinline|\tikzlinghookforeground| are available and will effect all\newline \tikzlings.}
 
 A short example how the hooks can be used:
 \begin{tcblisting}{}
@@ -273,6 +283,24 @@ A short example how the hooks can be used:
 \mouse
 \end{tcblisting}
 
+Given that the \tikzlings package uses everyday animal names for its macros, it sometimes conflicts with other packages which use the same macro names. The following example shows how such conflicts can be worked around:
+\begin{tcblisting}{listing only,lower separated=false}
+\documentclass{standalone}
+
+\usepackage{figchild}
+\let\figchildowl\owl
+\let\owl\undefined
+\usepackage{tikzlings-owls}
+
+\begin{document}
+\figchildowl{0.5}{blue}{1}
+\begin{tikzpicture}
+	\owl
+\end{tikzpicture}	
+\end{document}
+\end{tcblisting}
+
+\clearpage
 \subsection*{List of all \tikzlings:}
 
 \begingroup
@@ -1082,7 +1110,7 @@ or can cast a shadow:
 \marmot[shadow]
 \end{tcblisting}
 
-This ability is important if you want to ask Punxsutawney Phil\footnote{\url{https://en.wikipedia.org/wiki/Punxsutawney_Phil}} on Groundhog Day how the weather is going to be. With a probability derived from the statistics of 120 Groundhog Days\footnote{\url{https://www.livescience.com/32974-punxsutawney-phil-weather-prediction-accuracy.html}} the option \lstinline|askphil| might or might not result in a shadow.
+This ability is important if you want to ask Punxsutawney Phil\footnote{\url{https://en.wikipedia.org/wiki/Punxsutawney_Phil}} on Groundhog Day how the weather is going to be. With a probability derived from the statistics of 120 Groundhog Days\footnote{\hbadness=99999\url{https://www.livescience.com/32974-punxsutawney-phil-weather-prediction-accuracy.html}} the option \lstinline|askphil| might or might not result in a shadow.
 \begin{tcblisting}{}
 \marmot[askphil]
 \end{tcblisting}
