@@ -141,21 +141,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifcat@threeD
   \def\cat@part@draw[##1]{\shade[ball color=##1]}
-\else
+\else% 3D
   \ifcat@contour
     \def\cat@part@draw[##1]{\draw[##1,\cat@contour,fill=white,line width=\scalingfactor*0.4pt]}
-  \else
+  \else% contour
     \def\cat@part@draw[##1]{\fill[##1]}
-  \fi
-\fi
+  \fi% contour
+\fi% 3D
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Body parts (center: x=0)
+% Body parts
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname cathookbackground\endcsname
 \csname tikzlinghookbackground\endcsname
 %
@@ -168,12 +168,12 @@
 \ifcat@back
   \cat@part@draw[\cat@paws] (-0.255,0.3) circle[radius=0.18];  
   \cat@part@draw[\cat@paws] (0.255,0.3) circle[radius=0.18];
-\fi 
+\fi% back
 %
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \cat@part@draw[\cat@body] (0.5462, 0.7155) .. controls (0.5462, 0.1823) and (0.3259, 0.17) .. (0, 0.17) .. controls (-0.3259, 0.17) and (-0.5462, 0.1823) .. (-0.5462, 0.7155) .. controls (-0.5554, 1.2487) and (-0.3075, 1.6768) .. (0, 1.6768) .. controls (0.3075, 1.6768) and (0.5554, 1.2487) .. (0.5462, 0.7155) -- cycle;
 %
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname cathookbelly\endcsname
 \csname tikzlinghookbelly\endcsname
 %
@@ -188,44 +188,36 @@
 %
 % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \unless\ifcat@back
+  %
+  % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \cat@part@draw[\cat@eye] (-0.1014, 1.7491) .. controls (-0.1014, 1.7491) and (-0.1451, 1.7171) .. (-0.1841, 1.7284) .. controls (-0.2231, 1.7397) and (-0.2427, 1.79) .. (-0.2427, 1.79) .. controls (-0.2427, 1.79) and (-0.1992, 1.8221) .. (-0.1602, 1.8108) .. controls (-0.1212, 1.7995) and (-0.1014, 1.7491) .. (-0.1014, 1.7491) -- cycle;
+  \cat@part@draw[\cat@eye] (0.1014, 1.7491) .. controls (0.1014, 1.7491) and (0.1451, 1.7171) .. (0.1841, 1.7284) .. controls (0.2231, 1.7397) and (0.2427, 1.79) .. (0.2427, 1.79) .. controls (0.2427, 1.79) and (0.1992, 1.8221) .. (0.1602, 1.8108) .. controls (0.1212, 1.7995) and (0.1014, 1.7491) .. (0.1014, 1.7491) -- cycle;
+  %
+  % Pupils %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \cat@part@draw[\cat@pupil] (-0.1720, 1.8071) .. controls (-0.1720+\cat@pupil@width, 1.7827+\cat@pupil@offset) and (-0.1720+\cat@pupil@width, 1.7584-\cat@pupil@offset) .. (-0.1720, 1.7341) .. controls (-0.1720-\cat@pupil@width, 1.7584-\cat@pupil@offset) and (-0.1720-\cat@pupil@width, 1.7827+\cat@pupil@offset) .. (-0.1720, 1.8071) -- cycle;
+  \cat@part@draw[\cat@pupil] ( 0.1720, 1.8071) .. controls ( 0.1720+\cat@pupil@width, 1.7827+\cat@pupil@offset) and ( 0.1720+\cat@pupil@width, 1.7584-\cat@pupil@offset) .. ( 0.1720, 1.7341) .. controls ( 0.1720-\cat@pupil@width, 1.7584-\cat@pupil@offset) and ( 0.1720-\cat@pupil@width, 1.7827+\cat@pupil@offset) .. ( 0.1720, 1.8071) -- cycle;
+  %
+  % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \draw[\cat@whiskers,line width=\scalingfactor*0.2pt] (-0.16, 1.527) .. controls (-0.16, 1.527) and (-0.062, 1.420) .. ( 0.000, 1.556)  .. controls ( 0.062, 1.420) and ( 0.16, 1.527) .. ( 0.16, 1.527);
+  %
+  % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \cat@part@draw[\cat@nose] (-0.069, 1.6452) .. controls (-0.0524, 1.6613) and (0.0524, 1.6613) .. (0.069, 1.6452) .. controls (0.08, 1.625) and (0.0206, 1.55) .. (0, 1.55) .. controls (-0.0206, 1.55) and (-0.08, 1.625) .. (-0.069, 1.6452) -- cycle;
+  %
+  % Wiskers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \fill[\cat@whiskers] (0.0788, 1.5946) .. controls (0.1658, 1.6099) and (0.2086, 1.5439) .. (0.2956, 1.5286) -- (0.2956, 1.5386) .. controls (0.2097, 1.5537) and (0.1648, 1.6097) .. (0.0788, 1.5946) -- cycle;
+  \fill[\cat@whiskers] (-0.0788, 1.5946) .. controls (-0.1658, 1.6099) and (-0.2087, 1.5439) .. (-0.2956, 1.5286) -- (-0.2956, 1.5386) .. controls (-0.2097, 1.5537) and (-0.1648, 1.6097) .. (-0.0788, 1.5946) -- cycle;
+  \fill[\cat@whiskers] (0.0752, 1.6081) .. controls (0.1583, 1.6383) and (0.2171, 1.6109) .. (0.3002, 1.5807) -- (0.3002, 1.5907) .. controls (0.2174, 1.6208) and (0.158, 1.6382) .. (0.0752, 1.6081) -- cycle;
+  \fill[\cat@whiskers] (-0.0752, 1.6081) .. controls (-0.1583, 1.6383) and (-0.2171, 1.6109) .. (-0.3002, 1.5807) -- (-0.3002, 1.5907) .. controls (-0.2174, 1.6208) and (-0.158, 1.6382) .. (-0.0752, 1.6081) -- cycle;
+  \fill[\cat@whiskers] (0.0671, 1.6243) .. controls (0.1414, 1.6725) and (0.2182, 1.6964) .. (0.2925, 1.6482) -- (0.2925, 1.6582) .. controls (0.2179, 1.7066) and (0.1417, 1.6727) .. (0.0671, 1.6243) -- cycle;
+  \fill[\cat@whiskers] (-0.0671, 1.6243) .. controls (-0.1414, 1.6725) and (-0.2182, 1.6964) .. (-0.2925, 1.6482) -- (-0.2925, 1.6582) .. controls (-0.2179, 1.7066) and (-0.1417, 1.6727) .. (-0.0671, 1.6243) -- cycle;
+  %
+  % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \cat@part@draw[\cat@paws] (-0.255,0.3) circle[radius=0.18];  
+  \cat@part@draw[\cat@paws] (0.255,0.3) circle[radius=0.18]; 
+  %
+\fi% back
 %
-% Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\cat@part@draw[\cat@eye] (-0.1014, 1.7491) .. controls (-0.1014, 1.7491) and (-0.1451, 1.7171) .. (-0.1841, 1.7284) .. controls (-0.2231, 1.7397) and (-0.2427, 1.79) .. (-0.2427, 1.79) .. controls (-0.2427, 1.79) and (-0.1992, 1.8221) .. (-0.1602, 1.8108) .. controls (-0.1212, 1.7995) and (-0.1014, 1.7491) .. (-0.1014, 1.7491) -- cycle;
-\cat@part@draw[\cat@eye] (0.1014, 1.7491) .. controls (0.1014, 1.7491) and (0.1451, 1.7171) .. (0.1841, 1.7284) .. controls (0.2231, 1.7397) and (0.2427, 1.79) .. (0.2427, 1.79) .. controls (0.2427, 1.79) and (0.1992, 1.8221) .. (0.1602, 1.8108) .. controls (0.1212, 1.7995) and (0.1014, 1.7491) .. (0.1014, 1.7491) -- cycle;
-%
-% Pupils %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\cat@part@draw[\cat@pupil]
-  (-0.1720, 1.8071)
-    .. controls (-0.1720+\cat@pupil@width, 1.7827+\cat@pupil@offset) and (-0.1720+\cat@pupil@width, 1.7584-\cat@pupil@offset) .. (-0.1720, 1.7341)
-    .. controls (-0.1720-\cat@pupil@width, 1.7584-\cat@pupil@offset) and (-0.1720-\cat@pupil@width, 1.7827+\cat@pupil@offset) .. (-0.1720, 1.8071)
-  -- cycle;
-\cat@part@draw[\cat@pupil]
-  ( 0.1720, 1.8071)
-    .. controls ( 0.1720+\cat@pupil@width, 1.7827+\cat@pupil@offset) and ( 0.1720+\cat@pupil@width, 1.7584-\cat@pupil@offset) .. ( 0.1720, 1.7341)
-    .. controls ( 0.1720-\cat@pupil@width, 1.7584-\cat@pupil@offset) and ( 0.1720-\cat@pupil@width, 1.7827+\cat@pupil@offset) .. ( 0.1720, 1.8071)
-  -- cycle;
-%
-% Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\draw[\cat@whiskers,line width=\scalingfactor*0.2pt] (-0.16, 1.527) .. controls (-0.16, 1.527) and (-0.062, 1.420) .. ( 0.000, 1.556)  .. controls ( 0.062, 1.420) and ( 0.16, 1.527) .. ( 0.16, 1.527);
-%
-% Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\cat@part@draw[\cat@nose] (-0.069, 1.6452) .. controls (-0.0524, 1.6613) and (0.0524, 1.6613) .. (0.069, 1.6452) .. controls (0.08, 1.625) and (0.0206, 1.55) .. (0, 1.55) .. controls (-0.0206, 1.55) and (-0.08, 1.625) .. (-0.069, 1.6452) -- cycle;
-%
-% Wiskers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\fill[\cat@whiskers] (0.0788, 1.5946) .. controls (0.1658, 1.6099) and (0.2086, 1.5439) .. (0.2956, 1.5286) -- (0.2956, 1.5386) .. controls (0.2097, 1.5537) and (0.1648, 1.6097) .. (0.0788, 1.5946) -- cycle;
-\fill[\cat@whiskers] (-0.0788, 1.5946) .. controls (-0.1658, 1.6099) and (-0.2087, 1.5439) .. (-0.2956, 1.5286) -- (-0.2956, 1.5386) .. controls (-0.2097, 1.5537) and (-0.1648, 1.6097) .. (-0.0788, 1.5946) -- cycle;
-\fill[\cat@whiskers] (0.0752, 1.6081) .. controls (0.1583, 1.6383) and (0.2171, 1.6109) .. (0.3002, 1.5807) -- (0.3002, 1.5907) .. controls (0.2174, 1.6208) and (0.158, 1.6382) .. (0.0752, 1.6081) -- cycle;
-\fill[\cat@whiskers] (-0.0752, 1.6081) .. controls (-0.1583, 1.6383) and (-0.2171, 1.6109) .. (-0.3002, 1.5807) -- (-0.3002, 1.5907) .. controls (-0.2174, 1.6208) and (-0.158, 1.6382) .. (-0.0752, 1.6081) -- cycle;
-\fill[\cat@whiskers] (0.0671, 1.6243) .. controls (0.1414, 1.6725) and (0.2182, 1.6964) .. (0.2925, 1.6482) -- (0.2925, 1.6582) .. controls (0.2179, 1.7066) and (0.1417, 1.6727) .. (0.0671, 1.6243) -- cycle;
-\fill[\cat@whiskers] (-0.0671, 1.6243) .. controls (-0.1414, 1.6725) and (-0.2182, 1.6964) .. (-0.2925, 1.6482) -- (-0.2925, 1.6582) .. controls (-0.2179, 1.7066) and (-0.1417, 1.6727) .. (-0.0671, 1.6243) -- cycle;
-%
-% Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\cat@part@draw[\cat@paws] (-0.255,0.3) circle[radius=0.18];  
-\cat@part@draw[\cat@paws] (0.255,0.3) circle[radius=0.18]; 
-%
-\fi
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname cathookbody\endcsname
 \csname tikzlinghookbody\endcsname
 }
@@ -258,13 +250,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifcat@threeD
   \def\cat@part@draw[##1]{\shade[ball color=##1]}
-\else
+\else% 3D
   \ifcat@contour
     \def\cat@part@draw[##1]{\draw[##1,\cat@contour,fill=white,line width=\scalingfactor*0.4pt]}
-  \else
+  \else% contour
     \def\cat@part@draw[##1]{\fill[##1]}
-  \fi
-\fi
+  \fi% contour
+\fi% 3D
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 
@@ -272,7 +264,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname cathookbackground\endcsname
 \csname tikzlinghookbackground\endcsname
 %
@@ -280,26 +272,26 @@
 \cat@part@draw[gray] (-0.55,0.4) -- (-0.55,1.5) arc [start angle=180, end angle=0, radius=0.55] -- (0.55,0.4) -- cycle;
 \node[scale=\scalingfactor] at (0,1.3) {R.I.P.};
 %
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname cathookbelly\endcsname
 \csname tikzlinghookbelly\endcsname
 %
 % soil %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \cat@part@draw[brown!65!black] (1,0.15) arc [start angle=50, end angle=130, radius=1.56] -- cycle;
 %
-% flower
+% flower %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifcat@contour
   \draw[\cat@contour,line width=\scalingfactor*0.4pt] (-0.01,0.3) arc [start angle=-15, end angle=30, radius=0.7];
-\else
+\else% contour
   \draw[green!50!brown,line width=\scalingfactor*0.4pt] (-0.01,0.3) arc [start angle=-15, end angle=30, radius=0.7];
-\fi
+\fi% contour
 \cat@part@draw[green!50!brown] (-0.1377, 0.7384) .. controls (-0.1775, 0.5828) and (-0.1479, 0.4649) .. (0.0072, 0.4246) .. controls (0.0570, 0.5636) and (-0.1529, 0.6447) .. (-0.1377, 0.7384) -- cycle;
 \cat@part@draw[green!50!brown] (0.1527, 0.7334) .. controls (0.1925, 0.5778) and (0.1629, 0.4599) .. (0.0178, 0.4196) .. controls (-0.0420, 0.5586) and (0.1679, 0.6397) .. (0.1527, 0.7334) -- cycle;
 \foreach \i in {0,51.42857,...,359}{
   \cat@part@draw[yellow!50!white,rotate around={\i:(-0.0865, 0.8219)}] (-0.087, 0.822) .. controls (-0.087, 0.822) and (-0.1635, 0.6638) .. (-0.0818, 0.6653) .. controls (-0.0066, 0.6646) and (-0.087, 0.822) .. (-0.087, 0.822) -- cycle;
 }
 %
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname cathookbody\endcsname
 \csname tikzlinghookbody\endcsname
 %

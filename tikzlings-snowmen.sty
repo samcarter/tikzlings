@@ -102,13 +102,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifsnowman@threeD
   \def\snowman@part@draw[##1]{\shade[ball color=##1]}
-\else
+\else% 3D
   \ifsnowman@contour
     \def\snowman@part@draw[##1]{\draw[##1,\snowman@contour,fill=white,line width=\scalingfactor*0.4pt]}
-  \else
+  \else% contour
     \def\snowman@part@draw[##1]{\fill[##1]}
-  \fi
-\fi
+  \fi% contour
+\fi% 3D
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -116,7 +116,7 @@
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname snowmanhookbackground\endcsname
 \csname tikzlinghookbackground\endcsname
 %
@@ -126,9 +126,9 @@
   % Puddle %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifsnowman@contour
     \draw[\snowman@contour,fill=white,line width=\scalingfactor*0.4pt] (0,1.15) ellipse[x radius=1.6,y radius=1.15];
-  \else
+  \else% contour
     \fill[\snowman@globalwarming] (0,1.15) ellipse[x radius=1.6,y radius=1.15];
-  \fi
+  \fi% contour
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname snowmanhookbelly\endcsname
@@ -156,7 +156,7 @@
   \snowman@part@draw[\snowman@buttons] (0,0.25) circle[radius=0.06];   
 %
 % normal snowman %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\else
+\else% global warming
   %
   % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \snowman@part@draw[\snowman@body] (0.5,1.1) ellipse[x radius=0.3, y radius=0.12, rotate=-50];
@@ -173,29 +173,32 @@
   %
   % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifsnowman@back
-  %
-  % Mouth% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \fill[\snowman@mouth] (0,1.5) circle[radius=0.016];
-  \fill[\snowman@mouth] (0.04,1.507) circle[radius=0.016];
-  \fill[\snowman@mouth] (-0.04,1.507) circle[radius=0.016];
-  \fill[\snowman@mouth] (0.08,1.522) circle[radius=0.016];
-  \fill[\snowman@mouth] (-0.08,1.522) circle[radius=0.016];
-  \fill[\snowman@mouth] (0.12,1.543) circle[radius=0.016];
-  \fill[\snowman@mouth] (-0.12,1.543) circle[radius=0.016];
-  %
-  % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \snowman@part@draw[\snowman@eye] (-0.155,1.8) circle[radius=0.04]; 
-  \snowman@part@draw[\snowman@eye] (0.155,1.8) circle[radius=0.04]; 
-  %
-  % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \snowman@part@draw[\snowman@nose] (0,1.72) arc [radius=0.05, start angle=90, end angle=270] (0,1.62) -- (0.15,1.64) -- (0,1.72);
-  %
-  % Buttons %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \snowman@part@draw[\snowman@buttons] (0,1.15) circle[radius=0.04]; 
-  \snowman@part@draw[\snowman@buttons] (0,0.95) circle[radius=0.04]; 
-  \snowman@part@draw[\snowman@buttons] (0,0.75) circle[radius=0.04]; 
-  %
-\fi\fi
+    %
+    % Mouth% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \fill[\snowman@mouth] (0,1.5) circle[radius=0.016];
+    \fill[\snowman@mouth] (0.04,1.507) circle[radius=0.016];
+    \fill[\snowman@mouth] (-0.04,1.507) circle[radius=0.016];
+    \fill[\snowman@mouth] (0.08,1.522) circle[radius=0.016];
+    \fill[\snowman@mouth] (-0.08,1.522) circle[radius=0.016];
+    \fill[\snowman@mouth] (0.12,1.543) circle[radius=0.016];
+    \fill[\snowman@mouth] (-0.12,1.543) circle[radius=0.016];
+    %
+    % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \snowman@part@draw[\snowman@eye] (-0.155,1.8) circle[radius=0.04]; 
+    \snowman@part@draw[\snowman@eye] (0.155,1.8) circle[radius=0.04]; 
+    %
+    % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \snowman@part@draw[\snowman@nose] (0,1.72) arc [radius=0.05, start angle=90, end angle=270] (0,1.62) -- (0.15,1.64) -- (0,1.72);
+    %
+    % Buttons %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \snowman@part@draw[\snowman@buttons] (0,1.15) circle[radius=0.04]; 
+    \snowman@part@draw[\snowman@buttons] (0,0.95) circle[radius=0.04]; 
+    \snowman@part@draw[\snowman@buttons] (0,0.75) circle[radius=0.04]; 
+    %
+  \fi% back
+%
+\fi% global warming
+%
 % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname snowmanhookbody\endcsname
 \csname tikzlinghookbody\endcsname

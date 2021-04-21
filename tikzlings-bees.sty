@@ -102,42 +102,43 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifbee@threeD
   \def\bee@part@draw[##1]{\shade[ball color=##1]}
-\else
+\else% 3D
   \ifbee@contour
     \def\bee@part@draw[##1]{\draw[##1,\bee@contour,fill=white,line width=\scalingfactor*0.4pt]}
-  \else
+  \else% contour
     \def\bee@part@draw[##1]{\fill[##1]}
-  \fi
-\fi
+  \fi% contour
+\fi% 3D
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Body parts (center: x=0)
+% Body parts
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname beeshookbackground\endcsname
 \csname tikzlinghookbackground\endcsname
 %
 \ifbee@back
+  %
   % Antenna %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \fill[\bee@antennas,rotate around={15:(-0.175,2.115)}] (-0.2,1.93) rectangle (-0.15,2.3);
   \fill[\bee@antennas,rotate around={-15:(0.175,2.115)}] (0.2,1.93) rectangle (0.15,2.3);
   \bee@part@draw[\bee@antennas] (-0.22,2.30) circle[radius=0.07];
   \bee@part@draw[\bee@antennas] (0.22,2.30) circle[radius=0.07];
-\else
+\else% back
   % Wings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifbee@contour
     \bee@part@draw[\bee@wings] (0.5,0.8) circle[radius=0.35];
     \bee@part@draw[\bee@wings] (0.45,1.25) circle[radius=0.35];
     \bee@part@draw[\bee@wings] (-0.5,0.8) circle[radius=0.35];
     \bee@part@draw[\bee@wings] (-0.45,1.25) circle[radius=0.35];
-  \else
+  \else% contour
     \fill[\bee@wings] (0.45,1.25) circle[radius=0.35] (0.5,0.8) circle[radius=0.35];
     \fill[\bee@wings] (-0.45,1.25) circle[radius=0.35](-0.5,0.8) circle[radius=0.35];
-  \fi
-\fi
+  \fi% contour
+\fi% back
 %
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{scope}
@@ -150,7 +151,7 @@
   (-0.475,0.35) arc(180:360:0.5 and 0.1) -- ++ (0,-0.15) arc(360:180:0.5 and 0.1) -- cycle;
 \end{scope}
 %
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname beeshookbelly\endcsname
 \csname tikzlinghookbelly\endcsname
 %
@@ -163,11 +164,11 @@
     \bee@part@draw[\bee@wings] (0.45,1.25) circle[radius=0.35];
     \bee@part@draw[\bee@wings] (-0.5,0.8) circle[radius=0.35];
     \bee@part@draw[\bee@wings] (-0.45,1.25) circle[radius=0.35];
-  \else
+  \else% contour
     \fill[\bee@wings] (0.45,1.25) circle[radius=0.35] (0.5,0.8) circle[radius=0.35];
     \fill[\bee@wings] (-0.45,1.25) circle[radius=0.35](-0.5,0.8) circle[radius=0.35];
-  \fi
-\else
+  \fi% contour
+\else% back
   %
   % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \bee@part@draw[\bee@eye] (-0.15,1.8) circle[radius=0.05]; 
@@ -186,8 +187,9 @@
   \bee@part@draw[\bee@antennas] (-0.22,2.30) circle[radius=0.07];
   \bee@part@draw[\bee@antennas] (0.22,2.30) circle[radius=0.07];
   %
-\fi
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fi% back
+%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname beeshookbody\endcsname
 \csname tikzlinghookbody\endcsname
 %

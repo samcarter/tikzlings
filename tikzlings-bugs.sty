@@ -106,40 +106,42 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifbug@threeD
   \def\bug@part@draw[##1]{\shade[ball color=##1]}
-\else
+\else% 3D
   \ifbug@contour
     \def\bug@part@draw[##1]{\draw[##1,\bug@contour,fill=white,line width=\scalingfactor*0.4pt]}
-  \else
+  \else% contour
     \def\bug@part@draw[##1]{\fill[##1]}
-  \fi
-\fi
+  \fi% contour
+\fi% 3D
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Body parts (center: x=0)
+% Body parts
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname bugshookbackground\endcsname
 \csname tikzlinghookbackground\endcsname
 %
 \ifbug@back
+  %  
   % Antenna %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \draw[\bug@antennas,line width=\scalingfactor*0.8pt] (0.1134, 1.911) .. controls (0.0917, 2.0537) and (0.0986, 2.1999) .. (0.1608, 2.2816) .. controls (0.245, 2.3919) and (0.3278, 2.3011) .. (0.3272, 2.2192) .. controls (0.3266, 2.1341) and (0.2237, 2.0423) .. (0.1978, 2.1538);
   \draw[\bug@antennas,line width=\scalingfactor*0.8pt] (-0.1134, 1.911) .. controls (-0.0917, 2.0537) and (-0.0986, 2.1999) .. (-0.1608, 2.2816) .. controls (-0.245, 2.3919) and (-0.3278, 2.3011) .. (-0.3272, 2.2192) .. controls (-0.3266, 2.1341) and (-0.2237, 2.0423) .. (-0.1978, 2.1538);
-\else
+\else% back
+  %
   % Wings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \bug@part@draw[\bug@wings] (-0.0955, 1.4222) .. controls (-0.2086, 1.6765) and (-0.692, 1.2508) .. (-0.8174, 1.0023) .. controls (-0.9304, 0.7786) and (-0.9533, 0.379) .. (-0.7355, 0.2548) .. controls (-0.5988, 0.1768) and (-0.4043, 0.3269) .. (-0.3054, 0.4494) .. controls (-0.097, 0.7075) and (0.0589, 1.0749) .. (-0.0955, 1.4222) -- cycle;       
   \bug@part@draw[\bug@wings] (0.0955, 1.4222) .. controls (0.2086, 1.6765) and (0.692, 1.2508) .. (0.8174, 1.0023) .. controls (0.9304, 0.7786) and (0.9533, 0.379) .. (0.7355, 0.2548) .. controls (0.5988, 0.1768) and (0.4043, 0.3269) .. (0.3054, 0.4494) .. controls (0.097, 0.7075) and (-0.0589, 1.0749) .. (0.0955, 1.4222) -- cycle;
   \ifbug@contour
     \bug@part@draw[\bug@dots] (-0.2,0.85) circle [radius=0.08] (-0.5,0.8) circle [radius=0.08] (-0.8,0.75) circle [radius=0.08] (-0.35,0.6) circle [radius=0.08] (-0.65,0.5) circle [radius=0.08] (-0.3,1.05) circle [radius=0.08] (-0.6,1.1) circle [radius=0.08] (-0.35,1.35) circle [radius=0.08] (0.2,0.85) circle [radius=0.08] (0.5,0.8) circle [radius=0.08] (0.8,0.75) circle [radius=0.08] (0.35,0.6) circle [radius=0.08] (0.65,0.5) circle [radius=0.08] (0.3,1.05) circle [radius=0.08] (0.6,1.1) circle [radius=0.08] (0.35,1.35) circle [radius=0.08];     
-  \else 
+  \else% contour 
     \fill[\bug@dots] (-0.2,0.85) circle [radius=0.08] (-0.5,0.8) circle [radius=0.08] (-0.8,0.75) circle [radius=0.08] (-0.35,0.6) circle [radius=0.08] (-0.65,0.5) circle [radius=0.08] (-0.3,1.05) circle [radius=0.08] (-0.6,1.1) circle [radius=0.08] (-0.35,1.35) circle [radius=0.08] (0.2,0.85) circle [radius=0.08] (0.5,0.8) circle [radius=0.08] (0.8,0.75) circle [radius=0.08] (0.35,0.6) circle [radius=0.08] (0.65,0.5) circle [radius=0.08] (0.3,1.05) circle [radius=0.08] (0.6,1.1) circle [radius=0.08] (0.35,1.35) circle [radius=0.08];      
-  \fi
-\fi
+  \fi% contour
+\fi% back
 %
-% Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bug@part@draw[\bug@feet] (0.2,0.1) ellipse[x radius=0.18, y radius=0.06]; 
 \bug@part@draw[\bug@feet] (-0.2,0.1) ellipse[x radius=0.18, y radius=0.06];
 %
@@ -149,7 +151,7 @@
 % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bug@part@draw[\bug@body] (0,1.7) circle [radius=0.37];
 %
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname bugshookbelly\endcsname
 \csname tikzlinghookbelly\endcsname
 %
@@ -161,10 +163,10 @@
   \bug@part@draw[\bug@wings] (0.0955, 1.4222) .. controls (0.2086, 1.6765) and (0.692, 1.2508) .. (0.8174, 1.0023) .. controls (0.9304, 0.7786) and (0.9533, 0.379) .. (0.7355, 0.2548) .. controls (0.5988, 0.1768) and (0.4043, 0.3269) .. (0.3054, 0.4494) .. controls (0.097, 0.7075) and (-0.0589, 1.0749) .. (0.0955, 1.4222) -- cycle;
   \ifbug@contour
     \bug@part@draw[\bug@dots] (-0.2,0.85) circle [radius=0.08] (-0.5,0.8) circle [radius=0.08] (-0.8,0.75) circle [radius=0.08] (-0.35,0.6) circle [radius=0.08] (-0.65,0.5) circle [radius=0.08] (-0.3,1.05) circle [radius=0.08] (-0.6,1.1) circle [radius=0.08] (-0.35,1.35) circle [radius=0.08] (0.2,0.85) circle [radius=0.08] (0.5,0.8) circle [radius=0.08] (0.8,0.75) circle [radius=0.08] (0.35,0.6) circle [radius=0.08] (0.65,0.5) circle [radius=0.08] (0.3,1.05) circle [radius=0.08] (0.6,1.1) circle [radius=0.08] (0.35,1.35) circle [radius=0.08];     
-  \else 
+  \else% contour
     \fill[\bug@dots] (-0.2,0.85) circle [radius=0.08] (-0.5,0.8) circle [radius=0.08] (-0.8,0.75) circle [radius=0.08] (-0.35,0.6) circle [radius=0.08] (-0.65,0.5) circle [radius=0.08] (-0.3,1.05) circle [radius=0.08] (-0.6,1.1) circle [radius=0.08] (-0.35,1.35) circle [radius=0.08] (0.2,0.85) circle [radius=0.08] (0.5,0.8) circle [radius=0.08] (0.8,0.75) circle [radius=0.08] (0.35,0.6) circle [radius=0.08] (0.65,0.5) circle [radius=0.08] (0.3,1.05) circle [radius=0.08] (0.6,1.1) circle [radius=0.08] (0.35,1.35) circle [radius=0.08];      
-  \fi  
-\else
+  \fi% contour
+\else% back
   %
   % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \bug@part@draw[\bug@eye] (0.13,1.75) ellipse[x radius=0.067, y radius=0.085];
@@ -183,7 +185,8 @@
   \draw[\bug@antennas,line width=\scalingfactor*0.8pt] (0.1134, 1.911) .. controls (0.0917, 2.0537) and (0.0986, 2.1999) .. (0.1608, 2.2816) .. controls (0.245, 2.3919) and (0.3278, 2.3011) .. (0.3272, 2.2192) .. controls (0.3266, 2.1341) and (0.2237, 2.0423) .. (0.1978, 2.1538);
   \draw[\bug@antennas,line width=\scalingfactor*0.8pt] (-0.1134, 1.911) .. controls (-0.0917, 2.0537) and (-0.0986, 2.1999) .. (-0.1608, 2.2816) .. controls (-0.245, 2.3919) and (-0.3278, 2.3011) .. (-0.3272, 2.2192) .. controls (-0.3266, 2.1341) and (-0.2237, 2.0423) .. (-0.1978, 2.1538);
   %
-\fi
+\fi% back
+%
 % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname bugshookbody\endcsname
 \csname tikzlinghookbody\endcsname

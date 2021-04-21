@@ -113,21 +113,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifchicken@threeD
   \def\chicken@part@draw[##1]{\shade[ball color=##1]}
-\else
+\else% 3D
   \ifchicken@contour
     \def\chicken@part@draw[##1]{\draw[##1,\chicken@contour,fill=white,line width=\scalingfactor*0.4pt]}
-  \else
+  \else% contour
     \def\chicken@part@draw[##1]{\fill[##1]}
-  \fi
-\fi
+  \fi% contour
+\fi% 3D
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Body parts (center: x=0.925)
+% Body parts
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname chickenhookbackground\endcsname
 \csname tikzlinghookbackground\endcsname
 %
@@ -149,7 +149,7 @@
   \chicken@part@draw[\chicken@feet] (-0.175,0.2) ellipse[x radius=0.03, y radius=0.1];
   \chicken@part@draw[\chicken@feet] (-0.225,0.21) ellipse[x radius=0.03, y radius=0.1, rotate=-20];
   \chicken@part@draw[\chicken@feet] (-0.275,0.23) ellipse[x radius=0.03, y radius=0.1, rotate=-40];
-\fi
+\fi% back
 %
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chicken@part@draw[\chicken@body!50!white] ( 0.00, 0.33) .. controls (-0.60, 0.33) and (-0.55, 0.65) .. (-0.55, 0.90) .. controls (-0.55, 1.10) and (-0.48, 1.20) .. (-0.39, 1.40) .. controls (-0.32, 1.58) and (-0.32, 2.09) .. ( 0.00, 2.09) .. controls ( 0.32, 2.09) and ( 0.32, 1.58) .. ( 0.39, 1.40) .. controls ( 0.48, 1.20) and ( 0.55, 1.10) .. ( 0.55, 0.90) .. controls ( 0.55, 0.65) and ( 0.60, 0.33) .. ( 0, 0.33) -- cycle;
@@ -160,7 +160,7 @@
 \chicken@part@draw[\chicken@comb] (-0.03,2.095) ellipse[x radius=0.17, y radius=0.06, rotate=92];
 \chicken@part@draw[\chicken@comb] (-0.082,2.060) ellipse[x radius=0.15, y radius=0.06, rotate=120];
 %
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname chickenhookbelly\endcsname
 \csname tikzlinghookbelly\endcsname
 %
@@ -170,14 +170,14 @@
   \chicken@part@draw[\chicken@eye] (-0.135,1.8) ellipse[x radius=0.06, y radius=0.07];
   \chicken@part@draw[\chicken@pupil] (0.124,1.78) ellipse[x radius=0.017, y radius=0.027];
   \chicken@part@draw[\chicken@pupil] (-0.124,1.78) ellipse[x radius=0.017, y radius=0.027];
-\fi
+\fi% back
 %
 % Bill %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \unless\ifchicken@back
   \chicken@part@draw[\chicken@comb] (-0.04, 1.57) ellipse[x radius=0.04, y radius=0.08, rotate=-20];
   \chicken@part@draw[\chicken@comb] (0.04, 1.57) ellipse[x radius=0.04, y radius=0.08, rotate=20];   
   \chicken@part@draw[\chicken@bill] (-0.09, 1.7) -- (0, 1.58) -- (0.09, 1.7) arc [start angle=50, end angle=130, radius=0.14] -- cycle;
-\fi
+\fi% back
 %
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \unless\ifchicken@back
@@ -189,7 +189,7 @@
   \chicken@part@draw[\chicken@feet] (-0.175,0.2) ellipse[x radius=0.03, y radius=0.1];
   \chicken@part@draw[\chicken@feet] (-0.225,0.21) ellipse[x radius=0.03, y radius=0.1, rotate=-20];
   \chicken@part@draw[\chicken@feet] (-0.275,0.23) ellipse[x radius=0.03, y radius=0.1, rotate=-40];
-\fi
+\fi% back
 %
 % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifchicken@back
@@ -197,7 +197,8 @@
   \chicken@part@draw[\chicken@body] (0.04, 0.87) ellipse[x radius=0.25, y radius=0.06, rotate=80];
   \chicken@part@draw[\chicken@body] (-0.03, 0.83) ellipse[x radius=0.20, y radius=0.06, rotate=102];
   \chicken@part@draw[\chicken@body] (-0.082, 0.76) ellipse[x radius=0.17, y radius=0.06, rotate=130];
-\fi
+\fi% back
+%
 % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname chickenhookbody\endcsname
 \csname tikzlinghookbody\endcsname
@@ -236,13 +237,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifchicken@threeD
   \def\chicken@part@draw[##1]{\shade[ball color=##1]}
-\else
+\else% 3D
   \ifchicken@contour
     \def\chicken@part@draw[##1]{\draw[##1,\chicken@contour,fill=white,line width=\scalingfactor*0.4pt]}
-  \else
+  \else% contour
     \def\chicken@part@draw[##1]{\fill[##1]}
-  \fi
-\fi
+  \fi% contour
+\fi% 3D
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -276,7 +277,7 @@
     \chicken@part@draw[\chicken@feet] (-0.225,0.28) ellipse[x radius=0.03, y radius=0.1, rotate=-20];
     \chicken@part@draw[\chicken@feet] (-0.275,0.3) ellipse[x radius=0.03, y radius=0.1, rotate=-40];
   \end{scope}
-\fi
+\fi% back
 %
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chicken@part@draw[\chicken@baby] (0,0.55) circle [radius=0.3];
@@ -291,7 +292,7 @@
 % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chicken@part@draw[\chicken@baby] (0,0.87) circle [radius=0.25];
 %
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname chickenhookbelly\endcsname
 \csname tikzlinghookbelly\endcsname
 %
@@ -301,12 +302,12 @@
   \chicken@part@draw[\chicken@eye] (-0.075,0.925) ellipse[x radius=0.055, y radius=0.065];
   \chicken@part@draw[\chicken@pupil] (0.07,0.91) ellipse[x radius=0.017, y radius=0.024];
   \chicken@part@draw[\chicken@pupil] (-0.07,0.91) ellipse[x radius=0.017, y radius=0.024];
-\fi
+\fi% back
 %
 % Bill %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \unless\ifchicken@back
   \chicken@part@draw[\chicken@bill] (-0.05, 0.81) -- (0, 0.74) -- (0.05, 0.81) arc [start angle=60, end angle=120, radius=0.1] -- cycle;
-\fi
+\fi% back
 %
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \unless\ifchicken@back
@@ -320,18 +321,10 @@
     \chicken@part@draw[\chicken@feet] (-0.225,0.28) ellipse[x radius=0.03, y radius=0.1, rotate=-20];
     \chicken@part@draw[\chicken@feet] (-0.275,0.3) ellipse[x radius=0.03, y radius=0.1, rotate=-40];
   \end{scope}
-\fi
-%%
-%% Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\ifchicken@back
-%  \chicken@part@draw[\chicken@body] (0.12, 0.795) ellipse[x radius=0.20, y radius=0.06, rotate=58];
-%  \chicken@part@draw[\chicken@body] (0.04, 0.87) ellipse[x radius=0.25, y radius=0.06, rotate=80];
-%  \chicken@part@draw[\chicken@body] (-0.03, 0.83) ellipse[x radius=0.20, y radius=0.06, rotate=102];
-%  \chicken@part@draw[\chicken@body] (-0.082, 0.76) ellipse[x radius=0.17, y radius=0.06, rotate=130];
-%\fi
+\fi% back
+%
 % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname chickenhookbody\endcsname
 \csname tikzlinghookbody\endcsname
 %
 }
-

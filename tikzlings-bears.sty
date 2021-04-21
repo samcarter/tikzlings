@@ -89,17 +89,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifbear@threeD
   \def\bear@part@draw[##1]{\shade[ball color=##1]}
-\else
+\else% 3D
   \ifbear@contour
     \def\bear@part@draw[##1]{\draw[##1,\bear@contour,fill=white,line width=\scalingfactor*0.4pt]}
-  \else
+  \else% contour
     \def\bear@part@draw[##1]{\fill[##1]}
-  \fi
-\fi
+  \fi% contour
+\fi% 3D
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Body parts (center: x=0.925)
+% Body parts
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -115,13 +115,13 @@
 \ifbear@back
   \bear@part@draw[\bear@body!70!black] (0.425, 0.3) circle[radius=0.28]; 
   \bear@part@draw[\bear@body!70!black] (-0.425, 0.3) circle[radius=0.28];
-\fi
+\fi% back
 %
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bear@part@draw[\bear@body!70!black] (0,0.75) ellipse[x radius=0.55, y radius=0.65]; 
 \unless\ifbear@back
   \bear@part@draw[\bear@body!50!white] (0,0.7) ellipse[x radius=0.35, y radius=0.4];
-\fi 
+\fi% back
 %
 % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname bearhookbelly\endcsname
@@ -133,7 +133,7 @@
   \bear@part@draw[\bear@body!70!black] (-0.425, 0.3) circle[radius=0.28];
   \bear@part@draw[\bear@body!50!white] (0.425, 0.3) circle[radius=0.17]; 
   \bear@part@draw[\bear@body!50!white] (-0.425, 0.3) circle[radius=0.17];
-\fi
+\fi% back
 %
 % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bear@part@draw[\bear@body!70!black] (0.375, 1.95) circle[radius=0.15];
@@ -141,30 +141,30 @@
 \unless\ifbear@back
   \bear@part@draw[\bear@body!50!white] (0.375, 1.95) circle[radius=0.1];
   \bear@part@draw[\bear@body!50!white] (-0.375, 1.95) circle[radius=0.1];
-\fi
+\fi% back
 %
 % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bear@part@draw[\bear@body!70!black] (0, 1.55) circle[radius=0.5]; 
 %
 % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \unless\ifbear@back
+  %
+  % Muzzle %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \bear@part@draw[\bear@body!50!white] (0, 1.4) ellipse[x radius=0.28, y radius=0.2]; 
+  \bear@part@draw[\bear@body!70!white!80!red] (0, 1.5) ellipse[x radius=0.15, y radius=0.08]; 
+  %
+  % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \bear@part@draw[\bear@eye] (-0.155, 1.7) circle[radius=0.05]; 
+  \bear@part@draw[\bear@eye] (0.155, 1.7) circle[radius=0.05]; 
+  %
+  % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifbear@contour
+    \draw[\bear@contour,line width=\scalingfactor*0.4pt] (0.145, 1.38) arc [start angle=-20, end angle=-160, radius=0.16];
+  \else% contour
+    \draw[\bear@body!30!black,line width=\scalingfactor*0.4pt] (0.145, 1.38) arc [start angle=-20, end angle=-160, radius=0.16];
+  \fi% contour
 %
-% Muzzle %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\bear@part@draw[\bear@body!50!white] (0, 1.4) ellipse[x radius=0.28, y radius=0.2]; 
-\bear@part@draw[\bear@body!70!white!80!red] (0, 1.5) ellipse[x radius=0.15, y radius=0.08]; 
-%
-% Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\bear@part@draw[\bear@eye] (-0.155, 1.7) circle[radius=0.05]; 
-\bear@part@draw[\bear@eye] (0.155, 1.7) circle[radius=0.05]; 
-%
-% Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifbear@contour
-  \draw[\bear@contour,line width=\scalingfactor*0.4pt] (0.145, 1.38) arc [start angle=-20, end angle=-160, radius=0.16];
-\else
-  \draw[\bear@body!30!black,line width=\scalingfactor*0.4pt] (0.145, 1.38) arc [start angle=-20, end angle=-160, radius=0.16];
-\fi
-%
-\fi
+\fi% back
 %
 % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname bearhookbody\endcsname

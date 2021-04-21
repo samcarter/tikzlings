@@ -96,21 +96,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifowl@threeD
   \def\owl@part@draw[##1]{\shade[ball color=##1]}
-\else
+\else% 3D
   \ifowl@contour
     \def\owl@part@draw[##1]{\draw[##1,\owl@contour,fill=white,line width=\scalingfactor*0.4pt]}
-  \else
+  \else% contour
     \def\owl@part@draw[##1]{\fill[##1]}
-  \fi
-\fi
+  \fi% contour
+\fi% 3D
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Body parts (center: x=0.925)
+% Body parts
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname owlhookbackground\endcsname
 \csname tikzlinghookbackground\endcsname
 %
@@ -126,7 +126,7 @@
   \owl@part@draw[\owl@feet] (-0.175,0.2) ellipse[x radius=0.03, y radius=0.1];
   \owl@part@draw[\owl@feet] (-0.225,0.21) ellipse[x radius=0.03, y radius=0.1, rotate=-20];
   \owl@part@draw[\owl@feet] (-0.275,0.23) ellipse[x radius=0.03, y radius=0.1, rotate=-40];
-\fi
+\fi% back
 %
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \owl@part@draw[\owl@body] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
@@ -137,9 +137,9 @@
 % Belly %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \unless\ifowl@back
   \owl@part@draw[\owl@body!50!white] (0.425,0.5) .. controls (0.425,0.31) and (0.245,0.27) .. (0,0.27) .. controls (-0.245,0.27) and (-0.425,0.31) .. (-0.425,0.5) .. controls (-0.425,0.81) and (-0.225,0.98) .. (0,0.98) .. controls (0.225,0.98) and (0.425,0.81) .. (0.425,0.5) -- cycle;
-\fi
+\fi% back
 %
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname owlhookbelly\endcsname
 \csname tikzlinghookbelly\endcsname
 %
@@ -151,20 +151,20 @@
   \ifowl@contour
     \owl@part@draw[\owl@eye] (-0.28, 1.6) circle[radius=0.22];
     \owl@part@draw[\owl@eye] (0.28, 1.6) circle[radius=0.22];
-  \else
+  \else% contour
     \fill[\owl@eye] (-0.28, 1.6) circle[radius=0.22];
     \fill[\owl@eye] (0.28, 1.6) circle[radius=0.22];
-  \fi
+  \fi% contour
   \owl@part@draw[\owl@pupil]   (-0.28, 1.6) circle[radius=0.15];
   \owl@part@draw[\owl@pupil]   (0.28, 1.6) circle[radius=0.15];
   \owl@part@draw[white] (0.25, 1.64) circle[radius=0.03];
   \owl@part@draw[white] (-0.31, 1.64) circle[radius=0.03];
-\fi
+\fi% back
 %
 % Bill %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \unless\ifowl@back
   \owl@part@draw[\owl@bill] (0, 1.4) -- (-0.1, 1.3) -- (0, 1.15) -- (0.1, 1.3) -- cycle;
-\fi
+\fi% back
 %
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \unless\ifowl@back
@@ -174,7 +174,8 @@
   \owl@part@draw[\owl@feet] (-0.175,0.2) ellipse[x radius=0.03, y radius=0.1];
   \owl@part@draw[\owl@feet] (-0.225,0.21) ellipse[x radius=0.03, y radius=0.1, rotate=-20];
   \owl@part@draw[\owl@feet] (-0.275,0.23) ellipse[x radius=0.03, y radius=0.1, rotate=-40];
-\fi
+\fi% back
+%
 % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname owlhookbody\endcsname
 \csname tikzlinghookbody\endcsname

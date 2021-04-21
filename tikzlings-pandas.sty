@@ -92,21 +92,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifpanda@threeD
   \def\panda@part@draw[##1]{\shade[ball color=##1]}
-\else
+\else% 3D
   \ifpanda@contour
     \def\panda@part@draw[##1]{\draw[##1,\panda@contour,fill=white,line width=\scalingfactor*0.4pt]}
-  \else
+  \else% contour
     \def\panda@part@draw[##1]{\fill[##1]}
-  \fi
-\fi
+  \fi% contour
+\fi% 3D
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Body parts (center: x=0)
+% Body parts
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname pandahookbackground\endcsname
 \csname tikzlinghookbackground\endcsname
 %
@@ -114,12 +114,12 @@
 \ifpanda@back
   \panda@part@draw[black] (0.32, 0.27) circle[radius=0.2]; 
   \panda@part@draw[black] (-0.32, 0.27) circle[radius=0.2];
-\fi
+\fi% back
 %
 % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \panda@part@draw[\panda@body!55!white] (0,0.78) ellipse[x radius=0.57, y radius=0.65];
 %
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname pandahookbelly\endcsname
 \csname tikzlinghookbelly\endcsname
 %
@@ -129,13 +129,13 @@
   \panda@part@draw[black] (0.28,0.93) ellipse[x radius=0.24, y radius=0.13, rotate=70];
   \panda@part@draw[black] (-0.28,0.93) ellipse[x radius=0.24, y radius=0.13, rotate=-70];
   \end{scope}
-\fi
+\fi% back
 %
 % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \unless\ifpanda@back
   \panda@part@draw[black] (0.32, 0.27) circle[radius=0.2]; 
   \panda@part@draw[black] (-0.32, 0.27) circle[radius=0.2];
-\fi
+\fi% back
 %
 % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \panda@part@draw[black] (0.32, 2) circle[radius=0.15];
@@ -146,26 +146,27 @@
 %
 % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \unless\ifpanda@back
+  %
+  % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \panda@part@draw[black] (0.3732, 1.6905) .. controls (0.3498, 1.767) and (0.2032, 1.8059) .. (0.0944, 1.7715) .. controls (-0.0145, 1.7371) and (0.173, 1.5479) .. (0.2508, 1.5443) .. controls (0.3286, 1.5407) and (0.3965, 1.614) .. (0.3732, 1.6905) -- cycle;
+  \panda@part@draw[black] (-0.3732, 1.6905) .. controls (-0.3498, 1.767) and (-0.2032, 1.8059) .. (-0.0944, 1.7715) .. controls (0.0145, 1.7371) and (-0.173, 1.5479) .. (-0.2508, 1.5443) .. controls (-0.3286, 1.5407) and (-0.3965, 1.614) .. (-0.3732, 1.6905) -- cycle;
+  \panda@part@draw[\panda@eye] (-0.18, 1.7) circle[radius=0.05];
+  \panda@part@draw[\panda@eye] (0.18, 1.7) circle[radius=0.05];
+  \panda@part@draw[\panda@pupil] (0.17, 1.695) circle[radius=0.02];
+  \panda@part@draw[\panda@pupil] (-0.17, 1.695) circle[radius=0.02];
+  %
+  % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifpanda@contour
+    \draw[\panda@contour,line width=\scalingfactor*0.2pt] (-0.16, 1.477) .. controls (-0.16, 1.477) and (-0.062, 1.37) .. (0, 1.506)  .. controls (0.062, 1.37) and (0.16, 1.477) .. (0.16, 1.477);
+  \else% contour
+    \draw[black,line width=\scalingfactor*0.2pt] (-0.16, 1.477) .. controls (-0.16, 1.477) and (-0.062, 1.37) .. (0, 1.506)  .. controls (0.062, 1.37) and (0.16, 1.477) .. (0.16, 1.477);
+  \fi% contour
+  %
+  % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \panda@part@draw[black] (0,1.55) ellipse[x radius=0.07, y radius=0.04];
+  %
+\fi% back
 %
-% Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\panda@part@draw[black] (0.3732, 1.6905) .. controls (0.3498, 1.767) and (0.2032, 1.8059) .. (0.0944, 1.7715) .. controls (-0.0145, 1.7371) and (0.173, 1.5479) .. (0.2508, 1.5443) .. controls (0.3286, 1.5407) and (0.3965, 1.614) .. (0.3732, 1.6905) -- cycle;
-\panda@part@draw[black] (-0.3732, 1.6905) .. controls (-0.3498, 1.767) and (-0.2032, 1.8059) .. (-0.0944, 1.7715) .. controls (0.0145, 1.7371) and (-0.173, 1.5479) .. (-0.2508, 1.5443) .. controls (-0.3286, 1.5407) and (-0.3965, 1.614) .. (-0.3732, 1.6905) -- cycle;
-\panda@part@draw[\panda@eye] (-0.18, 1.7) circle[radius=0.05];
-\panda@part@draw[\panda@eye] (0.18, 1.7) circle[radius=0.05];
-\panda@part@draw[\panda@pupil] (0.17, 1.695) circle[radius=0.02];
-\panda@part@draw[\panda@pupil] (-0.17, 1.695) circle[radius=0.02];
-%
-% Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifpanda@contour
-  \draw[\panda@contour,line width=\scalingfactor*0.2pt] (-0.16, 1.477) .. controls (-0.16, 1.477) and (-0.062, 1.37) .. (0, 1.506)  .. controls (0.062, 1.37) and (0.16, 1.477) .. (0.16, 1.477);
-\else
-  \draw[black,line width=\scalingfactor*0.2pt] (-0.16, 1.477) .. controls (-0.16, 1.477) and (-0.062, 1.37) .. (0, 1.506)  .. controls (0.062, 1.37) and (0.16, 1.477) .. (0.16, 1.477);
-\fi
-%
-% Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\panda@part@draw[black] (0,1.55) ellipse[x radius=0.07, y radius=0.04];
-%
-\fi
 % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \csname pandahookbody\endcsname
 \csname tikzlinghookbody\endcsname
