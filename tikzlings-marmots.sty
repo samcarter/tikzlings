@@ -85,7 +85,9 @@
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  blush/.code        = \marmot@blushtrue,
+  blush/.code        = \marmot@blushtrue
+                       \def\marmot@blushcolor{#1},
+  blush/.default     = red, 
   whiskers/.code     = \marmot@whiskerstrue 
                        \def\marmot@whiskers{#1},
   whiskers/.default  = gray,
@@ -103,6 +105,7 @@
   back/.code         = \marmot@backtrue,  
   contour/.code      = \marmot@contourtrue
                        \def\marmot@contour{#1}
+                       \def\marmot@blushcolor{#1}
                        \def\marmot@mouth{#1},
   contour/.default   = black,  
   outline/.forward to = /marmot/contour,   
@@ -236,15 +239,10 @@
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % Blushed %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % Blushed %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
   \ifmarmot@blush
-    \ifmarmot@contour
-      \fill[\marmot@contour,path fading=marmot@blush] (-0.295,1.6) circle[radius=0.1]; 
-      \fill[\marmot@contour,path fading=marmot@blush] (0.295,1.6) circle[radius=0.1];   
-    \else% contour
-      \fill[red,path fading=marmot@blush] (-0.295,1.6) circle[radius=0.1]; 
-      \fill[red,path fading=marmot@blush] (0.295,1.6) circle[radius=0.1]; 
-    \fi% contour
+    \fill[\marmot@blushcolor,path fading=marmot@blush] (-0.295,1.6) circle[radius=0.1]; 
+    \fill[\marmot@blushcolor,path fading=marmot@blush] (0.295,1.6) circle[radius=0.1];   
   \fi% blush
   %
   % Wiskers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
