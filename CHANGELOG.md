@@ -8,6 +8,8 @@
 
 ### Changed
 
+- Adding options to change the colours of various body parts: mouth (bear, hippo, koala, marmot, moles, panda, pig, rhino, mouth), blush (koala, sheep), whiskers (mouse), tail (pig), nose (sheep), eyelid (sloth)
+
 ### Fixed
 
 ## [v0.7]
