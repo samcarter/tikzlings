@@ -283,24 +283,6 @@ A short example how the hooks can be used:
 \mouse
 \end{tcblisting}
 
-Given that the \tikzlings package uses everyday animal names for its macros, it sometimes conflicts with other packages which use the same macro names. The following example shows how such conflicts can be worked around:
-\begin{tcblisting}{listing only,lower separated=false}
-\documentclass{standalone}
-
-\usepackage{figchild}
-\let\figchildowl\owl
-\let\owl\undefined
-\usepackage{tikzlings-owls}
-
-\begin{document}
-\figchildowl{0.5}{blue}{1}
-\begin{tikzpicture}
-	\owl
-\end{tikzpicture}	
-\end{document}
-\end{tcblisting}
-
-\clearpage
 \subsection*{List of all \tikzlings:}
 
 \begingroup
