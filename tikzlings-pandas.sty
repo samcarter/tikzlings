@@ -1,16 +1,16 @@
-% !TeX root = ./examples/panda.tex
+ % !TeX root = ./examples/panda.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% This package is part of the TikZlings package
-% A package to bring cute little animals and other beings into tikz
-% Maintained by samcarter
-%
-% Project repository and bug tracker:
-% https://github.com/samcarter/tikzlings
-%
-% Released under the LaTeX Project Public License v1.3c or later
-% See http://www.latex-project.org/lppl.txt
-%
+%%
+%% This package is part of the TikZlings package
+%% A package to bring cute little animals and other beings into tikz
+%% Maintained by samcarter
+%%
+%% Project repository and bug tracker:
+%% https://github.com/samcarter/tikzlings
+%%
+%% Released under the LaTeX Project Public License v1.3c or later
+%% See http://www.latex-project.org/lppl.txt
+%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ProvidesPackage{tikzlings-pandas}[2021/04/20 version v0.7 Drawing pandas in TikZ]
 
@@ -69,105 +69,162 @@
 }
 
 \def\panda@draw{%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% minimal bounding box size 
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\path (-0.62,0.05) rectangle (0.62, 2.18);
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% store the current scale factor
-% from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
-\pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
-\pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
-\pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 
-% switch between 2D, 3D and contours, from
-% https://chat.stackexchange.com/transcript/message/45991801#45991801
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifpanda@threeD
-  \def\panda@part@draw[##1]{\shade[ball color=##1]}
-\else% 3D
-  \ifpanda@contour
-    \def\panda@part@draw[##1]{\draw[##1,\panda@contour,fill=white,line width=\scalingfactor*0.4pt]}
-  \else% contour
-    \def\panda@part@draw[##1]{\fill[##1]}
-  \fi% contour
-\fi% 3D
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Body parts
-% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname pandahookbackground\endcsname
-\csname tikzlinghookbackground\endcsname
-%
-% Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifpanda@back
-  \panda@part@draw[black] (0.32, 0.27) circle[radius=0.2]; 
-  \panda@part@draw[black] (-0.32, 0.27) circle[radius=0.2];
-\fi% back
-%
-% Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\panda@part@draw[\panda@body!55!white] (0,0.78) ellipse[x radius=0.57, y radius=0.65];
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname pandahookbelly\endcsname
-\csname tikzlinghookbelly\endcsname
-%
-% Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\unless\ifpanda@back
-  \begin{scope}[yshift=-0.08cm]
-  \panda@part@draw[black] (0.28,0.93) ellipse[x radius=0.24, y radius=0.13, rotate=70];
-  \panda@part@draw[black] (-0.28,0.93) ellipse[x radius=0.24, y radius=0.13, rotate=-70];
-  \end{scope}
-\fi% back
-%
-% Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\unless\ifpanda@back
-  \panda@part@draw[black] (0.32, 0.27) circle[radius=0.2]; 
-  \panda@part@draw[black] (-0.32, 0.27) circle[radius=0.2];
-\fi% back
-%
-% Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\panda@part@draw[black] (0.32, 2) circle[radius=0.15];
-\panda@part@draw[black] (-0.32, 2) circle[radius=0.15];
-%
-% Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\panda@part@draw[\panda@body!55!white] (0.4897, 1.5886) .. controls (0.4614, 1.8238) and (0.25, 2.1172) .. (0, 2.1134) .. controls (-0.25, 2.1172) and (-0.4614, 1.8238) .. (-0.4897, 1.5886) .. controls (-0.5261, 1.3269) and (-0.2748, 1.2377) .. (0, 1.2377) .. controls (0.2748, 1.2377) and (0.5261, 1.3269) .. (0.4897, 1.5886) -- cycle;
-%
-% Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\unless\ifpanda@back
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \panda@part@draw[black] (0.3732, 1.6905) .. controls (0.3498, 1.767) and (0.2032, 1.8059) .. (0.0944, 1.7715) .. controls (-0.0145, 1.7371) and (0.173, 1.5479) .. (0.2508, 1.5443) .. controls (0.3286, 1.5407) and (0.3965, 1.614) .. (0.3732, 1.6905) -- cycle;
-  \panda@part@draw[black] (-0.3732, 1.6905) .. controls (-0.3498, 1.767) and (-0.2032, 1.8059) .. (-0.0944, 1.7715) .. controls (0.0145, 1.7371) and (-0.173, 1.5479) .. (-0.2508, 1.5443) .. controls (-0.3286, 1.5407) and (-0.3965, 1.614) .. (-0.3732, 1.6905) -- cycle;
-  \panda@part@draw[\panda@eye] (-0.18, 1.7) circle[radius=0.05];
-  \panda@part@draw[\panda@eye] (0.18, 1.7) circle[radius=0.05];
-  \panda@part@draw[\panda@pupil] (0.17, 1.695) circle[radius=0.02];
-  \panda@part@draw[\panda@pupil] (-0.17, 1.695) circle[radius=0.02];
+  % minimal bounding box size 
   %
-  % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \draw[\panda@mouth,line width=\scalingfactor*0.2pt] (-0.16, 1.477) .. controls (-0.16, 1.477) and (-0.062, 1.37) .. (0, 1.506)  .. controls (0.062, 1.37) and (0.16, 1.477) .. (0.16, 1.477);
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \path (-0.62,0.05) rectangle (0.62, 2.18);
   %
-  % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \panda@part@draw[black] (0,1.55) ellipse[x radius=0.07, y radius=0.04];
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-\fi% back
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname pandahookbody\endcsname
-\csname tikzlinghookbody\endcsname
-%
+  % store the current scale factor
+  % from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
+  \pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
+  \pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
+  \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % 
+  % switch between 2D, 3D and contours, from
+  % https://chat.stackexchange.com/transcript/message/45991801#45991801
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifpanda@threeD
+    \def\panda@part@draw[##1]{\shade[ball color=##1]}
+  \else% 3D
+    \ifpanda@contour
+      \def\panda@part@draw[##1]{\draw[##1,\panda@contour,fill=white,line width=\scalingfactor*0.4pt]}
+    \else% contour
+      \def\panda@part@draw[##1]{\fill[##1]}
+    \fi% contour
+  \fi% 3D
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Body parts
+  % 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname pandahookbackground\endcsname
+  \csname tikzlinghookbackground\endcsname
+  %
+  % Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifpanda@back
+    \panda@part@draw[black] (0.32, 0.27) circle[radius=0.2]; 
+    \panda@part@draw[black] (-0.32, 0.27) circle[radius=0.2];
+  \fi% back
+  %
+  % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \panda@part@draw[\panda@body!55!white] (0,0.78) ellipse[x radius=0.57, y radius=0.65];
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname pandahookbelly\endcsname
+  \csname tikzlinghookbelly\endcsname
+  %
+  % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifpanda@back
+    \begin{scope}[yshift=-0.08cm]
+    \panda@part@draw[black] (0.28,0.93) ellipse[x radius=0.24, y radius=0.13, rotate=70];
+    \panda@part@draw[black] (-0.28,0.93) ellipse[x radius=0.24, y radius=0.13, rotate=-70];
+    \end{scope}
+  \fi% back
+  %
+  % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifpanda@back
+    \panda@part@draw[black] (0.32, 0.27) circle[radius=0.2]; 
+    \panda@part@draw[black] (-0.32, 0.27) circle[radius=0.2];
+  \fi% back
+  %
+  % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \panda@part@draw[black] (0.32, 2) circle[radius=0.15];
+  \panda@part@draw[black] (-0.32, 2) circle[radius=0.15];
+  %
+  % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \panda@part@draw[\panda@body!55!white] (0.4897, 1.5886) .. controls (0.4614, 1.8238) and (0.25, 2.1172) .. (0, 2.1134) .. controls (-0.25, 2.1172) and (-0.4614, 1.8238) .. (-0.4897, 1.5886) .. controls (-0.5261, 1.3269) and (-0.2748, 1.2377) .. (0, 1.2377) .. controls (0.2748, 1.2377) and (0.5261, 1.3269) .. (0.4897, 1.5886) -- cycle;
+  %
+  % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifpanda@back
+    %
+    % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \panda@part@draw[black] (0.3732, 1.6905) .. controls (0.3498, 1.767) and (0.2032, 1.8059) .. (0.0944, 1.7715) .. controls (-0.0145, 1.7371) and (0.173, 1.5479) .. (0.2508, 1.5443) .. controls (0.3286, 1.5407) and (0.3965, 1.614) .. (0.3732, 1.6905) -- cycle;
+    \panda@part@draw[black] (-0.3732, 1.6905) .. controls (-0.3498, 1.767) and (-0.2032, 1.8059) .. (-0.0944, 1.7715) .. controls (0.0145, 1.7371) and (-0.173, 1.5479) .. (-0.2508, 1.5443) .. controls (-0.3286, 1.5407) and (-0.3965, 1.614) .. (-0.3732, 1.6905) -- cycle;
+    \panda@part@draw[\panda@eye] (-0.18, 1.7) circle[radius=0.05];
+    \panda@part@draw[\panda@eye] (0.18, 1.7) circle[radius=0.05];
+    \panda@part@draw[\panda@pupil] (0.17, 1.695) circle[radius=0.02];
+    \panda@part@draw[\panda@pupil] (-0.17, 1.695) circle[radius=0.02];
+    %
+    % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \draw[\panda@mouth,line width=\scalingfactor*0.2pt] (-0.16, 1.477) .. controls (-0.16, 1.477) and (-0.062, 1.37) .. (0, 1.506)  .. controls (0.062, 1.37) and (0.16, 1.477) .. (0.16, 1.477);
+    %
+    % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \panda@part@draw[black] (0,1.55) ellipse[x radius=0.07, y radius=0.04];
+    %
+  \fi% back
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname pandahookbody\endcsname
+  \csname tikzlinghookbody\endcsname
+  %
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Documentation
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\clearpage
+%\section[Panda]{Meng Meng, the panda}
+%
+%\emph{Meng Meng is named after one of the pandas at the zoological garden Berlin}
+%
+%\subsection{Package name}
+%
+%\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
+%\vspace*{0.5cm}
+%\lstinline|\usepackage{tikzlings-pandas}| 
+%\vspace*{0.5cm}
+%\end{tcolorbox}
+%
+%\subsection{Basic Usage}
+%
+%\begin{tcblisting}{}
+%\panda
+%\end{tcblisting}
+%
+%\subsection{Options}
+%
+%The basic panda can be modified by changing its colour:
+%\begin{tcblisting}{}
+%\panda[body=blue]
+%\end{tcblisting}
+%
+%In addition to the colour of the body, the colour of various body parts can be adjusted:
+%\begin{tcblisting}{}
+%\panda[eye=red]
+%\end{tcblisting}
+%\begin{tcblisting}{}
+%\panda[pupil=red]
+%\end{tcblisting}
+%\begin{tcblisting}{}
+%\panda[mouth=red]
+%\end{tcblisting}
+%
+%To view the panda from behind:
+%\begin{tcblisting}{}
+%\panda[back]
+%\end{tcblisting}
+%
+%The key \lstinline|3D| will make the panda 3-dimensional:
+%\begin{tcblisting}{}
+%\panda[3D]
+%\end{tcblisting}
+%
+%And finally the \lstinline|contour| key will only draw the outlines:
+%\begin{tcblisting}{}
+%\panda[contour=black]
+%\end{tcblisting}

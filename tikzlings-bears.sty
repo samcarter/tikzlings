@@ -1,16 +1,16 @@
-% !TeX root = ./examples/bear.tex
+ % !TeX root = ./examples/bear.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% This package is part of the TikZlings package
-% A package to bring cute little animals and other beings into tikz
-% Maintained by samcarter
-%
-% Project repository and bug tracker:
-% https://github.com/samcarter/tikzlings
-%
-% Released under the LaTeX Project Public License v1.3c or later
-% See http://www.latex-project.org/lppl.txt
-%
+%%
+%% This package is part of the TikZlings package
+%% A package to bring cute little animals and other beings into tikz
+%% Maintained by samcarter
+%%
+%% Project repository and bug tracker:
+%% https://github.com/samcarter/tikzlings
+%%
+%% Released under the LaTeX Project Public License v1.3c or later
+%% See http://www.latex-project.org/lppl.txt
+%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ProvidesPackage{tikzlings-bears}[2021/04/20 version v0.7 Draw teddy bears in TikZ]
 
@@ -66,107 +66,178 @@
 }
 
 \def\bear@draw{%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% minimal bounding box size 
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\path (-0.8, 0.0) rectangle (0.8, 2.13);
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% store the current scale factor
-% from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
-\pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
-\pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
-\pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 
-% switch between 2D, 3D and contours, from
-% https://chat.stackexchange.com/transcript/message/45991801#45991801
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifbear@threeD
-  \def\bear@part@draw[##1]{\shade[ball color=##1]}
-\else% 3D
-  \ifbear@contour
-    \def\bear@part@draw[##1]{\draw[##1,\bear@contour,fill=white,line width=\scalingfactor*0.4pt]}
-  \else% contour
-    \def\bear@part@draw[##1]{\fill[##1]}
-  \fi% contour
-\fi% 3D
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Body parts
-% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname bearhookbackground\endcsname
-\csname tikzlinghookbackground\endcsname
-%
-% Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\bear@part@draw[\bear@body!70!black] (0.525,0.9) ellipse[x radius=0.35, y radius=0.15, rotate=-50];
-\bear@part@draw[\bear@body!70!black] (-0.525,0.9) ellipse[x radius=0.35, y radius=0.15, rotate=50];
-%
-% Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifbear@back
-  \bear@part@draw[\bear@body!70!black] (0.425, 0.3) circle[radius=0.28]; 
-  \bear@part@draw[\bear@body!70!black] (-0.425, 0.3) circle[radius=0.28];
-\fi% back
-%
-% Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\bear@part@draw[\bear@body!70!black] (0,0.75) ellipse[x radius=0.55, y radius=0.65]; 
-\unless\ifbear@back
-  \bear@part@draw[\bear@body!50!white] (0,0.7) ellipse[x radius=0.35, y radius=0.4];
-\fi% back
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname bearhookbelly\endcsname
-\csname tikzlinghookbelly\endcsname
-%
-% Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\unless\ifbear@back
-  \bear@part@draw[\bear@body!70!black] (0.425, 0.3) circle[radius=0.28]; 
-  \bear@part@draw[\bear@body!70!black] (-0.425, 0.3) circle[radius=0.28];
-  \bear@part@draw[\bear@body!50!white] (0.425, 0.3) circle[radius=0.17]; 
-  \bear@part@draw[\bear@body!50!white] (-0.425, 0.3) circle[radius=0.17];
-\fi% back
-%
-% Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\bear@part@draw[\bear@body!70!black] (0.375, 1.95) circle[radius=0.15];
-\bear@part@draw[\bear@body!70!black] (-0.375, 1.95) circle[radius=0.15];
-\unless\ifbear@back
-  \bear@part@draw[\bear@body!50!white] (0.375, 1.95) circle[radius=0.1];
-  \bear@part@draw[\bear@body!50!white] (-0.375, 1.95) circle[radius=0.1];
-\fi% back
-%
-% Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\bear@part@draw[\bear@body!70!black] (0, 1.55) circle[radius=0.5]; 
-%
-% Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\unless\ifbear@back
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % Muzzle %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \bear@part@draw[\bear@body!50!white] (0, 1.4) ellipse[x radius=0.28, y radius=0.2]; 
-  \bear@part@draw[\bear@body!70!white!80!red] (0, 1.5) ellipse[x radius=0.15, y radius=0.08]; 
+  % minimal bounding box size 
   %
-  % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \bear@part@draw[\bear@eye] (-0.155, 1.7) circle[radius=0.05]; 
-  \bear@part@draw[\bear@eye] (0.155, 1.7) circle[radius=0.05]; 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \path (-0.8, 0.0) rectangle (0.8, 2.13);
   %
-  % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \draw[\bear@mouth,line width=\scalingfactor*0.4pt] (0.145, 1.38) arc [start angle=-20, end angle=-160, radius=0.16];
-%
-\fi% back
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname bearhookbody\endcsname
-\csname tikzlinghookbody\endcsname
-%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % store the current scale factor
+  % from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
+  \pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
+  \pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
+  \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % 
+  % switch between 2D, 3D and contours, from
+  % https://chat.stackexchange.com/transcript/message/45991801#45991801
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifbear@threeD
+    \def\bear@part@draw[##1]{\shade[ball color=##1]}
+  \else% 3D
+    \ifbear@contour
+      \def\bear@part@draw[##1]{\draw[##1,\bear@contour,fill=white,line width=\scalingfactor*0.4pt]}
+    \else% contour
+      \def\bear@part@draw[##1]{\fill[##1]}
+    \fi% contour
+  \fi% 3D
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Body parts
+  % 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname bearhookbackground\endcsname
+  \csname tikzlinghookbackground\endcsname
+  %
+  % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \bear@part@draw[\bear@body!70!black] (0.525,0.9) ellipse[x radius=0.35, y radius=0.15, rotate=-50];
+  \bear@part@draw[\bear@body!70!black] (-0.525,0.9) ellipse[x radius=0.35, y radius=0.15, rotate=50];
+  %
+  % Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifbear@back
+    \bear@part@draw[\bear@body!70!black] (0.425, 0.3) circle[radius=0.28]; 
+    \bear@part@draw[\bear@body!70!black] (-0.425, 0.3) circle[radius=0.28];
+  \fi% back
+  %
+  % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \bear@part@draw[\bear@body!70!black] (0,0.75) ellipse[x radius=0.55, y radius=0.65]; 
+  \unless\ifbear@back
+    \bear@part@draw[\bear@body!50!white] (0,0.7) ellipse[x radius=0.35, y radius=0.4];
+  \fi% back
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname bearhookbelly\endcsname
+  \csname tikzlinghookbelly\endcsname
+  %
+  % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifbear@back
+    \bear@part@draw[\bear@body!70!black] (0.425, 0.3) circle[radius=0.28]; 
+    \bear@part@draw[\bear@body!70!black] (-0.425, 0.3) circle[radius=0.28];
+    \bear@part@draw[\bear@body!50!white] (0.425, 0.3) circle[radius=0.17]; 
+    \bear@part@draw[\bear@body!50!white] (-0.425, 0.3) circle[radius=0.17];
+  \fi% back
+  %
+  % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \bear@part@draw[\bear@body!70!black] (0.375, 1.95) circle[radius=0.15];
+  \bear@part@draw[\bear@body!70!black] (-0.375, 1.95) circle[radius=0.15];
+  \unless\ifbear@back
+    \bear@part@draw[\bear@body!50!white] (0.375, 1.95) circle[radius=0.1];
+    \bear@part@draw[\bear@body!50!white] (-0.375, 1.95) circle[radius=0.1];
+  \fi% back
+  %
+  % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \bear@part@draw[\bear@body!70!black] (0, 1.55) circle[radius=0.5]; 
+  %
+  % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifbear@back
+    %
+    % Muzzle %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \bear@part@draw[\bear@body!50!white] (0, 1.4) ellipse[x radius=0.28, y radius=0.2]; 
+    \bear@part@draw[\bear@body!70!white!80!red] (0, 1.5) ellipse[x radius=0.15, y radius=0.08]; 
+    %
+    % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \bear@part@draw[\bear@eye] (-0.155, 1.7) circle[radius=0.05]; 
+    \bear@part@draw[\bear@eye] (0.155, 1.7) circle[radius=0.05]; 
+    %
+    % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \draw[\bear@mouth,line width=\scalingfactor*0.4pt] (0.145, 1.38) arc [start angle=-20, end angle=-160, radius=0.16];
+  %
+  \fi% back
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname bearhookbody\endcsname
+  \csname tikzlinghookbody\endcsname
+  %
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Documentation
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\clearpage
+%\section[Bear]{B\"ar, the teddy bear}
+%
+%\emph{If you look very closely at the group picture in \href{https://www.tug.org/TUGboat/tb39-2/tb122wright-tug18.pdf}{TUG goes to Rio} you can spot the real B\"ar in it}
+%
+%\subsection{Package name}
+%
+%\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
+%\vspace*{0.5cm}
+%\lstinline|\usepackage{tikzlings-bears}| 
+%\vspace*{0.5cm}
+%\end{tcolorbox}
+%
+%\subsection{Basic Usage}
+%
+%\begin{tcblisting}{}
+%\bear
+%\end{tcblisting}
+%
+%\subsection{Options}
+%
+%The basic teddy bear can be modified by changing its colour:
+%\begin{tcblisting}{}
+%\bear[body=blue]
+%\end{tcblisting}
+%
+%In addition to the colour of the body, the colour of various body parts can be adjusted:
+%\begin{tcblisting}{}
+%\bear[eye=red]
+%\end{tcblisting}
+%\begin{tcblisting}{}
+%\bear[mouth=red]
+%\end{tcblisting}
+%
+%To view the teddy bear from behind:
+%\begin{tcblisting}{}
+%\bear[back]
+%\end{tcblisting}
+%
+%The key \lstinline|3D| will make the teddy bear 3-dimensional:
+%\begin{tcblisting}{}
+%\bear[3D]
+%\end{tcblisting}
+%
+%And finally the \lstinline|contour| key will only draw the outlines:
+%\begin{tcblisting}{}
+%\bear[contour=black]
+%\end{tcblisting}
+%
+%\subsection{Extension}
+%
+%The B\"ar and Ulrike Fischer wrote the fantastic \lstinline|bearwear| package, that provides many different clothing options for the \lstinline|TikZbears|. All the other \tikzlings admire them for the nice clothing!
+%
+%A short example:
+%
+%\begin{tcblisting}{}
+%%\usepackage{bearwear}
+%\bear
+%\bearwear[
+%  long sleeves, 
+%  shirt=red!80!black
+%]
+%\end{tcblisting}
+%
+%Many more options and examples can be found in the package documentation \url{https://ctan.org/pkg/bearwear}. 

@@ -1,16 +1,16 @@
-% !TeX root = ./examples/owl.tex
+ % !TeX root = ./examples/owl.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% This package is part of the TikZlings package
-% A package to bring cute little animals and other beings into tikz
-% Maintained by samcarter
-%
-% Project repository and bug tracker:
-% https://github.com/samcarter/tikzlings
-%
-% Released under the LaTeX Project Public License v1.3c or later
-% See http://www.latex-project.org/lppl.txt
-%
+%%
+%% This package is part of the TikZlings package
+%% A package to bring cute little animals and other beings into tikz
+%% Maintained by samcarter
+%%
+%% Project repository and bug tracker:
+%% https://github.com/samcarter/tikzlings
+%%
+%% Released under the LaTeX Project Public License v1.3c or later
+%% See http://www.latex-project.org/lppl.txt
+%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ProvidesPackage{tikzlings-owls}[2021/04/20 version v0.7 Draw owls in TikZ]
 
@@ -70,114 +70,174 @@
 }
 
 \def\owl@draw{%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% minimal bounding box size 
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\path (-0.73, 0.08) rectangle (0.73, 2.24);
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% store the current scale factor
-% from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
-\pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
-\pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
-\pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 
-% switch between 2D, 3D and contours, from
-% https://chat.stackexchange.com/transcript/message/45991801#45991801
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifowl@threeD
-  \def\owl@part@draw[##1]{\shade[ball color=##1]}
-\else% 3D
-  \ifowl@contour
-    \def\owl@part@draw[##1]{\draw[##1,\owl@contour,fill=white,line width=\scalingfactor*0.4pt]}
-  \else% contour
-    \def\owl@part@draw[##1]{\fill[##1]}
-  \fi% contour
-\fi% 3D
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Body parts
-% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname owlhookbackground\endcsname
-\csname tikzlinghookbackground\endcsname
-%
-% Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\owl@part@draw[\owl@body] (0.575,0.8) ellipse[x radius=0.38, y radius=0.1, rotate=-80];
-\owl@part@draw[\owl@body] (-0.575,0.8) ellipse[x radius=0.38, y radius=0.1, rotate=80]; 
-%
-% Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifowl@back
-  \owl@part@draw[\owl@feet] (0.175,0.2) ellipse[x radius=0.03, y radius=0.1];
-  \owl@part@draw[\owl@feet] (0.225,0.21) ellipse[x radius=0.03, y radius=0.1, rotate=20];
-  \owl@part@draw[\owl@feet] (0.275,0.23) ellipse[x radius=0.03, y radius=0.1, rotate=40];
-  \owl@part@draw[\owl@feet] (-0.175,0.2) ellipse[x radius=0.03, y radius=0.1];
-  \owl@part@draw[\owl@feet] (-0.225,0.21) ellipse[x radius=0.03, y radius=0.1, rotate=-20];
-  \owl@part@draw[\owl@feet] (-0.275,0.23) ellipse[x radius=0.03, y radius=0.1, rotate=-40];
-\fi% back
-%
-% Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\owl@part@draw[\owl@body] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
-%
-% Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\owl@part@draw[\owl@body] (-0.6361, 1.777) .. controls   (-0.6361, 1.777) and   (-0.7586, 1.9603) ..   (-0.6759, 2.2145) .. controls   (-0.3248, 1.912) and   (0.3248, 1.912) ..   (0.6759, 2.2145) .. controls   (0.7586, 1.9603) and   (0.6361, 1.777) ..   (0.6361, 1.777);
-%
-% Belly %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\unless\ifowl@back
-  \owl@part@draw[\owl@body!50!white] (0.425,0.5) .. controls (0.425,0.31) and (0.245,0.27) .. (0,0.27) .. controls (-0.245,0.27) and (-0.425,0.31) .. (-0.425,0.5) .. controls (-0.425,0.81) and (-0.225,0.98) .. (0,0.98) .. controls (0.225,0.98) and (0.425,0.81) .. (0.425,0.5) -- cycle;
-\fi% back
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname owlhookbelly\endcsname
-\csname tikzlinghookbelly\endcsname
-%
-% head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\owl@part@draw[\owl@body] (0,1.55) ellipse[x radius=0.7, y radius=0.55];
-%
-% Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\unless\ifowl@back
-  \ifowl@contour
-    \owl@part@draw[\owl@eye] (-0.28, 1.6) circle[radius=0.22];
-    \owl@part@draw[\owl@eye] (0.28, 1.6) circle[radius=0.22];
-  \else% contour
-    \fill[\owl@eye] (-0.28, 1.6) circle[radius=0.22];
-    \fill[\owl@eye] (0.28, 1.6) circle[radius=0.22];
-  \fi% contour
-  \owl@part@draw[\owl@pupil]   (-0.28, 1.6) circle[radius=0.15];
-  \owl@part@draw[\owl@pupil]   (0.28, 1.6) circle[radius=0.15];
-  \owl@part@draw[white] (0.25, 1.64) circle[radius=0.03];
-  \owl@part@draw[white] (-0.31, 1.64) circle[radius=0.03];
-\fi% back
-%
-% Bill %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\unless\ifowl@back
-  \owl@part@draw[\owl@bill] (0, 1.4) -- (-0.1, 1.3) -- (0, 1.15) -- (0.1, 1.3) -- cycle;
-\fi% back
-%
-% Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\unless\ifowl@back
-  \owl@part@draw[\owl@feet] (0.175,0.2) ellipse[x radius=0.03, y radius=0.1];
-  \owl@part@draw[\owl@feet] (0.225,0.21) ellipse[x radius=0.03, y radius=0.1, rotate=20];
-  \owl@part@draw[\owl@feet] (0.275,0.23) ellipse[x radius=0.03, y radius=0.1, rotate=40];
-  \owl@part@draw[\owl@feet] (-0.175,0.2) ellipse[x radius=0.03, y radius=0.1];
-  \owl@part@draw[\owl@feet] (-0.225,0.21) ellipse[x radius=0.03, y radius=0.1, rotate=-20];
-  \owl@part@draw[\owl@feet] (-0.275,0.23) ellipse[x radius=0.03, y radius=0.1, rotate=-40];
-\fi% back
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname owlhookbody\endcsname
-\csname tikzlinghookbody\endcsname
-%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % minimal bounding box size 
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \path (-0.73, 0.08) rectangle (0.73, 2.24);
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % store the current scale factor
+  % from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
+  \pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
+  \pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
+  \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % 
+  % switch between 2D, 3D and contours, from
+  % https://chat.stackexchange.com/transcript/message/45991801#45991801
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifowl@threeD
+    \def\owl@part@draw[##1]{\shade[ball color=##1]}
+  \else% 3D
+    \ifowl@contour
+      \def\owl@part@draw[##1]{\draw[##1,\owl@contour,fill=white,line width=\scalingfactor*0.4pt]}
+    \else% contour
+      \def\owl@part@draw[##1]{\fill[##1]}
+    \fi% contour
+  \fi% 3D
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Body parts
+  % 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname owlhookbackground\endcsname
+  \csname tikzlinghookbackground\endcsname
+  %
+  % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \owl@part@draw[\owl@body] (0.575,0.8) ellipse[x radius=0.38, y radius=0.1, rotate=-80];
+  \owl@part@draw[\owl@body] (-0.575,0.8) ellipse[x radius=0.38, y radius=0.1, rotate=80]; 
+  %
+  % Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifowl@back
+    \owl@part@draw[\owl@feet] (0.175,0.2) ellipse[x radius=0.03, y radius=0.1];
+    \owl@part@draw[\owl@feet] (0.225,0.21) ellipse[x radius=0.03, y radius=0.1, rotate=20];
+    \owl@part@draw[\owl@feet] (0.275,0.23) ellipse[x radius=0.03, y radius=0.1, rotate=40];
+    \owl@part@draw[\owl@feet] (-0.175,0.2) ellipse[x radius=0.03, y radius=0.1];
+    \owl@part@draw[\owl@feet] (-0.225,0.21) ellipse[x radius=0.03, y radius=0.1, rotate=-20];
+    \owl@part@draw[\owl@feet] (-0.275,0.23) ellipse[x radius=0.03, y radius=0.1, rotate=-40];
+  \fi% back
+  %
+  % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \owl@part@draw[\owl@body] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
+  %
+  % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \owl@part@draw[\owl@body] (-0.6361, 1.777) .. controls   (-0.6361, 1.777) and   (-0.7586, 1.9603) ..   (-0.6759, 2.2145) .. controls   (-0.3248, 1.912) and   (0.3248, 1.912) ..   (0.6759, 2.2145) .. controls   (0.7586, 1.9603) and   (0.6361, 1.777) ..   (0.6361, 1.777);
+  %
+  % Belly %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifowl@back
+    \owl@part@draw[\owl@body!50!white] (0.425,0.5) .. controls (0.425,0.31) and (0.245,0.27) .. (0,0.27) .. controls (-0.245,0.27) and (-0.425,0.31) .. (-0.425,0.5) .. controls (-0.425,0.81) and (-0.225,0.98) .. (0,0.98) .. controls (0.225,0.98) and (0.425,0.81) .. (0.425,0.5) -- cycle;
+  \fi% back
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname owlhookbelly\endcsname
+  \csname tikzlinghookbelly\endcsname
+  %
+  % head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \owl@part@draw[\owl@body] (0,1.55) ellipse[x radius=0.7, y radius=0.55];
+  %
+  % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifowl@back
+    \ifowl@contour
+      \owl@part@draw[\owl@eye] (-0.28, 1.6) circle[radius=0.22];
+      \owl@part@draw[\owl@eye] (0.28, 1.6) circle[radius=0.22];
+    \else% contour
+      \fill[\owl@eye] (-0.28, 1.6) circle[radius=0.22];
+      \fill[\owl@eye] (0.28, 1.6) circle[radius=0.22];
+    \fi% contour
+    \owl@part@draw[\owl@pupil]   (-0.28, 1.6) circle[radius=0.15];
+    \owl@part@draw[\owl@pupil]   (0.28, 1.6) circle[radius=0.15];
+    \owl@part@draw[white] (0.25, 1.64) circle[radius=0.03];
+    \owl@part@draw[white] (-0.31, 1.64) circle[radius=0.03];
+  \fi% back
+  %
+  % Bill %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifowl@back
+    \owl@part@draw[\owl@bill] (0, 1.4) -- (-0.1, 1.3) -- (0, 1.15) -- (0.1, 1.3) -- cycle;
+  \fi% back
+  %
+  % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifowl@back
+    \owl@part@draw[\owl@feet] (0.175,0.2) ellipse[x radius=0.03, y radius=0.1];
+    \owl@part@draw[\owl@feet] (0.225,0.21) ellipse[x radius=0.03, y radius=0.1, rotate=20];
+    \owl@part@draw[\owl@feet] (0.275,0.23) ellipse[x radius=0.03, y radius=0.1, rotate=40];
+    \owl@part@draw[\owl@feet] (-0.175,0.2) ellipse[x radius=0.03, y radius=0.1];
+    \owl@part@draw[\owl@feet] (-0.225,0.21) ellipse[x radius=0.03, y radius=0.1, rotate=-20];
+    \owl@part@draw[\owl@feet] (-0.275,0.23) ellipse[x radius=0.03, y radius=0.1, rotate=-40];
+  \fi% back
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname owlhookbody\endcsname
+  \csname tikzlinghookbody\endcsname
+  %
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Documentation
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\clearpage
+%\section[Owl]{Jake, the owl}
+%
+%\emph{The owl Jake was inspired by the avatar of one of the world's top TikZperts}
+%
+%\subsection{Package name}
+%
+%\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
+%\vspace*{0.5cm}
+%\lstinline|\usepackage{tikzlings-owls}| 
+%\vspace*{0.5cm}
+%\end{tcolorbox}
+%
+%\subsection{Basic Usage}
+%
+%\begin{tcblisting}{}
+%\owl
+%\end{tcblisting}
+%
+%\subsection{Options}
+%
+%The basic owl can be modified by changing its colour:
+%\begin{tcblisting}{}
+%\owl[body=blue]
+%\end{tcblisting}
+%
+%In addition to the colour of the body, the colour of various body parts can be adjusted:
+%\begin{tcblisting}{}
+%\owl[eye=red]
+%\end{tcblisting}
+%\begin{tcblisting}{}
+%\owl[pupil=red]
+%\end{tcblisting}
+%\begin{tcblisting}{}
+%\owl[bill=red]
+%\end{tcblisting}
+%\begin{tcblisting}{}
+%\owl[feet=red]
+%\end{tcblisting}
+%
+%To view the owl from behind:
+%\begin{tcblisting}{}
+%\owl[back]
+%\end{tcblisting}
+%
+%The key \lstinline|3D| will make the owl 3-dimensional:
+%\begin{tcblisting}{}
+%\owl[3D]
+%\end{tcblisting}
+%
+%And finally the \lstinline|contour| key will only draw the outlines:
+%\begin{tcblisting}{}
+%\owl[contour=black]
+%\end{tcblisting}

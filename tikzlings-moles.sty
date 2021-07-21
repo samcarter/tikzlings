@@ -1,16 +1,16 @@
-% !TeX root = ./examples/mole.tex
+ % !TeX root = ./examples/mole.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% This package is part of the TikZlings package
-% A package to bring cute little animals and other beings into tikz
-% Maintained by samcarter
-%
-% Project repository and bug tracker:
-% https://github.com/samcarter/tikzlings
-%
-% Released under the LaTeX Project Public License v1.3c or later
-% See http://www.latex-project.org/lppl.txt
-%
+%%
+%% This package is part of the TikZlings package
+%% A package to bring cute little animals and other beings into tikz
+%% Maintained by samcarter
+%%
+%% Project repository and bug tracker:
+%% https://github.com/samcarter/tikzlings
+%%
+%% Released under the LaTeX Project Public License v1.3c or later
+%% See http://www.latex-project.org/lppl.txt
+%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ProvidesPackage{tikzlings-moles}[2021/04/20 version v0.7 Drawing moles in TikZ]
 
@@ -74,119 +74,187 @@
 }
 
 \def\moles@draw{%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% minimal bounding box size 
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\path (-0.625,0.1) rectangle (0.905, 2.17);
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% store the current scale factor
-% from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
-\pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
-\pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
-\pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 
-% switch between 2D, 3D and contours, from
-% https://chat.stackexchange.com/transcript/message/45991801#45991801
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifmoles@threeD
-  \def\moles@part@draw[##1]{\shade[ball color=##1]}
-\else% 3D
-  \ifmoles@contour
-    \def\moles@part@draw[##1]{\draw[##1,\moles@contour,fill=white,line width=\scalingfactor*0.4pt]}
-  \else% contour
-    \def\moles@part@draw[##1]{\fill[##1]}
-  \fi% contour
-\fi% 3D
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Body parts
-% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname moleshookbackground\endcsname
-\csname tikzlinghookbackground\endcsname
-%
-% Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\moles@part@draw[\moles@feet] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];  
-\moles@part@draw[\moles@feet] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
-%
-% Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\unless\ifmoles@back
-  \moles@part@draw[\moles@body] (0.8856, 0.6504) .. controls (0.8656, 0.3803) and (0.0267, 0.2202) .. (0.0167, 0.4203) .. controls (-0.0033, 0.5404) and (0.1104, 0.4397) .. (0.3951, 0.4803) .. controls (0.6557, 0.5175) and (0.8856, 0.7005) .. (0.8856, 0.6504);
-\fi% back
-%
-% Hair %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\moles@part@draw[\moles@body] (-0.09, 2.06) .. controls (-0.09, 2.06) and (-0.13, 2.25) .. (-0.07, 2.27) .. controls (-0.09, 2.13) and (0.04, 2.08) .. (0.04, 2.08) .. controls (0.04, 2.08) and (0.02, 2.20) .. (0.06, 2.21) .. controls (0.06, 2.11) and (0.13, 2.08) .. (0.13, 2.08) -- cycle;
-%
-% Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\moles@part@draw[\moles@body] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
-%
-% Tail if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifmoles@back
-  \moles@part@draw[\moles@body] (0.8856, 0.6504) .. controls (0.8656, 0.3803) and (0.0267, 0.2202) .. (0.0167, 0.4203) .. controls (-0.0033, 0.5404) and (0.1104, 0.4397) .. (0.3951, 0.4803) .. controls (0.6557, 0.5175) and (0.8856, 0.7005) .. (0.8856, 0.6504) -- cycle;
-\fi% back
-%
-% Belly %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\unless\ifmoles@back
-  \moles@part@draw[\moles@body!50!white] (0.425, 0.71) .. controls (0.425, 0.41) and (0.245, 0.37) .. (0, 0.37) .. controls (-0.245, 0.37) and (-0.425, 0.41) .. (-0.425, 0.71) .. controls (-0.425, 1.01) and (-0.225, 1.26) .. (0, 1.26) .. controls (0.225, 1.26) and (0.425, 1.01) .. (0.425, 0.71) -- cycle;
-\fi% back
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname moleshookbelly\endcsname
-\csname tikzlinghookbelly\endcsname
-%
-% Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\unless\ifmoles@back
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \moles@part@draw[\moles@body] (0.37,0.86) ellipse[x radius=0.27, y radius=0.13, rotate=70];
-  \moles@part@draw[\moles@body] (-0.37,0.86) ellipse[x radius=0.27, y radius=0.13, rotate=-70];
+  % minimal bounding box size 
   %
-  % Hands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \ifmoles@contour
-    \moles@part@draw[] (-0.37,0.6) -- (-0.32,0.53) -- (-0.3,0.6) -- (-0.23,0.55) -- (-0.23,0.64) -- (-0.16,0.59) -- (-0.18,0.67) -- cycle;
-    \moles@part@draw[] (0.37,0.6) -- (0.32,0.53) -- (0.3,0.6) -- (0.23,0.55) -- (0.23,0.64) -- (0.16,0.59) -- (0.18,0.67) -- cycle;
-  \else% contour
-    \fill[white] (-0.37,0.6) -- (-0.32,0.53) -- (-0.3,0.6) -- (-0.23,0.55) -- (-0.23,0.64) -- (-0.16,0.59) -- (-0.18,0.67) -- cycle;
-    \fill[white] (0.37,0.6) -- (0.32,0.53) -- (0.3,0.6) -- (0.23,0.55) -- (0.23,0.64) -- (0.16,0.59) -- (0.18,0.67) -- cycle;
-  \fi% contour
-  \moles@part@draw[\moles@hands] (0.285,0.65) ellipse[x radius=0.08, y radius=0.13, rotate=70];
-  \moles@part@draw[\moles@hands] (-0.285,0.65) ellipse[x radius=0.08, y radius=0.13, rotate=-70];
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \path (-0.625,0.1) rectangle (0.905, 2.17);
   %
-  % Muzzle %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \moles@part@draw[\moles@muzzle] ( 0.22, 1.46) .. controls ( 0.22, 1.50) and ( 0.22, 1.53) .. ( 0.17, 1.56) .. controls ( 0.11, 1.58) and ( 0.05, 1.66) .. ( 0.00, 1.66) .. controls (-0.05, 1.66) and (-0.11, 1.58) .. (-0.17, 1.56) .. controls (-0.22, 1.53) and (-0.22, 1.50) .. (-0.22, 1.46) .. controls (-0.22, 1.39) and (-0.14, 1.33) .. ( 0.00, 1.33) .. controls ( 0.14, 1.33) and ( 0.22, 1.39) .. ( 0.22, 1.46) -- cycle;
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \moles@part@draw[\moles@body!60!black] (0,1.67) circle[radius=0.055];
+  % store the current scale factor
+  % from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
   %
-  % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
+  \pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
+  \pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
+  \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % 
+  % switch between 2D, 3D and contours, from
+  % https://chat.stackexchange.com/transcript/message/45991801#45991801
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifmoles@threeD
-    \fill[\moles@eye] (-0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=-15]; 
-    \fill[\moles@eye!50!black] (0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=15]; 
+    \def\moles@part@draw[##1]{\shade[ball color=##1]}
   \else% 3D
-    \fill[\moles@eye] (-0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=-15]; 
-    \fill[\moles@eye] (0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=15]; 
+    \ifmoles@contour
+      \def\moles@part@draw[##1]{\draw[##1,\moles@contour,fill=white,line width=\scalingfactor*0.4pt]}
+    \else% contour
+      \def\moles@part@draw[##1]{\fill[##1]}
+    \fi% contour
   \fi% 3D
   %
-  % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \draw[\moles@mouth, line width=\scalingfactor*0.4pt] (0.145,1.51) arc [start angle=-20, end angle=-160, radius=0.16] ;
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-\fi% back
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname moleshookbody\endcsname
-\csname tikzlinghookbody\endcsname
-%
+  % Body parts
+  % 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname moleshookbackground\endcsname
+  \csname tikzlinghookbackground\endcsname
+  %
+  % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \moles@part@draw[\moles@feet] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];  
+  \moles@part@draw[\moles@feet] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
+  %
+  % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifmoles@back
+    \moles@part@draw[\moles@body] (0.8856, 0.6504) .. controls (0.8656, 0.3803) and (0.0267, 0.2202) .. (0.0167, 0.4203) .. controls (-0.0033, 0.5404) and (0.1104, 0.4397) .. (0.3951, 0.4803) .. controls (0.6557, 0.5175) and (0.8856, 0.7005) .. (0.8856, 0.6504);
+  \fi% back
+  %
+  % Hair %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \moles@part@draw[\moles@body] (-0.09, 2.06) .. controls (-0.09, 2.06) and (-0.13, 2.25) .. (-0.07, 2.27) .. controls (-0.09, 2.13) and (0.04, 2.08) .. (0.04, 2.08) .. controls (0.04, 2.08) and (0.02, 2.20) .. (0.06, 2.21) .. controls (0.06, 2.11) and (0.13, 2.08) .. (0.13, 2.08) -- cycle;
+  %
+  % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \moles@part@draw[\moles@body] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
+  %
+  % Tail if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifmoles@back
+    \moles@part@draw[\moles@body] (0.8856, 0.6504) .. controls (0.8656, 0.3803) and (0.0267, 0.2202) .. (0.0167, 0.4203) .. controls (-0.0033, 0.5404) and (0.1104, 0.4397) .. (0.3951, 0.4803) .. controls (0.6557, 0.5175) and (0.8856, 0.7005) .. (0.8856, 0.6504) -- cycle;
+  \fi% back
+  %
+  % Belly %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifmoles@back
+    \moles@part@draw[\moles@body!50!white] (0.425, 0.71) .. controls (0.425, 0.41) and (0.245, 0.37) .. (0, 0.37) .. controls (-0.245, 0.37) and (-0.425, 0.41) .. (-0.425, 0.71) .. controls (-0.425, 1.01) and (-0.225, 1.26) .. (0, 1.26) .. controls (0.225, 1.26) and (0.425, 1.01) .. (0.425, 0.71) -- cycle;
+  \fi% back
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname moleshookbelly\endcsname
+  \csname tikzlinghookbelly\endcsname
+  %
+  % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifmoles@back
+    %
+    % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \moles@part@draw[\moles@body] (0.37,0.86) ellipse[x radius=0.27, y radius=0.13, rotate=70];
+    \moles@part@draw[\moles@body] (-0.37,0.86) ellipse[x radius=0.27, y radius=0.13, rotate=-70];
+    %
+    % Hands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \ifmoles@contour
+      \moles@part@draw[] (-0.37,0.6) -- (-0.32,0.53) -- (-0.3,0.6) -- (-0.23,0.55) -- (-0.23,0.64) -- (-0.16,0.59) -- (-0.18,0.67) -- cycle;
+      \moles@part@draw[] (0.37,0.6) -- (0.32,0.53) -- (0.3,0.6) -- (0.23,0.55) -- (0.23,0.64) -- (0.16,0.59) -- (0.18,0.67) -- cycle;
+    \else% contour
+      \fill[white] (-0.37,0.6) -- (-0.32,0.53) -- (-0.3,0.6) -- (-0.23,0.55) -- (-0.23,0.64) -- (-0.16,0.59) -- (-0.18,0.67) -- cycle;
+      \fill[white] (0.37,0.6) -- (0.32,0.53) -- (0.3,0.6) -- (0.23,0.55) -- (0.23,0.64) -- (0.16,0.59) -- (0.18,0.67) -- cycle;
+    \fi% contour
+    \moles@part@draw[\moles@hands] (0.285,0.65) ellipse[x radius=0.08, y radius=0.13, rotate=70];
+    \moles@part@draw[\moles@hands] (-0.285,0.65) ellipse[x radius=0.08, y radius=0.13, rotate=-70];
+    %
+    % Muzzle %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \moles@part@draw[\moles@muzzle] ( 0.22, 1.46) .. controls ( 0.22, 1.50) and ( 0.22, 1.53) .. ( 0.17, 1.56) .. controls ( 0.11, 1.58) and ( 0.05, 1.66) .. ( 0.00, 1.66) .. controls (-0.05, 1.66) and (-0.11, 1.58) .. (-0.17, 1.56) .. controls (-0.22, 1.53) and (-0.22, 1.50) .. (-0.22, 1.46) .. controls (-0.22, 1.39) and (-0.14, 1.33) .. ( 0.00, 1.33) .. controls ( 0.14, 1.33) and ( 0.22, 1.39) .. ( 0.22, 1.46) -- cycle;
+    %
+    % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \moles@part@draw[\moles@body!60!black] (0,1.67) circle[radius=0.055];
+    %
+    % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \ifmoles@threeD
+      \fill[\moles@eye] (-0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=-15]; 
+      \fill[\moles@eye!50!black] (0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=15]; 
+    \else% 3D
+      \fill[\moles@eye] (-0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=-15]; 
+      \fill[\moles@eye] (0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=15]; 
+    \fi% 3D
+    %
+    % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \draw[\moles@mouth, line width=\scalingfactor*0.4pt] (0.145,1.51) arc [start angle=-20, end angle=-160, radius=0.16] ;
+    %
+  \fi% back
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname moleshookbody\endcsname
+  \csname tikzlinghookbody\endcsname
+  %
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Documentation
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\clearpage
+%\section[Mole]{Wilhelm, the mole}
+%
+%\emph{The mole was added in celebration of the international mole day and is named after the chemist Wilhelm Ostwald}
+%
+%\subsection{Package name}
+%
+%\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
+%\vspace*{0.5cm}
+%\lstinline|\usepackage{tikzlings-moles}| 
+%\vspace*{0.5cm}
+%\end{tcolorbox}
+%
+%\subsection{Basic Usage}
+%
+%\textcolor{red!60!black}{\textbf{Attention:} In contrast to the other \tikzlings the macro name is the plural form to avoid conflicts with  \lstinline|siunitx| and similar packages.}
+%\begin{tcblisting}{}
+%\moles
+%\end{tcblisting}
+%
+%\subsection{Options}
+%
+%The basic mole can be modified by changing its colour:
+%\begin{tcblisting}{}
+%\moles[body=blue]
+%\end{tcblisting}
+%
+%In addition to the colour of the body, the colour of various body parts can be adjusted:
+%\begin{tcblisting}{}
+%\moles[eye=red]
+%\end{tcblisting}
+%
+%\begin{tcblisting}{}
+%\moles[muzzle=red]
+%\end{tcblisting}
+%
+%\begin{tcblisting}{}
+%\moles[hands=red]
+%\end{tcblisting}
+%
+%\begin{tcblisting}{}
+%\moles[feet=red]
+%\end{tcblisting}
+%
+%\begin{tcblisting}{}
+%\moles[mouth=red]
+%\end{tcblisting}
+%
+%To view the mole from behind:
+%\begin{tcblisting}{}
+%\moles[back]
+%\end{tcblisting}
+%
+%The key \lstinline|3D| will make the mole 3-dimensional:
+%\begin{tcblisting}{}
+%\moles[3D]
+%\end{tcblisting}
+%
+%And finally the \lstinline|contour| key will only draw the outlines:
+%\begin{tcblisting}{}
+%\moles[contour=black]
+%\end{tcblisting}

@@ -1,16 +1,16 @@
-% !TeX root = ./examples/marmot.tex
+ % !TeX root = ./examples/marmot.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% This package is part of the TikZlings package
-% A package to bring cute little animals and other beings into tikz
-% Maintained by samcarter
-%
-% Project repository and bug tracker:
-% https://github.com/samcarter/tikzlings
-%
-% Released under the LaTeX Project Public License v1.3c or later
-% See http://www.latex-project.org/lppl.txt
-%
+%%
+%% This package is part of the TikZlings package
+%% A package to bring cute little animals and other beings into tikz
+%% Maintained by samcarter
+%%
+%% Project repository and bug tracker:
+%% https://github.com/samcarter/tikzlings
+%%
+%% Released under the LaTeX Project Public License v1.3c or later
+%% See http://www.latex-project.org/lppl.txt
+%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ProvidesPackage{tikzlings-marmots}[2021/04/20 version v0.7 Drawing marmots in TikZ]
 
@@ -112,160 +112,245 @@
 }
 
 \def\marmot@draw{%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% minimal bounding box size 
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\path (-0.625,0.1) rectangle (0.905, 2.17);
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% store the current scale factor
-% from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
-\pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
-\pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
-\pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 
-% switch between 2D, 3D and contours, from
-% https://chat.stackexchange.com/transcript/message/45991801#45991801
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifmarmot@threeD
-  \def\marmot@part@draw[##1]{\shade[ball color=##1]}
-\else% 3D
-  \ifmarmot@contour
-    \def\marmot@part@draw[##1]{\draw[##1,\marmot@contour,fill=white,line width=\scalingfactor*0.4pt]}
-  \else% contour
-    \def\marmot@part@draw[##1]{\fill[##1]}
-  \fi% contour
-\fi% 3D
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% shadow
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname marmothookbackground\endcsname
-\csname tikzlinghookbackground\endcsname
-%
-\ifmarmot@askphil
-  \pgfmathparse{int(random(1,120))}
-  \let\marmot@random=\pgfmathresult
-  \ifnum\marmot@random>17
-    \marmot@shadowtrue
-  \fi
-\fi% askphil
-%
-\ifmarmot@shadow
-  \fill[opacity=0,blur shadow,] (0.3,0.5) ellipse[x radius=0.28, y radius=0.8, rotate=-80];
-\fi% shadow
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Body parts
-% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifmarmot@leftstep
-  \marmot@part@draw[\marmot@body!50!black] (-0.255,0.25) ellipse[x radius=0.23, y radius=0.09];  
-\else% step
-  \marmot@part@draw[\marmot@body!50!black] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];  
-\fi% step
-%
-\ifmarmot@rightstep
-  \marmot@part@draw[\marmot@body!50!black] (0.255,0.25) ellipse[x radius=0.23, y radius=0.09]; 
-\else% step
-  \marmot@part@draw[\marmot@body!50!black] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
-\fi% step
-%
-% Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\marmot@part@draw[\marmot@body!50!black] (0.255,2.03) ellipse[x radius=0.09, y radius=0.13];
-\marmot@part@draw[\marmot@body!50!black] (-0.255,2.03) ellipse[x radius=0.09, y radius=0.13];
-%
-% Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\unless\ifmarmot@back
-  \marmot@part@draw[\marmot@body!50!black] (0.8856, 0.6504) .. controls (0.8656, 0.3803) and (0.0267, 0.2202) .. (0.0167, 0.4203) .. controls (-0.0033, 0.5404) and (0.1104, 0.4397) .. (0.3951, 0.4803) .. controls (0.6557, 0.5175) and (0.8856, 0.7005) .. (0.8856, 0.6504);
-\fi% back
-%
-% Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\marmot@part@draw[\marmot@body] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
-%
-% Tail if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifmarmot@back
-  \marmot@part@draw[\marmot@body!50!black] (0.8856, 0.6504) .. controls (0.8656, 0.3803) and (0.0267, 0.2202) .. (0.0167, 0.4203) .. controls (-0.0033, 0.5404) and (0.1104, 0.4397) .. (0.3951, 0.4803) .. controls (0.6557, 0.5175) and (0.8856, 0.7005) .. (0.8856, 0.6504);
-\fi% back
-%
-% Belly %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\unless\ifmarmot@back
-  \marmot@part@draw[\marmot@body!50!white] (0.425, 0.71) .. controls (0.425, 0.41) and (0.245, 0.37) .. (0, 0.37) .. controls (-0.245, 0.37) and (-0.425, 0.41) .. (-0.425, 0.71) .. controls (-0.425, 1.01) and (-0.225, 1.26) .. (0, 1.26) .. controls (0.225, 1.26) and (0.425, 1.01) .. (0.425, 0.71) -- cycle;
-\fi% back
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname marmothookbelly\endcsname
-\csname tikzlinghookbelly\endcsname
-%
-% Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\unless\ifmarmot@back
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \marmot@part@draw[\marmot@body!50!black] (0.385,0.93) ellipse[x radius=0.24, y radius=0.13, rotate=70];
-  \marmot@part@draw[\marmot@body!50!black] (-0.385,0.93) ellipse[x radius=0.24, y radius=0.13, rotate=-70];
+  % minimal bounding box size 
   %
-  % Muzzle %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \marmot@part@draw[\marmot@body!50!white] (0,1.47) ellipse[x radius=0.23, y radius=0.13]; 
-  %
-  % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \marmot@part@draw[\marmot@body!50!black] (0,1.6) circle[radius=0.08];
-  %
-  % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \marmot@part@draw[\marmot@eye] (-0.155,1.77) circle[radius=0.05]; 
-  \marmot@part@draw[\marmot@eye] (0.155,1.77) circle[radius=0.05]; 
-  %
-  % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \fill[\marmot@mouth] (0.145,1.51) arc [start angle=-20, end angle=-160, radius=0.16] -- (-0.14,1.51) -- (-0.14,1.51) arc [start angle=-160, end angle=-20, radius=0.144] -- cycle ;
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \path (-0.625,0.1) rectangle (0.905, 2.17);
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % optional
+  % store the current scale factor
+  % from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
+  \pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
+  \pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
+  \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % 
+  % switch between 2D, 3D and contours, from
+  % https://chat.stackexchange.com/transcript/message/45991801#45991801
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifmarmot@threeD
+    \def\marmot@part@draw[##1]{\shade[ball color=##1]}
+  \else% 3D
+    \ifmarmot@contour
+      \def\marmot@part@draw[##1]{\draw[##1,\marmot@contour,fill=white,line width=\scalingfactor*0.4pt]}
+    \else% contour
+      \def\marmot@part@draw[##1]{\fill[##1]}
+    \fi% contour
+  \fi% 3D
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % Blushed %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-  \ifmarmot@blush
-    \fill[\marmot@blushcolor,path fading=marmot@blush] (-0.295,1.6) circle[radius=0.1]; 
-    \fill[\marmot@blushcolor,path fading=marmot@blush] (0.295,1.6) circle[radius=0.1];   
-  \fi% blush
+  % shadow
   %
-  % Wiskers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \ifmarmot@whiskers
-    \fill[\marmot@whiskers] (0.0788, 1.6146) .. controls (0.1658, 1.6299) and (0.2086, 1.5639) .. (0.2956, 1.5486) -- (0.2956, 1.5586) .. controls (0.2097, 1.5737) and (0.1648, 1.6297) .. (0.0788, 1.6146) -- cycle;
-    \fill[\marmot@whiskers] (-0.0788, 1.6146) .. controls (-0.1658, 1.6299) and (-0.2087, 1.5639) .. (-0.2956, 1.5486) -- (-0.2956, 1.5586) .. controls (-0.2097, 1.5737) and (-0.1648, 1.6297) .. (-0.0788, 1.6146) -- cycle;
-    \fill[\marmot@whiskers] (0.0752, 1.6281) .. controls (0.1583, 1.6583) and (0.2171, 1.6309) .. (0.3002, 1.6007) -- (0.3002, 1.6107) .. controls (0.2174, 1.6408) and (0.158, 1.6582) .. (0.0752, 1.6281) -- cycle;
-    \fill[\marmot@whiskers] (-0.0752, 1.6281) .. controls (-0.1583, 1.6583) and (-0.2171, 1.6309) .. (-0.3002, 1.6007) -- (-0.3002, 1.6107) .. controls (-0.2174, 1.6408) and (-0.158, 1.6582) .. (-0.0752, 1.6281) -- cycle;
-    \fill[\marmot@whiskers] (0.0671, 1.6443) .. controls (0.1414, 1.6925) and (0.2182, 1.7164) .. (0.2925, 1.6682) -- (0.2925, 1.6782) .. controls (0.2179, 1.7266) and (0.1417, 1.6927) .. (0.0671, 1.6443) -- cycle;
-    \fill[\marmot@whiskers] (-0.0671, 1.6443) .. controls (-0.1414, 1.6925) and (-0.2182, 1.7164) .. (-0.2925, 1.6682) -- (-0.2925, 1.6782) .. controls (-0.2179, 1.7266) and (-0.1417, 1.6927) .. (-0.0671, 1.6443) -- cycle;
-  \fi% whiskers
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % Teeth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \ifmarmot@teeth
-    \fill[\marmot@body!50!black] (0.048,1.413) rectangle (-0.048,1.373);
-    \fill[\marmot@teeth] (-0.045,1.407) rectangle (-0.004,1.376);
-    \fill[\marmot@teeth] (0.045,1.407) rectangle (0.004,1.376);  
-  \fi% teeth
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname marmothookbackground\endcsname
+  \csname tikzlinghookbackground\endcsname
   %
-\fi% back
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname marmothookbody\endcsname
-\csname tikzlinghookbody\endcsname
-%
+  \ifmarmot@askphil
+    \pgfmathparse{int(random(1,120))}
+    \let\marmot@random=\pgfmathresult
+    \ifnum\marmot@random>17
+      \marmot@shadowtrue
+    \fi
+  \fi% askphil
+  %
+  \ifmarmot@shadow
+    \fill[opacity=0,blur shadow,] (0.3,0.5) ellipse[x radius=0.28, y radius=0.8, rotate=-80];
+  \fi% shadow
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Body parts
+  % 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifmarmot@leftstep
+    \marmot@part@draw[\marmot@body!50!black] (-0.255,0.25) ellipse[x radius=0.23, y radius=0.09];  
+  \else% step
+    \marmot@part@draw[\marmot@body!50!black] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];  
+  \fi% step
+  %
+  \ifmarmot@rightstep
+    \marmot@part@draw[\marmot@body!50!black] (0.255,0.25) ellipse[x radius=0.23, y radius=0.09]; 
+  \else% step
+    \marmot@part@draw[\marmot@body!50!black] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
+  \fi% step
+  %
+  % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \marmot@part@draw[\marmot@body!50!black] (0.255,2.03) ellipse[x radius=0.09, y radius=0.13];
+  \marmot@part@draw[\marmot@body!50!black] (-0.255,2.03) ellipse[x radius=0.09, y radius=0.13];
+  %
+  % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifmarmot@back
+    \marmot@part@draw[\marmot@body!50!black] (0.8856, 0.6504) .. controls (0.8656, 0.3803) and (0.0267, 0.2202) .. (0.0167, 0.4203) .. controls (-0.0033, 0.5404) and (0.1104, 0.4397) .. (0.3951, 0.4803) .. controls (0.6557, 0.5175) and (0.8856, 0.7005) .. (0.8856, 0.6504);
+  \fi% back
+  %
+  % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \marmot@part@draw[\marmot@body] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
+  %
+  % Tail if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifmarmot@back
+    \marmot@part@draw[\marmot@body!50!black] (0.8856, 0.6504) .. controls (0.8656, 0.3803) and (0.0267, 0.2202) .. (0.0167, 0.4203) .. controls (-0.0033, 0.5404) and (0.1104, 0.4397) .. (0.3951, 0.4803) .. controls (0.6557, 0.5175) and (0.8856, 0.7005) .. (0.8856, 0.6504);
+  \fi% back
+  %
+  % Belly %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifmarmot@back
+    \marmot@part@draw[\marmot@body!50!white] (0.425, 0.71) .. controls (0.425, 0.41) and (0.245, 0.37) .. (0, 0.37) .. controls (-0.245, 0.37) and (-0.425, 0.41) .. (-0.425, 0.71) .. controls (-0.425, 1.01) and (-0.225, 1.26) .. (0, 1.26) .. controls (0.225, 1.26) and (0.425, 1.01) .. (0.425, 0.71) -- cycle;
+  \fi% back
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname marmothookbelly\endcsname
+  \csname tikzlinghookbelly\endcsname
+  %
+  % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifmarmot@back
+    %
+    % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \marmot@part@draw[\marmot@body!50!black] (0.385,0.93) ellipse[x radius=0.24, y radius=0.13, rotate=70];
+    \marmot@part@draw[\marmot@body!50!black] (-0.385,0.93) ellipse[x radius=0.24, y radius=0.13, rotate=-70];
+    %
+    % Muzzle %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \marmot@part@draw[\marmot@body!50!white] (0,1.47) ellipse[x radius=0.23, y radius=0.13]; 
+    %
+    % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \marmot@part@draw[\marmot@body!50!black] (0,1.6) circle[radius=0.08];
+    %
+    % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \marmot@part@draw[\marmot@eye] (-0.155,1.77) circle[radius=0.05]; 
+    \marmot@part@draw[\marmot@eye] (0.155,1.77) circle[radius=0.05]; 
+    %
+    % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \fill[\marmot@mouth] (0.145,1.51) arc [start angle=-20, end angle=-160, radius=0.16] -- (-0.14,1.51) -- (-0.14,1.51) arc [start angle=-160, end angle=-20, radius=0.144] -- cycle ;
+    %
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %
+    % optional
+    %
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %
+    % Blushed %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \ifmarmot@blush
+      \fill[\marmot@blushcolor,path fading=marmot@blush] (-0.295,1.6) circle[radius=0.1]; 
+      \fill[\marmot@blushcolor,path fading=marmot@blush] (0.295,1.6) circle[radius=0.1];   
+    \fi% blush
+    %
+    % Wiskers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \ifmarmot@whiskers
+      \fill[\marmot@whiskers] (0.0788, 1.6146) .. controls (0.1658, 1.6299) and (0.2086, 1.5639) .. (0.2956, 1.5486) -- (0.2956, 1.5586) .. controls (0.2097, 1.5737) and (0.1648, 1.6297) .. (0.0788, 1.6146) -- cycle;
+      \fill[\marmot@whiskers] (-0.0788, 1.6146) .. controls (-0.1658, 1.6299) and (-0.2087, 1.5639) .. (-0.2956, 1.5486) -- (-0.2956, 1.5586) .. controls (-0.2097, 1.5737) and (-0.1648, 1.6297) .. (-0.0788, 1.6146) -- cycle;
+      \fill[\marmot@whiskers] (0.0752, 1.6281) .. controls (0.1583, 1.6583) and (0.2171, 1.6309) .. (0.3002, 1.6007) -- (0.3002, 1.6107) .. controls (0.2174, 1.6408) and (0.158, 1.6582) .. (0.0752, 1.6281) -- cycle;
+      \fill[\marmot@whiskers] (-0.0752, 1.6281) .. controls (-0.1583, 1.6583) and (-0.2171, 1.6309) .. (-0.3002, 1.6007) -- (-0.3002, 1.6107) .. controls (-0.2174, 1.6408) and (-0.158, 1.6582) .. (-0.0752, 1.6281) -- cycle;
+      \fill[\marmot@whiskers] (0.0671, 1.6443) .. controls (0.1414, 1.6925) and (0.2182, 1.7164) .. (0.2925, 1.6682) -- (0.2925, 1.6782) .. controls (0.2179, 1.7266) and (0.1417, 1.6927) .. (0.0671, 1.6443) -- cycle;
+      \fill[\marmot@whiskers] (-0.0671, 1.6443) .. controls (-0.1414, 1.6925) and (-0.2182, 1.7164) .. (-0.2925, 1.6682) -- (-0.2925, 1.6782) .. controls (-0.2179, 1.7266) and (-0.1417, 1.6927) .. (-0.0671, 1.6443) -- cycle;
+    \fi% whiskers
+    %
+    % Teeth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \ifmarmot@teeth
+      \fill[\marmot@body!50!black] (0.048,1.413) rectangle (-0.048,1.373);
+      \fill[\marmot@teeth] (-0.045,1.407) rectangle (-0.004,1.376);
+      \fill[\marmot@teeth] (0.045,1.407) rectangle (0.004,1.376);  
+    \fi% teeth
+    %
+  \fi% back
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname marmothookbody\endcsname
+  \csname tikzlinghookbody\endcsname
+  %
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Documentation
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\clearpage
+%\section[Marmot]{Phil, the marmot}
+%
+%\emph{Phil got his name from Punxsutawney Phil, the famous weather forecasting groundhog}
+%
+%\subsection{Package name}
+%
+%\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
+%\vspace*{0.5cm}
+%\lstinline|\usepackage{tikzlings-marmots}| 
+%\vspace*{0.5cm}
+%\end{tcolorbox}
+%
+%\subsection{Basic Usage}
+%
+%\begin{tcblisting}{}
+%\marmot
+%\end{tcblisting}
+%
+%\subsection{Options}
+%
+%The basic marmot can be modified by changing its colour:
+%\begin{tcblisting}{}
+%\marmot[body=blue]
+%\end{tcblisting}
+%
+%In addition to the colour of the body, the colour of various body parts can be adjusted:
+%\begin{tcblisting}{}
+%\marmot[eye=red]
+%\end{tcblisting}
+%\begin{tcblisting}{}
+%\marmot[mouth=red]
+%\end{tcblisting}
+%
+%The marmot can also blush
+%\begin{tcblisting}{}
+%\marmot[blush=red]
+%\end{tcblisting}
+%
+%and whiskers can be added:
+%\begin{tcblisting}{}
+%\marmot[whiskers=gray]
+%\end{tcblisting}
+%
+%Some marmots even show their chisel teeth:
+%\begin{tcblisting}{}
+%\marmot[teeth=white]
+%\end{tcblisting}
+%
+%or can cast a shadow:
+%\begin{tcblisting}{}
+%\marmot[shadow]
+%\end{tcblisting}
+%
+%This ability is important if you want to ask Punxsutawney Phil\footnote{\url{https://en.wikipedia.org/wiki/Punxsutawney_Phil}} on Groundhog Day how the weather is going to be. With a probability derived from the statistics of 120 Groundhog Days\footnote{\hbadness=99999\url{https://www.livescience.com/32974-punxsutawney-phil-weather-prediction-accuracy.html}} the option \lstinline|askphil| might or might not result in a shadow.
+%\begin{tcblisting}{}
+%\marmot[askphil]
+%\end{tcblisting}
+%
+%If a good weather prognosis is derived, the happy marmot can dance by lifting up its left and right foot: 
+%\begin{tcblisting}{}
+%\marmot[leftstep]
+%\marmot[rightstep,xshift=2cm]
+%\end{tcblisting}
+%
+%To view the marmot from behind:
+%\begin{tcblisting}{}
+%\marmot[back]
+%\end{tcblisting}
+%
+%The key \lstinline|3D| will make the marmot 3-dimensional:
+%\begin{tcblisting}{}
+%\marmot[3D]
+%\end{tcblisting}
+%
+%And finally the \lstinline|contour| key will only draw the outlines:
+%\begin{tcblisting}{}
+%\marmot[contour=black]
+%\end{tcblisting}

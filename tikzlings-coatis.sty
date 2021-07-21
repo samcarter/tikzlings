@@ -1,16 +1,16 @@
-% !TeX root = ./examples/coati.tex
+ % !TeX root = ./examples/coati.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% This package is part of the TikZlings package
-% A package to bring cute little animals and other beings into tikz
-% Maintained by samcarter
-%
-% Project repository and bug tracker:
-% https://github.com/samcarter/tikzlings
-%
-% Released under the LaTeX Project Public License v1.3c or later
-% See http://www.latex-project.org/lppl.txt
-%
+%%
+%% This package is part of the TikZlings package
+%% A package to bring cute little animals and other beings into tikz
+%% Maintained by samcarter
+%%
+%% Project repository and bug tracker:
+%% https://github.com/samcarter/tikzlings
+%%
+%% Released under the LaTeX Project Public License v1.3c or later
+%% See http://www.latex-project.org/lppl.txt
+%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ProvidesPackage{tikzlings-coatis}[2021/04/20 version v0.7 Drawing coatis in TikZ]
 
@@ -68,180 +68,240 @@
 }
 
 \def\coati@draw{%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% minimal bounding box size 
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\path (-0.84,0.1) rectangle (1.63,2.26);
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% store the current scale factor
-% from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
-\pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
-\pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
-\pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 
-% switch between 2D, 3D and contours, from
-% https://chat.stackexchange.com/transcript/message/45991801#45991801
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifcoati@threeD
-  \def\coati@part@draw[##1]{\shade[ball color=##1]}
-\else% 3D
-  \ifcoati@contour
-    \def\coati@part@draw[##1]{\draw[##1,\coati@contour,fill=white,line width=\scalingfactor*0.4pt]}
-  \else% contour
-    \def\coati@part@draw[##1]{\fill[##1]}
-  \fi% contour
-\fi% 3D
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Body parts
-% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname coatihookbackground\endcsname
-\csname tikzlinghookbackground\endcsname
-%  
-% Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\coati@part@draw[\coati@body!80!white] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
-\coati@part@draw[\coati@body!80!white] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
-%
-% Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\unless\ifcoati@back
-  \coati@part@draw[\coati@body!50!darkgray] (0.2845, 0.5595) .. controls (0.6382, 0.8326) and (0.7302, 1.5138) .. (1.0504, 1.6639) .. controls (1.3206, 1.7840) and (1.7609, 1.3537) .. (1.5608, 1.3437) .. controls (0.9203, 2.0442) and (0.8642, 0.6247) .. (0.5001, 0.3831) .. controls (0.3214, 0.2645) and (-0.1764, 0.1117) .. (-0.1408, 0.3245) .. controls (-0.1082, 0.5191) and (0.0508, 0.3791) .. (0.2845, 0.5595) -- cycle;
-  \begin{scope}
-    \clip (0.2845, 0.5595) .. controls (0.6382, 0.8326) and (0.7302, 1.5138) .. (1.0504, 1.6639) .. controls (1.3206, 1.7840) and (1.7609, 1.3537) .. (1.5608, 1.3437) .. controls (0.9203, 2.0442) and (0.8642, 0.6247) .. (0.5001, 0.3831) .. controls (0.3214, 0.2645) and (-0.1764, 0.1117) .. (-0.1408, 0.3245) .. controls (-0.1082, 0.5191) and (0.0508, 0.3791) .. (0.2845, 0.5595) -- cycle;
-    \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-30:(0.8,1.15)}] (0.6,1.1) rectangle ++(0.4,0.1);
-    \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-30:(0.9,1.35)}] (0.7,1.3) rectangle ++(0.4,0.1);
-    \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-50:(1.0,1.5)}] (0.8,1.45) rectangle ++(0.4,0.1);
-    \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-80:(1.2,1.6)}] (1.0,1.55) rectangle ++(0.4,0.1);
-    \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-130:(1.5,1.5)}] (1.3,1.45) rectangle ++(0.4,0.1);
-    \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-30:(0.55,0.65)}] (0.35,0.6) rectangle ++(0.4,0.1);
-     \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-30:(0.65,0.9)}] (0.45,0.85) rectangle ++(0.4,0.1);
-    \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-40:(0.35,0.45)}] (0.15,0.4) rectangle ++(0.4,0.1);   
-    \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-60:(0.05,0.3)}] (-0.15,0.25) rectangle ++(0.4,0.1);   
-  \end{scope}
-\fi% back
-%
-% Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\coati@part@draw[\coati@body!80!white] (-0.625,1) ellipse[x radius=0.42, y radius=0.13, rotate=70];
-\coati@part@draw[\coati@body!80!white] (0.625,1) ellipse[x radius=0.42, y radius=0.13, rotate=-70];
-%
-% Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\coati@part@draw[\coati@body!50!darkgray] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname coatihookbelly\endcsname
-\csname tikzlinghookbelly\endcsname
-%  
-% Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{scope}[rotate around={\coati@rotatehead:(0,1.68)}]
-%
-% Sidewards head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifcoati@sideward
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % minimal bounding box size 
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \path (-0.84,0.1) rectangle (1.63,2.26);
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % store the current scale factor
+  % from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
+  \pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
+  \pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
+  \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % 
+  % switch between 2D, 3D and contours, from
+  % https://chat.stackexchange.com/transcript/message/45991801#45991801
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifcoati@threeD
+    \def\coati@part@draw[##1]{\shade[ball color=##1]}
+  \else% 3D
+    \ifcoati@contour
+      \def\coati@part@draw[##1]{\draw[##1,\coati@contour,fill=white,line width=\scalingfactor*0.4pt]}
+    \else% contour
+      \def\coati@part@draw[##1]{\fill[##1]}
+    \fi% contour
+  \fi% 3D
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Body parts
+  % 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname coatihookbackground\endcsname
+  \csname tikzlinghookbackground\endcsname
   %  
-  % Left Ear %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \coati@part@draw[\coati@body!45!white!95!orange] (-0.212, 2.135) ellipse[x radius=0.09, y radius=0.12, rotate=-16];
+  % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \coati@part@draw[\coati@body!80!white] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
+  \coati@part@draw[\coati@body!80!white] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
+  %
+  % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifcoati@back
-    \coati@part@draw[\coati@body!80!white] (-0.212, 2.135) ellipse[x radius=0.065, y radius=0.09, rotate=-16];
+    \coati@part@draw[\coati@body!50!darkgray] (0.2845, 0.5595) .. controls (0.6382, 0.8326) and (0.7302, 1.5138) .. (1.0504, 1.6639) .. controls (1.3206, 1.7840) and (1.7609, 1.3537) .. (1.5608, 1.3437) .. controls (0.9203, 2.0442) and (0.8642, 0.6247) .. (0.5001, 0.3831) .. controls (0.3214, 0.2645) and (-0.1764, 0.1117) .. (-0.1408, 0.3245) .. controls (-0.1082, 0.5191) and (0.0508, 0.3791) .. (0.2845, 0.5595) -- cycle;
+    \begin{scope}
+      \clip (0.2845, 0.5595) .. controls (0.6382, 0.8326) and (0.7302, 1.5138) .. (1.0504, 1.6639) .. controls (1.3206, 1.7840) and (1.7609, 1.3537) .. (1.5608, 1.3437) .. controls (0.9203, 2.0442) and (0.8642, 0.6247) .. (0.5001, 0.3831) .. controls (0.3214, 0.2645) and (-0.1764, 0.1117) .. (-0.1408, 0.3245) .. controls (-0.1082, 0.5191) and (0.0508, 0.3791) .. (0.2845, 0.5595) -- cycle;
+      \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-30:(0.8,1.15)}] (0.6,1.1) rectangle ++(0.4,0.1);
+      \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-30:(0.9,1.35)}] (0.7,1.3) rectangle ++(0.4,0.1);
+      \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-50:(1.0,1.5)}] (0.8,1.45) rectangle ++(0.4,0.1);
+      \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-80:(1.2,1.6)}] (1.0,1.55) rectangle ++(0.4,0.1);
+      \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-130:(1.5,1.5)}] (1.3,1.45) rectangle ++(0.4,0.1);
+      \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-30:(0.55,0.65)}] (0.35,0.6) rectangle ++(0.4,0.1);
+       \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-30:(0.65,0.9)}] (0.45,0.85) rectangle ++(0.4,0.1);
+      \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-40:(0.35,0.45)}] (0.15,0.4) rectangle ++(0.4,0.1);   
+      \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-60:(0.05,0.3)}] (-0.15,0.25) rectangle ++(0.4,0.1);   
+    \end{scope}
   \fi% back
+  %
+  % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \coati@part@draw[\coati@body!80!white] (-0.625,1) ellipse[x radius=0.42, y radius=0.13, rotate=70];
+  \coati@part@draw[\coati@body!80!white] (0.625,1) ellipse[x radius=0.42, y radius=0.13, rotate=-70];
+  %
+  % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \coati@part@draw[\coati@body!50!darkgray] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname coatihookbelly\endcsname
+  \csname tikzlinghookbelly\endcsname
   %  
   % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \ifcoati@back
-    \coati@part@draw[\coati@body!45!white!95!orange] (0.4569, 1.5608) .. controls (0.3680, 1.3594) and (0.0005, 1.2699) .. (-0.1826, 1.3507) .. controls (-0.3657, 1.4315) and (-0.5475, 1.7632) .. (-0.4587, 1.9646) .. controls (-0.1103, 2.3578) and (0.5123, 2.0832) .. (0.4569, 1.5608) -- cycle;
-  \else% back
-     \coati@part@draw[\coati@body!45!white!95!orange] (0.4808, 1.7911) .. controls (0.5682, 1.2837) and (-0.3468, 1.3575) .. (-0.6360, 1.3679) .. controls (-0.7582, 1.4729) and (-0.5198, 1.7911) .. (-0.5198, 1.7911) .. controls (-0.3597, 2.2914) and (0.3207, 2.2914) .. (0.4808, 1.7911) -- cycle;
-  \fi% back
-  %  
-  % Cheek %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \unless\ifcoati@back
-    \coati@part@draw[\coati@body!80!white] (0.30, 1.4552) .. controls (0.30, 1.4552) and (0.1016, 1.7565) .. (-0.0005, 1.7581) -- (-0.6360, 1.3679) .. controls (-0.3083, 1.3437) and (0.0283, 1.332) .. (0.30, 1.4552) -- cycle (-0.4166, 1.9824) .. controls (-0.4166, 1.9824) and (-0.2413, 1.9758) .. (-0.2226, 1.9112) -- (-0.6875, 1.4906) .. controls (-0.6875, 1.4906) and (-0.5712, 1.7549) .. (-0.4166, 1.9824) -- cycle;
-  \fi% back
+  \begin{scope}[rotate around={\coati@rotatehead:(0,1.68)}]
   %
-  % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \unless\ifcoati@back
-    \coati@part@draw[\coati@body!50!black] (-0.605, 1.453) circle[radius=0.09];
-  \fi% back
+  % Sidewards head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifcoati@sideward
+    %  
+    % Left Ear %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \coati@part@draw[\coati@body!45!white!95!orange] (-0.212, 2.135) ellipse[x radius=0.09, y radius=0.12, rotate=-16];
+    \unless\ifcoati@back
+      \coati@part@draw[\coati@body!80!white] (-0.212, 2.135) ellipse[x radius=0.065, y radius=0.09, rotate=-16];
+    \fi% back
+    %  
+    % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \ifcoati@back
+      \coati@part@draw[\coati@body!45!white!95!orange] (0.4569, 1.5608) .. controls (0.3680, 1.3594) and (0.0005, 1.2699) .. (-0.1826, 1.3507) .. controls (-0.3657, 1.4315) and (-0.5475, 1.7632) .. (-0.4587, 1.9646) .. controls (-0.1103, 2.3578) and (0.5123, 2.0832) .. (0.4569, 1.5608) -- cycle;
+    \else% back
+       \coati@part@draw[\coati@body!45!white!95!orange] (0.4808, 1.7911) .. controls (0.5682, 1.2837) and (-0.3468, 1.3575) .. (-0.6360, 1.3679) .. controls (-0.7582, 1.4729) and (-0.5198, 1.7911) .. (-0.5198, 1.7911) .. controls (-0.3597, 2.2914) and (0.3207, 2.2914) .. (0.4808, 1.7911) -- cycle;
+    \fi% back
+    %  
+    % Cheek %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \unless\ifcoati@back
+      \coati@part@draw[\coati@body!80!white] (0.30, 1.4552) .. controls (0.30, 1.4552) and (0.1016, 1.7565) .. (-0.0005, 1.7581) -- (-0.6360, 1.3679) .. controls (-0.3083, 1.3437) and (0.0283, 1.332) .. (0.30, 1.4552) -- cycle (-0.4166, 1.9824) .. controls (-0.4166, 1.9824) and (-0.2413, 1.9758) .. (-0.2226, 1.9112) -- (-0.6875, 1.4906) .. controls (-0.6875, 1.4906) and (-0.5712, 1.7549) .. (-0.4166, 1.9824) -- cycle;
+    \fi% back
+    %
+    % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \unless\ifcoati@back
+      \coati@part@draw[\coati@body!50!black] (-0.605, 1.453) circle[radius=0.09];
+    \fi% back
+    %
+    % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \unless\ifcoati@back
+      \coati@part@draw[\coati@eye] (0.007, 1.624) ellipse[x radius=0.04, y radius=0.06];
+      \coati@part@draw[\coati@eye] (-0.38, 1.865) ellipse[x radius=0.035, y radius=0.055];
+    \fi% back
+    %
+    % Right Ear %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \coati@part@draw[\coati@body!45!white!95!orange] (0.417, 1.875) ellipse[x radius=0.1, y radius=0.14, rotate=-16];
+    \unless\ifcoati@back
+      \coati@part@draw[\coati@body!80!white] (0.417, 1.875) ellipse[x radius=0.07, y radius=0.10, rotate=-16];
+    \fi% back
   %
-  % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \unless\ifcoati@back
-    \coati@part@draw[\coati@eye] (0.007, 1.624) ellipse[x radius=0.04, y radius=0.06];
-    \coati@part@draw[\coati@eye] (-0.38, 1.865) ellipse[x radius=0.035, y radius=0.055];
-  \fi% back
-  %
-  % Right Ear %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \coati@part@draw[\coati@body!45!white!95!orange] (0.417, 1.875) ellipse[x radius=0.1, y radius=0.14, rotate=-16];
-  \unless\ifcoati@back
-    \coati@part@draw[\coati@body!80!white] (0.417, 1.875) ellipse[x radius=0.07, y radius=0.10, rotate=-16];
-  \fi% back
-%
-% Normal Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\else% sidewards
-  %  
-  % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \ifcoati@back
-    \coati@part@draw[\coati@body!45!white!95!orange] (0.5, 1.8) .. controls (0.5, 1.58) and (0.2, 1.35) .. (0, 1.35) .. controls (-0.2, 1.35) and (-0.5, 1.58) .. (-0.5, 1.8) .. controls (-0.34, 2.3) and (0.34, 2.3) .. (0.5, 1.8) -- cycle;
-  \else% back
-    \coati@part@draw[\coati@body!45!white!95!orange] (0.5, 1.8) .. controls (0.5, 1.58) and (0.2, 1.25) .. (0, 1.16) .. controls (-0.2, 1.25) and (-0.5, 1.58) .. (-0.5, 1.8) .. controls (-0.34, 2.3) and (0.34, 2.3) .. (0.5, 1.8) -- cycle;
-  \fi% back
-  %
-  % Cheeks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \unless\ifcoati@back
-    \coati@part@draw[\coati@body!80!white] (-0.4935, 1.7443) .. controls (-0.4935, 1.7443) and (-0.1917, 1.7798) .. (-0.1371, 1.7333) .. controls (-0.07, 1.2) and (-0.07, 1.2) .. (-0.07, 1.2) .. controls (-0.259, 1.3169) and (-0.46, 1.5665) .. (-0.4935, 1.7443) -- cycle  (0.4935, 1.7443) .. controls (0.4935, 1.7443) and (0.1917, 1.7798) .. (0.1371, 1.7333) .. controls (0.07, 1.2) and (0.07, 1.2) .. (0.07, 1.2) .. controls (0.259, 1.3169) and (0.46, 1.5665) .. (0.4935, 1.7443) -- cycle;
-  \fi% back
-  %
-  % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \unless\ifcoati@back  
-    \coati@part@draw[\coati@body!50!black] (0, 1.248) circle[radius=0.09];
-  \fi% back
-  %
-  % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \unless\ifcoati@back
-    \coati@part@draw[\coati@eye] (0.23, 1.62) circle[radius=0.05];
-    \coati@part@draw[\coati@eye] (-0.23, 1.62) circle[radius=0.05];
-  \fi% back
-  %
-  % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \coati@part@draw[\coati@body!45!white!95!orange] (0.44, 2.02) circle[radius=0.12];
-  \coati@part@draw[\coati@body!45!white!95!orange] (-0.44, 2.02) circle[radius=0.12];
-  \unless\ifcoati@back  
-    \coati@part@draw[\coati@body!80!white] (0.44, 2.02) circle[radius=0.09];  
-    \coati@part@draw[\coati@body!80!white] (-0.44, 2.02) circle[radius=0.09];
-  \fi% back
-  %  
-\fi% sidewards
-\end{scope}
-%
-% Tail if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifcoati@back
-  \coati@part@draw[\coati@body!50!darkgray] (0.2845, 0.5595) .. controls (0.6382, 0.8326) and (0.7302, 1.5138) .. (1.0504, 1.6639) .. controls (1.3206, 1.7840) and (1.7609, 1.3537) .. (1.5608, 1.3437) .. controls (0.9203, 2.0442) and (0.8642, 0.6247) .. (0.5001, 0.3831) .. controls (0.3214, 0.2645) and (-0.1764, 0.1117) .. (-0.1408, 0.3245) .. controls (-0.1082, 0.5191) and (0.0508, 0.3791) .. (0.2845, 0.5595) -- cycle;
-  \begin{scope}
-    \clip (0.2845, 0.5595) .. controls (0.6382, 0.8326) and (0.7302, 1.5138) .. (1.0504, 1.6639) .. controls (1.3206, 1.7840) and (1.7609, 1.3537) .. (1.5608, 1.3437) .. controls (0.9203, 2.0442) and (0.8642, 0.6247) .. (0.5001, 0.3831) .. controls (0.3214, 0.2645) and (-0.1764, 0.1117) .. (-0.1408, 0.3245) .. controls (-0.1082, 0.5191) and (0.0508, 0.3791) .. (0.2845, 0.5595) -- cycle;
-    \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-30:(0.8,1.15)}] (0.6,1.1) rectangle ++(0.4,0.1);
-    \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-30:(0.9,1.35)}] (0.7,1.3) rectangle ++(0.4,0.1);
-    \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-50:(1.0,1.5)}] (0.8,1.45) rectangle ++(0.4,0.1);
-    \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-80:(1.2,1.6)}] (1.0,1.55) rectangle ++(0.4,0.1);
-    \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-130:(1.5,1.5)}] (1.3,1.45) rectangle ++(0.4,0.1);
-    \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-30:(0.55,0.65)}] (0.35,0.6) rectangle ++(0.4,0.1);
-     \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-30:(0.65,0.9)}] (0.45,0.85) rectangle ++(0.4,0.1);
-    \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-40:(0.35,0.45)}] (0.15,0.4) rectangle ++(0.4,0.1);   
-    \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-60:(0.05,0.3)}] (-0.15,0.25) rectangle ++(0.4,0.1);       
+  % Normal Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \else% sidewards
+    %  
+    % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \ifcoati@back
+      \coati@part@draw[\coati@body!45!white!95!orange] (0.5, 1.8) .. controls (0.5, 1.58) and (0.2, 1.35) .. (0, 1.35) .. controls (-0.2, 1.35) and (-0.5, 1.58) .. (-0.5, 1.8) .. controls (-0.34, 2.3) and (0.34, 2.3) .. (0.5, 1.8) -- cycle;
+    \else% back
+      \coati@part@draw[\coati@body!45!white!95!orange] (0.5, 1.8) .. controls (0.5, 1.58) and (0.2, 1.25) .. (0, 1.16) .. controls (-0.2, 1.25) and (-0.5, 1.58) .. (-0.5, 1.8) .. controls (-0.34, 2.3) and (0.34, 2.3) .. (0.5, 1.8) -- cycle;
+    \fi% back
+    %
+    % Cheeks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \unless\ifcoati@back
+      \coati@part@draw[\coati@body!80!white] (-0.4935, 1.7443) .. controls (-0.4935, 1.7443) and (-0.1917, 1.7798) .. (-0.1371, 1.7333) .. controls (-0.07, 1.2) and (-0.07, 1.2) .. (-0.07, 1.2) .. controls (-0.259, 1.3169) and (-0.46, 1.5665) .. (-0.4935, 1.7443) -- cycle  (0.4935, 1.7443) .. controls (0.4935, 1.7443) and (0.1917, 1.7798) .. (0.1371, 1.7333) .. controls (0.07, 1.2) and (0.07, 1.2) .. (0.07, 1.2) .. controls (0.259, 1.3169) and (0.46, 1.5665) .. (0.4935, 1.7443) -- cycle;
+    \fi% back
+    %
+    % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \unless\ifcoati@back  
+      \coati@part@draw[\coati@body!50!black] (0, 1.248) circle[radius=0.09];
+    \fi% back
+    %
+    % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \unless\ifcoati@back
+      \coati@part@draw[\coati@eye] (0.23, 1.62) circle[radius=0.05];
+      \coati@part@draw[\coati@eye] (-0.23, 1.62) circle[radius=0.05];
+    \fi% back
+    %
+    % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \coati@part@draw[\coati@body!45!white!95!orange] (0.44, 2.02) circle[radius=0.12];
+    \coati@part@draw[\coati@body!45!white!95!orange] (-0.44, 2.02) circle[radius=0.12];
+    \unless\ifcoati@back  
+      \coati@part@draw[\coati@body!80!white] (0.44, 2.02) circle[radius=0.09];  
+      \coati@part@draw[\coati@body!80!white] (-0.44, 2.02) circle[radius=0.09];
+    \fi% back
+    %  
+  \fi% sidewards
   \end{scope}
-\fi% back
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname coatihookbody\endcsname
-\csname tikzlinghookbody\endcsname
-%  
+  %
+  % Tail if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifcoati@back
+    \coati@part@draw[\coati@body!50!darkgray] (0.2845, 0.5595) .. controls (0.6382, 0.8326) and (0.7302, 1.5138) .. (1.0504, 1.6639) .. controls (1.3206, 1.7840) and (1.7609, 1.3537) .. (1.5608, 1.3437) .. controls (0.9203, 2.0442) and (0.8642, 0.6247) .. (0.5001, 0.3831) .. controls (0.3214, 0.2645) and (-0.1764, 0.1117) .. (-0.1408, 0.3245) .. controls (-0.1082, 0.5191) and (0.0508, 0.3791) .. (0.2845, 0.5595) -- cycle;
+    \begin{scope}
+      \clip (0.2845, 0.5595) .. controls (0.6382, 0.8326) and (0.7302, 1.5138) .. (1.0504, 1.6639) .. controls (1.3206, 1.7840) and (1.7609, 1.3537) .. (1.5608, 1.3437) .. controls (0.9203, 2.0442) and (0.8642, 0.6247) .. (0.5001, 0.3831) .. controls (0.3214, 0.2645) and (-0.1764, 0.1117) .. (-0.1408, 0.3245) .. controls (-0.1082, 0.5191) and (0.0508, 0.3791) .. (0.2845, 0.5595) -- cycle;
+      \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-30:(0.8,1.15)}] (0.6,1.1) rectangle ++(0.4,0.1);
+      \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-30:(0.9,1.35)}] (0.7,1.3) rectangle ++(0.4,0.1);
+      \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-50:(1.0,1.5)}] (0.8,1.45) rectangle ++(0.4,0.1);
+      \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-80:(1.2,1.6)}] (1.0,1.55) rectangle ++(0.4,0.1);
+      \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-130:(1.5,1.5)}] (1.3,1.45) rectangle ++(0.4,0.1);
+      \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-30:(0.55,0.65)}] (0.35,0.6) rectangle ++(0.4,0.1);
+       \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-30:(0.65,0.9)}] (0.45,0.85) rectangle ++(0.4,0.1);
+      \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-40:(0.35,0.45)}] (0.15,0.4) rectangle ++(0.4,0.1);   
+      \coati@part@draw[\coati@body!45!white!95!orange,rotate around={-60:(0.05,0.3)}] (-0.15,0.25) rectangle ++(0.4,0.1);       
+    \end{scope}
+  \fi% back
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname coatihookbody\endcsname
+  \csname tikzlinghookbody\endcsname
+  %  
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Documentation
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\clearpage
+%\section[Coati]{007, the coati}
+%
+%\emph{Named after a coati living in the zoo of M\"onchengladbach}
+%
+%\subsection{Package name}
+%
+%\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
+%\vspace*{0.5cm}
+%\lstinline|\usepackage{tikzlings-coatis}| 
+%\vspace*{0.5cm}
+%\end{tcolorbox}
+%
+%\subsection{Basic Usage}
+%
+%\begin{tcblisting}{}
+%\coati
+%\end{tcblisting}
+%
+%\subsection{Options}
+%
+%The basic coati can be modified by changing its colour:
+%\begin{tcblisting}{}
+%\coati[body=blue]
+%\end{tcblisting}
+%
+%In addition to the colour of the body, the colour of the eyes can be adjusted:
+%\begin{tcblisting}{}
+%\coati[eye=red]
+%\end{tcblisting}
+%
+%The head of the coati can be rotated, but please don't overdo this, otherwise his neck might break!
+%\begin{tcblisting}{}
+%\coati[rotatehead=-15]
+%\end{tcblisting}
+%
+%For the head an alternative sidewards facing head is available. It can be combined with the \lstinline|rotatehead| option.
+%\begin{tcblisting}{}
+%\coati[sideward]
+%\end{tcblisting}
+%
+%To view the coati from behind:
+%\begin{tcblisting}{}
+%\coati[back]
+%\end{tcblisting}
+%
+%The key \lstinline|3D| will make the coati 3-dimensional:
+%\begin{tcblisting}{}
+%\coati[3D]
+%\end{tcblisting}
+%
+%And finally the \lstinline|contour| key will only draw the outlines:
+%\begin{tcblisting}{}
+%\coati[contour=black]
+%\end{tcblisting}

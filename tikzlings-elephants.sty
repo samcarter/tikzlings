@@ -1,16 +1,16 @@
-% !TeX root = ./examples/elephant.tex
+ % !TeX root = ./examples/elephant.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% This package is part of the TikZlings package
-% A package to bring cute little animals and other beings into tikz
-% Maintained by samcarter
-%
-% Project repository and bug tracker:
-% https://github.com/samcarter/tikzlings
-%
-% Released under the LaTeX Project Public License v1.3c or later
-% See http://www.latex-project.org/lppl.txt
-%
+%%
+%% This package is part of the TikZlings package
+%% A package to bring cute little animals and other beings into tikz
+%% Maintained by samcarter
+%%
+%% Project repository and bug tracker:
+%% https://github.com/samcarter/tikzlings
+%%
+%% Released under the LaTeX Project Public License v1.3c or later
+%% See http://www.latex-project.org/lppl.txt
+%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ProvidesPackage{tikzlings-elephants}[2021/04/20 version v0.7 Draw teddy elephants in TikZ]
 
@@ -63,121 +63,172 @@
 }
 
 \def\elephant@draw{%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% minimal bounding box size 
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\path (-0.86, 0.0) rectangle (0.86, 2.17);
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% store the current scale factor
-% from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
-\pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
-\pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
-\pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 
-% switch between 2D, 3D and contours, from
-% https://chat.stackexchange.com/transcript/message/45991801#45991801
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifelephant@threeD
-  \def\elephant@part@draw[##1]{\shade[ball color=##1]}
-\else% 3D
-  \ifelephant@contour
-    \def\elephant@part@draw[##1]{\draw[##1,\elephant@contour,fill=white,line width=\scalingfactor*0.4pt]}
-  \else% contour
-    \def\elephant@part@draw[##1]{\fill[##1]}
-  \fi% contour
-\fi% 3D
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Body parts
-% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname elephanthookbackground\endcsname
-\csname tikzlinghookbackground\endcsname
-%
-% Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\elephant@part@draw[\elephant@body] (0.47,0.86) ellipse[x radius=0.35, y radius=0.25, rotate=-50];
-\elephant@part@draw[\elephant@body] (-0.47,0.86) ellipse[x radius=0.35, y radius=0.25, rotate=50];
-%
-% Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifelephant@back
-  \elephant@part@draw[\elephant@body] (0.425, 0.3) circle[radius=0.28]; 
-  \elephant@part@draw[\elephant@body] (-0.425, 0.3) circle[radius=0.28];
-  \elephant@part@draw[\elephant@body] (0.57,0.74) circle [radius=0.20];
-  \elephant@part@draw[\elephant@body] (-0.57,0.74) circle [radius=0.20];
-\fi% back
-%
-% Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\elephant@part@draw[\elephant@body] (0,0.75) ellipse[x radius=0.55, y radius=0.65]; 
-\unless\ifelephant@back
-  \elephant@part@draw[\elephant@body!30!white] (0,0.7) ellipse[x radius=0.35, y radius=0.4];
-\fi% back
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname elephanthookbelly\endcsname
-\csname tikzlinghookbelly\endcsname
-%
-% Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\unless\ifelephant@back
-  \elephant@part@draw[\elephant@body] (0.425, 0.3) circle[radius=0.28]; 
-  \elephant@part@draw[\elephant@body] (-0.425, 0.3) circle[radius=0.28];
-  \elephant@part@draw[\elephant@body!30!white] (0.425, 0.3) circle[radius=0.17]; 
-  \elephant@part@draw[\elephant@body!30!white] (-0.425, 0.3) circle[radius=0.17];
-  \elephant@part@draw[\elephant@body] (0.57,0.75) circle [radius=0.20];  
-  \elephant@part@draw[\elephant@body!30!white] (0.57,0.74) circle [radius=0.12];
-  \elephant@part@draw[\elephant@body] (-0.57,0.74) circle [radius=0.20];
-  \elephant@part@draw[\elephant@body!30!white] (-0.57,0.74) circle [radius=0.12];    
-\fi% back
-%
-% Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\elephant@part@draw[\elephant@body] (0.5, 1.7) ellipse [x radius=0.35,y radius=0.45];
-\elephant@part@draw[\elephant@body] (-0.5, 1.7) ellipse [x radius=0.35,y radius=0.45];
-\unless\ifelephant@back
-  \elephant@part@draw[\elephant@body!30!white] (0.5, 1.7) ellipse [x radius=0.25,y radius=0.35];
-  \elephant@part@draw[\elephant@body!30!white] (-0.5, 1.7) ellipse [x radius=0.25,y radius=0.35];  
-\fi% back
-%
-% Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\elephant@part@draw[\elephant@body] (0, 1.55) circle[radius=0.5]; 
-%
-% Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\unless\ifelephant@back
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % Trunk% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % minimal bounding box size 
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \path (-0.86, 0.0) rectangle (0.86, 2.17);
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % store the current scale factor
+  % from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
+  \pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
+  \pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
+  \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % 
+  % switch between 2D, 3D and contours, from
+  % https://chat.stackexchange.com/transcript/message/45991801#45991801
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifelephant@threeD
-    \elephant@part@draw[\elephant@body,draw=\elephant@body!70!black,line width=\scalingfactor*0.6pt] (0.1428, 1.4375) .. controls (0.1607, 1.0411) and (0.3327, 1.1276) .. (0.6705, 1.355) -- (0.72, 1.22) .. controls (0.3327, 0.9) and (-0.1607, 0.8) .. (-0.1428, 1.4375) arc [start angle=160, end angle=20, radius=0.155] -- cycle;
-    \fill[\elephant@body!40!black] (0.7, 1.29) circle [radius=0.08];
+    \def\elephant@part@draw[##1]{\shade[ball color=##1]}
   \else% 3D
-    \elephant@part@draw[\elephant@body,draw=\elephant@body!70!black,line width=\scalingfactor*0.6pt] (0.1428, 1.4375) .. controls (0.1607, 1.0411) and (0.3327, 1.1276) .. (0.6705, 1.355) -- (0.72, 1.22) .. controls (0.3327, 0.9) and (-0.1607, 0.8) .. (-0.1428, 1.4375);
-    \elephant@part@draw[\elephant@body!70!black] (0.7, 1.29) circle [radius=0.08];
+    \ifelephant@contour
+      \def\elephant@part@draw[##1]{\draw[##1,\elephant@contour,fill=white,line width=\scalingfactor*0.4pt]}
+    \else% contour
+      \def\elephant@part@draw[##1]{\fill[##1]}
+    \fi% contour
   \fi% 3D
   %
-  % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \elephant@part@draw[\elephant@eye] (-0.155, 1.7) circle[radius=0.05]; 
-  \elephant@part@draw[\elephant@eye] (0.155, 1.7) circle[radius=0.05]; 
-%
-\fi% back
-%
-% Tail if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifelephant@back
-  \draw[\elephant@body!30!white,line width=\scalingfactor*0.6pt] (0, 0.5904) .. controls (-0.1619, 0.4147) and (0.203, 0.4157) .. (0.2422, 0.2712);
-  \elephant@part@draw[\elephant@body!30!white] (0.2008, 0.1949) .. controls (0.2452, 0.2121) and (0.2799, 0.242) .. (0.2691, 0.2755) .. controls (0.2611, 0.3005) and (0.2127, 0.3115) .. (0.1927, 0.2945) .. controls (0.1674, 0.2729) and (0.2082, 0.2383) .. (0.2008, 0.1949) -- cycle;
-\fi% back
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname elephanthookbody\endcsname
-\csname tikzlinghookbody\endcsname
-%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Body parts
+  % 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname elephanthookbackground\endcsname
+  \csname tikzlinghookbackground\endcsname
+  %
+  % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \elephant@part@draw[\elephant@body] (0.47,0.86) ellipse[x radius=0.35, y radius=0.25, rotate=-50];
+  \elephant@part@draw[\elephant@body] (-0.47,0.86) ellipse[x radius=0.35, y radius=0.25, rotate=50];
+  %
+  % Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifelephant@back
+    \elephant@part@draw[\elephant@body] (0.425, 0.3) circle[radius=0.28]; 
+    \elephant@part@draw[\elephant@body] (-0.425, 0.3) circle[radius=0.28];
+    \elephant@part@draw[\elephant@body] (0.57,0.74) circle [radius=0.20];
+    \elephant@part@draw[\elephant@body] (-0.57,0.74) circle [radius=0.20];
+  \fi% back
+  %
+  % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \elephant@part@draw[\elephant@body] (0,0.75) ellipse[x radius=0.55, y radius=0.65]; 
+  \unless\ifelephant@back
+    \elephant@part@draw[\elephant@body!30!white] (0,0.7) ellipse[x radius=0.35, y radius=0.4];
+  \fi% back
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname elephanthookbelly\endcsname
+  \csname tikzlinghookbelly\endcsname
+  %
+  % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifelephant@back
+    \elephant@part@draw[\elephant@body] (0.425, 0.3) circle[radius=0.28]; 
+    \elephant@part@draw[\elephant@body] (-0.425, 0.3) circle[radius=0.28];
+    \elephant@part@draw[\elephant@body!30!white] (0.425, 0.3) circle[radius=0.17]; 
+    \elephant@part@draw[\elephant@body!30!white] (-0.425, 0.3) circle[radius=0.17];
+    \elephant@part@draw[\elephant@body] (0.57,0.75) circle [radius=0.20];  
+    \elephant@part@draw[\elephant@body!30!white] (0.57,0.74) circle [radius=0.12];
+    \elephant@part@draw[\elephant@body] (-0.57,0.74) circle [radius=0.20];
+    \elephant@part@draw[\elephant@body!30!white] (-0.57,0.74) circle [radius=0.12];    
+  \fi% back
+  %
+  % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \elephant@part@draw[\elephant@body] (0.5, 1.7) ellipse [x radius=0.35,y radius=0.45];
+  \elephant@part@draw[\elephant@body] (-0.5, 1.7) ellipse [x radius=0.35,y radius=0.45];
+  \unless\ifelephant@back
+    \elephant@part@draw[\elephant@body!30!white] (0.5, 1.7) ellipse [x radius=0.25,y radius=0.35];
+    \elephant@part@draw[\elephant@body!30!white] (-0.5, 1.7) ellipse [x radius=0.25,y radius=0.35];  
+  \fi% back
+  %
+  % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \elephant@part@draw[\elephant@body] (0, 1.55) circle[radius=0.5]; 
+  %
+  % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifelephant@back
+    %
+    % Trunk% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \ifelephant@threeD
+      \elephant@part@draw[\elephant@body,draw=\elephant@body!70!black,line width=\scalingfactor*0.6pt] (0.1428, 1.4375) .. controls (0.1607, 1.0411) and (0.3327, 1.1276) .. (0.6705, 1.355) -- (0.72, 1.22) .. controls (0.3327, 0.9) and (-0.1607, 0.8) .. (-0.1428, 1.4375) arc [start angle=160, end angle=20, radius=0.155] -- cycle;
+      \fill[\elephant@body!40!black] (0.7, 1.29) circle [radius=0.08];
+    \else% 3D
+      \elephant@part@draw[\elephant@body,draw=\elephant@body!70!black,line width=\scalingfactor*0.6pt] (0.1428, 1.4375) .. controls (0.1607, 1.0411) and (0.3327, 1.1276) .. (0.6705, 1.355) -- (0.72, 1.22) .. controls (0.3327, 0.9) and (-0.1607, 0.8) .. (-0.1428, 1.4375);
+      \elephant@part@draw[\elephant@body!70!black] (0.7, 1.29) circle [radius=0.08];
+    \fi% 3D
+    %
+    % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \elephant@part@draw[\elephant@eye] (-0.155, 1.7) circle[radius=0.05]; 
+    \elephant@part@draw[\elephant@eye] (0.155, 1.7) circle[radius=0.05]; 
+  %
+  \fi% back
+  %
+  % Tail if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifelephant@back
+    \draw[\elephant@body!30!white,line width=\scalingfactor*0.6pt] (0, 0.5904) .. controls (-0.1619, 0.4147) and (0.203, 0.4157) .. (0.2422, 0.2712);
+    \elephant@part@draw[\elephant@body!30!white] (0.2008, 0.1949) .. controls (0.2452, 0.2121) and (0.2799, 0.242) .. (0.2691, 0.2755) .. controls (0.2611, 0.3005) and (0.2127, 0.3115) .. (0.1927, 0.2945) .. controls (0.1674, 0.2729) and (0.2082, 0.2383) .. (0.2008, 0.1949) -- cycle;
+  \fi% back
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname elephanthookbody\endcsname
+  \csname tikzlinghookbody\endcsname
+  %
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Documentation
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\clearpage
+%\section[Elephant]{Johannes, the elephant}
+%
+%\emph{The namesake of Johannes loves elephants}
+%
+%\subsection{Package name}
+%
+%\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
+%\vspace*{0.5cm}
+%\lstinline|\usepackage{tikzlings-elephants}| 
+%\vspace*{0.5cm}
+%\end{tcolorbox}
+%
+%\subsection{Basic Usage}
+%
+%\begin{tcblisting}{}
+%\elephant
+%\end{tcblisting}
+%
+%\subsection{Options}
+%
+%The basic elephant can be modified by changing its colour:
+%\begin{tcblisting}{}
+%\elephant[body=blue]
+%\end{tcblisting}
+%
+%In addition to the colour of the body, the colour of the eyes can be adjusted:
+%\begin{tcblisting}{}
+%\elephant[eye=red]
+%\end{tcblisting}
+%
+%To view the elephant from behind:
+%\begin{tcblisting}{}
+%\elephant[back]
+%\end{tcblisting}
+%
+%The key \lstinline|3D| will make the elephant 3-dimensional:
+%\begin{tcblisting}{}
+%\elephant[3D]
+%\end{tcblisting}
+%
+%And finally the \lstinline|contour| key will only draw the outlines:
+%\begin{tcblisting}{}
+%\elephant[contour=black]
+%\end{tcblisting}

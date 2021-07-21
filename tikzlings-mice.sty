@@ -1,16 +1,16 @@
-% !TeX root = ./examples/mouse.tex
+ % !TeX root = ./examples/mouse.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% This package is part of the TikZlings package
-% A package to bring cute little animals and other beings into tikz
-% Maintained by samcarter
-%
-% Project repository and bug tracker:
-% https://github.com/samcarter/tikzlings
-%
-% Released under the LaTeX Project Public License v1.3c or later
-% See http://www.latex-project.org/lppl.txt
-%
+%%
+%% This package is part of the TikZlings package
+%% A package to bring cute little animals and other beings into tikz
+%% Maintained by samcarter
+%%
+%% Project repository and bug tracker:
+%% https://github.com/samcarter/tikzlings
+%%
+%% Released under the LaTeX Project Public License v1.3c or later
+%% See http://www.latex-project.org/lppl.txt
+%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ProvidesPackage{tikzlings-mice}[2021/04/20 version v0.7 Drawing mice in TikZ]
 
@@ -78,125 +78,190 @@
 }
 
 \def\mouse@draw{%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% minimal bounding box size 
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\path (-0.625,0.1) rectangle (0.905, 2.17);
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% store the current scale factor
-% from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
-\pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
-\pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
-\pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 
-% switch between 2D, 3D and contours, from
-% https://chat.stackexchange.com/transcript/message/45991801#45991801
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifmouse@threeD
-  \def\mouse@part@draw[##1]{\shade[ball color=##1]}
-\else% 3D
-  \ifmouse@contour
-    \def\mouse@part@draw[##1]{\draw[##1,\mouse@contour,fill=white,line width=\scalingfactor*0.4pt]}
-  \else% contour
-    \def\mouse@part@draw[##1]{\fill[##1]}
-  \fi% contour
-\fi% 3D
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Body parts
-% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname mousehookbackground\endcsname
-\csname tikzlinghookbackground\endcsname
-% 
-% Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifmouse@leftstep
-  \mouse@part@draw[\mouse@body!65!white] (-0.255,0.25) ellipse[x radius=0.23, y radius=0.09];  
-\else% step
-  \mouse@part@draw[\mouse@body!65!white] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];  
-\fi% step
-%
-\ifmouse@rightstep
-  \mouse@part@draw[\mouse@body!65!white] (0.255,0.25) ellipse[x radius=0.23, y radius=0.09]; 
-\else% step
-  \mouse@part@draw[\mouse@body!65!white] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
-\fi% step
-%
-% Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mouse@part@draw[\mouse@body!65!white] (0.36, 2.17) circle[radius=0.28];
-\mouse@part@draw[\mouse@body!65!white] (-0.36, 2.17) circle[radius=0.28];
-\unless\ifmouse@back
-  \mouse@part@draw[\mouse@body] (0.36, 2.17) circle[radius=0.15];
-  \mouse@part@draw[\mouse@body] (-0.36, 2.17) circle[radius=0.15];
-\fi% back
-%
-% Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\unless\ifmouse@back
-  \mouse@part@draw[\mouse@body!65!white] (1.0825, 1.6326) .. controls (1.3527, 1.7527) and (1.6609, 1.3164) .. (1.5928, 1.3124) .. controls (0.9164, 2.186) and (0.8338, 0.6325) .. (0.3708, 0.4451) .. controls (0.2529, 0.3974) and (-0.0064, 0.3874) .. (-0.0064, 0.3874) .. controls (-0.0776, 0.3765) and (-0.0862, 0.5026) .. (-0.0092, 0.5034) .. controls (-0.0092, 0.5034) and (0.0363, 0.4591) .. (0.3516, 0.54360) .. controls (0.6710, 0.6988) and (0.7613, 1.4825) .. (1.0825, 1.6326) -- cycle;
-\fi% back
-%
-% Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mouse@part@draw[\mouse@body] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname mousehookbelly\endcsname
-\csname tikzlinghookbelly\endcsname
-% 
-% Tail if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifmouse@back
-  \mouse@part@draw[\mouse@body!65!white] (1.0825, 1.6326) .. controls (1.3527, 1.7527) and (1.6609, 1.3164) .. (1.5928, 1.3124) .. controls (0.9164, 2.186) and (0.8338, 0.6325) .. (0.3708, 0.4451) .. controls (0.2529, 0.3974) and (-0.0064, 0.3874) .. (-0.0064, 0.3874) .. controls (-0.0776, 0.3765) and (-0.0862, 0.5026) .. (-0.0092, 0.5034) .. controls (-0.0092, 0.5034) and (0.0363, 0.4591) .. (0.3516, 0.54360) .. controls (0.6710, 0.6988) and (0.7613, 1.4825) .. (1.0825, 1.6326) -- cycle;
-\fi% back
-%
-% Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifmouse@back
-    \mouse@part@draw[\mouse@body!65!white] 
-    (0.5, 1.8) .. controls (0.5, 1.58) and (0.2, 1.35) .. 
-    (0, 1.35) .. controls (-0.2, 1.35) and (-0.5, 1.58) .. 
-    (-0.5, 1.8) .. controls (-0.34, 2.3) and (0.34, 2.3) .. 
-    (0.5, 1.8) -- cycle;
-\else% back
-  \mouse@part@draw[\mouse@body!65!white] (0.5, 1.8) .. controls (0.5, 1.58) and (0.2, 1.25) .. (0, 1.16) .. controls (-0.2, 1.25) and (-0.5, 1.58) .. (-0.5, 1.8) .. controls (-0.34, 2.3) and (0.34, 2.3) .. (0.5, 1.8) -- cycle;
-\fi% back
-%
-% Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\unless\ifmouse@back
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \mouse@part@draw[\mouse@body!65!white,rotate around={-\mouse@rotatearms:(0.47,1.15)}] (0.47,0.93) ellipse[x radius=0.13, y radius=0.24];
-  \mouse@part@draw[\mouse@body!65!white,rotate around={\mouse@rotatearms:(-0.47,1.15)}] (-0.47,0.93) ellipse[x radius=0.13, y radius=0.24];
+  % minimal bounding box size 
   %
-  % Wiskers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \fill[\mouse@whiskers] (0.0788, 1.2046) .. controls (0.1658, 1.2199) and (0.2086, 1.1539) .. (0.2956, 1.1386) -- (0.2956, 1.1486) .. controls (0.2097, 1.1637) and (0.1648, 1.2197) .. (0.0788, 1.2046) -- cycle;
-  \fill[\mouse@whiskers] (-0.0788, 1.2046) .. controls (-0.1658, 1.2199) and (-0.2087, 1.1539) .. (-0.2956, 1.1386) -- (-0.2956, 1.1486) .. controls (-0.2097, 1.1637) and (-0.1648, 1.2197) .. (-0.0788, 1.2046) -- cycle;
-  \fill[\mouse@whiskers] (0.0752, 1.2181) .. controls (0.1583, 1.2483) and (0.2171, 1.2209) .. (0.3002, 1.1907) -- (0.3002, 1.2007) .. controls (0.2174, 1.2308) and (0.158, 1.2482) .. (0.0752, 1.2181) -- cycle;
-  \fill[\mouse@whiskers] (-0.0752, 1.2181) .. controls (-0.1583, 1.2483) and (-0.2171, 1.2209) .. (-0.3002, 1.1907) -- (-0.3002, 1.2007) .. controls (-0.2174, 1.2308) and (-0.158, 1.2482) .. (-0.0752, 1.2181) -- cycle;
-  \fill[\mouse@whiskers] (0.0671, 1.2343) .. controls (0.1414, 1.2825) and (0.2182, 1.3064) .. (0.2925, 1.2582) -- (0.2925, 1.2682) .. controls (0.2179, 1.3166) and (0.1417, 1.2827) .. (0.0671, 1.2343) -- cycle;
-  \fill[\mouse@whiskers] (-0.0671, 1.2343) .. controls (-0.1414, 1.2825) and (-0.2182, 1.3064) .. (-0.2925, 1.2582) -- (-0.2925, 1.2682) .. controls (-0.2179, 1.3166) and (-0.1417, 1.2827) .. (-0.0671, 1.2343) -- cycle;
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \path (-0.625,0.1) rectangle (0.905, 2.17);
   %
-  % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \mouse@part@draw[\mouse@body!50!black] (0, 1.248) circle[radius=0.09];
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \mouse@part@draw[\mouse@eye] (0.23, 1.68) circle[radius=0.05];
-  \mouse@part@draw[\mouse@eye] (-0.23, 1.68) circle[radius=0.05];
+  % store the current scale factor
+  % from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
   %
-\fi% back
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname mousehookbody\endcsname
-\csname tikzlinghookbody\endcsname
-% 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
+  \pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
+  \pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
+  \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % 
+  % switch between 2D, 3D and contours, from
+  % https://chat.stackexchange.com/transcript/message/45991801#45991801
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifmouse@threeD
+    \def\mouse@part@draw[##1]{\shade[ball color=##1]}
+  \else% 3D
+    \ifmouse@contour
+      \def\mouse@part@draw[##1]{\draw[##1,\mouse@contour,fill=white,line width=\scalingfactor*0.4pt]}
+    \else% contour
+      \def\mouse@part@draw[##1]{\fill[##1]}
+    \fi% contour
+  \fi% 3D
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Body parts
+  % 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname mousehookbackground\endcsname
+  \csname tikzlinghookbackground\endcsname
+  % 
+  % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifmouse@leftstep
+    \mouse@part@draw[\mouse@body!65!white] (-0.255,0.25) ellipse[x radius=0.23, y radius=0.09];  
+  \else% step
+    \mouse@part@draw[\mouse@body!65!white] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];  
+  \fi% step
+  %
+  \ifmouse@rightstep
+    \mouse@part@draw[\mouse@body!65!white] (0.255,0.25) ellipse[x radius=0.23, y radius=0.09]; 
+  \else% step
+    \mouse@part@draw[\mouse@body!65!white] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
+  \fi% step
+  %
+  % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \mouse@part@draw[\mouse@body!65!white] (0.36, 2.17) circle[radius=0.28];
+  \mouse@part@draw[\mouse@body!65!white] (-0.36, 2.17) circle[radius=0.28];
+  \unless\ifmouse@back
+    \mouse@part@draw[\mouse@body] (0.36, 2.17) circle[radius=0.15];
+    \mouse@part@draw[\mouse@body] (-0.36, 2.17) circle[radius=0.15];
+  \fi% back
+  %
+  % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifmouse@back
+    \mouse@part@draw[\mouse@body!65!white] (1.0825, 1.6326) .. controls (1.3527, 1.7527) and (1.6609, 1.3164) .. (1.5928, 1.3124) .. controls (0.9164, 2.186) and (0.8338, 0.6325) .. (0.3708, 0.4451) .. controls (0.2529, 0.3974) and (-0.0064, 0.3874) .. (-0.0064, 0.3874) .. controls (-0.0776, 0.3765) and (-0.0862, 0.5026) .. (-0.0092, 0.5034) .. controls (-0.0092, 0.5034) and (0.0363, 0.4591) .. (0.3516, 0.54360) .. controls (0.6710, 0.6988) and (0.7613, 1.4825) .. (1.0825, 1.6326) -- cycle;
+  \fi% back
+  %
+  % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \mouse@part@draw[\mouse@body] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname mousehookbelly\endcsname
+  \csname tikzlinghookbelly\endcsname
+  % 
+  % Tail if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifmouse@back
+    \mouse@part@draw[\mouse@body!65!white] (1.0825, 1.6326) .. controls (1.3527, 1.7527) and (1.6609, 1.3164) .. (1.5928, 1.3124) .. controls (0.9164, 2.186) and (0.8338, 0.6325) .. (0.3708, 0.4451) .. controls (0.2529, 0.3974) and (-0.0064, 0.3874) .. (-0.0064, 0.3874) .. controls (-0.0776, 0.3765) and (-0.0862, 0.5026) .. (-0.0092, 0.5034) .. controls (-0.0092, 0.5034) and (0.0363, 0.4591) .. (0.3516, 0.54360) .. controls (0.6710, 0.6988) and (0.7613, 1.4825) .. (1.0825, 1.6326) -- cycle;
+  \fi% back
+  %
+  % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifmouse@back
+      \mouse@part@draw[\mouse@body!65!white] 
+      (0.5, 1.8) .. controls (0.5, 1.58) and (0.2, 1.35) .. 
+      (0, 1.35) .. controls (-0.2, 1.35) and (-0.5, 1.58) .. 
+      (-0.5, 1.8) .. controls (-0.34, 2.3) and (0.34, 2.3) .. 
+      (0.5, 1.8) -- cycle;
+  \else% back
+    \mouse@part@draw[\mouse@body!65!white] (0.5, 1.8) .. controls (0.5, 1.58) and (0.2, 1.25) .. (0, 1.16) .. controls (-0.2, 1.25) and (-0.5, 1.58) .. (-0.5, 1.8) .. controls (-0.34, 2.3) and (0.34, 2.3) .. (0.5, 1.8) -- cycle;
+  \fi% back
+  %
+  % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifmouse@back
+    %
+    % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \mouse@part@draw[\mouse@body!65!white,rotate around={-\mouse@rotatearms:(0.47,1.15)}] (0.47,0.93) ellipse[x radius=0.13, y radius=0.24];
+    \mouse@part@draw[\mouse@body!65!white,rotate around={\mouse@rotatearms:(-0.47,1.15)}] (-0.47,0.93) ellipse[x radius=0.13, y radius=0.24];
+    %
+    % Wiskers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \fill[\mouse@whiskers] (0.0788, 1.2046) .. controls (0.1658, 1.2199) and (0.2086, 1.1539) .. (0.2956, 1.1386) -- (0.2956, 1.1486) .. controls (0.2097, 1.1637) and (0.1648, 1.2197) .. (0.0788, 1.2046) -- cycle;
+    \fill[\mouse@whiskers] (-0.0788, 1.2046) .. controls (-0.1658, 1.2199) and (-0.2087, 1.1539) .. (-0.2956, 1.1386) -- (-0.2956, 1.1486) .. controls (-0.2097, 1.1637) and (-0.1648, 1.2197) .. (-0.0788, 1.2046) -- cycle;
+    \fill[\mouse@whiskers] (0.0752, 1.2181) .. controls (0.1583, 1.2483) and (0.2171, 1.2209) .. (0.3002, 1.1907) -- (0.3002, 1.2007) .. controls (0.2174, 1.2308) and (0.158, 1.2482) .. (0.0752, 1.2181) -- cycle;
+    \fill[\mouse@whiskers] (-0.0752, 1.2181) .. controls (-0.1583, 1.2483) and (-0.2171, 1.2209) .. (-0.3002, 1.1907) -- (-0.3002, 1.2007) .. controls (-0.2174, 1.2308) and (-0.158, 1.2482) .. (-0.0752, 1.2181) -- cycle;
+    \fill[\mouse@whiskers] (0.0671, 1.2343) .. controls (0.1414, 1.2825) and (0.2182, 1.3064) .. (0.2925, 1.2582) -- (0.2925, 1.2682) .. controls (0.2179, 1.3166) and (0.1417, 1.2827) .. (0.0671, 1.2343) -- cycle;
+    \fill[\mouse@whiskers] (-0.0671, 1.2343) .. controls (-0.1414, 1.2825) and (-0.2182, 1.3064) .. (-0.2925, 1.2582) -- (-0.2925, 1.2682) .. controls (-0.2179, 1.3166) and (-0.1417, 1.2827) .. (-0.0671, 1.2343) -- cycle;
+    %
+    % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \mouse@part@draw[\mouse@body!50!black] (0, 1.248) circle[radius=0.09];
+    %
+    % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \mouse@part@draw[\mouse@eye] (0.23, 1.68) circle[radius=0.05];
+    \mouse@part@draw[\mouse@eye] (-0.23, 1.68) circle[radius=0.05];
+    %
+  \fi% back
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname mousehookbody\endcsname
+  \csname tikzlinghookbody\endcsname
+  % 
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Documentation
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\clearpage
+%\section[Mouse]{Tokz, the mouse}
+%
+%\emph{The idea for the mouse came from an Italian \LaTeX{} user -- Tokz is a combination of the Italian word for mouse and \TikZ}
+%
+%\subsection{Package name}
+%
+%\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
+%\vspace*{0.5cm}
+%\lstinline|\usepackage{tikzlings-mice}| 
+%\vspace*{0.5cm}
+%\end{tcolorbox}
+%
+%\subsection{Basic Usage}
+%
+%\begin{tcblisting}{}
+%\mouse
+%\end{tcblisting}
+%
+%\subsection{Options}
+%
+%The basic mouse can be modified by changing its colour:
+%\begin{tcblisting}{}
+%\mouse[body=blue]
+%\end{tcblisting}
+%
+%In addition to the colour of the body, the colour of various body parts can be adjusted:
+%\begin{tcblisting}{}
+%\mouse[eye=red]
+%\end{tcblisting}
+%\begin{tcblisting}{}
+%\mouse[whiskers=red]
+%\end{tcblisting}
+%
+%The rotation angle of its arms can be adjusted:
+%\begin{tcblisting}{}
+%\mouse[rotatearms=40]
+%\end{tcblisting}
+%
+%And the mouse can lift its legs:
+%\begin{tcblisting}{}
+%\mouse[leftstep]
+%\mouse[rightstep,xshift=2cm]
+%\end{tcblisting}
+%
+%To view the mouse from behind:
+%\begin{tcblisting}{}
+%\mouse[back]
+%\end{tcblisting}
+%
+%The key \lstinline|3D| will make the mouse 3-dimensional:
+%\begin{tcblisting}{}
+%\mouse[3D]
+%\end{tcblisting}
+%
+%And finally the \lstinline|contour| key will only draw the outlines:
+%\begin{tcblisting}{}
+%\mouse[contour=black]
+%\end{tcblisting}

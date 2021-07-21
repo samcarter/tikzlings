@@ -1,16 +1,16 @@
-% !TeX root = ./examples/koala.tex
+ % !TeX root = ./examples/koala.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% This package is part of the TikZlings package
-% A package to bring cute little animals and other beings into tikz
-% Maintained by samcarter
-%
-% Project repository and bug tracker:
-% https://github.com/samcarter/tikzlings
-%
-% Released under the LaTeX Project Public License v1.3c or later
-% See http://www.latex-project.org/lppl.txt
-%
+%%
+%% This package is part of the TikZlings package
+%% A package to bring cute little animals and other beings into tikz
+%% Maintained by samcarter
+%%
+%% Project repository and bug tracker:
+%% https://github.com/samcarter/tikzlings
+%%
+%% Released under the LaTeX Project Public License v1.3c or later
+%% See http://www.latex-project.org/lppl.txt
+%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ProvidesPackage{tikzlings-koalas}[2021/04/20 version v0.7 Drawing koalas in TikZ]
 
@@ -79,129 +79,193 @@
 }
 
 \def\koala@draw{%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% minimal bounding box size 
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\path (-0.88,0.1) rectangle (0.88, 2.35);
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% store the current scale factor
-% from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
-\pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
-\pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
-\pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 
-% switch between 2D, 3D and contours, from
-% https://chat.stackexchange.com/transcript/message/45991801#45991801
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifkoala@threeD
-  \def\koala@part@draw[##1]{\shade[ball color=##1]}
-\else% 3D
-  \ifkoala@contour
-    \def\koala@part@draw[##1]{\draw[##1,\koala@contour,fill=white,line width=\scalingfactor*0.4pt]}
-  \else% contour
-    \def\koala@part@draw[##1]{\fill[##1]}
-  \fi% contour
-\fi% 3D
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Body parts
-% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname koalahookbackground\endcsname
-\csname tikzlinghookbackground\endcsname
-%
-% Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\koala@part@draw[\koala@body!50!black] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
-\koala@part@draw[\koala@body!50!black] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
-%
-% Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\koala@part@draw[\koala@body] (0.405, 2.1) ellipse[x radius=0.3, y radius=0.23];
-\koala@part@draw[\koala@body] (-0.405, 2.1) ellipse[x radius=0.3, y radius=0.23];
-\unless\ifkoala@back
-  \koala@part@draw[\koala@body!40!white] (-0.405, 2.1) ellipse[x radius=0.15, y radius=0.12];
-  \koala@part@draw[\koala@body!40!white] (0.405, 2.1) ellipse[x radius=0.15, y radius=0.12];
-\fi% back
-%
-% Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\koala@part@draw[\koala@body] (-0.625,1) ellipse[x radius=0.42, y radius=0.13, rotate=70];
-\koala@part@draw[\koala@body!50!black] (-0.745,0.65) ellipse[x radius=0.12, y radius=0.08, rotate=-20];
-\koala@part@draw[\koala@body] (0.625,1) ellipse[x radius=0.42, y radius=0.13, rotate=-70];
-\koala@part@draw[\koala@body!50!black] (0.745,0.65) ellipse[x radius=0.12, y radius=0.08, rotate=20];
-%
-% Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\koala@part@draw[\koala@body] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
-%
-% Belly %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\unless\ifkoala@back
-  \koala@part@draw[\koala@body!40!white] ( 0.425, 0.71) .. controls ( 0.425, 0.41) and ( 0.255, 0.27) .. ( 0    , 0.27) .. controls (-0.255, 0.27) and (-0.425, 0.41) .. (-0.425, 0.71) .. controls (-0.425, 1.01) and (-0.255, 1.20) .. ( 0    , 1.20) .. controls ( 0.225, 1.20) and ( 0.425, 1.01) .. ( 0.425, 0.71) -- cycle;
-\fi% back
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname koalahookbelly\endcsname
-\csname tikzlinghookbelly\endcsname
-%
-% Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\koala@part@draw[\koala@body] (0,1.67) ellipse[x radius=0.55, y radius=0.45];
-%
-% Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\unless\ifkoala@back
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \koala@part@draw[\koala@body!40!black] (-0.1501, 1.5609) .. controls (-0.1784, 1.4833) and (-0.0827, 1.4108) .. ( 0.0000, 1.4108) .. controls ( 0.0827, 1.4108) and ( 0.1784, 1.4833) .. ( 0.1501, 1.5609) .. controls ( 0.1290, 1.6191) and ( 0.1187, 1.6573) .. ( 0.0750, 1.7010) .. controls ( 0.0336, 1.7424) and (-0.0336, 1.7424) .. (-0.0750, 1.7010) .. controls (-0.1187, 1.6573) and (-0.1290, 1.6191) .. (-0.1501, 1.5609) -- cycle;
+  % minimal bounding box size 
   %
-  % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \ifkoala@sleeping
-    \fill[\koala@body!50!black] (0.2534, 1.675) rectangle ++(0.005, 0.03);
-    \fill[\koala@body!50!black,rotate around={20:(0.2925, 1.6925)}] (0.29, 1.68) rectangle ++(0.005, 0.03);
-    \fill[\koala@body!50!black,rotate around={-20:(0.2143, 1.6925)}] (0.2168, 1.68) rectangle ++(0.005, 0.03);
-    \fill[\koala@body!50!black,rotate around={40:(0.3255, 1.7025)}] (0.323, 1.69) rectangle ++(0.005, 0.03);
-    \fill[\koala@body!50!black,rotate around={-40:(0.1813, 1.7025)}] (0.1838, 1.69) rectangle ++(0.005, 0.03);
-    \fill[\koala@body!50!black] (-0.2534, 1.675) rectangle ++(-0.005, 0.03);
-    \fill[\koala@body!50!black,rotate around={-20:(-0.2925, 1.6925)}] (-0.29, 1.68) rectangle ++(-0.005, 0.03);
-    \fill[\koala@body!50!black,rotate around={20:(-0.2143, 1.6925)}] (-0.2168, 1.68) rectangle ++(-0.005, 0.03);
-    \fill[\koala@body!50!black,rotate around={-40:(-0.3255, 1.7025)}] (-0.323, 1.69) rectangle ++(-0.005, 0.03);
-    \fill[\koala@body!50!black,rotate around={40:(-0.1813, 1.7025)}] (-0.1838, 1.69) rectangle ++(-0.005, 0.03);  
-    \fill[\koala@body!50!black, even odd rule] (0.3331, 1.741) ..  controls (0.3331, 1.685) and (0.1737, 1.685) .. (0.1737, 1.741) .. controls (0.1737, 1.848) and (0.3331, 1.848) .. (0.3331, 1.741) -- cycle (0.328, 1.741) .. controls   (0.323, 1.705) and   (0.184, 1.705) .. (0.179, 1.741) .. controls   (0.184, 1.843) and   (0.323, 1.843) .. (0.328, 1.741) -- cycle;
-    \fill[\koala@body!50!black, even odd rule] (-0.3331, 1.741) ..  controls (-0.3331, 1.685) and (-0.1737, 1.685) .. (-0.1737, 1.741) .. controls (-0.1737, 1.848) and (-0.3331, 1.848) .. (-0.3331, 1.741) -- cycle   (-0.328, 1.741) .. controls     (-0.323, 1.705) and     (-0.184, 1.705) ..     (-0.179, 1.741) .. controls (-0.184, 1.843) and (-0.323, 1.843) .. (-0.328, 1.741) -- cycle;
-  \else% sleeping
-    \koala@part@draw[\koala@eye] (-0.255, 1.74) circle[radius=0.08]; 
-    \koala@part@draw[\koala@eye] (0.255, 1.74) circle[radius=0.08]; 
-    \fill[white] (-0.27, 1.76) circle[radius=0.015]; 
-    \fill[white] (0.24, 1.76) circle[radius=0.015]; 
-  \fi% sleeping
-  %
-  % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \draw[\koala@mouth,line width=\scalingfactor*0.4pt] (0.115, 1.39) arc [start angle=-40, end angle=-140, radius=0.16];
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \path (-0.88,0.1) rectangle (0.88, 2.35);
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % optional
+  % store the current scale factor
+  % from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
+  \pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
+  \pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
+  \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % 
+  % switch between 2D, 3D and contours, from
+  % https://chat.stackexchange.com/transcript/message/45991801#45991801
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifkoala@threeD
+    \def\koala@part@draw[##1]{\shade[ball color=##1]}
+  \else% 3D
+    \ifkoala@contour
+      \def\koala@part@draw[##1]{\draw[##1,\koala@contour,fill=white,line width=\scalingfactor*0.4pt]}
+    \else% contour
+      \def\koala@part@draw[##1]{\fill[##1]}
+    \fi% contour
+  \fi% 3D
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % Blushed %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \ifkoala@blush
-    \fill[\koala@blushcolor,path fading=koala@blush] (-0.3, 1.52) circle[radius=0.1]; 
-    \fill[\koala@blushcolor,path fading=koala@blush] (0.3, 1.52) circle[radius=0.1];
-  \fi% blush
+  % Body parts
+  % 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-\fi% back
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname koalahookbody\endcsname
-\csname tikzlinghookbody\endcsname
-%
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname koalahookbackground\endcsname
+  \csname tikzlinghookbackground\endcsname
+  %
+  % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \koala@part@draw[\koala@body!50!black] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
+  \koala@part@draw[\koala@body!50!black] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
+  %
+  % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \koala@part@draw[\koala@body] (0.405, 2.1) ellipse[x radius=0.3, y radius=0.23];
+  \koala@part@draw[\koala@body] (-0.405, 2.1) ellipse[x radius=0.3, y radius=0.23];
+  \unless\ifkoala@back
+    \koala@part@draw[\koala@body!40!white] (-0.405, 2.1) ellipse[x radius=0.15, y radius=0.12];
+    \koala@part@draw[\koala@body!40!white] (0.405, 2.1) ellipse[x radius=0.15, y radius=0.12];
+  \fi% back
+  %
+  % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \koala@part@draw[\koala@body] (-0.625,1) ellipse[x radius=0.42, y radius=0.13, rotate=70];
+  \koala@part@draw[\koala@body!50!black] (-0.745,0.65) ellipse[x radius=0.12, y radius=0.08, rotate=-20];
+  \koala@part@draw[\koala@body] (0.625,1) ellipse[x radius=0.42, y radius=0.13, rotate=-70];
+  \koala@part@draw[\koala@body!50!black] (0.745,0.65) ellipse[x radius=0.12, y radius=0.08, rotate=20];
+  %
+  % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \koala@part@draw[\koala@body] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
+  %
+  % Belly %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifkoala@back
+    \koala@part@draw[\koala@body!40!white] ( 0.425, 0.71) .. controls ( 0.425, 0.41) and ( 0.255, 0.27) .. ( 0    , 0.27) .. controls (-0.255, 0.27) and (-0.425, 0.41) .. (-0.425, 0.71) .. controls (-0.425, 1.01) and (-0.255, 1.20) .. ( 0    , 1.20) .. controls ( 0.225, 1.20) and ( 0.425, 1.01) .. ( 0.425, 0.71) -- cycle;
+  \fi% back
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname koalahookbelly\endcsname
+  \csname tikzlinghookbelly\endcsname
+  %
+  % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \koala@part@draw[\koala@body] (0,1.67) ellipse[x radius=0.55, y radius=0.45];
+  %
+  % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifkoala@back
+    %
+    % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \koala@part@draw[\koala@body!40!black] (-0.1501, 1.5609) .. controls (-0.1784, 1.4833) and (-0.0827, 1.4108) .. ( 0.0000, 1.4108) .. controls ( 0.0827, 1.4108) and ( 0.1784, 1.4833) .. ( 0.1501, 1.5609) .. controls ( 0.1290, 1.6191) and ( 0.1187, 1.6573) .. ( 0.0750, 1.7010) .. controls ( 0.0336, 1.7424) and (-0.0336, 1.7424) .. (-0.0750, 1.7010) .. controls (-0.1187, 1.6573) and (-0.1290, 1.6191) .. (-0.1501, 1.5609) -- cycle;
+    %
+    % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \ifkoala@sleeping
+      \fill[\koala@body!50!black] (0.2534, 1.675) rectangle ++(0.005, 0.03);
+      \fill[\koala@body!50!black,rotate around={20:(0.2925, 1.6925)}] (0.29, 1.68) rectangle ++(0.005, 0.03);
+      \fill[\koala@body!50!black,rotate around={-20:(0.2143, 1.6925)}] (0.2168, 1.68) rectangle ++(0.005, 0.03);
+      \fill[\koala@body!50!black,rotate around={40:(0.3255, 1.7025)}] (0.323, 1.69) rectangle ++(0.005, 0.03);
+      \fill[\koala@body!50!black,rotate around={-40:(0.1813, 1.7025)}] (0.1838, 1.69) rectangle ++(0.005, 0.03);
+      \fill[\koala@body!50!black] (-0.2534, 1.675) rectangle ++(-0.005, 0.03);
+      \fill[\koala@body!50!black,rotate around={-20:(-0.2925, 1.6925)}] (-0.29, 1.68) rectangle ++(-0.005, 0.03);
+      \fill[\koala@body!50!black,rotate around={20:(-0.2143, 1.6925)}] (-0.2168, 1.68) rectangle ++(-0.005, 0.03);
+      \fill[\koala@body!50!black,rotate around={-40:(-0.3255, 1.7025)}] (-0.323, 1.69) rectangle ++(-0.005, 0.03);
+      \fill[\koala@body!50!black,rotate around={40:(-0.1813, 1.7025)}] (-0.1838, 1.69) rectangle ++(-0.005, 0.03);  
+      \fill[\koala@body!50!black, even odd rule] (0.3331, 1.741) ..  controls (0.3331, 1.685) and (0.1737, 1.685) .. (0.1737, 1.741) .. controls (0.1737, 1.848) and (0.3331, 1.848) .. (0.3331, 1.741) -- cycle (0.328, 1.741) .. controls   (0.323, 1.705) and   (0.184, 1.705) .. (0.179, 1.741) .. controls   (0.184, 1.843) and   (0.323, 1.843) .. (0.328, 1.741) -- cycle;
+      \fill[\koala@body!50!black, even odd rule] (-0.3331, 1.741) ..  controls (-0.3331, 1.685) and (-0.1737, 1.685) .. (-0.1737, 1.741) .. controls (-0.1737, 1.848) and (-0.3331, 1.848) .. (-0.3331, 1.741) -- cycle   (-0.328, 1.741) .. controls     (-0.323, 1.705) and     (-0.184, 1.705) ..     (-0.179, 1.741) .. controls (-0.184, 1.843) and (-0.323, 1.843) .. (-0.328, 1.741) -- cycle;
+    \else% sleeping
+      \koala@part@draw[\koala@eye] (-0.255, 1.74) circle[radius=0.08]; 
+      \koala@part@draw[\koala@eye] (0.255, 1.74) circle[radius=0.08]; 
+      \fill[white] (-0.27, 1.76) circle[radius=0.015]; 
+      \fill[white] (0.24, 1.76) circle[radius=0.015]; 
+    \fi% sleeping
+    %
+    % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \draw[\koala@mouth,line width=\scalingfactor*0.4pt] (0.115, 1.39) arc [start angle=-40, end angle=-140, radius=0.16];
+    %
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %
+    % optional
+    %
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %
+    % Blushed %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \ifkoala@blush
+      \fill[\koala@blushcolor,path fading=koala@blush] (-0.3, 1.52) circle[radius=0.1]; 
+      \fill[\koala@blushcolor,path fading=koala@blush] (0.3, 1.52) circle[radius=0.1];
+    \fi% blush
+    %
+  \fi% back
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname koalahookbody\endcsname
+  \csname tikzlinghookbody\endcsname
+  %
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Documentation
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\clearpage
+%\section[Koala]{Will, the koala}
+%
+%\emph{The koala was generously contributed by @marmot and is named in honour of a \LaTeX{} developer from Down Under}
+%
+%\subsection{Package name}
+%
+%\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
+%\vspace*{0.5cm}
+%\lstinline|\usepackage{tikzlings-koalas}| 
+%\vspace*{0.5cm}
+%\end{tcolorbox}
+%
+%\subsection{Basic Usage}
+%
+%\begin{tcblisting}{}
+%\koala
+%\end{tcblisting}
+%
+%\subsection{Options}
+%
+%The basic koala can be modified by changing its colour:
+%\begin{tcblisting}{}
+%\koala[body=blue]
+%\end{tcblisting}
+%
+%In addition to the colour of the body, the colour of various body parts can be adjusted:
+%\begin{tcblisting}{}
+%\koala[eye=red]
+%\end{tcblisting}
+%\begin{tcblisting}{}
+%\koala[mouth=red]
+%\end{tcblisting}
+%
+%It can also blush
+%\begin{tcblisting}{}
+%\koala[blush=red]
+%\end{tcblisting}
+%
+%and if tired, it is going to take a nap:
+%\begin{tcblisting}{}
+%\koala[sleeping]
+%\end{tcblisting}
+%
+%To view the koala from behind:
+%\begin{tcblisting}{}
+%\koala[back]
+%\end{tcblisting}
+%
+%The key \lstinline|3D| will make the koala 3-dimensional:
+%\begin{tcblisting}{}
+%\koala[3D]
+%\end{tcblisting}
+%
+%And finally the \lstinline|contour| key will only draw the outlines:
+%\begin{tcblisting}{}
+%\koala[contour=black]
+%\end{tcblisting}

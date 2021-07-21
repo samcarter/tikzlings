@@ -1,16 +1,16 @@
-% !TeX root = ./examples/squirrel.tex
+ % !TeX root = ./examples/squirrel.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% This package is part of the TikZlings package
-% A package to bring cute little animals and other beings into tikz
-% Maintained by samcarter
-%
-% Project repository and bug tracker:
-% https://github.com/samcarter/tikzlings
-%
-% Released under the LaTeX Project Public License v1.3c or later
-% See http://www.latex-project.org/lppl.txt
-%
+%%
+%% This package is part of the TikZlings package
+%% A package to bring cute little animals and other beings into tikz
+%% Maintained by samcarter
+%%
+%% Project repository and bug tracker:
+%% https://github.com/samcarter/tikzlings
+%%
+%% Released under the LaTeX Project Public License v1.3c or later
+%% See http://www.latex-project.org/lppl.txt
+%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ProvidesPackage{tikzlings-squirrels}[2021/04/20 version v0.7 Drawing squirrels in TikZ]
 
@@ -65,125 +65,177 @@
 }
 
 \def\squirrel@draw{%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % minimal bounding box size 
+  %  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \path (-0.53,0.1) rectangle (1.12,2.15);
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % store the current scale factor
+  % from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
+  \pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
+  \pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
+  \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % 
+  % switch between 2D, 3D and contours, from
+  % https://chat.stackexchange.com/transcript/message/45991801#45991801
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifsquirrel@threeD
+    \def\squirrel@part@draw[##1]{\shade[ball color=##1]}
+  \else% 3D
+    \ifsquirrel@contour
+      \def\squirrel@part@draw[##1]{\draw[##1,\squirrel@contour,fill=white,line width=\scalingfactor*0.4pt]}
+    \else% contour
+      \def\squirrel@part@draw[##1]{\fill[##1]}
+    \fi% contour
+  \fi% 3D
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Body parts
+  % 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname squirrelhookbackground\endcsname
+  \csname tikzlinghookbackground\endcsname
+  %  
+  % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
+  \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
+  %
+  % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifsquirrel@back
+    \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray]
+     (0.9795, 1.089) .. controls (0.9795, 1.089) and (1.0684, 1.2135) .. (1.0837, 1.2877) .. controls (1.1483, 1.6164) and (0.7470, 1.8317) .. (0.5217, 1.7097) .. controls (0.3005, 1.5585) and (0.3397, 1.2578) .. (0.3951, 1.0501) .. controls (0.4419, 0.9023) and (0.5439, 0.6908) .. (0.4287, 0.5889) .. controls (0.3845, 0.5503) and (0.2295, 0.4255) .. (0.0123, 0.3869) .. controls (0.3032, 0.1931) and (1.0822, 0.6445) .. (0.8789, 1.0501) .. controls (0.8607, 1.114) and (0.8154, 1.1881) .. (0.8716, 1.2309) .. controls (0.9325, 1.2193) and (0.9536, 1.1463) .. (0.9795, 1.089) -- cycle;
+  \fi% back
+  %
+  % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \squirrel@part@draw[\squirrel@body] 
+   (0.5,0.5) .. controls (0.5,0.09) and (-0.5,0.09) .. (-0.5,0.5) .. controls (-0.5,0.85) and (-0.25,1.6) .. (0,1.7) .. controls (0.25,1.6) and (0.5,0.85) .. (0.5,0.5) -- cycle;
+  %
+  % Belly %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifsquirrel@back
+    \squirrel@part@draw[\squirrel@body!85!white] (0.35,0.5) .. controls (0.35,0.22) and (-0.35,0.22) .. (-0.35,0.5) .. controls (-0.35,0.7) and (-0.17,1.2) .. (0,1.2) .. controls (0.17,1.2) and (0.35,0.7) .. (0.35,0.5) -- cycle;
+  \fi% back
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname squirrelhookbelly\endcsname
+  \csname tikzlinghookbelly\endcsname
+  %
+  % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray]   (0.1920,1.9906) .. controls (0.1657,2.0780) and (0.1839,2.1332) .. (0.1839,2.1332) .. controls (0.1839,2.1332) and (0.1123,2.1773) .. (0.0941,2.0720) .. controls (0.0716,2.0156) and (0.0753,1.9519) .. (0.1023,1.9293) .. controls (0.1293,1.9068) and (0.1696,1.9342) .. (0.1920,1.9906) -- cycle;
+  \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray]  
+  (-0.1920,1.9906) .. controls (-0.1657,2.0780) and (-0.1839,2.1332) .. (-0.1839,2.1332) .. controls (-0.1839,2.1332) and (-0.1123,2.1773) .. (-0.0941,2.0720) .. controls (-0.0716,2.0156) and (-0.0753,1.9519) .. (-0.1023,1.9293) .. controls (-0.1293,1.9068) and (-0.1696,1.9342) .. (-0.1920,1.9906) -- cycle;
+  %
+  % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifsquirrel@contour
+    \squirrel@part@draw[\squirrel@body] (0,1.75) circle[radius=0.3]; 
+    \squirrel@part@draw[\squirrel@body] (0.2,1.6) circle[radius=0.15];  
+    \squirrel@part@draw[\squirrel@body] (-0.2,1.6) circle[radius=0.15];
+    \ifsquirrel@back
+      \squirrel@part@draw[\squirrel@body] (0,1.75) circle[radius=0.3]; 
+    \fi% back
+  \else% contour
+    \squirrel@part@draw[\squirrel@body] (0,1.75) circle[radius=0.3]  (0.2,1.6) circle[radius=0.15]  (-0.2,1.6) circle[radius=0.15];
+  \fi% contour
+  %
+  \ifsquirrel@back
+    % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray]
+     (0.9795, 1.089) .. controls (0.9795, 1.089) and (1.0684, 1.2135) .. (1.0837, 1.2877) .. controls (1.1483, 1.6164) and (0.7470, 1.8317) .. (0.5217, 1.7097) .. controls (0.3005, 1.5585) and (0.3397, 1.2578) .. (0.3951, 1.0501) .. controls (0.4419, 0.9023) and (0.5439, 0.6908) .. (0.4287, 0.5889) .. controls (0.3845, 0.5503) and (0.2295, 0.4255) .. (0.0123, 0.3869) .. controls (0.3032, 0.1931) and (1.0822, 0.6445) .. (0.8789, 1.0501) .. controls (0.8607, 1.114) and (0.8154, 1.1881) .. (0.8716, 1.2309) .. controls (0.9325, 1.2193) and (0.9536, 1.1463) .. (0.9795, 1.089) -- cycle;
+  \else% back
+    %
+    % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \squirrel@part@draw[\squirrel@body!70!brown!60!black] (0,1.66) ellipse[x radius=0.06, y radius=0.03];
+    % 
+    % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \squirrel@part@draw[\squirrel@eye] (0.07,1.78) ellipse[x radius=0.05, y radius=0.07];
+    \squirrel@part@draw[\squirrel@eye] (-0.07,1.78) ellipse[x radius=0.05, y radius=0.07];
+    \squirrel@part@draw[\squirrel@pupil] (0.07,1.76) ellipse[x radius=0.017, y radius=0.027];
+    \squirrel@part@draw[\squirrel@pupil] (-0.07,1.76) ellipse[x radius=0.017, y radius=0.027];
+    %
+    % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \ifsquirrel@contour
+      \draw[\squirrel@contour,fill=white,line width=\scalingfactor*0.4pt] (-0.025,1.567) rectangle ++(0.02,0.03);
+      \draw[\squirrel@contour,fill=white,line width=\scalingfactor*0.4pt] (0.025,1.567) rectangle ++(-0.02,0.03);
+      \draw[\squirrel@contour,line width=\scalingfactor*0.4pt] (-0.15,1.61) .. controls (-0.15,1.61) and (-0.15,1.52) .. (0.0,1.61) .. controls (0.15,1.52) and (0.15,1.61) .. (0.15,1.61);
+    \else% contour
+      \fill[white] (-0.025,1.567) rectangle ++(0.02,0.03);
+      \fill[white] (0.025,1.567) rectangle ++(-0.02,0.03);
+      \draw[\squirrel@body!70!brown!60!black,line width=\scalingfactor*0.4pt] (-0.15,1.61) .. controls (-0.15,1.61) and (-0.15,1.52) .. (0.0,1.61) .. controls (0.15,1.52) and (0.15,1.61) .. (0.15,1.61);  
+    \fi% contour
+    % 
+    % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray] (0.2,0.85) ellipse[x radius=0.22, y radius=0.11, rotate=70];
+    \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray] (-0.2,0.85) ellipse[x radius=0.22, y radius=0.11, rotate=-70];
+    %
+  \fi% back
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname squirrelhookbody\endcsname
+  \csname tikzlinghookbody\endcsname
+  %  
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% minimal bounding box size 
-%
+%%
+%% Documentation
+%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\path (-0.53,0.1) rectangle (1.12,2.15);
+%\clearpage
+%\section[Squirrel]{Ratatosk, the squirrel}
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\emph{named after the squirrel from Norse mythology who climbs around Yggdrasil}
 %
-% store the current scale factor
-% from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
+%\subsection{Package name}
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
-\pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
-\pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
-\pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
+%\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
+%\vspace*{0.5cm}
+%\lstinline|\usepackage{tikzlings-squirrels}| 
+%\vspace*{0.5cm}
+%\end{tcolorbox}
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 
-% switch between 2D, 3D and contours, from
-% https://chat.stackexchange.com/transcript/message/45991801#45991801
+%\subsection{Basic Usage}
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifsquirrel@threeD
-  \def\squirrel@part@draw[##1]{\shade[ball color=##1]}
-\else% 3D
-  \ifsquirrel@contour
-    \def\squirrel@part@draw[##1]{\draw[##1,\squirrel@contour,fill=white,line width=\scalingfactor*0.4pt]}
-  \else% contour
-    \def\squirrel@part@draw[##1]{\fill[##1]}
-  \fi% contour
-\fi% 3D
+%\begin{tcblisting}{}
+%\squirrel
+%\end{tcblisting}
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{Options}
 %
-% Body parts
-% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%The basic squirrel can be modified by changing its colour:
+%\begin{tcblisting}{}
+%\squirrel[body=blue]
+%\end{tcblisting}
 %
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname squirrelhookbackground\endcsname
-\csname tikzlinghookbackground\endcsname
-%  
-% Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\squirrel@part@draw[\squirrel@body!70!brown!50!darkgray] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
-\squirrel@part@draw[\squirrel@body!70!brown!50!darkgray] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
+%In addition to the colour of the body, the colour of the eyes can be adjusted:
+%\begin{tcblisting}{}
+%\squirrel[eye=red]
+%\end{tcblisting}
+%\begin{tcblisting}{}
+%\squirrel[pupil=red]
+%\end{tcblisting}
 %
-% Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\unless\ifsquirrel@back
-  \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray]
-   (0.9795, 1.089) .. controls (0.9795, 1.089) and (1.0684, 1.2135) .. (1.0837, 1.2877) .. controls (1.1483, 1.6164) and (0.7470, 1.8317) .. (0.5217, 1.7097) .. controls (0.3005, 1.5585) and (0.3397, 1.2578) .. (0.3951, 1.0501) .. controls (0.4419, 0.9023) and (0.5439, 0.6908) .. (0.4287, 0.5889) .. controls (0.3845, 0.5503) and (0.2295, 0.4255) .. (0.0123, 0.3869) .. controls (0.3032, 0.1931) and (1.0822, 0.6445) .. (0.8789, 1.0501) .. controls (0.8607, 1.114) and (0.8154, 1.1881) .. (0.8716, 1.2309) .. controls (0.9325, 1.2193) and (0.9536, 1.1463) .. (0.9795, 1.089) -- cycle;
-\fi% back
+%To view the squirrel from behind:
+%\begin{tcblisting}{}
+%\squirrel[back]
+%\end{tcblisting}
 %
-% Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\squirrel@part@draw[\squirrel@body] 
- (0.5,0.5) .. controls (0.5,0.09) and (-0.5,0.09) .. (-0.5,0.5) .. controls (-0.5,0.85) and (-0.25,1.6) .. (0,1.7) .. controls (0.25,1.6) and (0.5,0.85) .. (0.5,0.5) -- cycle;
+%The key \lstinline|3D| will make the squirrel 3-dimensional:
+%\begin{tcblisting}{}
+%\squirrel[3D]
+%\end{tcblisting}
 %
-% Belly %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\unless\ifsquirrel@back
-  \squirrel@part@draw[\squirrel@body!85!white] (0.35,0.5) .. controls (0.35,0.22) and (-0.35,0.22) .. (-0.35,0.5) .. controls (-0.35,0.7) and (-0.17,1.2) .. (0,1.2) .. controls (0.17,1.2) and (0.35,0.7) .. (0.35,0.5) -- cycle;
-\fi% back
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname squirrelhookbelly\endcsname
-\csname tikzlinghookbelly\endcsname
-%
-% Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\squirrel@part@draw[\squirrel@body!70!brown!50!darkgray]   (0.1920,1.9906) .. controls (0.1657,2.0780) and (0.1839,2.1332) .. (0.1839,2.1332) .. controls (0.1839,2.1332) and (0.1123,2.1773) .. (0.0941,2.0720) .. controls (0.0716,2.0156) and (0.0753,1.9519) .. (0.1023,1.9293) .. controls (0.1293,1.9068) and (0.1696,1.9342) .. (0.1920,1.9906) -- cycle;
-\squirrel@part@draw[\squirrel@body!70!brown!50!darkgray]  
-(-0.1920,1.9906) .. controls (-0.1657,2.0780) and (-0.1839,2.1332) .. (-0.1839,2.1332) .. controls (-0.1839,2.1332) and (-0.1123,2.1773) .. (-0.0941,2.0720) .. controls (-0.0716,2.0156) and (-0.0753,1.9519) .. (-0.1023,1.9293) .. controls (-0.1293,1.9068) and (-0.1696,1.9342) .. (-0.1920,1.9906) -- cycle;
-%
-% Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifsquirrel@contour
-  \squirrel@part@draw[\squirrel@body] (0,1.75) circle[radius=0.3]; 
-  \squirrel@part@draw[\squirrel@body] (0.2,1.6) circle[radius=0.15];  
-  \squirrel@part@draw[\squirrel@body] (-0.2,1.6) circle[radius=0.15];
-  \ifsquirrel@back
-    \squirrel@part@draw[\squirrel@body] (0,1.75) circle[radius=0.3]; 
-  \fi% back
-\else% contour
-  \squirrel@part@draw[\squirrel@body] (0,1.75) circle[radius=0.3]  (0.2,1.6) circle[radius=0.15]  (-0.2,1.6) circle[radius=0.15];
-\fi% contour
-%
-\ifsquirrel@back
-  % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray]
-   (0.9795, 1.089) .. controls (0.9795, 1.089) and (1.0684, 1.2135) .. (1.0837, 1.2877) .. controls (1.1483, 1.6164) and (0.7470, 1.8317) .. (0.5217, 1.7097) .. controls (0.3005, 1.5585) and (0.3397, 1.2578) .. (0.3951, 1.0501) .. controls (0.4419, 0.9023) and (0.5439, 0.6908) .. (0.4287, 0.5889) .. controls (0.3845, 0.5503) and (0.2295, 0.4255) .. (0.0123, 0.3869) .. controls (0.3032, 0.1931) and (1.0822, 0.6445) .. (0.8789, 1.0501) .. controls (0.8607, 1.114) and (0.8154, 1.1881) .. (0.8716, 1.2309) .. controls (0.9325, 1.2193) and (0.9536, 1.1463) .. (0.9795, 1.089) -- cycle;
-\else% back
-  %
-  % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \squirrel@part@draw[\squirrel@body!70!brown!60!black] (0,1.66) ellipse[x radius=0.06, y radius=0.03];
-  % 
-  % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \squirrel@part@draw[\squirrel@eye] (0.07,1.78) ellipse[x radius=0.05, y radius=0.07];
-  \squirrel@part@draw[\squirrel@eye] (-0.07,1.78) ellipse[x radius=0.05, y radius=0.07];
-  \squirrel@part@draw[\squirrel@pupil] (0.07,1.76) ellipse[x radius=0.017, y radius=0.027];
-  \squirrel@part@draw[\squirrel@pupil] (-0.07,1.76) ellipse[x radius=0.017, y radius=0.027];
-  %
-  % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \ifsquirrel@contour
-    \draw[\squirrel@contour,fill=white,line width=\scalingfactor*0.4pt] (-0.025,1.567) rectangle ++(0.02,0.03);
-    \draw[\squirrel@contour,fill=white,line width=\scalingfactor*0.4pt] (0.025,1.567) rectangle ++(-0.02,0.03);
-    \draw[\squirrel@contour,line width=\scalingfactor*0.4pt] (-0.15,1.61) .. controls (-0.15,1.61) and (-0.15,1.52) .. (0.0,1.61) .. controls (0.15,1.52) and (0.15,1.61) .. (0.15,1.61);
-  \else% contour
-    \fill[white] (-0.025,1.567) rectangle ++(0.02,0.03);
-    \fill[white] (0.025,1.567) rectangle ++(-0.02,0.03);
-    \draw[\squirrel@body!70!brown!60!black,line width=\scalingfactor*0.4pt] (-0.15,1.61) .. controls (-0.15,1.61) and (-0.15,1.52) .. (0.0,1.61) .. controls (0.15,1.52) and (0.15,1.61) .. (0.15,1.61);  
-  \fi% contour
-  % 
-  % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray] (0.2,0.85) ellipse[x radius=0.22, y radius=0.11, rotate=70];
-  \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray] (-0.2,0.85) ellipse[x radius=0.22, y radius=0.11, rotate=-70];
-  %
-\fi% back
-%
-% adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\csname squirrelhookbody\endcsname
-\csname tikzlinghookbody\endcsname
-%  
-}
+%And finally the \lstinline|contour| key will only draw the outlines:
+%\begin{tcblisting}{}
+%\squirrel[contour=black]
+%\end{tcblisting}
