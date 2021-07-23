@@ -358,8 +358,8 @@ A short example how the hooks can be used:
 \cs_new_protected:Npn \tikzlings_load_stys:N #1 {
   \clist_map_inline:Nn #1 {
     \exp_args:Nx \CommentInput { 
-      tikzlings- \__tikzlings_after_slash:w ##1 / / \s_stop 
-    .sty}
+      tikzlings- \__tikzlings_after_slash:w ##1 / / \s_stop .sty
+    }
   }
 }
 \cs_new_eq:NN \tikzling@loadstys \tikzlings_load_stys:N
