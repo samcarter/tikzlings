@@ -4,6 +4,15 @@
 
 ### New
 
+### Changed
+
+### Fixed
+
+
+## [v0.8]
+
+### New
+
 - Natalie, the bat
 
 ### Changed
@@ -87,7 +96,8 @@
 
 ------
 
-[Unreleased]: https://github.com/samcarter/tikzlings/compare/v0.7...HEAD
+[Unreleased]: https://github.com/samcarter/tikzlings/compare/v0.8...HEAD
+[v0.8]: https://github.com/samcarter/tikzlings/compare/v0.7...v0.8
 [v0.7]: https://github.com/samcarter/tikzlings/compare/v0.6...v0.7
 [v0.6]: https://github.com/samcarter/tikzlings/compare/v0.5...v0.6
 [v0.5]: https://github.com/samcarter/tikzlings/compare/v0.4...v0.5
