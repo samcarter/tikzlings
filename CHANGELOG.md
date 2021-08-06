@@ -14,6 +14,7 @@
 ### New
 
 - Natalie, the bat
+- adding broom and strawbroom for accessories 
 
 ### Changed
 
