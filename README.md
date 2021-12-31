@@ -56,7 +56,6 @@ An exhaustive list of possible options can be found in [package documentation](.
 
 ## Some examples
 
-
 <a href="./ViewingPlatform/Napoleon.svg"><img src="./ViewingPlatform/Napoleon.svg" alt="Napoleon" height="64"></a>
 <a href="./ViewingPlatform/Alfred_the_mouse.svg"><img src="./ViewingPlatform/Alfred_the_mouse.svg" alt="Alfred the mouse" height="64"></a>
 <a href="./ViewingPlatform/Latex3_bear.svg"><img src="./ViewingPlatform/Latex3_bear.svg" alt="Latex3 bear" height="64"></a>
@@ -78,12 +77,10 @@ An exhaustive list of possible options can be found in [package documentation](.
 <a href="./ViewingPlatform/Haggis.svg"><img src="./ViewingPlatform/Haggis.png" alt="Haggis" height="64"></a>
 <a href="./ViewingPlatform/Marmot_cupid.tex"><img src="./ViewingPlatform/Marmot_cupid.svg" alt="Marmot cupid" height="64"></a>
 
-
 <a href="./ViewingPlatform/Bruegel.svg"><img src="./ViewingPlatform/Bruegel.png" alt="Bruegel" height="64"></a>
 <a href="./ViewingPlatform/ElGreco.svg"><img src="./ViewingPlatform/ElGreco.png" alt="ElGreco" height="64"></a>
 <a href="./ViewingPlatform/Last_supper.svg"><img src="./ViewingPlatform/Last_supper.png" alt="Last Supper" height="64"></a>
 <a href="./ViewingPlatform/Vitruvian_coati.svg"><img src="./ViewingPlatform/Vitruvian_coati.svg" alt="Vitruvian coati" height="64"></a>
-
 
 <a href="./ViewingPlatform/lt3marmot.tex"><img src="./ViewingPlatform/lt3marmot.svg" alt="lt3marmot" height="64"></a>
 <a href="./ViewingPlatform/Coati_custom_body.tex"><img src="./ViewingPlatform/Coati_custom_body.svg" alt="Custom Body Coati" height="64"></a>
@@ -95,18 +92,6 @@ An exhaustive list of possible options can be found in [package documentation](.
 <a href="./ViewingPlatform/Spherical_pig.tex"><img src="./ViewingPlatform/Spherical_pig.png" alt="Spherical pig" height="64"></a>
 <a href="./ViewingPlatform/Rodent_Hood.tex"><img src="./ViewingPlatform/Rodent_Hood.svg" alt="Rodent Hood" height="64"></a>
 
-
 ## TikZlings in action
 
-Several TikZlings are featured in the following videos:
-
-<a href="https://vimeo.com/305374856"><img src="https://user-images.githubusercontent.com/43832342/49704004-3cd27500-fc0d-11e8-9002-319a8e71aca7.png" alt="The great TikZlings Christmas Extravaganza 2018" title="The great TikZlings Christmas Extravaganza 2018" height="128"></a>
-<a href="https://vimeo.com/380684973"><img src="https://user-images.githubusercontent.com/43832342/71256276-8382a100-2330-11ea-8996-e87132c6ad29.png" alt="The great TikZlings Christmas Extravaganza 2019" title="The great TikZlings Christmas Extravaganza 2019" height="128"></a>
-<a href="https://vimeo.com/492532561"><img src="https://user-images.githubusercontent.com/43832342/102637280-0c0b6b80-4156-11eb-8031-c67c20b474f4.png" alt="The great TikZlings Christmas Extravaganza 2020" title="The great TikZlings Christmas Extravaganza 2020" height="128"></a>
-<a href="https://vimeo.com/660399886"><img src="https://user-images.githubusercontent.com/43832342/147475062-6180d904-c24c-4c21-877e-e55f5e4e91ad.png" alt="The great TikZlings Christmas Extravaganza 2021" title="The great TikZlings Christmas Extravaganza 2021" height="128"></a>
-
-The source code of the movies is available from [TikZlings@github](https://github.com/TikZlings/).
-
-
-
-
+If you would like to observe TikZlings in their natural habitat, head over to the [TikZlings organisation](https://github.com/TikZlings/).
