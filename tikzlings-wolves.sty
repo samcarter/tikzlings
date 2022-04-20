@@ -1,0 +1,271 @@
+ % !TeX root = ./examples/wolf.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% This package is part of the TikZlings package
+%% A package to bring cute little animals and other beings into tikz
+%% Maintained by samcarter
+%%
+%% Project repository and bug tracker:
+%% https://github.com/samcarter/tikzlings
+%%
+%% Released under the LaTeX Project Public License v1.3c or later
+%% See http://www.latex-project.org/lppl.txt
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{tikzlings-wolves}[2022/04/10 version v0.8 Drawing wolves in TikZ]
+
+\RequirePackage{tikz}
+\RequirePackage{tikzlings-addons}
+\usetikzlibrary{decorations.pathmorphing}
+
+\newcommand*{\wolf}[1][]{%
+  \begin{scope}%
+    \tikzset{/wolf/.cd,#1}%
+    \wolf@draw%
+  \end{scope}%
+  \thing[#1]%
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname wolfhookforeground\endcsname
+  \csname tikzlinghookforeground\endcsname
+  %  
+}
+
+\newif\ifwolf@threeD
+\newif\ifwolf@rotatearms
+\newif\ifwolf@leftstep
+\newif\ifwolf@rightstep
+\newif\ifwolf@back
+\newif\ifwolf@contour
+
+\tikzset{
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Pass unknown keys on to tikz
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  /wolf/.search also={/tikz,/pgf,/thing},
+  /wolf/.cd,
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % body
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  body/.code         = \def\wolf@body{#1},
+  body               = gray!90!white,
+  eye/.code          = \def\wolf@eye{#1},
+  eye                = white,   
+  pupil/.code        = \def\wolf@pupil{#1},
+  pupil              = black,   
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % options
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  3D/.code           = \wolf@threeDtrue,
+  rotatearms/.code   = \wolf@rotatearmstrue
+                       \def\wolf@rotatearms{#1},
+  rotate arms/.forward to = /wolf/rotatearms,
+  rotatearms         = -50,
+  leftstep/.code     = \wolf@leftsteptrue,
+  left step/.forward to = /wolf/leftstep,
+  rightstep/.code    = \wolf@rightsteptrue,
+  right step/.forward to = /wolf/rightstep,    
+  back/.code         = \wolf@backtrue,  
+  contour/.code      = \wolf@contourtrue
+                       \def\wolf@contour{#1},
+  contour/.default   = black,  
+  outline/.forward to = /wolf/contour,   
+}
+
+\def\wolf@draw{%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % minimal bounding box size 
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \path (-0.625,0.1) rectangle (0.905, 2.17);
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % store the current scale factor
+  % from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
+  \pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
+  \pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
+  \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % 
+  % switch between 2D, 3D and contours, from
+  % https://chat.stackexchange.com/transcript/message/45991801#45991801
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifwolf@threeD
+    \def\wolf@part@draw[##1]{\shade[ball color=##1]}
+  \else% 3D
+    \ifwolf@contour
+      \def\wolf@part@draw[##1]{\draw[##1,\wolf@contour,fill=white,line width=\scalingfactor*0.4pt]}
+    \else% contour
+      \def\wolf@part@draw[##1]{\fill[##1]}
+    \fi% contour
+  \fi% 3D
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Body parts
+  % 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname wolfhookbackground\endcsname
+  \csname tikzlinghookbackground\endcsname
+  % 
+  % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifwolf@leftstep
+    \wolf@part@draw[\wolf@body!65!white] (-0.255,0.25) ellipse[x radius=0.23, y radius=0.09];  
+  \else% step
+    \wolf@part@draw[\wolf@body!65!white] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];  
+  \fi% step
+  %
+  \ifwolf@rightstep
+    \wolf@part@draw[\wolf@body!65!white] (0.255,0.25) ellipse[x radius=0.23, y radius=0.09]; 
+  \else% step
+    \wolf@part@draw[\wolf@body!65!white] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
+  \fi% step
+  %
+  % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \wolf@part@draw[\wolf@body] (0.22, 2.0392) .. controls   (0.22, 2.1584) and   (0.49460, 2.255) ..   (0.49460, 2.255) .. controls   (0.49460, 2.255) and (0.5300, 1.86) .. (0.3721, 1.86) .. controls (0.2891, 1.86) and   (0.22, 1.9201) .. (0.22, 2.0392) -- cycle;
+  \wolf@part@draw[\wolf@body!55!white] (0.22, 2.0392) .. controls (0.26, 2.1584) and (0.47, 2.22) .. (0.47, 2.20) .. controls (0.47, 2.2) and (0.49, 1.9) .. (0.3721, 1.9) .. controls (0.2891, 1.88) and (0.22, 1.88) .. (0.22, 2.0392) -- cycle;  
+  \wolf@part@draw[\wolf@body] (-0.22, 2.0392) .. controls   (-0.22, 2.1584) and   (-0.49460, 2.255) ..   (-0.49460, 2.255) .. controls   (-0.49460, 2.255) and (-0.5300, 1.86) .. (-0.3721, 1.86) .. controls (-0.2891, 1.86) and   (-0.22, 1.9201) .. (-0.22, 2.0392) -- cycle;
+  \wolf@part@draw[\wolf@body!55!white] (-0.22, 2.0392) .. controls (-0.26, 2.1584) and (-0.47, 2.22) .. (-0.47, 2.20) .. controls (-0.47, 2.2) and (-0.49, 1.9) .. (-0.3721, 1.9) .. controls (-0.2891, 1.88) and (-0.22, 1.88) .. (-0.22, 2.0392) -- cycle;  
+  % 
+  % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifwolf@back
+    \wolf@part@draw[\wolf@body!50!darkgray] (1.0893, 1.5779) .. controls (0.3433, 1.6612) and (0.4863, 0.6062) .. (-0.0243, 0.348) .. controls (1.0671, 0.068) and (0.8133, 1.1808) .. (1.0893, 1.5779) -- cycle;
+  \fi%back
+  %
+  % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \wolf@part@draw[\wolf@body!80!white,rotate around={-\wolf@rotatearms:(-0.36,1.3)}] (-0.8,1.3) ellipse[x radius=0.42, y radius=0.13];
+  \wolf@part@draw[\wolf@body!80!white,rotate around={\wolf@rotatearms:(0.36,1.3)}] (0.8,1.3) ellipse[x radius=0.42, y radius=0.13];
+  %
+  % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \wolf@part@draw[\wolf@body] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
+  %
+  % Tail in Back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifwolf@back
+    \wolf@part@draw[\wolf@body!50!darkgray] (1.0893, 1.5779) .. controls (0.3433, 1.6612) and (0.4863, 0.6062) .. (-0.0243, 0.348) .. controls (1.0671, 0.068) and (0.8133, 1.1808) .. (1.0893, 1.5779) -- cycle;
+  \fi%back
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname wolfhookbelly\endcsname
+  \csname tikzlinghookbelly\endcsname
+  % 
+  % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifwolf@back
+    \wolf@part@draw[\wolf@body!70!white!95!brown] (0.5, 1.8) .. controls (0.5, 1.58) and (0.2, 1.35) .. (0, 1.35) .. controls (-0.2, 1.35) and (-0.5, 1.58) .. (-0.5, 1.8) .. controls (-0.34, 2.3) and (0.34, 2.3) .. (0.5, 1.8) -- cycle;
+  \else% back
+    \wolf@part@draw[\wolf@body!70!white!95!brown] (0.5, 1.8) .. controls (0.5, 1.58) and (0.2, 1.25) .. (0, 1.16) .. controls (-0.2, 1.25) and (-0.5, 1.58) .. (-0.5, 1.8) .. controls (-0.34, 2.3) and (0.34, 2.3) .. (0.5, 1.8) -- cycle;
+  \fi% back
+  %
+  % Cheeks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifwolf@back
+    \wolf@part@draw[\wolf@body!40!white!80!brown] (-0.4935, 1.7443) .. controls (-0.4935, 1.7443) and (-0.1917, 1.7798) .. (-0.1371, 1.7333) .. controls (-0.07, 1.2) and (-0.07, 1.2) .. (-0.07, 1.2) .. controls (-0.259, 1.3169) and (-0.46, 1.5665) .. (-0.4935, 1.7443) -- cycle
+    (0.4935, 1.7443) .. controls (0.4935, 1.7443) and (0.1917, 1.7798) .. (0.1371, 1.7333) .. controls (0.07, 1.2) and (0.07, 1.2) .. (0.07, 1.2) .. controls (0.259, 1.3169) and (0.46, 1.5665) .. (0.4935, 1.7443) -- cycle;
+  \fi% back
+  %
+  % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifwolf@back
+  \wolf@part@draw[\wolf@eye] (-0.1514, 1.6791) .. controls (-0.1514, 1.6791) and (-0.1951, 1.6471) .. (-0.2341, 1.6584) .. controls (-0.2731, 1.6697) and (-0.2927, 1.72) .. (-0.2927, 1.72) .. controls (-0.2927, 1.72) and (-0.2492, 1.7521) .. (-0.2102, 1.7408) .. controls (-0.1712, 1.7295) and (-0.1514, 1.6791) .. (-0.1514, 1.6791) -- cycle;
+  \wolf@part@draw[\wolf@eye] (0.1514, 1.6791) .. controls (0.1514, 1.6791) and (0.1951, 1.6471) .. (0.2341, 1.6584) .. controls (0.2731, 1.6697) and (0.2927, 1.72) .. (0.2927, 1.72) .. controls (0.2927, 1.72) and (0.2492, 1.7521) .. (0.2102, 1.7408) .. controls (0.1712, 1.7295) and (0.1514, 1.6791) .. (0.1514, 1.6791) -- cycle;
+  \fi% back
+  %
+  % pupil %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifwolf@back
+    \wolf@part@draw[\wolf@pupil] (0.22, 1.695) circle[radius=0.025];
+    \wolf@part@draw[\wolf@pupil] (-0.22, 1.695) circle[radius=0.025];
+  \fi% back
+  %
+  % Hair and Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifwolf@back
+    % Hair from Back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \wolf@part@draw[\wolf@body!50!darkgray,decorate,decoration={zigzag,amplitude=\scalingfactor*0.3pt,segment length=\scalingfactor*2.5pt}] (-0.1,1.92) -- (-0.275,2.1) -- (-0.1,2.2) -- (0.1,2.2) -- (0.275,2.1) -- (0.1,1.92) -- cycle;
+  \else% back
+    % Hair from Front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \wolf@part@draw[\wolf@body!50!darkgray,decorate,decoration={zigzag,amplitude=\scalingfactor*0.3pt,segment length=\scalingfactor*2.5pt}] (0,1.6) -- (-0.1,1.92) -- (-0.275,2.1) -- (-0.1,2.2) -- (0.1,2.2) -- (0.275,2.1) -- (0.1,1.92) -- cycle;
+    % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \wolf@part@draw[\wolf@body!50!black] (0, 1.24) ellipse[x radius=0.07,y radius=0.05];
+    %
+  \fi% back
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname wolfhookbody\endcsname
+  \csname tikzlinghookbody\endcsname
+  % 
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Documentation
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\clearpage
+%\section[wolf]{Westy, the wolf}
+%
+%\emph{The wolf was kindly contributed by @cfroccajr. It is named ``Westy'' for the Western CT State University, whose new mascot is a wolf.}
+%
+%\subsection{Package name}
+%
+%\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
+%\vspace*{0.5cm}
+%\lstinline|\usepackage{tikzlings-wolves}| 
+%\vspace*{0.5cm}
+%\end{tcolorbox}
+%
+%\subsection{Basic Usage}
+%
+%\begin{tcblisting}{}
+%\wolf
+%\end{tcblisting}
+%
+%\subsection{Options}
+%
+%The basic wolf can be modified by changing its colour:
+%\begin{tcblisting}{}
+%\wolf[body=blue]
+%\end{tcblisting}
+%
+%In addition to the colour of the body, the colour of the eyes can be adjusted:
+%\begin{tcblisting}{}
+%\wolf[eye=red]
+%\end{tcblisting}
+%\begin{tcblisting}{}
+%\wolf[pupil=red]
+%\end{tcblisting}
+%
+%The rotation angle of its arms can be adjusted:
+%\begin{tcblisting}{}
+%\wolf[rotatearms=40]
+%\end{tcblisting}
+%
+%And the wolf can lift its legs:
+%\begin{tcblisting}{}
+%\wolf[leftstep]
+%\wolf[rightstep,xshift=2cm]
+%\end{tcblisting}
+%
+%To view the wolf from behind:
+%\begin{tcblisting}{}
+%\wolf[back]
+%\end{tcblisting}
+%
+%The key \lstinline|3D| will make the wolf 3-dimensional:
+%\begin{tcblisting}{}
+%\wolf[3D]
+%\end{tcblisting}
+%
+%And finally the \lstinline|contour| key will only draw the outlines:
+%\begin{tcblisting}{}
+%\wolf[contour=black]
+%\end{tcblisting}
