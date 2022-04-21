@@ -9,6 +9,17 @@
 ### Fixed
 
 
+## [v0.9]
+
+### New
+
+- Westy, the wolf
+
+### Changed
+
+### Fixed
+
+
 ## [v0.8]
 
 ### New
@@ -97,7 +108,8 @@
 
 ------
 
-[Unreleased]: https://github.com/samcarter/tikzlings/compare/v0.8...HEAD
+[Unreleased]: https://github.com/samcarter/tikzlings/compare/v0.9...HEAD
+[v0.9]: https://github.com/samcarter/tikzlings/compare/v0.8...v0.9
 [v0.8]: https://github.com/samcarter/tikzlings/compare/v0.7...v0.8
 [v0.7]: https://github.com/samcarter/tikzlings/compare/v0.6...v0.7
 [v0.6]: https://github.com/samcarter/tikzlings/compare/v0.5...v0.6
