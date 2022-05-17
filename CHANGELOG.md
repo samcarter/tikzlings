@@ -6,6 +6,8 @@
 
 ### Changed
 
+- Moving `\anteaterhookbelly` to be on top of the collar (see #27)
+
 ### Fixed
 
 

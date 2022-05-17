@@ -123,18 +123,22 @@
   % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \anteater@part@draw[\anteater@body] (0.52, 0.8) .. controls (0.52, 0.23) and (0.3, 0.17) .. (0, 0.17) .. controls (-0.3, 0.17) and (-0.52, 0.23) .. (-0.52, 0.8) .. controls (-0.52, 1.35) and (-0.3, 1.8) .. (0, 1.8) .. controls (0.3, 1.8) and (0.52, 1.35) .. (0.52, 0.8) -- cycle;
   %
+  % Collar %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifanteater@back
+    \anteater@part@draw[\anteater@body!45!white!95!orange] (-0,1.47) ellipse [x radius=0.36, y radius=0.28];    
+    \anteater@part@draw[\anteater@body!70!brown!50!darkgray]  
+     (-0,1.47) ellipse [x radius=0.35, y radius=0.23];  
+  \else% back
+    \anteater@part@draw[\anteater@body!45!white!95!orange]  (0.33, 1.55) -- (-0.33, 1.55) .. controls (-0.5, 1.05) and (-0.1, 0.95) .. (0, 0.60) .. controls (0.1, 0.95) and (0.5, 1.05) .. (0.33, 1.55) -- cycle;
+    \anteater@part@draw[\anteater@body!70!brown!50!darkgray] (0.33, 1.55) -- (-0.33, 1.55) .. controls (-0.45, 1.1) and (-0.1, 1) .. (0, 0.70) .. controls (0.1, 1) and (0.45, 1.1) .. (0.33, 1.55) -- cycle;
+  \fi% back
+  %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname anteaterhookbelly\endcsname
   \csname tikzlinghookbelly\endcsname
   %  
   \ifanteater@back
-    %
-     % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \anteater@part@draw[\anteater@body!45!white!95!orange] (-0,1.47) ellipse [x radius=0.36, y radius=0.28];    
-    %
-    % Collar %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \anteater@part@draw[\anteater@body!70!brown!50!darkgray]  
-   (-0,1.47) ellipse [x radius=0.35, y radius=0.23];  
+    % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \anteater@part@draw[\anteater@body]  (-0,1.73) ellipse [x radius=0.36, y radius=0.33];
     %
     % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -142,10 +146,6 @@
     \anteater@part@draw[\anteater@body!70!brown!50!darkgray] (-0.5551, 2.2281) .. controls (-0.4961, 2.2273) and (-0.4390, 2.2093) .. (-0.3831, 2.1919) .. controls (-0.3282, 2.173) and (-0.2725, 2.1539) .. (-0.2231, 2.1228) .. controls (-0.1875, 2.0984) and (-0.1524, 2.0637) .. (-0.1470, 2.0187) .. controls (-0.1446, 2.0028) and (-0.1518, 1.9881) .. (-0.1584, 1.9744) .. controls (-0.1706, 1.9343) and (-0.2090, 1.9063) .. (-0.25, 1.9017) .. controls (-0.3079, 1.8943) and (-0.3684, 1.9134) .. (-0.4132, 1.9504) .. controls (-0.4657, 1.9988) and (-0.5111, 2.0545) .. (-0.5513, 2.1133) .. controls (-0.5692, 2.1404) and (-0.5854, 2.1692) .. (-0.5945, 2.2004) .. controls (-0.5989, 2.2232) and (-0.5717, 2.2282) .. (-0.5551, 2.2281) -- cycle; 
   %  
   \else% back
-    %
-    % Collar %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \anteater@part@draw[\anteater@body!45!white!95!orange]  (0.33, 1.55) -- (-0.33, 1.55) .. controls (-0.5, 1.05) and (-0.1, 0.95) .. (0, 0.60) .. controls (0.1, 0.95) and (0.5, 1.05) .. (0.33, 1.55) -- cycle;
-    \anteater@part@draw[\anteater@body!70!brown!50!darkgray] (0.33, 1.55) -- (-0.33, 1.55) .. controls (-0.45, 1.1) and (-0.1, 1) .. (0, 0.70) .. controls (0.1, 1) and (0.45, 1.1) .. (0.33, 1.55) -- cycle;
     %
     % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \anteater@part@draw[\anteater@body!70!brown!50!darkgray] (0.3531, 1.9773) .. controls (0.4315, 2.0197) and (0.6217, 2.172) .. (0.5917, 2.2157) .. controls (0.5615, 2.2594) and (0.3224, 2.178) .. (0.2441, 2.1354) .. controls (0.1659, 2.093) and (0.1269, 2.023) .. (0.1569, 1.9793) .. controls (0.1870, 1.9356) and (0.2748, 1.9347) .. (0.3531, 1.9773) -- cycle;

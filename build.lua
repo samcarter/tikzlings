@@ -118,9 +118,9 @@ excludefiles = {"documentation.pdf"}
 require('build-private.lua')
 
 uploadconfig = {
-	author       = uploadconfig.author,
-	uploader     = uploadconfig.uploader,
-	email        = uploadconfig.email,
+  author       = uploadconfig.author,
+  uploader     = uploadconfig.uploader,
+  email        = uploadconfig.email,
   pkg          = ctanpkg,
   version      = packageversion .. " " .. packagedate,
   license      = "lppl1.3c",
