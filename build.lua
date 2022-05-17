@@ -10,18 +10,24 @@ module = "tikzlings"
 ctanpkg = "tikzlings"
 builddir = os.getenv("TMPDIR") 
 
+-- Private settings ==================================================
+local ok, build_private = pcall(require, "build-private.lua")
+
 -- Package version ===================================================
-local handle = io.popen("git describe --tags $(git rev-list --tags --max-count=1)")
-local oldtag = handle:read("*a")
-handle:close()
-newsubtag = string.sub(oldtag, 4)
-newmajortag = string.sub(oldtag, 0, 3)
-previousversion = newmajortag .. math.floor(newsubtag)
-if ( options["target"] == "tag") then
-	newsubtag = newsubtag + 1
+if ok then
+  local handle = io.popen("git describe --tags $(git rev-list --tags --max-count=1)")
+  local oldtag = handle:read("*a")
+  handle:close()
+  newsubtag = string.sub(oldtag, 4)
+  newmajortag = string.sub(oldtag, 0, 3)
+  previousversion = newmajortag .. math.floor(newsubtag)
+  if ( options["target"] == "tag") then
+    newsubtag = newsubtag + 1
+  end
+  packageversion = newmajortag .. math.floor(newsubtag)  
+else 
+  packageversion="v1.42"
 end
-packageversion = newmajortag .. math.floor(newsubtag)
---packageversion="v1.3"
 
 -- Package date ======================================================
 packagedate = os.date("!%Y-%m-%d")
@@ -115,7 +121,12 @@ sourcefiles = {"*.sty"}
 excludefiles = {"documentation.pdf"}
 
 -- configuring ctan upload ===========================================
-require('build-private.lua')
+if not ok then
+  uploadconfig = uploadconfig or {}
+  uploadconfig.author   = "xxx"
+  uploadconfig.uploader = "xxx"
+  uploadconfig.email    = "xxx"
+end
 
 uploadconfig = {
   author       = uploadconfig.author,
