@@ -28,19 +28,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{tikz}
 
-% from https://chat.stackexchange.com/transcript/message/56515698#56515698
 \ExplSyntaxOn
-\cs_new_protected:Npn \tikzlings_load_packages:N #1 {
-  \clist_map_inline:Nn #1 {
-    \exp_args:Nx \RequirePackage { 
-      tikzlings- \__tikzlings_after_slash:w ##1 / / \s_stop 
-    }
-  }
-}
-\cs_new:Npn \__tikzlings_after_slash:w #1 / #2 / #3 \s_stop { \tl_trim_spaces:n {#2} }
-\cs_new_eq:NN \tikzling@loadpackages \tikzlings_load_packages:N
+\cs_new_eq:NN \tikzlings@clistMapInlineNn \clist_map_inline:Nn
 \ExplSyntaxOff
-\tikzling@loadpackages\tikzling@list
+
+\tikzlings@clistMapInlineNn{\tikzlings@packages@clist}{%
+  \RequirePackage{tikzlings-#1}}
 
 \RequirePackage{tikzlings-addons}
 
@@ -65,29 +58,27 @@
   \pgfmathsetseed{\number\pdfrandomseed} 
 \fi
 
-% from https://chat.stackexchange.com/transcript/message/56516469#56516469
-% To be able to x-expand \iterateTikzlings, it has to be expandable, so no 'protected'.  Also \clist_map_inline:Nn is not expandable, so we have to use \clist_map_function:NN instead.
-\cs_new:Npn \tikzlings_iterate:N #1 { 
-  \clist_map_function:NN #1 \__tikzlings_braced_items:n 
-}
-% \__tikzlings_braced_items:n will receive each clist item, then:
-\cs_new:Npn \__tikzlings_braced_items:n #1 {
-  { % leave an open brace
-  % we don't want the x-expansion to expand the tikzling command, so we prevent expansion with \exp_not:c.  The 'c' variant is used so it builds a csname from its argument, before preventing the expansion: and the argument is what's before the '/'
-  \exp_not:c { 
-    \__tikzlings_before_slash:w #1 / \s_stop 
+% We don't want to expand the tikzling command when this is used with
+% x-expansion, so we prevent expansion with \exp_not:c. The 'c' variant builds
+% a csname from its argument, after which expansion is stopped by \exp_not:N.
+\cs_new:Npn \__tikzlings_brace_item:n #1
+  { { \exp_not:c {#1} } }
+
+\cs_new_protected:Npn \__tikzlings_declare_pgfmath_random_list:n #1
+  {
+    \pgfmathdeclarerandomlist { tikzlings } {#1}
   }
-  } % leave a close brace
-}
-\cs_new:Npn \__tikzlings_before_slash:w #1 / #2 \s_stop {
-  \tl_trim_spaces:n {#1} % make sure there are no spaces around the string
-}
-\cs_new_eq:NN \tikzling@iteraterandom \tikzlings_iterate:N
-\cs_new_eq:NN \ExpArgsNnx \exp_args:Nnx
 
+% Variant that uses \edef on the argument, then passes the result to
+% \__tikzlings_declare_pgfmath_random_list:n
+\cs_generate_variant:Nn \__tikzlings_declare_pgfmath_random_list:n { x }
+
+% Works because \clist_map_function:NN is expandable
+\__tikzlings_declare_pgfmath_random_list:x
+  {
+    \clist_map_function:NN \g__tikzlings_names_clist \__tikzlings_brace_item:n
+  }
 \ExplSyntaxOff
-
-\ExpArgsNnx\pgfmathdeclarerandomlist{tikzlings}{\tikzling@iteraterandom\tikzling@list}
 
 \newcommand{\tikzling}[1][]{%
   \pgfmathrandomitem{\tikzling@random}{tikzlings}%

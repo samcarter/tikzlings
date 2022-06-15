@@ -5,29 +5,53 @@
 % List of all TikZlings
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\def\tikzling@list{
-  anteater/anteaters,
-  bat/bats,
-  bear/bears,
-  bee/bees,
-  bug/bugs,
-  cat/cats,
-  chicken/chickens,
-  coati/coatis,
-  elephant/elephants,
-  hippo/hippos,
-  koala/koalas,
-  marmot/marmots,
-  mouse/mice,
-  moles/moles,
-  owl/owls,
-  panda/pandas,
-  penguin/penguins,
-  pig/pigs,
-  rhino/rhinos,
-  sheep/sheep,
-  sloth/sloths,
-  snowman/snowmen,
-  squirrel/squirrels,
-  wolf/wolves%
-}
+
+\ExplSyntaxOn
+
+\clist_const:Nn \c__tikzlings_clist
+  {
+    anteater / anteaters,
+    bat / bats,
+    bear / bears,
+    bee / bees,
+    bug / bugs,
+    cat / cats,
+    chicken / chickens,
+    coati / coatis,
+    elephant / elephants,
+    hippo / hippos,
+    koala / koalas,
+    marmot / marmots,
+    mouse / mice,
+    moles / moles,       % avoid conflict with siunitx's \mole
+    owl / owls,
+    panda / pandas,
+    penguin / penguins,
+    pig / pigs,
+    rhino / rhinos,
+    sheep / sheep,
+    sloth / sloths,
+    snowman / snowmen,
+    squirrel / squirrels,
+    wolf / wolves
+  }
+
+\clist_new:N \g__tikzlings_names_clist
+\clist_new:N \g__tikzlings_packages_clist
+
+% Store the two “columns” of \c__tikzlings_clist in these variables
+\clist_map_inline:Nn \c__tikzlings_clist
+  {
+    \seq_set_split:Nnn \l_tmpa_seq { / } {#1}
+    \clist_gput_right:Nx \g__tikzlings_names_clist
+      { \seq_item:Nn \l_tmpa_seq { 1 } }
+    \clist_gput_right:Nx \g__tikzlings_packages_clist
+      { \seq_item:Nn \l_tmpa_seq { 2 } }
+  }
+
+% Define aliases that can be used without \ExplSyntaxOn
+\cs_new_eq:NN \tikzlings@clist \c__tikzlings_clist
+\cs_new_eq:NN \tikzlings@names@clist \g__tikzlings_names_clist
+\cs_new_eq:NN \tikzlings@packages@clist \g__tikzlings_packages_clist
+
+\ExplSyntaxOff
