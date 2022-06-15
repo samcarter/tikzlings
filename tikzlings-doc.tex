@@ -33,6 +33,7 @@
   allcolors=SteelBlue!50!black
 ]{hyperref}
 \usetikzlibrary{3d}
+\usetikzlibrary{tikzlings}
 
 % macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\CTAN}{\textsc{CTAN}\xspace}
@@ -337,7 +338,7 @@ With regard to the individual components of the \tikzlings, they are located in 
 A short example how the hooks can be used:
 \begin{tcblisting}{}
 \newcommand{\mousehookbelly}{%
- \fill[red!80!black] 
+\fill[red!80!black] 
 (0.55, 1.35) -- (0.65, 0.3) -- 
 (-0.65, 0.3) -- (-0.55, 1.35) 
 -- (0.0, 0.9) -- cycle;
@@ -345,6 +346,42 @@ A short example how the hooks can be used:
 \mouse
 \end{tcblisting}
 
+Another way to use the \tikzlings is the \TikZ library of the same name. By loading this library, all macros from the normal package can be used. In addition the \TikZ library also defines the \tikzlings as \lstinline|pic|'s:
+\begin{tcolorbox}
+\begin{lstlisting}[morekeywords={bear,penguin,coati,thing,cat,duck,standalone,tikz,document}]
+\documentclass{standalone}
+
+\usepackage{tikz}
+\usetikzlibrary{tikzlings}
+
+\begin{document}
+\begin{tikzpicture}
+\path (1,0) pic{bear}
+       (2,1) pic[
+         coati/body=blue,
+         scale=0.5
+       ]{coati}
+       (3,2) pic[
+         thing/hat=red
+       ]{penguin};
+\end{tikzpicture}
+\end{document}  
+\end{lstlisting} 
+
+\tcblower
+\begin{tikzpicture}
+\path (1,0) pic{bear}
+       (2,1) pic[
+         coati/body=blue,
+         scale=0.5
+       ]{coati}
+       (3,2) pic[
+         thing/hat=red!80!black
+       ]{penguin};
+\end{tikzpicture}
+\end{tcolorbox}
+
+\clearpage
 \subsection*{List of all \tikzlings:}
 
 \begingroup
