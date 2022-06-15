@@ -21,32 +21,26 @@
 %
 % List of all TikZlings
 %
-% converting a list of the format
-%     bee/bees, marmot/marmots, ...
-% into a list of the format 
-%     /bee, /marmot, ...
-% for the also search option
-% usage: \tikzling@iteratesearch\tikzling@list
-%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{tikzlings-list}
 \RequirePackage{expl3}
 
 \ExplSyntaxOn
-\cs_new:Npn \tikzlings_iteratesearch:N #1 { 
-  \clist_map_function:NN #1 \__tikzlings_slashed_items:n 
-}
-\cs_new:Npn \__tikzlings_slashed_items:n #1 {
-  / 
-  \exp_not:N { 
-    \__tikzlings_before_slashsearch:w #1 / \s_stop 
+\seq_clear:N \l_tmpa_seq
+
+\clist_map_inline:Nn \g__tikzlings_names_clist
+  {
+    \seq_put_right:Nn \l_tmpa_seq { /#1 }
   }
-  , 
-}
-\cs_new:Npn \__tikzlings_before_slashsearch:w #1 / #2 \s_stop {
-  \tl_trim_spaces:n {#1} 
-}
-\cs_new_eq:NN \tikzling@iteratesearch \tikzlings_iteratesearch:N
+
+% Comma list such as '/anteater,/bat,/bear,...,/wolf' for use with the
+% '.search also' handler
+\clist_const:Nx \c__tikzlings_search_paths_clist
+  {
+    \seq_use:Nn \l_tmpa_seq { , }
+  }
+
+\cs_new_eq:NN \tikzlings@search@paths@clist \c__tikzlings_search_paths_clist
 \ExplSyntaxOff
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -119,7 +113,7 @@
   % General
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  /thing/.search also/.expanded={/tikz,/pgf,\tikzling@iteratesearch\tikzling@list}, 
+  /thing/.search also/.expanded={/tikz, /pgf, \tikzlings@search@paths@clist},
   %/thing/.unknown/.code=\relax, % bad idea, prevents tikz/pgf keys
   /thing/.cd,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

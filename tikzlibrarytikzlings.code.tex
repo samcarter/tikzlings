@@ -13,28 +13,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{tikzlings}
 
-% code from https://topanswers.xyz/tex?q=2030#a2282
-% many thanks to @Phelype Oleinik !
 \ExplSyntaxOn
 
-\cs_new:Npn \tikzlings_iterate_pic:N #1
-  { \clist_map_function:NN #1 \__tikzlings_pic_items:n }
-
-\cs_new:Npn \__tikzlings_pic_items:n #1
+\clist_map_inline:Nn \g__tikzlings_names_clist
   {
-    \exp_args:No \__tikzlings_pic_items_aux:n
-      { \__tikzlings_before_slash:w #1 / \s_stop }
+    \tikzset
+      {
+        % Create a csname in the argument but don't expand it now
+        #1/.pic/.expanded = { \exp_not:c {#1} },
+        #1/.search~also = { , /tikz, /pgf, /thing },
+      }
   }
-\cs_new:Npn \__tikzlings_pic_items_aux:n #1
-  {
-    #1/.pic = { \exp_not:c {#1} },
-    #1/.search~also = {,/tikz,/pgf,/thing},
-  }
-\cs_new_eq:NN \tikzling@iterate@pic \tikzlings_iterate_pic:N
 
 \ExplSyntaxOff
-
-\ExpandArgs{x}\tikzset{\tikzling@iterate@pic\tikzling@list}
 
 \tikzset{
   tikzling/.pic={\tikzling},
