@@ -9,7 +9,7 @@
 \raggedright
 
 \makeatletter
-\foreach \x/\y in \tikzlings@clist {
+\foreach \x in \tikzlings@names@clist {
   \begin{tikzpicture}
     \csname\x\endcsname
   \end{tikzpicture}
@@ -19,7 +19,7 @@
 \hrulefill
 
 \makeatletter
-\foreach \x/\y in \tikzlings@clist {
+\foreach \x in \tikzlings@names@clist {
   \begin{tikzpicture}
     \csname\x\endcsname[
       3D
@@ -31,7 +31,7 @@
 \hrulefill
 
 \makeatletter
-\foreach \x/\y in \tikzlings@clist {
+\foreach \x in \tikzlings@names@clist {
   \begin{tikzpicture}
     \csname\x\endcsname[
       back
@@ -43,7 +43,7 @@
 \hrulefill
 
 \makeatletter
-\foreach \x/\y in \tikzlings@clist {
+\foreach \x in \tikzlings@names@clist {
   \begin{tikzpicture}
     \csname\x\endcsname[
       contour
