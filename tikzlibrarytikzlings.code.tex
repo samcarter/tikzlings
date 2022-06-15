@@ -13,57 +13,28 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{tikzlings}
 
+% code from https://topanswers.xyz/tex?q=2030#a2282
+% many thanks to @Phelype Oleinik !
+\ExplSyntaxOn
 
-\tikzset{
-  anteater/.pic={\anteater},
-  anteater/.search also={,/tikz,/pgf,/thing},
-  bat/.pic={\bat},
-  bat/.search also={,/tikz,/pgf,/thing},  
-  bear/.pic={\bear},
-  bear/.search also={,/tikz,/pgf,/thing},
-  bee/.pic={\bee},
-  bee/.search also={,/tikz,/pgf,/thing}, 
-  bug/.pic={\bug},
-  bug/.search also={,/tikz,/pgf,/thing},  
-  cat/.pic={\cat},
-  cat/.search also={,/tikz,/pgf,/thing},  
-  chicken/.pic={\chicken},
-  chicken/.search also={,/tikz,/pgf,/thing},  
-  coati/.pic={\coati},
-  coati/.search also={,/tikz,/pgf,/thing},  
-  elephant/.pic={\elephant},
-  elephant/.search also={,/tikz,/pgf,/thing},  
-  hippo/.pic={\hippo},
-  hippo/.search also={,/tikz,/pgf,/thing},  
-  koala/.pic={\koala},
-  koala/.search also={,/tikz,/pgf,/thing},  
-  marmot/.pic={\marmot},
-  marmot/.search also={,/tikz,/pgf,/thing},  
-  mouse/.pic={\mouse},
-  mouse/.search also={,/tikz,/pgf,/thing},  
-  moles/.pic={\moles},
-  moles/.search also={,/tikz,/pgf,/thing},  
-  owl/.pic={\owl},
-  owl/.search also={,/tikz,/pgf,/thing},  
-  panda/.pic={\panda},
-  panda/.search also={,/tikz,/pgf,/thing},  
-  penguin/.pic={\penguin},
-  penguin/.search also={,/tikz,/pgf,/thing},  
-  pig/.pic={\pig},
-  pig/.search also={,/tikz,/pgf,/thing},  
-  rhino/.pic={\rhino},
-  rhino/.search also={,/tikz,/pgf,/thing},  
-  sheep/.pic={\sheep},
-  sheep/.search also={,/tikz,/pgf,/thing},  
-  sloth/.pic={\sloth},
-  sloth/.search also={,/tikz,/pgf,/thing},  
-  snowman/.pic={\snowman},
-  snowman/.search also={,/tikz,/pgf,/thing},  
-  squirrel/.pic={\squirrel},
-  squirrel/.search also={,/tikz,/pgf,/thing},  
-  wolf/.pic={\wolf},
-  wolf/.search also={,/tikz,/pgf,/thing},  
-}
+\cs_new:Npn \tikzlings_iterate_pic:N #1
+  { \clist_map_function:NN #1 \__tikzlings_pic_items:n }
+
+\cs_new:Npn \__tikzlings_pic_items:n #1
+  {
+    \exp_args:No \__tikzlings_pic_items_aux:n
+      { \__tikzlings_before_slash:w #1 / \s_stop }
+  }
+\cs_new:Npn \__tikzlings_pic_items_aux:n #1
+  {
+    #1/.pic = { \exp_not:c {#1} },
+    #1/.search~also = {,/tikz,/pgf,/thing},
+  }
+\cs_new_eq:NN \tikzling@iterate@pic \tikzlings_iterate_pic:N
+
+\ExplSyntaxOff
+
+\ExpandArgs{x}\tikzset{\tikzling@iterate@pic\tikzling@list}
 
 \tikzset{
   tikzling/.pic={\tikzling},
