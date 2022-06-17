@@ -117,7 +117,7 @@ textfiles= {"README_ctan.md"}
 ctanreadme= "README_ctan.md"
 packtdszip   = false
 installfiles = {"*.sty","*.code.tex"}
-sourcefiles = {"*.sty"}  
+sourcefiles = {"*.sty","*.code.tex"}  
 excludefiles = {"documentation.pdf"}
 
 -- configuring ctan upload ===========================================
