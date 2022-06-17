@@ -58,11 +58,25 @@
   \pgfmathsetseed{\number\pdfrandomseed} 
 \fi
 
-% We don't want to expand the tikzling command when this is used with
-% x-expansion, so we prevent expansion with \exp_not:c. The 'c' variant builds
-% a csname from its argument, after which expansion is stopped by \exp_not:N.
+% #1: tikzling name.
+% The second argument of \__tikzlings_show_tikzling:nn will be provided
+% by \tikzling.
 \cs_new:Npn \__tikzlings_brace_item:n #1
-  { { \exp_not:c {#1} } }
+  { { \__tikzlings_show_tikzling:nn {#1} } }
+
+% #1: tikzling name
+% #2: options passed to its command
+\cs_new_protected:Npn \__tikzlings_show_tikzling:nn #1#2
+  {
+    \group_begin:
+      \pgfkeys
+        {
+          /#1/.search~also/.expanded =
+            { /tikz, /pgf, /thing, \tikzlings@search@paths@clist }
+        }
+      \use:c {#1} [{#2}]
+    \group_end:
+  }
 
 \cs_new_protected:Npn \__tikzlings_declare_pgfmath_random_list:n #1
   {
@@ -81,6 +95,7 @@
 \ExplSyntaxOff
 
 \newcommand{\tikzling}[1][]{%
-  \pgfmathrandomitem{\tikzling@random}{tikzlings}%
-  \tikzling@random[#1]
+  \pgfmathrandomitem{\tikzlings@random}{tikzlings}%
+  % #1 is passed as second argument to \__tikzlings_show_tikzling:nn
+  \tikzlings@random{#1}%
 }
