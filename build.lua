@@ -116,7 +116,7 @@ docfiles = {"*-doc.tex"}
 textfiles= {"README_ctan.md"}
 ctanreadme= "README_ctan.md"
 packtdszip   = false
-installfiles = {"*.sty"}
+installfiles = {"*.sty","*.code.tex"}
 sourcefiles = {"*.sty"}  
 excludefiles = {"documentation.pdf"}
 

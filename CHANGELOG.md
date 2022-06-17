@@ -6,21 +6,25 @@
 
 ### Changed
 
-- Moving `\anteaterhookbelly` to be on top of the collar (see #27)
-
 ### Fixed
 
+## [v1.0]
+
+### New
+
+- introducing the `tikzlings` TikZ library with the ability to use the tikzlings in `pic` (thanks to @frougon and @Phelype Oleinik for their help!)
+
+### Changed
+
+- Moving `\anteaterhookbelly` to be on top of the collar (see #27)
+- internal restructuring/simplifying of code (thanks @frougon, #29)
+- random `\tikzling` now ignores keys specific to one tikzlings instead of throwing an error (thanks @frougon, #30)
 
 ## [v0.9]
 
 ### New
 
 - Westy, the wolf
-
-### Changed
-
-### Fixed
-
 
 ## [v0.8]
 
@@ -32,8 +36,6 @@
 ### Changed
 
 - Adding options to change the colours of various body parts: mouth (bear, hippo, koala, marmot, moles, panda, pig, rhino, mouth), blush (koala, sheep, marmot), whiskers (mouse), tail (pig), nose (sheep), eyelid (sloth)
-
-### Fixed
 
 ## [v0.7]
 
@@ -110,7 +112,8 @@
 
 ------
 
-[Unreleased]: https://github.com/samcarter/tikzlings/compare/v0.9...HEAD
+[Unreleased]: https://github.com/samcarter/tikzlings/compare/v1.0...HEAD
+[v1.0]: https://github.com/samcarter/tikzlings/compare/v0.9...v1.0
 [v0.9]: https://github.com/samcarter/tikzlings/compare/v0.8...v0.9
 [v0.8]: https://github.com/samcarter/tikzlings/compare/v0.7...v0.8
 [v0.7]: https://github.com/samcarter/tikzlings/compare/v0.6...v0.7
