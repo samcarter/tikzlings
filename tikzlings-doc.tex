@@ -420,7 +420,7 @@ Another way to use the \tikzlings is the \TikZ library of the same name. By load
 
 \subsection{Options}
 
-Only options common for all \tikzlings are supported for the \lstinline|\tikzling|. These are the ability to change the body colour
+Options common for all \tikzlings are supported for the \lstinline|\tikzling|. These are the ability to change the body colour
 \begin{tcblisting}{}
 \tikzling[body=blue]
 \end{tcblisting}
@@ -440,7 +440,7 @@ And finally the \lstinline|contour| key will only draw the outlines:
 \tikzling[contour=black]
 \end{tcblisting}
 
-If an option of a specific tikzlings is used (for example \lstinline|sleeping| which only the koala and sloth can do) this only works if you are lucky and one of them is drawn, in all other cases it will result in an error. 
+If an option of a specific Ti\emph{k}Zling is used (for example \lstinline|sleeping|, which only the koala and sloth can do) this option will only work for these \tikzlings. For all other \tikzlings, the option will be silently ignored.
 
 In addition all usual \TikZ and \lstinline|pgf| keys can be used in the optional argument as well as the accessories presented in the following section.
 
