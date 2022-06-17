@@ -73,14 +73,14 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.code              = \def\cat@body{#1},
+  body/.store in          = \cat@body,
   body                    = gray!30!black,
-  whiskers/.code          = \def\cat@whiskers{#1},
+  whiskers/.store in      = \cat@whiskers,
   whiskers                = gray!50!white,
-  eye/.code               = \def\cat@eye{#1},
+  eye/.store in           = \cat@eye,
   eye                     = yellow!80!orange,
   eyes/.forward to        = /cat/eye,
-  pupil/.code             = \def\cat@pupil{#1},
+  pupil/.store in         = \cat@pupil,
   pupil                   = black,
   pupilwidth/.code        = \def\cat@pupil@width{#1}
                             \edef\cat@pupil@offset{\strip@pt\dimexpr#1pt/4},
@@ -94,9 +94,9 @@
   very wide pupils/.code  = \def\cat@pupil@width{0.050}
                             \edef\cat@pupil@offset{\strip@pt\dimexpr 0.050pt/4},
   pupil width             = 0.015,
-  paws/.code              = \def\cat@paws{#1},
+  paws/.store in          = \cat@paws,
   paws                    = \cat@body,
-  nose/.code              = \def\cat@nose{#1},
+  nose/.store in          = \cat@nose,
   nose                    = red!40!white!80!gray,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %

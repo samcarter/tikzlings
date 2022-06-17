@@ -49,11 +49,11 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.code         = \def\mouse@body{#1},
+  body/.store in     = \mouse@body,
   body               = gray!90!white,
-  eye/.code          = \def\mouse@eye{#1},
+  eye/.store in      = \mouse@eye,
   eye                = \mouse@body!50!black,   
-  whiskers/.code     = \def\mouse@whiskers{#1},
+  whiskers/.store in = \mouse@whiskers,
   whiskers           = \mouse@body!50!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %

@@ -52,11 +52,11 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.code         = \def\koala@body{#1},
+  body/.store in     = \koala@body,
   body               = gray!75!white,
-  eye/.code          = \def\koala@eye{#1},
+  eye/.store in      = \koala@eye,
   eye                = black,   
-  mouth/.code        = \def\koala@mouth{#1},
+  mouth/.store in    = \koala@mouth,
   mouth              = \koala@body!40!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %

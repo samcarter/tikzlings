@@ -46,17 +46,17 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.code         = \def\moles@body{#1},
+  body/.store in     = \moles@body,
   body               = gray,
-  eye/.code          = \def\moles@eye{#1},
+  eye/.store in      = \moles@eye,
   eye                = \moles@body!60!black,   
-  feet/.code         = \def\moles@feet{#1},
+  feet/.store in     = \moles@feet,
   feet               = red!20!white!50!brown,
-  hands/.code        = \def\moles@hands{#1},
+  hands/.store in    = \moles@hands,
   hands              = red!20!white!50!brown,  
-  muzzle/.code       = \def\moles@muzzle{#1},
+  muzzle/.store in   = \moles@muzzle,
   muzzle             = red!20!white!50!brown, 
-  mouth/.code        = \def\moles@mouth{#1},
+  mouth/.store in    = \moles@mouth,
   mouth              = \moles@body!60!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %

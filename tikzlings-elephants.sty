@@ -45,9 +45,9 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.code         = \def\elephant@body{#1},
+  body/.store in     = \elephant@body,
   body               = gray,
-  eye/.code          = \def\elephant@eye{#1},
+  eye/.store in      = \elephant@eye,
   eye                = \elephant@body!30!black,  
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %

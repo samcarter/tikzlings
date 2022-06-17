@@ -52,17 +52,17 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.code         = \def\chicken@body{#1},
+  body/.store in     = \chicken@body,
   body               = brown!50!orange!70!yellow!80!white,
-  eye/.code          = \def\chicken@eye{#1},
+  eye/.store in      = \chicken@eye,
   eye                = white!90!gray,
-  pupil/.code        = \def\chicken@pupil{#1},
+  pupil/.store in    = \chicken@pupil,
   pupil              = brown!30!black,
-  bill/.code         = \def\chicken@bill{#1},
+  bill/.store in     = \chicken@bill,
   bill               = yellow,
-  feet/.code         = \def\chicken@feet{#1},
+  feet/.store in     = \chicken@feet,
   feet               = orange!90!yellow,  
-  comb/.code         = \def\chicken@comb{#1},
+  comb/.store in     = \chicken@comb,
   comb               = red,    
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %

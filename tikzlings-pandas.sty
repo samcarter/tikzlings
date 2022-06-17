@@ -46,13 +46,13 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.code         = \def\panda@body{#1},
+  body/.store in     = \panda@body,
   body               = white!90!black,
-  eye/.code          = \def\panda@eye{#1},
+  eye/.store in      = \panda@eye,
   eye                = white, 
-  pupil/.code        = \def\panda@pupil{#1},
+  pupil/.store in    = \panda@pupil,
   pupil              = black, 
-  mouth/.code        = \def\panda@mouth{#1},
+  mouth/.store in    = \panda@mouth,
   mouth              = black,   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %

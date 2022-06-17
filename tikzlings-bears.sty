@@ -45,11 +45,11 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.code         = \def\bear@body{#1},
+  body/.store in     = \bear@body,
   body               = brown,
-  eye/.code          = \def\bear@eye{#1},
+  eye/.store in      = \bear@eye,
   eye                = \bear@body!30!black,  
-  mouth/.code        = \def\bear@mouth{#1},
+  mouth/.store in    = \bear@mouth,
   mouth              = \bear@body!30!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %

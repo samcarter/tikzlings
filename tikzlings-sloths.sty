@@ -49,13 +49,13 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.code         = \def\sloth@body{#1},
+  body/.store in     = \sloth@body,
   body               = slothcol,
-  eye/.code          = \def\sloth@eye{#1},
+  eye/.store in      = \sloth@eye,
   eye                = black,   
-  eyelid/.code       = \def\sloth@eyelid{#1},
+  eyelid/.store in   = \sloth@eyelid,
   eyelid             = \sloth@body!50!white,
-  mouth/.code        = \def\sloth@mouth{#1},
+  mouth/.store in    = \sloth@mouth,
   mouth              = \sloth@body!40!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %

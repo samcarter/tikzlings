@@ -51,11 +51,11 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.code         = \def\sheep@body{#1},
+  body/.store in     = \sheep@body,
   body               = brown!50!darkgray!97!yellow,
-  eye/.code          = \def\sheep@eye{#1},
+  eye/.store in      = \sheep@eye,
   eye                = \sheep@body!50!black, 
-  nose/.code         = \def\sheep@nose{#1},
+  nose/.store in     = \sheep@nose,
   nose               = \sheep@body!50!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %

@@ -46,11 +46,11 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.code         = \def\coati@body{#1},
+  body/.store in     = \coati@body,
   body               = brown!50!darkgray!97!yellow,
-  eye/.code          = \def\coati@eye{#1},
+  eye/.store in      = \coati@eye,
   eye                = \coati@body!50!black,   
-  rotatehead/.code   = \def\coati@rotatehead{#1},
+  rotatehead/.store in = \coati@rotatehead,
   rotate head/.forward to = /coati/rotatehead,
   rotatehead         = 0,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -47,19 +47,19 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.code         = \def\bat@body{#1},
+  body/.store in     = \bat@body,
   body               = black!75!white,
-  ears/.code         = \def\bat@ears{#1},
+  ears/.store in     = \bat@ears,
   ears               = \bat@body,     
-  eye/.code          = \def\bat@eye{#1},
+  eye/.store in      = \bat@eye,
   eye                = white,
-  pupil/.code        = \def\bat@pupil{#1},
+  pupil/.store in    = \bat@pupil,
   pupil              = black,
-  mouth/.code        = \def\bat@mouth{#1},
+  mouth/.store in    = \bat@mouth,
   mouth              = black,     
-  feet/.code         = \def\bat@feet{#1},
+  feet/.store in     = \bat@feet,
   feet               = orange, 
-  wings/.code        = \def\bat@wings{#1},
+  wings/.store in    = \bat@wings,
   wings              = 1,  
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %

@@ -45,11 +45,11 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.code         = \def\squirrel@body{#1},
+  body/.store in     = \squirrel@body,
   body               = brown!40!gray!90!red,
-  eye/.code          = \def\squirrel@eye{#1},
+  eye/.store in      = \squirrel@eye,
   eye                = white, 
-  pupil/.code        = \def\squirrel@pupil{#1},
+  pupil/.store in    = \squirrel@pupil,
   pupil              = black,    
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %

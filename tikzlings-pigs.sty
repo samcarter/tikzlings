@@ -47,13 +47,13 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.code         = \def\pig@body{#1},
+  body/.store in     = \pig@body,
   body               = pigdark,
-  eye/.code          = \def\pig@eye{#1},
+  eye/.store in      = \pig@eye,
   eye                = gray,  
-  tail/.code         = \def\pig@tail{#1},
+  tail/.store in     = \pig@tail,
   tail               = \pig@body, 
-  mouth/.code        = \def\pig@mouth{#1},
+  mouth/.store in    = \pig@mouth,
   mouth              = gray,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %

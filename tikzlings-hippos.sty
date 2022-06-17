@@ -45,15 +45,15 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.code         = \def\hippo@body{#1},
+  body/.store in     = \hippo@body,
   body               = gray,
-  eye/.code          = \def\hippo@eye{#1},
+  eye/.store in      = \hippo@eye,
   eye                = white,   
-  pupil/.code        = \def\hippo@pupil{#1},
+  pupil/.store in    = \hippo@pupil,
   pupil              = black,  
-  toes/.code         = \def\hippo@toes{#1},
+  toes/.store in     = \hippo@toes,
   toes               = \hippo@body!55!white,
-  mouth/.code        = \def\hippo@mouth{#1},
+  mouth/.store in    = \hippo@mouth,
   mouth              = \hippo@body!70!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
