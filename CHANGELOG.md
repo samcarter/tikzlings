@@ -8,6 +8,8 @@
 
 ### Fixed
 
+- fixed bug in bug code (typo in hook name)
+
 ## [v1.0]
 
 ### New
