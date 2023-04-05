@@ -45,70 +45,70 @@ end
 -- replace version tags in .sty and -doc.tex files ===================
 tagfiles = {"*.sty", "*-doc.tex", "README_ctan.md", "CHANGELOG.md"}
 function update_tag (file,content,tagname,tagdate)
-	tagdate = string.gsub (packagedate,"-", "/")
-	if string.match (file, "%.sty$" ) then
-		content = string.gsub (
-			content,
-			"\\ProvidesPackage{(.-)}%[%d%d%d%d%/%d%d%/%d%d version v%d%.%d+",
-			"\\ProvidesPackage{%1}[" .. tagdate.." version "..packageversion
-		)
-		return content
-	elseif string.match (file, "*-doc.tex$" ) then
-		content = string.gsub (
-			content,
-			"\\date{Version v%d%.%d+ \\textendash{} %d%d%d%d%/%d%d%/%d%d",
-			"\\date{Version " .. packageversion .. " \\textendash{} " .. tagdate
-		)
-		return content
-	elseif string.match (file, "README_ctan.md$" ) then
-		content = string.gsub (
-			content,
-			"Current version: %d%d%d%d%/%d%d%/%d%d version v%d%.%d+",
-			"Current version: " .. tagdate.." version "..packageversion
-		)
-		return content
-    elseif string.match (file, "CHANGELOG.md$" ) then
-        local url = "https://github.com/samcarter/" .. module .. "/compare/"
-        local previous = string.match(content,"compare/(v%d%.%d)%.%.%.HEAD")
-        
-        -- copying current changelong to announcement.txt
-        -- finding start and end in changelog
-        i, startstring = string.find(content, "## %[Unreleased%]")
-        stopstring, i = string.find(content, "## %[" .. previousversion .. "%]")
-        -- opening file and writing substring
-        file = io.open("announcement.txt", "w")
-        file:write(string.sub(content, startstring+3, stopstring-1), "\n")
-        file:close()
-        
-        -- adding new unreleased heading at the top
-		content = string.gsub (
-			content,
+  tagdate = string.gsub (packagedate,"-", "/")
+  if string.match (file, "%.sty$" ) then
+    content = string.gsub (
+      content,
+      "\\ProvidesPackage{(.-)}%[%d%d%d%d%/%d%d%/%d%d version v%d%.%d+",
+      "\\ProvidesPackage{%1}[" .. tagdate.." version "..packageversion
+    )
+    return content
+  elseif string.match (file, "*-doc.tex$" ) then
+    content = string.gsub (
+      content,
+      "\\date{Version v%d%.%d+ \\textendash{} %d%d%d%d%/%d%d%/%d%d",
+      "\\date{Version " .. packageversion .. " \\textendash{} " .. tagdate
+    )
+    return content
+  elseif string.match (file, "README_ctan.md$" ) then
+    content = string.gsub (
+      content,
+      "Current version: %d%d%d%d%/%d%d%/%d%d version v%d%.%d+",
+      "Current version: " .. tagdate.." version "..packageversion
+    )
+    return content
+  elseif string.match (file, "CHANGELOG.md$" ) then
+    local url = "https://github.com/samcarter/" .. module .. "/compare/"
+    local previous = string.match(content,"compare/(v%d%.%d)%.%.%.HEAD")
+      
+    -- copying current changelong to announcement.txt
+    -- finding start and end in changelog
+    i, startstring = string.find(content, "## %[Unreleased%]")
+    stopstring, i = string.find(content, "## %[" .. previousversion .. "%]")
+    -- opening file and writing substring
+    file = io.open("announcement.txt", "w")
+    file:write(string.sub(content, startstring+3, stopstring-1), "\n")
+    file:close()
+      
+    -- adding new unreleased heading at the top
+    content = string.gsub (
+      content,
             "## %[Unreleased%]",
             "## [Unreleased]\n\n### New\n\n### Changed\n\n### Fixed\n\n\n## [" .. packageversion .."]"        
-		)
+    )
         
         -- adding new link at bottom
-		content = string.gsub (
-			content,
+    content = string.gsub (
+      content,
             "v%d.%d%.%.%.HEAD",
             packageversion .. "...HEAD\n[" .. packageversion .. "]: " .. url .. previousversion .. "..." .. packageversion
-		)
-		return content
-	end
-	return content
+    )
+    return content
+  end
+  return content
 end
 
 -- committing retagged file and tag the commit =======================
 function tag_hook(tagname)
-	git("add", "*.sty")
-	git("add", "*-doc.tex")
-	git("add", "README_ctan.md")
-    git("add", "CHANGELOG.md")
-	os.execute("latexmk " .. module .. "-doc")
-	os.execute("cp " .. module .. "-doc.pdf documentation.pdf")
-	git("add", "documentation.pdf")
-	git("commit -m 'step version ", packageversion, "'" )
-	git("tag", packageversion)
+  git("add", "*.sty")
+  git("add", "*-doc.tex")
+  git("add", "README_ctan.md")
+  git("add", "CHANGELOG.md")
+  os.execute("latexmk " .. module .. "-doc")
+  os.execute("cp " .. module .. "-doc.pdf documentation.pdf")
+  git("add", "documentation.pdf")
+  git("commit -m 'step version ", packageversion, "'" )
+  git("tag", packageversion)
 end
 
 -- collecting files for ctan =========================================
