@@ -11,6 +11,7 @@ A big thank you to all the people who contributed with code, ideas or feedback t
 ## Available TikZlings
 
 <a href="./Examples/anteater.tex"><img src="./Examples/anteater.svg" alt="Anteater" height="64"></a>
+<a href="./Examples/ape.tex"><img src="./Examples/ape.svg" alt="Ape" height="64"></a>
 <a href="./Examples/bat.tex"><img src="./Examples/bat.svg" alt="Bat" height="64"></a>
 <a href="./Examples/bear.tex"><img src="./Examples/bear.svg" alt="Bear" height="64"></a>
 <a href="./Examples/bee.tex"><img src="./Examples/bee.svg" alt="Bee" height="64"></a>

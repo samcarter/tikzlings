@@ -4,6 +4,9 @@
 
 ### New
 
+- Sandra, the ape (kindly contributed by @NuzzleTOO)
+- new accessories: banana and stick with leaf (kindly contributed by @NuzzleTOO)
+
 ### Changed
 
 ### Fixed

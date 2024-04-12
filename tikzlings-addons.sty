@@ -86,6 +86,7 @@
 \newif\ifthing@milkshake
 \newif\ifthing@wine
 \newif\ifthing@cocktail
+\newif\ifthing@banana
 % Sport %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifthing@cricket
 \newif\ifthing@hockey
@@ -106,6 +107,7 @@
 \newif\ifthing@umbrella
 \newif\ifthing@umbrellaclosed
 \newif\ifthing@handbag
+\newif\ifthing@stick
 
 \tikzset{%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -247,7 +249,10 @@
   wine/.code              = \thing@winetrue
                             \def\thing@wine{#1},  
   wine/.default           = red!70!black,  
-  cocktail/.code          = \thing@cocktailtrue,   
+  cocktail/.code          = \thing@cocktailtrue, 
+  banana/.code            = \thing@bananatrue
+                            \def\thing@banana{#1},
+  banana/.default         = yellow!80!orange,  
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Sport
@@ -331,6 +336,11 @@
   handbag/.code           = \thing@handbagtrue
                             \def\thing@handbag{#1},
   handbag/.default        = red!70!black,  
+  stick/.code             = \thing@sticktrue
+                            \def\thing@stick{#1},
+  stick/.default          = red!60!green,
+  leaf/.store in          = \thing@leaf,
+  leaf                    = green!70!red,       
 }
 
 \def\thing@draw{%
@@ -589,7 +599,7 @@
   \fill[green!40!brown] (1.00,0.60) ellipse[x radius=0.03, y radius=0.06];
   \end{scope}
 \fi
-% no pizza %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% not pizza %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@davidlikespineapplepizza
   \begin{scope}[xshift=-28,yshift=2]
   \fill[brown] (1.00,0.60) ellipse[x radius=0.4, y radius=0.2];
@@ -694,6 +704,19 @@
   \fill[gray!60!white] (0.928,0.64) -- (0.85,0.77) -- (1.08,0.77) -- cycle;
   \fill[green!40!brown!60!white] (0.94,0.71) circle[radius=0.04];
   \fill[red!80!black] (0.94,0.72) circle[radius=0.01];
+  \end{scope}
+\fi
+%
+% banana %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifthing@banana
+  \begin{scope}[yshift=27, xshift=7,rotate=25]
+    \fill[\thing@banana!30!] (0.02,0) .. controls (0.21,0.20) and (0.21,0.40) .. (0.02,0.6) arc [start angle=60,end angle=120, radius =0.04] .. controls (0.07,0.40) and (0.07,0.20) .. (-0.02,0) --cycle ;
+    %peel
+    \begin{scope}
+      \clip (-0.04,-0.01) rectangle (0.20,0.3);
+      \fill[\thing@banana] (0.03,0) .. controls (0.22,0.20) and (0.22,0.40) .. (0.03,0.6) arc [start angle=60,end angle=120, radius =0.06] .. controls (0.06,0.40) and (0.06,0.20) .. (-0.03,0);
+    \end{scope}
+    \fill[\thing@banana!60!] (0.12,0.3) arc [start angle=140, end angle=-100, y radius=0.20, x radius=0.06]  arc [start angle=-90, end angle=90, y radius=0.15, x radius=0.02] (0.12,0.3) arc [start angle=60, end angle=270, y radius=0.15, x radius=0.1] arc [start angle=270, end angle=90, y radius=0.13, x radius=0.04];
   \end{scope}
 \fi
 %
@@ -875,6 +898,24 @@
 \ifthing@handbag
   \fill[\thing@handbag] (0.5189, 0.1751) -- (-0.1913, 0.3097) -- (-0.0315, 0.7086) -- (0.5168, 0.6152) -- cycle;
   \fill[\thing@handbag!70!black] (0.4143, 0.4354) .. controls (0.5139, 0.9811) and (0.1204, 1.0719) .. (0.0134, 0.5155) -- (0.0957, 0.4996) .. controls (0.1753, 0.8952) and (0.3949, 0.8883) .. (0.3324, 0.4536) -- cycle;
+\fi
+%
+% stick %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifthing@stick
+  \begin{scope}[rotate=-30,yshift=26,xshift=-7]
+    %leaf
+    \begin{scope}[rotate=60, xshift=8.2,yshift=8.1]
+    \fill[\thing@leaf] (-0.01,0) .. controls (-0.1,0) and (-0.02, 0.2) .. (0,0.2) .. controls (0.02, 0.2) and (0.1,0) .. (0.01,0.0);
+    \path[clip] (-0.04,-0.04)-- (-0.01,0) .. controls (-0.1,0) and (-0.02, 0.2) .. (0,0.2) .. controls (0.02, 0.2) and (0.1,0) .. (0.01,0)-- (0.04,-0.04) --cycle;
+    \draw[\thing@leaf!80!, line width=0.1] (0,-0.04) --  (0,0.2) \foreach \i in {0.02,0.04,...,0.2} {(0,\i) -- ++(0.1,\i) (0,\i) -- ++(-0.1,\i)} ;
+    \end{scope} 
+    %stick itself
+    \fill[\thing@stick!90!red] (-0.04,0.8) -- (-0.04,0.4) arc[start angle=345,end angle=270,radius=0.03] -- ++(0,-0.01) arc[start angle=90,end angle=15,radius=0.03] -- (-0.04,0) arc [start angle=180, end angle=360 ,x radius=0.04, y radius=0.02] -- (0.04, 0.4) arc [start angle=180, end angle=120, radius=0.08] arc [start angle=-90, end angle=90, x radius=0.02, y radius=0.04] arc [start angle=240, end angle=180, radius=0.08] -- (0.04,0.75) arc [start angle=0, end angle=120 ,x radius=0.04, y radius=0.02] --cycle; 
+    \fill[\thing@stick!90!] (0.08, 0.51) ellipse [x radius=0.02, y radius=0.04] (0,0.75) ellipse [x radius=0.04, y radius=0.02] ;
+    \draw[\thing@stick!90!red, line width=0.06] (0.08, 0.51) ellipse [x radius=0.016, y radius=0.032]
+    ellipse [x radius=0.012, y radius=0.024] ellipse [x radius=0.008, y radius=0.016] (0,0.75) ellipse [y radius=0.016, x radius=0.032] ellipse [y radius=0.012, x radius=0.024]  ellipse [y radius=0.008, x radius=0.016] ;
+    \fill[\thing@stick!90!red] (0.08, 0.51) ellipse [x radius=0.004, y radius=0.008] (0,0.75) ellipse [x radius=0.008, y radius=0.004];
+  \end{scope}
 \fi
 %
 }
