@@ -11,38 +11,40 @@
 % See http://www.latex-project.org/lppl.txt
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% !TeX program = txs:///arara
+% arara: latexmk: {
+% arara: --> engine: pdflatex,
+% arara: --> options: [
+% arara: -->    '-shell-escape',
+% arara: -->    '-synctex=1',
+% arara: -->    '-interaction=nonstopmode',
+% arara: -->  ]
+% arara: --> }
 \documentclass[parskip=half]{scrartcl}
 
+% meta %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{The \texorpdfstring{\tikzlings}{tikzlings} package}
+\subtitle{drawing animals and beings in \TikZ}
+\author{%
+  \texorpdfstring{
+    \begin{tikzpicture}
+      \penguin
+    \end{tikzpicture}\\[0.8em]
+    \texttt{samcarter}\\
+    \url{https://github.com/samcarter/tikzlings}\\
+    \url{https://www.ctan.org/pkg/tikzlings}
+  }{samcarter}}
+\date{Version v1.0 \textendash{} 2022/06/17}
+
+\usepackage[
+  themecolor=samviolet
+]{\jobname-settings}
+
 % packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage[T1]{fontenc}  
-\usepackage[utf8]{inputenc}    
-\usepackage[english]{babel}
-\usepackage[svgnames]{xcolor}
-\usepackage[bitstream-charter]{mathdesign}
 \usepackage{tikzlings}
-\usepackage[most]{tcolorbox}
 \usepackage{bearwear}
-\usepackage[paper=a4paper,margin=3cm]{geometry}
-\usepackage{url}
-\usepackage{xspace}
-\usepackage{scrlayer-scrpage} 
-\usepackage[hang,flushmargin,bottom]{footmisc}
-\usepackage[%
-  colorlinks=true,
-  breaklinks=true,
-  allcolors=SteelBlue!50!black
-]{hyperref}
 \usetikzlibrary{3d}
 \usetikzlibrary{tikzlings}
-
-% macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\CTAN}{\textsc{CTAN}\xspace}
-\newcommand{\TikZ}{Ti\emph{k}Z\xspace}
-\newcommand{\tikzducks}{Ti\emph{k}Zducks\xspace}
-\newcommand{\tikzmarmots}{Ti\emph{k}Zmarmots\xspace}
-\newcommand{\tikzlings}{Ti\emph{k}Zlings\xspace}
-\newcommand{\miktex}{MiK\TeX\xspace}
-\newcommand{\texlive}{\TeX{}Live\xspace}
 
 % including commented lines from the .sty files %%%%%%%%%%%%%%%%%%%%%%
 % thanks to Phelype Oleinik https://topanswers.xyz/tex?q=1861#a2092
@@ -107,10 +109,6 @@
 \ExplSyntaxOff
 
 % customisation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\addtokomafont{sectioning}{\color{SteelBlue}}
-\addtokomafont{date}{\normalsize}
-\addtokomafont{author}{\normalsize}
-
 \deftocheading{toc}{}%
 \setcounter{tocdepth}{1}
 
@@ -141,90 +139,25 @@
 \renewcommand*{\subsectionformat}{}
 \renewcommand*{\sectionformat}{}
 
-\setlength{\footnotemargin}{0.7em}
-
-\colorlet{blue}{SteelBlue}
-
-\lstdefinestyle{duckstyle}{%
-  language={[latex]TeX},
-  tabsize=2,
-  breaklines,
-  basicstyle=\ttfamily,
-  commentstyle={\color{green!50!black}\slshape}, 
-  columns=fullflexible,
-  alsodigit={-},
-  alsoletter={3},
-  emphstyle=\color{red!60!black},
-  emph=[1]{
-    % package names
-    tikzlings, tikzlings-marmots, tikzlings-bears, tikzlings-coatis, tikzlings-koalas, tikzlings-marmots, tikzlings-owls, tikzlings-penguins, tikzlings-snowmen, tikzlings-mice, tikzlings-moles, tikzlings-sloths, tikzlings-pigs, tikzlings-cats, tikzlings-hippos, tikzlings-rhinos, tikzlings-pandas, tikzlings-bees, tikzlings-anteaters, tikzlings-squirrels, tikzlings-sheep, tikzlings-chickens, tikzlings-elephants, tikzlings-bugs, tikzlings-bats, tikzlings-wolves, tikzlings-apes,
-    % tikzlings options
-    body, 3D, rotatehead, sideward, blush, sleeping, whiskers, teeth, shadow, askphil, leftstep, rightstep, eye, nose, pupil, bill, feet, belly, ask, phil, mouth, rotatearms, paws, back, pupilwidth, globalwarming, wings, antennas, stripes, arms, ears, tail, eyelid, hands, muzzle, schroedinger, toes, monocle, contour, comb, baby, skin, legs, handposition, openmouth, seenoevil, hearnoevil, speaknoevil, mizaru, kikazaru, iwazaru,
-    % acessoires
-    buttons, hat, tophat, beret, strawhat, ribbon, harlequin, niuqelrah, witch, magichat, magicstars, crown, queencrown, kingcrown, santa, chef, graduate, tassel, alien, book, bookcolour, signpost, signcolour, signback, speech, think, bubblecolour, pizza, cheese, baguette, cake, icecream, flavoura, flavourb, flavourc, milkshake, wine, cricket, hockey, football, crystalball, magicwand, rollingpin, lightsaber, torch, basket, easter, egga, eggb, eggc, crozier, shovel, pickaxe, umbrella, umbrellaclosed, handbag, cocktail, strawbroom, strawbroomstick, strawbroomribbon, broom, broomstick, banana, stick, leaf,
-    % tikz options
-    scale, yshift, xshift, rotate,
-    % other
-    figchild, standalone, document,  
-  },
-  texcsstyle=*\color{SteelBlue!50!black}\bfseries,
-  keywordstyle=\color{red!60!black}\bfseries,
-  morekeywords={tikzpicture},
-  moretexcs={
-    % latex keywords
-    usepackage, usetikzlibrary, 
-    % tikzlings names
-    marmot, coati, bear, koala, owl, penguin, thing, tikzling, snowman, mouse, moles, sloth, pig, cat, hippo, rhino, panda, bee, anteater, squirrel, bearwear, sheep, chicken, elephant, bug, bat, wolf, ape,
-    % other
-    tikzlinghookbackground, tikzlinghookbelly, tikzlinghookbody, tikzlinghookforeground, mousehookbelly
-  },
-  delim ={[s][\ttfamily\color{green!50!black}]{$}{$}},
-  moredelim=[is][\footnotesize\ttfamily\color{orange!70!black}]{|}{|},
-  index=[1][emph]
-}
-
-\tcbset{%
-  colframe=SteelBlue!50!black,
-  arc=0mm,
-  fonttitle=\bfseries,
-  sidebyside,
-  listing options={style=duckstyle},
-  center lower,
-  righthand width=6.5cm,
-  bottom=0pt, 
-  top=0pt,
-  tikz lower,
-  height plus=3cm,
-  colback=SteelBlue!30!white
-}
-
-\lstset{style=duckstyle}
-
 \pgfmathsetseed{2}
 \setlength{\footheight}{50pt}
 
 \cfoot{\thepage} 
-\pagestyle{scrheadings}
-
-\newcommand{\coatihookbackground}{\path (-1.63,0.1) rectangle (1.63,2.26);}
-\newcommand{\mousehookbackground}{\path (-1.6,0.1) rectangle (0.905, 2.17);}
-\newcommand{\cathookbackground}{\path (-1.6,0.1) rectangle (0.905, 2.17);}
-
 \cfoot{%
   \begin{tikzpicture}[scale=0.5] 
       \tikzling[signpost={\thepage}]
   \end{tikzpicture}
 } 
+\pagestyle{scrheadings}
 
-% meta %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{The \texorpdfstring{\tikzlings}{tikzlings} package}
-\subtitle{drawing animals and beings in \TikZ}
-\author{%
-  \texorpdfstring{\texttt{samcarter}\\[0.8em]
-    \url{https://github.com/samcarter/tikzlings}\\
-    \url{https://www.ctan.org/pkg/tikzlings}
-  }{samcarter}}
-\date{Version v1.0 \textendash{} 2022/06/17}
+\tcbset{%
+  tikz lower,
+  height plus=3cm,
+}
+
+\newcommand{\coatihookbackground}{\path (-1.63,0.1) rectangle (1.63,2.26);}
+\newcommand{\mousehookbackground}{\path (-1.6,0.1) rectangle (0.905, 2.17);}
+\newcommand{\cathookbackground}{\path (-1.6,0.1) rectangle (0.905, 2.17);}
 
 \begin{document}
 \maketitle
@@ -252,36 +185,38 @@ Copyright \raisebox{0.2em}{\tiny\fontfamily{cmr}\selectfont\textcopyright}
 \clearpage
 \section*{The \tikzlings}
 
-The \tikzlings package is a collection of packages. It can either be loaded as a whole with \lstinline|\usepackage{tikzlings}| or the subpackages containing the individual animals (and beings) can be used separately, e.g.\ by loading \lstinline|\usepackage{tikzlings-marmots}|.
+The \tikzlings package is a collection of packages. It can either be loaded as a whole with \saminline|\usepackage{tikzlings}| or the subpackages containing the individual animals (and beings) can be used separately, e.g.\ by loading \saminline|\usepackage{tikzlings-marmots}|.
 
-The basic usage is the same for all animals (and beings). Inside a \lstinline|tikzpicture|, the \tikzlings can be added via \color{SteelBlue!50!black}\lstinline|\<name_of_the_tikzling>|\color{black}. For example
+The basic usage is the same for all animals (and beings). Inside a \saminline|tikzpicture|, the \tikzlings can be added via {\bfseries\color{listingcolor}\saminline|\<name_of_the_tikzling>|}. For example
 
 \begin{tcblisting}{}
 \marmot
 \end{tcblisting}
 
-will produce a marmot. All usual \TikZ and \lstinline|pgf| keys can be passed as optional argument to change the appearance. For example scaling and rotating the \tikzlings can be done by
+will produce a marmot. All usual \TikZ and \saminline|pgf| keys can be passed as optional argument to change the appearance. For example scaling and rotating the \tikzlings can be done by
 
 \begin{tcblisting}{}
 \penguin[rotate=30,scale=0.5]
 \end{tcblisting}
 
-In addition to the standard options provided by \TikZ each \tikzlings also comes with some additional options which are listed in the following sections. If these additional options consist of multiple words they are available both with and without spaces, for example \lstinline|askphil| and \lstinline|ask phil| will be treated as the same.
+In addition to the standard options provided by \TikZ each \tikzlings also comes with some additional options which are listed in the following sections. If these additional options consist of multiple words they are available both with and without spaces, for example \saminline|askphil| and \saminline|ask phil| will be treated as the same.
 
 To make customisation  of the \tikzlings easier, some hooks are provided, which can be redefined by the user in order to add commands at specific layers:
+{\bfseries\color{listingcolor}
 \begin{itemize}
-  \color{SteelBlue!50!black}
-  \item \lstinline|\<name_of_the_tikzling>hookbackground|
-  \item \lstinline|\<name_of_the_tikzling>hookbelly|
-  \item \lstinline|\<name_of_the_tikzling>hookbody| 
-  \item \lstinline|\<name_of_the_tikzling>hookforeground|
-\end{itemize}
+  \item \saminline|\<name_of_the_tikzling>hookbackground|
+  \item \saminline|\<name_of_the_tikzling>hookbelly|
+  \item \saminline|\<name_of_the_tikzling>hookbody|
+  \item \saminline|\<name_of_the_tikzling>hookforeground|
+\end{itemize}}
 
 With regard to the individual components of the \tikzlings, they are located in the following z order:
 \begin{center}
 \begin{tikzpicture}[scale=1.05]
-    \newcommand{\planes}{\fill[SteelBlue!30!white,opacity=0.9]  (-1.9,-0.1) rectangle (1.9,2.4);}
-    \newcommand{\hooks}{\draw[SteelBlue!50!black, rounded corners=3pt, line width=1pt]  (-1.9,-0.1) rectangle (1.9,2.4);}
+    \newcommand{\planewidth}{2.6}
+    \newcommand{\planeheight}{3.4}
+    \newcommand{\planes}{\fill[gray!20!white,opacity=0.9]  (-\planewidth,-0.1) rectangle (\planewidth,\planeheight);}
+    \newcommand{\hooks}{\draw[themecolor, rounded corners=3pt, line width=1pt]  (-\planewidth,-0.1) rectangle (\planewidth,\planeheight);}
     \newcounter{layer}
     \setcounter{layer}{0}
     \begin{scope}[canvas is zy plane at x=\thelayer*1.8]
@@ -333,22 +268,21 @@ With regard to the individual components of the \tikzlings, they are located in 
   \end{tikzpicture}
 \end{center}
 
-{\raggedright In addition, the hooks \lstinline|\tikzlinghookbackground|, \lstinline|\tikzlinghookbelly|,\newline \lstinline|\tikzlinghookbody| and \lstinline|\tikzlinghookforeground| are available and will effect all\newline \tikzlings.}
+{\raggedright In addition, the hooks \saminline|\tikzlinghookbackground|, \saminline|\tikzlinghookbelly|,\newline \saminline|\tikzlinghookbody| and \saminline|\tikzlinghookforeground| are available and will effect all\newline \tikzlings.}
 
 A short example how the hooks can be used:
 \begin{tcblisting}{}
 \newcommand{\mousehookbelly}{%
-\fill[red!80!black] 
-(0.55, 1.35) -- (0.65, 0.3) -- 
-(-0.65, 0.3) -- (-0.55, 1.35) 
--- (0.0, 0.9) -- cycle;
+  \fill[red!80!black] (0.55, 1.35) -- 
+    (0.65, 0.3) -- (-0.65, 0.3) -- 
+    (-0.55, 1.35) -- (0.0, 0.9) -- cycle;
 }
 \mouse
 \end{tcblisting}
 
-Another way to use the \tikzlings is the \TikZ library of the same name. By loading this library, all macros from the normal package can be used. In addition the \TikZ library also defines the \tikzlings as \lstinline|pic|'s:
+Another way to use the \tikzlings is the \TikZ library of the same name. By loading this library, all macros from the normal package can be used. In addition the \TikZ library also defines the \tikzlings as \saminline|pic|'s:
 \begin{tcolorbox}
-\begin{lstlisting}[morekeywords={bear,penguin,coati,thing,cat,duck,standalone,tikz,document}]
+\begin{samcode}
 \documentclass{standalone}
 
 \usepackage{tikz}
@@ -357,16 +291,16 @@ Another way to use the \tikzlings is the \TikZ library of the same name. By load
 \begin{document}
 \begin{tikzpicture}
 \path (1,0) pic{bear}
-       (2,1) pic[
-         coati/body=blue,
-         scale=0.5
-       ]{coati}
-       (3,2) pic[
-         thing/hat=red
-       ]{penguin};
+      (2,1) pic[
+        coati/body=blue,
+        scale=0.5
+      ]{coati}
+      (3,2) pic[
+        thing/hat=red
+      ]{penguin};
 \end{tikzpicture}
-\end{document}  
-\end{lstlisting} 
+\end{document}
+\end{samcode}
 
 \tcblower
 \begin{tikzpicture}
@@ -408,7 +342,7 @@ Another way to use the \tikzlings is the \TikZ library of the same name. By load
 
 \begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
 \vspace*{0.5cm}
-\lstinline|\usepackage{tikzlings}|
+\saminline|\usepackage{tikzlings}|
 \vspace*{0.5cm}
 \end{tcolorbox}
 
@@ -420,7 +354,7 @@ Another way to use the \tikzlings is the \TikZ library of the same name. By load
 
 \subsection{Options}
 
-Options common for all \tikzlings are supported for the \lstinline|\tikzling|. These are the ability to change the body colour
+Options common for all \tikzlings are supported for the \saminline|\tikzling|. These are the ability to change the body colour
 \begin{tcblisting}{}
 \tikzling[body=blue]
 \end{tcblisting}
@@ -430,19 +364,19 @@ to view the \tikzlings from behind
 \tikzling[back]
 \end{tcblisting}
 
-and the \lstinline|3D| key, which will make the Ti\emph{k}Zlings 3-dimensional:
+and the \saminline|3D| key, which will make the Ti\emph{k}Zlings 3-dimensional:
 \begin{tcblisting}{}
 \tikzling[3D]
 \end{tcblisting}
 
-And finally the \lstinline|contour| key will only draw the outlines:
+And finally the \saminline|contour| key will only draw the outlines:
 \begin{tcblisting}{}
 \tikzling[contour=black]
 \end{tcblisting}
 
-If an option of a specific Ti\emph{k}Zling is used (for example \lstinline|sleeping|, which only the koala and sloth can do) this option will only work for these \tikzlings. For all other \tikzlings, the option will be silently ignored.
+If an option of a specific Ti\emph{k}Zling is used (for example \saminline|sleeping|, which only the koala and sloth can do) this option will only work for these \tikzlings. For all other \tikzlings, the option will be silently ignored.
 
-In addition all usual \TikZ and \lstinline|pgf| keys can be used in the optional argument as well as the accessories presented in the following section.
+In addition all usual \TikZ and \saminline|pgf| keys can be used in the optional argument as well as the accessories presented in the following section.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -455,20 +389,29 @@ In addition all usual \TikZ and \lstinline|pgf| keys can be used in the optional
 To customise the \tikzlings the package provides a number of accessories which can be added to all the \tikzlings simply by adding the respective keyword as optional argument:
 
 \begin{tcblisting}{}
-\bear[hat]
+\bear[
+  hat
+]
 \end{tcblisting}
  
 For most of these items, the colour can be customised:
 
 \begin{tcblisting}{}
-\koala[crown=orange!50!yellow]
+\koala[
+  crown=orange!50!yellow
+]
 \end{tcblisting}
 
-Unfortunately it is very difficult to create accessories that will fit all the different shapes of the \tikzlings. Therefore it is also possible to add them separately as optional argument of the \lstinline|\thing| macro, which allows more control of their size and placement:
+Unfortunately it is very difficult to create accessories that will fit all the different shapes of the \tikzlings. Therefore it is also possible to add them separately as optional argument of the \saminline|\thing| macro, which allows more control of their size and placement:
 
 \begin{tcblisting}{}
 \owl
-\thing[tophat,scale=1.5,yshift=-0.6cm,xshift=-0.05cm]
+\thing[
+  tophat,
+  scale=1.5,
+  yshift=-0.6cm,
+  xshift=-0.05cm
+]
 \end{tcblisting}
 
 A list of all available accessories is given below. For completeness the default colours for each key are shown, but actually it is unnecessary unless it should be changed. In case more than one key is shown, all but the first are optional.
