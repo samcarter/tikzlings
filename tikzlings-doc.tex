@@ -187,7 +187,7 @@ Copyright \raisebox{0.2em}{\tiny\fontfamily{cmr}\selectfont\textcopyright}
 
 The \tikzlings package is a collection of packages. It can either be loaded as a whole with \saminline|\usepackage{tikzlings}| or the subpackages containing the individual animals (and beings) can be used separately, e.g.\ by loading \saminline|\usepackage{tikzlings-marmots}|.
 
-The basic usage is the same for all animals (and beings). Inside a \saminline|tikzpicture|, the \tikzlings can be added via {\bfseries\color{listingcolor}\saminline|\<name_of_the_tikzling>|}. For example
+The basic usage is the same for all animals (and beings). Inside a \saminline|tikzpicture|, the \tikzlings can be added via \saminline|\<name_of_the_tikzling>|. For example
 
 \begin{tcblisting}{}
 \marmot
@@ -202,13 +202,12 @@ will produce a marmot. All usual \TikZ and \saminline|pgf| keys can be passed as
 In addition to the standard options provided by \TikZ each \tikzlings also comes with some additional options which are listed in the following sections. If these additional options consist of multiple words they are available both with and without spaces, for example \saminline|askphil| and \saminline|ask phil| will be treated as the same.
 
 To make customisation  of the \tikzlings easier, some hooks are provided, which can be redefined by the user in order to add commands at specific layers:
-{\bfseries\color{listingcolor}
 \begin{itemize}
   \item \saminline|\<name_of_the_tikzling>hookbackground|
   \item \saminline|\<name_of_the_tikzling>hookbelly|
   \item \saminline|\<name_of_the_tikzling>hookbody|
   \item \saminline|\<name_of_the_tikzling>hookforeground|
-\end{itemize}}
+\end{itemize}
 
 With regard to the individual components of the \tikzlings, they are located in the following z order:
 \begin{center}
