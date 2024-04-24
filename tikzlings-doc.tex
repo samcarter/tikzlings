@@ -134,7 +134,7 @@
       \kern-.75\ht\strutbox\rule{\linewidth}{.8pt}%
     }%
   }{%
-    \@hangfrom{\hskip #2#3}{#4}}% 
+    \@hangfrom{\hskip #2#3}{#4}}%
 }
 \makeatother
 
@@ -144,12 +144,12 @@
 \pgfmathsetseed{2}
 \setlength{\footheight}{50pt}
 
-\cfoot{\thepage} 
+\cfoot{\thepage}
 \cfoot{%
-  \begin{tikzpicture}[scale=0.5] 
+  \begin{tikzpicture}[scale=0.5]
       \tikzling[signpost={\thepage}]
   \end{tikzpicture}
-} 
+}
 \pagestyle{scrheadings}
 
 \tcbset{%
@@ -168,12 +168,12 @@
 \section*{Introduction}
 \label{intro}
 
-The \tikzlings are a collection of little animals (and beings) drawn in \TikZ. It is the next evolutionary phase of the \tikzmarmots package extending it with further animals (and beings) and also adding the ability to natively use many of the accessories known from the \tikzducks package. 
+The \tikzlings are a collection of little animals (and beings) drawn in \TikZ. It is the next evolutionary phase of the \tikzmarmots package extending it with further animals (and beings) and also adding the ability to natively use many of the accessories known from the \tikzducks package.
 
-This package is work in progress, therefore I would be happy to hear your feedback and ideas how to improve the package. 
-The head version of the source code can be found on \url{github.com/samcarter/tikzlings}, including a bug tracker -- please make constructive use of it! 
+This package is work in progress, therefore I would be happy to hear your feedback and ideas how to improve the package.
+The head version of the source code can be found on \url{github.com/samcarter/tikzlings}, including a bug tracker -- please make constructive use of it!
 If you seek any other assistance (not bug reports/feature requests), I suggest asking a question at \url{topanswers.xyz/tex}.
-A more stable package version can be found on \CTAN (\url{https://www.ctan.org/pkg/tikzlings}) and is included in both \miktex and \texlive as \tikzlings. 
+A more stable package version can be found on \CTAN (\url{https://www.ctan.org/pkg/tikzlings}) and is included in both \miktex and \texlive as \tikzlings.
 
 \subsection*{Acknowledgements}
 
@@ -244,7 +244,7 @@ With regard to the individual components of the \tikzlings, they are located in 
       \newcommand{\rhinohookbackground}{
         \pgfsetfillopacity{0}
         \pgfsetstrokeopacity{0}
-      }      
+      }
       \newcommand{\rhinohookbelly}{
         \pgfsetfillopacity{1}
         \pgfsetstrokeopacity{1}
@@ -274,8 +274,8 @@ With regard to the individual components of the \tikzlings, they are located in 
 A short example how the hooks can be used:
 \begin{tcblisting}{}
 \newcommand{\mousehookbelly}{%
-  \fill[red!80!black] (0.55, 1.35) -- 
-    (0.65, 0.3) -- (-0.65, 0.3) -- 
+  \fill[red!80!black] (0.55, 1.35) --
+    (0.65, 0.3) -- (-0.65, 0.3) --
     (-0.55, 1.35) -- (0.0, 0.9) -- cycle;
 }
 \mouse
@@ -331,7 +331,7 @@ Another way to use the \tikzlings is the \TikZ library of the same name. By load
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Random Tikzling 
+% Random Tikzling
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
@@ -381,7 +381,7 @@ In addition all usual \TikZ and \saminline|pgf| keys can be used in the optional
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Accessories 
+% Accessories
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
@@ -394,7 +394,7 @@ To customise the \tikzlings the package provides a number of accessories which c
   hat
 ]
 \end{tcblisting}
- 
+
 For most of these items, the colour can be customised:
 
 \begin{tcblisting}{}
