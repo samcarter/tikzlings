@@ -6,8 +6,6 @@
 
 A collection of animals and other beings from the tikz world.
 
-Current version: 2022/06/17 version v1.0
-
 A big thank you to all the people who contributed with code, ideas or feedback to the package! Without this package would not exist!
 
 ## Available TikZlings
