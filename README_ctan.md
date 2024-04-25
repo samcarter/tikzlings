@@ -1,4 +1,4 @@
-![](https://raw.githubusercontent.com/samcarter/tikzlings/main/icon.png)
+![](https://raw.githubusercontent.com/samcarter/tikzlings/main/ICON.png)
 
 # TikZlings
 

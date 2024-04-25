@@ -4,7 +4,7 @@
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/samcarter/tikzlings.svg?label=current%20version)](https://github.com/samcarter/tikzlings/releases/latest)
 [![CTAN](https://img.shields.io/ctan/v/tikzlings.svg)](https://ctan.org/pkg/tikzlings)
 
-A collection of animals and other beings from the tikz world.
+A collection of animals and other beings from the TikZ world.
 
 A big thank you to all the people who contributed with code, ideas or feedback to the package! Without this package would not exist!
 
@@ -54,7 +54,7 @@ A short example to demonstrate the use of the TikZlings:
 \end{document}
 ```
 
-An exhaustive list of possible options can be found in [package documentation](./documentation.pdf)
+An exhaustive list of possible options can be found in [package documentation](https://github.com/samcarter/tikzlings/blob/main/DOCUMENTATION.pdf)
 
 ## Some examples
 
