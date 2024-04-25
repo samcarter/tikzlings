@@ -1,0 +1,4 @@
+hard pgf
+hard pgf-blur
+hard iftex
+hard epstopdf-pkg
