@@ -18,5 +18,5 @@ ctansummary = "A package to bring cute little animals and other beings into TikZ
 local common_settings, build_settings = pcall(require, "../beamertheme-sam/build-settings.lua")
 
 -- collecting files for ctan ===================================================
-textfiles= {"README_ctan.md"}
+textfiles= {"README_ctan.md","DEPENDS.txt"}
 ctanreadme= "README_ctan.md"
