@@ -8,32 +8,32 @@
 \setbeamercolor{background canvas}{bg=}
 
 \begin{document}
-	
+
 \begin{frame}[label=jump]
 
-	\begin{tikzpicture}[remember picture, overlay]
-	
-		\foreach \x in {0,5,...,180}{
-			\only<+>{
-				
-				\begin{scope}[yshift=sin(\x)*1cm,xshift=\thepage/\insertdocumentendpage*18cm]
-					\marmot[xshift=-1.2cm,yshift=-2.8cm]
-				\end{scope}
-			
-				\draw[thick] 
-					(-3.7+\thepage/\insertdocumentendpage*18, 0.6) .. controls 
-					(-3.7+\thepage/\insertdocumentendpage*18, 0.6) and 
-					(-3.5+\thepage/\insertdocumentendpage*18, -0.5) .. 
-					(-1.5+\thepage/\insertdocumentendpage*18, {sin(\x)-2});
-					
-			}
-		}
-		
-		\shade[ball color=red] (-3.7+\thepage/\insertdocumentendpage*18,1.4) ellipse (0.5 and 0.9);		
-		
-	\end{tikzpicture}
-	
-\end{frame}	
+  \begin{tikzpicture}[remember picture, overlay]
+  
+    \foreach \x in {0,5,...,180}{
+      \only<+>{
+        
+        \begin{scope}[yshift=sin(\x)*1cm,xshift=\thepage/\insertdocumentendpage*18cm]
+          \marmot[xshift=-1.2cm,yshift=-2.8cm]
+        \end{scope}
+      
+        \draw[thick]
+          (-3.7+\thepage/\insertdocumentendpage*18, 0.6) .. controls 
+          (-3.7+\thepage/\insertdocumentendpage*18, 0.6) and 
+          (-3.5+\thepage/\insertdocumentendpage*18, -0.5) .. 
+          (-1.5+\thepage/\insertdocumentendpage*18, {sin(\x)-2});
+          
+      }
+    }
+    
+    \shade[ball color=red] (-3.7+\thepage/\insertdocumentendpage*18,1.4) ellipse (0.5 and 0.9);
+    
+  \end{tikzpicture}
+
+\end{frame}
 
 \againframe{jump}
 \againframe{jump}

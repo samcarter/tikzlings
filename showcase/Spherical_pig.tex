@@ -1,9 +1,9 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Disclaimer:                                                                %%
-%% - No pigs were harmed in the preparation of this tex file                  %%
-%% - Contributed by @circumscribe                                             %%
-%% - https://github.com/samcarter/tikzlings/issues/3#issuecomment-464382318   %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Disclaimer:
+%% - No pigs were harmed in the preparation of this tex file
+%% - Contributed by @circumscribe
+%% - https://github.com/samcarter/tikzlings/issues/3#issuecomment-464382318
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % !TeX TS-program = latexmk % | txs:///convert
 
@@ -44,7 +44,7 @@
 %% The sky:
 \pagecolor{black}
 \foreach \X in {1,2,...,1024} {
-	% Changing the apparent brightness by modulating the size of the dots
+  % Changing the apparent brightness by modulating the size of the dots
   \pgfmathsetmacro{\starbrightness}{.003+rnd*.008}%% <- making them smaller causes errors
   % Adding some random redshift (this does not reflect the true z distribution of stars, but what looked nice)
   \pgfmathsetmacro{\starredshift}{20*rnd}%
@@ -52,13 +52,13 @@
   \pgfmathsetmacro{\starcolfraction}{50*rnd}%  
   \pgfmathsetmacro{\starcol}{less(rand,0.)}  
   \ifnum\starcol>0
-  	\def\starcolour{blue}
+    \def\starcolour{blue}
   \else%
-	  \def\starcolour{red}
+    \def\starcolour{red}
   \fi% 
   \fill[
-  	\starcolour!\starcolfraction!red!\starredshift!white
-  	,path fading=fade out] (rand*1.6,rand*1.6) circle[radius=\starbrightness];
+    \starcolour!\starcolfraction!red!\starredshift!white
+    ,path fading=fade out] (rand*1.6,rand*1.6) circle[radius=\starbrightness];
 }
 
 %%%%%%%%%%%%%%
