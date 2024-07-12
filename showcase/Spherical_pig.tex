@@ -4,9 +4,29 @@
 %% - Contributed by @circumscribe
 %% - https://github.com/samcarter/tikzlings/issues/3#issuecomment-464382318
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% !TeX TS-program = latexmk % | txs:///convert
-
+% !TeX program = txs:///arara
+% arara: latexmk: {
+% arara: --> engine: pdflatex,
+% arara: --> options: [
+% arara: -->    '-pretex="\\AtBeginDocument{\\pagecolor{gray!20}}"',
+% arara: -->    '-usepretex'
+% arara: -->  ]
+% arara: --> }
+% arara: pdftocairo: {
+% arara: --> format: 'png',
+% arara: --> options: [
+% arara: -->    '-r', '150', '-transp', '-singlefile',
+% arara: -->    '@{getBasename(getOriginalReference())}_bg'
+% arara: -->  ]
+% arara: --> }
+% arara: latexmk: {
+% arara: --> engine: pdflatex,
+% arara: --> }
+% arara: pdftocairo: {
+% arara: --> format: 'png',
+% arara: --> options: ['-r', '150', '-transp', '-singlefile'],
+% arara: --> }
+% arara: clean: { extensions: [ aux, log, fdb_latexmk, fls, synctex.gz ] }
 \documentclass[tikz]{standalone}
 \usetikzlibrary{fadings} %% <- for the stars
 
