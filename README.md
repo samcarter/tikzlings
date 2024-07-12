@@ -75,24 +75,24 @@ An exhaustive list of possible options can be found in [package documentation](h
 <a href="./showcase/Passepartout.svg"><img src="./showcase/Passepartout.svg" alt="Passepartout" height="64"></a>
 <a href="./showcase/Hang_gliding_pingu.svg"><img src="./showcase/Hang_gliding_pingu.svg" alt="Hang gliding pingu" height="64"></a>
 <a href="./showcase/Hang_gliding_bear.svg"><img src="./showcase/Hang_gliding_bear.svg" alt="Hang gliding bear" height="64"></a>
-<a href="./showcase/Tartan.svg"><img src="./showcase/Tartan.png" alt="Tartan" height="64"></a>
-<a href="./showcase/Haggis.svg"><img src="./showcase/Haggis.png" alt="Haggis" height="64"></a>
+<a href="./showcase/Tartan.svg"><img src="./showcase/Tartan.svg" alt="Tartan" height="64"></a>
+<a href="./showcase/Haggis.svg"><img src="./showcase/Haggis.svg" alt="Haggis" height="64"></a>
 <a href="./showcase/Marmot_cupid.tex"><img src="./showcase/Marmot_cupid.svg" alt="Marmot cupid" height="64"></a>
 
-<a href="./showcase/Bruegel.svg"><img src="./showcase/Bruegel.png" alt="Bruegel" height="64"></a>
-<a href="./showcase/ElGreco.svg"><img src="./showcase/ElGreco.png" alt="ElGreco" height="64"></a>
-<a href="./showcase/Last_supper.svg"><img src="./showcase/Last_supper.png" alt="Last Supper" height="64"></a>
+<a href="./showcase/Bruegel.svg"><img src="./showcase/Bruegel.svg" alt="Bruegel" height="64"></a>
+<a href="./showcase/ElGreco.svg"><img src="./showcase/ElGreco.svg" alt="ElGreco" height="64"></a>
+<a href="./showcase/Last_supper.svg"><img src="./showcase/Last_supper.svg" alt="Last Supper" height="64"></a>
 <a href="./showcase/Vitruvian_coati.svg"><img src="./showcase/Vitruvian_coati.svg" alt="Vitruvian coati" height="64"></a>
 
 <a href="./showcase/lt3marmot.tex"><img src="./showcase/lt3marmot.svg" alt="lt3marmot" height="64"></a>
 <a href="./showcase/Coati_custom_body.tex"><img src="./showcase/Coati_custom_body.svg" alt="Custom Body Coati" height="64"></a>
-<a href="./showcase/Jumping_marmot_ballon.tex"><img src="./showcase/Jumping_marmot_ballon.png" alt="Jumping Ballon Marmot" height="64"></a>
+<a href="./showcase/Jumping_marmot_ballon.tex"><img src="./showcase/Jumping_marmot_ballon_bg.png" alt="Jumping Ballon Marmot" height="64"></a>
 <a href="./showcase/Mandala.tex"><img src="./showcase/Mandala.svg" alt="Mandala" height="64"></a>
 <a href="./showcase/Mandala2.tex"><img src="./showcase/Mandala2.svg" alt="Mandala" height="64"></a>
 <a href="./showcase/Marmobil.svg"><img src="./showcase/Marmobil.svg" alt="Marmobil" height="64"></a>
 <a href="./showcase/Marmot_side.svg"><img src="./showcase/Marmot_side.svg" alt="Marmot side" height="64"></a>
 <a href="./showcase/Spherical_pig.tex"><img src="./showcase/Spherical_pig.png" alt="Spherical pig" height="64"></a>
-<a href="./showcase/Rodent_Hood.tex"><img src="./showcase/Rodent_Hood.svg" alt="Rodent Hood" height="64"></a>
+<a href="./showcase/Rodent_Hood.tex"><img src="./showcase/Rodent_Hood_bg.png" alt="Rodent Hood" height="64"></a>
 
 ## TikZlings in action
 

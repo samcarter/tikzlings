@@ -1,12 +1,25 @@
 % !TeX program = txs:///arara
 % arara: latexmk: {
 % arara: --> engine: pdflatex,
+% arara: --> options: [
+% arara: -->    '-pretex="\\AtBeginDocument{\\pagecolor{gray!20}}"',
+% arara: -->    '-usepretex'
+% arara: -->  ]
+% arara: --> }
+% arara: pdftocairo: { 
+% arara: --> format: 'png',
+% arara: --> options: [
+% arara: -->    '-r', '150', '-transp', '-singlefile', '-f', '77',
+% arara: -->    '@{getBasename(getOriginalReference())}_bg'
+% arara: -->  ]
+% arara: --> }
+% arara: latexmk: {
+% arara: --> engine: pdflatex,
 % arara: --> }
 % arara: convert: { options: [ '-delay', '1', '-loop', '0',
 % arara: --> '-density', '100', '-alpha', 'remove',
 % arara: --> '@{getBasename(getOriginalReference())}.pdf',
 % arara: --> '@{getBasename(getOriginalReference())}.gif' ] }
-% arara: clean: { extensions: [ aux, log, fdb_latexmk, fls, synctex.gz, nav, out, snm, toc ] }
 \documentclass{beamer}
 
 \usepackage{tikz}
