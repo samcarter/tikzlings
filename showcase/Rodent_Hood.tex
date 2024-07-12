@@ -1,5 +1,13 @@
 % from https://topanswers.xyz/tex?q=533#a583
-% !TeX TS-program = txs:///duck | convert -delay 60 -loop 0 -density 100 -alpha remove %.pdf %.gif
+% !TeX program = txs:///arara
+% arara: latexmk: {
+% arara: --> engine: pdflatex,
+% arara: --> }
+% arara: convert: { options: [ '-delay', '60', '-loop', '0',
+% arara: --> '-density', '100', '-alpha', 'remove',
+% arara: --> '@{getBasename(getOriginalReference())}.pdf',
+% arara: --> '@{getBasename(getOriginalReference())}.gif' ] }
+% arara: clean: { extensions: [ aux, log, fdb_latexmk, fls, synctex.gz, nav, out, snm, toc ] }
 \documentclass{beamer}
 \setbeamertemplate{navigation symbols}{}
 \usepackage{tikzlings}

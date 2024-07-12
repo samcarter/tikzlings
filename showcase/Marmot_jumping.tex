@@ -1,4 +1,12 @@
-% !TeX TS-program = txs:///duck | convert -delay 20 -loop 0 -density 100 -alpha remove %.pdf %.gif
+% !TeX program = txs:///arara
+% arara: latexmk: {
+% arara: --> engine: pdflatex,
+% arara: --> }
+% arara: convert: { options: [ '-delay', '20', '-loop', '0',
+% arara: --> '-density', '100', '-alpha', 'remove',
+% arara: --> '@{getBasename(getOriginalReference())}.pdf',
+% arara: --> '@{getBasename(getOriginalReference())}.gif' ] }
+% arara: clean: { extensions: [ aux, log, fdb_latexmk, fls, synctex.gz, nav, out, snm, toc ] }
 \documentclass[tikz]{standalone}
 
 \usepackage{tikzlings-marmots}
