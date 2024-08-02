@@ -1,6 +1,6 @@
 # TikZlings
 
-[![License](https://img.shields.io/github/license/samcarter/tikzlings.svg?color=blue)](http://www.latex-project.org/lppl.txt)
+[![License](https://img.shields.io/github/license/samcarter/tikzlings.svg?color=blue)](https://www.latex-project.org/lppl.txt)
 [![GitHub tag](https://img.shields.io/github/tag/samcarter/tikzlings.svg?label=current%20version&color=blue)](https://github.com/samcarter/tikzlings/releases/latest)
 [![CTAN](https://img.shields.io/ctan/v/tikzlings.svg?color=blue)](https://ctan.org/pkg/tikzlings)
 
