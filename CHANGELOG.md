@@ -7,6 +7,7 @@
 - Sandra, the ape (kindly contributed by @NuzzleTOO)
 - new accessories: banana and stick with leaf (kindly contributed by @NuzzleTOO)
 - added DEPENDS.txt file
+- new `leftstep` and `rightstep` options for the Anteater
 
 ### Changed
 

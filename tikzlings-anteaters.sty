@@ -31,6 +31,8 @@
 \newif\ifanteater@threeD
 \newif\ifanteater@back
 \newif\ifanteater@contour
+\newif\ifanteater@leftstep
+\newif\ifanteater@rightstep
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -55,6 +57,10 @@
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   3D/.code           = \anteater@threeDtrue,  
+  leftstep/.code     = \anteater@leftsteptrue,
+  left step/.forward to = /anteater/leftstep,
+  rightstep/.code    = \anteater@rightsteptrue,
+  right step/.forward to = /anteater/rightstep,      
   back/.code         = \anteater@backtrue,  
   contour/.code      = \anteater@contourtrue
                        \def\anteater@contour{#1},
@@ -109,8 +115,17 @@
   \csname tikzlinghookbackground\endcsname
   %  
   % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \anteater@part@draw[\anteater@body!70!brown!50!darkgray] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
-  \anteater@part@draw[\anteater@body!70!brown!50!darkgray] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
+  \ifanteater@leftstep
+    \anteater@part@draw[\anteater@body!70!brown!50!darkgray] (-0.255,0.25) ellipse[x radius=0.23, y radius=0.09]; 
+  \else% step
+     \anteater@part@draw[\anteater@body!70!brown!50!darkgray] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
+  \fi% step
+  %
+  \ifanteater@rightstep
+    \anteater@part@draw[\anteater@body!70!brown!50!darkgray] (0.255,0.25) ellipse[x radius=0.23, y radius=0.09];
+  \else% step
+    \anteater@part@draw[\anteater@body!70!brown!50!darkgray] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
+  \fi% step  
   %
   % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifanteater@back
@@ -212,6 +227,12 @@
 %In addition to the colour of the body, the colour of the eyes can be adjusted:
 %\begin{tcblisting}{}
 %\anteater[eye=red]
+%\end{tcblisting}
+%
+%And the anteater can lift its legs:
+%\begin{tcblisting}{}
+%\anteater[leftstep]
+%\anteater[rightstep,xshift=2cm]
 %\end{tcblisting}
 %
 %To view the anteater from behind:
