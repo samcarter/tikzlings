@@ -48,7 +48,17 @@
   body/.store in     = \elephant@body,
   body               = gray,
   eye/.store in      = \elephant@eye,
-  eye                = \elephant@body!30!black,  
+  eye                = \elephant@body!30!black,
+  ears/.store in     = \elephant@ears,
+  ears               = \elephant@body!30!white, 
+  feet/.store in     = \elephant@feet,
+  feet               = \elephant@body!30!white,   
+  hands/.store in    = \elephant@hands,
+  hands              = \elephant@body!30!white,   
+  belly/.store in    = \elephant@belly,
+  belly              = \elephant@body!30!white,     
+  tail/.store in    = \elephant@tail,
+  tail              = \elephant@body!30!white,     
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
@@ -122,7 +132,7 @@
   % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \elephant@part@draw[\elephant@body] (0,0.75) ellipse[x radius=0.55, y radius=0.65]; 
   \unless\ifelephant@back
-    \elephant@part@draw[\elephant@body!30!white] (0,0.7) ellipse[x radius=0.35, y radius=0.4];
+    \elephant@part@draw[\elephant@belly] (0,0.7) ellipse[x radius=0.35, y radius=0.4];
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -133,20 +143,20 @@
   \unless\ifelephant@back
     \elephant@part@draw[\elephant@body] (0.425, 0.3) circle[radius=0.28]; 
     \elephant@part@draw[\elephant@body] (-0.425, 0.3) circle[radius=0.28];
-    \elephant@part@draw[\elephant@body!30!white] (0.425, 0.3) circle[radius=0.17]; 
-    \elephant@part@draw[\elephant@body!30!white] (-0.425, 0.3) circle[radius=0.17];
+    \elephant@part@draw[\elephant@feet] (0.425, 0.3) circle[radius=0.17]; 
+    \elephant@part@draw[\elephant@feet] (-0.425, 0.3) circle[radius=0.17];
     \elephant@part@draw[\elephant@body] (0.57,0.75) circle [radius=0.20];  
-    \elephant@part@draw[\elephant@body!30!white] (0.57,0.74) circle [radius=0.12];
+    \elephant@part@draw[\elephant@hands] (0.57,0.74) circle [radius=0.12];
     \elephant@part@draw[\elephant@body] (-0.57,0.74) circle [radius=0.20];
-    \elephant@part@draw[\elephant@body!30!white] (-0.57,0.74) circle [radius=0.12];    
+    \elephant@part@draw[\elephant@hands] (-0.57,0.74) circle [radius=0.12];    
   \fi% back
   %
   % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \elephant@part@draw[\elephant@body] (0.5, 1.7) ellipse [x radius=0.35,y radius=0.45];
   \elephant@part@draw[\elephant@body] (-0.5, 1.7) ellipse [x radius=0.35,y radius=0.45];
   \unless\ifelephant@back
-    \elephant@part@draw[\elephant@body!30!white] (0.5, 1.7) ellipse [x radius=0.25,y radius=0.35];
-    \elephant@part@draw[\elephant@body!30!white] (-0.5, 1.7) ellipse [x radius=0.25,y radius=0.35];  
+    \elephant@part@draw[\elephant@ears] (0.5, 1.7) ellipse [x radius=0.25,y radius=0.35];
+    \elephant@part@draw[\elephant@ears] (-0.5, 1.7) ellipse [x radius=0.25,y radius=0.35];  
   \fi% back
   %
   % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -172,8 +182,8 @@
   %
   % Tail if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifelephant@back
-    \draw[\elephant@body!30!white,line width=\scalingfactor*0.6pt] (0, 0.5904) .. controls (-0.1619, 0.4147) and (0.203, 0.4157) .. (0.2422, 0.2712);
-    \elephant@part@draw[\elephant@body!30!white] (0.2008, 0.1949) .. controls (0.2452, 0.2121) and (0.2799, 0.242) .. (0.2691, 0.2755) .. controls (0.2611, 0.3005) and (0.2127, 0.3115) .. (0.1927, 0.2945) .. controls (0.1674, 0.2729) and (0.2082, 0.2383) .. (0.2008, 0.1949) -- cycle;
+    \draw[\elephant@tail,line width=\scalingfactor*0.6pt] (0, 0.5904) .. controls (-0.1619, 0.4147) and (0.203, 0.4157) .. (0.2422, 0.2712);
+    \elephant@part@draw[\elephant@tail] (0.2008, 0.1949) .. controls (0.2452, 0.2121) and (0.2799, 0.242) .. (0.2691, 0.2755) .. controls (0.2611, 0.3005) and (0.2127, 0.3115) .. (0.1927, 0.2945) .. controls (0.1674, 0.2729) and (0.2082, 0.2383) .. (0.2008, 0.1949) -- cycle;
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -213,9 +223,24 @@
 %\elephant[body=blue]
 %\end{tcblisting}
 %
-%In addition to the colour of the body, the colour of the eyes can be adjusted:
+%In addition to the colour of the body, the colour of various body parts can be adjusted:
+%\begin{tcblisting}{}
+%\elephant[ears=red]
+%\end{tcblisting}
 %\begin{tcblisting}{}
 %\elephant[eye=red]
+%\end{tcblisting}
+%\begin{tcblisting}{}
+%\elephant[hands=red]
+%\end{tcblisting}
+%\begin{tcblisting}{}
+%\elephant[belly=red]
+%\end{tcblisting}
+%\begin{tcblisting}{}
+%\elephant[feet=red]
+%\end{tcblisting}
+%\begin{tcblisting}{}
+%\elephant[back,tail=red]
 %\end{tcblisting}
 %
 %To view the elephant from behind:

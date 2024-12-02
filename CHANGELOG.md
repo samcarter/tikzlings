@@ -8,6 +8,7 @@
 - new accessories: banana and stick with leaf (kindly contributed by @NuzzleTOO)
 - added DEPENDS.txt file
 - new `leftstep` and `rightstep` options for the Anteater
+- new `ears`, `hands`, `belly`, `feet` and `tail` options to colour body parts of the elephant
 
 ### Changed
 
