@@ -30,6 +30,8 @@
 
 \newif\ifcoati@threeD
 \newif\ifcoati@sideward
+\newif\ifcoati@leftstep
+\newif\ifcoati@rightstep
 \newif\ifcoati@back
 \newif\ifcoati@contour
 
@@ -60,6 +62,10 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   3D/.code           = \coati@threeDtrue,  
   sideward/.code     = \coati@sidewardtrue,
+  leftstep/.code     = \coati@leftsteptrue,
+  left step/.forward to = /coati/leftstep,
+  rightstep/.code    = \coati@rightsteptrue,
+  right step/.forward to = /coati/rightstep,      
   back/.code         = \coati@backtrue,  
   contour/.code      = \coati@contourtrue
                        \def\coati@contour{#1},
@@ -113,8 +119,16 @@
   \csname tikzlinghookbackground\endcsname
   %  
   % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \coati@part@draw[\coati@body!80!white] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
-  \coati@part@draw[\coati@body!80!white] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
+  \ifcoati@leftstep
+    \coati@part@draw[\coati@body!80!white] (-0.255,0.25) ellipse[x radius=0.23, y radius=0.09];
+  \else% step
+    \coati@part@draw[\coati@body!80!white] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
+  \fi% step  
+  \ifcoati@rightstep
+    \coati@part@draw[\coati@body!80!white] (0.255,0.25) ellipse[x radius=0.23, y radius=0.09];
+  \else% step
+    \coati@part@draw[\coati@body!80!white] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
+  \fi% step    
   %
   % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifcoati@back
@@ -289,6 +303,12 @@
 %For the head an alternative sidewards facing head is available. It can be combined with the \saminline|rotatehead| option.
 %\begin{tcblisting}{}
 %\coati[sideward]
+%\end{tcblisting}
+%
+%And the coati can lift its legs:
+%\begin{tcblisting}{}
+%\coati[leftstep]
+%\coati[rightstep,xshift=2cm]
 %\end{tcblisting}
 %
 %To view the coati from behind:

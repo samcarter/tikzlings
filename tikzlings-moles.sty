@@ -30,6 +30,8 @@
 }
 
 \newif\ifmoles@threeD
+\newif\ifmoles@leftstep
+\newif\ifmoles@rightstep
 \newif\ifmoles@back
 \newif\ifmoles@contour
 
@@ -63,7 +65,11 @@
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  3D/.code           = \moles@threeDtrue,  
+  3D/.code           = \moles@threeDtrue, 
+  leftstep/.code     = \moles@leftsteptrue,
+  left step/.forward to = /moles/leftstep,
+  rightstep/.code    = \moles@rightsteptrue,
+  right step/.forward to = /moles/rightstep,       
   back/.code         = \moles@backtrue,  
   contour/.code      = \moles@contourtrue
                        \def\moles@contour{#1}
@@ -119,8 +125,16 @@
   \csname tikzlinghookbackground\endcsname
   %
   % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \moles@part@draw[\moles@feet] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];  
-  \moles@part@draw[\moles@feet] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
+  \ifmoles@leftstep
+    \moles@part@draw[\moles@feet] (-0.255,0.25) ellipse[x radius=0.23, y radius=0.09]; 
+  \else% step
+    \moles@part@draw[\moles@feet] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
+  \fi% step  
+  \ifmoles@rightstep
+    \moles@part@draw[\moles@feet] (0.255,0.25) ellipse[x radius=0.23, y radius=0.09]; 
+  \else% step
+    \moles@part@draw[\moles@feet] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
+  \fi% step    
   %
   % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifmoles@back
@@ -242,6 +256,12 @@
 %
 %\begin{tcblisting}{}
 %\moles[mouth=red]
+%\end{tcblisting}
+%
+%And the mole can lift its legs:
+%\begin{tcblisting}{}
+%\moles[leftstep]
+%\moles[rightstep,xshift=2cm]
 %\end{tcblisting}
 %
 %To view the mole from behind:

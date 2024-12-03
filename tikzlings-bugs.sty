@@ -30,6 +30,8 @@
 }
 
 \newif\ifbug@threeD
+\newif\ifbug@leftstep
+\newif\ifbug@rightstep
 \newif\ifbug@back
 \newif\ifbug@contour
 
@@ -69,7 +71,11 @@
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  3D/.code           = \bug@threeDtrue,  
+  3D/.code           = \bug@threeDtrue,
+  leftstep/.code     = \bug@leftsteptrue,
+  left step/.forward to = /bug/leftstep,
+  rightstep/.code    = \bug@rightsteptrue,
+  right step/.forward to = /bug/rightstep,        
   back/.code         = \bug@backtrue,       
   contour/.code      = \bug@contourtrue
                        \def\bug@contour{#1}
@@ -142,8 +148,16 @@
   \fi% back
   %
   % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \bug@part@draw[\bug@feet] (0.2,0.1) ellipse[x radius=0.18, y radius=0.06]; 
-  \bug@part@draw[\bug@feet] (-0.2,0.1) ellipse[x radius=0.18, y radius=0.06];
+  \ifbug@leftstep
+      \bug@part@draw[\bug@feet] (-0.2,0.12) ellipse[x radius=0.18, y radius=0.06];
+  \else% step
+    \bug@part@draw[\bug@feet] (-0.2,0.1) ellipse[x radius=0.18, y radius=0.06];
+  \fi% step  
+  \ifbug@rightstep
+      \bug@part@draw[\bug@feet] (0.2,0.12) ellipse[x radius=0.18, y radius=0.06];
+  \else% step
+    \bug@part@draw[\bug@feet] (0.2,0.1) ellipse[x radius=0.18, y radius=0.06];
+  \fi% step  
   %
   % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \bug@part@draw[\bug@body]  ( 0.55, 0.75) .. controls ( 0.55, 0.40) and ( 0.55, 0.08) .. ( 0.00, 0.08) .. controls (-0.55, 0.08) and (-0.55, 0.40) .. (-0.55, 0.75) .. controls (-0.55, 1.13) and (-0.30, 1.44) .. ( 0.00, 1.44) .. controls ( 0.30, 1.44) and ( 0.55, 1.13) .. ( 0.55, 0.75) -- cycle;
@@ -245,6 +259,12 @@
 %\end{tcblisting}
 %\begin{tcblisting}{}
 %\bug[feet=blue]
+%\end{tcblisting}
+%
+%And the bug can lift its legs:
+%\begin{tcblisting}{}
+%\bug[leftstep]
+%\bug[rightstep,xshift=2cm]
 %\end{tcblisting}
 %
 %To view the bug from behind:

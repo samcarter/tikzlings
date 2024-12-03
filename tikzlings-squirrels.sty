@@ -29,6 +29,8 @@
 }
 
 \newif\ifsquirrel@threeD
+\newif\ifsquirrel@leftstep
+\newif\ifsquirrel@rightstep
 \newif\ifsquirrel@back
 \newif\ifsquirrel@contour
 
@@ -56,7 +58,11 @@
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  3D/.code           = \squirrel@threeDtrue,  
+  3D/.code           = \squirrel@threeDtrue, 
+  leftstep/.code     = \squirrel@leftsteptrue,
+  left step/.forward to = /squirrel/leftstep,
+  rightstep/.code    = \squirrel@rightsteptrue,
+  right step/.forward to = /squirrel/rightstep,       
   back/.code         = \squirrel@backtrue,  
   contour/.code      = \squirrel@contourtrue
                        \def\squirrel@contour{#1},
@@ -109,8 +115,16 @@
   \csname tikzlinghookbackground\endcsname
   %  
   % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
-  \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
+  \ifsquirrel@leftstep
+    \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray] (-0.255,0.25) ellipse[x radius=0.23, y radius=0.09];
+  \else% step
+    \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
+  \fi% step  
+  \ifsquirrel@rightstep
+    \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray] (0.255,0.25) ellipse[x radius=0.23, y radius=0.09];
+  \else% step
+    \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
+  \fi% step    
   %
   % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifsquirrel@back
@@ -223,6 +237,12 @@
 %\end{tcblisting}
 %\begin{tcblisting}{}
 %\squirrel[pupil=red]
+%\end{tcblisting}
+%
+%And the squirrel can lift its legs:
+%\begin{tcblisting}{}
+%\squirrel[leftstep]
+%\squirrel[rightstep,xshift=2cm]
 %\end{tcblisting}
 %
 %To view the squirrel from behind:

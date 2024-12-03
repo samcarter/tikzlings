@@ -7,7 +7,7 @@
 - Sandra, the ape (kindly contributed by @NuzzleTOO)
 - new accessories: banana and stick with leaf (kindly contributed by @NuzzleTOO)
 - added DEPENDS.txt file
-- new `leftstep` and `rightstep` options for the Anteater
+- new `leftstep` and `rightstep` options for the anteater, bug, coati, mode and squirrel 
 - new `ears`, `hands`, `belly`, `feet` and `tail` options to colour body parts of the elephant
 
 ### Changed
