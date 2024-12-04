@@ -19,6 +19,7 @@
 ### Fixed
 
 - fixed bug in bug code (typo in hook name)
+- problem with bumps on sheep for negative scaling factors
 
 ## [v1.0]
 
