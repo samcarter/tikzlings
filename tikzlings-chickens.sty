@@ -53,7 +53,7 @@
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.store in     = \chicken@body,
-  body               = brown!50!orange!70!yellow!80!white,
+  body               = brown!90!orange!70!yellow!40!white,
   eye/.store in      = \chicken@eye,
   eye                = white!90!gray,
   pupil/.store in    = \chicken@pupil,
@@ -93,7 +93,7 @@
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \path (-0.96, 0.08) rectangle (0.96, 2.35);
-  %
+  %  
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % store the current scale factor
@@ -123,6 +123,18 @@
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
+  % generating saturated version of body colour
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \extractcolorspecs{\chicken@body}{\chicken@model}{\chicken@colorspec}
+  \convertcolorspec{\chicken@model}{\chicken@colorspec}{hsb}{\chicken@hsbcolorspec}
+  \pgfmathsetmacro{\chicken@hue}{(array({\chicken@hsbcolorspec},0))}
+  \pgfmathsetmacro{\chicken@sat}{(array({\chicken@hsbcolorspec},1)+0.5)}
+  \pgfmathsetmacro{\chicken@bright}{(array({\chicken@hsbcolorspec},2))}
+  \definecolor{chicken@bodysat50}{hsb}{\chicken@hue,\chicken@sat,\chicken@bright}
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
   % Body parts
   % 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -132,12 +144,12 @@
   \csname tikzlinghookbackground\endcsname
   %
   % Wings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \chicken@part@draw[\chicken@body] (0.57,0.95) ellipse[x radius=0.3, y radius=0.08, rotate=-65];
-  \chicken@part@draw[\chicken@body] (0.64,1.07) ellipse[x radius=0.3, y radius=0.08, rotate=-43];
-  \chicken@part@draw[\chicken@body] (0.66,1.18) ellipse[x radius=0.3, y radius=0.08, rotate=-18];
-  \chicken@part@draw[\chicken@body] (-0.57,0.95) ellipse[x radius=0.3, y radius=0.08, rotate=65];
-  \chicken@part@draw[\chicken@body] (-0.64,1.07) ellipse[x radius=0.3, y radius=0.08, rotate=43];
-  \chicken@part@draw[\chicken@body] (-0.66,1.18) ellipse[x radius=0.3, y radius=0.08, rotate=18];
+  \chicken@part@draw[chicken@bodysat50] (0.57,0.95) ellipse[x radius=0.3, y radius=0.08, rotate=-65];
+  \chicken@part@draw[chicken@bodysat50] (0.64,1.07) ellipse[x radius=0.3, y radius=0.08, rotate=-43];
+  \chicken@part@draw[chicken@bodysat50] (0.66,1.18) ellipse[x radius=0.3, y radius=0.08, rotate=-18];
+  \chicken@part@draw[chicken@bodysat50] (-0.57,0.95) ellipse[x radius=0.3, y radius=0.08, rotate=65];
+  \chicken@part@draw[chicken@bodysat50] (-0.64,1.07) ellipse[x radius=0.3, y radius=0.08, rotate=43];
+  \chicken@part@draw[chicken@bodysat50] (-0.66,1.18) ellipse[x radius=0.3, y radius=0.08, rotate=18];
   %
   % Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifchicken@back
@@ -152,8 +164,8 @@
   \fi% back
   %
   % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \chicken@part@draw[\chicken@body!50!white] ( 0.00, 0.33) .. controls (-0.60, 0.33) and (-0.55, 0.65) .. (-0.55, 0.90) .. controls (-0.55, 1.10) and (-0.48, 1.20) .. (-0.39, 1.40) .. controls (-0.32, 1.58) and (-0.32, 2.09) .. ( 0.00, 2.09) .. controls ( 0.32, 2.09) and ( 0.32, 1.58) .. ( 0.39, 1.40) .. controls ( 0.48, 1.20) and ( 0.55, 1.10) .. ( 0.55, 0.90) .. controls ( 0.55, 0.65) and ( 0.60, 0.33) .. ( 0, 0.33) -- cycle;
-  \chicken@part@draw[\chicken@body,decoration={snake,amplitude=\scalingfactor*1.5pt,segment length=\scalingfactor*6.1pt}] ( -0.39, 1.40) .. controls (-0.32, 1.58) and (-0.32, 2.09) .. ( 0.00, 2.09) .. controls ( 0.32, 2.09) and ( 0.32, 1.58) .. ( 0.39, 1.40) decorate {arc [start angle=-60,end angle=-120,radius=0.77]} -- cycle;
+  \chicken@part@draw[\chicken@body] ( 0.00, 0.33) .. controls (-0.60, 0.33) and (-0.55, 0.65) .. (-0.55, 0.90) .. controls (-0.55, 1.10) and (-0.48, 1.20) .. (-0.39, 1.40) .. controls (-0.32, 1.58) and (-0.32, 2.09) .. ( 0.00, 2.09) .. controls ( 0.32, 2.09) and ( 0.32, 1.58) .. ( 0.39, 1.40) .. controls ( 0.48, 1.20) and ( 0.55, 1.10) .. ( 0.55, 0.90) .. controls ( 0.55, 0.65) and ( 0.60, 0.33) .. ( 0, 0.33) -- cycle;
+  \chicken@part@draw[chicken@bodysat50,decoration={snake,amplitude=\scalingfactor*1.5pt,segment length=\scalingfactor*6.1pt}] ( -0.39, 1.40) .. controls (-0.32, 1.58) and (-0.32, 2.09) .. ( 0.00, 2.09) .. controls ( 0.32, 2.09) and ( 0.32, 1.58) .. ( 0.39, 1.40) decorate {arc [start angle=-60,end angle=-120,radius=0.77]} -- cycle;
   %
   % Comb %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \chicken@part@draw[\chicken@comb] (0.04,2.132) ellipse[x radius=0.22, y radius=0.06, rotate=70];
@@ -193,10 +205,10 @@
   %
   % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifchicken@back
-    \chicken@part@draw[\chicken@body] (0.12, 0.795) ellipse[x radius=0.20, y radius=0.06, rotate=58];
-    \chicken@part@draw[\chicken@body] (0.04, 0.87) ellipse[x radius=0.25, y radius=0.06, rotate=80];
-    \chicken@part@draw[\chicken@body] (-0.03, 0.83) ellipse[x radius=0.20, y radius=0.06, rotate=102];
-    \chicken@part@draw[\chicken@body] (-0.082, 0.76) ellipse[x radius=0.17, y radius=0.06, rotate=130];
+    \chicken@part@draw[chicken@bodysat50] (0.12, 0.795) ellipse[x radius=0.20, y radius=0.06, rotate=58];
+    \chicken@part@draw[chicken@bodysat50] (0.04, 0.87) ellipse[x radius=0.25, y radius=0.06, rotate=80];
+    \chicken@part@draw[chicken@bodysat50] (-0.03, 0.83) ellipse[x radius=0.20, y radius=0.06, rotate=102];
+    \chicken@part@draw[chicken@bodysat50] (-0.082, 0.76) ellipse[x radius=0.17, y radius=0.06, rotate=130];
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

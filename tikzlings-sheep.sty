@@ -52,11 +52,11 @@
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.store in     = \sheep@body,
-  body               = brown!50!darkgray!97!yellow,
+  body               = brown!50!darkgray!97!yellow!50!darkgray,
   eye/.store in      = \sheep@eye,
-  eye                = \sheep@body!50!black, 
+  eye                = sheep@bright!50!black, 
   nose/.store in     = \sheep@nose,
-  nose               = \sheep@body!50!black,
+  nose               = sheep@bright!50!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
@@ -113,6 +113,18 @@
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
+  % generating saturated/brighter version of body colour
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \extractcolorspecs{\sheep@body}{\sheep@model}{\sheep@colorspec}
+  \convertcolorspec{\sheep@model}{\sheep@colorspec}{hsb}{\sheep@hsbcolorspec}
+  \pgfmathsetmacro{\sheep@hue}{(array({\sheep@hsbcolorspec},0))}
+  \pgfmathsetmacro{\sheep@sat}{(array({\sheep@hsbcolorspec},1))}
+  \pgfmathsetmacro{\sheep@bright}{(array({\sheep@hsbcolorspec},2))+0.1}
+  \definecolor{sheep@bright}{hsb}{\sheep@hue,\sheep@sat,\sheep@bright}
+  %    
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
   % Body parts
   % 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -122,19 +134,19 @@
   \csname tikzlinghookbackground\endcsname
   % 
   % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \sheep@part@draw[\sheep@body] (0.22, 2.0392) .. controls   (0.22, 2.1584) and   (0.49460, 2.255) ..   (0.49460, 2.255) .. controls   (0.49460, 2.255) and (0.5300, 1.86) .. (0.3721, 1.86) .. controls (0.2891, 1.86) and   (0.22, 1.9201) .. (0.22, 2.0392) -- cycle;
-  \sheep@part@draw[\sheep@body!55!white] (0.22, 2.0392) .. controls (0.26, 2.1584) and (0.47, 2.22) .. (0.47, 2.20) .. controls (0.47, 2.2) and (0.49, 1.9) .. (0.3721, 1.9) .. controls (0.2891, 1.88) and (0.22, 1.88) .. (0.22, 2.0392) -- cycle;  
-  \sheep@part@draw[\sheep@body] (-0.22, 2.0392) .. controls   (-0.22, 2.1584) and   (-0.49460, 2.255) ..   (-0.49460, 2.255) .. controls   (-0.49460, 2.255) and (-0.5300, 1.86) .. (-0.3721, 1.86) .. controls (-0.2891, 1.86) and   (-0.22, 1.9201) .. (-0.22, 2.0392) -- cycle;
-  \sheep@part@draw[\sheep@body!55!white] (-0.22, 2.0392) .. controls (-0.26, 2.1584) and (-0.47, 2.22) .. (-0.47, 2.20) .. controls (-0.47, 2.2) and (-0.49, 1.9) .. (-0.3721, 1.9) .. controls (-0.2891, 1.88) and (-0.22, 1.88) .. (-0.22, 2.0392) -- cycle;  
+  \sheep@part@draw[sheep@bright] (0.22, 2.0392) .. controls   (0.22, 2.1584) and   (0.49460, 2.255) ..   (0.49460, 2.255) .. controls   (0.49460, 2.255) and (0.5300, 1.86) .. (0.3721, 1.86) .. controls (0.2891, 1.86) and   (0.22, 1.9201) .. (0.22, 2.0392) -- cycle;
+  \sheep@part@draw[sheep@bright!55!white] (0.22, 2.0392) .. controls (0.26, 2.1584) and (0.47, 2.22) .. (0.47, 2.20) .. controls (0.47, 2.2) and (0.49, 1.9) .. (0.3721, 1.9) .. controls (0.2891, 1.88) and (0.22, 1.88) .. (0.22, 2.0392) -- cycle;  
+  \sheep@part@draw[sheep@bright] (-0.22, 2.0392) .. controls   (-0.22, 2.1584) and   (-0.49460, 2.255) ..   (-0.49460, 2.255) .. controls   (-0.49460, 2.255) and (-0.5300, 1.86) .. (-0.3721, 1.86) .. controls (-0.2891, 1.86) and   (-0.22, 1.9201) .. (-0.22, 2.0392) -- cycle;
+  \sheep@part@draw[sheep@bright!55!white] (-0.22, 2.0392) .. controls (-0.26, 2.1584) and (-0.47, 2.22) .. (-0.47, 2.20) .. controls (-0.47, 2.2) and (-0.49, 1.9) .. (-0.3721, 1.9) .. controls (-0.2891, 1.88) and (-0.22, 1.88) .. (-0.22, 2.0392) -- cycle;  
   % 
   % Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifsheep@back
-    \sheep@part@draw[\sheep@body] (0.3216,0.15) arc (-15:195:0.12) -- (0.16,0.15) to [bend left] (0.25,0.15) -- cycle;
-    \sheep@part@draw[\sheep@body] (-0.3216,0.15) arc (195:-15:0.12) -- (-0.16,0.15) to[bend right] (-0.25,0.15) --cycle;
+    \sheep@part@draw[sheep@bright] (0.3216,0.15) arc (-15:195:0.12) -- (0.16,0.15) to [bend left] (0.25,0.15) -- cycle;
+    \sheep@part@draw[sheep@bright] (-0.3216,0.15) arc (195:-15:0.12) -- (-0.16,0.15) to[bend right] (-0.25,0.15) --cycle;
   \fi% back
   %
   % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \sheep@part@draw[\sheep@body!50!darkgray,decorate,decoration={bumps,amplitude=\scalingfactor*2.5pt,segment length=\scalingfactor*10pt}] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
+  \sheep@part@draw[\sheep@body,decorate,decoration={bumps,amplitude=\scalingfactor*2.5pt,segment length=\scalingfactor*10pt}] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname sheephookbelly\endcsname
@@ -142,29 +154,29 @@
   %
   % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifsheep@back
-    \sheep@part@draw[\sheep@body!45!white!95!orange] (-0.2402, 0.9823) .. controls (-0.2994, 1.0582) and (-0.3721, 1.0651) .. (-0.4024, 0.9978) .. controls (-0.4327, 0.9305) and (-0.4092, 0.8145) .. (-0.35, 0.7386) .. controls (-0.3311, 0.7145) and (-0.3101, 0.6964) .. (-0.289, 0.6862) .. controls (-0.2755, 0.7023) and (-0.2498, 0.7563) .. (-0.2498, 0.7563) .. controls (-0.2498, 0.7563) and (-0.1790, 0.731) .. (-0.1611, 0.746) .. controls (-0.1611, 0.746) and (-0.1809, 0.9064) .. (-0.2402, 0.9823) -- cycle;
-    \sheep@part@draw[\sheep@body!45!white!95!orange] (0.2402, 0.9823) .. controls (0.2994, 1.0582) and (0.3721, 1.0651) .. (0.4024, 0.9978) .. controls (0.4327, 0.9305) and (0.4092, 0.8145) .. (0.35, 0.7386) .. controls (0.3311, 0.7145) and (0.3101, 0.6964) .. (0.289, 0.6862) .. controls (0.2755, 0.7023) and (0.2498, 0.7563) .. (0.2498, 0.7563) .. controls (0.2498, 0.7563) and (0.1790, 0.731) .. (0.1611, 0.746) .. controls (0.1611, 0.746) and (0.1809, 0.9064) .. (0.2402, 0.9823) -- cycle;
+    \sheep@part@draw[sheep@bright!45!white!95!orange] (-0.2402, 0.9823) .. controls (-0.2994, 1.0582) and (-0.3721, 1.0651) .. (-0.4024, 0.9978) .. controls (-0.4327, 0.9305) and (-0.4092, 0.8145) .. (-0.35, 0.7386) .. controls (-0.3311, 0.7145) and (-0.3101, 0.6964) .. (-0.289, 0.6862) .. controls (-0.2755, 0.7023) and (-0.2498, 0.7563) .. (-0.2498, 0.7563) .. controls (-0.2498, 0.7563) and (-0.1790, 0.731) .. (-0.1611, 0.746) .. controls (-0.1611, 0.746) and (-0.1809, 0.9064) .. (-0.2402, 0.9823) -- cycle;
+    \sheep@part@draw[sheep@bright!45!white!95!orange] (0.2402, 0.9823) .. controls (0.2994, 1.0582) and (0.3721, 1.0651) .. (0.4024, 0.9978) .. controls (0.4327, 0.9305) and (0.4092, 0.8145) .. (0.35, 0.7386) .. controls (0.3311, 0.7145) and (0.3101, 0.6964) .. (0.289, 0.6862) .. controls (0.2755, 0.7023) and (0.2498, 0.7563) .. (0.2498, 0.7563) .. controls (0.2498, 0.7563) and (0.1790, 0.731) .. (0.1611, 0.746) .. controls (0.1611, 0.746) and (0.1809, 0.9064) .. (0.2402, 0.9823) -- cycle;
   \fi% back
   %
   % Hair %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \sheep@part@draw[\sheep@body!50!darkgray,decorate,decoration={bumps,amplitude=\scalingfactor*2.5pt,segment length=\scalingfactor*10pt}] (-0.275,1.98) -- (-0.2,2.2)  -- (-0.008,2.2) -- (0.2,2.2) -- (0.275,1.98) -- cycle;
+  \sheep@part@draw[\sheep@body,decorate,decoration={bumps,amplitude=\scalingfactor*2.5pt,segment length=\scalingfactor*10pt}] (-0.275,1.98) -- (-0.2,2.2)  -- (-0.008,2.2) -- (0.2,2.2) -- (0.275,1.98) -- cycle;
   %
   % Tail if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifsheep@back
-    \sheep@part@draw[\sheep@body!45!white!95!orange,rounded corners=\scalingfactor*0.1pt] (0,0.7) -- (0.08, 0.3236) arc (0:-180:\scalingfactor*2pt) -- cycle;
+    \sheep@part@draw[sheep@bright!45!white!95!orange,rounded corners=\scalingfactor*0.1pt] (0,0.7) -- (0.08, 0.3236) arc (0:-180:\scalingfactor*2pt) -- cycle;
   \fi% back
   %
   % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifsheep@back
     %
     % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \sheep@part@draw[\sheep@body!45!white!95!orange] (0.4, 1.8) .. controls (0.4, 1.5) and (0.2, 1.25) .. (0, 1.16) .. controls (-0.2, 1.25) and (-0.4, 1.5) .. (-0.4, 1.8) .. controls (-0.34, 2.3) and (0.34, 2.3) .. (0.4, 1.8) -- cycle;
+    \sheep@part@draw[sheep@bright!45!white!95!orange] (0.4, 1.8) .. controls (0.4, 1.5) and (0.2, 1.25) .. (0, 1.16) .. controls (-0.2, 1.25) and (-0.4, 1.5) .. (-0.4, 1.8) .. controls (-0.34, 2.3) and (0.34, 2.3) .. (0.4, 1.8) -- cycle;
     %
     % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \sheep@part@draw[\sheep@body] (0.22, 2.0392) .. controls   (0.22, 2.1584) and   (0.49460, 2.255) ..   (0.49460, 2.255) .. controls   (0.49460, 2.255) and (0.5300, 1.86) .. (0.3721, 1.86) .. controls (0.2891, 1.86) and   (0.22, 1.9201) .. (0.22, 2.0392) -- cycle;
-    \sheep@part@draw[\sheep@body!55!white] (0.22, 2.0392) .. controls (0.26, 2.1584) and (0.47, 2.22) .. (0.47, 2.20) .. controls (0.47, 2.2) and (0.49, 1.9) .. (0.3721, 1.9) .. controls (0.2891, 1.88) and (0.22, 1.88) .. (0.22, 2.0392) -- cycle;  
-    \sheep@part@draw[\sheep@body] (-0.22, 2.0392) .. controls   (-0.22, 2.1584) and   (-0.49460, 2.255) ..   (-0.49460, 2.255) .. controls   (-0.49460, 2.255) and (-0.5300, 1.86) .. (-0.3721, 1.86) .. controls (-0.2891, 1.86) and   (-0.22, 1.9201) .. (-0.22, 2.0392) -- cycle;
-    \sheep@part@draw[\sheep@body!55!white] (-0.22, 2.0392) .. controls (-0.26, 2.1584) and (-0.47, 2.22) .. (-0.47, 2.20) .. controls (-0.47, 2.2) and (-0.49, 1.9) .. (-0.3721, 1.9) .. controls (-0.2891, 1.88) and (-0.22, 1.88) .. (-0.22, 2.0392) -- cycle;  
+    \sheep@part@draw[sheep@bright] (0.22, 2.0392) .. controls   (0.22, 2.1584) and   (0.49460, 2.255) ..   (0.49460, 2.255) .. controls   (0.49460, 2.255) and (0.5300, 1.86) .. (0.3721, 1.86) .. controls (0.2891, 1.86) and   (0.22, 1.9201) .. (0.22, 2.0392) -- cycle;
+    \sheep@part@draw[sheep@bright!55!white] (0.22, 2.0392) .. controls (0.26, 2.1584) and (0.47, 2.22) .. (0.47, 2.20) .. controls (0.47, 2.2) and (0.49, 1.9) .. (0.3721, 1.9) .. controls (0.2891, 1.88) and (0.22, 1.88) .. (0.22, 2.0392) -- cycle;  
+    \sheep@part@draw[sheep@bright] (-0.22, 2.0392) .. controls   (-0.22, 2.1584) and   (-0.49460, 2.255) ..   (-0.49460, 2.255) .. controls   (-0.49460, 2.255) and (-0.5300, 1.86) .. (-0.3721, 1.86) .. controls (-0.2891, 1.86) and   (-0.22, 1.9201) .. (-0.22, 2.0392) -- cycle;
+    \sheep@part@draw[sheep@bright!55!white] (-0.22, 2.0392) .. controls (-0.26, 2.1584) and (-0.47, 2.22) .. (-0.47, 2.20) .. controls (-0.47, 2.2) and (-0.49, 1.9) .. (-0.3721, 1.9) .. controls (-0.2891, 1.88) and (-0.22, 1.88) .. (-0.22, 2.0392) -- cycle;  
     % 
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \unless\ifsheep@back
@@ -176,11 +188,11 @@
     \draw[\sheep@nose,line width=\scalingfactor*0.8pt,line cap=round]  (0.16,1.43) arc [start angle=-30, end angle=-150, radius=0.185] (0.0,1.335) -- (0,1.175);
     %
     % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \sheep@part@draw[\sheep@body!45!white!95!orange] (0.3216,0.13) arc (-15:195:0.10) -- (0.16,0.13) to [bend left] (0.25,0.13) -- cycle;
-    \sheep@part@draw[\sheep@body!45!white!95!orange] (-0.3216,0.13) arc (195:-15:0.10) -- (-0.16,0.13) to[bend right] (-0.25,0.13) --cycle;
+    \sheep@part@draw[sheep@bright!45!white!95!orange] (0.3216,0.13) arc (-15:195:0.10) -- (0.16,0.13) to [bend left] (0.25,0.13) -- cycle;
+    \sheep@part@draw[sheep@bright!45!white!95!orange] (-0.3216,0.13) arc (195:-15:0.10) -- (-0.16,0.13) to[bend right] (-0.25,0.13) --cycle;
     %
     % Hair %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \sheep@part@draw[\sheep@body!50!darkgray,decorate,decoration={bumps,amplitude=\scalingfactor*2.5pt,segment length=\scalingfactor*10pt}] (-0.275,1.98) -- (-0.2,2.2)  -- (-0.008,2.2) -- (0.2,2.2) -- (0.275,1.98) -- cycle;
+    \sheep@part@draw[\sheep@body,decorate,decoration={bumps,amplitude=\scalingfactor*2.5pt,segment length=\scalingfactor*10pt}] (-0.275,1.98) -- (-0.2,2.2)  -- (-0.008,2.2) -- (0.2,2.2) -- (0.275,1.98) -- cycle;
     %
     % Blush %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \ifsheep@blush

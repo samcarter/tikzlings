@@ -47,7 +47,7 @@
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.store in     = \panda@body,
-  body               = white!90!black,
+  body               = white!90!gray,
   eye/.store in      = \panda@eye,
   eye                = white, 
   pupil/.store in    = \panda@pupil,
@@ -120,7 +120,7 @@
   \fi% back
   %
   % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \panda@part@draw[\panda@body!55!white] (0,0.78) ellipse[x radius=0.57, y radius=0.65];
+  \panda@part@draw[\panda@body] (0,0.78) ellipse[x radius=0.57, y radius=0.65];
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname pandahookbelly\endcsname
@@ -145,7 +145,7 @@
   \panda@part@draw[black] (-0.32, 2) circle[radius=0.15];
   %
   % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \panda@part@draw[\panda@body!55!white] (0.4897, 1.5886) .. controls (0.4614, 1.8238) and (0.25, 2.1172) .. (0, 2.1134) .. controls (-0.25, 2.1172) and (-0.4614, 1.8238) .. (-0.4897, 1.5886) .. controls (-0.5261, 1.3269) and (-0.2748, 1.2377) .. (0, 1.2377) .. controls (0.2748, 1.2377) and (0.5261, 1.3269) .. (0.4897, 1.5886) -- cycle;
+  \panda@part@draw[\panda@body] (0.4897, 1.5886) .. controls (0.4614, 1.8238) and (0.25, 2.1172) .. (0, 2.1134) .. controls (-0.25, 2.1172) and (-0.4614, 1.8238) .. (-0.4897, 1.5886) .. controls (-0.5261, 1.3269) and (-0.2748, 1.2377) .. (0, 1.2377) .. controls (0.2748, 1.2377) and (0.5261, 1.3269) .. (0.4897, 1.5886) -- cycle;
   %
   % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifpanda@back

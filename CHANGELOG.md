@@ -12,6 +12,9 @@
 
 ### Changed
 
+- **Breaking change:** changed the reference point for body colour in several TikZlings (bears, chicken, coatis, hippos, pandas, pigs, rhinos, sheep, sloths). Previously the body colour didn't exactly specify the colour of the body, instead the body might have been drawn in a lighter or darker shade of the colour. This trick was used because it is easier to add white to a colour than to make the colour brighter. However the downside was that the range of possible colours was servely limited. For example the hippo used a 50% lighter shade for the body. Even if one choose black as the darkest possible body colour, one would still only get a medium gray hippo. Now the user can choose exactly the colour they want.
+  The default colours where adjusted to ensure that the TikZlings still look the same in v2.0, but if users previously used the `body=...` option, the result might now look different.
+
 ### Fixed
 
 - fixed bug in bug code (typo in hook name)

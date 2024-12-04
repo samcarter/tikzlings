@@ -46,11 +46,11 @@
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.store in     = \bear@body,
-  body               = brown,
+  body               = brown!70!black,
   eye/.store in      = \bear@eye,
-  eye                = \bear@body!30!black,  
+  eye                = \bear@body!42!black,  
   mouth/.store in    = \bear@mouth,
-  mouth              = \bear@body!30!black,
+  mouth              = \bear@body!42!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
@@ -102,6 +102,18 @@
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
+  % generating saturated/brighter version of body colour
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \extractcolorspecs{\bear@body}{\bear@model}{\bear@colorspec}
+  \convertcolorspec{\bear@model}{\bear@colorspec}{hsb}{\bear@hsbcolorspec}
+  \pgfmathsetmacro{\bear@hue}{(array({\bear@hsbcolorspec},0))}
+  \pgfmathsetmacro{\bear@sat}{(array({\bear@hsbcolorspec},1))-0.38}
+  \pgfmathsetmacro{\bear@bright}{(array({\bear@hsbcolorspec},2))+0.35}
+  \definecolor{bear@bright}{hsb}{\bear@hue,\bear@sat,\bear@bright}
+  %    
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
   % Body parts
   % 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -111,19 +123,19 @@
   \csname tikzlinghookbackground\endcsname
   %
   % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \bear@part@draw[\bear@body!70!black] (0.525,0.9) ellipse[x radius=0.35, y radius=0.15, rotate=-50];
-  \bear@part@draw[\bear@body!70!black] (-0.525,0.9) ellipse[x radius=0.35, y radius=0.15, rotate=50];
+  \bear@part@draw[\bear@body] (0.525,0.9) ellipse[x radius=0.35, y radius=0.15, rotate=-50];
+  \bear@part@draw[\bear@body] (-0.525,0.9) ellipse[x radius=0.35, y radius=0.15, rotate=50];
   %
   % Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifbear@back
-    \bear@part@draw[\bear@body!70!black] (0.425, 0.3) circle[radius=0.28]; 
-    \bear@part@draw[\bear@body!70!black] (-0.425, 0.3) circle[radius=0.28];
+    \bear@part@draw[\bear@body] (0.425, 0.3) circle[radius=0.28]; 
+    \bear@part@draw[\bear@body] (-0.425, 0.3) circle[radius=0.28];
   \fi% back
   %
   % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \bear@part@draw[\bear@body!70!black] (0,0.75) ellipse[x radius=0.55, y radius=0.65]; 
+  \bear@part@draw[\bear@body] (0,0.75) ellipse[x radius=0.55, y radius=0.65]; 
   \unless\ifbear@back
-    \bear@part@draw[\bear@body!50!white] (0,0.7) ellipse[x radius=0.35, y radius=0.4];
+    \bear@part@draw[bear@bright] (0,0.7) ellipse[x radius=0.35, y radius=0.4];
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -132,29 +144,29 @@
   %
   % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifbear@back
-    \bear@part@draw[\bear@body!70!black] (0.425, 0.3) circle[radius=0.28]; 
-    \bear@part@draw[\bear@body!70!black] (-0.425, 0.3) circle[radius=0.28];
-    \bear@part@draw[\bear@body!50!white] (0.425, 0.3) circle[radius=0.17]; 
-    \bear@part@draw[\bear@body!50!white] (-0.425, 0.3) circle[radius=0.17];
+    \bear@part@draw[\bear@body] (0.425, 0.3) circle[radius=0.28]; 
+    \bear@part@draw[\bear@body] (-0.425, 0.3) circle[radius=0.28];
+    \bear@part@draw[bear@bright] (0.425, 0.3) circle[radius=0.17]; 
+    \bear@part@draw[bear@bright] (-0.425, 0.3) circle[radius=0.17];
   \fi% back
   %
   % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \bear@part@draw[\bear@body!70!black] (0.375, 1.95) circle[radius=0.15];
-  \bear@part@draw[\bear@body!70!black] (-0.375, 1.95) circle[radius=0.15];
+  \bear@part@draw[\bear@body] (0.375, 1.95) circle[radius=0.15];
+  \bear@part@draw[\bear@body] (-0.375, 1.95) circle[radius=0.15];
   \unless\ifbear@back
-    \bear@part@draw[\bear@body!50!white] (0.375, 1.95) circle[radius=0.1];
-    \bear@part@draw[\bear@body!50!white] (-0.375, 1.95) circle[radius=0.1];
+    \bear@part@draw[bear@bright] (0.375, 1.95) circle[radius=0.1];
+    \bear@part@draw[bear@bright] (-0.375, 1.95) circle[radius=0.1];
   \fi% back
   %
   % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \bear@part@draw[\bear@body!70!black] (0, 1.55) circle[radius=0.5]; 
+  \bear@part@draw[\bear@body] (0, 1.55) circle[radius=0.5]; 
   %
   % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifbear@back
     %
     % Muzzle %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \bear@part@draw[\bear@body!50!white] (0, 1.4) ellipse[x radius=0.28, y radius=0.2]; 
-    \bear@part@draw[\bear@body!70!white!80!red] (0, 1.5) ellipse[x radius=0.15, y radius=0.08]; 
+    \bear@part@draw[bear@bright] (0, 1.4) ellipse[x radius=0.28, y radius=0.2]; 
+    \bear@part@draw[bear@bright!60!red] (0, 1.5) ellipse[x radius=0.15, y radius=0.08]; 
     %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \bear@part@draw[\bear@eye] (-0.155, 1.7) circle[radius=0.05]; 

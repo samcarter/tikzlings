@@ -16,7 +16,7 @@
 
 \RequirePackage{tikz}
 \RequirePackage{tikzlings-addons}
-\definecolor{pigdark}{RGB}{241,164,142}
+\definecolor{piglight}{RGB}{247,205,193}
 
 \newcommand*{\pig}[1][]{%
   \begin{scope}%
@@ -48,11 +48,11 @@
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.store in     = \pig@body,
-  body               = pigdark,
+  body               = piglight,
   eye/.store in      = \pig@eye,
   eye                = gray,  
   tail/.store in     = \pig@tail,
-  tail               = \pig@body, 
+  tail               = pig@bodysat22, 
   mouth/.store in    = \pig@mouth,
   mouth              = gray,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -108,8 +108,20 @@
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
+  % generating saturated version of body colour
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \extractcolorspecs{\pig@body}{\pig@model}{\pig@colorspec}
+  \convertcolorspec{\pig@model}{\pig@colorspec}{hsb}{\pig@hsbcolorspec}
+  \pgfmathsetmacro{\pig@hue}{(array({\pig@hsbcolorspec},0))}
+  \pgfmathsetmacro{\pig@sat}{(array({\pig@hsbcolorspec},1)+0.22)}
+  \pgfmathsetmacro{\pig@bright}{(array({\pig@hsbcolorspec},2))}
+  \definecolor{pig@bodysat22}{hsb}{\pig@hue,\pig@sat,\pig@bright}
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
   % Body parts
-  % 
+  %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -123,12 +135,12 @@
   %
   % Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifpig@back
-    \pig@part@draw[\pig@body] (0.3216,0.15) arc (-15:195:0.12) -- (0.16,0.15) to [bend left] (0.25,0.15) -- cycle;
-    \pig@part@draw[\pig@body] (-0.3216,0.15) arc (195:-15:0.12) -- (-0.16,0.15) to[bend right] (-0.25,0.15) --cycle;
+    \pig@part@draw[pig@bodysat22] (0.3216,0.15) arc (-15:195:0.12) -- (0.16,0.15) to [bend left] (0.25,0.15) -- cycle;
+    \pig@part@draw[pig@bodysat22] (-0.3216,0.15) arc (195:-15:0.12) -- (-0.16,0.15) to[bend right] (-0.25,0.15) --cycle;
   \fi% back
   %
   % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \pig@part@draw[\pig@body!55!white] ( 0.6,  0.8 ) .. controls ( 0.6 , 0.4) and ( 0.35, 0.16) .. ( 0.0,  0.16) .. controls (-0.35, 0.16) and (-0.6 , 0.4) .. (-0.6,  0.8 ) .. controls (-0.6 , 1.3) and (-0.35, 1.5) .. ( 0.0,  1.5) .. controls ( 0.35, 1.5) and ( 0.6 , 1.3) .. ( 0.6,  0.75) -- cycle;
+  \pig@part@draw[\pig@body] ( 0.6,  0.8 ) .. controls ( 0.6 , 0.4) and ( 0.35, 0.16) .. ( 0.0,  0.16) .. controls (-0.35, 0.16) and (-0.6 , 0.4) .. (-0.6,  0.8 ) .. controls (-0.6 , 1.3) and (-0.35, 1.5) .. ( 0.0,  1.5) .. controls ( 0.35, 1.5) and ( 0.6 , 1.3) .. ( 0.6,  0.75) -- cycle;
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname pighookbelly\endcsname
@@ -136,12 +148,12 @@
   %
   % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifpig@back
-    \pig@part@draw[\pig@body] (-0.2402, 0.9823) .. controls (-0.2994, 1.0582) and (-0.3721, 1.0651) .. (-0.4024, 0.9978) .. controls (-0.4327, 0.9305) and (-0.4092, 0.8145) .. (-0.35, 0.7386) .. controls (-0.3311, 0.7145) and (-0.3101, 0.6964) .. (-0.289, 0.6862) .. controls (-0.2755, 0.7023) and (-0.2498, 0.7563) .. (-0.2498, 0.7563) .. controls (-0.2498, 0.7563) and (-0.1790, 0.731) .. (-0.1611, 0.746) .. controls (-0.1611, 0.746) and (-0.1809, 0.9064) .. (-0.2402, 0.9823) -- cycle;
-    \pig@part@draw[\pig@body] (0.2402, 0.9823) .. controls (0.2994, 1.0582) and (0.3721, 1.0651) .. (0.4024, 0.9978) .. controls (0.4327, 0.9305) and (0.4092, 0.8145) .. (0.35, 0.7386) .. controls (0.3311, 0.7145) and (0.3101, 0.6964) .. (0.289, 0.6862) .. controls (0.2755, 0.7023) and (0.2498, 0.7563) .. (0.2498, 0.7563) .. controls (0.2498, 0.7563) and (0.1790, 0.731) .. (0.1611, 0.746) .. controls (0.1611, 0.746) and (0.1809, 0.9064) .. (0.2402, 0.9823) -- cycle;
+    \pig@part@draw[pig@bodysat22] (-0.2402, 0.9823) .. controls (-0.2994, 1.0582) and (-0.3721, 1.0651) .. (-0.4024, 0.9978) .. controls (-0.4327, 0.9305) and (-0.4092, 0.8145) .. (-0.35, 0.7386) .. controls (-0.3311, 0.7145) and (-0.3101, 0.6964) .. (-0.289, 0.6862) .. controls (-0.2755, 0.7023) and (-0.2498, 0.7563) .. (-0.2498, 0.7563) .. controls (-0.2498, 0.7563) and (-0.1790, 0.731) .. (-0.1611, 0.746) .. controls (-0.1611, 0.746) and (-0.1809, 0.9064) .. (-0.2402, 0.9823) -- cycle;
+    \pig@part@draw[pig@bodysat22] (0.2402, 0.9823) .. controls (0.2994, 1.0582) and (0.3721, 1.0651) .. (0.4024, 0.9978) .. controls (0.4327, 0.9305) and (0.4092, 0.8145) .. (0.35, 0.7386) .. controls (0.3311, 0.7145) and (0.3101, 0.6964) .. (0.289, 0.6862) .. controls (0.2755, 0.7023) and (0.2498, 0.7563) .. (0.2498, 0.7563) .. controls (0.2498, 0.7563) and (0.1790, 0.731) .. (0.1611, 0.746) .. controls (0.1611, 0.746) and (0.1809, 0.9064) .. (0.2402, 0.9823) -- cycle;
   \fi% back
   %
   % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \pig@part@draw[\pig@body!55!white] (0,1.64) ellipse[x radius=.5, y radius=.5];
+  \pig@part@draw[\pig@body] (0,1.64) ellipse[x radius=.5, y radius=.5];
   %
   % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifpig@back
@@ -151,7 +163,7 @@
     \pig@part@draw[\pig@eye] ( 0.09, 1.82) circle[radius=0.02];
     %
     % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \pig@part@draw[\pig@body]  (0, 1.62) ellipse[x radius=0.18, y radius=0.14];
+    \pig@part@draw[pig@bodysat22]  (0, 1.62) ellipse[x radius=0.18, y radius=0.14];
     \pig@part@draw[gray]  (-0.06, 1.62) circle[radius=0.035];
     \pig@part@draw[gray]  ( 0.06, 1.62) circle[radius=0.035];
     %
@@ -159,16 +171,16 @@
     \draw[\pig@mouth,line width=\scalingfactor*0.4pt] (0.105, 1.46) arc [start angle=-50, end angle=-130, radius=0.16] ;
     %
     % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \pig@part@draw[\pig@body] (0.3216,0.15) arc (-15:195:0.12) -- (0.16,0.15) to [bend left] (0.25,0.15) -- cycle;
-    \pig@part@draw[\pig@body] (-0.3216,0.15) arc (195:-15:0.12) -- (-0.16,0.15) to[bend right] (-0.25,0.15) --cycle;
+    \pig@part@draw[pig@bodysat22] (0.3216,0.15) arc (-15:195:0.12) -- (0.16,0.15) to [bend left] (0.25,0.15) -- cycle;
+    \pig@part@draw[pig@bodysat22] (-0.3216,0.15) arc (195:-15:0.12) -- (-0.16,0.15) to[bend right] (-0.25,0.15) --cycle;
     %
   \fi% back
   %
   % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \pig@part@draw[\pig@body] (0.22, 2.0392) .. controls   (0.22, 2.1584) and   (0.49460, 2.255) ..   (0.49460, 2.255) .. controls   (0.49460, 2.255) and (0.5300, 1.86) .. (0.3721, 1.86) .. controls (0.2891, 1.86) and   (0.22, 1.9201) .. (0.22, 2.0392) -- cycle;
-  \pig@part@draw[\pig@body!55!white] (0.22, 2.0392) .. controls (0.26, 2.1584) and (0.47, 2.22) .. (0.47, 2.20) .. controls (0.47, 2.2) and (0.49, 1.9) .. (0.3721, 1.9) .. controls (0.2891, 1.88) and (0.22, 1.88) .. (0.22, 2.0392) -- cycle;  
-  \pig@part@draw[\pig@body] (-0.22, 2.0392) .. controls   (-0.22, 2.1584) and   (-0.49460, 2.255) ..   (-0.49460, 2.255) .. controls   (-0.49460, 2.255) and (-0.5300, 1.86) .. (-0.3721, 1.86) .. controls (-0.2891, 1.86) and   (-0.22, 1.9201) .. (-0.22, 2.0392) -- cycle;
-  \pig@part@draw[\pig@body!55!white] (-0.22, 2.0392) .. controls (-0.26, 2.1584) and (-0.47, 2.22) .. (-0.47, 2.20) .. controls (-0.47, 2.2) and (-0.49, 1.9) .. (-0.3721, 1.9) .. controls (-0.2891, 1.88) and (-0.22, 1.88) .. (-0.22, 2.0392) -- cycle;  
+  \pig@part@draw[pig@bodysat22] (0.22, 2.0392) .. controls   (0.22, 2.1584) and   (0.49460, 2.255) ..   (0.49460, 2.255) .. controls   (0.49460, 2.255) and (0.5300, 1.86) .. (0.3721, 1.86) .. controls (0.2891, 1.86) and   (0.22, 1.9201) .. (0.22, 2.0392) -- cycle;
+  \pig@part@draw[\pig@body] (0.22, 2.0392) .. controls (0.26, 2.1584) and (0.47, 2.22) .. (0.47, 2.20) .. controls (0.47, 2.2) and (0.49, 1.9) .. (0.3721, 1.9) .. controls (0.2891, 1.88) and (0.22, 1.88) .. (0.22, 2.0392) -- cycle;  
+  \pig@part@draw[pig@bodysat22] (-0.22, 2.0392) .. controls   (-0.22, 2.1584) and   (-0.49460, 2.255) ..   (-0.49460, 2.255) .. controls   (-0.49460, 2.255) and (-0.5300, 1.86) .. (-0.3721, 1.86) .. controls (-0.2891, 1.86) and   (-0.22, 1.9201) .. (-0.22, 2.0392) -- cycle;
+  \pig@part@draw[\pig@body] (-0.22, 2.0392) .. controls (-0.26, 2.1584) and (-0.47, 2.22) .. (-0.47, 2.20) .. controls (-0.47, 2.2) and (-0.49, 1.9) .. (-0.3721, 1.9) .. controls (-0.2891, 1.88) and (-0.22, 1.88) .. (-0.22, 2.0392) -- cycle;  
   %  
   % Tail  if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifpig@back
