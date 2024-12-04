@@ -56,6 +56,8 @@
   pupil              = black,  
   mouth/.store in    = \rhino@mouth,
   mouth              = \rhino@body!50!black, 
+  horn/.store in     = \rhino@horn,
+  horn               = white!95!yellow,   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
@@ -170,7 +172,7 @@
     \rhino@part@draw[\rhino@body!83!black] (0, 1.55) ellipse[x radius=0.36, y radius=0.2];
     %
     % Horn %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \rhino@part@draw[white!95!yellow] (0, 1.7911) .. controls (-0.0231, 1.7372) and (-0.0463, 1.6832) .. (-0.0642, 1.6274) .. controls (-0.0687, 1.6132) and (-0.0724, 1.5981) .. (-0.0678, 1.5834) .. controls (-0.0603, 1.552) and (-0.0287, 1.5287) .. (0, 1.531) .. controls (0.0287, 1.5287) and (0.0603, 1.552) .. (0.0678, 1.5834) .. controls (0.0724, 1.5981) and (0.0687, 1.6132) .. (0.0642, 1.6274) .. controls (0.0463, 1.6832) and (0.0231, 1.7372) .. (0, 1.7911) -- cycle;
+    \rhino@part@draw[\rhino@horn] (0, 1.7911) .. controls (-0.0231, 1.7372) and (-0.0463, 1.6832) .. (-0.0642, 1.6274) .. controls (-0.0687, 1.6132) and (-0.0724, 1.5981) .. (-0.0678, 1.5834) .. controls (-0.0603, 1.552) and (-0.0287, 1.5287) .. (0, 1.531) .. controls (0.0287, 1.5287) and (0.0603, 1.552) .. (0.0678, 1.5834) .. controls (0.0724, 1.5981) and (0.0687, 1.6132) .. (0.0642, 1.6274) .. controls (0.0463, 1.6832) and (0.0231, 1.7372) .. (0, 1.7911) -- cycle;
     %
     % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \draw[\rhino@mouth,line width=\scalingfactor*0.4pt] (0.125, 1.5) arc [start angle=-50, end angle=-130, radius=0.2] ;
@@ -236,6 +238,9 @@
 %\end{tcblisting}
 %\begin{tcblisting}{}
 %\rhino[mouth=red]
+%\end{tcblisting}
+%\begin{tcblisting}{}
+%\rhino[horn=red]
 %\end{tcblisting}
 %
 %The hippo can also do its nails:

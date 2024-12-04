@@ -9,6 +9,7 @@
 - added DEPENDS.txt file
 - new `leftstep` and `rightstep` options for the anteater, bug, coati, mode and squirrel 
 - new `ears`, `hands`, `belly`, `feet` and `tail` options to colour body parts of the elephant
+- new option `horn` to change the colour of the rhinos horn
 
 ### Changed
 
