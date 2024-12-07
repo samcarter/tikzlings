@@ -94,7 +94,7 @@
   \pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
   \pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
   \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
-  \pgfmathsetmacro{\bumpscalefactor}{sign(\tmpscaleA)*sign(\tmpscaleD)*\scalingfactor}%  
+  \pgfmathsetmacro{\decoscalefactor}{sign(\tmpscaleA)*sign(\tmpscaleD)*\scalingfactor}%  
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   % 
@@ -147,7 +147,7 @@
   \fi% back
   %
   % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \sheep@part@draw[\sheep@body,decorate,decoration={bumps,amplitude=\bumpscalefactor*2.5pt,segment length=\scalingfactor*10pt}] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
+  \sheep@part@draw[\sheep@body,decorate,decoration={bumps,amplitude=\decoscalefactor*2.5pt,segment length=\scalingfactor*10pt}] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname sheephookbelly\endcsname
@@ -160,7 +160,7 @@
   \fi% back
   %
   % Hair %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \sheep@part@draw[\sheep@body,decorate,decoration={bumps,amplitude=\bumpscalefactor*2.5pt,segment length=\scalingfactor*10pt}] (-0.275,1.98) -- (-0.2,2.2)  -- (-0.008,2.2) -- (0.2,2.2) -- (0.275,1.98) -- cycle;
+  \sheep@part@draw[\sheep@body,decorate,decoration={bumps,amplitude=\decoscalefactor*2.5pt,segment length=\scalingfactor*10pt}] (-0.275,1.98) -- (-0.2,2.2)  -- (-0.008,2.2) -- (0.2,2.2) -- (0.275,1.98) -- cycle;
   %
   % Tail if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifsheep@back
@@ -193,7 +193,7 @@
     \sheep@part@draw[sheep@bright!45!white!95!orange] (-0.3216,0.13) arc (195:-15:0.10) -- (-0.16,0.13) to[bend right] (-0.25,0.13) --cycle;
     %
     % Hair %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \sheep@part@draw[\sheep@body,decorate,decoration={bumps,amplitude=\bumpscalefactor*2.5pt,segment length=\scalingfactor*10pt}] (-0.275,1.98) -- (-0.2,2.2)  -- (-0.008,2.2) -- (0.2,2.2) -- (0.275,1.98) -- cycle;
+    \sheep@part@draw[\sheep@body,decorate,decoration={bumps,amplitude=\decoscalefactor*2.5pt,segment length=\scalingfactor*10pt}] (-0.275,1.98) -- (-0.2,2.2)  -- (-0.008,2.2) -- (0.2,2.2) -- (0.275,1.98) -- cycle;
     %
     % Blush %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \ifsheep@blush

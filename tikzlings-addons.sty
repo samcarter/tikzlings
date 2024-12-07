@@ -16,6 +16,7 @@
 
 \RequirePackage{tikz}
 \usetikzlibrary{patterns} % for the wizard hat
+\usetikzlibrary{decorations.shapes} % for somvrero
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -70,6 +71,7 @@
 \newif\ifthing@santa
 \newif\ifthing@chef
 \newif\ifthing@graduate
+\newif\ifthing@sombrero
 \newif\ifthing@alien
 % Communication %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifthing@book
@@ -176,6 +178,15 @@
   graduate/.default       = black,
   tassel/.code            = \def\thing@tassel{#1},  
   tassel                  = red,
+  sombrero/.code          = \thing@sombrerotrue
+                            \def\thing@sombrero{#1},
+  sombrero/.default       = orange!70!yellow,
+  sombreroa/.code         = \def\thing@sombreroa{#1},
+  sombreroa               = green!70!blue,
+  sombrerob/.code         = \def\thing@sombrerob{#1},
+  sombrerob               = red,
+  sombreroc/.code         = \def\thing@sombreroc{#1},
+  sombreroc               = blue,    
   alien/.code             = \thing@alientrue       
                             \def\thing@alien{#1},
   alien/.default          = green,   
@@ -355,6 +366,7 @@
 \pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
 \pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
 \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
+\pgfmathsetmacro{\decoscalefactor}{sign(\tmpscaleA)*sign(\tmpscaleD)*\scalingfactor}%  
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -524,6 +536,20 @@
   \fill[\thing@graduate] (0.3,2.25) -- (1.05,2.35) -- (1.7,1.95) -- (0.92,1.85) -- cycle;
   \fill[\thing@tassel,rounded corners=\scalingfactor*1] (1.12,1.89) -- (1.01,2.1) -- (1.09,2.11) -- (1.2,1.9) -- (1.2,1.3) -- (1.12,1.3) -- cycle;
   \fill[\thing@tassel] (1.16,1.3) ellipse[x radius=0.06, y radius=0.12];
+  \end{scope}
+\fi
+%
+% sombrero %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifthing@sombrero
+  \fill[\thing@sombrero] (-.45,2) to[in=200] (0,2.8) to[out=-20] (.45,2) -- cycle;
+  \fill[\thing@sombrero] (-0.65, 1.75) .. controls (-0.85, 1.7) and (-0.85, 1.9) .. (-0.85, 1.9)  .. controls (-0.30, 2.2) and (0.30, 2.2) .. ( 0.85, 1.9)  .. controls ( 0.85, 1.9) and (0.85, 1.7) .. ( 0.65, 1.75) .. controls ( 0.30, 1.95) and (-0.30, 1.95) .. (-0.65, 1.75) -- cycle;
+  \draw[\thing@sombrerob,line width=\scalingfactor*0.8pt] (-0.85, 1.9)  .. controls (-0.30, 2.2) and (0.30, 2.2) .. ( 0.85, 1.9);
+  \draw[decorate,decoration={zigzag, amplitude=\decoscalefactor*1pt, segment length=\scalingfactor*6pt},\thing@sombreroa, line width=\scalingfactor*1pt] (-0.81, 1.8)  .. controls (-0.30, 2.1) and (0.30, 2.1) .. ( 0.82, 1.8);
+  \begin{scope}
+    \clip (-.45,2) to[in=200] (0,2.8) to[out=-20] (.45,2) -- cycle;
+    \draw[decorate,decoration={zigzag, amplitude=\decoscalefactor*1pt, segment length=\scalingfactor*3pt},\thing@sombreroa, line width=\scalingfactor*1pt] (-.4,2.4) to[bend left] (.4,2.4);  
+    \fill[decorate,decoration={shape backgrounds,shape=circle,        shape size=\scalingfactor*2pt, shape evenly spread=7}, \thing@sombreroc] (-.3,2.6) to[bend left] (.3,2.6);  
+    \fill[decorate,decoration={shape backgrounds,shape=circle,shape size=\scalingfactor*2pt,shape evenly spread=9},\thing@sombreroc] (-.4,2.18) to[bend left] (.4,2.18);  
   \end{scope}
 \fi
 %
