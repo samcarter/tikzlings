@@ -182,13 +182,13 @@ The \tikzlings package is a collection of packages. It can either be loaded as a
 
 The basic usage is the same for all animals (and beings). Inside a \saminline|tikzpicture|, the \tikzlings can be added via \saminline|\<name_of_the_tikzling>|. For example
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Basic Ti\emph{k}Zling}}
 \marmot
 \end{tcblisting}
 
 will produce a marmot. All usual \TikZ and \saminline|pgf| keys can be passed as optional argument to change the appearance. For example scaling and rotating the \tikzlings can be done by
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Ti\emph{k}Zling with options}}
 \penguin[rotate=30,scale=0.5]
 \end{tcblisting}
 
@@ -203,8 +203,10 @@ To make customisation  of the \tikzlings easier, some hooks are provided, which 
 \end{itemize}
 
 With regard to the individual components of the \tikzlings, they are located in the following z order:
-\begin{center}
-\begin{tikzpicture}[scale=1.05]
+
+\begingroup
+  \centering
+  \begin{tikzpicture}[scale=0.95]
     \newcommand{\planewidth}{2.6}
     \newcommand{\planeheight}{3.4}
     \newcommand{\planes}{\fill[gray!20!white,opacity=0.9]  (-\planewidth,-0.1) rectangle (\planewidth,\planeheight);}
@@ -258,12 +260,13 @@ With regard to the individual components of the \tikzlings, they are located in 
       \node[font=\footnotesize\ttfamily,rotate=45] at (0,0.1) {foreground};
     \end{scope}
   \end{tikzpicture}
-\end{center}
+  \par
+\endgroup
 
 {\raggedright In addition, the hooks \saminline|\tikzlinghookbackground|, \saminline|\tikzlinghookbelly|,\newline \saminline|\tikzlinghookbody| and \saminline|\tikzlinghookforeground| are available and will effect all\newline \tikzlings.}
 
 A short example how the hooks can be used:
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Hooks}}
 \newcommand{\mousehookbelly}{%
   \fill[red!80!black] (0.55, 1.35) --
     (0.65, 0.3) -- (-0.65, 0.3) --
@@ -273,7 +276,7 @@ A short example how the hooks can be used:
 \end{tcblisting}
 
 Another way to use the \tikzlings is the \TikZ library of the same name. By loading this library, all macros from the normal package can be used. In addition the \TikZ library also defines the \tikzlings as \saminline|pic|'s:
-\begin{tcolorbox}
+\begin{tcolorbox}[title={Ti\emph{k}z library and \texttt{\textbackslash pic}}]
 \begin{samcode}
 \documentclass{standalone}
 
@@ -332,7 +335,7 @@ Another way to use the \tikzlings is the \TikZ library of the same name. By load
 
 \subsection{Package name}
 
-\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth]
+\begin{tcolorbox}[lower separated=false, lefthand width=.8\linewidth,title={Package usage}]
 \vspace*{0.5cm}
 \saminline|\usepackage{tikzlings}|
 \vspace*{0.5cm}
@@ -340,29 +343,29 @@ Another way to use the \tikzlings is the \TikZ library of the same name. By load
 
 \subsection{Basic Usage}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Basic Ti\emph{k}Zling}}
 \tikzling
 \end{tcblisting}
 
 \subsection{Options}
 
 Options common for all \tikzlings are supported for the \saminline|\tikzling|. These are the ability to change the body colour
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Body colour}}
 \tikzling[body=blue]
 \end{tcblisting}
 
 to view the \tikzlings from behind
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Back view}}
 \tikzling[back]
 \end{tcblisting}
 
 and the \saminline|3D| key, which will make the Ti\emph{k}Zlings 3-dimensional:
-\begin{tcblisting}{}
+\begin{tcblisting}{title={3D view}}
 \tikzling[3D]
 \end{tcblisting}
 
 And finally the \saminline|contour| key will only draw the outlines:
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Contours}}
 \tikzling[contour=black]
 \end{tcblisting}
 
@@ -380,7 +383,7 @@ In addition all usual \TikZ and \saminline|pgf| keys can be used in the optional
 
 To customise the \tikzlings the package provides a number of accessories which can be added to all the \tikzlings simply by adding the respective keyword as optional argument:
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Basic usage}}
 \bear[
   hat
 ]
@@ -388,7 +391,7 @@ To customise the \tikzlings the package provides a number of accessories which c
 
 For most of these items, the colour can be customised:
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Customisation}}
 \koala[
   crown=orange!50!yellow
 ]
@@ -396,7 +399,7 @@ For most of these items, the colour can be customised:
 
 Unfortunately it is very difficult to create accessories that will fit all the different shapes of the \tikzlings. Therefore it is also possible to add them separately as optional argument of the \saminline|\thing| macro, which allows more control of their size and placement:
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Further customisation}}
 \owl
 \thing[
   tophat,
@@ -410,95 +413,95 @@ A list of all available accessories is given below. For completeness the default
 
 \subsection{Hats}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Hat}}
 \penguin[
   hat=blue!40!black
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Top hat}}
 \snowman[
   tophat=black!90!white
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Beret}}
 \mouse[
   beret=black
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Strawhat}}
 \anteater[
   strawhat=blue,
   ribbon=black
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Harlequin hat}}
 \coati[
   harlequin=blue,
   niuqelrah=red
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Witch hat}}
 \cat[
   witch=gray
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Magic hat}}
 \bear[
   magichat=violet,
   magicstars=yellow!80!brown
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Crown}}
 \sheep[
   crown=yellow!90!orange
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Queen crown}}
 \bat[
   queencrown=yellow
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={King crown}}
 \marmot[
   kingcrown=gray
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Santa hat}}
 \mouse[
   santa=red!80!black
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Chefs hat}}
 \bear[
   chef=gray!20!white
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Graduate cap}}
 \wolf[
   graduate=black,
   tassel=red
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Alien antennas}}
 \penguin[
   alien=green
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Sombrero}}
 \marmot[
   sombrero=orange!70!yellow,
   sombreroa= green!70!blue,
@@ -509,14 +512,14 @@ A list of all available accessories is given below. For completeness the default
 
 \subsection{Communication}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Book}}
 \coati[
   book={\tiny\TeX},
   bookcolour=brown
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Sign post}}
 \pig[
   signpost={\TeX},
   signcolour= brown!50!black,
@@ -524,14 +527,14 @@ A list of all available accessories is given below. For completeness the default
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Speech bubble}}
 \bear[
   speech={\TeX},
   bubblecolour=gray!30!white
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Thinking bubble}}
 \penguin[
   think={\TeX},
   bubblecolour=gray!30!white
@@ -540,31 +543,31 @@ A list of all available accessories is given below. For completeness the default
 
 \subsection{Food}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Pizza}}
 \koala[
   pizza
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Cheese}}
 \mouse[
   cheese=yellow!30!orange!60!white
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Baguette}}
 \bug[
   baguette=brown
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Cake}}
 \moles[
   cake=violet
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Ice cream}}
 \marmot[
   icecream=brown!60!gray,
   flavoura=brown!50!black,
@@ -573,25 +576,25 @@ A list of all available accessories is given below. For completeness the default
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Milk shake}}
 \penguin[
   milkshake=red!20!white
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={wine}}
 \owl[
   wine=red!70!black
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Cocktail}}
 \bear[
   cocktail
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Banana}}
 \ape[
   banana=yellow!80!orange
 ]
@@ -599,19 +602,19 @@ A list of all available accessories is given below. For completeness the default
 
 \subsection{Sports}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Cricket bat}}
 \coati[
   cricket=brown
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Hockey stick}}
 \bug[
   hockey=brown
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Football}}
 \elephant[
   football=white
 ]
@@ -619,43 +622,43 @@ A list of all available accessories is given below. For completeness the default
 
 \subsection{Other items}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Crystal ball}}
 \marmot[
   crystalball=cyan
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Magic wand}}
 \bear[
   magicwand
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Rolling pin}}
 \coati[
   rollingpin=brown
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Light sabre}}
 \penguin[
   lightsaber=green
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Torch}}
 \snowman[
   torch=gray
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Basket}}
 \mouse[
   basket=brown!70!gray
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Easter Basket}}
 \sloth[
   easter=brown!70!gray,
   egga=blue,
@@ -664,25 +667,25 @@ A list of all available accessories is given below. For completeness the default
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Crozier}}
 \koala[
   crozier=brown
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Shovel}}
 \snowman[
   shovel=gray
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Pick axe}}
 \penguin[
   pickaxe=gray
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Straw broom}}
 \bug[
   strawbroom=brown!50!white,
   strawbroomstick=brown,
@@ -690,32 +693,32 @@ A list of all available accessories is given below. For completeness the default
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={broom}}
 \chicken[
   broom=brown,
   broomstick=gray!50!black
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Open umbrella}}
 \rhino[
   umbrella=cyan
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Closed umbrella}}
 \marmot[
   umbrellaclosed=cyan
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Handbag}}
 \mouse[
   handbag=red!70!black
 ]
 \end{tcblisting}
 
-\begin{tcblisting}{}
+\begin{tcblisting}{title={Stick with leaf}}
 \ape[
   stick=brown!50!black,
   leaf=green!70!red

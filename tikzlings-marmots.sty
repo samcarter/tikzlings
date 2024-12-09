@@ -282,7 +282,7 @@
 %
 %\subsection{Package name}
 %
-%\begin{tcolorbox}
+%\begin{tcolorbox}[title={Package usage}]
 %\begin{samcode}
 %\usepackage{tikzlings-marmots}
 %\end{samcode}
@@ -290,67 +290,67 @@
 %
 %\subsection{Basic Usage}
 %
-%\begin{tcblisting}{}
+%\begin{tcblisting}{title={Basic marmot}}
 %\marmot
 %\end{tcblisting}
 %
 %\subsection{Options}
 %
 %The basic marmot can be modified by changing its colour:
-%\begin{tcblisting}{}
+%\begin{tcblisting}{title={Body colour}}
 %\marmot[body=blue]
 %\end{tcblisting}
 %
 %In addition to the colour of the body, the colour of various body parts can be adjusted:
-%\begin{tcblisting}{}
+%\begin{tcblisting}{title={Eye colour}}
 %\marmot[eye=red]
 %\end{tcblisting}
-%\begin{tcblisting}{}
+%\begin{tcblisting}{title={Mouth colour}}
 %\marmot[mouth=red]
 %\end{tcblisting}
 %
 %The marmot can also blush
-%\begin{tcblisting}{}
+%\begin{tcblisting}{title={Blushing marmot}}
 %\marmot[blush=red]
 %\end{tcblisting}
 %
 %and whiskers can be added:
-%\begin{tcblisting}{}
+%\begin{tcblisting}{title={Whiskers colour}}
 %\marmot[whiskers=gray]
 %\end{tcblisting}
 %
 %Some marmots even show their chisel teeth:
-%\begin{tcblisting}{}
+%\begin{tcblisting}{title={Teeth colour}}
 %\marmot[teeth=white]
 %\end{tcblisting}
 %
 %or can cast a shadow:
-%\begin{tcblisting}{}
+%\begin{tcblisting}{title={Shadow}}
 %\marmot[shadow]
 %\end{tcblisting}
 %
 %This ability is important if you want to ask Punxsutawney Phil\footnote{\url{https://en.wikipedia.org/wiki/Punxsutawney_Phil}} on Groundhog Day how the weather is going to be. With a probability derived from the statistics of 120 Groundhog Days\footnote{\hbadness=99999\url{https://www.livescience.com/32974-punxsutawney-phil-weather-prediction-accuracy.html}} the option \saminline|askphil| might or might not result in a shadow.
-%\begin{tcblisting}{}
+%\begin{tcblisting}{title={Ask Phil}}
 %\marmot[askphil]
 %\end{tcblisting}
 %
 %If a good weather prognosis is derived, the happy marmot can dance by lifting up its left and right foot: 
-%\begin{tcblisting}{}
+%\begin{tcblisting}{title={Walking}}
 %\marmot[leftstep]
 %\marmot[rightstep,xshift=2cm]
 %\end{tcblisting}
 %
 %To view the marmot from behind:
-%\begin{tcblisting}{}
+%\begin{tcblisting}{title={Back view}}
 %\marmot[back]
 %\end{tcblisting}
 %
 %The key \saminline|3D| will make the marmot 3-dimensional:
-%\begin{tcblisting}{}
+%\begin{tcblisting}{title={3D view}}
 %\marmot[3D]
 %\end{tcblisting}
 %
 %And finally the \saminline|contour| key will only draw the outlines:
-%\begin{tcblisting}{}
+%\begin{tcblisting}{title={Contours}}
 %\marmot[contour=black]
 %\end{tcblisting}

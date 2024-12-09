@@ -307,7 +307,7 @@
 %
 %\subsection{Package name}
 %
-%\begin{tcolorbox}
+%\begin{tcolorbox}[title={Package usage}]
 %\begin{samcode}
 %\usepackage{tikzlings-cats}
 %\end{samcode}
@@ -315,41 +315,41 @@
 %
 %\subsection{Basic Usage}
 %
-%\begin{tcblisting}{}
+%\begin{tcblisting}{title={Basic cat}}
 %\cat
 %\end{tcblisting}
 %
 %\subsection{Options}
 %
 %The basic cat can be modified by changing its colour:
-%\begin{tcblisting}{}
+%\begin{tcblisting}{title={Body colour}}
 %\cat[body=blue]
 %\end{tcblisting}
 %
 %In addition to the colour of the body, the colour of various body parts can be adjusted:
-%\begin{tcblisting}{}
+%\begin{tcblisting}{title={Eye colour}}
 %\cat[eye=green]
 %\end{tcblisting}
-%\begin{tcblisting}{}
+%\begin{tcblisting}{title={Pupil colour}}
 %\cat[pupil=red]
 %\end{tcblisting}
-%\begin{tcblisting}{}
+%\begin{tcblisting}{title={Nose colour}}
 %\cat[nose=red]
 %\end{tcblisting}
-%\begin{tcblisting}{}
+%\begin{tcblisting}{title={Whiskers colour}}
 %\cat[whiskers=red]
 %\end{tcblisting}
-%\begin{tcblisting}{}
+%\begin{tcblisting}{title={Paw colour}}
 %\cat[paws=red]
 %\end{tcblisting}
 %
 %The shape of the \saminline|pupil| can be changed with the \saminline|pupilwidth| option:
-%\begin{tcblisting}{}
+%\begin{tcblisting}{title={Width of pupils}}
 %\cat[pupilwidth=0.015]
 %\end{tcblisting}
 %
 %Additionally several predefined widths exist:
-%\begin{tcolorbox}
+%\begin{tcolorbox}[title={Predefined pupil widths}]
 %\begin{samcode}
 %\cat[narrow pupils]
 %
@@ -379,22 +379,22 @@
 %}
 %\renewcommand{\cathookbackground}{}
 %\makeatother
-%\begin{tcblisting}{}
+%\begin{tcblisting}{title={Schrödingers cat}}
 %\cat[schroedinger]
 %\end{tcblisting}
 %\endgroup
 %
 %To view the cat from behind:
-%\begin{tcblisting}{}
+%\begin{tcblisting}{title={Back view}}
 %\cat[back]
 %\end{tcblisting}
 %
 %The key \saminline|3D| will make the cat 3-dimensional:
-%\begin{tcblisting}{}
+%\begin{tcblisting}{title={3D view}}
 %\cat[3D]
 %\end{tcblisting}
 %
 %And finally the \saminline|contour| key will only draw the outlines:
-%\begin{tcblisting}{}
+%\begin{tcblisting}{title={Contours}}
 %\cat[contour=black]
 %\end{tcblisting}
