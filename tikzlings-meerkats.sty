@@ -1,0 +1,329 @@
+ % !TeX root = ./examples/meerkat.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% This package is part of the TikZlings package
+%% A package to bring cute little animals and other beings into tikz
+%% Maintained by samcarter
+%%
+%% Project repository and bug tracker:
+%% https://github.com/samcarter/tikzlings
+%%
+%% Released under the LaTeX Project Public License v1.3c or later
+%% See https://www.latex-project.org/lppl.txt
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{tikzlings-meerkats}[2022/06/17 version v1.0 Drawing meerkats in TikZ]
+
+\RequirePackage{tikz}
+\RequirePackage{tikzlings-addons}
+
+\newcommand*{\meerkat}[1][]{%
+  \begin{scope}%
+    \tikzset{/meerkat/.cd,#1}%
+    \meerkat@draw%
+  \end{scope}%
+  \thing[#1]%
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname meerkathookforeground\endcsname
+  \csname tikzlinghookforeground\endcsname
+  %  
+}
+
+\newif\ifmeerkat@standing
+\newif\ifmeerkat@threeD
+\newif\ifmeerkat@back
+\newif\ifmeerkat@contour
+
+\def\meerkat@shift{0}
+
+\tikzset{
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Pass unknown keys on to tikz
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  /meerkat/.search also={/tikz,/pgf,/thing},
+  /meerkat/.cd,
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % body
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  body/.store in     = \meerkat@body,
+  body               = brown,
+  upperbody/.store in = \meerkat@upperbody,
+  upperbody          = \meerkat@body!70!white,
+  upper body/.forward to = /meerkat/upperbody,
+  chest/.store in    = \meerkat@chest,
+  chest              = \meerkat@body!45!white,
+  legs/.store in     = \meerkat@legs,
+  legs               = \meerkat@body,
+  tail/.store in     = \meerkat@tail,
+  tail               = \meerkat@body,
+  tip/.store in      = \meerkat@tip,
+  tip                = \meerkat@tail!50!black,
+  ears/.store in     = \meerkat@ears,
+  ears               = \meerkat@body!50!black,
+  eye/.store in      = \meerkat@eye,
+  eye                = black,
+  eyecircles/.store in = \meerkat@eyecircles,
+  eyecircles         = \meerkat@body!75!black,
+  eye circles/.forward to = /meerkat/eyecircles,
+  muzzle/.store in   = \meerkat@muzzle,
+  muzzle             = \meerkat@body!45!white,
+  nose/.store in     = \meerkat@nose,
+  nose               = \meerkat@tail!50!black,
+  mouth/.store in    = \meerkat@mouth,
+  mouth              = \meerkat@tail!50!black,  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % options
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  3D/.code           = \meerkat@threeDtrue,
+  back/.code         = \meerkat@backtrue,  
+  contour/.code      = \meerkat@contourtrue
+                       \def\meerkat@contour{#1}
+                       \def\meerkat@blushcolor{#1}
+                       \def\meerkat@mouth{#1},
+  contour/.default   = black,  
+  outline/.forward to = /meerkat/contour,   
+  standing/.code     = \meerkat@standingtrue
+                       \def\meerkat@shift{15},
+}
+
+\def\meerkat@draw{%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % minimal bounding box size 
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifmeerkat@standing
+    \path (-0.55,0.05) rectangle (0.85, 2.65);
+  \else
+    \path (-0.55,0.05) rectangle (0.85, 2.13);
+  \fi
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % store the current scale factor
+  % from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
+  \pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
+  \pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
+  \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % 
+  % switch between 2D, 3D and contours, from
+  % https://chat.stackexchange.com/transcript/message/45991801#45991801
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifmeerkat@threeD
+    \def\meerkat@part@draw[##1]{\shade[ball color=##1]}
+  \else% 3D
+    \ifmeerkat@contour
+      \def\meerkat@part@draw[##1]{\draw[##1,\meerkat@contour,fill=white,line width=\scalingfactor*0.4pt]}
+    \else% contour
+      \def\meerkat@part@draw[##1]{\fill[##1]}
+    \fi% contour
+  \fi% 3D
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Body parts
+  % 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname meerkathookbackground\endcsname
+  \csname tikzlinghookbackground\endcsname
+  %
+  \ifmeerkat@standing
+    %
+    \unless\ifmeerkat@back
+      % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \meerkat@part@draw[\meerkat@tail] (0.0071, 1.0065).. controls (0.0949, 0.7556) and (0.2077, 0.5139) .. (0.3436, 0.2854).. controls (0.3809, 0.2966) and (0.4183, 0.3078) .. (0.4557, 0.319).. controls (0.3377, 0.5524) and (0.2434, 0.7968) .. (0.174, 1.049);  
+      %
+      % Tip of tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \meerkat@part@draw[\meerkat@tip] (0.8483, 0.1284).. controls (0.7159, 0.1309) and (0.575, 0.1064) .. (0.4503, 0.163).. controls (0.3999, 0.1871) and (0.3617, 0.2328) .. (0.3436, 0.2854).. controls (0.3809, 0.2966) and (0.4183, 0.3078) .. (0.4557, 0.319).. controls (0.5224, 0.2163) and (0.6411, 0.1646) .. (0.7581, 0.145).. controls (0.7881, 0.1389) and (0.8182, 0.1337) .. (0.8483, 0.1284) -- cycle;
+    \fi %back
+    %
+    % Legs %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \meerkat@part@draw[\meerkat@legs] (-0.3454, 1.3191).. controls (-0.3768, 1.128) and (-0.4158, 0.9325) .. (-0.3865, 0.7386).. controls (-0.3749, 0.6541) and (-0.3231, 0.5584) .. (-0.2285, 0.5516).. controls (-0.1819, 0.5615) and (-0.1524, 0.5219) .. (-0.1531, 0.48).. controls (-0.1406, 0.4015) and (-0.126, 0.3232) .. (-0.1147, 0.2446).. controls (-0.1149, 0.1841) and (-0.2292, 0.195) .. (-0.2042, 0.1256).. controls (-0.1635, 0.0562) and (-0.0406, 0.0684) .. (-0.021, 0.15).. controls (0.0009, 0.2391) and (-0.0108, 0.3319) .. (-0.0078, 0.4229).. controls (-0.0101, 0.4797) and (-0.0028, 0.5377) .. (-0.0126, 0.5937).. controls (-0.0473, 0.6539) and (-0.1009, 0.7107) .. (-0.0889, 0.7877).. controls (-0.0857, 0.8768) and (-0.0601, 0.963) .. (-0.0454, 1.0505);
+    \meerkat@part@draw[\meerkat@legs] (0.3522, 1.3191).. controls (0.3836, 1.128) and (0.4226, 0.9325) .. (0.3932, 0.7386).. controls (0.3817, 0.6541) and (0.3299, 0.5584) .. (0.2352, 0.5516).. controls (0.1887, 0.5615) and (0.1592, 0.5219) .. (0.1599, 0.48).. controls (0.1474, 0.4015) and (0.1327, 0.3232) .. (0.1215, 0.2446).. controls (0.1217, 0.1841) and (0.236, 0.195) .. (0.211, 0.1256).. controls (0.1702, 0.0562) and (0.0474, 0.0684) .. (0.0278, 0.15).. controls (0.0058, 0.2391) and (0.0176, 0.3319) .. (0.0146, 0.4229).. controls (0.0168, 0.4797) and (0.0095, 0.5377) .. (0.0194, 0.5937).. controls (0.0541, 0.6539) and (0.1077, 0.7107) .. (0.0956, 0.7877).. controls (0.0924, 0.8768) and (0.0668, 0.963) .. (0.0521, 1.0505);
+    %
+    \ifmeerkat@back
+      % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \meerkat@part@draw[\meerkat@tail] (0.0071, 1.0065).. controls (0.0949, 0.7556) and (0.2077, 0.5139) .. (0.3436, 0.2854).. controls (0.3809, 0.2966) and (0.4183, 0.3078) .. (0.4557, 0.319).. controls (0.3377, 0.5524) and (0.2434, 0.7968) .. (0.174, 1.049);  
+      %
+      % Tip of tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \meerkat@part@draw[\meerkat@tip] (0.8483, 0.1284).. controls (0.7159, 0.1309) and (0.575, 0.1064) .. (0.4503, 0.163).. controls (0.3999, 0.1871) and (0.3617, 0.2328) .. (0.3436, 0.2854).. controls (0.3809, 0.2966) and (0.4183, 0.3078) .. (0.4557, 0.319).. controls (0.5224, 0.2163) and (0.6411, 0.1646) .. (0.7581, 0.145).. controls (0.7881, 0.1389) and (0.8182, 0.1337) .. (0.8483, 0.1284) -- cycle;
+    \fi %back    
+  \else % sitting meerkat
+    %
+    \unless\ifmeerkat@back
+      % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \meerkat@part@draw[\meerkat@tail] (-0.0555, 0.5998).. controls (-0.0555, 0.4298) and (0.1812, 0.2011) .. (0.341, 0.143) -- (0.44, 0.253).. controls (0.3106, 0.3001) and (0.0959, 0.4717) .. (0.0959, 0.6094);
+      %
+      % Tip of the tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \meerkat@part@draw[\meerkat@tip] (0.836, 0.132).. controls (0.6422, 0.132) and (0.5231, 0.0767) .. (0.341, 0.143) -- (0.44, 0.253).. controls (0.5922, 0.1976) and (0.6765, 0.1601) .. (0.836, 0.132);
+    \fi % back
+    %
+    % Legs %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \meerkat@part@draw[\meerkat@legs] (-0.2759, 0.6554).. controls (-0.2927, 0.7506) and (-0.3983, 0.77) .. (-0.4598, 0.77).. controls (-0.4793, 0.77) and (-0.4959, 0.7543) .. (-0.4971, 0.7349).. controls (-0.5094, 0.5297) and (-0.4208, 0.3526) .. (-0.2493, 0.2393).. controls (-0.2331, 0.2287) and (-0.236, 0.2231) .. (-0.2551, 0.22) -- (-0.4553, 0.1878).. controls (-0.4745, 0.1847) and (-0.5016, 0.1767) .. (-0.5153, 0.1629).. controls (-0.5208, 0.1574) and (-0.5208, 0.1081) .. (-0.5153, 0.1026).. controls (-0.5016, 0.0889) and (-0.4747, 0.0794) .. (-0.4553, 0.0796).. controls (-0.0935, 0.0833) and (-0.055, 0.0466) .. (-0.055, 0.1848).. controls (-0.055, 0.2042) and (-0.0521, 0.2354) .. (-0.0485, 0.2545) -- (-0.0187, 0.4185);
+    \meerkat@part@draw[\meerkat@legs] (0.2759, 0.6554).. controls (0.2927, 0.7506) and (0.3983, 0.77) .. (0.4598, 0.77).. controls (0.4793, 0.77) and (0.4959, 0.7543) .. (0.4971, 0.7349).. controls (0.5094, 0.5297) and (0.4208, 0.3526) .. (0.2493, 0.2393).. controls (0.2331, 0.2287) and (0.236, 0.2231) .. (0.2551, 0.22) -- (0.4553, 0.1878).. controls (0.4745, 0.1847) and (0.5016, 0.1767) .. (0.5153, 0.1629).. controls (0.5208, 0.1574) and (0.5208, 0.1081) .. (0.5153, 0.1026).. controls (0.5016, 0.0889) and (0.4747, 0.0794) .. (0.4553, 0.0796).. controls (0.0935, 0.0833) and (0.055, 0.0466) .. (0.055, 0.1848).. controls (0.055, 0.2042) and (0.0521, 0.2354) .. (0.0485, 0.2545) -- (0.0187, 0.4185);
+    %
+    \ifmeerkat@back
+      % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \meerkat@part@draw[\meerkat@tail] (-0.0555, 0.5998).. controls (-0.0555, 0.4298) and (0.1812, 0.2011) .. (0.341, 0.143) -- (0.44, 0.253).. controls (0.3106, 0.3001) and (0.0959, 0.4717) .. (0.0959, 0.6094);
+      %
+      % Tip of the tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \meerkat@part@draw[\meerkat@tip] (0.836, 0.132).. controls (0.6422, 0.132) and (0.5231, 0.0767) .. (0.341, 0.143) -- (0.44, 0.253).. controls (0.5922, 0.1976) and (0.6765, 0.1601) .. (0.836, 0.132);
+    \fi % back
+    %
+  \fi % standling
+  %
+  \begin{scope}[yshift=\meerkat@shift]
+    %
+    % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \meerkat@part@draw[\meerkat@body] (0,0.77) circle [radius=0.35];
+    % 
+    % Upper body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \ifmeerkat@back
+      \meerkat@part@draw[\meerkat@upperbody] (-0.374, 1.32).. controls (-0.3892, 1.1462) and (-0.2287, 0.903) .. (-0.0859, 0.7515).. controls (-0.0594, 0.7213) and (-0.031, 0.691) .. (0.0, 0.66).. controls (0.031, 0.691) and (0.0595, 0.7213) .. (0.0859, 0.7515).. controls (0.2399, 0.9179) and (0.3892, 1.1462) .. (0.374, 1.32).. controls (0.374, 1.4277) and (0.1868, 1.582) .. (0.0, 1.65).. controls (-0.1876, 1.5817) and (-0.374, 1.4271) .. (-0.374, 1.32) -- cycle;
+    \else
+      \meerkat@part@draw[\meerkat@upperbody] (-0.374, 1.32).. controls (-0.3974, 1.0521) and (-0.176, 0.9289) .. (-0.176, 0.66).. controls (-0.176, 0.467) and (-0.077, 0.467) .. (-0.077, 0.66).. controls (-0.077, 0.6924) and (-0.0803, 0.7227) .. (-0.0859, 0.7515).. controls (-0.0594, 0.7213) and (-0.031, 0.691) .. (-0.0, 0.66).. controls (0.031, 0.691) and (0.0595, 0.7213) .. (0.0859, 0.7515).. controls (0.0803, 0.7227) and (0.077, 0.6924) .. (0.077, 0.66).. controls (0.077, 0.467) and (0.176, 0.467) .. (0.176, 0.66).. controls (0.176, 0.9289) and (0.3974, 1.0521) .. (0.374, 1.32).. controls (0.374, 1.4277) and (0.1868, 1.582) .. (-0.0, 1.65).. controls (-0.1876, 1.5817) and (-0.374, 1.4271) .. (-0.374, 1.32) -- cycle;
+    \fi % back
+    %
+    % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \csname meerkathookbelly\endcsname
+    \csname tikzlinghookbelly\endcsname
+    %
+    % Chest %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \unless\ifmeerkat@back
+      \meerkat@part@draw[\meerkat@chest] (-0.0, 1.54).. controls (-0.1378, 1.54) and (-0.275, 1.4578) .. (-0.275, 1.32).. controls (-0.275, 1.1168) and (-0.1437, 1.0237) .. (-0.0, 0.88).. controls (0.1437, 1.0237) and (0.275, 1.1168) .. (0.275, 1.32).. controls (0.275, 1.4578) and (0.1378, 1.54) .. (-0.0, 1.54) -- cycle;
+    \fi % back
+    %
+    % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \meerkat@part@draw[\meerkat@ears] (-0.35, 1.87) circle [radius=0.11];
+    \meerkat@part@draw[\meerkat@ears] (0.35, 1.87) circle [radius=0.11];
+    %
+    % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \ifmeerkat@back
+      \meerkat@part@draw[\meerkat@muzzle] (0,1.7) ellipse [x radius=0.38, y radius=0.21];
+      \meerkat@part@draw[\meerkat@body] (0,1.775) ellipse [x radius=0.34, y radius=0.32];
+    \else
+      \meerkat@part@draw[\meerkat@body] (0,1.85) ellipse [x radius=0.34, y radius=0.25];
+      \meerkat@part@draw[\meerkat@muzzle] (0,1.7) ellipse [x radius=0.38, y radius=0.21];
+      %
+      % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \meerkat@part@draw[\meerkat@nose] (0.0176, 1.6987) -- (0.0437, 1.7439).. controls (0.0534, 1.7607) and (0.0455, 1.7743) .. (0.0261, 1.7743) -- (-0.0261, 1.7743).. controls (-0.0455, 1.7743) and (-0.0534, 1.7607) .. (-0.0437, 1.7439) -- (-0.0176, 1.6987).. controls (-0.0079, 1.6819) and (0.0079, 1.6819) .. (0.0176, 1.6987) -- cycle;
+      %
+      % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \draw[\meerkat@mouth,line width=\scalingfactor*0.4pt] (0.0, 1.6871).. controls (0.0412, 1.6415) and (0.1351, 1.6616) .. (0.154, 1.7201);
+      \draw[\meerkat@mouth,line width=\scalingfactor*0.4pt](0.0, 1.6871).. controls (-0.0412, 1.6415) and (-0.1351, 1.6616) .. (-0.154, 1.7201);
+      %
+      % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \meerkat@part@draw[\meerkat@eyecircles,rotate=30] (0.75,1.7) ellipse [x radius=0.14, y radius=0.08];
+      \meerkat@part@draw[\meerkat@eyecircles,rotate=-30] (-0.75,1.7) ellipse [x radius=0.14, y radius=0.08];
+      \meerkat@part@draw[\meerkat@eye] (0.18,1.86) circle [radius=0.055];
+      \meerkat@part@draw[\meerkat@eye] (-0.18,1.86) circle [radius=0.055];
+      \meerkat@part@draw[white] (0.165,1.88) circle [radius=0.01];
+      \meerkat@part@draw[white] (-0.195,1.88) circle [radius=0.01];
+    \fi % back
+    %
+    % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \csname meerkathookbody\endcsname
+    \csname tikzlinghookbody\endcsname
+    %  
+  \end{scope}% body shift
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Documentation
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\clearpage
+%\section[Meerkat]{Ambrogio, the meerkat}
+%
+%\emph{The Meerkat was first created by Carla for the Great TikZlings Extravanganza 2022\footnote{\url{https://github.com/TikZlings/Extravaganza2022}}. Ambrogio got his name from the patreon saint of his home town Milan, Saint Ambrogio}
+%
+%\subsection{Package name}
+%
+%\begin{tcolorbox}[title={Package usage}]
+%\begin{samcode}
+%\usepackage{tikzlings-meerkats}
+%\end{samcode}
+%\end{tcolorbox}
+%
+%\subsection{Basic Usage}
+%
+%\begin{tcblisting}{title={Basic meerkat}}
+%\meerkat
+%\end{tcblisting}
+%
+%\subsection{Options}
+%
+%The basic meerkat can be modified by changing its colour:
+%\begin{tcblisting}{title={Body colour}}
+%\meerkat[body=blue]
+%\end{tcblisting}
+%
+%In addition to the colour of the body, the colour of various body parts can be adjusted:
+%\begin{tcblisting}{title={Eye colour}}
+%\meerkat[eye=red]
+%\end{tcblisting}
+%\begin{tcblisting}{title={Eye circle colour}}
+%\meerkat[eyecircles=red]
+%\end{tcblisting}
+%\begin{tcblisting}{title={Ear colour}}
+%\meerkat[ears=red]
+%\end{tcblisting}
+%\begin{tcblisting}{title={Muzzle colour}}
+%\meerkat[muzzle=red]
+%\end{tcblisting}
+%\begin{tcblisting}{title={Nose colour}}
+%\meerkat[nose=red]
+%\end{tcblisting}
+%\begin{tcblisting}{title={Mouth colour}}
+%\meerkat[mouth=red]
+%\end{tcblisting}
+%\begin{tcblisting}{title={Upper body colour}}
+%\meerkat[upperbody=red]
+%\end{tcblisting}
+%\begin{tcblisting}{title={Chest colour}}
+%\meerkat[chest=red]
+%\end{tcblisting}
+%\begin{tcblisting}{title={Leg colour}}
+%\meerkat[legs=red]
+%\end{tcblisting}
+%\begin{tcblisting}{title={Tail colour}}
+%\meerkat[tail=red]
+%\end{tcblisting}
+%\begin{tcblisting}{title={Tail tip colour}}
+%\meerkat[tip=red]
+%\end{tcblisting}
+%
+%The meerkat can also stand up
+%\begin{tcblisting}{title={Standing meerkat}}
+%\meerkat[standing]
+%\end{tcblisting}
+%
+%To view the meerkat from behind:
+%\begin{tcblisting}{title={Back view}}
+%\meerkat[back]
+%\end{tcblisting}
+%
+%The key \saminline|3D| will make the meerkat 3-dimensional:
+%\begin{tcblisting}{title={3D view}}
+%\meerkat[3D]
+%\end{tcblisting}
+%
+%And finally the \saminline|contour| key will only draw the outlines:
+%\begin{tcblisting}{title={Contours}}
+%\meerkat[contour=black]
+%\end{tcblisting}

@@ -23,6 +23,7 @@ A big thank you to all the people who contributed with code, ideas or feedback t
 <a href="./examples/hippo.tex"><img src="./examples/hippo.svg" alt="Hippo" height="64"></a>
 <a href="./examples/koala.tex"><img src="./examples/koala.svg" alt="Koala" height="64"></a>
 <a href="./examples/marmot.tex"><img src="./examples/marmot.svg" alt="Marmot" height="64"></a>
+<a href="./examples/meerkat.tex"><img src="./examples/meerkat.svg" alt="Meerkat" height="64"></a>
 <a href="./examples/mole.tex"><img src="./examples/mole.svg" alt="Mole" height="64"></a>
 <a href="./examples/mouse.tex"><img src="./examples/mouse.svg" alt="Mouse" height="64"></a>
 <a href="./examples/owl.tex"><img src="./examples/owl.svg" alt="Owl" height="64"></a>
