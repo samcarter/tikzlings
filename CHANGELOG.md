@@ -137,7 +137,7 @@
 ------
 
 [Unreleased]: https://github.com/samcarter/tikzlings/compare/v2.0...HEAD
-[v2.0]: https://github.com/samcarter/tikzlings/compare/v2.-1...v2.0
+[v2.0]: https://github.com/samcarter/tikzlings/compare/v1.0...v2.0
 [v1.0]: https://github.com/samcarter/tikzlings/compare/v0.9...v1.0
 [v0.9]: https://github.com/samcarter/tikzlings/compare/v0.8...v0.9
 [v0.8]: https://github.com/samcarter/tikzlings/compare/v0.7...v0.8
