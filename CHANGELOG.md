@@ -8,6 +8,7 @@
 
 ### Fixed
 
+- meerkat: fixed typos in names of mouth and nose default colours
 
 ## [v2.0]
 
