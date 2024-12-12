@@ -8,6 +8,15 @@
 
 ### Fixed
 
+
+## [v2.1]
+
+### New
+
+### Changed
+
+### Fixed
+
 - meerkat: fixed typos in names of mouth and nose default colours
 
 ## [v2.0]
@@ -137,7 +146,8 @@
 
 ------
 
-[Unreleased]: https://github.com/samcarter/tikzlings/compare/v2.0...HEAD
+[Unreleased]: https://github.com/samcarter/tikzlings/compare/v2.1...HEAD
+[v2.1]: https://github.com/samcarter/tikzlings/compare/v2.0...v2.1
 [v2.0]: https://github.com/samcarter/tikzlings/compare/v1.0...v2.0
 [v1.0]: https://github.com/samcarter/tikzlings/compare/v0.9...v1.0
 [v0.9]: https://github.com/samcarter/tikzlings/compare/v0.8...v0.9
