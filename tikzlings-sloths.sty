@@ -28,7 +28,7 @@
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname slothhookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
-  %  
+  %
 }
 
 \newif\ifsloth@sleeping
@@ -53,7 +53,7 @@
   body/.store in     = \sloth@body,
   body               = slothcol,
   eye/.store in      = \sloth@eye,
-  eye                = black,   
+  eye                = black,
   eyelid/.store in   = \sloth@eyelid,
   eyelid             = sloth@bright10!50!white,
   mouth/.store in    = \sloth@mouth,
@@ -63,23 +63,23 @@
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  sleeping/.code     = \sloth@sleepingtrue, 
+  sleeping/.code     = \sloth@sleepingtrue,
   openmouth/.code    = \sloth@openmouthtrue,
-  open mouth/.forward to = /sloth/openmouth,  
-  3D/.code           = \sloth@threeDtrue,       
-  back/.code         = \sloth@backtrue,  
+  open mouth/.forward to = /sloth/openmouth,
+  3D/.code           = \sloth@threeDtrue,
+  back/.code         = \sloth@backtrue,
   contour/.code      = \sloth@contourtrue
                        \def\sloth@contour{#1}
                        \def\sloth@mouth{#1}
                        \def\sloth@eyelid{#1},
-  contour/.default   = black,  
-  outline/.forward to = /sloth/contour,  
+  contour/.default   = black,
+  outline/.forward to = /sloth/contour,
 }
 
 \def\sloth@draw{%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % minimal bounding box size 
+  % minimal bounding box size
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \path (-0.7,0.12) rectangle (0.7, 2.27);
@@ -96,7 +96,7 @@
   \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % 
+  %
   % switch between 2D, 3D and contours, from
   % https://chat.stackexchange.com/transcript/message/45991801#45991801
   %
@@ -122,11 +122,11 @@
   \pgfmathsetmacro{\sloth@sat}{(array({\sloth@hsbcolorspec},1))}
   \pgfmathsetmacro{\sloth@bright}{(array({\sloth@hsbcolorspec},2))+0.1}
   \definecolor{sloth@bright10}{hsb}{\sloth@hue,\sloth@sat,\sloth@bright}
-  %  
+  %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Body parts
-  % 
+  %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -136,7 +136,7 @@
   % Arms if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifsloth@back
     \sloth@part@draw[sloth@bright10] (0.53,0.95) ellipse[x radius=0.1, y radius=0.27, rotate=10];
-    \sloth@part@draw[sloth@bright10] (-0.53,0.95) ellipse[x radius=0.1, y radius=0.27, rotate=-10];  
+    \sloth@part@draw[sloth@bright10] (-0.53,0.95) ellipse[x radius=0.1, y radius=0.27, rotate=-10];
   \fi% back
   %
   % Feet if back%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -152,8 +152,7 @@
   \fi% back
   %
   % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \sloth@part@draw[\sloth@body] (0.53,0.85) .. controls (0.53,0.29) and (0.32,0.22) .. (0,0.22) .. controls (-0.32,0.22) and (-0.53,0.29) .. 
-  (-0.53,0.85) .. controls (-0.53,1.41) and (-0.32,1.87) .. (0,1.87) .. controls (0.33,1.87) and (0.53,1.41) .. (0.53,0.85) -- cycle;
+  \sloth@part@draw[\sloth@body] (0.53,0.85) .. controls (0.53,0.29) and (0.32,0.22) .. (0,0.22) .. controls (-0.32,0.22) and (-0.53,0.29) .. (-0.53,0.85) .. controls (-0.53,1.41) and (-0.32,1.87) .. (0,1.87) .. controls (0.33,1.87) and (0.53,1.41) .. (0.53,0.85) -- cycle;
   %
   % Belly %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifsloth@back
@@ -168,11 +167,7 @@
   \sloth@part@draw[sloth@bright10] (-0.1128,2.0724) .. controls (-0.1128,2.0724) and (-0.1499,2.2329) .. (-0.0972,2.2525) .. controls (-0.1082,2.1318) and (-0.0047,2.0839) .. (-0.0047,2.0839) .. controls (-0.0047,2.0839) and (-0.0219,2.1866) .. (0.0145,2.1933) .. controls (0.0142,2.1159) and (0.0770,2.0884) .. (0.0770,2.0884) -- cycle;
   %
   % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \sloth@part@draw[sloth@bright10] 
-  ( 0.50,1.67) .. controls ( 0.50,1.91) and ( 0.27,2.10) .. 
-  ( 0.00,2.10) .. controls (-0.27,2.10) and (-0.50,1.91) .. (-0.50,1.67) .. controls (-0.50,1.43) and (-0.33,1.28) .. 
-  ( 0.00,1.28) .. controls ( 0.33,1.28) and ( 0.50,1.43) .. 
-  ( 0.50,1.67) -- cycle;
+  \sloth@part@draw[sloth@bright10] ( 0.50,1.67) .. controls ( 0.50,1.91) and ( 0.27,2.10) .. ( 0.00,2.10) .. controls (-0.27,2.10) and (-0.50,1.91) .. (-0.50,1.67) .. controls (-0.50,1.43) and (-0.33,1.28) .. ( 0.00,1.28) .. controls ( 0.33,1.28) and ( 0.50,1.43) .. ( 0.50,1.67) -- cycle;
   %
   % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifsloth@back
@@ -191,20 +186,20 @@
     %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \ifsloth@sleeping
-      \fill[\sloth@eyelid] (0.195, 1.705) rectangle ++(0.005, 0.02);  
-      \fill[\sloth@eyelid,rotate around={22:(0.195, 1.76)}] (0.195, 1.705) rectangle ++(0.005, 0.02); 
-      \fill[\sloth@eyelid,rotate around={44:(0.195, 1.76)}] (0.195, 1.701) rectangle ++(0.005, 0.02);   
-      \fill[\sloth@eyelid,rotate around={-22:(0.195, 1.76)}] (0.195, 1.705) rectangle ++(0.005, 0.02); 
-      \fill[\sloth@eyelid,rotate around={-44:(0.195, 1.76)}] (0.195, 1.705) rectangle ++(0.005, 0.02);     
+      \fill[\sloth@eyelid] (0.195, 1.705) rectangle ++(0.005, 0.02);
+      \fill[\sloth@eyelid,rotate around={22:(0.195, 1.76)}] (0.195, 1.705) rectangle ++(0.005, 0.02);
+      \fill[\sloth@eyelid,rotate around={44:(0.195, 1.76)}] (0.195, 1.701) rectangle ++(0.005, 0.02);
+      \fill[\sloth@eyelid,rotate around={-22:(0.195, 1.76)}] (0.195, 1.705) rectangle ++(0.005, 0.02);
+      \fill[\sloth@eyelid,rotate around={-44:(0.195, 1.76)}] (0.195, 1.705) rectangle ++(0.005, 0.02);
       %
-      \fill[\sloth@eyelid] (-0.195, 1.705) rectangle ++(0.005, 0.02);  
-      \fill[\sloth@eyelid,rotate around={22:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02); 
-      \fill[\sloth@eyelid,rotate around={44:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02);   
-      \fill[\sloth@eyelid,rotate around={-22:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02); 
-      \fill[\sloth@eyelid,rotate around={-44:(-0.195, 1.76)}] (-0.195, 1.701) rectangle ++(0.005, 0.02);  
+      \fill[\sloth@eyelid] (-0.195, 1.705) rectangle ++(0.005, 0.02);
+      \fill[\sloth@eyelid,rotate around={22:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02);
+      \fill[\sloth@eyelid,rotate around={44:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02);
+      \fill[\sloth@eyelid,rotate around={-22:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02);
+      \fill[\sloth@eyelid,rotate around={-44:(-0.195, 1.76)}] (-0.195, 1.701) rectangle ++(0.005, 0.02);
       %
       \sloth@part@draw[\sloth@eyelid] (0.237, 1.743) .. controls (0.237, 1.712) and (0.157, 1.712) .. (0.157, 1.743) .. controls (0.157, 1.802) and (0.237, 1.802) .. (0.237, 1.743) -- cycle;
-      \sloth@part@draw[\sloth@eyelid] (-0.237, 1.743) .. controls (-0.237, 1.712) and (-0.157, 1.712) .. (-0.157, 1.743) .. controls (-0.157, 1.802) and (-0.237, 1.802) .. (-0.237, 1.743) -- cycle;  
+      \sloth@part@draw[\sloth@eyelid] (-0.237, 1.743) .. controls (-0.237, 1.712) and (-0.157, 1.712) .. (-0.157, 1.743) .. controls (-0.157, 1.802) and (-0.237, 1.802) .. (-0.237, 1.743) -- cycle;
     \else% sleeping
       \sloth@part@draw[\sloth@eye] (0.193,1.75) circle[radius=0.04];
       \sloth@part@draw[\sloth@eye] (-0.193,1.75) circle[radius=0.04];

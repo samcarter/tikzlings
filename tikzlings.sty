@@ -49,13 +49,13 @@
 \else
   \ifdefined\pdfrandomseed % pdflatex
   \else
-      \ifdefined\randomseed 
+      \ifdefined\randomseed
         \let\pdfrandomseed\randomseed % post TL19 xelatex and lualatex
       \else
           \let\pdfrandomseed\time % pre TL19 xelatex
       \fi
   \fi
-  \pgfmathsetseed{\number\pdfrandomseed} 
+  \pgfmathsetseed{\number\pdfrandomseed}
 \fi
 
 % #1: tikzling name.

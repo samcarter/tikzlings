@@ -49,7 +49,7 @@
   body/.store in     = \bear@body,
   body               = brown!70!black,
   eye/.store in      = \bear@eye,
-  eye                = \bear@body!42!black,  
+  eye                = \bear@body!42!black,
   mouth/.store in    = \bear@mouth,
   mouth              = \bear@body!42!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -59,19 +59,19 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   openmouth/.code    = \bear@openmouthtrue,
   open mouth/.forward to = /bear/openmouth,
-  3D/.code           = \bear@threeDtrue, 
-  back/.code         = \bear@backtrue,  
+  3D/.code           = \bear@threeDtrue,
+  back/.code         = \bear@backtrue,
   contour/.code      = \bear@contourtrue
                        \def\bear@contour{#1}
                        \def\bear@mouth{#1},
-  contour/.default   = black,  
-  outline/.forward to = /bear/contour,   
+  contour/.default   = black,
+  outline/.forward to = /bear/contour,
 }
 
 \def\bear@draw{%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % minimal bounding box size 
+  % minimal bounding box size
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \path (-0.8, 0.0) rectangle (0.8, 2.13);
@@ -88,7 +88,7 @@
   \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % 
+  %
   % switch between 2D, 3D and contours, from
   % https://chat.stackexchange.com/transcript/message/45991801#45991801
   %
@@ -114,11 +114,11 @@
   \pgfmathsetmacro{\bear@sat}{(array({\bear@hsbcolorspec},1))-0.38}
   \pgfmathsetmacro{\bear@bright}{(array({\bear@hsbcolorspec},2))+0.35}
   \definecolor{bear@bright}{hsb}{\bear@hue,\bear@sat,\bear@bright}
-  %    
+  %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Body parts
-  % 
+  %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -131,12 +131,12 @@
   %
   % Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifbear@back
-    \bear@part@draw[\bear@body] (0.425, 0.3) circle[radius=0.28]; 
+    \bear@part@draw[\bear@body] (0.425, 0.3) circle[radius=0.28];
     \bear@part@draw[\bear@body] (-0.425, 0.3) circle[radius=0.28];
   \fi% back
   %
   % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \bear@part@draw[\bear@body] (0,0.75) ellipse[x radius=0.55, y radius=0.65]; 
+  \bear@part@draw[\bear@body] (0,0.75) ellipse[x radius=0.55, y radius=0.65];
   \unless\ifbear@back
     \bear@part@draw[bear@bright] (0,0.7) ellipse[x radius=0.35, y radius=0.4];
   \fi% back
@@ -147,9 +147,9 @@
   %
   % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifbear@back
-    \bear@part@draw[\bear@body] (0.425, 0.3) circle[radius=0.28]; 
+    \bear@part@draw[\bear@body] (0.425, 0.3) circle[radius=0.28];
     \bear@part@draw[\bear@body] (-0.425, 0.3) circle[radius=0.28];
-    \bear@part@draw[bear@bright] (0.425, 0.3) circle[radius=0.17]; 
+    \bear@part@draw[bear@bright] (0.425, 0.3) circle[radius=0.17];
     \bear@part@draw[bear@bright] (-0.425, 0.3) circle[radius=0.17];
   \fi% back
   %
@@ -162,18 +162,18 @@
   \fi% back
   %
   % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \bear@part@draw[\bear@body] (0, 1.55) circle[radius=0.5]; 
+  \bear@part@draw[\bear@body] (0, 1.55) circle[radius=0.5];
   %
   % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifbear@back
     %
     % Muzzle %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \bear@part@draw[bear@bright] (0, 1.4) ellipse[x radius=0.28, y radius=0.2]; 
-    \bear@part@draw[bear@bright!60!red] (0, 1.5) ellipse[x radius=0.15, y radius=0.08]; 
+    \bear@part@draw[bear@bright] (0, 1.4) ellipse[x radius=0.28, y radius=0.2];
+    \bear@part@draw[bear@bright!60!red] (0, 1.5) ellipse[x radius=0.15, y radius=0.08];
     %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \bear@part@draw[\bear@eye] (-0.155, 1.7) circle[radius=0.05]; 
-    \bear@part@draw[\bear@eye] (0.155, 1.7) circle[radius=0.05]; 
+    \bear@part@draw[\bear@eye] (-0.155, 1.7) circle[radius=0.05];
+    \bear@part@draw[\bear@eye] (0.155, 1.7) circle[radius=0.05];
     %
     % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \ifbear@openmouth
@@ -259,9 +259,9 @@
 %%\usepackage{bearwear}
 %\bear
 %\bearwear[
-%  long sleeves, 
+%  long sleeves,
 %  shirt=red!80!black
 %]
 %\end{tcblisting}
 %
-%Many more options and examples can be found in the package documentation \url{https://ctan.org/pkg/bearwear}. 
+%Many more options and examples can be found in the package documentation \url{https://ctan.org/pkg/bearwear}.

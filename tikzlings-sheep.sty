@@ -54,7 +54,7 @@
   body/.store in     = \sheep@body,
   body               = brown!50!darkgray!97!yellow!50!darkgray,
   eye/.store in      = \sheep@eye,
-  eye                = sheep@bright!50!black, 
+  eye                = sheep@bright!50!black,
   nose/.store in     = \sheep@nose,
   nose               = sheep@bright!50!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -64,22 +64,22 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   blush/.code        = \sheep@blushtrue
                        \def\sheep@blushcolor{#1},
-  blush/.default     = red, 
+  blush/.default     = red,
   monocle/.code      = \sheep@monocletrue,
-  3D/.code           = \sheep@threeDtrue, 
-  back/.code         = \sheep@backtrue,  
+  3D/.code           = \sheep@threeDtrue,
+  back/.code         = \sheep@backtrue,
   contour/.code      = \sheep@contourtrue
                        \def\sheep@contour{#1}
                        \def\sheep@blushcolor{#1}
                        \def\sheep@nose{#1},
-  contour/.default   = black,  
-  outline/.forward to = /sheep/contour,  
+  contour/.default   = black,
+  outline/.forward to = /sheep/contour,
 }
 
 \def\sheep@draw{%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % minimal bounding box size 
+  % minimal bounding box size
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \path (-0.7,0.08) rectangle (0.7,2.33);
@@ -94,10 +94,10 @@
   \pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
   \pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
   \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
-  \pgfmathsetmacro{\decoscalefactor}{sign(\tmpscaleA)*sign(\tmpscaleD)*\scalingfactor}%  
+  \pgfmathsetmacro{\decoscalefactor}{sign(\tmpscaleA)*sign(\tmpscaleD)*\scalingfactor}%
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % 
+  %
   % switch between 2D, 3D and contours, from
   % https://chat.stackexchange.com/transcript/message/45991801#45991801
   %
@@ -123,23 +123,23 @@
   \pgfmathsetmacro{\sheep@sat}{(array({\sheep@hsbcolorspec},1))}
   \pgfmathsetmacro{\sheep@bright}{(array({\sheep@hsbcolorspec},2))+0.1}
   \definecolor{sheep@bright}{hsb}{\sheep@hue,\sheep@sat,\sheep@bright}
-  %    
+  %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Body parts
-  % 
+  %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname sheephookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
-  % 
+  %
   % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \sheep@part@draw[sheep@bright] (0.22, 2.0392) .. controls   (0.22, 2.1584) and   (0.49460, 2.255) ..   (0.49460, 2.255) .. controls   (0.49460, 2.255) and (0.5300, 1.86) .. (0.3721, 1.86) .. controls (0.2891, 1.86) and   (0.22, 1.9201) .. (0.22, 2.0392) -- cycle;
-  \sheep@part@draw[sheep@bright!55!white] (0.22, 2.0392) .. controls (0.26, 2.1584) and (0.47, 2.22) .. (0.47, 2.20) .. controls (0.47, 2.2) and (0.49, 1.9) .. (0.3721, 1.9) .. controls (0.2891, 1.88) and (0.22, 1.88) .. (0.22, 2.0392) -- cycle;  
+  \sheep@part@draw[sheep@bright!55!white] (0.22, 2.0392) .. controls (0.26, 2.1584) and (0.47, 2.22) .. (0.47, 2.20) .. controls (0.47, 2.2) and (0.49, 1.9) .. (0.3721, 1.9) .. controls (0.2891, 1.88) and (0.22, 1.88) .. (0.22, 2.0392) -- cycle;
   \sheep@part@draw[sheep@bright] (-0.22, 2.0392) .. controls   (-0.22, 2.1584) and   (-0.49460, 2.255) ..   (-0.49460, 2.255) .. controls   (-0.49460, 2.255) and (-0.5300, 1.86) .. (-0.3721, 1.86) .. controls (-0.2891, 1.86) and   (-0.22, 1.9201) .. (-0.22, 2.0392) -- cycle;
-  \sheep@part@draw[sheep@bright!55!white] (-0.22, 2.0392) .. controls (-0.26, 2.1584) and (-0.47, 2.22) .. (-0.47, 2.20) .. controls (-0.47, 2.2) and (-0.49, 1.9) .. (-0.3721, 1.9) .. controls (-0.2891, 1.88) and (-0.22, 1.88) .. (-0.22, 2.0392) -- cycle;  
-  % 
+  \sheep@part@draw[sheep@bright!55!white] (-0.22, 2.0392) .. controls (-0.26, 2.1584) and (-0.47, 2.22) .. (-0.47, 2.20) .. controls (-0.47, 2.2) and (-0.49, 1.9) .. (-0.3721, 1.9) .. controls (-0.2891, 1.88) and (-0.22, 1.88) .. (-0.22, 2.0392) -- cycle;
+  %
   % Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifsheep@back
     \sheep@part@draw[sheep@bright] (0.3216,0.15) arc (-15:195:0.12) -- (0.16,0.15) to [bend left] (0.25,0.15) -- cycle;
@@ -175,10 +175,10 @@
     %
     % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \sheep@part@draw[sheep@bright] (0.22, 2.0392) .. controls   (0.22, 2.1584) and   (0.49460, 2.255) ..   (0.49460, 2.255) .. controls   (0.49460, 2.255) and (0.5300, 1.86) .. (0.3721, 1.86) .. controls (0.2891, 1.86) and   (0.22, 1.9201) .. (0.22, 2.0392) -- cycle;
-    \sheep@part@draw[sheep@bright!55!white] (0.22, 2.0392) .. controls (0.26, 2.1584) and (0.47, 2.22) .. (0.47, 2.20) .. controls (0.47, 2.2) and (0.49, 1.9) .. (0.3721, 1.9) .. controls (0.2891, 1.88) and (0.22, 1.88) .. (0.22, 2.0392) -- cycle;  
+    \sheep@part@draw[sheep@bright!55!white] (0.22, 2.0392) .. controls (0.26, 2.1584) and (0.47, 2.22) .. (0.47, 2.20) .. controls (0.47, 2.2) and (0.49, 1.9) .. (0.3721, 1.9) .. controls (0.2891, 1.88) and (0.22, 1.88) .. (0.22, 2.0392) -- cycle;
     \sheep@part@draw[sheep@bright] (-0.22, 2.0392) .. controls   (-0.22, 2.1584) and   (-0.49460, 2.255) ..   (-0.49460, 2.255) .. controls   (-0.49460, 2.255) and (-0.5300, 1.86) .. (-0.3721, 1.86) .. controls (-0.2891, 1.86) and   (-0.22, 1.9201) .. (-0.22, 2.0392) -- cycle;
-    \sheep@part@draw[sheep@bright!55!white] (-0.22, 2.0392) .. controls (-0.26, 2.1584) and (-0.47, 2.22) .. (-0.47, 2.20) .. controls (-0.47, 2.2) and (-0.49, 1.9) .. (-0.3721, 1.9) .. controls (-0.2891, 1.88) and (-0.22, 1.88) .. (-0.22, 2.0392) -- cycle;  
-    % 
+    \sheep@part@draw[sheep@bright!55!white] (-0.22, 2.0392) .. controls (-0.26, 2.1584) and (-0.47, 2.22) .. (-0.47, 2.20) .. controls (-0.47, 2.2) and (-0.49, 1.9) .. (-0.3721, 1.9) .. controls (-0.2891, 1.88) and (-0.22, 1.88) .. (-0.22, 2.0392) -- cycle;
+    %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \unless\ifsheep@back
       \sheep@part@draw[\sheep@eye] (0.2, 1.66) circle[radius=0.06];
@@ -197,7 +197,7 @@
     %
     % Blush %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \ifsheep@blush
-      \fill[\sheep@blushcolor,path fading=sheep@blush] (-0.25, 1.5) circle[radius=0.1]; 
+      \fill[\sheep@blushcolor,path fading=sheep@blush] (-0.25, 1.5) circle[radius=0.1];
       \fill[\sheep@blushcolor,path fading=sheep@blush] (0.25, 1.5) circle[radius=0.1];
     \fi% blush
     %
@@ -212,7 +212,7 @@
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname sheephookbody\endcsname
   \csname tikzlinghookbody\endcsname
-  %  
+  %
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

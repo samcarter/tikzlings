@@ -26,7 +26,7 @@
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname pandahookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
-  %  
+  %
 }
 
 \newif\ifpanda@threeD
@@ -50,31 +50,31 @@
   body/.store in     = \panda@body,
   body               = white!90!gray,
   eye/.store in      = \panda@eye,
-  eye                = white, 
+  eye                = white,
   pupil/.store in    = \panda@pupil,
-  pupil              = black, 
+  pupil              = black,
   mouth/.store in    = \panda@mouth,
-  mouth              = black,   
+  mouth              = black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   openmouth/.code    = \panda@openmouthtrue,
-  open mouth/.forward to = /panda/openmouth,  
-  3D/.code           = \panda@threeDtrue, 
-  back/.code         = \panda@backtrue,  
+  open mouth/.forward to = /panda/openmouth,
+  3D/.code           = \panda@threeDtrue,
+  back/.code         = \panda@backtrue,
   contour/.code      = \panda@contourtrue
                        \def\panda@contour{#1}
                        \def\panda@mouth{#1},
-  contour/.default   = black,  
-  outline/.forward to = /panda/contour,   
+  contour/.default   = black,
+  outline/.forward to = /panda/contour,
 }
 
 \def\panda@draw{%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % minimal bounding box size 
+  % minimal bounding box size
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \path (-0.62,0.05) rectangle (0.62, 2.18);
@@ -91,7 +91,7 @@
   \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % 
+  %
   % switch between 2D, 3D and contours, from
   % https://chat.stackexchange.com/transcript/message/45991801#45991801
   %
@@ -109,7 +109,7 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Body parts
-  % 
+  %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -118,7 +118,7 @@
   %
   % Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifpanda@back
-    \panda@part@draw[black] (0.32, 0.27) circle[radius=0.2]; 
+    \panda@part@draw[black] (0.32, 0.27) circle[radius=0.2];
     \panda@part@draw[black] (-0.32, 0.27) circle[radius=0.2];
   \fi% back
   %
@@ -139,7 +139,7 @@
   %
   % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifpanda@back
-    \panda@part@draw[black] (0.32, 0.27) circle[radius=0.2]; 
+    \panda@part@draw[black] (0.32, 0.27) circle[radius=0.2];
     \panda@part@draw[black] (-0.32, 0.27) circle[radius=0.2];
   \fi% back
   %
@@ -163,7 +163,7 @@
     %
     % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \ifpanda@openmouth
-      \filldraw[\panda@mouth,line width=\scalingfactor*0.2pt] (-0.16, 1.477) .. controls (-0.16, 1.477) and (-0.062, 1.37) .. (0, 1.506)  .. controls (0.062, 1.37) and (0.16, 1.477) .. (0.16, 1.477) (0.16,1.477) arc [start angle=-20, end angle=-160, radius=0.17];    
+      \filldraw[\panda@mouth,line width=\scalingfactor*0.2pt] (-0.16, 1.477) .. controls (-0.16, 1.477) and (-0.062, 1.37) .. (0, 1.506)  .. controls (0.062, 1.37) and (0.16, 1.477) .. (0.16, 1.477) (0.16,1.477) arc [start angle=-20, end angle=-160, radius=0.17];
     \else
       \draw[\panda@mouth,line width=\scalingfactor*0.2pt] (-0.16, 1.477) .. controls (-0.16, 1.477) and (-0.062, 1.37) .. (0, 1.506)  .. controls (0.062, 1.37) and (0.16, 1.477) .. (0.16, 1.477);
     \fi

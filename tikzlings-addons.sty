@@ -114,7 +114,7 @@
 
 \tikzset{%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %  
+  %
   % General
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -126,58 +126,58 @@
   % Hats
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  hat/.code               = \thing@hattrue        
+  hat/.code               = \thing@hattrue
                             \def\thing@hat{#1},
-  hat/.default            = blue!40!black,  
-  tophat/.code            = \thing@tophattrue     
+  hat/.default            = blue!40!black,
+  tophat/.code            = \thing@tophattrue
                             \def\thing@tophat{#1},
   top hat/.forward to     = /thing/tophat,
   tophat/.default         = black!90!white,
-  beret/.code             = \thing@berettrue      
+  beret/.code             = \thing@berettrue
                             \def\thing@beret{#1},
-  beret/.default          = black,     
+  beret/.default          = black,
   strawhat/.code          = \thing@strawhattrue
                             \def\thing@strawhat{#1},
   straw hat/.forward to   = /thing/strawhat,
   strawhat/.default       = gray!30!white,
   ribbon/.code            = \def\thing@ribbon{#1},
   ribbon                  = black,
-  harlequin/.code         = \thing@harlequintrue  
+  harlequin/.code         = \thing@harlequintrue
                             \def\thing@harlequin{#1},
   harlequin/.default      = blue,
-  niuqelrah/.code         = \def\thing@niuqelrah{#1},  
-  niuqelrah               = red, 
-  witch/.code             = \thing@witchtrue       
-                            \def\thing@witch{#1},  
-  witch/.default          = black,    
-  magichat/.code          = \thing@magichattrue    
+  niuqelrah/.code         = \def\thing@niuqelrah{#1},
+  niuqelrah               = red,
+  witch/.code             = \thing@witchtrue
+                            \def\thing@witch{#1},
+  witch/.default          = black,
+  magichat/.code          = \thing@magichattrue
                             \def\thing@magichat{#1},
   magic hat/.forward to   = /thing/magichat,
   magichat/.default       = violet,
   magicstars/.code        = \def\thing@magicstars{#1},
-  magic stars/.forward to = /thing/magicstars,  
-  magicstars              = yellow!80!brown,  
-  crown/.code             = \thing@crowntrue       
+  magic stars/.forward to = /thing/magicstars,
+  magicstars              = yellow!80!brown,
+  crown/.code             = \thing@crowntrue
                             \def\thing@crown{#1},
-  crown/.default          = yellow!90!orange,    
-  queencrown/.code        = \thing@queencrowntrue  
+  crown/.default          = yellow!90!orange,
+  queencrown/.code        = \thing@queencrowntrue
                             \def\thing@queencrown{#1},
   queen crown/.forward to = /thing/queencrown,
   queencrown/.default     = yellow,
-  kingcrown/.code         = \thing@kingcrowntrue   
+  kingcrown/.code         = \thing@kingcrowntrue
                             \def\thing@kingcrown{#1},
   king crown/.forward to  = /thing/kingcrown,
   kingcrown/.default      = gray,
-  santa/.code             = \thing@santatrue       
+  santa/.code             = \thing@santatrue
                             \def\thing@santa{#1},
   santa/.default          = red!80!black,
-  chef/.code              = \thing@cheftrue        
-                            \def\thing@chef{#1},  
-  chef/.default           = gray!20!white,  
-  graduate/.code          = \thing@graduatetrue    
+  chef/.code              = \thing@cheftrue
+                            \def\thing@chef{#1},
+  chef/.default           = gray!20!white,
+  graduate/.code          = \thing@graduatetrue
                             \def\thing@graduate{#1},
   graduate/.default       = black,
-  tassel/.code            = \def\thing@tassel{#1},  
+  tassel/.code            = \def\thing@tassel{#1},
   tassel                  = red,
   sombrero/.code          = \thing@sombrerotrue
                             \def\thing@sombrero{#1},
@@ -187,10 +187,10 @@
   sombrerob/.code         = \def\thing@sombrerob{#1},
   sombrerob               = red,
   sombreroc/.code         = \def\thing@sombreroc{#1},
-  sombreroc               = blue,    
-  alien/.code             = \thing@alientrue       
+  sombreroc               = blue,
+  alien/.code             = \thing@alientrue
                             \def\thing@alien{#1},
-  alien/.default          = green,   
+  alien/.default          = green,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Communication
@@ -203,17 +203,17 @@
   book color/.forward to  = /thing/bookcolour,
   bookcolor/.forward to   = /thing/bookcolour,
   bookcolour              = brown,
-  signpost/.code          = \thing@signposttrue    
+  signpost/.code          = \thing@signposttrue
                             \def\thing@signpost{#1},
   sign post/.forward to   = /thing/signpost,
   signcolour/.code        = \def\thing@signcolour{#1},
   sign colour/.forward to = /thing/signcolour,
   sign color/.forward to  = /thing/signcolour,
-  signcolor/.forward to   = /thing/signcolour,  
-  signcolour              = brown!50!black,  
+  signcolor/.forward to   = /thing/signcolour,
+  signcolour              = brown!50!black,
   signback/.code          = \def\thing@signback{#1},
   sign back/.forward to   = /thing/signback,
-  signback                = green!40!black,  
+  signback                = green!40!black,
   speech/.code            = \thing@speechtrue
                             \def\thing@speech{#1},
   think/.code             = \thing@thinktrue
@@ -221,7 +221,7 @@
   bubblecolour/.code      = \def\thing@bubblecolour{#1},
   bubble colour/.forward to = /thing/bubblecolour,
   bubble color/.forward to = /thing/bubblecolour,
-  bubblecolor/.forward to = /thing/bubblecolour,  
+  bubblecolor/.forward to = /thing/bubblecolour,
   bubblecolour            = gray!30!white,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
@@ -230,12 +230,12 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   pizza/.code             = \thing@pizzatrue,
   davidlikespineapplepizza/.code = \thing@davidlikespineapplepizzatrue
-                            \thing@speechtrue 
+                            \thing@speechtrue
                             \def\thing@speech{\scalebox{\scalingfactor}{\scalebox{0.9}{\tiny ih, che schifo!}}},
   david likes pineapple pizza/.forward to = /thing/davidlikespineapplepizza,
   cheese/.code            = \thing@cheesetrue
                             \def\thing@cheese{#1},
-  cheese/.default         = yellow!30!orange!60!white,  
+  cheese/.default         = yellow!30!orange!60!white,
   baguette/.code          = \thing@baguettetrue
                             \def\thing@baguette{#1},
   baguette/.default       = brown,
@@ -254,17 +254,17 @@
   flavourb                = white!70!brown,
   flavourc/.code          = \def\thing@flavourc{#1},
   flavour c/.forward to   = /thing/flavourc,
-  flavourc                = red!50!white,  
+  flavourc                = red!50!white,
   milkshake/.code         = \thing@milkshaketrue
-                            \def\thing@milkshake{#1}, 
-  milkshake/.default      = red!20!white,  
+                            \def\thing@milkshake{#1},
+  milkshake/.default      = red!20!white,
   wine/.code              = \thing@winetrue
-                            \def\thing@wine{#1},  
-  wine/.default           = red!70!black,  
-  cocktail/.code          = \thing@cocktailtrue, 
+                            \def\thing@wine{#1},
+  wine/.default           = red!70!black,
+  cocktail/.code          = \thing@cocktailtrue,
   banana/.code            = \thing@bananatrue
                             \def\thing@banana{#1},
-  banana/.default         = yellow!80!orange,  
+  banana/.default         = yellow!80!orange,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Sport
@@ -286,11 +286,11 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   crystalball/.code       = \thing@crystalballtrue
                             \def\thing@crystalball{#1},
-  crystal ball/.forward to = /thing/crystalball,    
-  crystalball/.default    = cyan,    
+  crystal ball/.forward to = /thing/crystalball,
+  crystalball/.default    = cyan,
   magicwand/.code         = \thing@magicwandtrue,
   magic want/.forward to  = /thing/magicwand,
-  rollingpin/.code        = \thing@rollingpintrue  
+  rollingpin/.code        = \thing@rollingpintrue
                             \def\thing@rollingpin{#1},
   rolling pin/.forward to = /thing/rollingpin,
   rollingpin/.default     = brown,
@@ -347,12 +347,12 @@
   umbrella closed/.forward to = /thing/umbrellaclosed,
   handbag/.code           = \thing@handbagtrue
                             \def\thing@handbag{#1},
-  handbag/.default        = red!70!black,  
+  handbag/.default        = red!70!black,
   stick/.code             = \thing@sticktrue
                             \def\thing@stick{#1},
   stick/.default          = brown!50!black,
   leaf/.store in          = \thing@leaf,
-  leaf                    = green!70!red,       
+  leaf                    = green!70!red,
 }
 
 \def\thing@draw{%
@@ -367,7 +367,7 @@
 \pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
 \pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
 \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
-\pgfmathsetmacro{\decoscalefactor}{sign(\tmpscaleA)*sign(\tmpscaleD)*\scalingfactor}%  
+\pgfmathsetmacro{\decoscalefactor}{sign(\tmpscaleA)*sign(\tmpscaleD)*\scalingfactor}%
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -378,15 +378,15 @@
 % Hat %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@hat
   \fill[\thing@hat,rotate around={-15:(-0.3,2.01)}] (-0.3,2.01) rectangle (0.46,2.31);
-  \fill[\thing@hat] (0.05,1.92) ellipse[x radius=0.6, y radius=0.1, rotate=-15]; 
-  \fill[\thing@hat] (0.14,2.2) ellipse[x radius=0.37, y radius=0.08, rotate=-15]; 
+  \fill[\thing@hat] (0.05,1.92) ellipse[x radius=0.6, y radius=0.1, rotate=-15];
+  \fill[\thing@hat] (0.14,2.2) ellipse[x radius=0.37, y radius=0.08, rotate=-15];
 \fi
 %
 % Tophat %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@tophat
   \fill[\thing@tophat] (0.1,1.94) ellipse[x radius=0.48, y radius=0.1, rotate=-15];
   \fill[\thing@tophat,rotate around={-15:(0.15,2.165)}] (-0.17, 1.94) -- (0.46, 1.94) -- (0.52, 2.39) -- (-0.22, 2.39) -- cycle;
-  \fill[\thing@tophat] (0.21,2.385) ellipse[x radius=0.37, y radius=0.08, rotate=-15];  
+  \fill[\thing@tophat] (0.21,2.385) ellipse[x radius=0.37, y radius=0.08, rotate=-15];
 \fi
 %
 % Beret %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -401,13 +401,13 @@
 % Straw hat %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@strawhat
   \begin{scope}[xshift=-16,rotate=12,yshift=-1]
-  \fill[\thing@strawhat,rotate=-15] (0.44,2.0) ellipse[x radius=0.75, y radius=0.1];  
+  \fill[\thing@strawhat,rotate=-15] (0.44,2.0) ellipse[x radius=0.75, y radius=0.1];
   \fill[\thing@strawhat,rotate=-15] (0.1,2.05) rectangle (0.78,2.5);
-  \fill[\thing@strawhat,rotate=-15] (0.44,2.5) ellipse[x radius=0.34, y radius=0.08];  
+  \fill[\thing@strawhat,rotate=-15] (0.44,2.5) ellipse[x radius=0.34, y radius=0.08];
   \fill[\thing@strawhat,rotate=-15] (-0.3,2.02) -- (1.18,2.02) -- (0.78,2.2) -- (0.1,2.2) -- cycle;
-  \fill[\thing@ribbon,rotate=-15] (0.44,2.2) ellipse[x radius=0.34, y radius=0.08];   
+  \fill[\thing@ribbon,rotate=-15] (0.44,2.2) ellipse[x radius=0.34, y radius=0.08];
   \fill[\thing@ribbon,rotate=-15] (0.1,2.2) rectangle (0.78,2.3);
-  \fill[\thing@strawhat,rotate=-15] (0.44,2.3) ellipse[x radius=0.34, y radius=0.08];  
+  \fill[\thing@strawhat,rotate=-15] (0.44,2.3) ellipse[x radius=0.34, y radius=0.08];
   \end{scope}
 \fi
 %
@@ -424,8 +424,8 @@
 %
 % witch %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@witch
-  \begin{scope}[xshift=-26] 
-  \fill[\thing@witch,rotate=-15] (0.44,2.13) ellipse[x radius=0.75, y radius=0.17];  
+  \begin{scope}[xshift=-26]
+  \fill[\thing@witch,rotate=-15] (0.44,2.13) ellipse[x radius=0.75, y radius=0.17];
   \fill[\thing@witch,rotate=-15] (0.05,2.2)--(0.45,3.2)--(0.82,2.2);
   \end{scope}
 \fi
@@ -433,9 +433,7 @@
 % magic hat %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@magichat
   \begin{scope}[xshift=-26]
-  \path[preaction={fill, \thing@magichat!100},rotate=-5,
-        pattern=fivepointed stars, pattern color=\thing@magicstars!100] 
-    (0.36,1.95)--(0.86,2.95)--(1.20,1.85);
+  \path[preaction={fill, \thing@magichat!100},rotate=-5,pattern=fivepointed stars, pattern color=\thing@magicstars!100] (0.36,1.95)--(0.86,2.95)--(1.20,1.85);
     \end{scope}
 \fi
 %
@@ -502,17 +500,8 @@
 % Santa %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@santa
   \begin{scope}[xshift=-26]
-  \fill[\thing@santa] 
-    (0.430,1.803) .. controls (0.590,2.174) and (0.837,2.065) ..
-    (1.118,1.954) .. controls (1.679,1.731) and (1.328,1.193) .. 
-    (1.647,1.057) .. controls (1.638,1.255) and (1.745,2.104) .. 
-    (1.168,2.270) .. controls (0.867,2.356) and (0.536,2.280) .. 
-    (0.430,1.803) -- cycle;
-  \fill[white!80!brown] 
-    (0.44,1.733) .. controls (0.211,2.299) and (1.082,2.188) .. 
-    (1.456,1.759) .. controls (1.534,1.637) and (1.480,1.545) .. 
-    (1.400,1.566) .. controls (1.265,1.714) and (0.577,2.267) .. 
-    (0.44,1.733) -- cycle;
+  \fill[\thing@santa] (0.430,1.803) .. controls (0.590,2.174) and (0.837,2.065) .. (1.118,1.954) .. controls (1.679,1.731) and (1.328,1.193) .. (1.647,1.057) .. controls (1.638,1.255) and (1.745,2.104) .. (1.168,2.270) .. controls (0.867,2.356) and (0.536,2.280) .. (0.430,1.803) -- cycle;
+  \fill[white!80!brown] (0.44,1.733) .. controls (0.211,2.299) and (1.082,2.188) .. (1.456,1.759) .. controls (1.534,1.637) and (1.480,1.545) .. (1.400,1.566) .. controls (1.265,1.714) and (0.577,2.267) .. (0.44,1.733) -- cycle;
   \fill[white!80!brown] (1.6,1.0) circle[radius=0.17];
   \end{scope}
 \fi
@@ -520,7 +509,7 @@
 % Chef hat %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@chef
   \begin{scope}[xshift=-26]
-  \fill[\thing@chef,rotate=-15] (0.44,2.1) ellipse[x radius=0.37, y radius=0.08];  
+  \fill[\thing@chef,rotate=-15] (0.44,2.1) ellipse[x radius=0.37, y radius=0.08];
   \fill[\thing@chef,rotate=-15] (0.07,2.1) rectangle (0.81,2.55);
   \fill[\thing@chef] (1.01,2.47) circle[radius=0.17];
   \fill[\thing@chef] (1.24,2.35) circle[radius=0.15];
@@ -532,7 +521,7 @@
 % graduate hat %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@graduate
   \begin{scope}[xshift=-26]
-  \fill[\thing@graduate,rotate=-15] (0.44,2.1) ellipse[x radius=0.37, y radius=0.1];  
+  \fill[\thing@graduate,rotate=-15] (0.44,2.1) ellipse[x radius=0.37, y radius=0.1];
   \fill[\thing@graduate,rotate=-15] (0.07,2.1) rectangle (0.81,2.3);
   \fill[\thing@graduate] (0.3,2.25) -- (1.05,2.35) -- (1.7,1.95) -- (0.92,1.85) -- cycle;
   \fill[\thing@tassel,rounded corners=\scalingfactor*1] (1.12,1.89) -- (1.01,2.1) -- (1.09,2.11) -- (1.2,1.9) -- (1.2,1.3) -- (1.12,1.3) -- cycle;
@@ -548,9 +537,9 @@
   \draw[decorate,decoration={zigzag, amplitude=\decoscalefactor*1pt, segment length=\scalingfactor*6pt},\thing@sombreroa, line width=\scalingfactor*1pt] (-0.81, 1.8)  .. controls (-0.30, 2.1) and (0.30, 2.1) .. ( 0.82, 1.8);
   \begin{scope}
     \clip (-.45,2) to[in=200] (0,2.8) to[out=-20] (.45,2) -- cycle;
-    \draw[decorate,decoration={zigzag, amplitude=\decoscalefactor*1pt, segment length=\scalingfactor*3pt},\thing@sombreroa, line width=\scalingfactor*1pt] (-.4,2.4) to[bend left] (.4,2.4);  
-    \fill[decorate,decoration={shape backgrounds,shape=circle,        shape size=\scalingfactor*2pt, shape evenly spread=7}, \thing@sombreroc] (-.3,2.6) to[bend left] (.3,2.6);  
-    \fill[decorate,decoration={shape backgrounds,shape=circle,shape size=\scalingfactor*2pt,shape evenly spread=9},\thing@sombreroc] (-.4,2.18) to[bend left] (.4,2.18);  
+    \draw[decorate,decoration={zigzag, amplitude=\decoscalefactor*1pt, segment length=\scalingfactor*3pt},\thing@sombreroa, line width=\scalingfactor*1pt] (-.4,2.4) to[bend left] (.4,2.4);
+    \fill[decorate,decoration={shape backgrounds,shape=circle,        shape size=\scalingfactor*2pt, shape evenly spread=7}, \thing@sombreroc] (-.3,2.6) to[bend left] (.3,2.6);
+    \fill[decorate,decoration={shape backgrounds,shape=circle,shape size=\scalingfactor*2pt,shape evenly spread=9},\thing@sombreroc] (-.4,2.18) to[bend left] (.4,2.18);
   \end{scope}
 \fi
 %
@@ -571,8 +560,7 @@
 % book %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@book
   \begin{scope}[xshift=-25,yshift=1]
-  \fill[\thing@bookcolour,rotate=-20] 
-    (0.40,1.20) rectangle (0.80,0.60);
+  \fill[\thing@bookcolour,rotate=-20] (0.40,1.20) rectangle (0.80,0.60);
   \node[rotate=-20*\yscalefactor/\xscalefactor, color=white] at (0.88,0.70) {\thing@book};%
   \end{scope}
 \fi
@@ -599,7 +587,7 @@
 % think bubble %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@think
   \begin{scope}[xshift=-26]
-  \fill[\thing@bubblecolour] (2,2.4) ellipse[x radius=0.7, y radius=0.35]; 
+  \fill[\thing@bubblecolour] (2,2.4) ellipse[x radius=0.7, y radius=0.35];
   \fill[\thing@bubblecolour] (1.55,2.35) circle[radius=0.25] (2.0,2.15) circle[radius=0.25] (2.4,2.25) circle[radius=0.25] (1.6,2.55) circle[radius=0.25] (2.0,2.6) circle[radius=0.25] (2.35,2.5) circle[radius=0.25] (1.65,1.95) circle[radius=0.1] (1.55,1.80) circle[radius=0.06] (1.47,1.70) circle[radius=0.03];
   \node at (2,2.4) {\thing@think};
   \end{scope}
@@ -616,9 +604,9 @@
   \begin{scope}[xshift=-28,yshift=2]
   \fill[brown] (1.00,0.60) ellipse[x radius=0.4, y radius=0.2];
   \fill[red!70!black] (1.00,0.60) ellipse[x radius=0.34, y radius=0.16];
-  \fill[white!85!yellow] (1.15,0.65) ellipse[x radius=0.065, y radius=0.04];  
-  \fill[white!85!yellow] (0.81,0.57) ellipse[x radius=0.065, y radius=0.04];  
-  \fill[white!85!yellow] (0.95,0.68) ellipse[x radius=0.065, y radius=0.04];  
+  \fill[white!85!yellow] (1.15,0.65) ellipse[x radius=0.065, y radius=0.04];
+  \fill[white!85!yellow] (0.81,0.57) ellipse[x radius=0.065, y radius=0.04];
+  \fill[white!85!yellow] (0.95,0.68) ellipse[x radius=0.065, y radius=0.04];
   \fill[white!85!yellow] (1.02,0.54) ellipse[x radius=0.065, y radius=0.04];
   \fill[green!40!brown] (1.09,0.54) ellipse[x radius=0.07, y radius=0.02];
   \fill[green!40!brown,rotate=20] (1.0,0.34) ellipse[x radius=0.07, y radius=0.02];
@@ -631,18 +619,18 @@
   \begin{scope}[xshift=-28,yshift=2]
   \fill[brown] (1.00,0.60) ellipse[x radius=0.4, y radius=0.2];
   \fill[red!70!black] (1.00,0.60) ellipse[x radius=0.34, y radius=0.16];
-  \fill[yellow!70!brown] (1.15,0.65) ellipse[x radius=0.08, y radius=0.06];  
-  \fill[red!70!black] (1.15,0.65) ellipse[x radius=0.04, y radius=0.03]; 
-  \fill[yellow!70!brown] (0.81,0.57) ellipse[x radius=0.08, y radius=0.06];  
-  \fill[red!70!black] (0.81,0.57) ellipse[x radius=0.04, y radius=0.03]; 
-  \fill[yellow!70!brown] (0.95,0.68) ellipse[x radius=0.08, y radius=0.06];  
-  \fill[red!70!black] (0.95,0.68) ellipse[x radius=0.04, y radius=0.03]; 
+  \fill[yellow!70!brown] (1.15,0.65) ellipse[x radius=0.08, y radius=0.06];
+  \fill[red!70!black] (1.15,0.65) ellipse[x radius=0.04, y radius=0.03];
+  \fill[yellow!70!brown] (0.81,0.57) ellipse[x radius=0.08, y radius=0.06];
+  \fill[red!70!black] (0.81,0.57) ellipse[x radius=0.04, y radius=0.03];
+  \fill[yellow!70!brown] (0.95,0.68) ellipse[x radius=0.08, y radius=0.06];
+  \fill[red!70!black] (0.95,0.68) ellipse[x radius=0.04, y radius=0.03];
   \fill[yellow!70!brown] (1.02,0.54) ellipse[x radius=0.08, y radius=0.06];
-  \fill[red!70!black] (1.02,0.54) ellipse[x radius=0.04, y radius=0.03]; 
+  \fill[red!70!black] (1.02,0.54) ellipse[x radius=0.04, y radius=0.03];
   \fill[green!40!brown] (1.09,0.54) ellipse[x radius=0.07, y radius=0.02];
   \fill[green!40!brown,rotate=20] (1.0,0.34) ellipse[x radius=0.07, y radius=0.02];
   \fill[green!40!brown,rotate=-20] (0.9,1.05) ellipse[x radius=0.07, y radius=0.02];
-  \fill[green!40!brown] (1.00,0.60) ellipse[x radius=0.03, y radius=0.06];  
+  \fill[green!40!brown] (1.00,0.60) ellipse[x radius=0.03, y radius=0.06];
   \end{scope}
 \fi
 %
@@ -682,7 +670,7 @@
   \fill[\thing@cone,rotate=-20] (0.35,1.20)--(0.50,0.60)--(0.75,1.20);
   \fill[\thing@flavoura] (0.85,1.03) circle[radius=0.12];
   \fill[\thing@flavourb] (1.05,0.95) circle[radius=0.12];
-  \fill[\thing@flavourc] (0.95,1.1) circle[radius=0.12];    
+  \fill[\thing@flavourc] (0.95,1.1) circle[radius=0.12];
   \end{scope}
 \fi
 %
@@ -692,7 +680,7 @@
   \fill[cyan!10!white, rotate=-10] (0.8,0.50) ellipse[x radius=0.17, y radius=0.05];
   \fill[cyan!10!white, rotate=-10] (0.8,0.55) ellipse[x radius=0.12, y radius=0.03];
   \begin{scope}
-    \clip[rotate=-10] (0.58,0.5) rectangle (1.02,1.03); 
+    \clip[rotate=-10] (0.58,0.5) rectangle (1.02,1.03);
     \fill[cyan!10!white, rotate=-10] (0.8,0.94) ellipse[x radius=0.18, y radius=0.4];
     \fill[\thing@milkshake, rotate=-10] (0.8,0.94) ellipse[x radius=0.15, y radius=0.36];
   \end{scope}
@@ -700,7 +688,7 @@
   \fill[red!90!black] (1.0,1.1) circle[radius=0.05];
   \fill[white!85!yellow] (0.94,1.05) circle[radius=0.05] (1.03,1.03) circle[radius=0.05];
   \fill[cyan!10!white, rotate=-10] (0.8,0.50) ellipse[x radius=0.17, y radius=0.05];
-  \fill[red!90!black,rotate=20] (1.2,0.58) rectangle (1.22,0.85); 
+  \fill[red!90!black,rotate=20] (1.2,0.58) rectangle (1.22,0.85);
   \end{scope}
 \fi
 %
@@ -711,11 +699,11 @@
   \fill[cyan!10!white, rotate=-10] (0.8,0.55) ellipse[x radius=0.12, y radius=0.03];
   \fill[cyan!10!white, rotate=-10] (0.8,0.7) ellipse[x radius=0.03, y radius=0.2];
   \begin{scope}
-    \clip[rotate=-10] (0.58,0.5) rectangle (1.02,1.03); 
+    \clip[rotate=-10] (0.58,0.5) rectangle (1.02,1.03);
     \fill[cyan!10!white, rotate=-10] (0.8,1.1) ellipse[x radius=0.18, y radius=0.4];
   \end{scope}
   \begin{scope}
-    \clip[rotate=-10] (0.58,0.5) rectangle (1.02,0.87); 
+    \clip[rotate=-10] (0.58,0.5) rectangle (1.02,0.87);
     \fill[\thing@wine, rotate=-10] (0.8,1.1) ellipse[x radius=0.15, y radius=0.36];
   \end{scope}
   \end{scope}
@@ -790,7 +778,7 @@
 \ifthing@crystalball
   \shade[ball color=\thing@crystalball,opacity=0.7] (0,0.8) circle[radius=0.33];
 \fi
-% 
+%
 % magic wand %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@magicwand
   \begin{scope}[xshift=-16,yshift=2]
@@ -818,51 +806,36 @@
 % torch %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@torch
   \begin{scope}[xshift=-26]
-  \fill[red!50!yellow]   
-    (1.4338,1.025) .. controls (1.4308,0.8877) and (1.3468,0.8997) .. 
-    (1.2447,0.748) .. controls (1.1427,0.8982) and (1.0721,0.8892) .. 
-    (1.0646,1.024) .. controls (1.0541,1.1714) and (1.2642,1.1654) .. 
-    (1.2492,1.386) .. controls (1.3093,1.3110) and (1.4383,1.2705) .. 
-    (1.4338,1.025) -- cycle;
-  \fill[red!25!yellow, scale=0.67, xshift=17, yshift=15]         
-    (1.4338,1.025) .. controls (1.4308,0.8877) and (1.3468,0.8997) .. 
-    (1.2447,0.748) .. controls (1.1427,0.8982) and (1.0721,0.8892) .. 
-    (1.0646,1.024) .. controls (1.0541,1.1714) and (1.2642,1.1654) .. 
-    (1.2492,1.386) .. controls (1.3093,1.3110) and (1.4383,1.2705) .. 
-    (1.4338,1.025) -- cycle;
-  \fill[white!50!yellow, scale=0.4, xshift=53.5, yshift=45.3]     
-    (1.4338,1.025) .. controls (1.4308,0.8877) and (1.3468,0.8997) .. 
-    (1.2447,0.748) .. controls (1.1427,0.8982) and (1.0721,0.8892) .. 
-    (1.0646,1.024) .. controls (1.0541,1.1714) and (1.2642,1.1654) .. 
-    (1.2492,1.386) .. controls (1.3093,1.3110) and (1.4383,1.2705) .. 
-    (1.4338,1.025) -- cycle;
+  \fill[red!50!yellow] (1.4338,1.025) .. controls (1.4308,0.8877) and (1.3468,0.8997) .. (1.2447,0.748) .. controls (1.1427,0.8982) and (1.0721,0.8892) .. (1.0646,1.024) .. controls (1.0541,1.1714) and (1.2642,1.1654) .. (1.2492,1.386) .. controls (1.3093,1.3110) and (1.4383,1.2705) .. (1.4338,1.025) -- cycle;
+  \fill[red!25!yellow, scale=0.67, xshift=17, yshift=15] (1.4338,1.025) .. controls (1.4308,0.8877) and (1.3468,0.8997) .. (1.2447,0.748) .. controls (1.1427,0.8982) and (1.0721,0.8892) .. (1.0646,1.024) .. controls (1.0541,1.1714) and (1.2642,1.1654) .. (1.2492,1.386) .. controls (1.3093,1.3110) and (1.4383,1.2705) .. (1.4338,1.025) -- cycle;
+  \fill[white!50!yellow, scale=0.4, xshift=53.5, yshift=45.3] (1.4338,1.025) .. controls (1.4308,0.8877) and (1.3468,0.8997) .. (1.2447,0.748) .. controls (1.1427,0.8982) and (1.0721,0.8892) .. (1.0646,1.024) .. controls (1.0541,1.1714) and (1.2642,1.1654) .. (1.2492,1.386) .. controls (1.3093,1.3110) and (1.4383,1.2705) .. (1.4338,1.025) -- cycle;
   \fill[\thing@torch,rounded corners=\scalingfactor*1]
     (1.1,0.96) -- (0.77,0.25) -- (0.83,0.25) -- (1.3,0.86) -- cycle;
   \fill[\thing@torch,rotate=-28] (0.62,1.32) ellipse[x radius=0.2, y radius=0.08];
   \end{scope}
 \fi%
-% 
+%
 % basket %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@basket
   \begin{scope}[xshift=-28.5]
   \fill[\thing@basket, start angle=180, end angle=360, x radius=0.35, y radius=0.35] (0.65,0.61) arc  -- cycle;
   \fill[\thing@basket, start angle=180, end angle=0, even odd rule] [x radius=0.35, y radius=0.5] (0.65,0.6) arc  -- cycle [x radius=0.3, y radius=0.45] (0.7,0.6) arc  -- cycle;
-  \fill[\thing@basket, even odd rule] (1,0.6) ellipse[x radius=0.35, y radius=0.1] (1,0.6) ellipse[x radius=0.3, y radius=0.07];  
+  \fill[\thing@basket, even odd rule] (1,0.6) ellipse[x radius=0.35, y radius=0.1] (1,0.6) ellipse[x radius=0.3, y radius=0.07];
   \fill[\thing@basket!75!black] (1,0.6) ellipse[x radius=0.3, y radius=0.07];
-  \end{scope}  
-\fi%  
+  \end{scope}
+\fi%
 %
 % easter basket %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@easter
   \begin{scope}[xshift=-28.5]
   \begin{scope}
-    \clip [start angle=180, end angle=0, x radius=0.3, y radius=0.45] (0.7,0.6) arc  -- cycle [start angle=180, end angle=360, x radius=0.3, y radius=0.07] (0.7,0.6) arc  -- cycle;  
+    \clip [start angle=180, end angle=0, x radius=0.3, y radius=0.45] (0.7,0.6) arc  -- cycle [start angle=180, end angle=360, x radius=0.3, y radius=0.07] (0.7,0.6) arc  -- cycle;
     \fill[\thing@eggb, rotate=-5]  (0.95,0.72) ellipse[x radius=0.09, y radius=0.13];
     \fill[\thing@egga, rotate=10]  (0.94,0.42) ellipse[x radius=0.09, y radius=0.13];
     \fill[\thing@eggc, rotate=-30] (0.7,1.08) ellipse[x radius=0.09, y radius=0.13];
   \end{scope}
-  \end{scope}  
-\fi% 
+  \end{scope}
+\fi%
 %
 % crozier %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthing@crozier
@@ -871,7 +844,7 @@
     \clip [rotate=-20] (0.6,2.3) rectangle (1.1,1.999);
     \fill[even odd rule,\thing@crozier] (1.5,1.6) circle[radius=0.2] (1.5,1.6) circle[radius=0.1];
   \end{scope}
-  \fill[\thing@crozier,rotate=-20] (0.663,0.5) rectangle (0.763,2.0);  
+  \fill[\thing@crozier,rotate=-20] (0.663,0.5) rectangle (0.763,2.0);
   \end{scope}
 \fi
 %
@@ -935,9 +908,9 @@
     \fill[\thing@leaf] (-0.01,0) .. controls (-0.1,0) and (-0.02, 0.2) .. (0,0.2) .. controls (0.02, 0.2) and (0.1,0) .. (0.01,0.0);
     \path[clip] (-0.04,-0.04)-- (-0.01,0) .. controls (-0.1,0) and (-0.02, 0.2) .. (0,0.2) .. controls (0.02, 0.2) and (0.1,0) .. (0.01,0)-- (0.04,-0.04) --cycle;
     \draw[\thing@leaf!80!, line width=0.1] (0,-0.04) --  (0,0.2) \foreach \i in {0.02,0.04,...,0.2} {(0,\i) -- ++(0.1,\i) (0,\i) -- ++(-0.1,\i)} ;
-    \end{scope} 
+    \end{scope}
     %stick itself
-    \fill[\thing@stick!90!red] (-0.04,0.8) -- (-0.04,0.4) arc[start angle=345,end angle=270,radius=0.03] -- ++(0,-0.01) arc[start angle=90,end angle=15,radius=0.03] -- (-0.04,0) arc [start angle=180, end angle=360 ,x radius=0.04, y radius=0.02] -- (0.04, 0.4) arc [start angle=180, end angle=120, radius=0.08] arc [start angle=-90, end angle=90, x radius=0.02, y radius=0.04] arc [start angle=240, end angle=180, radius=0.08] -- (0.04,0.75) arc [start angle=0, end angle=120 ,x radius=0.04, y radius=0.02] --cycle; 
+    \fill[\thing@stick!90!red] (-0.04,0.8) -- (-0.04,0.4) arc[start angle=345,end angle=270,radius=0.03] -- ++(0,-0.01) arc[start angle=90,end angle=15,radius=0.03] -- (-0.04,0) arc [start angle=180, end angle=360 ,x radius=0.04, y radius=0.02] -- (0.04, 0.4) arc [start angle=180, end angle=120, radius=0.08] arc [start angle=-90, end angle=90, x radius=0.02, y radius=0.04] arc [start angle=240, end angle=180, radius=0.08] -- (0.04,0.75) arc [start angle=0, end angle=120 ,x radius=0.04, y radius=0.02] --cycle;
     \fill[\thing@stick!90!] (0.08, 0.51) ellipse [x radius=0.02, y radius=0.04] (0,0.75) ellipse [x radius=0.04, y radius=0.02] ;
     \draw[\thing@stick!90!red, line width=0.06] (0.08, 0.51) ellipse [x radius=0.016, y radius=0.032]
     ellipse [x radius=0.012, y radius=0.024] ellipse [x radius=0.008, y radius=0.016] (0,0.75) ellipse [y radius=0.016, x radius=0.032] ellipse [y radius=0.012, x radius=0.024]  ellipse [y radius=0.008, x radius=0.016] ;

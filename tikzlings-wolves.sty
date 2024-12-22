@@ -27,7 +27,7 @@
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname wolfhookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
-  %  
+  %
 }
 
 \newif\ifwolf@threeD
@@ -53,9 +53,9 @@
   body/.store in     = \wolf@body,
   body               = gray!90!white,
   eye/.store in      = \wolf@eye,
-  eye                = white,   
+  eye                = white,
   pupil/.store in    = \wolf@pupil,
-  pupil              = black,   
+  pupil              = black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
@@ -69,18 +69,18 @@
   leftstep/.code     = \wolf@leftsteptrue,
   left step/.forward to = /wolf/leftstep,
   rightstep/.code    = \wolf@rightsteptrue,
-  right step/.forward to = /wolf/rightstep,    
-  back/.code         = \wolf@backtrue,  
+  right step/.forward to = /wolf/rightstep,
+  back/.code         = \wolf@backtrue,
   contour/.code      = \wolf@contourtrue
                        \def\wolf@contour{#1},
-  contour/.default   = black,  
-  outline/.forward to = /wolf/contour,   
+  contour/.default   = black,
+  outline/.forward to = /wolf/contour,
 }
 
 \def\wolf@draw{%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % minimal bounding box size 
+  % minimal bounding box size
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \path (-0.625,0.1) rectangle (0.905, 2.17);
@@ -97,7 +97,7 @@
   \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % 
+  %
   % switch between 2D, 3D and contours, from
   % https://chat.stackexchange.com/transcript/message/45991801#45991801
   %
@@ -115,32 +115,32 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Body parts
-  % 
+  %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname wolfhookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
-  % 
+  %
   % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifwolf@leftstep
-    \wolf@part@draw[\wolf@body!65!white] (-0.255,0.25) ellipse[x radius=0.23, y radius=0.09];  
+    \wolf@part@draw[\wolf@body!65!white] (-0.255,0.25) ellipse[x radius=0.23, y radius=0.09];
   \else% step
-    \wolf@part@draw[\wolf@body!65!white] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];  
+    \wolf@part@draw[\wolf@body!65!white] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
   \fi% step
   %
   \ifwolf@rightstep
-    \wolf@part@draw[\wolf@body!65!white] (0.255,0.25) ellipse[x radius=0.23, y radius=0.09]; 
+    \wolf@part@draw[\wolf@body!65!white] (0.255,0.25) ellipse[x radius=0.23, y radius=0.09];
   \else% step
-    \wolf@part@draw[\wolf@body!65!white] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
+    \wolf@part@draw[\wolf@body!65!white] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
   \fi% step
   %
   % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \wolf@part@draw[\wolf@body] (0.22, 2.0392) .. controls   (0.22, 2.1584) and   (0.49460, 2.255) ..   (0.49460, 2.255) .. controls   (0.49460, 2.255) and (0.5300, 1.86) .. (0.3721, 1.86) .. controls (0.2891, 1.86) and   (0.22, 1.9201) .. (0.22, 2.0392) -- cycle;
-  \wolf@part@draw[\wolf@body!55!white] (0.22, 2.0392) .. controls (0.26, 2.1584) and (0.47, 2.22) .. (0.47, 2.20) .. controls (0.47, 2.2) and (0.49, 1.9) .. (0.3721, 1.9) .. controls (0.2891, 1.88) and (0.22, 1.88) .. (0.22, 2.0392) -- cycle;  
+  \wolf@part@draw[\wolf@body!55!white] (0.22, 2.0392) .. controls (0.26, 2.1584) and (0.47, 2.22) .. (0.47, 2.20) .. controls (0.47, 2.2) and (0.49, 1.9) .. (0.3721, 1.9) .. controls (0.2891, 1.88) and (0.22, 1.88) .. (0.22, 2.0392) -- cycle;
   \wolf@part@draw[\wolf@body] (-0.22, 2.0392) .. controls   (-0.22, 2.1584) and   (-0.49460, 2.255) ..   (-0.49460, 2.255) .. controls   (-0.49460, 2.255) and (-0.5300, 1.86) .. (-0.3721, 1.86) .. controls (-0.2891, 1.86) and   (-0.22, 1.9201) .. (-0.22, 2.0392) -- cycle;
-  \wolf@part@draw[\wolf@body!55!white] (-0.22, 2.0392) .. controls (-0.26, 2.1584) and (-0.47, 2.22) .. (-0.47, 2.20) .. controls (-0.47, 2.2) and (-0.49, 1.9) .. (-0.3721, 1.9) .. controls (-0.2891, 1.88) and (-0.22, 1.88) .. (-0.22, 2.0392) -- cycle;  
-  % 
+  \wolf@part@draw[\wolf@body!55!white] (-0.22, 2.0392) .. controls (-0.26, 2.1584) and (-0.47, 2.22) .. (-0.47, 2.20) .. controls (-0.47, 2.2) and (-0.49, 1.9) .. (-0.3721, 1.9) .. controls (-0.2891, 1.88) and (-0.22, 1.88) .. (-0.22, 2.0392) -- cycle;
+  %
   % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifwolf@back
     \wolf@part@draw[\wolf@body!50!darkgray] (1.0893, 1.5779) .. controls (0.3433, 1.6612) and (0.4863, 0.6062) .. (-0.0243, 0.348) .. controls (1.0671, 0.068) and (0.8133, 1.1808) .. (1.0893, 1.5779) -- cycle;
@@ -161,7 +161,7 @@
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname wolfhookbelly\endcsname
   \csname tikzlinghookbelly\endcsname
-  % 
+  %
   % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifwolf@back
     \wolf@part@draw[\wolf@body!70!white!95!brown] (0.5, 1.8) .. controls (0.5, 1.58) and (0.2, 1.35) .. (0, 1.35) .. controls (-0.2, 1.35) and (-0.5, 1.58) .. (-0.5, 1.8) .. controls (-0.34, 2.3) and (0.34, 2.3) .. (0.5, 1.8) -- cycle;
@@ -202,7 +202,7 @@
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname wolfhookbody\endcsname
   \csname tikzlinghookbody\endcsname
-  % 
+  %
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

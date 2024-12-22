@@ -26,7 +26,7 @@
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname rhinohookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
-  %  
+  %
 }
 
 \newif\ifrhino@threeD
@@ -52,34 +52,34 @@
   toes/.store in     = \rhino@toes,
   toes               = \rhino@body,
   eye/.store in      = \rhino@eye,
-  eye                = white,  
+  eye                = white,
   pupil/.store in    = \rhino@pupil,
-  pupil              = black,  
+  pupil              = black,
   mouth/.store in    = \rhino@mouth,
-  mouth              = \rhino@body!50!black, 
+  mouth              = \rhino@body!50!black,
   horn/.store in     = \rhino@horn,
-  horn               = white!95!yellow,   
+  horn               = white!95!yellow,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   openmouth/.code    = \rhino@openmouthtrue,
-  open mouth/.forward to = /rhino/openmouth,  
+  open mouth/.forward to = /rhino/openmouth,
   3D/.code           = \rhino@threeDtrue
-                       \def\rhino@mouth{black}, 
-  back/.code         = \rhino@backtrue, 
+                       \def\rhino@mouth{black},
+  back/.code         = \rhino@backtrue,
   contour/.code      = \rhino@contourtrue
                        \def\rhino@contour{#1}
                        \def\rhino@mouth{#1},
-  contour/.default   = black,   
-  outline/.forward to = /rhino/contour,   
+  contour/.default   = black,
+  outline/.forward to = /rhino/contour,
 }
 
 \def\rhino@draw{%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % minimal bounding box size 
+  % minimal bounding box size
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \path (-0.625,0.1) rectangle (0.625, 2.17);
@@ -96,7 +96,7 @@
   \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % 
+  %
   % switch between 2D, 3D and contours, from
   % https://chat.stackexchange.com/transcript/message/45991801#45991801
   %
@@ -114,7 +114,7 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Body parts
-  % 
+  %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -130,7 +130,7 @@
     \begin{scope}
       \clip (-0.5,0.4) rectangle (0.5,0.13);
       \rhino@part@draw[\rhino@body!70!black] (-0.25,0.15) ellipse[x radius=0.16, y radius=0.17];
-      \rhino@part@draw[\rhino@body!70!black] (0.25,0.15) ellipse[x radius=0.16, y radius=0.17];  
+      \rhino@part@draw[\rhino@body!70!black] (0.25,0.15) ellipse[x radius=0.16, y radius=0.17];
     \end{scope}
   \fi% back
   %
@@ -194,7 +194,7 @@
       \rhino@part@draw[\rhino@toes] (0.37,0.11) ellipse[x radius=0.05, y radius=0.1];
       \rhino@part@draw[\rhino@toes] (-0.25,0.13) ellipse[x radius=0.05, y radius=0.1];
       \rhino@part@draw[\rhino@toes] (-0.13,0.11) ellipse[x radius=0.05, y radius=0.1];
-      \rhino@part@draw[\rhino@toes] (-0.37,0.11) ellipse[x radius=0.05, y radius=0.1];  
+      \rhino@part@draw[\rhino@toes] (-0.37,0.11) ellipse[x radius=0.05, y radius=0.1];
     \end{scope}
     %
   \fi% back

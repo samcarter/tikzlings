@@ -26,7 +26,7 @@
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname mousehookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
-  %  
+  %
 }
 
 \newif\ifmouse@threeD
@@ -52,7 +52,7 @@
   body/.store in     = \mouse@body,
   body               = gray!90!white,
   eye/.store in      = \mouse@eye,
-  eye                = \mouse@body!50!black,   
+  eye                = \mouse@body!50!black,
   whiskers/.store in = \mouse@whiskers,
   whiskers           = \mouse@body!50!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -68,19 +68,19 @@
   leftstep/.code     = \mouse@leftsteptrue,
   left step/.forward to = /mouse/leftstep,
   rightstep/.code    = \mouse@rightsteptrue,
-  right step/.forward to = /mouse/rightstep,    
-  back/.code         = \mouse@backtrue,  
+  right step/.forward to = /mouse/rightstep,
+  back/.code         = \mouse@backtrue,
   contour/.code      = \mouse@contourtrue
                        \def\mouse@contour{#1}
                        \def\mouse@whiskers{#1},
-  contour/.default   = black,  
-  outline/.forward to = /mouse/contour,   
+  contour/.default   = black,
+  outline/.forward to = /mouse/contour,
 }
 
 \def\mouse@draw{%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % minimal bounding box size 
+  % minimal bounding box size
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \path (-0.625,0.1) rectangle (0.905, 2.17);
@@ -97,7 +97,7 @@
   \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % 
+  %
   % switch between 2D, 3D and contours, from
   % https://chat.stackexchange.com/transcript/message/45991801#45991801
   %
@@ -115,24 +115,24 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Body parts
-  % 
+  %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname mousehookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
-  % 
+  %
   % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifmouse@leftstep
-    \mouse@part@draw[\mouse@body!65!white] (-0.255,0.25) ellipse[x radius=0.23, y radius=0.09];  
+    \mouse@part@draw[\mouse@body!65!white] (-0.255,0.25) ellipse[x radius=0.23, y radius=0.09];
   \else% step
-    \mouse@part@draw[\mouse@body!65!white] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];  
+    \mouse@part@draw[\mouse@body!65!white] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
   \fi% step
   %
   \ifmouse@rightstep
-    \mouse@part@draw[\mouse@body!65!white] (0.255,0.25) ellipse[x radius=0.23, y radius=0.09]; 
+    \mouse@part@draw[\mouse@body!65!white] (0.255,0.25) ellipse[x radius=0.23, y radius=0.09];
   \else% step
-    \mouse@part@draw[\mouse@body!65!white] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
+    \mouse@part@draw[\mouse@body!65!white] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
   \fi% step
   %
   % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -154,7 +154,7 @@
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname mousehookbelly\endcsname
   \csname tikzlinghookbelly\endcsname
-  % 
+  %
   % Tail if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifmouse@back
     \mouse@part@draw[\mouse@body!65!white] (1.0825, 1.6326) .. controls (1.3527, 1.7527) and (1.6609, 1.3164) .. (1.5928, 1.3124) .. controls (0.9164, 2.186) and (0.8338, 0.6325) .. (0.3708, 0.4451) .. controls (0.2529, 0.3974) and (-0.0064, 0.3874) .. (-0.0064, 0.3874) .. controls (-0.0776, 0.3765) and (-0.0862, 0.5026) .. (-0.0092, 0.5034) .. controls (-0.0092, 0.5034) and (0.0363, 0.4591) .. (0.3516, 0.54360) .. controls (0.6710, 0.6988) and (0.7613, 1.4825) .. (1.0825, 1.6326) -- cycle;
@@ -162,11 +162,7 @@
   %
   % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifmouse@back
-      \mouse@part@draw[\mouse@body!65!white] 
-      (0.5, 1.8) .. controls (0.5, 1.58) and (0.2, 1.35) .. 
-      (0, 1.35) .. controls (-0.2, 1.35) and (-0.5, 1.58) .. 
-      (-0.5, 1.8) .. controls (-0.34, 2.3) and (0.34, 2.3) .. 
-      (0.5, 1.8) -- cycle;
+    \mouse@part@draw[\mouse@body!65!white] (0.5, 1.8) .. controls (0.5, 1.58) and (0.2, 1.35) .. (0, 1.35) .. controls (-0.2, 1.35) and (-0.5, 1.58) .. (-0.5, 1.8) .. controls (-0.34, 2.3) and (0.34, 2.3) .. (0.5, 1.8) -- cycle;
   \else% back
     \mouse@part@draw[\mouse@body!65!white] (0.5, 1.8) .. controls (0.5, 1.58) and (0.2, 1.25) .. (0, 1.16) .. controls (-0.2, 1.25) and (-0.5, 1.58) .. (-0.5, 1.8) .. controls (-0.34, 2.3) and (0.34, 2.3) .. (0.5, 1.8) -- cycle;
   \fi% back
@@ -198,7 +194,7 @@
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname mousehookbody\endcsname
   \csname tikzlinghookbody\endcsname
-  % 
+  %
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

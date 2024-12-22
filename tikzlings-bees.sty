@@ -26,7 +26,7 @@
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname beehookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
-  %   
+  %
 }
 
 \newif\ifbee@threeD
@@ -50,38 +50,38 @@
   body/.store in     = \bee@body,
   body               = yellow!70!orange,
   hands/.store in    = \bee@hands,
-  hands              = black,  
+  hands              = black,
   wings/.store in    = \bee@wings,
-  wings              = blue!20!cyan!30!white, 
+  wings              = blue!20!cyan!30!white,
   stripes/.store in  = \bee@stripes,
-  stripes            = black,     
+  stripes            = black,
   antennas/.store in = \bee@antennas,
-  antennas           = black,     
+  antennas           = black,
   eye/.store in      = \bee@eye,
-  eye                = black,   
+  eye                = black,
   mouth/.store in    = \bee@mouth,
-  mouth              = black,      
+  mouth              = black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   openmouth/.code    = \bee@openmouthtrue,
-  open mouth/.forward to = /bee/openmouth,  
-  3D/.code           = \bee@threeDtrue,  
-  back/.code         = \bee@backtrue,       
+  open mouth/.forward to = /bee/openmouth,
+  3D/.code           = \bee@threeDtrue,
+  back/.code         = \bee@backtrue,
   contour/.code      = \bee@contourtrue
                        \def\bee@contour{#1}
                        \def\bee@antennas{#1}
                        \def\bee@mouth{#1},
-  contour/.default   = black,  
-  outline/.forward to = /bee/contour,   
+  contour/.default   = black,
+  outline/.forward to = /bee/contour,
 }
 
 \def\bee@draw{%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % minimal bounding box size 
+  % minimal bounding box size
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \path (-0.88,0.1) rectangle (0.88, 2.4);
@@ -98,7 +98,7 @@
   \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % 
+  %
   % switch between 2D, 3D and contours, from
   % https://chat.stackexchange.com/transcript/message/45991801#45991801
   %
@@ -116,7 +116,7 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Body parts
-  % 
+  %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -174,8 +174,8 @@
   \else% back
     %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \bee@part@draw[\bee@eye] (-0.15,1.8) circle[radius=0.05]; 
-    \bee@part@draw[\bee@eye] (0.15,1.8) circle[radius=0.05]; 
+    \bee@part@draw[\bee@eye] (-0.15,1.8) circle[radius=0.05];
+    \bee@part@draw[\bee@eye] (0.15,1.8) circle[radius=0.05];
     %
     % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \bee@part@draw[\bee@hands] (-0.25,0.88) circle[x radius=0.07,y radius=0.2, rotate=25];
@@ -187,7 +187,7 @@
     \else
       \draw[\bee@mouth,line width=\scalingfactor*0.4pt] (0.115, 1.6) arc [start angle=-40, end angle=-140, radius=0.16];
     \fi
-    % 
+    %
     % Antenna %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \fill[\bee@antennas,rotate around={15:(-0.175,2.115)}] (-0.2,1.93) rectangle (-0.15,2.3);
     \fill[\bee@antennas,rotate around={-15:(0.175,2.115)}] (0.2,1.93) rectangle (0.15,2.3);

@@ -54,8 +54,8 @@
   body/.store in     = \ape@body,
   body               = red!15!brown!80!black,
   eye/.store in      = \ape@eye,
-  eye                = \ape@body!40!black,  
-  eyes/.forward to   = /ape/eye, 
+  eye                = \ape@body!40!black,
+  eyes/.forward to   = /ape/eye,
   skin/.store in     = \ape@skin,
   skin               = \ape@body!50!gray,
   nose/.store in     = \ape@nose,
@@ -73,30 +73,30 @@
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  3D/.code           = \ape@threeDtrue, 
+  3D/.code           = \ape@threeDtrue,
   handposition/.code = \csname ape@handposition@#1true\endcsname,
-  kikazaru/.code     = \ape@handposition@hearnoeviltrue, 
+  kikazaru/.code     = \ape@handposition@hearnoeviltrue,
   mizaru/.code       = \ape@handposition@seenoeviltrue,
   iwazaru/.code      = \ape@handposition@speaknoeviltrue,
-  %clap/.code        = \ape@handposition@claptrue, %%% should we support this too? 
-  %waving/.code      = \ape@handposition@wavingtrue, %%% should we support this too? 
-  hearnoevil/.code   = \ape@handposition@hearnoeviltrue, 
-  seenoevil/.code    = \ape@handposition@seenoeviltrue, 
+  %clap/.code        = \ape@handposition@claptrue, %%% should we support this too?
+  %waving/.code      = \ape@handposition@wavingtrue, %%% should we support this too?
+  hearnoevil/.code   = \ape@handposition@hearnoeviltrue,
+  seenoevil/.code    = \ape@handposition@seenoeviltrue,
   speaknoevil/.code  = \ape@handposition@speaknoeviltrue,
   back/.code         = \ape@backtrue,
   openmouth/.code    = \ape@openmouthtrue,
-  open mouth/.forward to = /ape/openmouth,  
+  open mouth/.forward to = /ape/openmouth,
   contour/.code      = \ape@contourtrue
                        \def\ape@contour{#1}
                        \def\ape@mouth{#1},
-  contour/.default   = black,  
+  contour/.default   = black,
   outline/.forward to = /ape/contour,
 }
 
 \def\ape@draw{%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % minimal bounding box size 
+  % minimal bounding box size
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \path (-1.435,0.1) rectangle (1.435, 2.27);
@@ -113,7 +113,7 @@
   \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % 
+  %
   % switch between 2D, 3D and contours, from
   % https://chat.stackexchange.com/transcript/message/45991801#45991801
   %
@@ -131,12 +131,12 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Body parts
-  % 
+  %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname apehookbackground\endcsname
-  \csname tikzlinghookbackground\endcsname 
+  \csname tikzlinghookbackground\endcsname
   %
   % Draw backside partially in reversed order %%%%%%%%%%%%%%%%%%%%%%%%
   \ifape@back
@@ -150,19 +150,19 @@
       \ape@part@draw[\ape@arms] (0.9,1.61)  ellipse[x radius=0.15, y radius=0.6, rotate=125];
     % see-no-evil pose backside %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \else\ifape@handposition@seenoevil%
-      \ape@part@draw[\ape@skin!90!white] (-0.325,1.91) ++(390:0.3 and 0.1) arc [start angle=390, end angle=150,x radius=0.3, y radius=0.1] {[rotate=10] arc [start angle=150, end angle=-60,x radius=0.15, y radius=0.03] } -- cycle;      
+      \ape@part@draw[\ape@skin!90!white] (-0.325,1.91) ++(390:0.3 and 0.1) arc [start angle=390, end angle=150,x radius=0.3, y radius=0.1] {[rotate=10] arc [start angle=150, end angle=-60,x radius=0.15, y radius=0.03] } -- cycle;
       \ape@part@draw[\ape@arms] (-0.59,1.97) arc [start angle=25, end angle=335,x radius=0.475, y radius=0.15] --cycle;
       \ape@part@draw[\ape@arms] (-0.93,1.70)  ellipse[x radius=0.15, y radius=0.6, rotate=70];
-      \ape@part@draw[\ape@skin!90!white] (0.325,1.91) ++(150:0.3 and 0.1)  arc [start angle=150, end angle=390,x radius=0.3, y radius=0.1] {[rotate=-10] arc [start angle=30, end angle=240,x radius=0.15, y radius=0.03] } -- cycle;  
-      \ape@part@draw[\ape@arms] (0.59,1.97) arc [start angle=155, end angle=-155,x radius=0.475, y radius=0.15] --cycle;      
+      \ape@part@draw[\ape@skin!90!white] (0.325,1.91) ++(150:0.3 and 0.1)  arc [start angle=150, end angle=390,x radius=0.3, y radius=0.1] {[rotate=-10] arc [start angle=30, end angle=240,x radius=0.15, y radius=0.03] } -- cycle;
+      \ape@part@draw[\ape@arms] (0.59,1.97) arc [start angle=155, end angle=-155,x radius=0.475, y radius=0.15] --cycle;
       \ape@part@draw[\ape@arms] (0.93,1.70)  ellipse[x radius=0.15, y radius=0.6, rotate=110];
      % speak-no-evil pose backside %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \else\ifape@handposition@speaknoevil%
       \ape@part@draw[\ape@arms] (-0.85,1.55)  ellipse[x radius=0.15, y radius=0.6, rotate=-100];
-      \ape@part@draw[\ape@skin!90!white] (-0.275,1.46) ++(390:0.3 and 0.1) arc [start angle=390, end angle=150,x radius=0.3, y radius=0.1] {[rotate=10] arc [start angle=150, end angle=-60,x radius=0.15, y radius=0.03] } -- cycle;      
+      \ape@part@draw[\ape@skin!90!white] (-0.275,1.46) ++(390:0.3 and 0.1) arc [start angle=390, end angle=150,x radius=0.3, y radius=0.1] {[rotate=10] arc [start angle=150, end angle=-60,x radius=0.15, y radius=0.03] } -- cycle;
       \ape@part@draw[\ape@arms] (-0.53,1.52) {[rotate=-10] arc [start angle=15, end angle=335,x radius=0.475, y radius=0.15]} --cycle;
       \ape@part@draw[\ape@arms] (0.85,1.55)  ellipse[x radius=0.15, y radius=0.6, rotate=100];
-      \ape@part@draw[\ape@skin!90!white] (0.275,1.46) ++(150:0.3 and 0.1) arc [start angle=150, end angle=390,x radius=0.3, y radius=0.1] {[rotate=-10] arc [start angle=30, end angle=240,x radius=0.15, y radius=0.03] } -- cycle;  
+      \ape@part@draw[\ape@skin!90!white] (0.275,1.46) ++(150:0.3 and 0.1) arc [start angle=150, end angle=390,x radius=0.3, y radius=0.1] {[rotate=-10] arc [start angle=30, end angle=240,x radius=0.15, y radius=0.03] } -- cycle;
       \ape@part@draw[\ape@arms] (0.53,1.52) {[rotate=10] arc [start angle=165, end angle=-155,x radius=0.475, y radius=0.15]} --cycle;
     % clapping hand pose backside %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \else\ifape@handposition@clap%
@@ -174,9 +174,9 @@
       \ape@part@draw[\ape@arms] (0.75,1.95) ellipse[x radius=0.15, y radius=0.6, rotate=150];
     % waving left hand pose backside %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \else\ifape@handposition@waving%
-      \ape@part@draw[\ape@arms] (-0.53,1.115) {[rotate=5] arc [start angle=25, end angle=335,x radius=0.475, y radius=0.15]} --cycle;    
+      \ape@part@draw[\ape@arms] (-0.53,1.115) {[rotate=5] arc [start angle=25, end angle=335,x radius=0.475, y radius=0.15]} --cycle;
       \ape@part@draw[\ape@arms] (-0.9,1.25)  ellipse[x radius=0.15, y radius=0.6, rotate=-60];
-      \ape@part@draw[\ape@skin!90!white] (0.97,3.2) ++(390:0.3 and 0.1) {[rotate=90] arc [start angle=390, end angle=150,x radius=0.3, y radius=0.1] {[rotate=10] arc [start angle=150, end angle=-60,x radius=0.15, y radius=0.03] } -- cycle};    
+      \ape@part@draw[\ape@skin!90!white] (0.97,3.2) ++(390:0.3 and 0.1) {[rotate=90] arc [start angle=390, end angle=150,x radius=0.3, y radius=0.1] {[rotate=10] arc [start angle=150, end angle=-60,x radius=0.15, y radius=0.03] } -- cycle};
      \ape@part@draw[\ape@arms] (1.35,2.74) {[rotate=100] arc [start angle=335, end angle=25,x radius=0.475, y radius=0.15]} --cycle;
       \ape@part@draw[\ape@arms] (0.93,1.70)  ellipse[x radius=0.15, y radius=0.6, rotate=-70];
     % default pose backside %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -188,10 +188,10 @@
     \fi\fi\fi\fi\fi
     %
     % legs / feet backside %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \ape@part@draw[\ape@skin] (1.2,0.27) ++(210:0.3 and 0.1) {[rotate=180] arc  [start angle=210, end angle=-30,x radius=0.3, y radius=0.1] {[rotate=10] arc [start angle=-30, end angle=-240,x radius=0.15, y radius=0.03]}-- cycle}; 
+    \ape@part@draw[\ape@skin] (1.2,0.27) ++(210:0.3 and 0.1) {[rotate=180] arc  [start angle=210, end angle=-30,x radius=0.3, y radius=0.1] {[rotate=10] arc [start angle=-30, end angle=-240,x radius=0.15, y radius=0.03]}-- cycle};
     \ape@part@draw[\ape@legs] (0.7,0.67) ellipse[x radius=0.15, y radius=0.6, rotate=-30];
     \ape@part@draw[\ape@legs] (0.52,0.68) ellipse[x radius=0.15, y radius=0.7, rotate=-45];
-    \ape@part@draw[\ape@skin] (-1.2,0.27) ++(-30:0.3 and 0.1) {[rotate=180] arc  [start angle=-30, end angle=210,x radius=0.3, y radius=0.1] {[rotate=-10] arc [start angle=210, end angle=420,x radius=0.15, y radius=0.03]}-- cycle}; 
+    \ape@part@draw[\ape@skin] (-1.2,0.27) ++(-30:0.3 and 0.1) {[rotate=180] arc  [start angle=-30, end angle=210,x radius=0.3, y radius=0.1] {[rotate=-10] arc [start angle=210, end angle=420,x radius=0.15, y radius=0.03]}-- cycle};
     \ape@part@draw[\ape@legs] (-0.7,0.67) ellipse[x radius=0.15, y radius=0.6, rotate=30];
     \ape@part@draw[\ape@legs] (-0.52,0.68) ellipse[x radius=0.15, y radius=0.7, rotate=45];
     %
@@ -240,10 +240,8 @@
     \fi
     %
     % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \ape@part@draw[\ape@skin] (0.675,0.2) ++(-30:0.3 and 0.1) arc  [start angle=-30, end angle=210,x radius=0.3, y radius=0.1] {[rotate=-10] arc 
-    [start angle=210, end angle=420,x radius=0.15, y radius=0.03]}-- cycle; 
-    \ape@part@draw[\ape@skin] (-0.675,0.2) ++(210:0.3 and 0.1) arc  [start angle=210, end angle=-30,x radius=0.3, y radius=0.1] {[rotate=10] arc 
-    [start angle=-30, end angle=-240,x radius=0.15, y radius=0.03]}-- cycle; 
+    \ape@part@draw[\ape@skin] (0.675,0.2) ++(-30:0.3 and 0.1) arc  [start angle=-30, end angle=210,x radius=0.3, y radius=0.1] {[rotate=-10] arc [start angle=210, end angle=420,x radius=0.15, y radius=0.03]}-- cycle;
+    \ape@part@draw[\ape@skin] (-0.675,0.2) ++(210:0.3 and 0.1) arc  [start angle=210, end angle=-30,x radius=0.3, y radius=0.1] {[rotate=10] arc [start angle=-30, end angle=-240,x radius=0.15, y radius=0.03]}-- cycle;
     %
     % Legs %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \ape@part@draw[\ape@legs] (0.52,0.68) ellipse[x radius=0.15, y radius=0.7, rotate=-45];
@@ -262,18 +260,18 @@
     % see-no-evil pose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \else\ifape@handposition@seenoevil
       \ape@part@draw[\ape@arms] (-0.93,1.70)  ellipse[x radius=0.15, y radius=0.6, rotate=70];
-      \ape@part@draw[\ape@skin!90!white] (-0.325,1.91) ++(390:0.3 and 0.1) arc [start angle=390, end angle=150,x radius=0.3, y radius=0.1] {[rotate=10] arc [start angle=150, end angle=-60,x radius=0.15, y radius=0.03] } -- cycle;      
+      \ape@part@draw[\ape@skin!90!white] (-0.325,1.91) ++(390:0.3 and 0.1) arc [start angle=390, end angle=150,x radius=0.3, y radius=0.1] {[rotate=10] arc [start angle=150, end angle=-60,x radius=0.15, y radius=0.03] } -- cycle;
       \ape@part@draw[\ape@arms] (-0.59,1.97) arc [start angle=25, end angle=335,x radius=0.475, y radius=0.15] --cycle;
       \ape@part@draw[\ape@arms] (0.93,1.70)  ellipse[x radius=0.15, y radius=0.6, rotate=110];
-      \ape@part@draw[\ape@skin!90!white] (0.325,1.91) ++(150:0.3 and 0.1)  arc [start angle=150, end angle=390,x radius=0.3, y radius=0.1] {[rotate=-10] arc [start angle=30, end angle=240,x radius=0.15, y radius=0.03] } -- cycle;  
-      \ape@part@draw[\ape@arms] (0.59,1.97) arc [start angle=155, end angle=-155,x radius=0.475, y radius=0.15] --cycle;      
+      \ape@part@draw[\ape@skin!90!white] (0.325,1.91) ++(150:0.3 and 0.1)  arc [start angle=150, end angle=390,x radius=0.3, y radius=0.1] {[rotate=-10] arc [start angle=30, end angle=240,x radius=0.15, y radius=0.03] } -- cycle;
+      \ape@part@draw[\ape@arms] (0.59,1.97) arc [start angle=155, end angle=-155,x radius=0.475, y radius=0.15] --cycle;
     % speak-no-evil pose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \else\ifape@handposition@speaknoevil%
       \ape@part@draw[\ape@arms] (-0.85,1.55)  ellipse[x radius=0.15, y radius=0.6, rotate=-100];
-      \ape@part@draw[\ape@skin!90!white] (-0.275,1.46) ++(390:0.3 and 0.1) arc [start angle=390, end angle=150,x radius=0.3, y radius=0.1] {[rotate=10] arc [start angle=150, end angle=-60,x radius=0.15, y radius=0.03] } -- cycle;      
+      \ape@part@draw[\ape@skin!90!white] (-0.275,1.46) ++(390:0.3 and 0.1) arc [start angle=390, end angle=150,x radius=0.3, y radius=0.1] {[rotate=10] arc [start angle=150, end angle=-60,x radius=0.15, y radius=0.03] } -- cycle;
       \ape@part@draw[\ape@arms] (-0.53,1.52) {[rotate=-10] arc [start angle=15, end angle=335,x radius=0.475, y radius=0.15]} --cycle;
       \ape@part@draw[\ape@arms] (0.85,1.55)  ellipse[x radius=0.15, y radius=0.6, rotate=100];
-      \ape@part@draw[\ape@skin!90!white] (0.275,1.46) ++(150:0.3 and 0.1) arc [start angle=150, end angle=390,x radius=0.3, y radius=0.1] {[rotate=-10] arc [start angle=30, end angle=240,x radius=0.15, y radius=0.03] } -- cycle;  
+      \ape@part@draw[\ape@skin!90!white] (0.275,1.46) ++(150:0.3 and 0.1) arc [start angle=150, end angle=390,x radius=0.3, y radius=0.1] {[rotate=-10] arc [start angle=30, end angle=240,x radius=0.15, y radius=0.03] } -- cycle;
       \ape@part@draw[\ape@arms] (0.53,1.52) {[rotate=10] arc [start angle=165, end angle=-155,x radius=0.475, y radius=0.15]} --cycle;
     % clapping pose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \else\ifape@handposition@clap%
@@ -286,18 +284,18 @@
     % waving hand pose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \else\ifape@handposition@waving%
       \ape@part@draw[\ape@arms] (-0.93,1.70)  ellipse[x radius=0.15, y radius=0.6, rotate=70];
-      \ape@part@draw[\ape@skin!90!white] (-0.97,3.2) ++(150:0.3 and 0.1) {[rotate=-90] arc [start angle=150, end angle=390,x radius=0.3, y radius=0.1] {[rotate=-10] arc [start angle=30, end angle=240,x radius=0.15, y radius=0.03] } -- cycle};    
+      \ape@part@draw[\ape@skin!90!white] (-0.97,3.2) ++(150:0.3 and 0.1) {[rotate=-90] arc [start angle=150, end angle=390,x radius=0.3, y radius=0.1] {[rotate=-10] arc [start angle=30, end angle=240,x radius=0.15, y radius=0.03] } -- cycle};
        \ape@part@draw[\ape@arms] (-1.35,2.74) {[rotate=80] arc [start angle=25, end angle=335,x radius=0.475, y radius=0.15]} --cycle;
       \ape@part@draw[\ape@arms] (0.9,1.25)  ellipse[x radius=0.15, y radius=0.6, rotate=60];
-      \ape@part@draw[\ape@skin!90!white] (0.325,1.05) ++(150:0.3 and 0.1) arc [start angle=150, end angle=390,x radius=0.3, y radius=0.1] {[rotate=-10] arc [start angle=30, end angle=240,x radius=0.15, y radius=0.03] } -- cycle;  
+      \ape@part@draw[\ape@skin!90!white] (0.325,1.05) ++(150:0.3 and 0.1) arc [start angle=150, end angle=390,x radius=0.3, y radius=0.1] {[rotate=-10] arc [start angle=30, end angle=240,x radius=0.15, y radius=0.03] } -- cycle;
       \ape@part@draw[\ape@arms] (0.53,1.115) {[rotate=-5] arc [start angle=155, end angle=-155,x radius=0.475, y radius=0.15]} --cycle;
     % normal pose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \else
       \ape@part@draw[\ape@arms] (-0.9,1.25)  ellipse[x radius=0.15, y radius=0.6, rotate=-60];
-      \ape@part@draw[\ape@skin!90!white] (-0.325,1.05) ++(390:0.3 and 0.1) arc [start angle=390, end angle=150,x radius=0.3, y radius=0.1] {[rotate=10] arc [start angle=150, end angle=-60,x radius=0.15, y radius=0.03] } -- cycle;      
+      \ape@part@draw[\ape@skin!90!white] (-0.325,1.05) ++(390:0.3 and 0.1) arc [start angle=390, end angle=150,x radius=0.3, y radius=0.1] {[rotate=10] arc [start angle=150, end angle=-60,x radius=0.15, y radius=0.03] } -- cycle;
       \ape@part@draw[\ape@arms] (-0.53,1.115) {[rotate=5] arc [start angle=25, end angle=335,x radius=0.475, y radius=0.15]} --cycle;
       \ape@part@draw[\ape@arms] (0.9,1.25)  ellipse[x radius=0.15, y radius=0.6, rotate=60];
-      \ape@part@draw[\ape@skin!90!white] (0.325,1.05) ++(150:0.3 and 0.1) arc [start angle=150, end angle=390,x radius=0.3, y radius=0.1] {[rotate=-10] arc [start angle=30, end angle=240,x radius=0.15, y radius=0.03] } -- cycle;  
+      \ape@part@draw[\ape@skin!90!white] (0.325,1.05) ++(150:0.3 and 0.1) arc [start angle=150, end angle=390,x radius=0.3, y radius=0.1] {[rotate=-10] arc [start angle=30, end angle=240,x radius=0.15, y radius=0.03] } -- cycle;
       \ape@part@draw[\ape@arms] (0.53,1.115) {[rotate=-5] arc [start angle=155, end angle=-155,x radius=0.475, y radius=0.15]} --cycle;
     \fi\fi\fi\fi\fi%
   \fi%
@@ -341,7 +339,7 @@
 %In addition to the colour of the body, the colour of various body parts can be adjusted:
 %\begin{tcblisting}{title={Eye colour}}
 %\ape[eye=red]
-%\end{tcblisting} 
+%\end{tcblisting}
 %\begin{tcblisting}{title={Nose colour}}
 %\ape[nose=red]
 %\end{tcblisting}
@@ -379,7 +377,7 @@
 %\begin{tcblisting}{title={speak no evil}}
 %\ape[handposition=speaknoevil]
 %\end{tcblisting}
-% As shortcuts, these three apes are also available via 
+% As shortcuts, these three apes are also available via
 %\saminline|\ape[seenoevil]|, \saminline|\ape[hearnoevil]|, \saminline|\ape[speaknoevil]| and \saminline|\ape[mizaru]|, \saminline|\ape[kikazaru]|, \saminline|\ape[iwazaru]|.
 %
 %To see a hooting ape:

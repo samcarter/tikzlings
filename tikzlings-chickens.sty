@@ -31,7 +31,7 @@
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname chickenhookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
-  %  
+  %
 }
 
 \newif\ifchicken@threeD
@@ -61,24 +61,24 @@
   bill/.store in     = \chicken@bill,
   bill               = yellow,
   feet/.store in     = \chicken@feet,
-  feet               = orange!90!yellow,  
+  feet               = orange!90!yellow,
   comb/.store in     = \chicken@comb,
-  comb               = red,    
+  comb               = red,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   3D/.code           = \chicken@threeDtrue,
-  back/.code         = \chicken@backtrue,  
+  back/.code         = \chicken@backtrue,
   contour/.code      = \chicken@contourtrue
                        \def\chicken@contour{#1},
-  contour/.default   = black,  
-  outline/.forward to = /chicken/contour,   
+  contour/.default   = black,
+  outline/.forward to = /chicken/contour,
   baby/.code         = \chicken@babytrue
                        \def\chicken@baby{#1}
                        \def\chicken@bill{\chicken@feet},
-  baby/.default      = yellow!80!orange,    
+  baby/.default      = yellow!80!orange,
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -89,11 +89,11 @@
 \def\chicken@draw{%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % minimal bounding box size 
+  % minimal bounding box size
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \path (-0.96, 0.08) rectangle (0.96, 2.35);
-  %  
+  %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % store the current scale factor
@@ -106,7 +106,7 @@
   \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % 
+  %
   % switch between 2D, 3D and contours, from
   % https://chat.stackexchange.com/transcript/message/45991801#45991801
   %
@@ -136,7 +136,7 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Body parts
-  % 
+  %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -187,7 +187,7 @@
   % Bill %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifchicken@back
     \chicken@part@draw[\chicken@comb] (-0.04, 1.57) ellipse[x radius=0.04, y radius=0.08, rotate=-20];
-    \chicken@part@draw[\chicken@comb] (0.04, 1.57) ellipse[x radius=0.04, y radius=0.08, rotate=20];   
+    \chicken@part@draw[\chicken@comb] (0.04, 1.57) ellipse[x radius=0.04, y radius=0.08, rotate=20];
     \chicken@part@draw[\chicken@bill] (-0.09, 1.7) -- (0, 1.58) -- (0.09, 1.7) arc [start angle=50, end angle=130, radius=0.14] -- cycle;
   \fi% back
   %
@@ -225,7 +225,7 @@
 \def\chicken@drawbaby{%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % minimal bounding box size 
+  % minimal bounding box size
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \path (-0.53, 0.1) rectangle (0.53, 1.22);
@@ -242,7 +242,7 @@
   \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % 
+  %
   % switch between 2D, 3D and contours, from
   % https://chat.stackexchange.com/transcript/message/45991801#45991801
   %
@@ -260,7 +260,7 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Body parts (center: x=0.925)
-  % 
+  %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

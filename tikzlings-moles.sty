@@ -26,7 +26,7 @@
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname moleshookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
-  %   
+  %
 }
 
 \newif\ifmoles@threeD
@@ -52,13 +52,13 @@
   body/.store in     = \moles@body,
   body               = gray,
   eye/.store in      = \moles@eye,
-  eye                = \moles@body!60!black,   
+  eye                = \moles@body!60!black,
   feet/.store in     = \moles@feet,
   feet               = red!20!white!50!brown,
   hands/.store in    = \moles@hands,
-  hands              = red!20!white!50!brown,  
+  hands              = red!20!white!50!brown,
   muzzle/.store in   = \moles@muzzle,
-  muzzle             = red!20!white!50!brown, 
+  muzzle             = red!20!white!50!brown,
   mouth/.store in    = \moles@mouth,
   mouth              = \moles@body!60!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -68,24 +68,24 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   openmouth/.code    = \moles@openmouthtrue,
   open mouth/.forward to = /moles/openmouth,
-  3D/.code           = \moles@threeDtrue, 
+  3D/.code           = \moles@threeDtrue,
   leftstep/.code     = \moles@leftsteptrue,
   left step/.forward to = /moles/leftstep,
   rightstep/.code    = \moles@rightsteptrue,
-  right step/.forward to = /moles/rightstep,       
-  back/.code         = \moles@backtrue,  
+  right step/.forward to = /moles/rightstep,
+  back/.code         = \moles@backtrue,
   contour/.code      = \moles@contourtrue
                        \def\moles@contour{#1}
                        \def\moles@mouth{#1}
                        \def\moles@eye{#1},
-  contour/.default   = black,  
-  outline/.forward to = /moles/contour,        
+  contour/.default   = black,
+  outline/.forward to = /moles/contour,
 }
 
 \def\moles@draw{%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % minimal bounding box size 
+  % minimal bounding box size
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \path (-0.625,0.1) rectangle (0.905, 2.17);
@@ -102,7 +102,7 @@
   \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % 
+  %
   % switch between 2D, 3D and contours, from
   % https://chat.stackexchange.com/transcript/message/45991801#45991801
   %
@@ -120,7 +120,7 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Body parts
-  % 
+  %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -129,15 +129,15 @@
   %
   % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifmoles@leftstep
-    \moles@part@draw[\moles@feet] (-0.255,0.25) ellipse[x radius=0.23, y radius=0.09]; 
+    \moles@part@draw[\moles@feet] (-0.255,0.25) ellipse[x radius=0.23, y radius=0.09];
   \else% step
-    \moles@part@draw[\moles@feet] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
-  \fi% step  
+    \moles@part@draw[\moles@feet] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
+  \fi% step
   \ifmoles@rightstep
-    \moles@part@draw[\moles@feet] (0.255,0.25) ellipse[x radius=0.23, y radius=0.09]; 
+    \moles@part@draw[\moles@feet] (0.255,0.25) ellipse[x radius=0.23, y radius=0.09];
   \else% step
-    \moles@part@draw[\moles@feet] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
-  \fi% step    
+    \moles@part@draw[\moles@feet] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
+  \fi% step
   %
   % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifmoles@back
@@ -190,11 +190,11 @@
     %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \ifmoles@threeD
-      \fill[\moles@eye] (-0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=-15]; 
-      \fill[\moles@eye!50!black] (0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=15]; 
+      \fill[\moles@eye] (-0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=-15];
+      \fill[\moles@eye!50!black] (0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=15];
     \else% 3D
-      \fill[\moles@eye] (-0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=-15]; 
-      \fill[\moles@eye] (0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=15]; 
+      \fill[\moles@eye] (-0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=-15];
+      \fill[\moles@eye] (0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=15];
     \fi% 3D
     %
     % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -17,7 +17,7 @@
 \RequirePackage{tikz}
 \RequirePackage{tikzlings-addons}
 \usetikzlibrary{shadows.blur}
-\usetikzlibrary{fadings} 
+\usetikzlibrary{fadings}
 
 \tikzfading[name=marmot@blush,inner color=transparent!50,outer color=transparent!100]
 
@@ -28,13 +28,13 @@
 \else
   \ifdefined\pdfrandomseed % pdflatex
   \else
-      \ifdefined\randomseed 
+      \ifdefined\randomseed
         \let\pdfrandomseed\randomseed % post TL19 xelatex and lualatex
       \else
           \let\pdfrandomseed\time % pre TL19 xelatex
       \fi
   \fi
-  \pgfmathsetseed{\number\pdfrandomseed} 
+  \pgfmathsetseed{\number\pdfrandomseed}
 \fi
 \ExplSyntaxOff
 
@@ -47,7 +47,7 @@
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname marmothookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
-  %  
+  %
 }
 
 \newif\ifmarmot@blush
@@ -78,7 +78,7 @@
   body/.store in     = \marmot@body,
   body               = brown,
   eye/.store in      = \marmot@eye,
-  eye                = \marmot@body!50!black,   
+  eye                = \marmot@body!50!black,
   mouth/.store in    = \marmot@mouth,
   mouth              = \marmot@body!50!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -88,15 +88,15 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   blush/.code        = \marmot@blushtrue
                        \def\marmot@blushcolor{#1},
-  blush/.default     = red, 
-  whiskers/.code     = \marmot@whiskerstrue 
+  blush/.default     = red,
+  whiskers/.code     = \marmot@whiskerstrue
                        \def\marmot@whiskers{#1},
   whiskers/.default  = gray,
-  teeth/.code        = \marmot@teethtrue    
-                       \def\marmot@teeth{#1}, 
+  teeth/.code        = \marmot@teethtrue
+                       \def\marmot@teeth{#1},
   teeth/.default     = white,
   openmouth/.code    = \marmot@openmouthtrue,
-  open mouth/.forward to = /marmot/openmouth,  
+  open mouth/.forward to = /marmot/openmouth,
   3D/.code           = \marmot@threeDtrue,
   shadow/.code       = \marmot@shadowtrue,
   askphil/.code      = \marmot@askphiltrue,
@@ -104,20 +104,20 @@
   leftstep/.code     = \marmot@leftsteptrue,
   left step/.forward to = /marmot/leftstep,
   rightstep/.code    = \marmot@rightsteptrue,
-  right step/.forward to = /marmot/rightstep,  
-  back/.code         = \marmot@backtrue,  
+  right step/.forward to = /marmot/rightstep,
+  back/.code         = \marmot@backtrue,
   contour/.code      = \marmot@contourtrue
                        \def\marmot@contour{#1}
                        \def\marmot@blushcolor{#1}
                        \def\marmot@mouth{#1},
-  contour/.default   = black,  
-  outline/.forward to = /marmot/contour,   
+  contour/.default   = black,
+  outline/.forward to = /marmot/contour,
 }
 
 \def\marmot@draw{%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % minimal bounding box size 
+  % minimal bounding box size
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \path (-0.625,0.1) rectangle (0.905, 2.17);
@@ -134,7 +134,7 @@
   \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % 
+  %
   % switch between 2D, 3D and contours, from
   % https://chat.stackexchange.com/transcript/message/45991801#45991801
   %
@@ -174,20 +174,20 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Body parts
-  % 
+  %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifmarmot@leftstep
-    \marmot@part@draw[\marmot@body!50!black] (-0.255,0.25) ellipse[x radius=0.23, y radius=0.09];  
+    \marmot@part@draw[\marmot@body!50!black] (-0.255,0.25) ellipse[x radius=0.23, y radius=0.09];
   \else% step
-    \marmot@part@draw[\marmot@body!50!black] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];  
+    \marmot@part@draw[\marmot@body!50!black] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
   \fi% step
   %
   \ifmarmot@rightstep
-    \marmot@part@draw[\marmot@body!50!black] (0.255,0.25) ellipse[x radius=0.23, y radius=0.09]; 
+    \marmot@part@draw[\marmot@body!50!black] (0.255,0.25) ellipse[x radius=0.23, y radius=0.09];
   \else% step
-    \marmot@part@draw[\marmot@body!50!black] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
+    \marmot@part@draw[\marmot@body!50!black] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
   \fi% step
   %
   % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -224,14 +224,14 @@
     \marmot@part@draw[\marmot@body!50!black] (-0.385,0.93) ellipse[x radius=0.24, y radius=0.13, rotate=-70];
     %
     % Muzzle %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \marmot@part@draw[\marmot@body!50!white] (0,1.47) ellipse[x radius=0.23, y radius=0.13]; 
+    \marmot@part@draw[\marmot@body!50!white] (0,1.47) ellipse[x radius=0.23, y radius=0.13];
     %
     % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \marmot@part@draw[\marmot@body!50!black] (0,1.6) circle[radius=0.08];
     %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \marmot@part@draw[\marmot@eye] (-0.155,1.77) circle[radius=0.05]; 
-    \marmot@part@draw[\marmot@eye] (0.155,1.77) circle[radius=0.05]; 
+    \marmot@part@draw[\marmot@eye] (-0.155,1.77) circle[radius=0.05];
+    \marmot@part@draw[\marmot@eye] (0.155,1.77) circle[radius=0.05];
     %
     % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \ifmarmot@openmouth
@@ -248,8 +248,8 @@
     %
     % Blushed %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \ifmarmot@blush
-      \fill[\marmot@blushcolor,path fading=marmot@blush] (-0.295,1.6) circle[radius=0.1]; 
-      \fill[\marmot@blushcolor,path fading=marmot@blush] (0.295,1.6) circle[radius=0.1];   
+      \fill[\marmot@blushcolor,path fading=marmot@blush] (-0.295,1.6) circle[radius=0.1];
+      \fill[\marmot@blushcolor,path fading=marmot@blush] (0.295,1.6) circle[radius=0.1];
     \fi% blush
     %
     % Wiskers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -266,7 +266,7 @@
     \ifmarmot@teeth
       \fill[\marmot@body!50!black] (0.048,1.413) rectangle (-0.048,1.373);
       \fill[\marmot@teeth] (-0.045,1.407) rectangle (-0.004,1.376);
-      \fill[\marmot@teeth] (0.045,1.407) rectangle (0.004,1.376);  
+      \fill[\marmot@teeth] (0.045,1.407) rectangle (0.004,1.376);
     \fi% teeth
     %
   \fi% back
@@ -346,7 +346,7 @@
 %\marmot[askphil]
 %\end{tcblisting}
 %
-%If a good weather prognosis is derived, the happy marmot can dance by lifting up its left and right foot: 
+%If a good weather prognosis is derived, the happy marmot can dance by lifting up its left and right foot:
 %\begin{tcblisting}{title={Walking}}
 %\marmot[leftstep]
 %\marmot[rightstep,xshift=2cm]

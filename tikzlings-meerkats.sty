@@ -26,7 +26,7 @@
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname meerkathookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
-  %  
+  %
 }
 
 \newif\ifmeerkat@standing
@@ -75,7 +75,7 @@
   nose/.store in     = \meerkat@nose,
   nose               = \meerkat@body!50!black,
   mouth/.store in    = \meerkat@mouth,
-  mouth              = \meerkat@body!50!black,  
+  mouth              = \meerkat@body!50!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
@@ -84,21 +84,21 @@
   openmouth/.code    = \meerkat@openmouthtrue,
   open mouth/.forward to = /meerkat/openmouth,
   standing/.code     = \meerkat@standingtrue
-                       \def\meerkat@shift{15},  
+                       \def\meerkat@shift{15},
   3D/.code           = \meerkat@threeDtrue,
-  back/.code         = \meerkat@backtrue,  
+  back/.code         = \meerkat@backtrue,
   contour/.code      = \meerkat@contourtrue
                        \def\meerkat@contour{#1}
                        \def\meerkat@blushcolor{#1}
                        \def\meerkat@mouth{#1},
-  contour/.default   = black,  
-  outline/.forward to = /meerkat/contour,   
+  contour/.default   = black,
+  outline/.forward to = /meerkat/contour,
 }
 
 \def\meerkat@draw{%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % minimal bounding box size 
+  % minimal bounding box size
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifmeerkat@standing
@@ -119,7 +119,7 @@
   \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % 
+  %
   % switch between 2D, 3D and contours, from
   % https://chat.stackexchange.com/transcript/message/45991801#45991801
   %
@@ -137,7 +137,7 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Body parts
-  % 
+  %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -148,7 +148,7 @@
     %
     \unless\ifmeerkat@back
       % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-      \meerkat@part@draw[\meerkat@tail] (0.0071, 1.0065).. controls (0.0949, 0.7556) and (0.2077, 0.5139) .. (0.3436, 0.2854).. controls (0.3809, 0.2966) and (0.4183, 0.3078) .. (0.4557, 0.319).. controls (0.3377, 0.5524) and (0.2434, 0.7968) .. (0.174, 1.049);  
+      \meerkat@part@draw[\meerkat@tail] (0.0071, 1.0065).. controls (0.0949, 0.7556) and (0.2077, 0.5139) .. (0.3436, 0.2854).. controls (0.3809, 0.2966) and (0.4183, 0.3078) .. (0.4557, 0.319).. controls (0.3377, 0.5524) and (0.2434, 0.7968) .. (0.174, 1.049);
       %
       % Tip of tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
       \meerkat@part@draw[\meerkat@tip] (0.8483, 0.1284).. controls (0.7159, 0.1309) and (0.575, 0.1064) .. (0.4503, 0.163).. controls (0.3999, 0.1871) and (0.3617, 0.2328) .. (0.3436, 0.2854).. controls (0.3809, 0.2966) and (0.4183, 0.3078) .. (0.4557, 0.319).. controls (0.5224, 0.2163) and (0.6411, 0.1646) .. (0.7581, 0.145).. controls (0.7881, 0.1389) and (0.8182, 0.1337) .. (0.8483, 0.1284) -- cycle;
@@ -160,11 +160,11 @@
     %
     \ifmeerkat@back
       % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-      \meerkat@part@draw[\meerkat@tail] (0.0071, 1.0065).. controls (0.0949, 0.7556) and (0.2077, 0.5139) .. (0.3436, 0.2854).. controls (0.3809, 0.2966) and (0.4183, 0.3078) .. (0.4557, 0.319).. controls (0.3377, 0.5524) and (0.2434, 0.7968) .. (0.174, 1.049);  
+      \meerkat@part@draw[\meerkat@tail] (0.0071, 1.0065).. controls (0.0949, 0.7556) and (0.2077, 0.5139) .. (0.3436, 0.2854).. controls (0.3809, 0.2966) and (0.4183, 0.3078) .. (0.4557, 0.319).. controls (0.3377, 0.5524) and (0.2434, 0.7968) .. (0.174, 1.049);
       %
       % Tip of tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
       \meerkat@part@draw[\meerkat@tip] (0.8483, 0.1284).. controls (0.7159, 0.1309) and (0.575, 0.1064) .. (0.4503, 0.163).. controls (0.3999, 0.1871) and (0.3617, 0.2328) .. (0.3436, 0.2854).. controls (0.3809, 0.2966) and (0.4183, 0.3078) .. (0.4557, 0.319).. controls (0.5224, 0.2163) and (0.6411, 0.1646) .. (0.7581, 0.145).. controls (0.7881, 0.1389) and (0.8182, 0.1337) .. (0.8483, 0.1284) -- cycle;
-    \fi %back    
+    \fi %back
   \else % sitting meerkat
     %
     \unless\ifmeerkat@back
@@ -193,7 +193,7 @@
     %
     % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \meerkat@part@draw[\meerkat@body] (0,0.77) circle [radius=0.35];
-    % 
+    %
     % Upper body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \ifmeerkat@back
       \meerkat@part@draw[\meerkat@upperbody] (-0.374, 1.32).. controls (-0.3892, 1.1462) and (-0.2287, 0.903) .. (-0.0859, 0.7515).. controls (-0.0594, 0.7213) and (-0.031, 0.691) .. (0.0, 0.66).. controls (0.031, 0.691) and (0.0595, 0.7213) .. (0.0859, 0.7515).. controls (0.2399, 0.9179) and (0.3892, 1.1462) .. (0.374, 1.32).. controls (0.374, 1.4277) and (0.1868, 1.582) .. (0.0, 1.65).. controls (-0.1876, 1.5817) and (-0.374, 1.4271) .. (-0.374, 1.32) -- cycle;
@@ -244,7 +244,7 @@
     % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \csname meerkathookbody\endcsname
     \csname tikzlinghookbody\endcsname
-    %  
+    %
   \end{scope}% body shift
 }
 

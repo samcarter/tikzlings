@@ -51,9 +51,9 @@
   body/.store in     = \squirrel@body,
   body               = brown!40!gray!90!red,
   eye/.store in      = \squirrel@eye,
-  eye                = white, 
+  eye                = white,
   pupil/.store in    = \squirrel@pupil,
-  pupil              = black,    
+  pupil              = black,
   mouth/.store in    = \squirrel@mouth,
   mouth              = \squirrel@body!70!brown!60!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -64,12 +64,12 @@
   openmouth/.code    = \squirrel@openmouthtrue,
   open mouth/.forward to = /squirrel/openmouth,
   3D/.code           = \squirrel@threeDtrue
-                       \def\squirrel@mouth{\squirrel@body!40!black}, 
+                       \def\squirrel@mouth{\squirrel@body!40!black},
   leftstep/.code     = \squirrel@leftsteptrue,
   left step/.forward to = /squirrel/leftstep,
   rightstep/.code    = \squirrel@rightsteptrue,
-  right step/.forward to = /squirrel/rightstep,       
-  back/.code         = \squirrel@backtrue,  
+  right step/.forward to = /squirrel/rightstep,
+  back/.code         = \squirrel@backtrue,
   contour/.code      = \squirrel@contourtrue
                        \def\squirrel@contour{#1},
   contour/.default   = black,
@@ -79,7 +79,7 @@
 \def\squirrel@draw{%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % minimal bounding box size 
+  % minimal bounding box size
   %  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \path (-0.53,0.1) rectangle (1.12,2.15);
   %
@@ -95,7 +95,7 @@
   \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % 
+  %
   % switch between 2D, 3D and contours, from
   % https://chat.stackexchange.com/transcript/message/45991801#45991801
   %
@@ -113,24 +113,24 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Body parts
-  % 
+  %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname squirrelhookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
-  %  
+  %
   % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifsquirrel@leftstep
     \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray] (-0.255,0.25) ellipse[x radius=0.23, y radius=0.09];
   \else% step
     \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
-  \fi% step  
+  \fi% step
   \ifsquirrel@rightstep
     \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray] (0.255,0.25) ellipse[x radius=0.23, y radius=0.09];
   \else% step
     \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
-  \fi% step    
+  \fi% step
   %
   % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifsquirrel@back
@@ -139,8 +139,7 @@
   \fi% back
   %
   % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \squirrel@part@draw[\squirrel@body] 
-   (0.5,0.5) .. controls (0.5,0.09) and (-0.5,0.09) .. (-0.5,0.5) .. controls (-0.5,0.85) and (-0.25,1.6) .. (0,1.7) .. controls (0.25,1.6) and (0.5,0.85) .. (0.5,0.5) -- cycle;
+  \squirrel@part@draw[\squirrel@body] (0.5,0.5) .. controls (0.5,0.09) and (-0.5,0.09) .. (-0.5,0.5) .. controls (-0.5,0.85) and (-0.25,1.6) .. (0,1.7) .. controls (0.25,1.6) and (0.5,0.85) .. (0.5,0.5) -- cycle;
   %
   % Belly %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifsquirrel@back
@@ -152,17 +151,16 @@
   \csname tikzlinghookbelly\endcsname
   %
   % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray]   (0.1920,1.9906) .. controls (0.1657,2.0780) and (0.1839,2.1332) .. (0.1839,2.1332) .. controls (0.1839,2.1332) and (0.1123,2.1773) .. (0.0941,2.0720) .. controls (0.0716,2.0156) and (0.0753,1.9519) .. (0.1023,1.9293) .. controls (0.1293,1.9068) and (0.1696,1.9342) .. (0.1920,1.9906) -- cycle;
-  \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray]  
-  (-0.1920,1.9906) .. controls (-0.1657,2.0780) and (-0.1839,2.1332) .. (-0.1839,2.1332) .. controls (-0.1839,2.1332) and (-0.1123,2.1773) .. (-0.0941,2.0720) .. controls (-0.0716,2.0156) and (-0.0753,1.9519) .. (-0.1023,1.9293) .. controls (-0.1293,1.9068) and (-0.1696,1.9342) .. (-0.1920,1.9906) -- cycle;
+  \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray] (0.1920,1.9906) .. controls (0.1657,2.0780) and (0.1839,2.1332) .. (0.1839,2.1332) .. controls (0.1839,2.1332) and (0.1123,2.1773) .. (0.0941,2.0720) .. controls (0.0716,2.0156) and (0.0753,1.9519) .. (0.1023,1.9293) .. controls (0.1293,1.9068) and (0.1696,1.9342) .. (0.1920,1.9906) -- cycle;
+  \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray] (-0.1920,1.9906) .. controls (-0.1657,2.0780) and (-0.1839,2.1332) .. (-0.1839,2.1332) .. controls (-0.1839,2.1332) and (-0.1123,2.1773) .. (-0.0941,2.0720) .. controls (-0.0716,2.0156) and (-0.0753,1.9519) .. (-0.1023,1.9293) .. controls (-0.1293,1.9068) and (-0.1696,1.9342) .. (-0.1920,1.9906) -- cycle;
   %
   % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifsquirrel@contour
-    \squirrel@part@draw[\squirrel@body] (0,1.75) circle[radius=0.3]; 
-    \squirrel@part@draw[\squirrel@body] (0.2,1.6) circle[radius=0.15];  
+    \squirrel@part@draw[\squirrel@body] (0,1.75) circle[radius=0.3];
+    \squirrel@part@draw[\squirrel@body] (0.2,1.6) circle[radius=0.15];
     \squirrel@part@draw[\squirrel@body] (-0.2,1.6) circle[radius=0.15];
     \ifsquirrel@back
-      \squirrel@part@draw[\squirrel@body] (0,1.75) circle[radius=0.3]; 
+      \squirrel@part@draw[\squirrel@body] (0,1.75) circle[radius=0.3];
     \fi% back
   \else% contour
     \squirrel@part@draw[\squirrel@body] (0,1.75) circle[radius=0.3]  (0.2,1.6) circle[radius=0.15]  (-0.2,1.6) circle[radius=0.15];
@@ -176,7 +174,7 @@
     %
     % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \squirrel@part@draw[\squirrel@body!70!brown!60!black] (0,1.66) ellipse[x radius=0.06, y radius=0.03];
-    % 
+    %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \squirrel@part@draw[\squirrel@eye] (0.07,1.78) ellipse[x radius=0.05, y radius=0.07];
     \squirrel@part@draw[\squirrel@eye] (-0.07,1.78) ellipse[x radius=0.05, y radius=0.07];
@@ -185,7 +183,7 @@
     %
     % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \ifsquirrel@contour
-      \draw[\squirrel@contour,fill=white,line width=\scalingfactor*0.4pt] (-0.15,1.61) .. controls (-0.15,1.61) and (-0.15,1.52) .. (0.0,1.61) .. controls (0.15,1.52) and (0.15,1.61) .. (0.15,1.61) (0.15,1.61) arc [start angle=-20, end angle=-160, radius=0.16];    
+      \draw[\squirrel@contour,fill=white,line width=\scalingfactor*0.4pt] (-0.15,1.61) .. controls (-0.15,1.61) and (-0.15,1.52) .. (0.0,1.61) .. controls (0.15,1.52) and (0.15,1.61) .. (0.15,1.61) (0.15,1.61) arc [start angle=-20, end angle=-160, radius=0.16];
       \draw[\squirrel@contour,fill=white,line width=\scalingfactor*0.4pt] (-0.025,1.567) rectangle ++(0.02,0.03);
       \draw[\squirrel@contour,fill=white,line width=\scalingfactor*0.4pt] (0.025,1.567) rectangle ++(-0.02,0.03);
       \draw[\squirrel@contour,line width=\scalingfactor*0.4pt] (-0.15,1.61) .. controls (-0.15,1.61) and (-0.15,1.52) .. (0.0,1.61) .. controls (0.15,1.52) and (0.15,1.61) .. (0.15,1.61);
@@ -195,9 +193,9 @@
       \fi% open mouth
       \fill[white] (-0.025,1.567) rectangle ++(0.02,0.03);
       \fill[white] (0.025,1.567) rectangle ++(-0.02,0.03);
-      \draw[\squirrel@mouth,line width=\scalingfactor*0.4pt] (-0.15,1.61) .. controls (-0.15,1.61) and (-0.15,1.52) .. (0.0,1.61) .. controls (0.15,1.52) and (0.15,1.61) .. (0.15,1.61);  
+      \draw[\squirrel@mouth,line width=\scalingfactor*0.4pt] (-0.15,1.61) .. controls (-0.15,1.61) and (-0.15,1.52) .. (0.0,1.61) .. controls (0.15,1.52) and (0.15,1.61) .. (0.15,1.61);
     \fi% contour
-    % 
+    %
     % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray] (0.2,0.85) ellipse[x radius=0.22, y radius=0.11, rotate=70];
     \squirrel@part@draw[\squirrel@body!70!brown!50!darkgray] (-0.2,0.85) ellipse[x radius=0.22, y radius=0.11, rotate=-70];
@@ -207,7 +205,7 @@
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname squirrelhookbody\endcsname
   \csname tikzlinghookbody\endcsname
-  %  
+  %
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

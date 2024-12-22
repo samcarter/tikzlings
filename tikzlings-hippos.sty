@@ -49,9 +49,9 @@
   body/.store in     = \hippo@body,
   body               = gray!55!white,
   eye/.store in      = \hippo@eye,
-  eye                = white,   
+  eye                = white,
   pupil/.store in    = \hippo@pupil,
-  pupil              = black,  
+  pupil              = black,
   toes/.store in     = \hippo@toes,
   toes               = \hippo@body,
   mouth/.store in    = \hippo@mouth,
@@ -62,21 +62,21 @@
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   openmouth/.code    = \hippo@openmouthtrue,
-  open mouth/.forward to = /hippo/openmouth,  
+  open mouth/.forward to = /hippo/openmouth,
   3D/.code           = \hippo@threeDtrue
-                       \def\hippo@mouth{black}, 
+                       \def\hippo@mouth{black},
   back/.code         = \hippo@backtrue,
   contour/.code      = \hippo@contourtrue
                        \def\hippo@contour{#1}
                        \def\hippo@mouth{#1},
-  contour/.default   = black,  
-  outline/.forward to = /hippo/contour,   
+  contour/.default   = black,
+  outline/.forward to = /hippo/contour,
 }
 
 \def\hippo@draw{%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % minimal bounding box size 
+  % minimal bounding box size
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \path (-0.625,0.1) rectangle (0.625, 2.17);
@@ -93,7 +93,7 @@
   \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % 
+  %
   % switch between 2D, 3D and contours, from
   % https://chat.stackexchange.com/transcript/message/45991801#45991801
   %
@@ -111,12 +111,12 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Body parts
-  % 
+  %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname hippohookbackground\endcsname
-  \csname tikzlinghookbackground\endcsname 
+  \csname tikzlinghookbackground\endcsname
   %
   % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \hippo@part@draw[\hippo@body!70!black] (0.23,2.03) ellipse[x radius=0.09, y radius=0.13, rotate=-30];
@@ -142,7 +142,7 @@
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname hippohookbelly\endcsname
   \csname tikzlinghookbelly\endcsname
-  %    
+  %
   % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifhippo@back
     \hippo@part@draw[\hippo@body!70!black] (0.35,1.0) ellipse[x radius=0.24, y radius=0.13, rotate=90];
@@ -190,7 +190,7 @@
       \hippo@part@draw[\hippo@toes] (0.37,0.11) ellipse[x radius=0.05, y radius=0.1];
       \hippo@part@draw[\hippo@toes] (-0.25,0.13) ellipse[x radius=0.05, y radius=0.1];
       \hippo@part@draw[\hippo@toes] (-0.13,0.11) ellipse[x radius=0.05, y radius=0.1];
-      \hippo@part@draw[\hippo@toes] (-0.37,0.11) ellipse[x radius=0.05, y radius=0.1];  
+      \hippo@part@draw[\hippo@toes] (-0.37,0.11) ellipse[x radius=0.05, y radius=0.1];
     \end{scope}
   %
   \fi% back

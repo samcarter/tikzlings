@@ -24,13 +24,13 @@
 \else
   \ifdefined\pdfrandomseed % pdflatex
   \else
-      \ifdefined\randomseed 
+      \ifdefined\randomseed
         \let\pdfrandomseed\randomseed % post TL19 xelatex and lualatex
       \else
           \let\pdfrandomseed\time % pre TL19 xelatex
       \fi
   \fi
-  \pgfmathsetseed{\number\pdfrandomseed} 
+  \pgfmathsetseed{\number\pdfrandomseed}
 \fi
 \ExplSyntaxOff
 
@@ -106,21 +106,21 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   schroedinger/.code = \cat@schroedingertrue,
   openmouth/.code    = \cat@openmouthtrue,
-  open mouth/.forward to = /cat/openmouth,  
+  open mouth/.forward to = /cat/openmouth,
   3D/.code           = \cat@threeDtrue,
-  back/.code         = \cat@backtrue,  
+  back/.code         = \cat@backtrue,
   contour/.code      = \cat@contourtrue
                        \def\cat@contour{#1}
                        \def\cat@whiskers{#1},
-  contour/.default   = black,  
-  outline/.forward to = /cat/contour,   
+  contour/.default   = black,
+  outline/.forward to = /cat/contour,
 }
 
 \def\cat@draw{%
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % minimal bounding box size 
+  % minimal bounding box size
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \path (-0.56,0.1) rectangle (1.63, 2.22);
@@ -137,7 +137,7 @@
   \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % 
+  %
   % switch between 2D, 3D and contours, from
   % https://chat.stackexchange.com/transcript/message/45991801#45991801
   %
@@ -155,7 +155,7 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Body parts
-  % 
+  %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -167,7 +167,7 @@
   %
   % Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifcat@back
-    \cat@part@draw[\cat@paws] (-0.255,0.3) circle[radius=0.18];  
+    \cat@part@draw[\cat@paws] (-0.255,0.3) circle[radius=0.18];
     \cat@part@draw[\cat@paws] (0.255,0.3) circle[radius=0.18];
   \fi% back
   %
@@ -179,10 +179,8 @@
   \csname tikzlinghookbelly\endcsname
   %
   % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \cat@part@draw[\cat@body] 
-  (0.12, 2.0392) .. controls (0.16, 2.1584) and (0.37, 2.22) .. (0.37, 2.20) .. controls (0.37, 2.2) and (0.39, 1.9) .. (0.2721, 1.9) .. controls (0.1891, 1.88) and (0.12, 1.88) .. (0.12, 2.0392) -- cycle; 
-  \cat@part@draw[\cat@body] 
-  (-0.12, 2.0392) .. controls (-0.16, 2.1584) and (-0.37, 2.22) .. (-0.37, 2.20) .. controls (-0.37, 2.2) and (-0.39, 1.9) .. (-0.2721, 1.9) .. controls (-0.1891, 1.88) and (-0.12, 1.88) .. (-0.12, 2.0392) -- cycle;
+  \cat@part@draw[\cat@body] (0.12, 2.0392) .. controls (0.16, 2.1584) and (0.37, 2.22) .. (0.37, 2.20) .. controls (0.37, 2.2) and (0.39, 1.9) .. (0.2721, 1.9) .. controls (0.1891, 1.88) and (0.12, 1.88) .. (0.12, 2.0392) -- cycle;
+  \cat@part@draw[\cat@body] (-0.12, 2.0392) .. controls (-0.16, 2.1584) and (-0.37, 2.22) .. (-0.37, 2.20) .. controls (-0.37, 2.2) and (-0.39, 1.9) .. (-0.2721, 1.9) .. controls (-0.1891, 1.88) and (-0.12, 1.88) .. (-0.12, 2.0392) -- cycle;
   %
   % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \cat@part@draw[\cat@body] (0,1.64) circle[radius=0.44];
@@ -217,8 +215,8 @@
     \fill[\cat@whiskers] (-0.0671, 1.6243) .. controls (-0.1414, 1.6725) and (-0.2182, 1.6964) .. (-0.2925, 1.6482) -- (-0.2925, 1.6582) .. controls (-0.2179, 1.7066) and (-0.1417, 1.6727) .. (-0.0671, 1.6243) -- cycle;
     %
     % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \cat@part@draw[\cat@paws] (-0.255,0.3) circle[radius=0.18];  
-    \cat@part@draw[\cat@paws] (0.255,0.3) circle[radius=0.18]; 
+    \cat@part@draw[\cat@paws] (-0.255,0.3) circle[radius=0.18];
+    \cat@part@draw[\cat@paws] (0.255,0.3) circle[radius=0.18];
     %
   \fi% back
   %
@@ -231,7 +229,7 @@
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % minimal bounding box size 
+  % minimal bounding box size
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \path (-0.55,0.39) rectangle (0.55, 2.06);
@@ -248,7 +246,7 @@
   \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % 
+  %
   % switch between 2D, 3D and contours, from
   % https://chat.stackexchange.com/transcript/message/45991801#45991801
   %
@@ -264,7 +262,7 @@
   \fi% 3D
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % 
+  %
   % Drawing the tomebstone
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -370,7 +368,7 @@
 %\cat[wide pupils]
 %
 %\cat[very wide pupils]
-%\end{samcode} 
+%\end{samcode}
 %
 %\tcblower
 %\begin{tikzpicture}[yshift=2.4cm,xshift=1.8cm]

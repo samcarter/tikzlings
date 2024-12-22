@@ -17,7 +17,7 @@
 \RequirePackage{tikz}
 \RequirePackage{tikzlings-addons}
 \usetikzlibrary{shadows.blur}
-\usetikzlibrary{fadings} 
+\usetikzlibrary{fadings}
 
 \tikzfading[name=koala@blush,inner color=transparent!50,outer color=transparent!100]
 
@@ -56,7 +56,7 @@
   body/.store in     = \koala@body,
   body               = gray!75!white,
   eye/.store in      = \koala@eye,
-  eye                = black,   
+  eye                = black,
   mouth/.store in    = \koala@mouth,
   mouth              = \koala@body!40!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -66,25 +66,25 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   blush/.code        = \koala@blushtrue
                        \def\koala@blushcolor{#1},
-  blush/.default     = red, 
+  blush/.default     = red,
   sleeping/.code     = \koala@sleepingtrue,
   openmouth/.code    = \koala@openmouthtrue,
-  open mouth/.forward to = /koala/openmouth,  
+  open mouth/.forward to = /koala/openmouth,
   3D/.code           = \koala@threeDtrue
-                       \def\koala@mouth{black},  
-  back/.code         = \koala@backtrue,  
+                       \def\koala@mouth{black},
+  back/.code         = \koala@backtrue,
   contour/.code      = \koala@contourtrue
                        \def\koala@contour{#1}
                        \def\koala@blushcolor{#1}
                        \def\koala@mouth{#1},
-  contour/.default   = black,  
-  outline/.forward to = /koala/contour,   
+  contour/.default   = black,
+  outline/.forward to = /koala/contour,
 }
 
 \def\koala@draw{%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % minimal bounding box size 
+  % minimal bounding box size
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \path (-0.88,0.1) rectangle (0.88, 2.35);
@@ -101,7 +101,7 @@
   \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % 
+  %
   % switch between 2D, 3D and contours, from
   % https://chat.stackexchange.com/transcript/message/45991801#45991801
   %
@@ -119,7 +119,7 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Body parts
-  % 
+  %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -127,7 +127,7 @@
   \csname tikzlinghookbackground\endcsname
   %
   % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \koala@part@draw[\koala@body!50!black] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09]; 
+  \koala@part@draw[\koala@body!50!black] (0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
   \koala@part@draw[\koala@body!50!black] (-0.255,0.2) ellipse[x radius=0.23, y radius=0.09];
   %
   % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -176,14 +176,14 @@
       \fill[\koala@body!50!black,rotate around={-20:(-0.2925, 1.6925)}] (-0.29, 1.68) rectangle ++(-0.005, 0.03);
       \fill[\koala@body!50!black,rotate around={20:(-0.2143, 1.6925)}] (-0.2168, 1.68) rectangle ++(-0.005, 0.03);
       \fill[\koala@body!50!black,rotate around={-40:(-0.3255, 1.7025)}] (-0.323, 1.69) rectangle ++(-0.005, 0.03);
-      \fill[\koala@body!50!black,rotate around={40:(-0.1813, 1.7025)}] (-0.1838, 1.69) rectangle ++(-0.005, 0.03);  
+      \fill[\koala@body!50!black,rotate around={40:(-0.1813, 1.7025)}] (-0.1838, 1.69) rectangle ++(-0.005, 0.03);
       \fill[\koala@body!50!black, even odd rule] (0.3331, 1.741) ..  controls (0.3331, 1.685) and (0.1737, 1.685) .. (0.1737, 1.741) .. controls (0.1737, 1.848) and (0.3331, 1.848) .. (0.3331, 1.741) -- cycle (0.328, 1.741) .. controls   (0.323, 1.705) and   (0.184, 1.705) .. (0.179, 1.741) .. controls   (0.184, 1.843) and   (0.323, 1.843) .. (0.328, 1.741) -- cycle;
       \fill[\koala@body!50!black, even odd rule] (-0.3331, 1.741) ..  controls (-0.3331, 1.685) and (-0.1737, 1.685) .. (-0.1737, 1.741) .. controls (-0.1737, 1.848) and (-0.3331, 1.848) .. (-0.3331, 1.741) -- cycle   (-0.328, 1.741) .. controls     (-0.323, 1.705) and     (-0.184, 1.705) ..     (-0.179, 1.741) .. controls (-0.184, 1.843) and (-0.323, 1.843) .. (-0.328, 1.741) -- cycle;
     \else% sleeping
-      \koala@part@draw[\koala@eye] (-0.255, 1.74) circle[radius=0.08]; 
-      \koala@part@draw[\koala@eye] (0.255, 1.74) circle[radius=0.08]; 
-      \fill[white] (-0.27, 1.76) circle[radius=0.015]; 
-      \fill[white] (0.24, 1.76) circle[radius=0.015]; 
+      \koala@part@draw[\koala@eye] (-0.255, 1.74) circle[radius=0.08];
+      \koala@part@draw[\koala@eye] (0.255, 1.74) circle[radius=0.08];
+      \fill[white] (-0.27, 1.76) circle[radius=0.015];
+      \fill[white] (0.24, 1.76) circle[radius=0.015];
     \fi% sleeping
     %
     % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -201,7 +201,7 @@
     %
     % Blushed %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \ifkoala@blush
-      \fill[\koala@blushcolor,path fading=koala@blush] (-0.3, 1.52) circle[radius=0.1]; 
+      \fill[\koala@blushcolor,path fading=koala@blush] (-0.3, 1.52) circle[radius=0.1];
       \fill[\koala@blushcolor,path fading=koala@blush] (0.3, 1.52) circle[radius=0.1];
     \fi% blush
     %
