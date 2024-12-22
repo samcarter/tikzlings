@@ -32,6 +32,7 @@
 \newif\ifpanda@threeD
 \newif\ifpanda@back
 \newif\ifpanda@contour
+\newif\ifpanda@openmouth
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -59,6 +60,8 @@
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  openmouth/.code    = \panda@openmouthtrue,
+  open mouth/.forward to = /panda/openmouth,  
   3D/.code           = \panda@threeDtrue, 
   back/.code         = \panda@backtrue,  
   contour/.code      = \panda@contourtrue
@@ -159,7 +162,11 @@
     \panda@part@draw[\panda@pupil] (-0.17, 1.695) circle[radius=0.02];
     %
     % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \draw[\panda@mouth,line width=\scalingfactor*0.2pt] (-0.16, 1.477) .. controls (-0.16, 1.477) and (-0.062, 1.37) .. (0, 1.506)  .. controls (0.062, 1.37) and (0.16, 1.477) .. (0.16, 1.477);
+    \ifpanda@openmouth
+      \filldraw[\panda@mouth,line width=\scalingfactor*0.2pt] (-0.16, 1.477) .. controls (-0.16, 1.477) and (-0.062, 1.37) .. (0, 1.506)  .. controls (0.062, 1.37) and (0.16, 1.477) .. (0.16, 1.477) (0.16,1.477) arc [start angle=-20, end angle=-160, radius=0.17];    
+    \else
+      \draw[\panda@mouth,line width=\scalingfactor*0.2pt] (-0.16, 1.477) .. controls (-0.16, 1.477) and (-0.062, 1.37) .. (0, 1.506)  .. controls (0.062, 1.37) and (0.16, 1.477) .. (0.16, 1.477);
+    \fi
     %
     % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \panda@part@draw[black] (0,1.55) ellipse[x radius=0.07, y radius=0.04];
@@ -212,6 +219,11 @@
 %\end{tcblisting}
 %\begin{tcblisting}{title={Mouth colour}}
 %\panda[mouth=red]
+%\end{tcblisting}
+%
+% The panda can open its mouth:
+%\begin{tcblisting}{title={Open mouth}}
+%\panda[openmouth]
 %\end{tcblisting}
 %
 %To view the panda from behind:

@@ -31,6 +31,7 @@
 \newif\ifhippo@threeD
 \newif\ifhippo@back
 \newif\ifhippo@contour
+\newif\ifhippo@openmouth
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -60,7 +61,10 @@
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  3D/.code           = \hippo@threeDtrue, 
+  openmouth/.code    = \hippo@openmouthtrue,
+  open mouth/.forward to = /hippo/openmouth,  
+  3D/.code           = \hippo@threeDtrue
+                       \def\hippo@mouth{black}, 
   back/.code         = \hippo@backtrue,
   contour/.code      = \hippo@contourtrue
                        \def\hippo@contour{#1}
@@ -170,11 +174,11 @@
     \hippo@part@draw[\hippo@mouth]  (0.07, 1.63) circle[radius=0.035];
     %
     % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \ifhippo@threeD
-      \draw[black,line width=\scalingfactor*0.4pt] (0.125, 1.5) arc [start angle=-50, end angle=-130, radius=0.2] ;
-    \else% 3D
+    \ifhippo@openmouth
+      \filldraw[\hippo@mouth,line width=\scalingfactor*0.4pt] (0.125, 1.5) arc [start angle=-50, end angle=-130, radius=0.2];
+    \else% open mouth
       \draw[\hippo@mouth,line width=\scalingfactor*0.4pt] (0.125, 1.5) arc [start angle=-50, end angle=-130, radius=0.2];
-    \fi% 3D
+    \fi% open mouth
     %
     % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{scope}
@@ -237,6 +241,11 @@
 %\end{tcblisting}
 %\begin{tcblisting}{title={Mouth colour}}
 %\hippo[mouth=red]
+%\end{tcblisting}
+%
+% The hippo can open its mouth:
+%\begin{tcblisting}{title={Open mouth}}
+%\hippo[openmouth]
 %\end{tcblisting}
 %
 %The hippo can also do its nails:

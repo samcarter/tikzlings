@@ -34,6 +34,7 @@
 \newif\ifmoles@rightstep
 \newif\ifmoles@back
 \newif\ifmoles@contour
+\newif\ifmoles@openmouth
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -65,6 +66,8 @@
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  openmouth/.code    = \moles@openmouthtrue,
+  open mouth/.forward to = /moles/openmouth,
   3D/.code           = \moles@threeDtrue, 
   leftstep/.code     = \moles@leftsteptrue,
   left step/.forward to = /moles/leftstep,
@@ -195,7 +198,11 @@
     \fi% 3D
     %
     % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \draw[\moles@mouth, line width=\scalingfactor*0.4pt] (0.145,1.51) arc [start angle=-20, end angle=-160, radius=0.16] ;
+    \ifmoles@openmouth
+      \filldraw[\moles@mouth, line width=\scalingfactor*0.4pt] (0.145,1.51) arc [start angle=-20, end angle=-160, radius=0.16] ;
+    \else
+      \draw[\moles@mouth, line width=\scalingfactor*0.4pt] (0.145,1.51) arc [start angle=-20, end angle=-160, radius=0.16];
+    \fi
     %
   \fi% back
   %
@@ -241,21 +248,22 @@
 %\begin{tcblisting}{title={Eye colour}}
 %\moles[eye=red]
 %\end{tcblisting}
-%
 %\begin{tcblisting}{title={Muzzle colour}}
 %\moles[muzzle=red]
 %\end{tcblisting}
-%
 %\begin{tcblisting}{title={Hand colour}}
 %\moles[hands=red]
 %\end{tcblisting}
-%
 %\begin{tcblisting}{title={Foot colour}}
 %\moles[feet=red]
 %\end{tcblisting}
-%
 %\begin{tcblisting}{title={Mouth colour}}
 %\moles[mouth=red]
+%\end{tcblisting}
+%
+% The mole can open its mouth:
+%\begin{tcblisting}{title={Open mouth}}
+%\moles[openmouth]
 %\end{tcblisting}
 %
 %And the mole can lift its legs:

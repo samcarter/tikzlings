@@ -33,6 +33,7 @@
 \newif\ifpig@threeD
 \newif\ifpig@back
 \newif\ifpig@contour
+\newif\ifpig@openmouth
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -60,6 +61,8 @@
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  openmouth/.code    = \pig@openmouthtrue,
+  open mouth/.forward to = /pig/openmouth,
   3D/.code           = \pig@threeDtrue
                        \def\pig@mouth{gray!70!black}, 
   back/.code         = \pig@backtrue,  
@@ -168,7 +171,11 @@
     \pig@part@draw[gray]  ( 0.06, 1.62) circle[radius=0.035];
     %
     % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \draw[\pig@mouth,line width=\scalingfactor*0.4pt] (0.105, 1.46) arc [start angle=-50, end angle=-130, radius=0.16] ;
+    \ifpig@openmouth
+      \filldraw[\pig@mouth,line width=\scalingfactor*0.4pt] (0.105, 1.46) arc [start angle=-50, end angle=-130, radius=0.16];
+    \else
+      \draw[\pig@mouth,line width=\scalingfactor*0.4pt] (0.105, 1.46) arc [start angle=-50, end angle=-130, radius=0.16];
+    \fi
     %
     % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \pig@part@draw[pig@bodysat22] (0.3216,0.15) arc (-15:195:0.12) -- (0.16,0.15) to [bend left] (0.25,0.15) -- cycle;
@@ -233,6 +240,11 @@
 %\end{tcblisting}
 %\begin{tcblisting}{title={Mouth colour}}
 %\pig[mouth=red]
+%\end{tcblisting}
+%
+% The pig can open its mouth:
+%\begin{tcblisting}{title={Open mouth}}
+%\pig[openmouth]
 %\end{tcblisting}
 %
 %To view the pig from behind:

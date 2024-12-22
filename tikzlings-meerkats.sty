@@ -33,6 +33,7 @@
 \newif\ifmeerkat@threeD
 \newif\ifmeerkat@back
 \newif\ifmeerkat@contour
+\newif\ifmeerkat@openmouth
 
 \def\meerkat@shift{0}
 
@@ -80,6 +81,10 @@
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  openmouth/.code    = \meerkat@openmouthtrue,
+  open mouth/.forward to = /meerkat/openmouth,
+  standing/.code     = \meerkat@standingtrue
+                       \def\meerkat@shift{15},  
   3D/.code           = \meerkat@threeDtrue,
   back/.code         = \meerkat@backtrue,  
   contour/.code      = \meerkat@contourtrue
@@ -88,8 +93,6 @@
                        \def\meerkat@mouth{#1},
   contour/.default   = black,  
   outline/.forward to = /meerkat/contour,   
-  standing/.code     = \meerkat@standingtrue
-                       \def\meerkat@shift{15},
 }
 
 \def\meerkat@draw{%
@@ -223,8 +226,11 @@
       \meerkat@part@draw[\meerkat@nose] (0.0176, 1.6987) -- (0.0437, 1.7439).. controls (0.0534, 1.7607) and (0.0455, 1.7743) .. (0.0261, 1.7743) -- (-0.0261, 1.7743).. controls (-0.0455, 1.7743) and (-0.0534, 1.7607) .. (-0.0437, 1.7439) -- (-0.0176, 1.6987).. controls (-0.0079, 1.6819) and (0.0079, 1.6819) .. (0.0176, 1.6987) -- cycle;
       %
       % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-      \draw[\meerkat@mouth,line width=\scalingfactor*0.4pt] (0.0, 1.6871).. controls (0.0412, 1.6415) and (0.1351, 1.6616) .. (0.154, 1.7201);
-      \draw[\meerkat@mouth,line width=\scalingfactor*0.4pt](0.0, 1.6871).. controls (-0.0412, 1.6415) and (-0.1351, 1.6616) .. (-0.154, 1.7201);
+      \ifmeerkat@openmouth
+        \filldraw[\meerkat@mouth,line width=\scalingfactor*0.4pt] (-0.16, 1.727) .. controls (-0.16, 1.727) and (-0.062, 1.62) .. (0, 1.7)  .. controls (0.062, 1.62) and (0.16, 1.727) .. (0.16, 1.727) (0.16, 1.727) arc [start angle=-20, end angle=-160, radius=0.17];
+      \else
+        \draw[\meerkat@mouth,line width=\scalingfactor*0.4pt] (-0.16, 1.727) .. controls (-0.16, 1.727) and (-0.062, 1.62) .. (0, 1.7)  .. controls (0.062, 1.62) and (0.16, 1.727) .. (0.16, 1.727);
+      \fi
       %
       % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
       \meerkat@part@draw[\meerkat@eyecircles,rotate=30] (0.75,1.7) ellipse [x radius=0.14, y radius=0.08];
@@ -306,6 +312,11 @@
 %\end{tcblisting}
 %\begin{tcblisting}{title={Tail tip colour}}
 %\meerkat[tip=red]
+%\end{tcblisting}
+%
+% The meerkat can open its mouth:
+%\begin{tcblisting}{title={Open mouth}}
+%\meerkat[openmouth]
 %\end{tcblisting}
 %
 %The meerkat can also stand up

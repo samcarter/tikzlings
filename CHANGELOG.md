@@ -4,6 +4,8 @@
 
 ### New
 
+- added `openmouth` option to ape, bat, bear, bee, bug, cat, hippo, koala, marmot, meerkat, moles, panda, pig, rhino, sloth, snowman and squirrel
+
 ### Changed
 
 ### Fixed

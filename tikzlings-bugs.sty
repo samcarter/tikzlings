@@ -34,6 +34,7 @@
 \newif\ifbug@rightstep
 \newif\ifbug@back
 \newif\ifbug@contour
+\newif\ifbug@openmouth
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -76,6 +77,8 @@
   left step/.forward to = /bug/leftstep,
   rightstep/.code    = \bug@rightsteptrue,
   right step/.forward to = /bug/rightstep,        
+  openmouth/.code    = \bug@openmouthtrue,
+  open mouth/.forward to = /bug/openmouth,  
   back/.code         = \bug@backtrue,       
   contour/.code      = \bug@contourtrue
                        \def\bug@contour{#1}
@@ -193,7 +196,11 @@
     \bug@part@draw[\bug@arms] (0.25,0.88) circle[x radius=0.07,y radius=0.18, rotate=-35];
     %
     % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \draw[\bug@mouth,line width=\scalingfactor*0.4pt] (0.115, 1.56) arc [start angle=-40, end angle=-140, radius=0.16];
+    \ifbug@openmouth
+      \filldraw[\bug@mouth,line width=\scalingfactor*0.4pt] (0.115, 1.56) arc [start angle=-40, end angle=-140, radius=0.16];
+    \else
+      \draw[\bug@mouth,line width=\scalingfactor*0.4pt] (0.115, 1.56) arc [start angle=-40, end angle=-140, radius=0.16];
+    \fi
     % 
     % Antenna %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \draw[\bug@antennas,line width=\scalingfactor*0.8pt] (0.1134, 1.911) .. controls (0.0917, 2.0537) and (0.0986, 2.1999) .. (0.1608, 2.2816) .. controls (0.245, 2.3919) and (0.3278, 2.3011) .. (0.3272, 2.2192) .. controls (0.3266, 2.1341) and (0.2237, 2.0423) .. (0.1978, 2.1538);
@@ -259,6 +266,11 @@
 %\end{tcblisting}
 %\begin{tcblisting}{title={Foot colour}}
 %\bug[feet=blue]
+%\end{tcblisting}
+%
+% The bug can open its mouth:
+%\begin{tcblisting}{title={Open mouth}}
+%\bug[openmouth]
 %\end{tcblisting}
 %
 %And the bug can lift its legs:

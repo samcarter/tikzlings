@@ -35,6 +35,7 @@
 \newif\ifsloth@threeD
 \newif\ifsloth@back
 \newif\ifsloth@contour
+\newif\ifsloth@openmouth
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -63,6 +64,8 @@
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   sleeping/.code     = \sloth@sleepingtrue, 
+  openmouth/.code    = \sloth@openmouthtrue,
+  open mouth/.forward to = /sloth/openmouth,  
   3D/.code           = \sloth@threeDtrue,       
   back/.code         = \sloth@backtrue,  
   contour/.code      = \sloth@contourtrue
@@ -213,7 +216,11 @@
     \sloth@part@draw[sloth@bright10!40!black] (0,1.665) ellipse[x radius=0.078, y radius=0.048];
     %
     % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \draw[\sloth@mouth,line width=\scalingfactor*0.4pt]  (0.115, 1.55) arc [start angle=-40, end angle=-140, radius=0.16];
+    \ifsloth@openmouth
+      \filldraw[\sloth@mouth,line width=\scalingfactor*0.4pt]  (0.115, 1.55) arc [start angle=-40, end angle=-140, radius=0.16];
+    \else
+      \draw[\sloth@mouth,line width=\scalingfactor*0.4pt]  (0.115, 1.55) arc [start angle=-40, end angle=-140, radius=0.16];
+    \fi
     %
     % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \sloth@part@draw[sloth@bright10] (-0.50, 1.24) .. controls (-0.54, 1.24) and (-0.55, 1.20) .. (-0.56, 1.17) .. controls (-0.61, 1.06) and (-0.63, 0.95) .. (-0.64, 0.83) .. controls (-0.64, 0.80) and (-0.64, 0.77) .. (-0.63, 0.74) .. controls (-0.57, 0.66) and (-0.47, 0.60) .. (-0.38, 0.56) .. controls (-0.31, 0.54) and (-0.23, 0.52) .. (-0.16, 0.54) .. controls (-0.12, 0.54) and (-0.10, 0.59) .. (-0.13, 0.61) .. controls (-0.17, 0.68) and (-0.24, 0.73) .. (-0.30, 0.77) .. controls (-0.34, 0.79) and (-0.38, 0.81) .. (-0.42, 0.83) .. controls (-0.41, 0.92) and (-0.41, 1.01) .. (-0.42, 1.09) .. controls (-0.43, 1.14) and (-0.44, 1.19) .. (-0.48, 1.23) .. controls (-0.48, 1.24) and (-0.49, 1.24) .. (-0.50, 1.24) -- cycle;
@@ -302,6 +309,11 @@
 %\end{tcblisting}
 %\begin{tcblisting}{title={Mouth colour}}
 %\sloth[mouth=red]
+%\end{tcblisting}
+%
+% The sloth can open its mouth:
+%\begin{tcblisting}{title={Open mouth}}
+%\sloth[openmouth]
 %\end{tcblisting}
 %
 %If tired, the sloth can take a nap:

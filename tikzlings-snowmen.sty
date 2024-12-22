@@ -33,6 +33,7 @@
 \newif\ifsnowman@back
 \newif\ifsnowman@globalwarming
 \newif\ifsnowman@contour
+\newif\ifsnowman@openmouth
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -62,6 +63,8 @@
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  openmouth/.code    = \snowman@openmouthtrue,
+  open mouth/.forward to = /snowman/openmouth,
   3D/.code           = \snowman@threeDtrue, 
   back/.code         = \snowman@backtrue,
   globalwarming/.code= \snowman@globalwarmingtrue
@@ -182,6 +185,13 @@
       \fill[\snowman@mouth] (-0.08,1.522) circle[radius=0.016];
       \fill[\snowman@mouth] (0.12,1.543) circle[radius=0.016];
       \fill[\snowman@mouth] (-0.12,1.543) circle[radius=0.016];
+      \ifsnowman@openmouth
+        \fill[\snowman@mouth] (0,1.57) circle[radius=0.016];
+        \fill[\snowman@mouth] (-0.04,1.565) circle[radius=0.016];
+        \fill[\snowman@mouth] (-0.08,1.56) circle[radius=0.016];
+        \fill[\snowman@mouth] (0.04,1.565) circle[radius=0.016];
+        \fill[\snowman@mouth] (0.08,1.56) circle[radius=0.016];
+      \fi      
       %
       % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
       \snowman@part@draw[\snowman@eye] (-0.155,1.8) circle[radius=0.04]; 
@@ -248,6 +258,11 @@
 %\end{tcblisting}
 %\begin{tcblisting}{title={Button colour}}
 %\snowman[buttons=red]
+%\end{tcblisting}
+%
+% The snowman can open its mouth:
+%\begin{tcblisting}{title={Open mouth}}
+%\snowman[openmouth]
 %\end{tcblisting}
 %
 %The biggest enemy of the snowman are raising temperatures:

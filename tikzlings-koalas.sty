@@ -38,6 +38,7 @@
 \newif\ifkoala@threeD
 \newif\ifkoala@back
 \newif\ifkoala@contour
+\newif\ifkoala@openmouth
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -66,7 +67,9 @@
   blush/.code        = \koala@blushtrue
                        \def\koala@blushcolor{#1},
   blush/.default     = red, 
-  sleeping/.code     = \koala@sleepingtrue, 
+  sleeping/.code     = \koala@sleepingtrue,
+  openmouth/.code    = \koala@openmouthtrue,
+  open mouth/.forward to = /koala/openmouth,  
   3D/.code           = \koala@threeDtrue
                        \def\koala@mouth{black},  
   back/.code         = \koala@backtrue,  
@@ -184,7 +187,11 @@
     \fi% sleeping
     %
     % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \draw[\koala@mouth,line width=\scalingfactor*0.4pt] (0.115, 1.39) arc [start angle=-40, end angle=-140, radius=0.16];
+    \ifkoala@openmouth
+      \filldraw[\koala@mouth,line width=\scalingfactor*0.4pt] (0.115, 1.39) arc [start angle=-40, end angle=-140, radius=0.16];
+    \else
+      \draw[\koala@mouth,line width=\scalingfactor*0.4pt] (0.115, 1.39) arc [start angle=-40, end angle=-140, radius=0.16];
+    \fi
     %
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %
@@ -243,6 +250,11 @@
 %\end{tcblisting}
 %\begin{tcblisting}{title={Mouth colour}}
 %\koala[mouth=red]
+%\end{tcblisting}
+%
+% The koala can open its mouth:
+%\begin{tcblisting}{title={Open mouth}}
+%\koala[openmouth]
 %\end{tcblisting}
 %
 %It can also blush

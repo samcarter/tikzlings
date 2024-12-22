@@ -26,13 +26,14 @@
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \csname bathookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
-  %   
+  %
 }
 
 \newif\ifbat@threeD
 \newif\ifbat@back
 \newif\ifbat@contour
 \newif\ifbat@teeth
+\newif\ifbat@openmouth
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -50,39 +51,41 @@
   body/.store in     = \bat@body,
   body               = black!75!white,
   ears/.store in     = \bat@ears,
-  ears               = \bat@body,     
+  ears               = \bat@body,
   eye/.store in      = \bat@eye,
   eye                = white,
   pupil/.store in    = \bat@pupil,
   pupil              = black,
   mouth/.store in    = \bat@mouth,
-  mouth              = black,     
+  mouth              = black,
   feet/.store in     = \bat@feet,
-  feet               = orange, 
+  feet               = orange,
   wings/.store in    = \bat@wings,
-  wings              = 1,  
+  wings              = 1,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  teeth/.code        = \bat@teethtrue    
-                       \def\bat@teeth{#1}, 
+  teeth/.code        = \bat@teethtrue
+                       \def\bat@teeth{#1},
   teeth/.default     = white,
-  3D/.code           = \bat@threeDtrue,  
-  back/.code         = \bat@backtrue,       
+  openmouth/.code    = \bat@openmouthtrue,
+  open mouth/.forward to = /bat/openmouth,
+  3D/.code           = \bat@threeDtrue,
+  back/.code         = \bat@backtrue,
   contour/.code      = \bat@contourtrue
                        \def\bat@contour{#1}
                        \def\bat@antennas{#1}
                        \def\bat@mouth{#1},
-  contour/.default   = black,  
-  outline/.forward to = /bat/contour,   
+  contour/.default   = black,
+  outline/.forward to = /bat/contour,
 }
 
 \def\bat@draw{%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
-  % minimal bounding box size 
+  % minimal bounding box size
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \path (-0.44,0.0) rectangle (0.44, 2.2);
@@ -172,12 +175,16 @@
     % Teeth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \ifbat@teeth
       \bat@part@draw[\bat@teeth] (-0.1,1.36) -- (-0.12,1.3) -- (-0.14,1.38) -- cycle;  
-      \bat@part@draw[\bat@teeth] (0.1,1.36) -- (0.12,1.3) -- (0.14,1.38) -- cycle;      
+      \bat@part@draw[\bat@teeth] (0.1,1.36) -- (0.12,1.3) -- (0.14,1.38) -- cycle;
     \fi
     %
     % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \draw[\bat@mouth,line width=\scalingfactor*0.4pt] (0.18, 1.42) arc [start angle=-40, end angle=-140, radius=0.23];
-    % 
+    \ifbat@openmouth
+      \filldraw[\bat@mouth,line width=\scalingfactor*0.4pt] (0.18, 1.42) arc [start angle=-40, end angle=-140, radius=0.23];
+    \else
+      \draw[\bat@mouth,line width=\scalingfactor*0.4pt] (0.18, 1.42) arc [start angle=-40, end angle=-140, radius=0.23];
+    \fi
+    %
     %
   \fi% back
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -234,7 +241,12 @@
 %\bat[feet=red]
 %\end{tcblisting}
 %
-%The spread of the wings can be adjusted by passing values between 0 and 1 to the \saminline|wings| option:
+% The bat can open its mouth:
+%\begin{tcblisting}{title={Open mouth}}
+%\bat[openmouth]
+%\end{tcblisting}
+%
+%With the \saminline|wings| option, one can adjust the spread of the wings. It accepts values between~0 and~1:
 %\begin{tcblisting}{title={Wing span}}
 %\bat[wings=0.5]
 %\end{tcblisting}

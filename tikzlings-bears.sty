@@ -31,6 +31,7 @@
 \newif\ifbear@threeD
 \newif\ifbear@back
 \newif\ifbear@contour
+\newif\ifbear@openmouth
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -56,6 +57,8 @@
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  openmouth/.code    = \bear@openmouthtrue,
+  open mouth/.forward to = /bear/openmouth,
   3D/.code           = \bear@threeDtrue, 
   back/.code         = \bear@backtrue,  
   contour/.code      = \bear@contourtrue
@@ -173,7 +176,11 @@
     \bear@part@draw[\bear@eye] (0.155, 1.7) circle[radius=0.05]; 
     %
     % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \draw[\bear@mouth,line width=\scalingfactor*0.4pt] (0.145, 1.38) arc [start angle=-20, end angle=-160, radius=0.16];
+    \ifbear@openmouth
+      \filldraw[\bear@mouth,line width=\scalingfactor*0.4pt] (0.145, 1.38) arc [start angle=-20, end angle=-160, radius=0.16];
+    \else
+      \draw[\bear@mouth,line width=\scalingfactor*0.4pt] (0.145, 1.38) arc [start angle=-20, end angle=-160, radius=0.16];
+    \fi
   %
   \fi% back
   %
@@ -220,6 +227,11 @@
 %\end{tcblisting}
 %\begin{tcblisting}{title={Mouth colour}}
 %\bear[mouth=red]
+%\end{tcblisting}
+%
+% The bear can open its mouth:
+%\begin{tcblisting}{title={Open mouth}}
+%\bear[openmouth]
 %\end{tcblisting}
 %
 %To view the teddy bear from behind:

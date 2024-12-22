@@ -59,6 +59,7 @@
 \newif\ifcat@schroedinger
 \newif\ifcat@back
 \newif\ifcat@contour
+\newif\ifcat@openmouth
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -103,8 +104,10 @@
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  3D/.code           = \cat@threeDtrue,
   schroedinger/.code = \cat@schroedingertrue,
+  openmouth/.code    = \cat@openmouthtrue,
+  open mouth/.forward to = /cat/openmouth,  
+  3D/.code           = \cat@threeDtrue,
   back/.code         = \cat@backtrue,  
   contour/.code      = \cat@contourtrue
                        \def\cat@contour{#1}
@@ -196,7 +199,11 @@
     \cat@part@draw[\cat@pupil] ( 0.1720, 1.8071) .. controls ( 0.1720+\cat@pupil@width, 1.7827+\cat@pupil@offset) and ( 0.1720+\cat@pupil@width, 1.7584-\cat@pupil@offset) .. ( 0.1720, 1.7341) .. controls ( 0.1720-\cat@pupil@width, 1.7584-\cat@pupil@offset) and ( 0.1720-\cat@pupil@width, 1.7827+\cat@pupil@offset) .. ( 0.1720, 1.8071) -- cycle;
     %
     % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \draw[\cat@whiskers,line width=\scalingfactor*0.2pt] (-0.16, 1.527) .. controls (-0.16, 1.527) and (-0.062, 1.420) .. ( 0.000, 1.556)  .. controls ( 0.062, 1.420) and ( 0.16, 1.527) .. ( 0.16, 1.527);
+    \ifcat@openmouth
+      \filldraw[\cat@whiskers,line width=\scalingfactor*0.2pt] (-0.16, 1.527) .. controls (-0.16, 1.527) and (-0.062, 1.420) .. ( 0.000, 1.556)  .. controls ( 0.062, 1.420) and ( 0.16, 1.527) .. ( 0.16, 1.527) (0.16,1.527) arc [start angle=-20, end angle=-160, radius=0.17];
+    \else
+      \draw[\cat@whiskers,line width=\scalingfactor*0.2pt] (-0.16, 1.527) .. controls (-0.16, 1.527) and (-0.062, 1.420) .. ( 0.000, 1.556)  .. controls ( 0.062, 1.420) and ( 0.16, 1.527) .. ( 0.16, 1.527);
+    \fi
     %
     % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \cat@part@draw[\cat@nose] (-0.069, 1.6452) .. controls (-0.0524, 1.6613) and (0.0524, 1.6613) .. (0.069, 1.6452) .. controls (0.08, 1.625) and (0.0206, 1.55) .. (0, 1.55) .. controls (-0.0206, 1.55) and (-0.08, 1.625) .. (-0.069, 1.6452) -- cycle;
@@ -341,6 +348,11 @@
 %\end{tcblisting}
 %\begin{tcblisting}{title={Paw colour}}
 %\cat[paws=red]
+%\end{tcblisting}
+%
+% The cat can open its mouth:
+%\begin{tcblisting}{title={Open mouth}}
+%\cat[openmouth]
 %\end{tcblisting}
 %
 %The shape of the \saminline|pupil| can be changed with the \saminline|pupilwidth| option:

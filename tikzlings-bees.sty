@@ -32,6 +32,7 @@
 \newif\ifbee@threeD
 \newif\ifbee@back
 \newif\ifbee@contour
+\newif\ifbee@openmouth
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -65,6 +66,8 @@
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  openmouth/.code    = \bee@openmouthtrue,
+  open mouth/.forward to = /bee/openmouth,  
   3D/.code           = \bee@threeDtrue,  
   back/.code         = \bee@backtrue,       
   contour/.code      = \bee@contourtrue
@@ -179,7 +182,11 @@
     \bee@part@draw[\bee@hands] (0.25,0.88) circle[x radius=0.07,y radius=0.2, rotate=-25];
     %
     % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \draw[\bee@mouth,line width=\scalingfactor*0.4pt] (0.115, 1.6) arc [start angle=-40, end angle=-140, radius=0.16];
+    \ifbee@openmouth
+      \filldraw[\bee@mouth,line width=\scalingfactor*0.4pt] (0.115, 1.6) arc [start angle=-40, end angle=-140, radius=0.16];
+    \else
+      \draw[\bee@mouth,line width=\scalingfactor*0.4pt] (0.115, 1.6) arc [start angle=-40, end angle=-140, radius=0.16];
+    \fi
     % 
     % Antenna %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \fill[\bee@antennas,rotate around={15:(-0.175,2.115)}] (-0.2,1.93) rectangle (-0.15,2.3);
@@ -244,6 +251,11 @@
 %\end{tcblisting}
 %\begin{tcblisting}{title={Stripe colour}}
 %\bee[stripes=red]
+%\end{tcblisting}
+%
+% The bee can open its mouth:
+%\begin{tcblisting}{title={Open mouth}}
+%\bee[openmouth]
 %\end{tcblisting}
 %
 %To view the bee from behind:

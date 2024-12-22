@@ -33,6 +33,7 @@
 \newif\ifsquirrel@rightstep
 \newif\ifsquirrel@back
 \newif\ifsquirrel@contour
+\newif\ifsquirrel@openmouth
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -53,12 +54,17 @@
   eye                = white, 
   pupil/.store in    = \squirrel@pupil,
   pupil              = black,    
+  mouth/.store in    = \squirrel@mouth,
+  mouth              = \squirrel@body!70!brown!60!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  3D/.code           = \squirrel@threeDtrue, 
+  openmouth/.code    = \squirrel@openmouthtrue,
+  open mouth/.forward to = /squirrel/openmouth,
+  3D/.code           = \squirrel@threeDtrue
+                       \def\squirrel@mouth{\squirrel@body!40!black}, 
   leftstep/.code     = \squirrel@leftsteptrue,
   left step/.forward to = /squirrel/leftstep,
   rightstep/.code    = \squirrel@rightsteptrue,
@@ -179,13 +185,17 @@
     %
     % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \ifsquirrel@contour
+      \draw[\squirrel@contour,fill=white,line width=\scalingfactor*0.4pt] (-0.15,1.61) .. controls (-0.15,1.61) and (-0.15,1.52) .. (0.0,1.61) .. controls (0.15,1.52) and (0.15,1.61) .. (0.15,1.61) (0.15,1.61) arc [start angle=-20, end angle=-160, radius=0.16];    
       \draw[\squirrel@contour,fill=white,line width=\scalingfactor*0.4pt] (-0.025,1.567) rectangle ++(0.02,0.03);
       \draw[\squirrel@contour,fill=white,line width=\scalingfactor*0.4pt] (0.025,1.567) rectangle ++(-0.02,0.03);
       \draw[\squirrel@contour,line width=\scalingfactor*0.4pt] (-0.15,1.61) .. controls (-0.15,1.61) and (-0.15,1.52) .. (0.0,1.61) .. controls (0.15,1.52) and (0.15,1.61) .. (0.15,1.61);
     \else% contour
+      \ifsquirrel@openmouth
+        \filldraw[\squirrel@mouth,line width=\scalingfactor*0.4pt] (-0.15,1.61) .. controls (-0.15,1.61) and (-0.15,1.52) .. (0.0,1.61) .. controls (0.15,1.52) and (0.15,1.61) .. (0.15,1.61) (0.15,1.61) arc [start angle=-20, end angle=-160, radius=0.16];
+      \fi% open mouth
       \fill[white] (-0.025,1.567) rectangle ++(0.02,0.03);
       \fill[white] (0.025,1.567) rectangle ++(-0.02,0.03);
-      \draw[\squirrel@body!70!brown!60!black,line width=\scalingfactor*0.4pt] (-0.15,1.61) .. controls (-0.15,1.61) and (-0.15,1.52) .. (0.0,1.61) .. controls (0.15,1.52) and (0.15,1.61) .. (0.15,1.61);  
+      \draw[\squirrel@mouth,line width=\scalingfactor*0.4pt] (-0.15,1.61) .. controls (-0.15,1.61) and (-0.15,1.52) .. (0.0,1.61) .. controls (0.15,1.52) and (0.15,1.61) .. (0.15,1.61);  
     \fi% contour
     % 
     % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -237,6 +247,14 @@
 %\end{tcblisting}
 %\begin{tcblisting}{title={Pupil colour}}
 %\squirrel[pupil=red]
+%\end{tcblisting}
+%\begin{tcblisting}{title={Mouth colour}}
+%\squirrel[mouth=red]
+%\end{tcblisting}
+%
+% The squirrel can open its mouth:
+%\begin{tcblisting}{title={Open mouth}}
+%\squirrel[openmouth]
 %\end{tcblisting}
 %
 %And the squirrel can lift its legs:

@@ -32,6 +32,7 @@
 \newif\ifrhino@threeD
 \newif\ifrhino@back
 \newif\ifrhino@contour
+\newif\ifrhino@openmouth
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -63,6 +64,8 @@
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  openmouth/.code    = \rhino@openmouthtrue,
+  open mouth/.forward to = /rhino/openmouth,  
   3D/.code           = \rhino@threeDtrue
                        \def\rhino@mouth{black}, 
   back/.code         = \rhino@backtrue, 
@@ -175,7 +178,11 @@
     \rhino@part@draw[\rhino@horn] (0, 1.7911) .. controls (-0.0231, 1.7372) and (-0.0463, 1.6832) .. (-0.0642, 1.6274) .. controls (-0.0687, 1.6132) and (-0.0724, 1.5981) .. (-0.0678, 1.5834) .. controls (-0.0603, 1.552) and (-0.0287, 1.5287) .. (0, 1.531) .. controls (0.0287, 1.5287) and (0.0603, 1.552) .. (0.0678, 1.5834) .. controls (0.0724, 1.5981) and (0.0687, 1.6132) .. (0.0642, 1.6274) .. controls (0.0463, 1.6832) and (0.0231, 1.7372) .. (0, 1.7911) -- cycle;
     %
     % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \draw[\rhino@mouth,line width=\scalingfactor*0.4pt] (0.125, 1.5) arc [start angle=-50, end angle=-130, radius=0.2] ;
+    \ifrhino@openmouth
+      \filldraw[\rhino@mouth,line width=\scalingfactor*0.4pt] (0.125, 1.5) arc [start angle=-50, end angle=-130, radius=0.2];
+    \else
+      \draw[\rhino@mouth,line width=\scalingfactor*0.4pt] (0.125, 1.5) arc [start angle=-50, end angle=-130, radius=0.2];
+    \fi
     %
     % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{scope}
@@ -241,6 +248,11 @@
 %\end{tcblisting}
 %\begin{tcblisting}{title={Horn colour}}
 %\rhino[horn=red]
+%\end{tcblisting}
+%
+% The rhino can open its mouth:
+%\begin{tcblisting}{title={Open mouth}}
+%\rhino[openmouth]
 %\end{tcblisting}
 %
 %The hippo can also do its nails:
