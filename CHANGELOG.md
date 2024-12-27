@@ -12,6 +12,8 @@
 
 ### Fixed
 
+- typo in hook names for bees
+
 
 ## [v2.1]
 
