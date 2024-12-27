@@ -8,6 +8,8 @@
 
 ### Changed
 
+- replaced clipped paths in bee, coati, hippo and rhino
+
 ### Fixed
 
 

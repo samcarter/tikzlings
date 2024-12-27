@@ -127,11 +127,8 @@
   %
   % Feet if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \ifrhino@back
-    \begin{scope}
-      \clip (-0.5,0.4) rectangle (0.5,0.13);
-      \rhino@part@draw[\rhino@body!70!black] (-0.25,0.15) ellipse[x radius=0.16, y radius=0.17];
-      \rhino@part@draw[\rhino@body!70!black] (0.25,0.15) ellipse[x radius=0.16, y radius=0.17];
-    \end{scope}
+    \rhino@part@draw[\rhino@body!70!black] (-0.08,0.13) arc [start angle=0, end angle=180, x radius=0.17, y radius=0.19] -- cycle;
+    \rhino@part@draw[\rhino@body!70!black](0.08,0.13) arc [start angle=180, end angle=0, x radius=0.17, y radius=0.19] -- cycle;
   \fi% back
   %
   % Nose if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -185,17 +182,14 @@
     \fi
     %
     % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \begin{scope}
-      \clip (-0.5,0.4) rectangle (0.5,0.13);
-      \rhino@part@draw[\rhino@body!70!black] (-0.25,0.15) ellipse[x radius=0.16, y radius=0.17];
-      \rhino@part@draw[\rhino@body!70!black] (0.25,0.15) ellipse[x radius=0.16, y radius=0.17];
-      \rhino@part@draw[\rhino@toes] (0.25,0.13) ellipse[x radius=0.05, y radius=0.1];
-      \rhino@part@draw[\rhino@toes] (0.13,0.11) ellipse[x radius=0.05, y radius=0.1];
-      \rhino@part@draw[\rhino@toes] (0.37,0.11) ellipse[x radius=0.05, y radius=0.1];
-      \rhino@part@draw[\rhino@toes] (-0.25,0.13) ellipse[x radius=0.05, y radius=0.1];
-      \rhino@part@draw[\rhino@toes] (-0.13,0.11) ellipse[x radius=0.05, y radius=0.1];
-      \rhino@part@draw[\rhino@toes] (-0.37,0.11) ellipse[x radius=0.05, y radius=0.1];
-    \end{scope}
+    \rhino@part@draw[\rhino@body!70!black] (-0.08,0.13) arc [start angle=0, end angle=180, x radius=0.17, y radius=0.19] -- cycle;
+    \rhino@part@draw[\rhino@toes] (-0.08,0.13) arc [start angle=0, end angle=180, x radius=0.05, y radius=0.08] -- cycle;
+    \rhino@part@draw[\rhino@toes] (-0.2,0.13) arc [start angle=0, end angle=180, x radius=0.05, y radius=0.1] -- cycle;
+    \rhino@part@draw[\rhino@toes] (-0.32,0.13) arc [start angle=0, end angle=180, x radius=0.05, y radius=0.08] -- cycle;
+    \rhino@part@draw[\rhino@body!70!black](0.08,0.13) arc [start angle=180, end angle=0, x radius=0.17, y radius=0.19] -- cycle;
+    \rhino@part@draw[\rhino@toes] (0.08,0.13) arc [start angle=180, end angle=0, x radius=0.05, y radius=0.08] -- cycle;
+    \rhino@part@draw[\rhino@toes] (0.2,0.13) arc [start angle=180, end angle=0, x radius=0.05, y radius=0.1] -- cycle;
+    \rhino@part@draw[\rhino@toes] (0.32,0.13) arc [start angle=180, end angle=0, x radius=0.05, y radius=0.08] -- cycle;
     %
   \fi% back
   %
