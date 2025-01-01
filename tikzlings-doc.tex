@@ -110,8 +110,9 @@
 \newcommand*\gobbleentrynumber[1]{}
 \newcommand*\mytocformat[1]{#1}
 \newcommand*\mytocpageformat[1]{#1}
+\makeatletter
 \RedeclareSectionCommand[
-  toclinefill=\TOCLineLeaderFill,
+  toclinefill=\hyper@linkstart{link}{\Hy@tocdestname}\TOCLineLeaderFill\hyper@linkend,
   tocnumwidth=0pt,
   tocentrynumberformat=\gobbleentrynumber,
   tocentryformat=\mytocformat,
@@ -119,7 +120,6 @@
   tocbeforeskip=0.8ex plus 1pt minus 1pt
 ]{section}
 
-\makeatletter
 \renewcommand{\sectionlinesformat}[4]{%
 \Ifstr{#1}{section}{%
     \parbox[t]{\linewidth}{%
@@ -316,7 +316,7 @@ Another way to use the \tikzlings is the \TikZ library of the same name. By load
 \subsection*{List of all \tikzlings:}
 
 \begingroup
-  \hypersetup{hidelinks}
+  \hypersetup{hidelinks,linktoc=all}
   \tableofcontents
 \endgroup
 
