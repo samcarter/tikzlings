@@ -1,0 +1,118 @@
+\documentclass[varwidth=20cm,border=0.5cm]{standalone}
+
+\usepackage{tikzlings}
+\usepackage{moreverb}
+\usepackage[cachedir=./.minted]{minted}
+
+\newwrite\readme
+\immediate\openout\readme=README.md
+
+% from https://stackoverflow.com/a/42105300/2777074
+\makeatletter
+\def\verbatimappend{% inspired by moreverb.sty (verbatimwrite)
+  \@bsphack
+  \let\do\@makeother\dospecials
+  \catcode`\^^M\active \catcode`\^^I=12
+  \def\verbatim@processline{%
+    \immediate\write\readme%
+      {\the\verbatim@line}}%
+  \verbatim@start}
+\def\endverbatimappend{%
+  \@esphack%
+}
+\makeatother
+
+\begin{document}~
+
+\begin{verbatimappend}
+# TikZlings
+
+[![License](https://img.shields.io/github/license/samcarter/tikzlings.svg?color=blue)](https://www.latex-project.org/lppl.txt)
+[![GitHub tag](https://img.shields.io/github/tag/samcarter/tikzlings.svg?label=current%20version&color=blue)](https://github.com/samcarter/tikzlings/releases/latest)
+[![CTAN](https://img.shields.io/ctan/v/tikzlings.svg?color=blue)](https://ctan.org/pkg/tikzlings)
+
+A collection of animals and other beings from the TikZ world.
+
+A big thank you to all the people who contributed with code, ideas or feedback to the package! Without this package would not exist!
+
+## Available TikZlings
+
+\end{verbatimappend}
+
+\makeatletter
+\foreach \x in \tikzlings@names@clist {%
+  \immediate\write\readme{<a href="./examples/\x.tex"><img src="./examples/\x.svg" alt="\x" height="64"></a>}
+}
+\makeatother
+
+\begin{verbatimappend}
+
+## Usage
+
+A short example to demonstrate the use of the TikZlings:
+
+```
+\documentclass{standalone}
+
+\usepackage{tikzlings}
+
+\begin{document}
+
+\begin{tikzpicture}
+\marmot
+\end{tikzpicture}	
+	
+\end{document}
+```
+
+An exhaustive list of possible options can be found in [package documentation](https://github.com/samcarter/tikzlings/blob/main/DOCUMENTATION.pdf)
+
+## Some examples
+
+<a href="./showcase/Napoleon.svg"><img src="./showcase/Napoleon.svg" alt="Napoleon" height="64"></a>
+<a href="./showcase/Alfred_the_mouse.svg"><img src="./showcase/Alfred_the_mouse.svg" alt="Alfred the mouse" height="64"></a>
+<a href="./showcase/Latex3_bear.svg"><img src="./showcase/Latex3_bear.svg" alt="Latex3 bear" height="64"></a>
+<a href="./showcase/Marmot_geek.svg"><img src="./showcase/Marmot_geek.svg" alt="Marmot Geek" height="64"></a>
+<a href="./showcase/Miss_marmot.svg"><img src="./showcase/Miss_marmot.svg" alt="Miss Marmot" height="64"></a>
+<a href="./showcase/Mouse_chocolate.svg"><img src="./showcase/Mouse_chocolate.svg" alt="Mouse chocolate" height="64"></a>
+<a href="./showcase/Winter_pig.svg"><img src="./showcase/Winter_pig.svg" alt="Winter pig" height="64"></a>
+<a href="./showcase/Winter_marmot.svg"><img src="./showcase/Winter_marmot.svg" alt="Winter marmot" height="64"></a>
+<a href="./showcase/Wild_west_marmot.svg"><img src="./showcase/Wild_west_marmot.svg" alt="Wild west marmot" height="64"></a>
+<a href="./showcase/Roller_skates_koala.svg"><img src="./showcase/Roller_skates_koala.svg" alt="Roller skates koala" height="64"></a>
+<a href="./showcase/Roller_skates_pig.svg"><img src="./showcase/Roller_skates_pig.svg" alt="Roller skates pig" height="64"></a>
+<a href="./showcase/Nurse.svg"><img src="./showcase/Nurse.svg" alt="Nurse" height="64"></a>
+<a href="./showcase/Aouda.svg"><img src="./showcase/Aouda.svg" alt="Princess Aouda" height="64"></a>
+<a href="./showcase/Phileas_Fogg.svg"><img src="./showcase/Phileas_Fogg.svg" alt="Phileas Fogg" height="64"></a>
+<a href="./showcase/Passepartout.svg"><img src="./showcase/Passepartout.svg" alt="Passepartout" height="64"></a>
+<a href="./showcase/Hang_gliding_pingu.svg"><img src="./showcase/Hang_gliding_pingu.svg" alt="Hang gliding pingu" height="64"></a>
+<a href="./showcase/Hang_gliding_bear.svg"><img src="./showcase/Hang_gliding_bear.svg" alt="Hang gliding bear" height="64"></a>
+<a href="./showcase/Tartan.svg"><img src="./showcase/Tartan.svg" alt="Tartan" height="64"></a>
+<a href="./showcase/Haggis.svg"><img src="./showcase/Haggis.svg" alt="Haggis" height="64"></a>
+<a href="./showcase/Marmot_cupid.tex"><img src="./showcase/Marmot_cupid.svg" alt="Marmot cupid" height="64"></a>
+
+<a href="./showcase/Bruegel.svg"><img src="./showcase/Bruegel.svg" alt="Bruegel" height="64"></a>
+<a href="./showcase/ElGreco.svg"><img src="./showcase/ElGreco.svg" alt="ElGreco" height="64"></a>
+<a href="./showcase/Last_supper.svg"><img src="./showcase/Last_supper.svg" alt="Last Supper" height="64"></a>
+<a href="./showcase/Vitruvian_coati.svg"><img src="./showcase/Vitruvian_coati.svg" alt="Vitruvian coati" height="64"></a>
+
+<a href="./showcase/lt3marmot.tex"><img src="./showcase/lt3marmot.svg" alt="lt3marmot" height="64"></a>
+<a href="./showcase/Coati_custom_body.tex"><img src="./showcase/Coati_custom_body.svg" alt="Custom Body Coati" height="64"></a>
+<a href="./showcase/Jumping_marmot_ballon.tex"><img src="./showcase/Jumping_marmot_ballon_bg.png" alt="Jumping Ballon Marmot" height="64"></a>
+<a href="./showcase/Mandala.tex"><img src="./showcase/Mandala.svg" alt="Mandala" height="64"></a>
+<a href="./showcase/Mandala2.tex"><img src="./showcase/Mandala2.svg" alt="Mandala" height="64"></a>
+<a href="./showcase/Marmobil.svg"><img src="./showcase/Marmobil.svg" alt="Marmobil" height="64"></a>
+<a href="./showcase/Marmot_side.svg"><img src="./showcase/Marmot_side.svg" alt="Marmot side" height="64"></a>
+<a href="./showcase/Spherical_pig.tex"><img src="./showcase/Spherical_pig.png" alt="Spherical pig" height="64"></a>
+<a href="./showcase/Rodent_Hood.tex"><img src="./showcase/Rodent_Hood_bg.png" alt="Rodent Hood" height="64"></a>
+
+## TikZlings in action
+
+If you would like to observe TikZlings in their natural habitat, head over to the [TikZlings organisation](https://github.com/TikZlings/).
+
+\end{verbatimappend}
+
+\immediate\closeout\readme
+
+\inputminted[breaklines,breakanywhere]{markdown}{README.md}
+
+\end{document}
