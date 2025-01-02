@@ -10,32 +10,32 @@ A big thank you to all the people who contributed with code, ideas or feedback t
 
 ## Available TikZlings
 
-<a href="./examples/anteater.tex"><img src="./examples/anteater.svg" alt="Anteater" height="64"></a>
-<a href="./examples/ape.tex"><img src="./examples/ape.svg" alt="Ape" height="64"></a>
-<a href="./examples/bat.tex"><img src="./examples/bat.svg" alt="Bat" height="64"></a>
-<a href="./examples/bear.tex"><img src="./examples/bear.svg" alt="Bear" height="64"></a>
-<a href="./examples/bee.tex"><img src="./examples/bee.svg" alt="Bee" height="64"></a>
-<a href="./examples/bug.tex"><img src="./examples/bug.svg" alt="Bug" height="64"></a>
-<a href="./examples/cat.tex"><img src="./examples/cat.svg" alt="Cat" height="64"></a>
-<a href="./examples/chicken.tex"><img src="./examples/chicken.svg" alt="Chicken" height="64"></a>
-<a href="./examples/coati.tex"><img src="./examples/coati.svg" alt="Coati" height="64"></a>
-<a href="./examples/elephant.tex"><img src="./examples/elephant.svg" alt="Elephant" height="64"></a>
-<a href="./examples/hippo.tex"><img src="./examples/hippo.svg" alt="Hippo" height="64"></a>
-<a href="./examples/koala.tex"><img src="./examples/koala.svg" alt="Koala" height="64"></a>
-<a href="./examples/marmot.tex"><img src="./examples/marmot.svg" alt="Marmot" height="64"></a>
-<a href="./examples/meerkat.tex"><img src="./examples/meerkat.svg" alt="Meerkat" height="64"></a>
-<a href="./examples/mole.tex"><img src="./examples/mole.svg" alt="Mole" height="64"></a>
-<a href="./examples/mouse.tex"><img src="./examples/mouse.svg" alt="Mouse" height="64"></a>
-<a href="./examples/owl.tex"><img src="./examples/owl.svg" alt="Owl" height="64"></a>
-<a href="./examples/panda.tex"><img src="./examples/panda.svg" alt="Panda" height="64"></a>
-<a href="./examples/pingu.tex"><img src="./examples/pingu.svg" alt="Penguin" height="64"></a>
-<a href="./examples/pig.tex"><img src="./examples/pig.svg" alt="Pig" height="64"></a>
-<a href="./examples/rhino.tex"><img src="./examples/rhino.svg" alt="Rhino" height="64"></a>
-<a href="./examples/sheep.tex"><img src="./examples/sheep.svg" alt="Sheep" height="64"></a>
-<a href="./examples/sloth.tex"><img src="./examples/sloth.svg" alt="Sloth" height="64"></a>
-<a href="./examples/squirrel.tex"><img src="./examples/squirrel.svg" alt="Squirrel" height="64"></a>
-<a href="./examples/snowman.tex"><img src="./examples/snowman.svg" alt="Snowman" height="64"></a>
-<a href="./examples/wolf.tex"><img src="./examples/wolf.svg" alt="Wolf" height="64"></a>
+<a href="./examples/anteater.tex"><img src="./examples/anteater.svg" alt="anteater" height="64"></a>
+<a href="./examples/ape.tex"><img src="./examples/ape.svg" alt="ape" height="64"></a>
+<a href="./examples/bat.tex"><img src="./examples/bat.svg" alt="bat" height="64"></a>
+<a href="./examples/bear.tex"><img src="./examples/bear.svg" alt="bear" height="64"></a>
+<a href="./examples/bee.tex"><img src="./examples/bee.svg" alt="bee" height="64"></a>
+<a href="./examples/bug.tex"><img src="./examples/bug.svg" alt="bug" height="64"></a>
+<a href="./examples/cat.tex"><img src="./examples/cat.svg" alt="cat" height="64"></a>
+<a href="./examples/chicken.tex"><img src="./examples/chicken.svg" alt="chicken" height="64"></a>
+<a href="./examples/coati.tex"><img src="./examples/coati.svg" alt="coati" height="64"></a>
+<a href="./examples/elephant.tex"><img src="./examples/elephant.svg" alt="elephant" height="64"></a>
+<a href="./examples/hippo.tex"><img src="./examples/hippo.svg" alt="hippo" height="64"></a>
+<a href="./examples/koala.tex"><img src="./examples/koala.svg" alt="koala" height="64"></a>
+<a href="./examples/marmot.tex"><img src="./examples/marmot.svg" alt="marmot" height="64"></a>
+<a href="./examples/meerkat.tex"><img src="./examples/meerkat.svg" alt="meerkat" height="64"></a>
+<a href="./examples/mouse.tex"><img src="./examples/mouse.svg" alt="mouse" height="64"></a>
+<a href="./examples/moles.tex"><img src="./examples/moles.svg" alt="moles" height="64"></a>
+<a href="./examples/owl.tex"><img src="./examples/owl.svg" alt="owl" height="64"></a>
+<a href="./examples/panda.tex"><img src="./examples/panda.svg" alt="panda" height="64"></a>
+<a href="./examples/penguin.tex"><img src="./examples/penguin.svg" alt="penguin" height="64"></a>
+<a href="./examples/pig.tex"><img src="./examples/pig.svg" alt="pig" height="64"></a>
+<a href="./examples/rhino.tex"><img src="./examples/rhino.svg" alt="rhino" height="64"></a>
+<a href="./examples/sheep.tex"><img src="./examples/sheep.svg" alt="sheep" height="64"></a>
+<a href="./examples/sloth.tex"><img src="./examples/sloth.svg" alt="sloth" height="64"></a>
+<a href="./examples/snowman.tex"><img src="./examples/snowman.svg" alt="snowman" height="64"></a>
+<a href="./examples/squirrel.tex"><img src="./examples/squirrel.svg" alt="squirrel" height="64"></a>
+<a href="./examples/wolf.tex"><img src="./examples/wolf.svg" alt="wolf" height="64"></a>
 
 ## Usage
 
@@ -98,3 +98,4 @@ An exhaustive list of possible options can be found in [package documentation](h
 ## TikZlings in action
 
 If you would like to observe TikZlings in their natural habitat, head over to the [TikZlings organisation](https://github.com/TikZlings/).
+
