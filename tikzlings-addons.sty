@@ -58,59 +58,77 @@
   \end{scope}%
 }
 
+\def\thing@listhead{}
+\def\thing@listacces{}
+\def\thing@headtext{head}
+\def\thing@accesstext{acess}
+
+\ExplSyntaxOn
+\NewDocumentCommand{\thing@ini}{om}{
+  \expandafter\newif\csname ifthing@#2\endcsname
+  \def\thing@tmp{#1}
+  \ifx\thing@headtext\thing@tmp
+    \tl_put_right:Nn \thing@listhead { {#2} }
+  \fi
+  \ifx\thing@accesstext\thing@tmp
+    \tl_put_right:Nn \thing@listacces { {#2} }
+  \fi  
+}
+\ExplSyntaxOff
+
 % Hats %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newif\ifthing@hat
-\newif\ifthing@tophat
-\newif\ifthing@beret
-\newif\ifthing@strawhat
-\newif\ifthing@harlequin
-\newif\ifthing@witch
-\newif\ifthing@magichat
-\newif\ifthing@crown
-\newif\ifthing@queencrown
-\newif\ifthing@kingcrown
-\newif\ifthing@santa
-\newif\ifthing@chef
-\newif\ifthing@graduate
-\newif\ifthing@sombrero
-\newif\ifthing@alien
+\thing@ini[head]{hat}
+\thing@ini[head]{tophat}
+\thing@ini[head]{beret}
+\thing@ini[head]{strawhat}
+\thing@ini[head]{harlequin}
+\thing@ini[head]{witch}
+\thing@ini[head]{magichat}
+\thing@ini[head]{crown}
+\thing@ini[head]{queencrown}
+\thing@ini[head]{kingcrown}
+\thing@ini[head]{santa}
+\thing@ini[head]{chef}
+\thing@ini[head]{graduate}
+\thing@ini[head]{sombrero}
+\thing@ini[head]{alien}
 % Communication %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newif\ifthing@book
-\newif\ifthing@signpost
+\thing@ini[acess]{book}
+\thing@ini[acess]{signpost}
 \newif\ifthing@speech
 \newif\ifthing@think
 % Food %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newif\ifthing@pizza
+\thing@ini[acess]{pizza}
 \newif\ifthing@davidlikespineapplepizza
-\newif\ifthing@cheese
-\newif\ifthing@baguette
-\newif\ifthing@cake
-\newif\ifthing@icecream
-\newif\ifthing@milkshake
-\newif\ifthing@wine
-\newif\ifthing@cocktail
-\newif\ifthing@banana
+\thing@ini[acess]{cheese}
+\thing@ini[acess]{baguette}
+\thing@ini[acess]{cake}
+\thing@ini[acess]{icecream}
+\thing@ini[acess]{milkshake}
+\thing@ini[acess]{wine}
+\thing@ini[acess]{cocktail}
+\thing@ini[acess]{banana}
 % Sport %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newif\ifthing@cricket
-\newif\ifthing@hockey
-\newif\ifthing@football
+\thing@ini[acess]{cricket}
+\thing@ini[acess]{hockey}
+\thing@ini[acess]{football}
 % Other %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newif\ifthing@crystalball
-\newif\ifthing@magicwand
-\newif\ifthing@rollingpin
-\newif\ifthing@lightsaber
-\newif\ifthing@torch
-\newif\ifthing@basket
-\newif\ifthing@easter
-\newif\ifthing@crozier
-\newif\ifthing@shovel
-\newif\ifthing@pickaxe
-\newif\ifthing@strawbroom
-\newif\ifthing@broom
-\newif\ifthing@umbrella
-\newif\ifthing@umbrellaclosed
-\newif\ifthing@handbag
-\newif\ifthing@stick
+\thing@ini[acess]{crystalball}
+\thing@ini[acess]{magicwand}
+\thing@ini[acess]{rollingpin}
+\thing@ini[acess]{lightsaber}
+\thing@ini[acess]{torch}
+\thing@ini[acess]{basket}
+\thing@ini[acess]{easter}
+\thing@ini[acess]{crozier}
+\thing@ini[acess]{shovel}
+\thing@ini[acess]{pickaxe}
+\thing@ini[acess]{strawbroom}
+\thing@ini[acess]{broom}
+\thing@ini[acess]{umbrella}
+\thing@ini[acess]{umbrellaclosed}
+\thing@ini[acess]{handbag}
+\thing@ini[acess]{stick}
 
 \tikzset{%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -918,4 +936,20 @@
   \end{scope}
 \fi
 %
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Random items
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pgfmathdeclarerandomlist{head}{\thing@listhead}
+\pgfmathdeclarerandomlist{accessories}{\thing@listacces}
+
+\def\shufflethings{%
+ \pgfmathrandomitem{\head}{head}%
+ \edef\randomhead{\head}%
+ \pgfmathrandomitem{\accessories}{accessories}%
+ \edef\randomaccessories{\accessories}%
 }
