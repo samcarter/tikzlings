@@ -4,6 +4,8 @@
 
 ### New
 
+- Cookie, the dog
+
 ### Changed
 
 ### Fixed

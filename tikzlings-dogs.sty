@@ -1,0 +1,236 @@
+ % !TeX root = ./examples/dog.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% This package is part of the TikZlings package
+%% A package to bring cute little animals and other beings into tikz
+%% Maintained by samcarter
+%%
+%% Project repository and bug tracker:
+%% https://github.com/samcarter/tikzlings
+%%
+%% Released under the LaTeX Project Public License v1.3c or later
+%% See https://www.latex-project.org/lppl.txt
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{tikzlings-dogs}[2025/01/05 version v2.2 Drawing dogs in TikZ]
+
+\RequirePackage{tikz}
+\RequirePackage{tikzlings-addons}
+
+\newcommand*{\dog}[1][]{%
+  \begin{scope}%
+    \tikzset{/dog/.cd,#1}%
+    \dog@draw%
+  \end{scope}%
+  \thing[#1]%
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname doghookforeground\endcsname
+  \csname tikzlinghookforeground\endcsname
+}
+
+\newif\ifdog@threeD
+\newif\ifdog@back
+\newif\ifdog@contour
+
+\tikzset{
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Pass unknown keys on to tikz
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  /dog/.search also={/tikz,/pgf,/thing},
+  /dog/.cd,
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % body
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  body/.store in          = \dog@body,
+  body                    = brown!90!orange!70!white,
+  eye/.store in           = \dog@eye,
+  eye                     = black!80!white,
+  eyes/.forward to        = /dog/eye,
+  paws/.store in          = \dog@paws,
+  paws                    = \dog@body!60!white,
+  nose/.store in          = \dog@nose,
+  nose                    = black!80!white,
+  tail/.store in          = \dog@tail,
+  tail                    = \dog@body!60!white,
+  head/.store in          = \dog@head,
+  head                    = \dog@body!60!white,
+  ears/.store in          = \dog@ears,
+  ears                    = \dog@body,
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % options
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  3D/.code           = \dog@threeDtrue,
+  back/.code         = \dog@backtrue,
+  contour/.code      = \dog@contourtrue
+                       \def\dog@contour{#1}
+                       \def\dog@whiskers{#1},
+  contour/.default   = black,
+  outline/.forward to = /dog/contour,
+}
+
+\def\dog@draw{%
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % minimal bounding box size
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \path (-0.6,0.1) rectangle (0.96, 2.25);
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % store the current scale factor
+  % from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
+  \pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
+  \pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
+  \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % switch between 2D, 3D and contours, from
+  % https://chat.stackexchange.com/transcript/message/45991801#45991801
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifdog@threeD
+    \def\dog@part@draw[##1]{\shade[ball color=##1]}
+  \else% 3D
+    \ifdog@contour
+      \def\dog@part@draw[##1]{\draw[##1,\dog@contour,fill=white,line width=\scalingfactor*0.4pt]}
+    \else% contour
+      \def\dog@part@draw[##1]{\fill[##1]}
+    \fi% contour
+  \fi% 3D
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Body parts
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname doghookbackground\endcsname
+  \csname tikzlinghookbackground\endcsname
+  %
+  % body if back %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifdog@back
+    %
+    % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \dog@part@draw[\dog@tail,overlay] (0.8496, 0.6798).. controls (0.6181, 0.2192) and (-0.0349, 0.2165) .. (-0.0273, 0.4485).. controls (-0.0197, 0.6805) and (0.3442, 0.4836) .. (0.5802, 0.6615).. controls (0.7305, 0.7748) and (0.8744, 1.0345) .. (0.9231, 1.0115).. controls (0.9717, 0.9884) and (0.9263, 0.8323) .. (0.8496, 0.6798) -- cycle;
+    %
+    % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \dog@part@draw[\dog@body] (0.53, 0.89) .. controls (0.53, 0.49) and (0.53, 0.18) .. (0, 0.17) .. controls (-0.53, 0.18) and (-0.53, 0.49) .. (-0.53, 0.89) .. controls (-0.53, 1.29) and (-0.24, 1.61) .. (0, 1.61) .. controls (0.24, 1.61) and (0.53, 1.29) .. (0.53, 0.89) -- cycle;
+  \fi% back
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname doghookbelly\endcsname
+  \csname tikzlinghookbelly\endcsname
+  %
+  % Head %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \dog@part@draw[\dog@head] (0.51,1.91) .. controls (0.51,1.73) and (0.2,1.24) .. (0,1.24) .. controls (-0.2,1.24) and  (-0.51, 1.73) .. (-0.51,1.91) .. controls(-0.51,2.09) and (-0.28,2.24) .. (0,2.24) .. controls (0.28,2.24) and (0.51,2.09) .. (0.51,1.91) -- cycle;
+  %
+  % Paws %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \dog@part@draw[\dog@paws] (-0.18, 0.40).. controls (-0.18, 0.23) and (-0.15, 0.07) .. (-0.28, 0.08).. controls (-0.42, 0.09) and (-0.39, 0.23) .. (-0.39, 0.40).. controls (-0.39, 0.58) and (-0.34, 0.73) .. (-0.28, 0.73).. controls (-0.22, 0.73) and (-0.18, 0.58) .. (-0.18, 0.40) -- cycle;
+  \dog@part@draw[\dog@paws] (0.18, 0.40).. controls (0.18, 0.23) and (0.15, 0.07) .. (0.28, 0.08).. controls (0.42, 0.09) and (0.39, 0.23) .. (0.39, 0.40).. controls (0.39, 0.58) and (0.34, 0.73) .. (0.28, 0.73).. controls (0.22, 0.73) and (0.18, 0.58) .. (0.18, 0.40) -- cycle;
+  %
+  % Show details only from the front %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifdog@back
+    % Body if back
+    \dog@part@draw[\dog@body] (0.53, 0.89) .. controls (0.53, 0.49) and (0.53, 0.18) .. (0, 0.17) .. controls (-0.53, 0.18) and (-0.53, 0.49) .. (-0.53, 0.89) .. controls (-0.53, 1.29) and (-0.24, 1.61) .. (0, 1.61) .. controls (0.24, 1.61) and (0.53, 1.29) .. (0.53, 0.89) -- cycle;
+    %
+    % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \dog@part@draw[\dog@tail,overlay] (0.8496, 0.6798).. controls (0.6181, 0.2192) and (-0.0349, 0.2165) .. (-0.0273, 0.4485).. controls (-0.0197, 0.6805) and (0.3442, 0.4836) .. (0.5802, 0.6615).. controls (0.7305, 0.7748) and (0.8744, 1.0345) .. (0.9231, 1.0115).. controls (0.9717, 0.9884) and (0.9263, 0.8323) .. (0.8496, 0.6798) -- cycle;
+    %
+  \else
+    %
+    % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \dog@part@draw[\dog@eye] (-0.18, 1.73) circle [radius=0.04];
+    \dog@part@draw[\dog@eye] (0.18, 1.73) circle [radius=0.04];
+    %
+    % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \dog@part@draw[\dog@nose] (0.09, 1.50) .. controls (0.09, 1.47) and (0.05, 1.41) .. (0, 1.41) .. controls (-0.05, 1.41) and (-0.09, 1.47) .. (-0.09, 1.50) .. controls (-0.09, 1.53) and  (-0.05, 1.56) .. (0, 1.56) .. controls (0.05, 1.56) and (0.09, 1.53) .. (0.09, 1.50) -- cycle;
+    %
+  \fi% back
+  %
+  % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \dog@part@draw[\dog@ears, rotate=-10] (-0.75,1.7)  ellipse [x radius=0.14, y radius=0.4];
+  \dog@part@draw[\dog@ears, rotate=10] (0.75,1.7)  ellipse [x radius=0.14, y radius=0.4];
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \csname doghookbody\endcsname
+  \csname tikzlinghookbody\endcsname
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Documentation
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\clearpage
+%\section[Dog]{Cookie, the dog}
+%
+%\emph{A friend asked me about a dog-shaped cookie cutter, so the \tikzlings got to have a dog}
+%
+%\subsection{Package name}
+%
+%\begin{tcolorbox}[title={Package usage}]
+%\begin{samcode}
+%\usepackage{tikzlings-dogs}
+%\end{samcode}
+%\end{tcolorbox}
+%
+%\subsection{Basic Usage}
+%
+%\begin{tcblisting}{title={Basic dog}}
+%\dog
+%\end{tcblisting}
+%
+%\subsection{Options}
+%
+%The basic dog can be modified by changing its colour:
+%\begin{tcblisting}{title={Body colour}}
+%\dog[body=blue]
+%\end{tcblisting}
+%
+%In addition to the colour of the body, the colour of various body parts can be adjusted:
+%\begin{tcblisting}{title={Eye colour}}
+%\dog[eye=red]
+%\end{tcblisting}
+%\begin{tcblisting}{title={Nose colour}}
+%\dog[nose=red]
+%\end{tcblisting}
+%\begin{tcblisting}{title={Head colour}}
+%\dog[head=red]
+%\end{tcblisting}
+%\begin{tcblisting}{title={Ears colour}}
+%\dog[ears=red]
+%\end{tcblisting}
+%\begin{tcblisting}{title={Paw colour}}
+%\dog[paws=red]
+%\end{tcblisting}
+%\begin{tcblisting}{title={Tail colour}}
+%\dog[tail=red]
+%\end{tcblisting}
+%
+%To view the dog from behind:
+%\begin{tcblisting}{title={Back view}}
+%\dog[back]
+%\end{tcblisting}
+%
+%The key \saminline|3D| will make the dog 3-dimensional:
+%\begin{tcblisting}{title={3D view}}
+%\dog[3D]
+%\end{tcblisting}
+%
+%And finally the \saminline|contour| key will only draw the outlines:
+%\begin{tcblisting}{title={Contours}}
+%\dog[contour=black]
+%\end{tcblisting}
