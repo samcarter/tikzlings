@@ -4,6 +4,15 @@
 
 ### New
 
+### Changed
+
+### Fixed
+
+
+## [v2.2]
+
+### New
+
 - added `openmouth` option to ape, bat, bear, bee, bug, cat, hippo, koala, marmot, meerkat, moles, panda, pig, rhino, sloth, snowman and squirrel
 - added `\randomaccessories`, `\randomhead` and `\shufflethings` macros to allow adding random accessories
 
@@ -153,7 +162,8 @@
 
 ------
 
-[Unreleased]: https://github.com/samcarter/tikzlings/compare/v2.1...HEAD
+[Unreleased]: https://github.com/samcarter/tikzlings/compare/v2.2...HEAD
+[v2.2]: https://github.com/samcarter/tikzlings/compare/v2.1...v2.2
 [v2.1]: https://github.com/samcarter/tikzlings/compare/v2.0...v2.1
 [v2.0]: https://github.com/samcarter/tikzlings/compare/v1.0...v2.0
 [v1.0]: https://github.com/samcarter/tikzlings/compare/v0.9...v1.0
