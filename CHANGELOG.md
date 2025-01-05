@@ -10,6 +10,7 @@
 
 ### Fixed
 
+- bounding box of coati
 
 ## [v2.2]
 
