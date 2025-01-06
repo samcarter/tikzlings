@@ -51,8 +51,9 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.store in     = \mouse@body,
   body               = gray!90!white,
-  eye/.store in      = \mouse@eye,
-  eye                = \mouse@body!50!black,
+  eyes/.store in     = \mouse@eyes,
+  eyes               = \mouse@body!50!black,
+  eye/.forward to    = /mouse/eyes,
   whiskers/.store in = \mouse@whiskers,
   whiskers           = \mouse@body!50!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -186,8 +187,8 @@
     \mouse@part@draw[\mouse@body!50!black] (0, 1.248) circle[radius=0.09];
     %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \mouse@part@draw[\mouse@eye] (0.23, 1.68) circle[radius=0.05];
-    \mouse@part@draw[\mouse@eye] (-0.23, 1.68) circle[radius=0.05];
+    \mouse@part@draw[\mouse@eyes] (0.23, 1.68) circle[radius=0.05];
+    \mouse@part@draw[\mouse@eyes] (-0.23, 1.68) circle[radius=0.05];
     %
   \fi% back
   %
@@ -230,7 +231,7 @@
 %
 %In addition to the colour of the body, the colour of various body parts can be adjusted:
 %\begin{tcblisting}{title={Eye colour}}
-%\mouse[eye=red]
+%\mouse[eyes=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Whiskers colour}}
 %\mouse[whiskers=red]

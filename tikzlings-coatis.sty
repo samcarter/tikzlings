@@ -50,8 +50,9 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.store in     = \coati@body,
   body               = brown!50!darkgray!97!yellow!50!darkgray,
-  eye/.store in      = \coati@eye,
-  eye                = coati@bodybright!50!black,
+  eyes/.store in     = \coati@eyes,
+  eyes               = coati@bodybright!50!black,
+  eye/.forward to    = /coati/eyes,
   rotatehead/.store in = \coati@rotatehead,
   rotate head/.forward to = /coati/rotatehead,
   rotatehead         = 0,
@@ -199,8 +200,8 @@
     %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \unless\ifcoati@back
-      \coati@part@draw[\coati@eye] (0.007, 1.624) ellipse[x radius=0.04, y radius=0.06];
-      \coati@part@draw[\coati@eye] (-0.38, 1.865) ellipse[x radius=0.035, y radius=0.055];
+      \coati@part@draw[\coati@eyes] (0.007, 1.624) ellipse[x radius=0.04, y radius=0.06];
+      \coati@part@draw[\coati@eyes] (-0.38, 1.865) ellipse[x radius=0.035, y radius=0.055];
     \fi% back
     %
     % Right Ear %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -231,8 +232,8 @@
     %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \unless\ifcoati@back
-      \coati@part@draw[\coati@eye] (0.23, 1.62) circle[radius=0.05];
-      \coati@part@draw[\coati@eye] (-0.23, 1.62) circle[radius=0.05];
+      \coati@part@draw[\coati@eyes] (0.23, 1.62) circle[radius=0.05];
+      \coati@part@draw[\coati@eyes] (-0.23, 1.62) circle[radius=0.05];
     \fi% back
     %
     % Ears %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -299,7 +300,7 @@
 %
 %In addition to the colour of the body, the colour of the eyes can be adjusted:
 %\begin{tcblisting}{title={Eye colour}}
-%\coati[eye=red]
+%\coati[eyes=red]
 %\end{tcblisting}
 %
 %The head of the coati can be rotated, but please don't overdo this, otherwise his neck might break!

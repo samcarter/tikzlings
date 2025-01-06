@@ -51,10 +51,12 @@
   body               = gray!55!white,
   toes/.store in     = \rhino@toes,
   toes               = \rhino@body,
-  eye/.store in      = \rhino@eye,
-  eye                = white,
-  pupil/.store in    = \rhino@pupil,
-  pupil              = black,
+  eyes/.store in     = \rhino@eyes,
+  eyes               = white,
+  eye/.forward to    = /rhino/eyes,
+  pupils/.store in   = \rhino@pupils,
+  pupils             = black,
+  pupil/.forward to  = /rhino/eyes,
   mouth/.store in    = \rhino@mouth,
   mouth              = \rhino@body!50!black,
   horn/.store in     = \rhino@horn,
@@ -157,15 +159,15 @@
     %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \ifrhino@contour
-      \rhino@part@draw[\rhino@eye] (-0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
-      \rhino@part@draw[\rhino@eye] (0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
-      \rhino@part@draw[\rhino@pupil] (-0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
-      \rhino@part@draw[\rhino@pupil] (0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
+      \rhino@part@draw[\rhino@eyes] (-0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
+      \rhino@part@draw[\rhino@eyes] (0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
+      \rhino@part@draw[\rhino@pupils] (-0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
+      \rhino@part@draw[\rhino@pupils] (0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
     \else% contour
-      \fill[\rhino@eye] (-0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
-      \fill[\rhino@eye] (0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
-      \fill[\rhino@pupil] (-0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
-      \fill[\rhino@pupil] (0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
+      \fill[\rhino@eyes] (-0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
+      \fill[\rhino@eyes] (0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
+      \fill[\rhino@pupils] (-0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
+      \fill[\rhino@pupils] (0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
     \fi% contour
     %
     % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -232,10 +234,10 @@
 %
 %In addition to the colour of the body, the colour of various body parts can be adjusted:
 %\begin{tcblisting}{title={Eye colour}}
-%\rhino[eye=red]
+%\rhino[eyes=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Pupil colour}}
-%\rhino[pupil=red]
+%\rhino[pupils=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Mouth colour}}
 %\rhino[mouth=red]

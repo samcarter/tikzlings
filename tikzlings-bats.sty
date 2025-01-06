@@ -52,10 +52,12 @@
   body               = black!75!white,
   ears/.store in     = \bat@ears,
   ears               = \bat@body,
-  eye/.store in      = \bat@eye,
-  eye                = white,
-  pupil/.store in    = \bat@pupil,
-  pupil              = black,
+  eyes/.store in     = \bat@eyes,
+  eyes               = white,
+  eye/.forward to    = /bat/eyes,
+  pupils/.store in   = \bat@pupils,
+  pupils             = black,
+  pupil/.forward to  = /bat/pupils,
   mouth/.store in    = \bat@mouth,
   mouth              = black,
   feet/.store in     = \bat@feet,
@@ -167,10 +169,10 @@
     \bat@part@draw[\bat@feet] (-0.275,0.13) ellipse[x radius=0.03, y radius=0.1, rotate=-40];
     %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \bat@part@draw[\bat@eye] (-0.18,1.66) ellipse[x radius=0.1, y radius=0.15, rotate=10];
-    \bat@part@draw[\bat@pupil] (-0.15,1.645) ellipse[x radius=0.0357, y radius=0.0714, rotate=3];
-    \bat@part@draw[\bat@eye] (0.18,1.66) ellipse[x radius=0.1, y radius=0.15, rotate=-10];
-    \bat@part@draw[\bat@pupil] (0.15,1.645) ellipse[x radius=0.0357, y radius=0.0714, rotate=-3];
+    \bat@part@draw[\bat@eyes] (-0.18,1.66) ellipse[x radius=0.1, y radius=0.15, rotate=10];
+    \bat@part@draw[\bat@pupils] (-0.15,1.645) ellipse[x radius=0.0357, y radius=0.0714, rotate=3];
+    \bat@part@draw[\bat@eyes] (0.18,1.66) ellipse[x radius=0.1, y radius=0.15, rotate=-10];
+    \bat@part@draw[\bat@pupils] (0.15,1.645) ellipse[x radius=0.0357, y radius=0.0714, rotate=-3];
     %
     % Teeth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \ifbat@teeth
@@ -226,10 +228,10 @@
 %
 %In addition to the colour of the body, the colour of various body parts can be adjusted:
 %\begin{tcblisting}{title={Eye colour}}
-%\bat[eye=red]
+%\bat[eyes=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Pupil colour}}
-%\bat[pupil=red]
+%\bat[pupils=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Mouth colour}}
 %\bat[mouth=red]

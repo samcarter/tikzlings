@@ -1,4 +1,4 @@
- % !TeX root = ./examples/pingu.tex
+ % !TeX root = ./examples/penguin.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
 %% This package is part of the TikZlings package
@@ -54,10 +54,12 @@
   feet               = yellow!50!orange,
   bill/.store in     = \penguin@bill,
   bill               = orange,
-  eye/.store in      = \penguin@eye,
-  eye                = white!95!black,
-  pupil/.store in    = \penguin@pupil,
-  pupil              = black,
+  eyes/.store in     = \penguin@eyes,
+  eyes               = white!95!black,
+  eye/.forward to    = /penguin/eyes,
+  pupils/.store in   = \penguin@pupils,
+  pupils             = black,
+  pupil/.forward to  = /penguin/pupils,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
@@ -147,15 +149,15 @@
   % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifpenguin@back
     \ifpenguin@contour
-      \penguin@part@draw[\penguin@eye] (-0.175,1.64) ellipse[x radius=0.1, y radius=0.15, rotate=-10];
-      \penguin@part@draw[\penguin@pupil] (-0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714, rotate=-3];
-      \penguin@part@draw[\penguin@eye] (0.175,1.64) ellipse[x radius=0.1, y radius=0.15, rotate=10];
-      \penguin@part@draw[\penguin@pupil] (0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714, rotate=3];
+      \penguin@part@draw[\penguin@eyes] (-0.175,1.64) ellipse[x radius=0.1, y radius=0.15, rotate=-10];
+      \penguin@part@draw[\penguin@pupils] (-0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714, rotate=-3];
+      \penguin@part@draw[\penguin@eyes] (0.175,1.64) ellipse[x radius=0.1, y radius=0.15, rotate=10];
+      \penguin@part@draw[\penguin@pupils] (0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714, rotate=3];
     \else% contour
-      \fill[\penguin@eye] (-0.175,1.64) ellipse[x radius=0.1, y radius=0.15, rotate=-10];
-      \fill[\penguin@pupil] (-0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714, rotate=-3];
-      \fill[\penguin@eye] (0.175,1.64) ellipse[x radius=0.1, y radius=0.15, rotate=10];
-      \fill[\penguin@pupil] (0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714, rotate=3];
+      \fill[\penguin@eyes] (-0.175,1.64) ellipse[x radius=0.1, y radius=0.15, rotate=-10];
+      \fill[\penguin@pupils] (-0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714, rotate=-3];
+      \fill[\penguin@eyes] (0.175,1.64) ellipse[x radius=0.1, y radius=0.15, rotate=10];
+      \fill[\penguin@pupils] (0.145,1.625) ellipse[x radius=0.0357, y radius=0.0714, rotate=3];
     \fi% contour
   \fi% back
   %
@@ -203,10 +205,10 @@
 %
 %In addition to the colour of the body, the colour of various body parts can be adjusted:
 %\begin{tcblisting}{title={Eye colour}}
-%\penguin[eye=red]
+%\penguin[eyes=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Pupil colour}}
-%\penguin[pupil=red]
+%\penguin[pupils=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Bill colour}}
 %\penguin[bill=red]

@@ -1,4 +1,4 @@
- % !TeX root = ./examples/mole.tex
+ % !TeX root = ./examples/moles.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
 %% This package is part of the TikZlings package
@@ -51,8 +51,9 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.store in     = \moles@body,
   body               = gray,
-  eye/.store in      = \moles@eye,
-  eye                = \moles@body!60!black,
+  eyes/.store in     = \moles@eyes,
+  eyes               = \moles@body!60!black,
+  eye/.forward to    = /moles/eyes,
   feet/.store in     = \moles@feet,
   feet               = red!20!white!50!brown,
   hands/.store in    = \moles@hands,
@@ -77,7 +78,7 @@
   contour/.code      = \moles@contourtrue
                        \def\moles@contour{#1}
                        \def\moles@mouth{#1}
-                       \def\moles@eye{#1},
+                       \def\moles@eyes{#1},
   contour/.default   = black,
   outline/.forward to = /moles/contour,
 }
@@ -190,11 +191,11 @@
     %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \ifmoles@threeD
-      \fill[\moles@eye] (-0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=-15];
-      \fill[\moles@eye!50!black] (0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=15];
+      \fill[\moles@eyes] (-0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=-15];
+      \fill[\moles@eyes!50!black] (0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=15];
     \else% 3D
-      \fill[\moles@eye] (-0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=-15];
-      \fill[\moles@eye] (0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=15];
+      \fill[\moles@eyes] (-0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=-15];
+      \fill[\moles@eyes] (0.165,1.79) ellipse[x radius=0.055, y radius=0.015, rotate=15];
     \fi% 3D
     %
     % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -246,7 +247,7 @@
 %
 %In addition to the colour of the body, the colour of various body parts can be adjusted:
 %\begin{tcblisting}{title={Eye colour}}
-%\moles[eye=red]
+%\moles[eyes=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Muzzle colour}}
 %\moles[muzzle=red]

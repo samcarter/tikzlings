@@ -77,8 +77,9 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.store in     = \marmot@body,
   body               = brown,
-  eye/.store in      = \marmot@eye,
-  eye                = \marmot@body!50!black,
+  eyes/.store in     = \marmot@eyes,
+  eyes               = \marmot@body!50!black,
+  eye/.forward to    = /marmot/eyes,
   mouth/.store in    = \marmot@mouth,
   mouth              = \marmot@body!50!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -230,8 +231,8 @@
     \marmot@part@draw[\marmot@body!50!black] (0,1.6) circle[radius=0.08];
     %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \marmot@part@draw[\marmot@eye] (-0.155,1.77) circle[radius=0.05];
-    \marmot@part@draw[\marmot@eye] (0.155,1.77) circle[radius=0.05];
+    \marmot@part@draw[\marmot@eyes] (-0.155,1.77) circle[radius=0.05];
+    \marmot@part@draw[\marmot@eyes] (0.155,1.77) circle[radius=0.05];
     %
     % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \ifmarmot@openmouth
@@ -310,7 +311,7 @@
 %
 %In addition to the colour of the body, the colour of various body parts can be adjusted:
 %\begin{tcblisting}{title={Eye colour}}
-%\marmot[eye=red]
+%\marmot[eyes=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Mouth colour}}
 %\marmot[mouth=red]

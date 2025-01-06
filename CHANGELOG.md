@@ -8,6 +8,8 @@
 
 ### Changed
 
+- added synonyms for `eye`/`eyes` and `pupil`/`pupils`
+
 ### Fixed
 
 - bounding box of coati

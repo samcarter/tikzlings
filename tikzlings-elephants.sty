@@ -47,8 +47,9 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.store in     = \elephant@body,
   body               = gray,
-  eye/.store in      = \elephant@eye,
-  eye                = \elephant@body!30!black,
+  eyes/.store in     = \elephant@eyes,
+  eyes               = \elephant@body!30!black,
+  eye/.forward to    = /elephant/eyes,
   ears/.store in     = \elephant@ears,
   ears               = \elephant@body!30!white,
   feet/.store in     = \elephant@feet,
@@ -175,8 +176,8 @@
     \fi% 3D
     %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \elephant@part@draw[\elephant@eye] (-0.155, 1.7) circle[radius=0.05];
-    \elephant@part@draw[\elephant@eye] (0.155, 1.7) circle[radius=0.05];
+    \elephant@part@draw[\elephant@eyes] (-0.155, 1.7) circle[radius=0.05];
+    \elephant@part@draw[\elephant@eyes] (0.155, 1.7) circle[radius=0.05];
   %
   \fi% back
   %
@@ -228,7 +229,7 @@
 %\elephant[ears=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Eye colour}}
-%\elephant[eye=red]
+%\elephant[eyes=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Hand colour}}
 %\elephant[hands=red]

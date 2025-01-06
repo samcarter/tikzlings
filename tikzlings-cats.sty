@@ -78,11 +78,12 @@
   body                    = gray!30!black,
   whiskers/.store in      = \cat@whiskers,
   whiskers                = gray!50!white,
-  eye/.store in           = \cat@eye,
-  eye                     = yellow!80!orange,
-  eyes/.forward to        = /cat/eye,
-  pupil/.store in         = \cat@pupil,
-  pupil                   = black,
+  eyes/.store in          = \cat@eyes,
+  eyes                    = yellow!80!orange,
+  eye/.forward to         = /cat/eyes,
+  pupils/.store in        = \cat@pupils,
+  pupils                  = black,
+  pupil/.forward to       = /cat/pupils,
   pupilwidth/.code        = \def\cat@pupil@width{#1}
                             \edef\cat@pupil@offset{\strip@pt\dimexpr#1pt/4},
   pupil width/.forward to = /cat/pupilwidth,
@@ -189,12 +190,12 @@
   \unless\ifcat@back
     %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \cat@part@draw[\cat@eye] (-0.1014, 1.7491) .. controls (-0.1014, 1.7491) and (-0.1451, 1.7171) .. (-0.1841, 1.7284) .. controls (-0.2231, 1.7397) and (-0.2427, 1.79) .. (-0.2427, 1.79) .. controls (-0.2427, 1.79) and (-0.1992, 1.8221) .. (-0.1602, 1.8108) .. controls (-0.1212, 1.7995) and (-0.1014, 1.7491) .. (-0.1014, 1.7491) -- cycle;
-    \cat@part@draw[\cat@eye] (0.1014, 1.7491) .. controls (0.1014, 1.7491) and (0.1451, 1.7171) .. (0.1841, 1.7284) .. controls (0.2231, 1.7397) and (0.2427, 1.79) .. (0.2427, 1.79) .. controls (0.2427, 1.79) and (0.1992, 1.8221) .. (0.1602, 1.8108) .. controls (0.1212, 1.7995) and (0.1014, 1.7491) .. (0.1014, 1.7491) -- cycle;
+    \cat@part@draw[\cat@eyes] (-0.1014, 1.7491) .. controls (-0.1014, 1.7491) and (-0.1451, 1.7171) .. (-0.1841, 1.7284) .. controls (-0.2231, 1.7397) and (-0.2427, 1.79) .. (-0.2427, 1.79) .. controls (-0.2427, 1.79) and (-0.1992, 1.8221) .. (-0.1602, 1.8108) .. controls (-0.1212, 1.7995) and (-0.1014, 1.7491) .. (-0.1014, 1.7491) -- cycle;
+    \cat@part@draw[\cat@eyes] (0.1014, 1.7491) .. controls (0.1014, 1.7491) and (0.1451, 1.7171) .. (0.1841, 1.7284) .. controls (0.2231, 1.7397) and (0.2427, 1.79) .. (0.2427, 1.79) .. controls (0.2427, 1.79) and (0.1992, 1.8221) .. (0.1602, 1.8108) .. controls (0.1212, 1.7995) and (0.1014, 1.7491) .. (0.1014, 1.7491) -- cycle;
     %
     % Pupils %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \cat@part@draw[\cat@pupil] (-0.1720, 1.8071) .. controls (-0.1720+\cat@pupil@width, 1.7827+\cat@pupil@offset) and (-0.1720+\cat@pupil@width, 1.7584-\cat@pupil@offset) .. (-0.1720, 1.7341) .. controls (-0.1720-\cat@pupil@width, 1.7584-\cat@pupil@offset) and (-0.1720-\cat@pupil@width, 1.7827+\cat@pupil@offset) .. (-0.1720, 1.8071) -- cycle;
-    \cat@part@draw[\cat@pupil] ( 0.1720, 1.8071) .. controls ( 0.1720+\cat@pupil@width, 1.7827+\cat@pupil@offset) and ( 0.1720+\cat@pupil@width, 1.7584-\cat@pupil@offset) .. ( 0.1720, 1.7341) .. controls ( 0.1720-\cat@pupil@width, 1.7584-\cat@pupil@offset) and ( 0.1720-\cat@pupil@width, 1.7827+\cat@pupil@offset) .. ( 0.1720, 1.8071) -- cycle;
+    \cat@part@draw[\cat@pupils] (-0.1720, 1.8071) .. controls (-0.1720+\cat@pupil@width, 1.7827+\cat@pupil@offset) and (-0.1720+\cat@pupil@width, 1.7584-\cat@pupil@offset) .. (-0.1720, 1.7341) .. controls (-0.1720-\cat@pupil@width, 1.7584-\cat@pupil@offset) and (-0.1720-\cat@pupil@width, 1.7827+\cat@pupil@offset) .. (-0.1720, 1.8071) -- cycle;
+    \cat@part@draw[\cat@pupils] ( 0.1720, 1.8071) .. controls ( 0.1720+\cat@pupil@width, 1.7827+\cat@pupil@offset) and ( 0.1720+\cat@pupil@width, 1.7584-\cat@pupil@offset) .. ( 0.1720, 1.7341) .. controls ( 0.1720-\cat@pupil@width, 1.7584-\cat@pupil@offset) and ( 0.1720-\cat@pupil@width, 1.7827+\cat@pupil@offset) .. ( 0.1720, 1.8071) -- cycle;
     %
     % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \ifcat@openmouth
@@ -333,10 +334,10 @@
 %
 %In addition to the colour of the body, the colour of various body parts can be adjusted:
 %\begin{tcblisting}{title={Eye colour}}
-%\cat[eye=green]
+%\cat[eyes=green]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Pupil colour}}
-%\cat[pupil=red]
+%\cat[pupils=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Nose colour}}
 %\cat[nose=red]
@@ -353,7 +354,7 @@
 %\cat[openmouth]
 %\end{tcblisting}
 %
-%The shape of the \saminline|pupil| can be changed with the \saminline|pupilwidth| option:
+%The shape of the \saminline|pupils| can be changed with the \saminline|pupilwidth| option:
 %\begin{tcblisting}{title={Width of pupils}}
 %\cat[pupilwidth=0.015]
 %\end{tcblisting}

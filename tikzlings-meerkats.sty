@@ -65,8 +65,9 @@
   tip                = \meerkat@tail!50!black,
   ears/.store in     = \meerkat@ears,
   ears               = \meerkat@body!50!black,
-  eye/.store in      = \meerkat@eye,
-  eye                = black,
+  eyes/.store in     = \meerkat@eyes,
+  eyes               = black,
+  eye/.forward to    = /meerkat/eyes,
   eyecircles/.store in = \meerkat@eyecircles,
   eyecircles         = \meerkat@body!75!black,
   eye circles/.forward to = /meerkat/eyecircles,
@@ -235,8 +236,8 @@
       % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
       \meerkat@part@draw[\meerkat@eyecircles,rotate=30] (0.75,1.7) ellipse [x radius=0.14, y radius=0.08];
       \meerkat@part@draw[\meerkat@eyecircles,rotate=-30] (-0.75,1.7) ellipse [x radius=0.14, y radius=0.08];
-      \meerkat@part@draw[\meerkat@eye] (0.18,1.86) circle [radius=0.055];
-      \meerkat@part@draw[\meerkat@eye] (-0.18,1.86) circle [radius=0.055];
+      \meerkat@part@draw[\meerkat@eyes] (0.18,1.86) circle [radius=0.055];
+      \meerkat@part@draw[\meerkat@eyes] (-0.18,1.86) circle [radius=0.055];
       \meerkat@part@draw[white] (0.165,1.88) circle [radius=0.01];
       \meerkat@part@draw[white] (-0.195,1.88) circle [radius=0.01];
     \fi % back
@@ -281,7 +282,7 @@
 %
 %In addition to the colour of the body, the colour of various body parts can be adjusted:
 %\begin{tcblisting}{title={Eye colour}}
-%\meerkat[eye=red]
+%\meerkat[eyes=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Eye circle colour}}
 %\meerkat[eyecircles=red]

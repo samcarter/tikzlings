@@ -49,10 +49,12 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.store in     = \panda@body,
   body               = white!90!gray,
-  eye/.store in      = \panda@eye,
-  eye                = white,
-  pupil/.store in    = \panda@pupil,
-  pupil              = black,
+  eyes/.store in     = \panda@eyes,
+  eyes               = white,
+  eye/.forward to    = /panda/eyes,
+  pupils/.store in   = \panda@pupils,
+  pupils             = black,
+  pupil/.forward to  = /panda/pupils,
   mouth/.store in    = \panda@mouth,
   mouth              = black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -156,10 +158,10 @@
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \panda@part@draw[black] (0.3732, 1.6905) .. controls (0.3498, 1.767) and (0.2032, 1.8059) .. (0.0944, 1.7715) .. controls (-0.0145, 1.7371) and (0.173, 1.5479) .. (0.2508, 1.5443) .. controls (0.3286, 1.5407) and (0.3965, 1.614) .. (0.3732, 1.6905) -- cycle;
     \panda@part@draw[black] (-0.3732, 1.6905) .. controls (-0.3498, 1.767) and (-0.2032, 1.8059) .. (-0.0944, 1.7715) .. controls (0.0145, 1.7371) and (-0.173, 1.5479) .. (-0.2508, 1.5443) .. controls (-0.3286, 1.5407) and (-0.3965, 1.614) .. (-0.3732, 1.6905) -- cycle;
-    \panda@part@draw[\panda@eye] (-0.18, 1.7) circle[radius=0.05];
-    \panda@part@draw[\panda@eye] (0.18, 1.7) circle[radius=0.05];
-    \panda@part@draw[\panda@pupil] (0.17, 1.695) circle[radius=0.02];
-    \panda@part@draw[\panda@pupil] (-0.17, 1.695) circle[radius=0.02];
+    \panda@part@draw[\panda@eyes] (-0.18, 1.7) circle[radius=0.05];
+    \panda@part@draw[\panda@eyes] (0.18, 1.7) circle[radius=0.05];
+    \panda@part@draw[\panda@pupils] (0.17, 1.695) circle[radius=0.02];
+    \panda@part@draw[\panda@pupils] (-0.17, 1.695) circle[radius=0.02];
     %
     % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \ifpanda@openmouth
@@ -212,10 +214,10 @@
 %
 %In addition to the colour of the body, the colour of various body parts can be adjusted:
 %\begin{tcblisting}{title={Eye colour}}
-%\panda[eye=red]
+%\panda[eyes=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Pupil colour}}
-%\panda[pupil=red]
+%\panda[pupils=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Mouth colour}}
 %\panda[mouth=red]

@@ -54,10 +54,12 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.store in     = \chicken@body,
   body               = brown!90!orange!70!yellow!40!white,
-  eye/.store in      = \chicken@eye,
-  eye                = white!90!gray,
-  pupil/.store in    = \chicken@pupil,
-  pupil              = brown!30!black,
+  eyes/.store in     = \chicken@eyes,
+  eyes               = white!90!gray,
+  eye/.forward to    = /chicken/eyes,
+  pupils/.store in   = \chicken@pupils,
+  pupils             = brown!30!black,
+  pupil/.forward to  = /chicken/pupils,
   bill/.store in     = \chicken@bill,
   bill               = yellow,
   feet/.store in     = \chicken@feet,
@@ -178,10 +180,10 @@
   %
   % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifchicken@back
-    \chicken@part@draw[\chicken@eye] (0.135,1.8) ellipse[x radius=0.06, y radius=0.07];
-    \chicken@part@draw[\chicken@eye] (-0.135,1.8) ellipse[x radius=0.06, y radius=0.07];
-    \chicken@part@draw[\chicken@pupil] (0.124,1.78) ellipse[x radius=0.017, y radius=0.027];
-    \chicken@part@draw[\chicken@pupil] (-0.124,1.78) ellipse[x radius=0.017, y radius=0.027];
+    \chicken@part@draw[\chicken@eyes] (0.135,1.8) ellipse[x radius=0.06, y radius=0.07];
+    \chicken@part@draw[\chicken@eyes] (-0.135,1.8) ellipse[x radius=0.06, y radius=0.07];
+    \chicken@part@draw[\chicken@pupils] (0.124,1.78) ellipse[x radius=0.017, y radius=0.027];
+    \chicken@part@draw[\chicken@pupils] (-0.124,1.78) ellipse[x radius=0.017, y radius=0.027];
   \fi% back
   %
   % Bill %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -310,10 +312,10 @@
   %
   % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifchicken@back
-    \chicken@part@draw[\chicken@eye] (0.075,0.925) ellipse[x radius=0.055, y radius=0.065];
-    \chicken@part@draw[\chicken@eye] (-0.075,0.925) ellipse[x radius=0.055, y radius=0.065];
-    \chicken@part@draw[\chicken@pupil] (0.07,0.91) ellipse[x radius=0.017, y radius=0.024];
-    \chicken@part@draw[\chicken@pupil] (-0.07,0.91) ellipse[x radius=0.017, y radius=0.024];
+    \chicken@part@draw[\chicken@eyes] (0.075,0.925) ellipse[x radius=0.055, y radius=0.065];
+    \chicken@part@draw[\chicken@eyes] (-0.075,0.925) ellipse[x radius=0.055, y radius=0.065];
+    \chicken@part@draw[\chicken@pupils] (0.07,0.91) ellipse[x radius=0.017, y radius=0.024];
+    \chicken@part@draw[\chicken@pupils] (-0.07,0.91) ellipse[x radius=0.017, y radius=0.024];
   \fi% back
   %
   % Bill %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -378,11 +380,11 @@
 %\end{tcblisting}
 %
 %\begin{tcblisting}{title={Eye colour}}
-%\chicken[eye=red]
+%\chicken[eyes=red]
 %\end{tcblisting}
 %
 %\begin{tcblisting}{title={Pupil color}}
-%\chicken[pupil=red]
+%\chicken[pupils=red]
 %\end{tcblisting}
 %
 %\begin{tcblisting}{title={Bill colour}}

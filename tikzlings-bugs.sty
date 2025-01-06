@@ -59,10 +59,12 @@
   dots               = black!90!white,
   antennas/.store in = \bug@antennas,
   antennas           = red!80!black,
-  eye/.store in      = \bug@eye,
-  eye                = white,
-  pupil/.store in    = \bug@pupil,
-  pupil              = black,
+  eyes/.store in     = \bug@eyes,
+  eyes               = white,
+  eye/.forward to    = /bug/eyes,
+  pupils/.store in   = \bug@pupils,
+  pupils             = black,
+  pupil/.forward to  = /bug/pupils,
   mouth/.store in    = \bug@mouth,
   mouth              = red,
   feet/.store in     = \bug@feet,
@@ -186,10 +188,10 @@
   \else% back
     %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \bug@part@draw[\bug@eye] (0.13,1.75) ellipse[x radius=0.067, y radius=0.085];
-    \bug@part@draw[\bug@eye] (-0.13,1.75) ellipse[x radius=0.067, y radius=0.085];
-    \bug@part@draw[\bug@pupil] (0.12,1.73) ellipse[x radius=0.019, y radius=0.029];
-    \bug@part@draw[\bug@pupil] (-0.12,1.73) ellipse[x radius=0.019, y radius=0.029];
+    \bug@part@draw[\bug@eyes] (0.13,1.75) ellipse[x radius=0.067, y radius=0.085];
+    \bug@part@draw[\bug@eyes] (-0.13,1.75) ellipse[x radius=0.067, y radius=0.085];
+    \bug@part@draw[\bug@pupils] (0.12,1.73) ellipse[x radius=0.019, y radius=0.029];
+    \bug@part@draw[\bug@pupils] (-0.12,1.73) ellipse[x radius=0.019, y radius=0.029];
     %
     % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \bug@part@draw[\bug@arms] (-0.25,0.88) circle[x radius=0.07,y radius=0.18, rotate=35];
@@ -250,10 +252,10 @@
 %\bug[antennas=blue]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Eye colour}}
-%\bug[eye=blue]
+%\bug[eyes=blue]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Pupil colour}}
-%\bug[pupil=blue]
+%\bug[pupils=blue]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Mouth colour}}
 %\bug[mouth=blue]

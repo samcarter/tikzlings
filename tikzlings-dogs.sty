@@ -47,9 +47,9 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.store in          = \dog@body,
   body                    = brown!90!orange!70!white,
-  eye/.store in           = \dog@eye,
-  eye                     = black!80!white,
-  eyes/.forward to        = /dog/eye,
+  eyes/.store in          = \dog@eyes,
+  eyes                    = black!80!white,
+  eye/.forward to         = /dog/eyes,
   paws/.store in          = \dog@paws,
   paws                    = \dog@body!60!white,
   nose/.store in          = \dog@nose,
@@ -152,8 +152,8 @@
   \else
     %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \dog@part@draw[\dog@eye] (-0.18, 1.73) circle [radius=0.04];
-    \dog@part@draw[\dog@eye] (0.18, 1.73) circle [radius=0.04];
+    \dog@part@draw[\dog@eyes] (-0.18, 1.73) circle [radius=0.04];
+    \dog@part@draw[\dog@eyes] (0.18, 1.73) circle [radius=0.04];
     %
     % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \dog@part@draw[\dog@nose] (0.09, 1.50) .. controls (0.09, 1.47) and (0.05, 1.41) .. (0, 1.41) .. controls (-0.05, 1.41) and (-0.09, 1.47) .. (-0.09, 1.50) .. controls (-0.09, 1.53) and  (-0.05, 1.56) .. (0, 1.56) .. controls (0.05, 1.56) and (0.09, 1.53) .. (0.09, 1.50) -- cycle;
@@ -202,7 +202,7 @@
 %
 %In addition to the colour of the body, the colour of various body parts can be adjusted:
 %\begin{tcblisting}{title={Eye colour}}
-%\dog[eye=red]
+%\dog[eyes=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Nose colour}}
 %\dog[nose=red]

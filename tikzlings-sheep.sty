@@ -53,8 +53,9 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.store in     = \sheep@body,
   body               = brown!50!darkgray!97!yellow!50!darkgray,
-  eye/.store in      = \sheep@eye,
-  eye                = sheep@bright!50!black,
+  eyes/.store in     = \sheep@eyes,
+  eyes               = sheep@bright!50!black,
+  eye/.forward to    = /sheep/eyes,
   nose/.store in     = \sheep@nose,
   nose               = sheep@bright!50!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -181,8 +182,8 @@
     %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \unless\ifsheep@back
-      \sheep@part@draw[\sheep@eye] (0.2, 1.66) circle[radius=0.06];
-      \sheep@part@draw[\sheep@eye] (-0.2, 1.66) circle[radius=0.06];
+      \sheep@part@draw[\sheep@eyes] (0.2, 1.66) circle[radius=0.06];
+      \sheep@part@draw[\sheep@eyes] (-0.2, 1.66) circle[radius=0.06];
     \fi% back
     %
     % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -248,7 +249,7 @@
 %
 %In addition to the colour of the body, the colour of various body parts can be adjusted:
 %\begin{tcblisting}{title={Eye colour}}
-%\sheep[eye=red]
+%\sheep[eyes=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Nose colour}}
 %\sheep[nose=red]

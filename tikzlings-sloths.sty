@@ -52,10 +52,12 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.store in     = \sloth@body,
   body               = slothcol,
-  eye/.store in      = \sloth@eye,
-  eye                = black,
-  eyelid/.store in   = \sloth@eyelid,
-  eyelid             = sloth@bright10!50!white,
+  eyes/.store in     = \sloth@eyes,
+  eyes               = black,
+  eye/.forward to    = /sloth/eyes,
+  eyelids/.store in  = \sloth@eyelids,
+  eyelids            = sloth@bright10!50!white,
+  eyelid/.forward to = /sloth/eyelids,
   mouth/.store in    = \sloth@mouth,
   mouth              = sloth@bright10!40!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -71,7 +73,7 @@
   contour/.code      = \sloth@contourtrue
                        \def\sloth@contour{#1}
                        \def\sloth@mouth{#1}
-                       \def\sloth@eyelid{#1},
+                       \def\sloth@eyelids{#1},
   contour/.default   = black,
   outline/.forward to = /sloth/contour,
 }
@@ -186,23 +188,23 @@
     %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \ifsloth@sleeping
-      \fill[\sloth@eyelid] (0.195, 1.705) rectangle ++(0.005, 0.02);
-      \fill[\sloth@eyelid,rotate around={22:(0.195, 1.76)}] (0.195, 1.705) rectangle ++(0.005, 0.02);
-      \fill[\sloth@eyelid,rotate around={44:(0.195, 1.76)}] (0.195, 1.701) rectangle ++(0.005, 0.02);
-      \fill[\sloth@eyelid,rotate around={-22:(0.195, 1.76)}] (0.195, 1.705) rectangle ++(0.005, 0.02);
-      \fill[\sloth@eyelid,rotate around={-44:(0.195, 1.76)}] (0.195, 1.705) rectangle ++(0.005, 0.02);
+      \fill[\sloth@eyelids] (0.195, 1.705) rectangle ++(0.005, 0.02);
+      \fill[\sloth@eyelids,rotate around={22:(0.195, 1.76)}] (0.195, 1.705) rectangle ++(0.005, 0.02);
+      \fill[\sloth@eyelids,rotate around={44:(0.195, 1.76)}] (0.195, 1.701) rectangle ++(0.005, 0.02);
+      \fill[\sloth@eyelids,rotate around={-22:(0.195, 1.76)}] (0.195, 1.705) rectangle ++(0.005, 0.02);
+      \fill[\sloth@eyelids,rotate around={-44:(0.195, 1.76)}] (0.195, 1.705) rectangle ++(0.005, 0.02);
       %
-      \fill[\sloth@eyelid] (-0.195, 1.705) rectangle ++(0.005, 0.02);
-      \fill[\sloth@eyelid,rotate around={22:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02);
-      \fill[\sloth@eyelid,rotate around={44:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02);
-      \fill[\sloth@eyelid,rotate around={-22:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02);
-      \fill[\sloth@eyelid,rotate around={-44:(-0.195, 1.76)}] (-0.195, 1.701) rectangle ++(0.005, 0.02);
+      \fill[\sloth@eyelids] (-0.195, 1.705) rectangle ++(0.005, 0.02);
+      \fill[\sloth@eyelids,rotate around={22:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02);
+      \fill[\sloth@eyelids,rotate around={44:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02);
+      \fill[\sloth@eyelids,rotate around={-22:(-0.195, 1.76)}] (-0.195, 1.705) rectangle ++(0.005, 0.02);
+      \fill[\sloth@eyelids,rotate around={-44:(-0.195, 1.76)}] (-0.195, 1.701) rectangle ++(0.005, 0.02);
       %
-      \sloth@part@draw[\sloth@eyelid] (0.237, 1.743) .. controls (0.237, 1.712) and (0.157, 1.712) .. (0.157, 1.743) .. controls (0.157, 1.802) and (0.237, 1.802) .. (0.237, 1.743) -- cycle;
-      \sloth@part@draw[\sloth@eyelid] (-0.237, 1.743) .. controls (-0.237, 1.712) and (-0.157, 1.712) .. (-0.157, 1.743) .. controls (-0.157, 1.802) and (-0.237, 1.802) .. (-0.237, 1.743) -- cycle;
+      \sloth@part@draw[\sloth@eyelids] (0.237, 1.743) .. controls (0.237, 1.712) and (0.157, 1.712) .. (0.157, 1.743) .. controls (0.157, 1.802) and (0.237, 1.802) .. (0.237, 1.743) -- cycle;
+      \sloth@part@draw[\sloth@eyelids] (-0.237, 1.743) .. controls (-0.237, 1.712) and (-0.157, 1.712) .. (-0.157, 1.743) .. controls (-0.157, 1.802) and (-0.237, 1.802) .. (-0.237, 1.743) -- cycle;
     \else% sleeping
-      \sloth@part@draw[\sloth@eye] (0.193,1.75) circle[radius=0.04];
-      \sloth@part@draw[\sloth@eye] (-0.193,1.75) circle[radius=0.04];
+      \sloth@part@draw[\sloth@eyes] (0.193,1.75) circle[radius=0.04];
+      \sloth@part@draw[\sloth@eyes] (-0.193,1.75) circle[radius=0.04];
       \fill[white] (-0.2  ,1.765) circle[radius=0.006];
       \fill[white] ( 0.186,1.765) circle[radius=0.006];
     \fi% sleeping
@@ -300,7 +302,7 @@
 %
 %In addition to the colour of the body, the colour of various body parts can be adjusted:
 %\begin{tcblisting}{title={Eye colour}}
-%\sloth[eye=red]
+%\sloth[eyes=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Mouth colour}}
 %\sloth[mouth=red]
@@ -316,7 +318,7 @@
 %\sloth[sleeping]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Eyelid colour}}
-%\sloth[sleeping,eyelid=red]
+%\sloth[sleeping,eyelids=red]
 %\end{tcblisting}
 %
 %To view the sloth from behind:

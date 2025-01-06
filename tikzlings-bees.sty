@@ -57,8 +57,9 @@
   stripes            = black,
   antennas/.store in = \bee@antennas,
   antennas           = black,
-  eye/.store in      = \bee@eye,
-  eye                = black,
+  eyes/.store in     = \bee@eyes,
+  eyes               = black,
+  eye/.forward to    = /bee/eyes,
   mouth/.store in    = \bee@mouth,
   mouth              = black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -167,8 +168,8 @@
   \else% back
     %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \bee@part@draw[\bee@eye] (-0.15,1.8) circle[radius=0.05];
-    \bee@part@draw[\bee@eye] (0.15,1.8) circle[radius=0.05];
+    \bee@part@draw[\bee@eyes] (-0.15,1.8) circle[radius=0.05];
+    \bee@part@draw[\bee@eyes] (0.15,1.8) circle[radius=0.05];
     %
     % Arms %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \bee@part@draw[\bee@hands] (-0.25,0.88) circle[x radius=0.07,y radius=0.2, rotate=25];
@@ -231,7 +232,7 @@
 %\bee[antennas=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Eye colour}}
-%\bee[eye=red]
+%\bee[eyes=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Mouth colour}}
 %\bee[mouth=red]

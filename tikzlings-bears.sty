@@ -48,8 +48,9 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.store in     = \bear@body,
   body               = brown!70!black,
-  eye/.store in      = \bear@eye,
-  eye                = \bear@body!42!black,
+  eyes/.store in     = \bear@eyes,
+  eyes               = \bear@body!42!black,
+  eye/.forward to    = /bear/eyes,
   mouth/.store in    = \bear@mouth,
   mouth              = \bear@body!42!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -172,8 +173,8 @@
     \bear@part@draw[bear@bright!60!red] (0, 1.5) ellipse[x radius=0.15, y radius=0.08];
     %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \bear@part@draw[\bear@eye] (-0.155, 1.7) circle[radius=0.05];
-    \bear@part@draw[\bear@eye] (0.155, 1.7) circle[radius=0.05];
+    \bear@part@draw[\bear@eyes] (-0.155, 1.7) circle[radius=0.05];
+    \bear@part@draw[\bear@eyes] (0.155, 1.7) circle[radius=0.05];
     %
     % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \ifbear@openmouth
@@ -223,7 +224,7 @@
 %
 %In addition to the colour of the body, the colour of various body parts can be adjusted:
 %\begin{tcblisting}{title={Eye colour}}
-%\bear[eye=red]
+%\bear[eyes=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Mouth colour}}
 %\bear[mouth=red]

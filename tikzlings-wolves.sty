@@ -52,10 +52,12 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.store in     = \wolf@body,
   body               = gray!90!white,
-  eye/.store in      = \wolf@eye,
-  eye                = white,
-  pupil/.store in    = \wolf@pupil,
-  pupil              = black,
+  eyes/.store in     = \wolf@eyes,
+  eyes               = white,
+  eye/.forward to    = /wolf/eyes,
+  pupils/.store in   = \wolf@pupils,
+  pupils             = black,
+  pupil/.forward to  = /wolf/pupils,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
@@ -177,14 +179,14 @@
   %
   % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifwolf@back
-  \wolf@part@draw[\wolf@eye] (-0.1514, 1.6791) .. controls (-0.1514, 1.6791) and (-0.1951, 1.6471) .. (-0.2341, 1.6584) .. controls (-0.2731, 1.6697) and (-0.2927, 1.72) .. (-0.2927, 1.72) .. controls (-0.2927, 1.72) and (-0.2492, 1.7521) .. (-0.2102, 1.7408) .. controls (-0.1712, 1.7295) and (-0.1514, 1.6791) .. (-0.1514, 1.6791) -- cycle;
-  \wolf@part@draw[\wolf@eye] (0.1514, 1.6791) .. controls (0.1514, 1.6791) and (0.1951, 1.6471) .. (0.2341, 1.6584) .. controls (0.2731, 1.6697) and (0.2927, 1.72) .. (0.2927, 1.72) .. controls (0.2927, 1.72) and (0.2492, 1.7521) .. (0.2102, 1.7408) .. controls (0.1712, 1.7295) and (0.1514, 1.6791) .. (0.1514, 1.6791) -- cycle;
+  \wolf@part@draw[\wolf@eyes] (-0.1514, 1.6791) .. controls (-0.1514, 1.6791) and (-0.1951, 1.6471) .. (-0.2341, 1.6584) .. controls (-0.2731, 1.6697) and (-0.2927, 1.72) .. (-0.2927, 1.72) .. controls (-0.2927, 1.72) and (-0.2492, 1.7521) .. (-0.2102, 1.7408) .. controls (-0.1712, 1.7295) and (-0.1514, 1.6791) .. (-0.1514, 1.6791) -- cycle;
+  \wolf@part@draw[\wolf@eyes] (0.1514, 1.6791) .. controls (0.1514, 1.6791) and (0.1951, 1.6471) .. (0.2341, 1.6584) .. controls (0.2731, 1.6697) and (0.2927, 1.72) .. (0.2927, 1.72) .. controls (0.2927, 1.72) and (0.2492, 1.7521) .. (0.2102, 1.7408) .. controls (0.1712, 1.7295) and (0.1514, 1.6791) .. (0.1514, 1.6791) -- cycle;
   \fi% back
   %
   % pupil %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifwolf@back
-    \wolf@part@draw[\wolf@pupil] (0.22, 1.695) circle[radius=0.025];
-    \wolf@part@draw[\wolf@pupil] (-0.22, 1.695) circle[radius=0.025];
+    \wolf@part@draw[\wolf@pupils] (0.22, 1.695) circle[radius=0.025];
+    \wolf@part@draw[\wolf@pupils] (-0.22, 1.695) circle[radius=0.025];
   \fi% back
   %
   % Hair and Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -238,10 +240,10 @@
 %
 %In addition to the colour of the body, the colour of the eyes can be adjusted:
 %\begin{tcblisting}{title={Eye colour}}
-%\wolf[eye=red]
+%\wolf[eyes=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Pupil Colour}}
-%\wolf[pupil=red]
+%\wolf[pupils=red]
 %\end{tcblisting}
 %
 %The rotation angle of its arms can be adjusted:

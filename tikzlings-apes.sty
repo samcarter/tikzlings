@@ -53,9 +53,9 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.store in     = \ape@body,
   body               = red!15!brown!80!black,
-  eye/.store in      = \ape@eye,
-  eye                = \ape@body!40!black,
-  eyes/.forward to   = /ape/eye,
+  eyes/.store in     = \ape@eyes,
+  eyes               = \ape@body!40!black,
+  eye/.forward to    = /ape/eyes,
   skin/.store in     = \ape@skin,
   skin               = \ape@body!50!gray,
   nose/.store in     = \ape@nose,
@@ -213,8 +213,8 @@
     \ape@part@draw[\ape@skin] (0, 1.76) circle[x radius=0.32,y radius=0.40];
     %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \ape@part@draw[\ape@eye] (-0.08, 1.9) ellipse[x radius=0.04, y radius=0.04];
-    \ape@part@draw[\ape@eye] (0.08, 1.9) ellipse[x radius=0.04, y radius=0.04];
+    \ape@part@draw[\ape@eyes] (-0.08, 1.9) ellipse[x radius=0.04, y radius=0.04];
+    \ape@part@draw[\ape@eyes] (0.08, 1.9) ellipse[x radius=0.04, y radius=0.04];
     %
     % muzzle %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \ape@part@draw[\ape@muzzle] (0, 1.55) ellipse[x radius=0.28, y radius=0.2];
@@ -338,7 +338,7 @@
 %
 %In addition to the colour of the body, the colour of various body parts can be adjusted:
 %\begin{tcblisting}{title={Eye colour}}
-%\ape[eye=red]
+%\ape[eyes=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Nose colour}}
 %\ape[nose=red]

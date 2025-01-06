@@ -48,10 +48,12 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.store in     = \hippo@body,
   body               = gray!55!white,
-  eye/.store in      = \hippo@eye,
-  eye                = white,
-  pupil/.store in    = \hippo@pupil,
-  pupil              = black,
+  eyes/.store in     = \hippo@eyes,
+  eyes               = white,
+  eye/.forward to    = /hippo/eyes,
+  pupils/.store in   = \hippo@pupils,
+  pupils             = black,
+  pupil/.forward to  = /hippo/pupils,
   toes/.store in     = \hippo@toes,
   toes               = \hippo@body,
   mouth/.store in    = \hippo@mouth,
@@ -154,15 +156,15 @@
     %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \ifhippo@contour
-      \hippo@part@draw[\hippo@eye] (-0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
-      \hippo@part@draw[\hippo@eye] (0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
-      \hippo@part@draw[\hippo@pupil] (-0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
-      \hippo@part@draw[\hippo@pupil] (0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
+      \hippo@part@draw[\hippo@eyes] (-0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
+      \hippo@part@draw[\hippo@eyes] (0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
+      \hippo@part@draw[\hippo@pupils] (-0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
+      \hippo@part@draw[\hippo@pupils] (0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
     \else% contour
-      \fill[\hippo@eye] (-0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
-      \fill[\hippo@eye] (0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
-      \fill[\hippo@pupil] (-0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
-      \fill[\hippo@pupil] (0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
+      \fill[\hippo@eyes] (-0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
+      \fill[\hippo@eyes] (0.11, 1.83) ellipse[x radius=0.08, y radius=0.12];
+      \fill[\hippo@pupils] (-0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
+      \fill[\hippo@pupils] (0.105, 1.78) ellipse[x radius=0.04, y radius=0.07];
     \fi% contour
     %
     % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -228,10 +230,10 @@
 %
 %In addition to the colour of the body, the colour of various body parts can be adjusted:
 %\begin{tcblisting}{title={Eye colour}}
-%\hippo[eye=red]
+%\hippo[eyes=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Pupil colour}}
-%\hippo[pupil=red]
+%\hippo[pupils=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Mouth colour}}
 %\hippo[mouth=red]

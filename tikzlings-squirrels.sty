@@ -50,10 +50,12 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.store in     = \squirrel@body,
   body               = brown!40!gray!90!red,
-  eye/.store in      = \squirrel@eye,
-  eye                = white,
-  pupil/.store in    = \squirrel@pupil,
-  pupil              = black,
+  eyes/.store in     = \squirrel@eyes,
+  eyes               = white,
+  eye/.forward to    = /squirrel/eyes,
+  pupils/.store in   = \squirrel@pupils,
+  pupils             = black,
+  pupil/.forward to  = /squirrel/pupils,
   mouth/.store in    = \squirrel@mouth,
   mouth              = \squirrel@body!70!brown!60!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -176,10 +178,10 @@
     \squirrel@part@draw[\squirrel@body!70!brown!60!black] (0,1.66) ellipse[x radius=0.06, y radius=0.03];
     %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \squirrel@part@draw[\squirrel@eye] (0.07,1.78) ellipse[x radius=0.05, y radius=0.07];
-    \squirrel@part@draw[\squirrel@eye] (-0.07,1.78) ellipse[x radius=0.05, y radius=0.07];
-    \squirrel@part@draw[\squirrel@pupil] (0.07,1.76) ellipse[x radius=0.017, y radius=0.027];
-    \squirrel@part@draw[\squirrel@pupil] (-0.07,1.76) ellipse[x radius=0.017, y radius=0.027];
+    \squirrel@part@draw[\squirrel@eyes] (0.07,1.78) ellipse[x radius=0.05, y radius=0.07];
+    \squirrel@part@draw[\squirrel@eyes] (-0.07,1.78) ellipse[x radius=0.05, y radius=0.07];
+    \squirrel@part@draw[\squirrel@pupils] (0.07,1.76) ellipse[x radius=0.017, y radius=0.027];
+    \squirrel@part@draw[\squirrel@pupils] (-0.07,1.76) ellipse[x radius=0.017, y radius=0.027];
     %
     % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \ifsquirrel@contour
@@ -241,10 +243,10 @@
 %
 %In addition to the colour of the body, the colour of the eyes can be adjusted:
 %\begin{tcblisting}{title={Eye colour}}
-%\squirrel[eye=red]
+%\squirrel[eyes=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Pupil colour}}
-%\squirrel[pupil=red]
+%\squirrel[pupils=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Mouth colour}}
 %\squirrel[mouth=red]

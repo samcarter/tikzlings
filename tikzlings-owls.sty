@@ -48,10 +48,12 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.store in     = \owl@body,
   body               = brown!70!black,
-  eye/.store in      = \owl@eye,
-  eye                = white!90!gray,
-  pupil/.store in    = \owl@pupil,
-  pupil              = brown!30!black,
+  eyes/.store in     = \owl@eyes,
+  eyes               = white!90!gray,
+  eye/.forward to    = /owl/eyes,
+  pupils/.store in   = \owl@pupils,
+  pupils             = brown!30!black,
+  pupil/.forward to  = /owl/pupils,
   bill/.store in     = \owl@bill,
   bill               = orange,
   feet/.store in     = \owl@feet,
@@ -149,14 +151,14 @@
   % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \unless\ifowl@back
     \ifowl@contour
-      \owl@part@draw[\owl@eye] (-0.28, 1.6) circle[radius=0.22];
-      \owl@part@draw[\owl@eye] (0.28, 1.6) circle[radius=0.22];
+      \owl@part@draw[\owl@eyes] (-0.28, 1.6) circle[radius=0.22];
+      \owl@part@draw[\owl@eyes] (0.28, 1.6) circle[radius=0.22];
     \else% contour
-      \fill[\owl@eye] (-0.28, 1.6) circle[radius=0.22];
-      \fill[\owl@eye] (0.28, 1.6) circle[radius=0.22];
+      \fill[\owl@eyes] (-0.28, 1.6) circle[radius=0.22];
+      \fill[\owl@eyes] (0.28, 1.6) circle[radius=0.22];
     \fi% contour
-    \owl@part@draw[\owl@pupil]   (-0.28, 1.6) circle[radius=0.15];
-    \owl@part@draw[\owl@pupil]   (0.28, 1.6) circle[radius=0.15];
+    \owl@part@draw[\owl@pupils]   (-0.28, 1.6) circle[radius=0.15];
+    \owl@part@draw[\owl@pupils]   (0.28, 1.6) circle[radius=0.15];
     \owl@part@draw[white] (0.25, 1.64) circle[radius=0.03];
     \owl@part@draw[white] (-0.31, 1.64) circle[radius=0.03];
   \fi% back
@@ -215,10 +217,10 @@
 %
 %In addition to the colour of the body, the colour of various body parts can be adjusted:
 %\begin{tcblisting}{title={Eye colour}}
-%\owl[eye=red]
+%\owl[eyes=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Pupil colour}}
-%\owl[pupil=red]
+%\owl[pupils=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Bill colour}}
 %\owl[bill=red]

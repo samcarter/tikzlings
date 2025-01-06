@@ -50,8 +50,9 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.store in     = \snowman@body,
   body               = white!95!black,
-  eye/.store in      = \snowman@eye,
-  eye                = black,
+  eyes/.store in     = \snowman@eyes,
+  eyes               = black,
+  eye/.forward to    = /snowman/eyes,
   nose/.store in     = \snowman@nose,
   nose               = orange,
   mouth/.store in    = \snowman@mouth,
@@ -147,8 +148,8 @@
     \fill[\snowman@mouth] (-0.25,1.2) circle[radius=0.025];
     %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \snowman@part@draw[\snowman@eye] (-0.5,1.75) circle[radius=0.06];
-    \snowman@part@draw[\snowman@eye] (-0.1,1.55) circle[radius=0.06];
+    \snowman@part@draw[\snowman@eyes] (-0.5,1.75) circle[radius=0.06];
+    \snowman@part@draw[\snowman@eyes] (-0.1,1.55) circle[radius=0.06];
     %
     % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \snowman@part@draw[\snowman@nose] (-0.6,1.4) -- (-0.8,1.42) -- (-0.6,1.54) (-0.6,1.4) arc[radius=0.07, start angle=-90, end angle=90];
@@ -194,8 +195,8 @@
       \fi
       %
       % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-      \snowman@part@draw[\snowman@eye] (-0.155,1.8) circle[radius=0.04];
-      \snowman@part@draw[\snowman@eye] (0.155,1.8) circle[radius=0.04];
+      \snowman@part@draw[\snowman@eyes] (-0.155,1.8) circle[radius=0.04];
+      \snowman@part@draw[\snowman@eyes] (0.155,1.8) circle[radius=0.04];
       %
       % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
       \snowman@part@draw[\snowman@nose] (0,1.72) arc [radius=0.05, start angle=90, end angle=270] (0,1.62) -- (0.15,1.64) -- (0,1.72);
@@ -248,7 +249,7 @@
 %
 %In addition to the colour of the body, the colour of various body parts can be adjusted:
 %\begin{tcblisting}{title={Eye colour}}
-%\snowman[eye=red]
+%\snowman[eyes=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Nose colour}}
 %\snowman[nose=red]

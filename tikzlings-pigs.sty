@@ -50,8 +50,9 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   body/.store in     = \pig@body,
   body               = piglight,
-  eye/.store in      = \pig@eye,
-  eye                = gray,
+  eyes/.store in     = \pig@eyes,
+  eyes               = gray,
+  eye/.forward to    = /pig/eyes,
   tail/.store in     = \pig@tail,
   tail               = pig@bodysat22,
   mouth/.store in    = \pig@mouth,
@@ -162,8 +163,8 @@
   \unless\ifpig@back
     %
     % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \pig@part@draw[\pig@eye] (-0.09, 1.82) circle[radius=0.02];
-    \pig@part@draw[\pig@eye] ( 0.09, 1.82) circle[radius=0.02];
+    \pig@part@draw[\pig@eyes] (-0.09, 1.82) circle[radius=0.02];
+    \pig@part@draw[\pig@eyes] ( 0.09, 1.82) circle[radius=0.02];
     %
     % Nose %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \pig@part@draw[pig@bodysat22]  (0, 1.62) ellipse[x radius=0.18, y radius=0.14];
@@ -233,7 +234,7 @@
 %
 %In addition to the colour of the body, the colour of various body parts can be adjusted:
 %\begin{tcblisting}{title={Eye colour}}
-%\pig[eye=red]
+%\pig[eyes=red]
 %\end{tcblisting}
 %\begin{tcblisting}{title={Tail colour}}
 %\pig[tail=red]
