@@ -8,7 +8,7 @@
 
 ### Changed
 
-- added synonyms for `eye`/`eyes` and `pupil`/`pupils`
+- added synonyms for eye/eyes, pupil/pupils, leg/legs, arm/arms, ear/ears, foot/feet, wing/wings, hand/hands, antenna/antennas, whisker/whiskers, paw/paws, toe/toes, tooth/teeth, etc.
 
 ### Fixed
 

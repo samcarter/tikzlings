@@ -52,6 +52,7 @@
   body               = black!75!white,
   ears/.store in     = \bat@ears,
   ears               = \bat@body,
+  ear/.forward to    = /bat/ears,
   eyes/.store in     = \bat@eyes,
   eyes               = white,
   eye/.forward to    = /bat/eyes,
@@ -62,8 +63,10 @@
   mouth              = black,
   feet/.store in     = \bat@feet,
   feet               = orange,
+  foot/.forward to   = /bat/feet,
   wings/.store in    = \bat@wings,
   wings              = 1,
+  wing/.forward to   = /bat/wings,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options

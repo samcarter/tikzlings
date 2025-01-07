@@ -53,12 +53,16 @@
   body               = black!90!white,
   arms/.store in     = \bug@arms,
   arms               = red!80!black,
+  arm/.forward to    = /bug/arms,
   wings/.store in    = \bug@wings,
   wings              = red!80!black,
+  wing/.forward to   = /bug/wings,
   dots/.store in     = \bug@dots,
   dots               = black!90!white,
+  dot/.forward to    = /bug/dots,
   antennas/.store in = \bug@antennas,
   antennas           = red!80!black,
+  antenna/.forward to = /bug/antennas,
   eyes/.store in     = \bug@eyes,
   eyes               = white,
   eye/.forward to    = /bug/eyes,
@@ -69,6 +73,7 @@
   mouth              = red,
   feet/.store in     = \bug@feet,
   feet               = red!80!black,
+  foot/.forward to   = /bug/feet,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
