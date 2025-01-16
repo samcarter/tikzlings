@@ -60,19 +60,14 @@
 
 \def\thing@listhead{}
 \def\thing@listacces{}
-\def\thing@headtext{head}
-\def\thing@accesstext{acess}
 
 \ExplSyntaxOn
+% based on https://topanswers.xyz/tex?q=8082#a7698
 \NewDocumentCommand{\thing@ini}{om}{
   \expandafter\newif\csname ifthing@#2\endcsname
-  \def\thing@tmp{#1}
-  \ifx\thing@headtext\thing@tmp
-    \tl_put_right:Nn \thing@listhead { {#2} }
-  \fi
-  \ifx\thing@accesstext\thing@tmp
-    \tl_put_right:Nn \thing@listacces { {#2} }
-  \fi  
+  \IfValueT{#1}{
+    \tl_put_right:cn { thing@list#1 } { {#2} }
+  }
 }
 \ExplSyntaxOff
 
@@ -93,42 +88,42 @@
 \thing@ini[head]{sombrero}
 \thing@ini[head]{alien}
 % Communication %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\thing@ini[acess]{book}
-\thing@ini[acess]{signpost}
-\newif\ifthing@speech
-\newif\ifthing@think
+\thing@ini[acces]{book}
+\thing@ini[acces]{signpost}
+\thing@ini{speech}
+\thing@ini{think}
 % Food %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\thing@ini[acess]{pizza}
-\newif\ifthing@davidlikespineapplepizza
-\thing@ini[acess]{cheese}
-\thing@ini[acess]{baguette}
-\thing@ini[acess]{cake}
-\thing@ini[acess]{icecream}
-\thing@ini[acess]{milkshake}
-\thing@ini[acess]{wine}
-\thing@ini[acess]{cocktail}
-\thing@ini[acess]{banana}
+\thing@ini[acces]{pizza}
+\thing@ini{davidlikespineapplepizza}
+\thing@ini[acces]{cheese}
+\thing@ini[acces]{baguette}
+\thing@ini[acces]{cake}
+\thing@ini[acces]{icecream}
+\thing@ini[acces]{milkshake}
+\thing@ini[acces]{wine}
+\thing@ini[acces]{cocktail}
+\thing@ini[acces]{banana}
 % Sport %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\thing@ini[acess]{cricket}
-\thing@ini[acess]{hockey}
-\thing@ini[acess]{football}
+\thing@ini[acces]{cricket}
+\thing@ini[acces]{hockey}
+\thing@ini[acces]{football}
 % Other %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\thing@ini[acess]{crystalball}
-\thing@ini[acess]{magicwand}
-\thing@ini[acess]{rollingpin}
-\thing@ini[acess]{lightsaber}
-\thing@ini[acess]{torch}
-\thing@ini[acess]{basket}
-\thing@ini[acess]{easter}
-\thing@ini[acess]{crozier}
-\thing@ini[acess]{shovel}
-\thing@ini[acess]{pickaxe}
-\thing@ini[acess]{strawbroom}
-\thing@ini[acess]{broom}
-\thing@ini[acess]{umbrella}
-\thing@ini[acess]{umbrellaclosed}
-\thing@ini[acess]{handbag}
-\thing@ini[acess]{stick}
+\thing@ini[acces]{crystalball}
+\thing@ini[acces]{magicwand}
+\thing@ini[acces]{rollingpin}
+\thing@ini[acces]{lightsaber}
+\thing@ini[acces]{torch}
+\thing@ini[acces]{basket}
+\thing@ini[acces]{easter}
+\thing@ini[acces]{crozier}
+\thing@ini[acces]{shovel}
+\thing@ini[acces]{pickaxe}
+\thing@ini[acces]{strawbroom}
+\thing@ini[acces]{broom}
+\thing@ini[acces]{umbrella}
+\thing@ini[acces]{umbrellaclosed}
+\thing@ini[acces]{handbag}
+\thing@ini[acces]{stick}
 
 \tikzset{%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
