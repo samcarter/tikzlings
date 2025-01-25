@@ -5,6 +5,7 @@
 ### New
 
 - Cookie, the dog
+- New options `randomhead` and `randomaccessories`. Basically the same as  `\randomhead` and `\randomaccessories`, but no longer require `\shufflethings`
 
 ### Changed
 

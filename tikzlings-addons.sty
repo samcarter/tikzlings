@@ -130,9 +130,13 @@
   % General
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  /thing/.search also/.expanded={/tikz, /pgf, \tikzlings@search@paths@clist},
+  /thing/.search also/.expanded = {/tikz, /pgf, \tikzlings@search@paths@clist},
   %/thing/.unknown/.code=\relax, % bad idea, prevents tikz/pgf keys
   /thing/.cd,
+  randomhead/.code        = \shufflethings,
+  randomhead/.forward to  = /thing/\randomhead,
+  randomaccessories/.code = \shufflethings,
+  randomaccessories/.forward to = /thing/\randomaccessories,  
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Hats
