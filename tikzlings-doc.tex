@@ -14,6 +14,10 @@
 % arara: latexmk
 \documentclass{scrartcl}
 
+\usepackage[
+  themecolor=samviolet
+]{\jobname-settings}
+
 % meta %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{The \texorpdfstring{\tikzlings}{tikzlings} package}
 \subtitle{drawing animals and beings in \TikZ}
@@ -24,13 +28,10 @@
     \end{tikzpicture}\\[0.8em]
     \texttt{samcarter}\\
     \url{https://github.com/samcarter/tikzlings}\\
-    \url{https://www.ctan.org/pkg/tikzlings}
+    \url{https://ctan.org/pkg/tikzlings}
   }{samcarter}}
 \date{Version v2.2 \textendash{} 2025/01/05}
-
-\usepackage[
-  themecolor=samviolet
-]{\jobname-settings}
+\packagename{tikzlings}
 
 \selectcolormodel{rgb}
 \colorlet{blue}{samlblue}
@@ -162,21 +163,11 @@
 \section*{Introduction}
 \label{intro}
 
-The \tikzlings are a collection of little animals (and beings) drawn in \TikZ. It is the next evolutionary phase of the \tikzmarmots package extending it with further animals (and beings) and also adding the ability to natively use many of the accessories known from the \tikzducks package.
+The \tikzlings are a collection of little animals (and beings) drawn in \TikZ. It is the next evolutionary phase of the \tikzmarmots package, extending it with further animals (and beings) and also adding the ability to natively use many of the accessories known from the \tikzducks package.
 
-This package is work in progress, therefore I would be happy to hear your feedback and ideas how to improve the package.
-The head version of the source code can be found on \url{github.com/samcarter/tikzlings}, including a bug tracker -- please make constructive use of it!
-If you seek any other assistance (not bug reports/feature requests), I suggest asking a question at \url{topanswers.xyz/tex}.
-A more stable package version can be found on \CTAN (\url{https://www.ctan.org/pkg/tikzlings}) and is included in both \miktex and \texlive as \tikzlings.
+I'd like to thank the friendly and helpful community of \TeX{} users for their suggestions, feedback and help to create this package and naming it. As a thank you, the \tikzlings all have names which are, in some way or another, connected to their creators, their inspiration or to users of \TeX{}.
 
-\subsection*{Acknowledgements}
-
-I'd like to thank the friendly and helpful community of \TeX{} users for their suggestions, feedback and help to create this package and find a suitable name for it. As a thank you all the \tikzlings have a name which is in some way or another connected to the users of \TeX{}.
-
-\subsection*{License}
-
-Copyright \raisebox{0.2em}{\tiny\fontfamily{cmr}\selectfont\textcopyright}
-\texttt{samcarter}. Permission is granted to copy, distribute and\slash or modify this software under the terms of the LaTeX project public licence, version 1.3c or later \url{https://www.latex-project.org/lppl.txt}.
+\blurb
 
 \clearpage
 \section*{The \tikzlings}
