@@ -24,6 +24,8 @@
   \end{scope}%
   \thing[#1]%
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/bat/foreground}
+  \UseHook{tikzlings/foreground}
   \csname bathookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
   %
@@ -34,6 +36,11 @@
 \newif\ifbat@contour
 \newif\ifbat@teeth
 \newif\ifbat@openmouth
+
+\NewHook{tikzlings/bat/background}
+\NewHook{tikzlings/bat/belly}
+\NewHook{tikzlings/bat/body}
+\NewHook{tikzlings/bat/foreground}
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -129,6 +136,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/bat/background}
+  \UseHook{tikzlings/background}
   \csname batshookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
   %
@@ -157,6 +166,8 @@
   \bat@part@draw[\bat@body] (0,1.55) circle [radius=0.43];
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/bat/belly}
+  \UseHook{tikzlings/belly}
   \csname batshookbelly\endcsname
   \csname tikzlinghookbelly\endcsname
   %
@@ -193,6 +204,8 @@
     %
   \fi% back
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/bat/body}
+  \UseHook{tikzlings/body}
   \csname batshookbody\endcsname
   \csname tikzlinghookbody\endcsname
   %

@@ -50,6 +50,8 @@
   \end{scope}%
   \thing[#1]%
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/cat/foreground}
+  \UseHook{tikzlings/foreground}
   \csname cathookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
 }
@@ -59,6 +61,11 @@
 \newif\ifcat@back
 \newif\ifcat@contour
 \newif\ifcat@openmouth
+
+\NewHook{tikzlings/cat/background}
+\NewHook{tikzlings/cat/belly}
+\NewHook{tikzlings/cat/body}
+\NewHook{tikzlings/cat/foreground}
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -161,6 +168,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/cat/background}
+  \UseHook{tikzlings/background}
   \csname cathookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
   %
@@ -177,6 +186,8 @@
   \cat@part@draw[\cat@body] (0.5462, 0.7155) .. controls (0.5462, 0.1823) and (0.3259, 0.17) .. (0, 0.17) .. controls (-0.3259, 0.17) and (-0.5462, 0.1823) .. (-0.5462, 0.7155) .. controls (-0.5554, 1.2487) and (-0.3075, 1.6768) .. (0, 1.6768) .. controls (0.3075, 1.6768) and (0.5554, 1.2487) .. (0.5462, 0.7155) -- cycle;
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/cat/belly}
+  \UseHook{tikzlings/belly}
   \csname cathookbelly\endcsname
   \csname tikzlinghookbelly\endcsname
   %
@@ -223,6 +234,8 @@
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/cat/body}
+  \UseHook{tikzlings/body}
   \csname cathookbody\endcsname
   \csname tikzlinghookbody\endcsname
 }
@@ -270,6 +283,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/cat/background}
+  \UseHook{tikzlings/background}
   \csname cathookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
   %
@@ -278,6 +293,8 @@
   \node[scale=\scalingfactor] at (0,1.3) {R.I.P.};
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/cat/belly}
+  \UseHook{tikzlings/belly}
   \csname cathookbelly\endcsname
   \csname tikzlinghookbelly\endcsname
   %
@@ -297,6 +314,8 @@
   }
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/cat/body}
+  \UseHook{tikzlings/body}
   \csname cathookbody\endcsname
   \csname tikzlinghookbody\endcsname
   %
@@ -389,12 +408,13 @@
 %    \tikzset{/cat/.cd,#1}%
 %    \cat@tombstone%
 %}
-%\renewcommand{\cathookbackground}{}
+%\RemoveFromHook{tikzlings/cat/background}
 %\makeatother
 %\begin{tcblisting}{title={Schrödingers cat}}
 %\cat[schroedinger]
 %\end{tcblisting}
 %\endgroup
+%\AddToHook{tikzlings/cat/background}{\path (-1.6,0.1) rectangle (0.905, 2.17);}
 %
 %To view the cat from behind:
 %\begin{tcblisting}{title={Back view}}

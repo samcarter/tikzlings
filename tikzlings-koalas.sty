@@ -28,6 +28,8 @@
   \end{scope}%
   \thing[#1]%
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/koala/foreground}
+  \UseHook{tikzlings/koala/foreground}
   \csname koalahookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
   %
@@ -39,6 +41,11 @@
 \newif\ifkoala@back
 \newif\ifkoala@contour
 \newif\ifkoala@openmouth
+
+\NewHook{tikzlings/koala/background}
+\NewHook{tikzlings/koala/belly}
+\NewHook{tikzlings/koala/body}
+\NewHook{tikzlings/koala/foreground}
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -124,6 +131,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/koala/background}
+  \UseHook{tikzlings/koala/background}
   \csname koalahookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
   %
@@ -154,6 +163,8 @@
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/koala/belly}
+  \UseHook{tikzlings/koala/belly}
   \csname koalahookbelly\endcsname
   \csname tikzlinghookbelly\endcsname
   %
@@ -209,6 +220,8 @@
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/koala/body}
+  \UseHook{tikzlings/koala/body}
   \csname koalahookbody\endcsname
   \csname tikzlinghookbody\endcsname
   %

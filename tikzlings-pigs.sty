@@ -25,6 +25,8 @@
   \end{scope}%
   \thing[#1]%
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/pig/foreground}
+  \UseHook{tikzlings/foreground}
   \csname pighookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
   %
@@ -34,6 +36,11 @@
 \newif\ifpig@back
 \newif\ifpig@contour
 \newif\ifpig@openmouth
+
+\NewHook{tikzlings/pig/background}
+\NewHook{tikzlings/pig/belly}
+\NewHook{tikzlings/pig/body}
+\NewHook{tikzlings/pig/foreground}
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -129,6 +136,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/pig/background}
+  \UseHook{tikzlings/background}
   \csname pighookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
   %
@@ -147,6 +156,8 @@
   \pig@part@draw[\pig@body] ( 0.6,  0.8 ) .. controls ( 0.6 , 0.4) and ( 0.35, 0.16) .. ( 0.0,  0.16) .. controls (-0.35, 0.16) and (-0.6 , 0.4) .. (-0.6,  0.8 ) .. controls (-0.6 , 1.3) and (-0.35, 1.5) .. ( 0.0,  1.5) .. controls ( 0.35, 1.5) and ( 0.6 , 1.3) .. ( 0.6,  0.75) -- cycle;
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/pig/belly}
+  \UseHook{tikzlings/belly}
   \csname pighookbelly\endcsname
   \csname tikzlinghookbelly\endcsname
   %
@@ -196,6 +207,8 @@
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/pig/body}
+  \UseHook{tikzlings/body}
   \csname pighookbody\endcsname
   \csname tikzlinghookbody\endcsname
   %

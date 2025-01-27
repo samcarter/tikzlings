@@ -24,6 +24,8 @@
   \end{scope}%
   \thing[#1]%
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/dog/foreground}
+  \UseHook{tikzlings/foreground}
   \csname doghookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
 }
@@ -31,6 +33,11 @@
 \newif\ifdog@threeD
 \newif\ifdog@back
 \newif\ifdog@contour
+
+\NewHook{tikzlings/dog/background}
+\NewHook{tikzlings/dog/belly}
+\NewHook{tikzlings/dog/body}
+\NewHook{tikzlings/dog/foreground}
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -119,6 +126,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/dog/background}
+  \UseHook{tikzlings/background}
   \csname doghookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
   %
@@ -133,6 +142,8 @@
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/dog/belly}
+  \UseHook{tikzlings/belly}
   \csname doghookbelly\endcsname
   \csname tikzlinghookbelly\endcsname
   %
@@ -167,6 +178,8 @@
   \dog@part@draw[\dog@ears, rotate=10] (0.75,1.7)  ellipse [x radius=0.14, y radius=0.4];
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/dog/body}
+  \UseHook{tikzlings/body}
   \csname doghookbody\endcsname
   \csname tikzlinghookbody\endcsname
 }

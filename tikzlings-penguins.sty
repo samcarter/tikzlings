@@ -24,6 +24,8 @@
   \end{scope}%
   \thing[#1]%
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/penguin/foreground}
+  \UseHook{tikzlings/foreground}
   \csname penguinhookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
   %
@@ -32,6 +34,11 @@
 \newif\ifpenguin@threeD
 \newif\ifpenguin@back
 \newif\ifpenguin@contour
+
+\NewHook{tikzlings/penguin/background}
+\NewHook{tikzlings/penguin/belly}
+\NewHook{tikzlings/penguin/body}
+\NewHook{tikzlings/penguin/foreground}
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -116,6 +123,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/penguin/background}
+  \UseHook{tikzlings/background}
   \csname penguinhookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
   %
@@ -138,6 +147,8 @@
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/penguin/belly}
+  \UseHook{tikzlings/belly}
   \csname penguinhookbelly\endcsname
   \csname tikzlinghookbelly\endcsname
   %
@@ -168,6 +179,8 @@
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/penguin/body}
+  \UseHook{tikzlings/body}
   \csname penguinhookbody\endcsname
   \csname tikzlinghookbody\endcsname
   %

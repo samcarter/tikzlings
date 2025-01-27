@@ -44,6 +44,8 @@
   \end{scope}%
   \thing[#1]%
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/marmot/foreground}
+  \UseHook{tikzlings/foreground}
   \csname marmothookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
   %
@@ -60,6 +62,11 @@
 \newif\ifmarmot@back
 \newif\ifmarmot@contour
 \newif\ifmarmot@openmouth
+
+\NewHook{tikzlings/marmot/background}
+\NewHook{tikzlings/marmot/belly}
+\NewHook{tikzlings/marmot/body}
+\NewHook{tikzlings/marmot/foreground}
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -158,6 +165,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/marmot/background}
+  \UseHook{tikzlings/background}
   \csname marmothookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
   %
@@ -215,6 +224,8 @@
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/marmot/belly}
+  \UseHook{tikzlings/belly}
   \csname marmothookbelly\endcsname
   \csname tikzlinghookbelly\endcsname
   %
@@ -274,6 +285,8 @@
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/marmot/body}
+  \UseHook{tikzlings/body}
   \csname marmothookbody\endcsname
   \csname tikzlinghookbody\endcsname
   %

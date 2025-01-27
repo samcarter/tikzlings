@@ -151,10 +151,10 @@
   height plus=3cm,
 }
 
-\newcommand{\coatihookbackground}{\path (-1.63,0.1) rectangle (1.63,2.26);}
-\newcommand{\mousehookbackground}{\path (-1.6,0.1) rectangle (0.905, 2.17);}
-\newcommand{\cathookbackground}{\path (-1.6,0.1) rectangle (0.905, 2.17);}
-\newcommand{\doghookbackground}{\path (-1.6,0.1) rectangle (0.905, 2.17);}
+\AddToHook{tikzlings/coat/background}{\path (-1.63,0.1) rectangle (1.63,2.26);}
+\AddToHook{tikzlings/mouse/background}{\path (-1.6,0.1) rectangle (0.905, 2.17);}
+\AddToHook{tikzlings/cat/background}{\path (-1.6,0.1) rectangle (0.905, 2.17);}
+\AddToHook{tikzlings/dog/background}{\path (-1.6,0.1) rectangle (0.905, 2.17);}
 
 \begin{document}
 \maketitle
@@ -188,12 +188,12 @@ will produce a marmot. All usual \TikZ and \saminline|pgf| keys can be passed as
 
 In addition to the standard options provided by \TikZ each \tikzlings also comes with some additional options which are listed in the following sections. If these additional options consist of multiple words they are available both with and without spaces, for example \saminline|askphil| and \saminline|ask phil| will be treated as the same.
 
-To make customisation  of the \tikzlings easier, some hooks are provided, which can be redefined by the user in order to add commands at specific layers:
+To make customisation  of the \tikzlings easier, some hooks are provided, which can be utilised by the user in order to add commands at specific layers:
 \begin{itemize}
-  \item \saminline|\<name_of_the_tikzling>hookbackground|
-  \item \saminline|\<name_of_the_tikzling>hookbelly|
-  \item \saminline|\<name_of_the_tikzling>hookbody|
-  \item \saminline|\<name_of_the_tikzling>hookforeground|
+  \item \saminline|\NewHook{tikzlings/<name_of_the_tikzling>/background}|
+  \item \saminline|\NewHook{tikzlings/<name_of_the_tikzling>/belly}|
+  \item \saminline|\NewHook{tikzlings/<name_of_the_tikzling>/body}|
+  \item \saminline|\NewHook{tikzlings/<name_of_the_tikzling>/foreground}|
 \end{itemize}
 
 With regard to the individual components of the \tikzlings, they are located in the following z order:
@@ -257,16 +257,26 @@ With regard to the individual components of the \tikzlings, they are located in 
   \par
 \endgroup
 
-{\raggedright In addition, the hooks \saminline|\tikzlinghookbackground|, \saminline|\tikzlinghookbelly|,\newline \saminline|\tikzlinghookbody| and \saminline|\tikzlinghookforeground| are available and will effect all\newline \tikzlings.}
+In addition, there are also hooks available which will effect all \tikzlings:
+\begin{itemize}
+  \item \saminline|\NewHook{tikzlings/background}|
+  \item \saminline|\NewHook{tikzlings/belly}|
+  \item \saminline|\NewHook{tikzlings/body}|
+  \item \saminline|\NewHook{tikzlings/foreground}|
+\end{itemize}
 
 A short example how the hooks can be used:
 \begin{tcblisting}{title={Hooks}}
-\newcommand{\mousehookbelly}{%
+\AddToHook{tikzlings/mouse/belly}{%
   \fill[red!80!black] (0.55, 1.35) --
     (0.65, 0.3) -- (-0.65, 0.3) --
     (-0.55, 1.35) -- (0.0, 0.9) -- cycle;
 }
+
 \mouse
+
+% optionally
+\RemoveFromHook{tikzlings/mouse/belly}
 \end{tcblisting}
 
 Another way to use the \tikzlings is the \TikZ library of the same name. By loading this library, all macros from the normal package can be used. In addition the \TikZ library also defines the \tikzlings as \saminline|pic|'s:

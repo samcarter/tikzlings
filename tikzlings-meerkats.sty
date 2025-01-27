@@ -24,6 +24,8 @@
   \end{scope}%
   \thing[#1]%
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/meerkat/foreground}
+  \UseHook{tikzlings/foreground}
   \csname meerkathookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
   %
@@ -34,6 +36,11 @@
 \newif\ifmeerkat@back
 \newif\ifmeerkat@contour
 \newif\ifmeerkat@openmouth
+
+\NewHook{tikzlings/meerkat/background}
+\NewHook{tikzlings/meerkat/belly}
+\NewHook{tikzlings/meerkat/body}
+\NewHook{tikzlings/meerkat/foreground}
 
 \def\meerkat@shift{0}
 
@@ -145,6 +152,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/meerkat/background}
+  \UseHook{tikzlings/background}
   \csname meerkathookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
   %
@@ -206,6 +215,8 @@
     \fi % back
     %
     % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \UseHook{tikzlings/meerkat/belly}
+    \UseHook{tikzlings/belly}
     \csname meerkathookbelly\endcsname
     \csname tikzlinghookbelly\endcsname
     %
@@ -246,6 +257,8 @@
     \fi % back
     %
     % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \UseHook{tikzlings/meerkat/body}
+    \UseHook{tikzlings/body}
     \csname meerkathookbody\endcsname
     \csname tikzlinghookbody\endcsname
     %

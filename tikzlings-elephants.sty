@@ -24,6 +24,8 @@
   \end{scope}%
   \thing[#1]%
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/elephant/foreground}
+  \UseHook{tikzlings/foreground}
   \csname elephanthookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
 }
@@ -31,6 +33,11 @@
 \newif\ifelephant@threeD
 \newif\ifelephant@back
 \newif\ifelephant@contour
+
+\NewHook{tikzlings/elephant/background}
+\NewHook{tikzlings/elephant/belly}
+\NewHook{tikzlings/elephant/body}
+\NewHook{tikzlings/elephant/foreground}
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -118,6 +125,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/elephant/background}
+  \UseHook{tikzlings/background}
   \csname elephanthookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
   %
@@ -140,6 +149,8 @@
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/elephant/belly}
+  \UseHook{tikzlings/belly}
   \csname elephanthookbelly\endcsname
   \csname tikzlinghookbelly\endcsname
   %
@@ -191,6 +202,8 @@
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/elephant/body}
+  \UseHook{tikzlings/body}
   \csname elephanthookbody\endcsname
   \csname tikzlinghookbody\endcsname
   %

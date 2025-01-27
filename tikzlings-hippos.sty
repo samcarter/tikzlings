@@ -24,6 +24,8 @@
   \end{scope}%
   \thing[#1]%
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/hippo/foreground}
+  \UseHook{tikzlings/foreground}
   \csname hippohookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
 }
@@ -32,6 +34,11 @@
 \newif\ifhippo@back
 \newif\ifhippo@contour
 \newif\ifhippo@openmouth
+
+\NewHook{tikzlings/hippo/background}
+\NewHook{tikzlings/hippo/belly}
+\NewHook{tikzlings/hippo/body}
+\NewHook{tikzlings/hippo/foreground}
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -118,6 +125,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/hippo/background}
+  \UseHook{tikzlings/background}
   \csname hippohookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
   %
@@ -140,6 +149,8 @@
   \hippo@part@draw[\hippo@body] ( 0.6,  0.8 ) .. controls ( 0.6 , 0.4) and ( 0.35, 0.19) .. ( 0.0,  0.19) .. controls (-0.35, 0.19) and (-0.6 , 0.4) .. (-0.6,  0.8 ) .. controls (-0.6 , 1.3) and (-0.35, 1.65) .. ( 0.0,  1.65) .. controls ( 0.35, 1.65) and ( 0.6 , 1.3) .. ( 0.6,  0.8) -- cycle;
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/hippo/belly}
+  \UseHook{tikzlings/belly}
   \csname hippohookbelly\endcsname
   \csname tikzlinghookbelly\endcsname
   %
@@ -193,6 +204,8 @@
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/hippo/body}
+  \UseHook{tikzlings/body}
   \csname hippohookbody\endcsname
   \csname tikzlinghookbody\endcsname
   %

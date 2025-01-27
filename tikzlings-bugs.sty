@@ -24,6 +24,8 @@
   \end{scope}%
   \thing[#1]%
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/bug/foreground}
+  \UseHook{tikzlings/foreground}
   \csname bughookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
   %
@@ -35,6 +37,11 @@
 \newif\ifbug@back
 \newif\ifbug@contour
 \newif\ifbug@openmouth
+
+\NewHook{tikzlings/bug/background}
+\NewHook{tikzlings/bug/belly}
+\NewHook{tikzlings/bug/body}
+\NewHook{tikzlings/bug/foreground}
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -137,6 +144,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/bug/background}
+  \UseHook{tikzlings/background}
   \csname bughookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
   %
@@ -176,6 +185,8 @@
   \bug@part@draw[\bug@body] (0,1.7) circle [radius=0.37];
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/bug/belly}
+  \UseHook{tikzlings/belly}
   \csname bughookbelly\endcsname
   \csname tikzlinghookbelly\endcsname
   %
@@ -216,6 +227,8 @@
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/bug/body}
+  \UseHook{tikzlings/body}
   \csname bughookbody\endcsname
   \csname tikzlinghookbody\endcsname
   %

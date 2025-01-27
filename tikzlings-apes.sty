@@ -24,6 +24,8 @@
   \end{scope}%
   \thing[#1]%
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/ape/foreground}
+  \UseHook{tikzlings/foreground}
   \csname apehookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
 }
@@ -37,6 +39,11 @@
 \newif\ifape@back
 \newif\ifape@contour
 \newif\ifape@openmouth
+
+\NewHook{tikzlings/ape/background}
+\NewHook{tikzlings/ape/belly}
+\NewHook{tikzlings/ape/body}
+\NewHook{tikzlings/ape/foreground}
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -137,6 +144,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/ape/background}
+  \UseHook{tikzlings/background}
   \csname apehookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
   %
@@ -205,6 +214,8 @@
   \ape@part@draw[\ape@body] ( 0.5,  0.8 ) .. controls ( 0.5 , 0.4) and ( 0.35, 0.17) .. ( 0.0,  0.17) .. controls (-0.35, 0.17) and (-0.5 , 0.4) .. (-0.5,  0.8 ) .. controls (-0.9 , 1.6) and (-0.4, 1.65) .. ( 0.0,  1.65) .. controls ( 0.4, 1.65) and ( 0.9 , 1.6) .. ( 0.5,  0.8) -- cycle;
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/ape/belly}
+  \UseHook{tikzlings/belly}
   \csname apehookbelly\endcsname
   \csname tikzlinghookbelly\endcsname
   %
@@ -303,6 +314,8 @@
   \fi%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/ape/body}
+  \UseHook{tikzlings/body}
   \csname apehookbody\endcsname
   \csname tikzlinghookbody\endcsname
 }

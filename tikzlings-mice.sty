@@ -24,6 +24,8 @@
   \end{scope}%
   \thing[#1]%
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/mouse/foreground}
+  \UseHook{tikzlings/foreground}
   \csname mousehookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
   %
@@ -35,6 +37,11 @@
 \newif\ifmouse@rightstep
 \newif\ifmouse@back
 \newif\ifmouse@contour
+
+\NewHook{tikzlings/mouse/background}
+\NewHook{tikzlings/mouse/belly}
+\NewHook{tikzlings/mouse/body}
+\NewHook{tikzlings/mouse/foreground}
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -122,6 +129,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/mouse/background}
+  \UseHook{tikzlings/background}
   \csname mousehookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
   %
@@ -155,6 +164,8 @@
   \mouse@part@draw[\mouse@body] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/mouse/belly}
+  \UseHook{tikzlings/belly}
   \csname mousehookbelly\endcsname
   \csname tikzlinghookbelly\endcsname
   %
@@ -195,6 +206,8 @@
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/mouse/body}
+  \UseHook{tikzlings/body}
   \csname mousehookbody\endcsname
   \csname tikzlinghookbody\endcsname
   %

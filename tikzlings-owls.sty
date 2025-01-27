@@ -24,6 +24,8 @@
   \end{scope}%
   \thing[#1]%
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/owl/foreground}
+  \UseHook{tikzlings/foreground}
   \csname owlhookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
   %
@@ -32,6 +34,11 @@
 \newif\ifowl@threeD
 \newif\ifowl@back
 \newif\ifowl@contour
+
+\NewHook{tikzlings/owl/background}
+\NewHook{tikzlings/owl/belly}
+\NewHook{tikzlings/owl/body}
+\NewHook{tikzlings/owl/foreground}
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -114,6 +121,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/owl/background}
+  \UseHook{tikzlings/background}
   \csname owlhookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
   %
@@ -143,6 +152,8 @@
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/owl/belly}
+  \UseHook{tikzlings/belly}
   \csname owlhookbelly\endcsname
   \csname tikzlinghookbelly\endcsname
   %
@@ -180,6 +191,8 @@
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/owl/body}
+  \UseHook{tikzlings/body}
   \csname owlhookbody\endcsname
   \csname tikzlinghookbody\endcsname
   %

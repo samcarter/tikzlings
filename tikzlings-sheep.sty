@@ -28,6 +28,8 @@
   \end{scope}%
   \thing[#1]%
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/sheep/foreground}
+  \UseHook{tikzlings/foreground}
   \csname sheephookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
 }
@@ -37,6 +39,11 @@
 \newif\ifsheep@blush
 \newif\ifsheep@back
 \newif\ifsheep@contour
+
+\NewHook{tikzlings/sheep/background}
+\NewHook{tikzlings/sheep/belly}
+\NewHook{tikzlings/sheep/body}
+\NewHook{tikzlings/sheep/foreground}
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -132,6 +139,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/sheep/background}
+  \UseHook{tikzlings/background}
   \csname sheephookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
   %
@@ -151,6 +160,8 @@
   \sheep@part@draw[\sheep@body,decorate,decoration={bumps,amplitude=\decoscalefactor*2.5pt,segment length=\scalingfactor*10pt}] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/sheep/belly}
+  \UseHook{tikzlings/belly}
   \csname sheephookbelly\endcsname
   \csname tikzlinghookbelly\endcsname
   %
@@ -211,6 +222,8 @@
   \fi% end showing details only for front
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/sheep/body}
+  \UseHook{tikzlings/body}
   \csname sheephookbody\endcsname
   \csname tikzlinghookbody\endcsname
   %

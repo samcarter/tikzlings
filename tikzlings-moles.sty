@@ -24,6 +24,8 @@
   \end{scope}%
   \thing[#1]%
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/moles/foreground}
+  \UseHook{tikzlings/foreground}
   \csname moleshookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
   %
@@ -35,6 +37,11 @@
 \newif\ifmoles@back
 \newif\ifmoles@contour
 \newif\ifmoles@openmouth
+
+\NewHook{tikzlings/moles/background}
+\NewHook{tikzlings/moles/belly}
+\NewHook{tikzlings/moles/body}
+\NewHook{tikzlings/moles/foreground}
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -127,6 +134,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/moles/background}
+  \UseHook{tikzlings/background}
   \csname moleshookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
   %
@@ -164,6 +173,8 @@
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/moles/belly}
+  \UseHook{tikzlings/belly}
   \csname moleshookbelly\endcsname
   \csname tikzlinghookbelly\endcsname
   %
@@ -210,6 +221,8 @@
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/moles/body}
+  \UseHook{tikzlings/body}
   \csname moleshookbody\endcsname
   \csname tikzlinghookbody\endcsname
   %

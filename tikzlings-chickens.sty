@@ -29,6 +29,8 @@
   \end{scope}%
   \thing[#1]%
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/chicken/foreground}
+  \UseHook{tikzlings/foreground}
   \csname chickenhookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
   %
@@ -38,6 +40,11 @@
 \newif\ifchicken@back
 \newif\ifchicken@contour
 \newif\ifchicken@baby
+
+\NewHook{tikzlings/chicken/background}
+\NewHook{tikzlings/chicken/belly}
+\NewHook{tikzlings/chicken/body}
+\NewHook{tikzlings/chicken/foreground}
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -143,6 +150,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/chicken/background}
+  \UseHook{tikzlings/background}
   \csname chickenhookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
   %
@@ -176,6 +185,8 @@
   \chicken@part@draw[\chicken@comb] (-0.082,2.060) ellipse[x radius=0.15, y radius=0.06, rotate=120];
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/chicken/belly}
+  \UseHook{tikzlings/belly}
   \csname chickenhookbelly\endcsname
   \csname tikzlinghookbelly\endcsname
   %
@@ -215,6 +226,8 @@
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/chicken/body}
+  \UseHook{tikzlings/body}
   \csname chickenhookbody\endcsname
   \csname tikzlinghookbody\endcsname
   %
@@ -267,6 +280,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/chicken/background}
+  \UseHook{tikzlings/background}
   \csname chickenhookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
   %
@@ -308,6 +323,8 @@
   \chicken@part@draw[\chicken@baby] (0,0.87) circle [radius=0.25];
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/chicken/belly}
+  \UseHook{tikzlings/belly}
   \csname chickenhookbelly\endcsname
   \csname tikzlinghookbelly\endcsname
   %
@@ -339,6 +356,8 @@
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/chicken/body}
+  \UseHook{tikzlings/body}
   \csname chickenhookbody\endcsname
   \csname tikzlinghookbody\endcsname
   %

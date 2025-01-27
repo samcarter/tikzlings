@@ -24,6 +24,8 @@
   \end{scope}%
   \thing[#1]%
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/snowman/foreground}
+  \UseHook{tikzlings/foreground}
   \csname snowmanhookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
   %
@@ -34,6 +36,11 @@
 \newif\ifsnowman@globalwarming
 \newif\ifsnowman@contour
 \newif\ifsnowman@openmouth
+
+\NewHook{tikzlings/snowman/background}
+\NewHook{tikzlings/snowman/belly}
+\NewHook{tikzlings/snowman/body}
+\NewHook{tikzlings/snowman/foreground}
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -122,6 +129,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/snowman/background}
+  \UseHook{tikzlings/background}
   \csname snowmanhookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
   %
@@ -136,6 +145,8 @@
     \fi% contour
     %
     % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \UseHook{tikzlings/snowman/belly}
+    \UseHook{tikzlings/belly}
     \csname snowmanhookbelly\endcsname
     \csname tikzlinghookbelly\endcsname
     %
@@ -173,6 +184,8 @@
     \snowman@part@draw[\snowman@body] (0,1.7) circle[radius=0.4];
     %
     % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \UseHook{tikzlings/snowman/belly}
+    \UseHook{tikzlings/belly}
     \csname snowmanhookbelly\endcsname
     \csname tikzlinghookbelly\endcsname
     %
@@ -212,6 +225,8 @@
   \fi% global warming
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/snowman/body}
+  \UseHook{tikzlings/body}
   \csname snowmanhookbody\endcsname
   \csname tikzlinghookbody\endcsname
   %

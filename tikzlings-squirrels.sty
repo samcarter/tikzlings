@@ -24,6 +24,8 @@
   \end{scope}%
   \thing[#1]%
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/squirrel/foreground}
+  \UseHook{tikzlings/foreground}
   \csname squirrelhookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
 }
@@ -34,6 +36,11 @@
 \newif\ifsquirrel@back
 \newif\ifsquirrel@contour
 \newif\ifsquirrel@openmouth
+
+\NewHook{tikzlings/squirrel/background}
+\NewHook{tikzlings/squirrel/belly}
+\NewHook{tikzlings/squirrel/body}
+\NewHook{tikzlings/squirrel/foreground}
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -119,6 +126,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/squirrel/background}
+  \UseHook{tikzlings/background}
   \csname squirrelhookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
   %
@@ -149,6 +158,8 @@
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/squirrel/belly}
+  \UseHook{tikzlings/belly}
   \csname squirrelhookbelly\endcsname
   \csname tikzlinghookbelly\endcsname
   %
@@ -205,6 +216,8 @@
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/squirrel/body}
+  \UseHook{tikzlings/body}
   \csname squirrelhookbody\endcsname
   \csname tikzlinghookbody\endcsname
   %

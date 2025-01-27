@@ -24,6 +24,8 @@
   \end{scope}%
   \thing[#1]%
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/anteater/foreground}
+  \UseHook{tikzlings/foreground}
   \csname anteaterhookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
 }
@@ -33,6 +35,11 @@
 \newif\ifanteater@contour
 \newif\ifanteater@leftstep
 \newif\ifanteater@rightstep
+
+\NewHook{tikzlings/anteater/background}
+\NewHook{tikzlings/anteater/belly}
+\NewHook{tikzlings/anteater/body}
+\NewHook{tikzlings/anteater/foreground}
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -112,6 +119,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/anteater/background}
+  \UseHook{tikzlings/background}
   \csname anteaterhookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
   %
@@ -149,6 +158,8 @@
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/anteater/belly}
+  \UseHook{tikzlings/belly}
   \csname anteaterhookbelly\endcsname
   \csname tikzlinghookbelly\endcsname
   %
@@ -189,6 +200,8 @@
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/anteater/body}
+  \UseHook{tikzlings/body}
   \csname anteaterhookbody\endcsname
   \csname tikzlinghookbody\endcsname
   %

@@ -24,6 +24,8 @@
   \end{scope}%
   \thing[#1]%
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/panda/foreground}
+  \UseHook{tikzlings/foreground}
   \csname pandahookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
   %
@@ -33,6 +35,11 @@
 \newif\ifpanda@back
 \newif\ifpanda@contour
 \newif\ifpanda@openmouth
+
+\NewHook{tikzlings/panda/background}
+\NewHook{tikzlings/panda/belly}
+\NewHook{tikzlings/panda/body}
+\NewHook{tikzlings/panda/foreground}
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -115,6 +122,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/panda/background}
+  \UseHook{tikzlings/background}
   \csname pandahookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
   %
@@ -128,6 +137,8 @@
   \panda@part@draw[\panda@body] (0,0.78) ellipse[x radius=0.57, y radius=0.65];
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/panda/belly}
+  \UseHook{tikzlings/belly}
   \csname pandahookbelly\endcsname
   \csname tikzlinghookbelly\endcsname
   %
@@ -176,6 +187,8 @@
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/panda/body}
+  \UseHook{tikzlings/body}
   \csname pandahookbody\endcsname
   \csname tikzlinghookbody\endcsname
   %

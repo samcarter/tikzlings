@@ -10,6 +10,7 @@
 ### Changed
 
 - added synonyms for eye/eyes, pupil/pupils, leg/legs, arm/arms, ear/ears, foot/feet, wing/wings, hand/hands, antenna/antennas, whisker/whiskers, paw/paws, toe/toes, tooth/teeth, etc.
+- replaced self-baked hooks with latex hooks: `\NewHook{tikzlings/<name_of_the_tikzling>/background}`, `\NewHook{tikzlings/<name_of_the_tikzling>/belly}`, `\NewHook{tikzlings/<name_of_the_tikzling>/body}`, `\NewHook{tikzlings/<name_of_the_tikzling>/foreground}`, `\NewHook{tikzlings/background}`, `\NewHook{tikzlings/body}`, `\NewHook{tikzlings/clothing}`, `\NewHook{tikzlings/hair}`, `\NewHook{tikzlings/hat}` and `\NewHook{tikzlings/foreground}`
 
 ### Fixed
 

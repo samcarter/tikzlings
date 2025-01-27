@@ -24,6 +24,8 @@
   \end{scope}%
   \thing[#1]%
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/coati/foreground}
+  \UseHook{tikzlings/foreground}
   \csname coatihookforeground\endcsname
   \csname tikzlinghookforeground\endcsname
 }
@@ -34,6 +36,11 @@
 \newif\ifcoati@rightstep
 \newif\ifcoati@back
 \newif\ifcoati@contour
+
+\NewHook{tikzlings/coati/background}
+\NewHook{tikzlings/coati/belly}
+\NewHook{tikzlings/coati/body}
+\NewHook{tikzlings/coati/foreground}
 
 \tikzset{
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -129,6 +136,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/coati/background}
+  \UseHook{tikzlings/background}
   \csname coatihookbackground\endcsname
   \csname tikzlinghookbackground\endcsname
   %
@@ -166,6 +175,8 @@
   \coati@part@draw[\coati@body] (0.595, 0.92) .. controls (0.595, 0.26) and (0.355, 0.18) .. (0, 0.18) .. controls (-0.355, 0.18) and (-0.595, 0.26) .. (-0.595, 0.92) .. controls (-0.605, 1.58) and (-0.335, 2.11) .. (0, 2.11) .. controls (0.335, 2.11) and (0.605, 1.58) .. (0.595, 0.92) -- cycle;
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/coati/belly}
+  \UseHook{tikzlings/belly}
   \csname coatihookbelly\endcsname
   \csname tikzlinghookbelly\endcsname
   %
@@ -262,6 +273,8 @@
   \fi% back
   %
   % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/coati/body}
+  \UseHook{tikzlings/body}
   \csname coatihookbody\endcsname
   \csname tikzlinghookbody\endcsname
   %
