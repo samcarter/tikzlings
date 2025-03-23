@@ -4,6 +4,15 @@
 
 ### New
 
+### Changed
+
+### Fixed
+
+
+## [v2.3]
+
+### New
+
 - Cookie, the dog
 - New options `randomhead` and `randomaccessories`. Basically the same as  `\randomhead` and `\randomaccessories`, but no longer require `\shufflethings`
 
@@ -169,7 +178,8 @@
 
 ------
 
-[Unreleased]: https://github.com/samcarter/tikzlings/compare/v2.2...HEAD
+[Unreleased]: https://github.com/samcarter/tikzlings/compare/v2.3...HEAD
+[v2.3]: https://github.com/samcarter/tikzlings/compare/v2.2...v2.3
 [v2.2]: https://github.com/samcarter/tikzlings/compare/v2.1...v2.2
 [v2.1]: https://github.com/samcarter/tikzlings/compare/v2.0...v2.1
 [v2.0]: https://github.com/samcarter/tikzlings/compare/v1.0...v2.0
