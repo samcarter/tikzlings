@@ -4,6 +4,8 @@
 
 ### New
 
+- added `tailpos` option to the dog, so it can wag its tail
+
 ### Changed
 
 ### Fixed

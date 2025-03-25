@@ -30,6 +30,7 @@
   \csname tikzlinghookforeground\endcsname
 }
 
+\def\dog@tailpostext{left}
 \newif\ifdog@threeD
 \newif\ifdog@back
 \newif\ifdog@contour
@@ -74,6 +75,8 @@
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  tailpos/.code      = \def\dog@tailpos{#1},
+  tailpos/.default   = right,
   3D/.code           = \dog@threeDtrue,
   back/.code         = \dog@backtrue,
   contour/.code      = \dog@contourtrue
@@ -90,7 +93,11 @@
   % minimal bounding box size
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \path (-0.6,0.1) rectangle (0.96, 2.25);
+  \ifx\dog@tailpos\dog@tailpostext
+    \path (-0.96,0.1) rectangle (0.6, 2.25);
+  \else
+    \path (-0.6,0.1) rectangle (0.96, 2.25);
+  \fi
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
@@ -135,7 +142,11 @@
   \unless\ifdog@back
     %
     % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \dog@part@draw[\dog@tail,overlay] (0.8496, 0.6798).. controls (0.6181, 0.2192) and (-0.0349, 0.2165) .. (-0.0273, 0.4485).. controls (-0.0197, 0.6805) and (0.3442, 0.4836) .. (0.5802, 0.6615).. controls (0.7305, 0.7748) and (0.8744, 1.0345) .. (0.9231, 1.0115).. controls (0.9717, 0.9884) and (0.9263, 0.8323) .. (0.8496, 0.6798) -- cycle;
+    \ifx\dog@tailpos\dog@tailpostext
+      \dog@part@draw[\dog@tail,overlay,xscale=-1] (0.8496, 0.6798).. controls (0.6181, 0.2192) and (-0.0349, 0.2165) .. (-0.0273, 0.4485).. controls (-0.0197, 0.6805) and (0.3442, 0.4836) .. (0.5802, 0.6615).. controls (0.7305, 0.7748) and (0.8744, 1.0345) .. (0.9231, 1.0115).. controls (0.9717, 0.9884) and (0.9263, 0.8323) .. (0.8496, 0.6798) -- cycle;
+    \else
+      \dog@part@draw[\dog@tail,overlay] (0.8496, 0.6798).. controls (0.6181, 0.2192) and (-0.0349, 0.2165) .. (-0.0273, 0.4485).. controls (-0.0197, 0.6805) and (0.3442, 0.4836) .. (0.5802, 0.6615).. controls (0.7305, 0.7748) and (0.8744, 1.0345) .. (0.9231, 1.0115).. controls (0.9717, 0.9884) and (0.9263, 0.8323) .. (0.8496, 0.6798) -- cycle;
+    \fi
     %
     % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \dog@part@draw[\dog@body] (0.53, 0.89) .. controls (0.53, 0.49) and (0.53, 0.18) .. (0, 0.17) .. controls (-0.53, 0.18) and (-0.53, 0.49) .. (-0.53, 0.89) .. controls (-0.53, 1.29) and (-0.24, 1.61) .. (0, 1.61) .. controls (0.24, 1.61) and (0.53, 1.29) .. (0.53, 0.89) -- cycle;
@@ -160,7 +171,11 @@
     \dog@part@draw[\dog@body] (0.53, 0.89) .. controls (0.53, 0.49) and (0.53, 0.18) .. (0, 0.17) .. controls (-0.53, 0.18) and (-0.53, 0.49) .. (-0.53, 0.89) .. controls (-0.53, 1.29) and (-0.24, 1.61) .. (0, 1.61) .. controls (0.24, 1.61) and (0.53, 1.29) .. (0.53, 0.89) -- cycle;
     %
     % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \dog@part@draw[\dog@tail,overlay] (0.8496, 0.6798).. controls (0.6181, 0.2192) and (-0.0349, 0.2165) .. (-0.0273, 0.4485).. controls (-0.0197, 0.6805) and (0.3442, 0.4836) .. (0.5802, 0.6615).. controls (0.7305, 0.7748) and (0.8744, 1.0345) .. (0.9231, 1.0115).. controls (0.9717, 0.9884) and (0.9263, 0.8323) .. (0.8496, 0.6798) -- cycle;
+    \ifx\dog@tailpos\dog@tailpostext
+      \dog@part@draw[\dog@tail,overlay,xscale=-1] (0.8496, 0.6798).. controls (0.6181, 0.2192) and (-0.0349, 0.2165) .. (-0.0273, 0.4485).. controls (-0.0197, 0.6805) and (0.3442, 0.4836) .. (0.5802, 0.6615).. controls (0.7305, 0.7748) and (0.8744, 1.0345) .. (0.9231, 1.0115).. controls (0.9717, 0.9884) and (0.9263, 0.8323) .. (0.8496, 0.6798) -- cycle;
+    \else
+      \dog@part@draw[\dog@tail,overlay] (0.8496, 0.6798).. controls (0.6181, 0.2192) and (-0.0349, 0.2165) .. (-0.0273, 0.4485).. controls (-0.0197, 0.6805) and (0.3442, 0.4836) .. (0.5802, 0.6615).. controls (0.7305, 0.7748) and (0.8744, 1.0345) .. (0.9231, 1.0115).. controls (0.9717, 0.9884) and (0.9263, 0.8323) .. (0.8496, 0.6798) -- cycle;
+    \fi
     %
   \else
     %
@@ -233,6 +248,12 @@
 %\end{tcblisting}
 %\begin{tcblisting}{title={Tail colour}}
 %\dog[tail=red]
+%\end{tcblisting}
+%
+% The dog can wag its tail:
+%\begin{tcblisting}{title={Wagging tail}}
+%\dog[tailpos=left]
+%\dog[tailpos=right,xshift=2cm]
 %\end{tcblisting}
 %
 %To view the dog from behind:
