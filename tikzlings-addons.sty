@@ -123,6 +123,7 @@
 \thing@ini[acces]{umbrellaclosed}
 \thing@ini[acces]{handbag}
 \thing@ini[acces]{stick}
+\thing@ini[acces]{towel}
 
 \tikzset{%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -369,6 +370,9 @@
   stick/.default          = brown!50!black,
   leaf/.store in          = \thing@leaf,
   leaf                    = green!70!red,
+  towel/.code             = \thing@toweltrue
+                            \def\thing@towel{#1},
+  towel/.default          = violet,
 }
 
 \def\thing@draw{%
@@ -931,6 +935,13 @@
     \draw[\thing@stick!90!red, line width=0.06] (0.08, 0.51) ellipse [x radius=0.016, y radius=0.032]
     ellipse [x radius=0.012, y radius=0.024] ellipse [x radius=0.008, y radius=0.016] (0,0.75) ellipse [y radius=0.016, x radius=0.032] ellipse [y radius=0.012, x radius=0.024]  ellipse [y radius=0.008, x radius=0.016] ;
     \fill[\thing@stick!90!red] (0.08, 0.51) ellipse [x radius=0.004, y radius=0.008] (0,0.75) ellipse [x radius=0.008, y radius=0.004];
+  \end{scope}
+\fi
+%
+% towel %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifthing@towel
+  \begin{scope}[xshift=-26]
+    \fill[\thing@towel]  (0.6457, 0.9482).. controls (0.6509, 1.028) and (1.3581, 1.0564) .. (1.3736, 0.9841).. controls (1.4459, 0.6474) and (1.3166, 0.8398) .. (1.4272, 0.3739).. controls (1.3567, 0.243) and (1.2095, 0.2817) .. (1.0938, 0.2664).. controls (0.9612, 0.2488) and (0.9142, 0.1883) .. (0.693, 0.286).. controls (0.7014, 0.7758) and (0.6221, 0.5838) .. (0.6457, 0.9482) -- cycle;
   \end{scope}
 \fi
 %
