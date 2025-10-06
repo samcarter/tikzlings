@@ -68,14 +68,14 @@
   \pgfmathsetmacro{\starbrightness}{.003+rnd*.008}%% <- making them smaller causes errors
   % Adding some random redshift (this does not reflect the true z distribution of stars, but what looked nice)
   \pgfmathsetmacro{\starredshift}{20*rnd}%
-  % adding an intrisic colour to the star. The code below produces equal ammout of red and blue stars (this is not a realistic value, again just what looked nice), the intensity of the colour is random
-  \pgfmathsetmacro{\starcolfraction}{50*rnd}%  
-  \pgfmathsetmacro{\starcol}{less(rand,0.)}  
+  % adding an intrinsic colour to the star. The code below produces equal ammout of red and blue stars (this is not a realistic value, again just what looked nice), the intensity of the colour is random
+  \pgfmathsetmacro{\starcolfraction}{50*rnd}%
+  \pgfmathsetmacro{\starcol}{less(rand,0.)}
   \ifnum\starcol>0
     \def\starcolour{blue}
   \else%
     \def\starcolour{red}
-  \fi% 
+  \fi%
   \fill[
     \starcolour!\starcolfraction!red!\starredshift!white
     ,path fading=fade out] (rand*1.6,rand*1.6) circle[radius=\starbrightness];
