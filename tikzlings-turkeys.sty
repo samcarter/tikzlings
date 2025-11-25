@@ -1,0 +1,291 @@
+ % !TeX root = ./examples/turkey.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% This package is part of the TikZlings package
+%% A package to bring cute little animals and other beings into tikz
+%% Maintained by samcarter
+%%
+%% Project repository and bug tracker:
+%% https://github.com/samcarter/tikzlings
+%%
+%% Released under the LaTeX Project Public License v1.3c or later
+%% See https://www.latex-project.org/lppl.txt
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{tikzlings-turkeys}[2025/03/23 version v2.3 Draw turkeys in TikZ]
+
+\RequirePackage{tikz}
+\RequirePackage{tikzlings-addons}
+\usetikzlibrary{decorations.pathmorphing}
+
+\newcommand*{\turkey}[1][]{%
+  \begin{scope}%
+    \tikzset{/turkey/.cd,#1}%
+    \turkey@draw%
+  \end{scope}%
+  \thing[#1]%
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/turkey/foreground}
+  \UseHook{tikzlings/foreground}
+  \csname turkeyhookforeground\endcsname
+  \csname tikzlinghookforeground\endcsname
+  %
+}
+
+\newif\ifturkey@threeD
+\newif\ifturkey@back
+\newif\ifturkey@contour
+\newif\ifturkey@baby
+
+\NewHook{tikzlings/turkey/background}
+\NewHook{tikzlings/turkey/belly}
+\NewHook{tikzlings/turkey/body}
+\NewHook{tikzlings/turkey/foreground}
+
+\tikzset{
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Pass unknown keys on to tikz
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  /turkey/.search also={/tikz,/pgf,/thing},
+  /turkey/.cd,
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % body
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  body/.store in     = \turkey@body,
+  body               = brown!70!black,
+  eyes/.store in     = \turkey@eyes,
+  eyes               = white!90!gray,
+  eye/.forward to    = /turkey/eyes,
+  pupils/.store in   = \turkey@pupils,
+  pupils             = brown!30!black,
+  pupil/.forward to  = /turkey/pupils,
+  bill/.store in     = \turkey@bill,
+  bill               = yellow!50!orange,
+  feet/.store in     = \turkey@feet,
+  feet               = orange!90!yellow,
+  foot/.forward to   = /turkey/feet,
+  comb/.store in     = \turkey@comb,
+  comb               = red!70!black,
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % options
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  3D/.code           = \turkey@threeDtrue,
+  back/.code         = \turkey@backtrue,
+  contour/.code      = \turkey@contourtrue
+                       \def\turkey@contour{#1},
+  contour/.default   = black,
+  outline/.forward to = /turkey/contour,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Grown up turkey
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\turkey@draw{%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % minimal bounding box size
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \path (-0.96, 0.08) rectangle (0.96, 2.35);
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % store the current scale factor
+  % from https://github.com/samcarter/tikzlings/issues/3#issuecomment-461373494
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \pgfgettransformentries{\tmpscaleA}{\tmpscaleB}{\tmpscaleC}{\tmpscaleD}{\tmp}{\tmp}%
+  \pgfmathsetmacro{\scalingfactor}{sqrt(abs(\tmpscaleA*\tmpscaleD-\tmpscaleB*\tmpscaleC))*sqrt(abs((\pgf@xx/1cm)*(\pgf@yy/1cm)-(\pgf@xy/1cm)*(\pgf@yx/1cm)))}%
+  \pgfmathsetmacro{\xscalefactor}{\tmpscaleA}
+  \pgfmathsetmacro{\yscalefactor}{\tmpscaleD}
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % switch between 2D, 3D and contours, from
+  % https://chat.stackexchange.com/transcript/message/45991801#45991801
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ifturkey@threeD
+    \def\turkey@part@draw[##1]{\shade[ball color=##1]}
+  \else% 3D
+    \ifturkey@contour
+      \def\turkey@part@draw[##1]{\draw[##1,\turkey@contour,fill=white,line width=\scalingfactor*0.4pt]}
+    \else% contour
+      \def\turkey@part@draw[##1]{\fill[##1]}
+    \fi% contour
+  \fi% 3D
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % generating saturated version of body colour
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \extractcolorspecs{\turkey@body}{\turkey@model}{\turkey@colorspec}
+  \convertcolorspec{\turkey@model}{\turkey@colorspec}{hsb}{\turkey@hsbcolorspec}
+  \pgfmathsetmacro{\turkey@hue}{(array({\turkey@hsbcolorspec},0))}
+  \pgfmathsetmacro{\turkey@sat}{(array({\turkey@hsbcolorspec},1)+0.5)}
+  \pgfmathsetmacro{\turkey@bright}{(array({\turkey@hsbcolorspec},2))}
+  \definecolor{turkey@bodysat50}{hsb}{\turkey@hue,\turkey@sat,\turkey@bright}
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Body parts
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/turkey/background}
+  \UseHook{tikzlings/background}
+  \csname turkeyhookbackground\endcsname
+  \csname tikzlinghookbackground\endcsname
+  %
+  % Tail
+  \foreach \turkey@tail [count=\turkey@tailcount]  in {-30,-10,...,210}{
+    \ifodd\turkey@tailcount
+      \turkey@part@draw[\turkey@body!80] (0,1)++(\turkey@tail:0.6) ellipse[x radius=0.3, y radius=0.15, rotate=\turkey@tail];
+    \else
+      \turkey@part@draw[\turkey@body!60] (0,1)++(\turkey@tail:0.6) ellipse[x radius=0.3, y radius=0.15, rotate=\turkey@tail];
+    \fi
+  }
+  %
+  % Feet %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \turkey@part@draw[\turkey@feet] (0.19,0.4) ellipse[x radius=0.03, y radius=0.2];
+  \turkey@part@draw[\turkey@feet] (-0.19,0.4) ellipse[x radius=0.03, y radius=0.2];
+  \turkey@part@draw[\turkey@feet] (0.175,0.2) ellipse[x radius=0.03, y radius=0.1];
+  \turkey@part@draw[\turkey@feet] (0.225,0.21) ellipse[x radius=0.03, y radius=0.1, rotate=20];
+  \turkey@part@draw[\turkey@feet] (0.275,0.23) ellipse[x radius=0.03, y radius=0.1, rotate=40];
+  \turkey@part@draw[\turkey@feet] (-0.175,0.2) ellipse[x radius=0.03, y radius=0.1];
+  \turkey@part@draw[\turkey@feet] (-0.225,0.21) ellipse[x radius=0.03, y radius=0.1, rotate=-20];
+  \turkey@part@draw[\turkey@feet] (-0.275,0.23) ellipse[x radius=0.03, y radius=0.1, rotate=-40];
+  %
+  % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \turkey@part@draw[\turkey@body] (0,1) circle [radius=0.5];
+  \turkey@part@draw[\turkey@body] (0.18,0.55) circle [radius=0.1];
+  \turkey@part@draw[\turkey@body] (-0.18,0.55) circle [radius=0.1];
+  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/turkey/belly}
+  \UseHook{tikzlings/belly}
+  \csname turkeyhookbelly\endcsname
+  \csname tikzlinghookbelly\endcsname
+  %
+  % Neck
+  \turkey@part@draw[\turkey@body!80] (0,1.1) circle [radius=0.1];
+  \turkey@part@draw[\turkey@body!80] (-0.1,1.1) rectangle (0.1,1.8);
+  %
+  % Head
+  \begin{scope}[scale=0.9,xscale=-1,yshift=0.15cm]
+  \turkey@part@draw[\turkey@body!80] (-0.09, 2.06) .. controls (-0.09, 2.06) and (-0.13, 2.25) .. (-0.07, 2.27) .. controls (-0.09, 2.13) and (0.04, 2.08) .. (0.04, 2.08) .. controls (0.04, 2.08) and (0.02, 2.20) .. (0.06, 2.21) .. controls (0.06, 2.11) and (0.13, 2.08) .. (0.13, 2.08) -- cycle;
+  \end{scope}
+  \turkey@part@draw[\turkey@body!80] (0,1.75) circle [radius=0.28];
+
+  \turkey@part@draw[\turkey@body!80!black] (0.45,0.64) arc[start angle=-30, end angle=65, radius=0.6] -- cycle;
+  \turkey@part@draw[\turkey@body!80!black] (-0.45,0.64) arc[end angle=115, start angle=210, radius=0.6] -- cycle;
+  %
+  % Eyes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifturkey@back
+    \turkey@part@draw[\turkey@pupils] (0.124,1.78) circle[radius=0.03];
+    \turkey@part@draw[\turkey@pupils] (-0.124,1.78) circle[radius=0.03];
+  \fi% back
+  %
+  % Bill %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \unless\ifturkey@back
+    \turkey@part@draw[\turkey@comb] (-0.04, 1.57) ellipse[x radius=0.04, y radius=0.08, rotate=-20];
+    \turkey@part@draw[\turkey@bill] (-0.09, 1.7) -- (0, 1.58) -- (0.09, 1.7) arc [start angle=50, end angle=130, radius=0.14] -- cycle;
+  \fi% back
+%  %
+%  % Tail %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  \ifturkey@back
+%    \turkey@part@draw[turkey@bodysat50] (0.12, 0.795) ellipse[x radius=0.20, y radius=0.06, rotate=58];
+%    \turkey@part@draw[turkey@bodysat50] (0.04, 0.87) ellipse[x radius=0.25, y radius=0.06, rotate=80];
+%    \turkey@part@draw[turkey@bodysat50] (-0.03, 0.83) ellipse[x radius=0.20, y radius=0.06, rotate=102];
+%    \turkey@part@draw[turkey@bodysat50] (-0.082, 0.76) ellipse[x radius=0.17, y radius=0.06, rotate=130];
+%  \fi% back
+%  %
+  % adding hook for users to customise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \UseHook{tikzlings/turkey/body}
+  \UseHook{tikzlings/body}
+  \csname turkeyhookbody\endcsname
+  \csname tikzlinghookbody\endcsname
+  %
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Documentation
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\clearpage
+%\section[turkey]{Paulette, the turkey}
+%
+%\emph{Paulette is named after the French word for turkey ``poulet''}
+%
+%\subsection{Package name}
+%
+%\begin{tcolorbox}[title={Package usage}]
+%\begin{samcode}
+%\usepackage{tikzlings-turkeys}
+%\end{samcode}
+%\end{tcolorbox}
+%
+%\subsection{Basic Usage}
+%
+%\begin{tcblisting}{title={Basic turkey}}
+%\turkey
+%\end{tcblisting}
+%
+%\subsection{Options}
+%
+%The basic turkey can be modified by changing its colour:
+%\begin{tcblisting}{title={Body colour}}
+%\turkey[body=blue]
+%\end{tcblisting}
+%
+%In addition to the colour of the body, the colour of various body parts can be adjusted:
+%\begin{tcblisting}{title={Comb colour}}
+%\turkey[comb=green]
+%\end{tcblisting}
+%
+%\begin{tcblisting}{title={Eye colour}}
+%\turkey[eyes=red]
+%\end{tcblisting}
+%
+%\begin{tcblisting}{title={Pupil color}}
+%\turkey[pupils=red]
+%\end{tcblisting}
+%
+%\begin{tcblisting}{title={Bill colour}}
+%\turkey[bill=red]
+%\end{tcblisting}
+%
+%\begin{tcblisting}{title={Foot colour}}
+%\turkey[feet=red]
+%\end{tcblisting}
+%
+%There is also the special option \saminline|baby| which will draw a baby turkey called \emph{Pio}:
+%\begin{tcblisting}{title={Baby turkey}}
+%\turkey[baby=yellow]
+%\end{tcblisting}
+%
+%To view the turkey from behind:
+%\begin{tcblisting}{title={Back view}}
+%\turkey[back]
+%\end{tcblisting}
+%
+%The key \saminline|3D| will make the turkey 3-dimensional:
+%\begin{tcblisting}{title={3D view}}
+%\turkey[3D]
+%\end{tcblisting}
+%
+%And finally the \saminline|contour| key will only draw the outlines:
+%\begin{tcblisting}{title={Contours}}
+%\turkey[contour=black]
+%\end{tcblisting}
