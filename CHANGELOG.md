@@ -4,6 +4,7 @@
 
 ### New
 
+- Karl, the turkey
 - added `tailpos` option to the dog, so it can wag its tail
 - new accessories: towel
 
