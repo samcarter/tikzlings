@@ -1,0 +1,54 @@
+\documentclass[varwidth=15cm]{standalone}
+
+\usepackage{tikzlings}
+\newcommand{\tikzlinghookbackground}{\path (-0.9,0) rectangle (1.75,2.5);}
+
+\begin{document}
+
+\raggedright
+
+\makeatletter
+\foreach \x in \tikzlings@names@clist {
+  \begin{tikzpicture}
+    \csname\x\endcsname
+  \end{tikzpicture}
+}
+\makeatother
+
+\hrulefill
+
+\makeatletter
+\foreach \x in \tikzlings@names@clist {
+  \begin{tikzpicture}
+    \csname\x\endcsname[
+      3D
+    ]
+  \end{tikzpicture}
+}
+\makeatother
+
+\hrulefill
+
+\makeatletter
+\foreach \x in \tikzlings@names@clist {
+  \begin{tikzpicture}
+    \csname\x\endcsname[
+      back
+    ]
+  \end{tikzpicture}
+}
+\makeatother
+
+\hrulefill
+
+\makeatletter
+\foreach \x in \tikzlings@names@clist {
+  \begin{tikzpicture}
+    \csname\x\endcsname[
+      contour
+    ]
+  \end{tikzpicture}
+}
+\makeatother
+
+\end{document}
