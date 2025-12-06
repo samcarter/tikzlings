@@ -124,6 +124,7 @@
 \thing@ini[acces]{handbag}
 \thing@ini[acces]{stick}
 \thing@ini[acces]{towel}
+\thing@ini[acces]{present}
 
 \tikzset{%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -137,7 +138,7 @@
   randomhead/.code        = \shufflethings,
   randomhead/.forward to  = /thing/\randomhead,
   randomaccessories/.code = \shufflethings,
-  randomaccessories/.forward to = /thing/\randomaccessories,  
+  randomaccessories/.forward to = /thing/\randomaccessories,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Hats
@@ -373,6 +374,18 @@
   towel/.code             = \thing@toweltrue
                             \def\thing@towel{#1},
   towel/.default          = violet,
+  present/.code           = \thing@presenttrue
+                            \def\thing@present{#1},
+  present/.default        = violet,
+  presenttop/.code        = \def\thing@presenttop{#1},
+  presenttop              = \thing@present!70,
+  present top/.forward to = /thing/presenttop,
+  presentbottom/.code     = \def\thing@presentbottom{#1},
+  presentbottom           = \thing@present!80,
+  present bottom/.forward to = /thing/presentbottom,
+  presentribbon/.code     = \def\thing@presentribbon{#1},
+  presentribbon           = \thing@present,
+  present ribbon/.forward to = /thing/presentribbon,
 }
 
 \def\thing@draw{%
@@ -945,6 +958,16 @@
   \end{scope}
 \fi
 %
+% present %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifthing@present
+  \fill[\thing@presentbottom] (-0.3, 0.35) rectangle (0.3, 0.9);
+  \fill[\thing@presenttop] (-0.32, 0.75) rectangle (0.32, 0.95);
+  \fill[\thing@presentribbon] (-0.05, 0.35) rectangle (0.05, 0.95);
+  \draw[\thing@presentribbon,line width=\scalingfactor*0.8pt, in=0, out=40,loop,min distance=12] (0, 0.95) to (0, 0.95);
+  \draw[\thing@presentribbon,line width=\scalingfactor*0.8pt, in=40, out=80,loop,min distance=12] (0, 0.95) to (0, 0.95);
+  \draw[\thing@presentribbon,line width=\scalingfactor*0.8pt,in=100, out=140,loop,min distance=12] (0, 0.95) to (0, 0.95);
+  \draw[\thing@presentribbon,line width=\scalingfactor*0.8pt,in=140, out=180,loop,min distance=12] (0, 0.95) to (0, 0.95);
+\fi
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

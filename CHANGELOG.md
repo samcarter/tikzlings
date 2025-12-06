@@ -4,6 +4,8 @@
 
 ### New
 
+- new accessories: present (many thanks to @CarLaTeX)
+
 ### Changed
 
 ### Fixed
