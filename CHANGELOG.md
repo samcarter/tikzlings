@@ -10,6 +10,8 @@
 
 ### Fixed
 
+- chicken: In some situation, a "dimension too large"-error could occur due the snake path decoration. Using the `/pgf/fpu/install only={reciprocal}` option avoids the error.
+
 
 ## [v2.4]
 

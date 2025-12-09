@@ -17,6 +17,7 @@
 \RequirePackage{tikz}
 \RequirePackage{tikzlings-addons}
 \usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{fpu}
 
 \newcommand*{\chicken}[1][]{%
   \begin{scope}%
@@ -177,7 +178,7 @@
   %
   % Body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \chicken@part@draw[\chicken@body] ( 0.00, 0.33) .. controls (-0.60, 0.33) and (-0.55, 0.65) .. (-0.55, 0.90) .. controls (-0.55, 1.10) and (-0.48, 1.20) .. (-0.39, 1.40) .. controls (-0.32, 1.58) and (-0.32, 2.09) .. ( 0.00, 2.09) .. controls ( 0.32, 2.09) and ( 0.32, 1.58) .. ( 0.39, 1.40) .. controls ( 0.48, 1.20) and ( 0.55, 1.10) .. ( 0.55, 0.90) .. controls ( 0.55, 0.65) and ( 0.60, 0.33) .. ( 0, 0.33) -- cycle;
-  \chicken@part@draw[chicken@bodysat50,decoration={snake,amplitude=\scalingfactor*1.5pt,segment length=\scalingfactor*6.1pt}] ( -0.39, 1.40) .. controls (-0.32, 1.58) and (-0.32, 2.09) .. ( 0.00, 2.09) .. controls ( 0.32, 2.09) and ( 0.32, 1.58) .. ( 0.39, 1.40) decorate {arc [start angle=-60,end angle=-120,radius=0.77]} -- cycle;
+  \chicken@part@draw[chicken@bodysat50,decoration={snake,amplitude=\scalingfactor*1.5pt,segment length=\scalingfactor*6.1pt},/pgf/fpu/install only={reciprocal}] ( -0.39, 1.40) .. controls (-0.32, 1.58) and (-0.32, 2.09) .. ( 0.00, 2.09) .. controls ( 0.32, 2.09) and ( 0.32, 1.58) .. ( 0.39, 1.40) decorate {arc [start angle=-60,end angle=-120,radius=0.77]} -- cycle;
   %
   % Comb %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \chicken@part@draw[\chicken@comb] (0.04,2.132) ellipse[x radius=0.22, y radius=0.06, rotate=70];
