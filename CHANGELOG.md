@@ -4,6 +4,15 @@
 
 ### New
 
+### Changed
+
+### Fixed
+
+
+## [v2.5]
+
+### New
+
 - new accessories: present (many thanks to @CarLaTeX)
 
 ### Changed
@@ -195,7 +204,8 @@
 
 ------
 
-[Unreleased]: https://github.com/samcarter/tikzlings/compare/v2.4...HEAD
+[Unreleased]: https://github.com/samcarter/tikzlings/compare/v2.5...HEAD
+[v2.5]: https://github.com/samcarter/tikzlings/compare/v2.4...v2.5
 [v2.4]: https://github.com/samcarter/tikzlings/compare/v2.3...v2.4
 [v2.3]: https://github.com/samcarter/tikzlings/compare/v2.2...v2.3
 [v2.2]: https://github.com/samcarter/tikzlings/compare/v2.1...v2.2
