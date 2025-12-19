@@ -151,20 +151,14 @@
   height plus=3cm,
 }
 
-\AddToHook{tikzlings/coati/background}{\path (-1.63,0.1) rectangle (1.63,2.26);}
-\AddToHook{tikzlings/mouse/background}{\path (-1.6,0.1) rectangle (0.905, 2.17);}
-\AddToHook{tikzlings/cat/background}{\path (-1.6,0.1) rectangle (0.905, 2.17);}
-\AddToHook{tikzlings/dog/background}{\path (-1.6,0.1) rectangle (0.905, 2.17);}
+\newcommand{\tikzlinghookforeground}{\path (-1.63,0.1) rectangle (1.63,0.1);}
 
 \def\battext{bat}
 \newcommand{\tocentrysam}[3]{%
   % 1: label
   % 2: Title
   % 3: tikz code
-  \RemoveFromHook{tikzlings/coati/background}%
-  \RemoveFromHook{tikzlings/mouse/background}%
-  \RemoveFromHook{tikzlings/cat/background}%
-  \RemoveFromHook{tikzlings/dog/background}%
+  \renewcommand{\tikzlinghookforeground}{}%
   \hyperref[#1]{%
     ~\begin{tikzpicture}[scale=1]
       \path (0,0) rectangle (0,2.6);
@@ -173,10 +167,6 @@
       \node at (0,-0.8) {(\pageref{#1})};
     \end{tikzpicture}~%
   }\hfil%
-  \AddToHook{tikzlings/coati/background}{\path (-1.63,0.1) rectangle (1.63,2.26);}%
-  \AddToHook{tikzlings/mouse/background}{\path (-1.6,0.1) rectangle (0.905, 2.17);}%
-  \AddToHook{tikzlings/cat/background}{\path (-1.6,0.1) rectangle (0.905, 2.17);}%
-  \AddToHook{tikzlings/dog/background}{\path (-1.6,0.1) rectangle (0.905, 2.17);}%
 }
 
 \begin{document}
@@ -239,7 +229,7 @@ To make customisation  of the \tikzlings easier, some hooks are provided, which 
   \item \saminline|\NewHook{tikzlings/<name_of_the_tikzling>/foreground}|
 \end{itemize}
 
-With regard to the individual components of the \tikzlings, they are located in the following z order:
+With regard to the individual components of the \tikzlings, they are located in the following z order:\enlargethispage{0.5cm}
 
 \begingroup
   \centering
