@@ -35,6 +35,7 @@
 \newif\ifrhino@back
 \newif\ifrhino@contour
 \newif\ifrhino@openmouth
+\newif\ifrhino@debug
 
 \NewHook{tikzlings/rhino/background}
 \NewHook{tikzlings/rhino/belly}
@@ -54,36 +55,37 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.store in     = \rhino@body,
-  body               = gray!55!white,
-  toes/.store in     = \rhino@toes,
-  toes               = \rhino@body,
-  toe/.forward to    = /rhino/toes,
-  eyes/.store in     = \rhino@eyes,
-  eyes               = white,
-  eye/.forward to    = /rhino/eyes,
-  pupils/.store in   = \rhino@pupils,
-  pupils             = black,
-  pupil/.forward to  = /rhino/eyes,
-  mouth/.store in    = \rhino@mouth,
-  mouth              = \rhino@body!50!black,
-  horn/.store in     = \rhino@horn,
-  horn               = white!95!yellow,
+  body/.store in      = \rhino@body,
+  body                = gray!55!white,
+  toes/.store in      = \rhino@toes,
+  toes                = \rhino@body,
+  toe/.forward to     = /rhino/toes,
+  eyes/.store in      = \rhino@eyes,
+  eyes                = white,
+  eye/.forward to     = /rhino/eyes,
+  pupils/.store in    = \rhino@pupils,
+  pupils              = black,
+  pupil/.forward to   = /rhino/eyes,
+  mouth/.store in     = \rhino@mouth,
+  mouth               = \rhino@body!50!black,
+  horn/.store in      = \rhino@horn,
+  horn                = white!95!yellow,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  openmouth/.code    = \rhino@openmouthtrue,
+  openmouth/.code     = \rhino@openmouthtrue,
   open mouth/.forward to = /rhino/openmouth,
-  3D/.code           = \rhino@threeDtrue
-                       \def\rhino@mouth{black},
-  back/.code         = \rhino@backtrue,
-  contour/.code      = \rhino@contourtrue
-                       \def\rhino@contour{#1}
-                       \def\rhino@mouth{#1},
-  contour/.default   = black,
+  3D/.code            = \rhino@threeDtrue
+                        \def\rhino@mouth{black},
+  back/.code          = \rhino@backtrue,
+  contour/.code       = \rhino@contourtrue
+                        \def\rhino@contour{#1}
+                        \def\rhino@mouth{#1},
+  contour/.default    = black,
   outline/.forward to = /rhino/contour,
+  debug/.code         = \rhino@debugtrue,
 }
 
 \def\rhino@draw{%
@@ -117,7 +119,7 @@
     \ifrhino@contour
       \def\rhino@part@draw[##1]{\draw[##1,\rhino@contour,fill=white,line width=\scalingfactor*0.4pt]}
     \else% contour
-      \def\rhino@part@draw[##1]{\fill[##1]}
+      \def\rhino@part@draw[##1]{\fill[\ifrhino@debug tikzlings debug\fi,##1]}
     \fi% contour
   \fi% 3D
   %

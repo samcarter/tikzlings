@@ -40,6 +40,7 @@
 \newif\ifsnowman@globalwarming
 \newif\ifsnowman@contour
 \newif\ifsnowman@openmouth
+\newif\ifsnowman@debug
 
 \NewHook{tikzlings/snowman/background}
 \NewHook{tikzlings/snowman/belly}
@@ -59,36 +60,37 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.store in     = \snowman@body,
-  body               = white!95!black,
-  eyes/.store in     = \snowman@eyes,
-  eyes               = black,
-  eye/.forward to    = /snowman/eyes,
-  nose/.store in     = \snowman@nose,
-  nose               = orange,
-  mouth/.store in    = \snowman@mouth,
-  mouth              = black,
-  buttons/.store in  = \snowman@buttons,
-  buttons            = black,
-  button/.forward to = /snowman/buttons,
+  body/.store in      = \snowman@body,
+  body                = white!95!black,
+  eyes/.store in      = \snowman@eyes,
+  eyes                = black,
+  eye/.forward to     = /snowman/eyes,
+  nose/.store in      = \snowman@nose,
+  nose                = orange,
+  mouth/.store in     = \snowman@mouth,
+  mouth               = black,
+  buttons/.store in   = \snowman@buttons,
+  buttons             = black,
+  button/.forward to  = /snowman/buttons,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  openmouth/.code    = \snowman@openmouthtrue,
+  openmouth/.code     = \snowman@openmouthtrue,
   open mouth/.forward to = /snowman/openmouth,
-  3D/.code           = \snowman@threeDtrue,
-  back/.code         = \snowman@backtrue,
-  globalwarming/.code= \snowman@globalwarmingtrue
-                       \def\snowman@globalwarming{#1},
+  3D/.code            = \snowman@threeDtrue,
+  back/.code          = \snowman@backtrue,
+  globalwarming/.code = \snowman@globalwarmingtrue
+                        \def\snowman@globalwarming{#1},
   globalwarming/.default = blue!10!white,
   global warming/.forward to = /snowman/globalwarming,
-  contour/.code      = \snowman@contourtrue
-                       \def\snowman@contour{#1}
-                       \def\snowman@mouth{#1},
-  contour/.default   = black,
+  contour/.code       = \snowman@contourtrue
+                        \def\snowman@contour{#1}
+                        \def\snowman@mouth{#1},
+  contour/.default    = black,
   outline/.forward to = /snowman/contour,
+  debug/.code         = \snowman@debugtrue,
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -127,7 +129,7 @@
     \ifsnowman@contour
       \def\snowman@part@draw[##1]{\draw[##1,\snowman@contour,fill=white,line width=\scalingfactor*0.4pt]}
     \else% contour
-      \def\snowman@part@draw[##1]{\fill[##1]}
+      \def\snowman@part@draw[##1]{\fill[\ifsnowman@debug tikzlings debug\fi,##1]}
     \fi% contour
   \fi% 3D
   %

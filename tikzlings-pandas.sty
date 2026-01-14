@@ -35,6 +35,7 @@
 \newif\ifpanda@back
 \newif\ifpanda@contour
 \newif\ifpanda@openmouth
+\newif\ifpanda@debug
 
 \NewHook{tikzlings/panda/background}
 \NewHook{tikzlings/panda/belly}
@@ -54,30 +55,31 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.store in     = \panda@body,
-  body               = white!90!gray,
-  eyes/.store in     = \panda@eyes,
-  eyes               = white,
-  eye/.forward to    = /panda/eyes,
-  pupils/.store in   = \panda@pupils,
-  pupils             = black,
-  pupil/.forward to  = /panda/pupils,
-  mouth/.store in    = \panda@mouth,
-  mouth              = black,
+  body/.store in      = \panda@body,
+  body                = white!90!gray,
+  eyes/.store in      = \panda@eyes,
+  eyes                = white,
+  eye/.forward to     = /panda/eyes,
+  pupils/.store in    = \panda@pupils,
+  pupils              = black,
+  pupil/.forward to   = /panda/pupils,
+  mouth/.store in     = \panda@mouth,
+  mouth               = black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  openmouth/.code    = \panda@openmouthtrue,
+  openmouth/.code     = \panda@openmouthtrue,
   open mouth/.forward to = /panda/openmouth,
-  3D/.code           = \panda@threeDtrue,
-  back/.code         = \panda@backtrue,
-  contour/.code      = \panda@contourtrue
-                       \def\panda@contour{#1}
-                       \def\panda@mouth{#1},
-  contour/.default   = black,
+  3D/.code            = \panda@threeDtrue,
+  back/.code          = \panda@backtrue,
+  contour/.code       = \panda@contourtrue
+                        \def\panda@contour{#1}
+                        \def\panda@mouth{#1},
+  contour/.default    = black,
   outline/.forward to = /panda/contour,
+  debug/.code         = \panda@debugtrue,
 }
 
 \def\panda@draw{%
@@ -111,7 +113,7 @@
     \ifpanda@contour
       \def\panda@part@draw[##1]{\draw[##1,\panda@contour,fill=white,line width=\scalingfactor*0.4pt]}
     \else% contour
-      \def\panda@part@draw[##1]{\fill[##1]}
+      \def\panda@part@draw[##1]{\fill[\ifpanda@debug tikzlings debug\fi,##1]}
     \fi% contour
   \fi% 3D
   %

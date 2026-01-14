@@ -37,6 +37,7 @@
 \newif\ifmouse@rightstep
 \newif\ifmouse@back
 \newif\ifmouse@contour
+\newif\ifmouse@debug
 
 \NewHook{tikzlings/mouse/background}
 \NewHook{tikzlings/mouse/belly}
@@ -56,35 +57,36 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.store in     = \mouse@body,
-  body               = gray!90!white,
-  eyes/.store in     = \mouse@eyes,
-  eyes               = \mouse@body!50!black,
-  eye/.forward to    = /mouse/eyes,
-  whiskers/.store in = \mouse@whiskers,
-  whiskers           = \mouse@body!50!black,
+  body/.store in      = \mouse@body,
+  body                = gray!90!white,
+  eyes/.store in      = \mouse@eyes,
+  eyes                = \mouse@body!50!black,
+  eye/.forward to     = /mouse/eyes,
+  whiskers/.store in  = \mouse@whiskers,
+  whiskers            = \mouse@body!50!black,
   whisker/.forward to = /mouse/whiskers,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  3D/.code           = \mouse@threeDtrue,
-  rotatearms/.code   = \mouse@rotatearmstrue
-                       \def\mouse@rotatearms{#1},
+  3D/.code            = \mouse@threeDtrue,
+  rotatearms/.code    = \mouse@rotatearmstrue
+                        \def\mouse@rotatearms{#1},
   rotate arms/.forward to = /mouse/rotatearms,
   rotate arm/.forward to = /mouse/rotatearms,
-  rotatearms         = 20,
-  leftstep/.code     = \mouse@leftsteptrue,
+  rotatearms          = 20,
+  leftstep/.code      = \mouse@leftsteptrue,
   left step/.forward to = /mouse/leftstep,
-  rightstep/.code    = \mouse@rightsteptrue,
+  rightstep/.code     = \mouse@rightsteptrue,
   right step/.forward to = /mouse/rightstep,
-  back/.code         = \mouse@backtrue,
-  contour/.code      = \mouse@contourtrue
-                       \def\mouse@contour{#1}
-                       \def\mouse@whiskers{#1},
-  contour/.default   = black,
+  back/.code          = \mouse@backtrue,
+  contour/.code       = \mouse@contourtrue
+                        \def\mouse@contour{#1}
+                        \def\mouse@whiskers{#1},
+  contour/.default    = black,
   outline/.forward to = /mouse/contour,
+  debug/.code         = \mouse@debugtrue,
 }
 
 \def\mouse@draw{%
@@ -118,7 +120,7 @@
     \ifmouse@contour
       \def\mouse@part@draw[##1]{\draw[##1,\mouse@contour,fill=white,line width=\scalingfactor*0.4pt]}
     \else% contour
-      \def\mouse@part@draw[##1]{\fill[##1]}
+      \def\mouse@part@draw[##1]{\fill[\ifmouse@debug tikzlings debug\fi,##1]}
     \fi% contour
   \fi% 3D
   %

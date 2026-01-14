@@ -38,6 +38,7 @@
 \newif\ifsloth@back
 \newif\ifsloth@contour
 \newif\ifsloth@openmouth
+\newif\ifsloth@debug
 
 \NewHook{tikzlings/sloth/background}
 \NewHook{tikzlings/sloth/belly}
@@ -57,32 +58,33 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.store in     = \sloth@body,
-  body               = slothcol,
-  eyes/.store in     = \sloth@eyes,
-  eyes               = black,
-  eye/.forward to    = /sloth/eyes,
-  eyelids/.store in  = \sloth@eyelids,
-  eyelids            = sloth@bright10!50!white,
-  eyelid/.forward to = /sloth/eyelids,
-  mouth/.store in    = \sloth@mouth,
-  mouth              = sloth@bright10!40!black,
+  body/.store in      = \sloth@body,
+  body                = slothcol,
+  eyes/.store in      = \sloth@eyes,
+  eyes                = black,
+  eye/.forward to     = /sloth/eyes,
+  eyelids/.store in   = \sloth@eyelids,
+  eyelids             = sloth@bright10!50!white,
+  eyelid/.forward to  = /sloth/eyelids,
+  mouth/.store in     = \sloth@mouth,
+  mouth               = sloth@bright10!40!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  sleeping/.code     = \sloth@sleepingtrue,
-  openmouth/.code    = \sloth@openmouthtrue,
+  sleeping/.code      = \sloth@sleepingtrue,
+  openmouth/.code     = \sloth@openmouthtrue,
   open mouth/.forward to = /sloth/openmouth,
-  3D/.code           = \sloth@threeDtrue,
-  back/.code         = \sloth@backtrue,
-  contour/.code      = \sloth@contourtrue
-                       \def\sloth@contour{#1}
-                       \def\sloth@mouth{#1}
-                       \def\sloth@eyelids{#1},
-  contour/.default   = black,
+  3D/.code            = \sloth@threeDtrue,
+  back/.code          = \sloth@backtrue,
+  contour/.code       = \sloth@contourtrue
+                        \def\sloth@contour{#1}
+                        \def\sloth@mouth{#1}
+                        \def\sloth@eyelids{#1},
+  contour/.default    = black,
   outline/.forward to = /sloth/contour,
+  debug/.code         = \sloth@debugtrue
 }
 
 \def\sloth@draw{%
@@ -116,7 +118,7 @@
     \ifsloth@contour
       \def\sloth@part@draw[##1]{\draw[##1,\sloth@contour,fill=white,line width=\scalingfactor*0.4pt]}
     \else% contour
-      \def\sloth@part@draw[##1]{\fill[##1]}
+      \def\sloth@part@draw[##1]{\fill[\ifsloth@debug tikzlings debug\fi,##1]}
     \fi% contour
   \fi% 3D
   %

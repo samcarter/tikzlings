@@ -41,6 +41,7 @@
 \newif\ifchicken@back
 \newif\ifchicken@contour
 \newif\ifchicken@baby
+\newif\ifchicken@debug
 
 \NewHook{tikzlings/chicken/background}
 \NewHook{tikzlings/chicken/belly}
@@ -60,36 +61,37 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.store in     = \chicken@body,
-  body               = brown!90!orange!70!yellow!40!white,
-  eyes/.store in     = \chicken@eyes,
-  eyes               = white!90!gray,
-  eye/.forward to    = /chicken/eyes,
-  pupils/.store in   = \chicken@pupils,
-  pupils             = brown!30!black,
-  pupil/.forward to  = /chicken/pupils,
-  bill/.store in     = \chicken@bill,
-  bill               = yellow,
-  feet/.store in     = \chicken@feet,
-  feet               = orange!90!yellow,
-  foot/.forward to   = /chicken/feet,
-  comb/.store in     = \chicken@comb,
-  comb               = red,
+  body/.store in      = \chicken@body,
+  body                = brown!90!orange!70!yellow!40!white,
+  eyes/.store in      = \chicken@eyes,
+  eyes                = white!90!gray,
+  eye/.forward to     = /chicken/eyes,
+  pupils/.store in    = \chicken@pupils,
+  pupils              = brown!30!black,
+  pupil/.forward to   = /chicken/pupils,
+  bill/.store in      = \chicken@bill,
+  bill                = yellow,
+  feet/.store in      = \chicken@feet,
+  feet                = orange!90!yellow,
+  foot/.forward to    = /chicken/feet,
+  comb/.store in      = \chicken@comb,
+  comb                = red,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  3D/.code           = \chicken@threeDtrue,
-  back/.code         = \chicken@backtrue,
-  contour/.code      = \chicken@contourtrue
+  3D/.code            = \chicken@threeDtrue,
+  back/.code          = \chicken@backtrue,
+  contour/.code       = \chicken@contourtrue
                        \def\chicken@contour{#1},
-  contour/.default   = black,
+  contour/.default    = black,
   outline/.forward to = /chicken/contour,
-  baby/.code         = \chicken@babytrue
+  debug/.code         = \chicken@debugtrue,
+  baby/.code          = \chicken@babytrue
                        \def\chicken@baby{#1}
                        \def\chicken@bill{\chicken@feet},
-  baby/.default      = yellow!80!orange,
+  baby/.default       = yellow!80!orange,
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -128,7 +130,7 @@
     \ifchicken@contour
       \def\chicken@part@draw[##1]{\draw[##1,\chicken@contour,fill=white,line width=\scalingfactor*0.4pt]}
     \else% contour
-      \def\chicken@part@draw[##1]{\fill[##1]}
+      \def\chicken@part@draw[##1]{\fill[\ifchicken@debug tikzlings debug\fi,##1]}
     \fi% contour
   \fi% 3D
   %

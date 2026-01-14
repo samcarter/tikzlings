@@ -39,6 +39,7 @@
 \newif\ifsheep@blush
 \newif\ifsheep@back
 \newif\ifsheep@contour
+\newif\ifsheep@debug
 
 \NewHook{tikzlings/sheep/background}
 \NewHook{tikzlings/sheep/belly}
@@ -58,30 +59,31 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.store in     = \sheep@body,
-  body               = brown!50!darkgray!97!yellow!50!darkgray,
-  eyes/.store in     = \sheep@eyes,
-  eyes               = sheep@bright!50!black,
-  eye/.forward to    = /sheep/eyes,
-  nose/.store in     = \sheep@nose,
-  nose               = sheep@bright!50!black,
+  body/.store in      = \sheep@body,
+  body                = brown!50!darkgray!97!yellow!50!darkgray,
+  eyes/.store in      = \sheep@eyes,
+  eyes                = sheep@bright!50!black,
+  eye/.forward to     = /sheep/eyes,
+  nose/.store in      = \sheep@nose,
+  nose                = sheep@bright!50!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  blush/.code        = \sheep@blushtrue
-                       \def\sheep@blushcolor{#1},
-  blush/.default     = red,
-  monocle/.code      = \sheep@monocletrue,
-  3D/.code           = \sheep@threeDtrue,
-  back/.code         = \sheep@backtrue,
-  contour/.code      = \sheep@contourtrue
-                       \def\sheep@contour{#1}
-                       \def\sheep@blushcolor{#1}
-                       \def\sheep@nose{#1},
-  contour/.default   = black,
+  blush/.code         = \sheep@blushtrue
+                        \def\sheep@blushcolor{#1},
+  blush/.default      = red,
+  monocle/.code       = \sheep@monocletrue,
+  3D/.code            = \sheep@threeDtrue,
+  back/.code          = \sheep@backtrue,
+  contour/.code       = \sheep@contourtrue
+                        \def\sheep@contour{#1}
+                        \def\sheep@blushcolor{#1}
+                        \def\sheep@nose{#1},
+  contour/.default    = black,
   outline/.forward to = /sheep/contour,
+  debug/.code         = \sheep@debugtrue,
 }
 
 \def\sheep@draw{%
@@ -116,7 +118,7 @@
     \ifsheep@contour
       \def\sheep@part@draw[##1]{\draw[##1,\sheep@contour,fill=white,line width=\scalingfactor*0.4pt]}
     \else% contour
-      \def\sheep@part@draw[##1]{\fill[##1]}
+      \def\sheep@part@draw[##1]{\fill[\ifsheep@debug tikzlings debug\fi,##1]}
     \fi% contour
   \fi% 3D
   %

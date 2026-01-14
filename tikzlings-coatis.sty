@@ -36,6 +36,7 @@
 \newif\ifcoati@rightstep
 \newif\ifcoati@back
 \newif\ifcoati@contour
+\newif\ifcoati@debug
 
 \NewHook{tikzlings/coati/background}
 \NewHook{tikzlings/coati/belly}
@@ -55,30 +56,31 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.store in     = \coati@body,
-  body               = brown!50!darkgray!97!yellow!50!darkgray,
-  eyes/.store in     = \coati@eyes,
-  eyes               = coati@bodybright!50!black,
-  eye/.forward to    = /coati/eyes,
+  body/.store in      = \coati@body,
+  body                = brown!50!darkgray!97!yellow!50!darkgray,
+  eyes/.store in      = \coati@eyes,
+  eyes                = coati@bodybright!50!black,
+  eye/.forward to     = /coati/eyes,
   rotatehead/.store in = \coati@rotatehead,
   rotate head/.forward to = /coati/rotatehead,
-  rotatehead         = 0,
+  rotatehead          = 0,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  3D/.code           = \coati@threeDtrue,
-  sideward/.code     = \coati@sidewardtrue,
-  leftstep/.code     = \coati@leftsteptrue,
+  3D/.code            = \coati@threeDtrue,
+  sideward/.code      = \coati@sidewardtrue,
+  leftstep/.code      = \coati@leftsteptrue,
   left step/.forward to = /coati/leftstep,
-  rightstep/.code    = \coati@rightsteptrue,
+  rightstep/.code     = \coati@rightsteptrue,
   right step/.forward to = /coati/rightstep,
-  back/.code         = \coati@backtrue,
-  contour/.code      = \coati@contourtrue
-                       \def\coati@contour{#1},
-  contour/.default   = black,
+  back/.code          = \coati@backtrue,
+  contour/.code       = \coati@contourtrue
+                        \def\coati@contour{#1},
+  contour/.default    = black,
   outline/.forward to = /coati/contour,
+  debug/.code         = \coati@debugtrue,
 }
 
 \def\coati@draw{%
@@ -112,7 +114,7 @@
     \ifcoati@contour
       \def\coati@part@draw[##1]{\draw[##1,\coati@contour,fill=white,line width=\scalingfactor*0.4pt]}
     \else% contour
-      \def\coati@part@draw[##1]{\fill[##1]}
+      \def\coati@part@draw[##1]{\fill[\ifcoati@debug tikzlings debug\fi,##1]}
     \fi% contour
   \fi% 3D
   %

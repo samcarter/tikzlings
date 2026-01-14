@@ -36,6 +36,7 @@
 \newif\ifbat@contour
 \newif\ifbat@teeth
 \newif\ifbat@openmouth
+\newif\ifbat@debug
 
 \NewHook{tikzlings/bat/background}
 \NewHook{tikzlings/bat/belly}
@@ -55,43 +56,44 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.store in     = \bat@body,
-  body               = black!75!white,
-  ears/.store in     = \bat@ears,
-  ears               = \bat@body,
-  ear/.forward to    = /bat/ears,
-  eyes/.store in     = \bat@eyes,
-  eyes               = white,
-  eye/.forward to    = /bat/eyes,
-  pupils/.store in   = \bat@pupils,
-  pupils             = black,
-  pupil/.forward to  = /bat/pupils,
-  mouth/.store in    = \bat@mouth,
-  mouth              = black,
-  feet/.store in     = \bat@feet,
-  feet               = orange,
-  foot/.forward to   = /bat/feet,
-  wings/.store in    = \bat@wings,
-  wings              = 1,
-  wing/.forward to   = /bat/wings,
+  body/.store in      = \bat@body,
+  body                = black!75!white,
+  ears/.store in      = \bat@ears,
+  ears                = \bat@body,
+  ear/.forward to     = /bat/ears,
+  eyes/.store in      = \bat@eyes,
+  eyes                = white,
+  eye/.forward to     = /bat/eyes,
+  pupils/.store in    = \bat@pupils,
+  pupils              = black,
+  pupil/.forward to   = /bat/pupils,
+  mouth/.store in     = \bat@mouth,
+  mouth               = black,
+  feet/.store in      = \bat@feet,
+  feet                = orange,
+  foot/.forward to    = /bat/feet,
+  wings/.store in     = \bat@wings,
+  wings               = 1,
+  wing/.forward to    = /bat/wings,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  teeth/.code        = \bat@teethtrue
-                       \def\bat@teeth{#1},
-  teeth/.default     = white,
-  openmouth/.code    = \bat@openmouthtrue,
+  teeth/.code         = \bat@teethtrue
+                        \def\bat@teeth{#1},
+  teeth/.default      = white,
+  openmouth/.code     = \bat@openmouthtrue,
   open mouth/.forward to = /bat/openmouth,
-  3D/.code           = \bat@threeDtrue,
-  back/.code         = \bat@backtrue,
-  contour/.code      = \bat@contourtrue
-                       \def\bat@contour{#1}
-                       \def\bat@antennas{#1}
-                       \def\bat@mouth{#1},
-  contour/.default   = black,
+  3D/.code            = \bat@threeDtrue,
+  back/.code          = \bat@backtrue,
+  contour/.code       = \bat@contourtrue
+                        \def\bat@contour{#1}
+                        \def\bat@antennas{#1}
+                        \def\bat@mouth{#1},
+  contour/.default    = black,
   outline/.forward to = /bat/contour,
+  debug/.code         = \bat@debugtrue,
 }
 
 \def\bat@draw{%
@@ -125,7 +127,7 @@
     \ifbat@contour
       \def\bat@part@draw[##1]{\draw[##1,\bat@contour,fill=white,line width=\scalingfactor*0.4pt]}
     \else% contour
-      \def\bat@part@draw[##1]{\fill[##1]}
+      \def\bat@part@draw[##1]{\fill[\ifbat@debug tikzlings debug\fi,##1]}
     \fi% contour
   \fi% 3D
   %

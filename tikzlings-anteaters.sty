@@ -35,6 +35,7 @@
 \newif\ifanteater@contour
 \newif\ifanteater@leftstep
 \newif\ifanteater@rightstep
+\newif\ifanteater@debug
 
 \NewHook{tikzlings/anteater/background}
 \NewHook{tikzlings/anteater/belly}
@@ -54,26 +55,27 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.store in     = \anteater@body,
-  body               = red!55!green!75!blue!66!white,
-  eyes/.store in     = \anteater@eyes,
-  eyes               = \anteater@body!70!brown!50!darkgray,
-  eye/.forward to    = /anteater/eyes,
+  body/.store in      = \anteater@body,
+  body                = red!55!green!75!blue!66!white,
+  eyes/.store in      = \anteater@eyes,
+  eyes                = \anteater@body!70!brown!50!darkgray,
+  eye/.forward to     = /anteater/eyes,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  3D/.code           = \anteater@threeDtrue,
-  leftstep/.code     = \anteater@leftsteptrue,
+  3D/.code            = \anteater@threeDtrue,
+  leftstep/.code      = \anteater@leftsteptrue,
   left step/.forward to = /anteater/leftstep,
-  rightstep/.code    = \anteater@rightsteptrue,
+  rightstep/.code     = \anteater@rightsteptrue,
   right step/.forward to = /anteater/rightstep,
-  back/.code         = \anteater@backtrue,
-  contour/.code      = \anteater@contourtrue
-                       \def\anteater@contour{#1},
-  contour/.default   = black,
+  back/.code          = \anteater@backtrue,
+  contour/.code       = \anteater@contourtrue
+                        \def\anteater@contour{#1},
+  contour/.default    = black,
   outline/.forward to = /anteater/contour,
+  debug/.code         = \anteater@debugtrue,
 }
 
 \def\anteater@draw{%
@@ -108,7 +110,7 @@
     \ifanteater@contour
       \def\anteater@part@draw[##1]{\draw[##1,\anteater@contour,fill=white,line width=\scalingfactor*0.4pt]}
     \else% contour
-      \def\anteater@part@draw[##1]{\fill[##1]}
+      \def\anteater@part@draw[##1]{\fill[\ifanteater@debug tikzlings debug\fi,##1]}
     \fi% contour
   \fi% 3D
   %

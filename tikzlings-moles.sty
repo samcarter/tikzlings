@@ -37,6 +37,7 @@
 \newif\ifmoles@back
 \newif\ifmoles@contour
 \newif\ifmoles@openmouth
+\newif\ifmoles@debug
 
 \NewHook{tikzlings/moles/background}
 \NewHook{tikzlings/moles/belly}
@@ -56,40 +57,41 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.store in     = \moles@body,
-  body               = gray,
-  eyes/.store in     = \moles@eyes,
-  eyes               = \moles@body!60!black,
-  eye/.forward to    = /moles/eyes,
-  feet/.store in     = \moles@feet,
-  feet               = red!20!white!50!brown,
-  foot/.forward to   = /moles/feet,
-  hands/.store in    = \moles@hands,
-  hands              = red!20!white!50!brown,
-  hand/.forward to   = /moles/hands,
-  muzzle/.store in   = \moles@muzzle,
-  muzzle             = red!20!white!50!brown,
-  mouth/.store in    = \moles@mouth,
-  mouth              = \moles@body!60!black,
+  body/.store in      = \moles@body,
+  body                = gray,
+  eyes/.store in      = \moles@eyes,
+  eyes                = \moles@body!60!black,
+  eye/.forward to     = /moles/eyes,
+  feet/.store in      = \moles@feet,
+  feet                = red!20!white!50!brown,
+  foot/.forward to    = /moles/feet,
+  hands/.store in     = \moles@hands,
+  hands               = red!20!white!50!brown,
+  hand/.forward to    = /moles/hands,
+  muzzle/.store in    = \moles@muzzle,
+  muzzle              = red!20!white!50!brown,
+  mouth/.store in     = \moles@mouth,
+  mouth               = \moles@body!60!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  openmouth/.code    = \moles@openmouthtrue,
+  openmouth/.code     = \moles@openmouthtrue,
   open mouth/.forward to = /moles/openmouth,
-  3D/.code           = \moles@threeDtrue,
-  leftstep/.code     = \moles@leftsteptrue,
+  3D/.code            = \moles@threeDtrue,
+  leftstep/.code      = \moles@leftsteptrue,
   left step/.forward to = /moles/leftstep,
-  rightstep/.code    = \moles@rightsteptrue,
+  rightstep/.code     = \moles@rightsteptrue,
   right step/.forward to = /moles/rightstep,
-  back/.code         = \moles@backtrue,
-  contour/.code      = \moles@contourtrue
-                       \def\moles@contour{#1}
-                       \def\moles@mouth{#1}
-                       \def\moles@eyes{#1},
-  contour/.default   = black,
+  back/.code          = \moles@backtrue,
+  contour/.code       = \moles@contourtrue
+                        \def\moles@contour{#1}
+                        \def\moles@mouth{#1}
+                        \def\moles@eyes{#1},
+  contour/.default    = black,
   outline/.forward to = /moles/contour,
+  debug/.code         = \moles@debugtrue,
 }
 
 \def\moles@draw{%
@@ -123,7 +125,7 @@
     \ifmoles@contour
       \def\moles@part@draw[##1]{\draw[##1,\moles@contour,fill=white,line width=\scalingfactor*0.4pt]}
     \else% contour
-      \def\moles@part@draw[##1]{\fill[##1]}
+      \def\moles@part@draw[##1]{\fill[\ifmoles@debug tikzlings debug\fi,##1]}
     \fi% contour
   \fi% 3D
   %

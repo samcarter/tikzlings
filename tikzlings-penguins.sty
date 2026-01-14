@@ -34,6 +34,7 @@
 \newif\ifpenguin@threeD
 \newif\ifpenguin@back
 \newif\ifpenguin@contour
+\newif\ifpenguin@debug
 
 \NewHook{tikzlings/penguin/background}
 \NewHook{tikzlings/penguin/belly}
@@ -53,32 +54,33 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.store in     = \penguin@body,
-  body               = black,
-  belly/.store in    = \penguin@belly,
-  belly              = white!95!black,
-  feet/.store in     = \penguin@feet,
-  feet               = yellow!50!orange,
-  foot/.forward to   = /penguin/feet,
-  bill/.store in     = \penguin@bill,
-  bill               = orange,
-  eyes/.store in     = \penguin@eyes,
-  eyes               = white!95!black,
-  eye/.forward to    = /penguin/eyes,
-  pupils/.store in   = \penguin@pupils,
-  pupils             = black,
-  pupil/.forward to  = /penguin/pupils,
+  body/.store in      = \penguin@body,
+  body                = black,
+  belly/.store in     = \penguin@belly,
+  belly               = white!95!black,
+  feet/.store in      = \penguin@feet,
+  feet                = yellow!50!orange,
+  foot/.forward to    = /penguin/feet,
+  bill/.store in      = \penguin@bill,
+  bill                = orange,
+  eyes/.store in      = \penguin@eyes,
+  eyes                = white!95!black,
+  eye/.forward to     = /penguin/eyes,
+  pupils/.store in    = \penguin@pupils,
+  pupils              = black,
+  pupil/.forward to   = /penguin/pupils,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  3D/.code           = \penguin@threeDtrue,
-  back/.code         = \penguin@backtrue,
-  contour/.code      = \penguin@contourtrue
-                       \def\penguin@contour{#1},
-  contour/.default   = black,
+  3D/.code            = \penguin@threeDtrue,
+  back/.code          = \penguin@backtrue,
+  contour/.code       = \penguin@contourtrue
+                        \def\penguin@contour{#1},
+  contour/.default    = black,
   outline/.forward to = /penguin/contour,
+  debug/.code         = \penguin@debugtrue,
 }
 
 \def\penguin@draw{%
@@ -112,7 +114,7 @@
     \ifpenguin@contour
       \def\penguin@part@draw[##1]{\draw[##1,\penguin@contour,fill=white,line width=\scalingfactor*0.4pt]}
     \else% contour
-      \def\penguin@part@draw[##1]{\fill[##1]}
+      \def\penguin@part@draw[##1]{\fill[\ifpenguin@debug tikzlings debug\fi,##1]}
     \fi% contour
   \fi% 3D
   %

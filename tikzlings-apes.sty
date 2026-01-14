@@ -39,6 +39,7 @@
 \newif\ifape@back
 \newif\ifape@contour
 \newif\ifape@openmouth
+\newif\ifape@debug
 
 \NewHook{tikzlings/ape/background}
 \NewHook{tikzlings/ape/belly}
@@ -58,48 +59,49 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.store in     = \ape@body,
-  body               = red!15!brown!80!black,
-  eyes/.store in     = \ape@eyes,
-  eyes               = \ape@body!40!black,
-  eye/.forward to    = /ape/eyes,
-  skin/.store in     = \ape@skin,
-  skin               = \ape@body!50!gray,
-  nose/.store in     = \ape@nose,
-  nose               = \ape@skin!60!black,
-  mouth/.store in    = \ape@mouth,
-  mouth              = \ape@skin!50!black,
-  muzzle/.store in   = \ape@muzzle,
-  muzzle             = \ape@skin!80!white,
-  legs/.store in     = \ape@legs,
-  legs               = \ape@body!90!black,
-  leg/.forward to    = /ape/legs,
-  arms/.store in     = \ape@arms,
-  arms               = \ape@body!95!black,
-  arm/.forward to    = /ape/arms,
+  body/.store in      = \ape@body,
+  body                = red!15!brown!80!black,
+  eyes/.store in      = \ape@eyes,
+  eyes                = \ape@body!40!black,
+  eye/.forward to     = /ape/eyes,
+  skin/.store in      = \ape@skin,
+  skin                = \ape@body!50!gray,
+  nose/.store in      = \ape@nose,
+  nose                = \ape@skin!60!black,
+  mouth/.store in     = \ape@mouth,
+  mouth               = \ape@skin!50!black,
+  muzzle/.store in    = \ape@muzzle,
+  muzzle              = \ape@skin!80!white,
+  legs/.store in      = \ape@legs,
+  legs                = \ape@body!90!black,
+  leg/.forward to     = /ape/legs,
+  arms/.store in      = \ape@arms,
+  arms                = \ape@body!95!black,
+  arm/.forward to     = /ape/arms,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  3D/.code           = \ape@threeDtrue,
-  handposition/.code = \csname ape@handposition@#1true\endcsname,
-  kikazaru/.code     = \ape@handposition@hearnoeviltrue,
-  mizaru/.code       = \ape@handposition@seenoeviltrue,
-  iwazaru/.code      = \ape@handposition@speaknoeviltrue,
-  %clap/.code        = \ape@handposition@claptrue, %%% should we support this too?
-  %waving/.code      = \ape@handposition@wavingtrue, %%% should we support this too?
-  hearnoevil/.code   = \ape@handposition@hearnoeviltrue,
-  seenoevil/.code    = \ape@handposition@seenoeviltrue,
-  speaknoevil/.code  = \ape@handposition@speaknoeviltrue,
-  back/.code         = \ape@backtrue,
-  openmouth/.code    = \ape@openmouthtrue,
+  3D/.code            = \ape@threeDtrue,
+  handposition/.code  = \csname ape@handposition@#1true\endcsname,
+  kikazaru/.code      = \ape@handposition@hearnoeviltrue,
+  mizaru/.code        = \ape@handposition@seenoeviltrue,
+  iwazaru/.code       = \ape@handposition@speaknoeviltrue,
+  %clap/.code         = \ape@handposition@claptrue, %%% should we support this too?
+  %waving/.code       = \ape@handposition@wavingtrue, %%% should we support this too?
+  hearnoevil/.code    = \ape@handposition@hearnoeviltrue,
+  seenoevil/.code     = \ape@handposition@seenoeviltrue,
+  speaknoevil/.code   = \ape@handposition@speaknoeviltrue,
+  back/.code          = \ape@backtrue,
+  openmouth/.code     = \ape@openmouthtrue,
   open mouth/.forward to = /ape/openmouth,
-  contour/.code      = \ape@contourtrue
-                       \def\ape@contour{#1}
-                       \def\ape@mouth{#1},
-  contour/.default   = black,
+  contour/.code       = \ape@contourtrue
+                        \def\ape@contour{#1}
+                        \def\ape@mouth{#1},
+  contour/.default    = black,
   outline/.forward to = /ape/contour,
+  debug/.code         = \ape@debugtrue,
 }
 
 \def\ape@draw{%
@@ -133,7 +135,7 @@
     \ifape@contour
       \def\ape@part@draw[##1]{\draw[##1,\ape@contour,fill=white,line width=\scalingfactor*0.4pt]}
     \else% contour
-      \def\ape@part@draw[##1]{\fill[##1]}
+      \def\ape@part@draw[##1]{\fill[\ifape@debug tikzlings debug\fi,##1]}
     \fi% contour
   \fi% 3D
   %

@@ -41,6 +41,7 @@
 \newif\ifkoala@back
 \newif\ifkoala@contour
 \newif\ifkoala@openmouth
+\newif\ifkoala@debug
 
 \NewHook{tikzlings/koala/background}
 \NewHook{tikzlings/koala/belly}
@@ -60,33 +61,34 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.store in     = \koala@body,
-  body               = gray!75!white,
-  eyes/.store in     = \koala@eyes,
-  eyes               = black,
-  eye/.forward to    = /koala/eyes,
-  mouth/.store in    = \koala@mouth,
-  mouth              = \koala@body!40!black,
+  body/.store in      = \koala@body,
+  body                = gray!75!white,
+  eyes/.store in      = \koala@eyes,
+  eyes                = black,
+  eye/.forward to     = /koala/eyes,
+  mouth/.store in     = \koala@mouth,
+  mouth               = \koala@body!40!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  blush/.code        = \koala@blushtrue
+  blush/.code         = \koala@blushtrue
                        \def\koala@blushcolor{#1},
-  blush/.default     = red,
-  sleeping/.code     = \koala@sleepingtrue,
-  openmouth/.code    = \koala@openmouthtrue,
+  blush/.default      = red,
+  sleeping/.code      = \koala@sleepingtrue,
+  openmouth/.code     = \koala@openmouthtrue,
   open mouth/.forward to = /koala/openmouth,
-  3D/.code           = \koala@threeDtrue
-                       \def\koala@mouth{black},
-  back/.code         = \koala@backtrue,
-  contour/.code      = \koala@contourtrue
-                       \def\koala@contour{#1}
-                       \def\koala@blushcolor{#1}
-                       \def\koala@mouth{#1},
-  contour/.default   = black,
+  3D/.code            = \koala@threeDtrue
+                        \def\koala@mouth{black},
+  back/.code          = \koala@backtrue,
+  contour/.code       = \koala@contourtrue
+                        \def\koala@contour{#1}
+                        \def\koala@blushcolor{#1}
+                        \def\koala@mouth{#1},
+  contour/.default    = black,
   outline/.forward to = /koala/contour,
+  debug/.code         = \koala@debugtrue,
 }
 
 \def\koala@draw{%
@@ -120,7 +122,7 @@
     \ifkoala@contour
       \def\koala@part@draw[##1]{\draw[##1,\koala@contour,fill=white,line width=\scalingfactor*0.4pt]}
     \else% contour
-      \def\koala@part@draw[##1]{\fill[##1]}
+      \def\koala@part@draw[##1]{\fill[\ifkoala@debug tikzlings debug\fi,##1]}
     \fi% contour
   \fi% 3D
   %

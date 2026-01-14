@@ -36,6 +36,7 @@
 \newif\ifmeerkat@back
 \newif\ifmeerkat@contour
 \newif\ifmeerkat@openmouth
+\newif\ifmeerkat@debug
 
 \NewHook{tikzlings/meerkat/background}
 \NewHook{tikzlings/meerkat/belly}
@@ -57,53 +58,54 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.store in     = \meerkat@body,
-  body               = brown,
+  body/.store in      = \meerkat@body,
+  body                = brown,
   upperbody/.store in = \meerkat@upperbody,
-  upperbody          = \meerkat@body!70!white,
+  upperbody           = \meerkat@body!70!white,
   upper body/.forward to = /meerkat/upperbody,
-  chest/.store in    = \meerkat@chest,
-  chest              = \meerkat@body!45!white,
-  legs/.store in     = \meerkat@legs,
-  legs               = \meerkat@body,
-  leg/.forward to    = /meerkat/legs,
-  tail/.store in     = \meerkat@tail,
-  tail               = \meerkat@body,
-  tip/.store in      = \meerkat@tip,
-  tip                = \meerkat@tail!50!black,
-  ears/.store in     = \meerkat@ears,
-  ears               = \meerkat@body!50!black,
-  ear/.forward to    = /meerkat/ears,
-  eyes/.store in     = \meerkat@eyes,
-  eyes               = black,
-  eye/.forward to    = /meerkat/eyes,
+  chest/.store in     = \meerkat@chest,
+  chest               = \meerkat@body!45!white,
+  legs/.store in      = \meerkat@legs,
+  legs                = \meerkat@body,
+  leg/.forward to     = /meerkat/legs,
+  tail/.store in      = \meerkat@tail,
+  tail                = \meerkat@body,
+  tip/.store in       = \meerkat@tip,
+  tip                 = \meerkat@tail!50!black,
+  ears/.store in      = \meerkat@ears,
+  ears                = \meerkat@body!50!black,
+  ear/.forward to     = /meerkat/ears,
+  eyes/.store in      = \meerkat@eyes,
+  eyes                = black,
+  eye/.forward to     = /meerkat/eyes,
   eyecircles/.store in = \meerkat@eyecircles,
-  eyecircles         = \meerkat@body!75!black,
+  eyecircles          = \meerkat@body!75!black,
   eye circles/.forward to = /meerkat/eyecircles,
   eyecircle/.forward to = /meerkat/eyecircles,
-  muzzle/.store in   = \meerkat@muzzle,
-  muzzle             = \meerkat@body!45!white,
-  nose/.store in     = \meerkat@nose,
-  nose               = \meerkat@body!50!black,
-  mouth/.store in    = \meerkat@mouth,
-  mouth              = \meerkat@body!50!black,
+  muzzle/.store in    = \meerkat@muzzle,
+  muzzle              = \meerkat@body!45!white,
+  nose/.store in      = \meerkat@nose,
+  nose                = \meerkat@body!50!black,
+  mouth/.store in     = \meerkat@mouth,
+  mouth               = \meerkat@body!50!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  openmouth/.code    = \meerkat@openmouthtrue,
+  openmouth/.code     = \meerkat@openmouthtrue,
   open mouth/.forward to = /meerkat/openmouth,
-  standing/.code     = \meerkat@standingtrue
-                       \def\meerkat@shift{15},
-  3D/.code           = \meerkat@threeDtrue,
-  back/.code         = \meerkat@backtrue,
-  contour/.code      = \meerkat@contourtrue
-                       \def\meerkat@contour{#1}
-                       \def\meerkat@blushcolor{#1}
-                       \def\meerkat@mouth{#1},
-  contour/.default   = black,
+  standing/.code      = \meerkat@standingtrue
+                        \def\meerkat@shift{15},
+  3D/.code            = \meerkat@threeDtrue,
+  back/.code          = \meerkat@backtrue,
+  contour/.code       = \meerkat@contourtrue
+                        \def\meerkat@contour{#1}
+                        \def\meerkat@blushcolor{#1}
+                        \def\meerkat@mouth{#1},
+  contour/.default    = black,
   outline/.forward to = /meerkat/contour,
+  debug/.code         = \meerkat@debugtrue,
 }
 
 \def\meerkat@draw{%
@@ -141,7 +143,7 @@
     \ifmeerkat@contour
       \def\meerkat@part@draw[##1]{\draw[##1,\meerkat@contour,fill=white,line width=\scalingfactor*0.4pt]}
     \else% contour
-      \def\meerkat@part@draw[##1]{\fill[##1]}
+      \def\meerkat@part@draw[##1]{\fill[\ifmeerkat@debug tikzlings debug\fi,##1]}
     \fi% contour
   \fi% 3D
   %

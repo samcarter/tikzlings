@@ -34,7 +34,7 @@
 \newif\ifturkey@threeD
 \newif\ifturkey@back
 \newif\ifturkey@contour
-\newif\ifturkey@baby
+\newif\ifturkey@debug
 
 \NewHook{tikzlings/turkey/background}
 \NewHook{tikzlings/turkey/belly}
@@ -54,36 +54,37 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.store in     = \turkey@body,
-  body               = brown!70!black,
-  eyes/.store in     = \turkey@eyes,
-  eyes               = brown!30!black,
-  eye/.forward to    = /turkey/eyes,
-  bill/.store in     = \turkey@bill,
-  bill               = yellow!50!orange,
-  feet/.store in     = \turkey@feet,
-  feet               = orange!90!yellow,
-  foot/.forward to   = /turkey/feet,
-  wattle/.store in   = \turkey@wattle,
-  wattle             = red!70!black,
-  head/.store in     = \turkey@head,
-  head               = \turkey@body!80!white,
-  wings/.store in    = \turkey@wings,
-  wings              = \turkey@body!80!black,
-  wing/.forward to   = /turkey/wings,
-  tail/.store in     = \turkey@tail,
-  tail               = \turkey@body!80!white,
+  body/.store in      = \turkey@body,
+  body                = brown!70!black,
+  eyes/.store in      = \turkey@eyes,
+  eyes                = brown!30!black,
+  eye/.forward to     = /turkey/eyes,
+  bill/.store in      = \turkey@bill,
+  bill                = yellow!50!orange,
+  feet/.store in      = \turkey@feet,
+  feet                = orange!90!yellow,
+  foot/.forward to    = /turkey/feet,
+  wattle/.store in    = \turkey@wattle,
+  wattle              = red!70!black,
+  head/.store in      = \turkey@head,
+  head                = \turkey@body!80!white,
+  wings/.store in     = \turkey@wings,
+  wings               = \turkey@body!80!black,
+  wing/.forward to    = /turkey/wings,
+  tail/.store in      = \turkey@tail,
+  tail                = \turkey@body!80!white,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  3D/.code           = \turkey@threeDtrue,
-  back/.code         = \turkey@backtrue,
-  contour/.code      = \turkey@contourtrue
+  3D/.code            = \turkey@threeDtrue,
+  back/.code          = \turkey@backtrue,
+  contour/.code       = \turkey@contourtrue
                        \def\turkey@contour{#1},
-  contour/.default   = black,
+  contour/.default    = black,
   outline/.forward to = /turkey/contour,
+  debug/.code         = \turkey@debugtrue,
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -122,7 +123,7 @@
     \ifturkey@contour
       \def\turkey@part@draw[##1]{\draw[##1,\turkey@contour,fill=white,line width=\scalingfactor*0.4pt]}
     \else% contour
-      \def\turkey@part@draw[##1]{\fill[##1]}
+      \def\turkey@part@draw[##1]{\fill[\ifturkey@debug tikzlings debug\fi,##1]}
     \fi% contour
   \fi% 3D
   %

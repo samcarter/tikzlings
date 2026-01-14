@@ -18,6 +18,7 @@
 \usetikzlibrary{patterns} % for the wizard hat
 \usetikzlibrary{decorations.shapes} % for sombrero
 \usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.pathreplacing} % for debug/showing control points
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -984,4 +985,30 @@
  \edef\randomhead{\head}%
  \pgfmathrandomitem{\accessories}{accessories}%
  \edef\randomaccessories{\accessories}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% showing control points
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% code by Mark Wibrow
+% https://tex.stackexchange.com/a/255258/36296
+\tikzset{%
+  tikzlings debug/.style={
+    postaction={
+      decoration={
+        show path construction,
+        curveto code={
+          \draw [blue,line width=0.2pt]
+            (\tikzinputsegmentfirst) -- (\tikzinputsegmentsupporta)
+            (\tikzinputsegmentlast) -- (\tikzinputsegmentsupportb);
+          \fill[red]
+            (\tikzinputsegmentsupporta) circle [radius=.1ex]
+            (\tikzinputsegmentsupportb) circle [radius=.1ex];
+        }
+      },
+      decorate
+    }
+  }
 }

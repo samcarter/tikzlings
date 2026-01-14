@@ -36,6 +36,7 @@
 \newif\ifpig@back
 \newif\ifpig@contour
 \newif\ifpig@openmouth
+\newif\ifpig@debug
 
 \NewHook{tikzlings/pig/background}
 \NewHook{tikzlings/pig/belly}
@@ -55,31 +56,32 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.store in     = \pig@body,
-  body               = piglight,
-  eyes/.store in     = \pig@eyes,
-  eyes               = gray,
-  eye/.forward to    = /pig/eyes,
-  tail/.store in     = \pig@tail,
-  tail               = pig@bodysat22,
-  mouth/.store in    = \pig@mouth,
-  mouth              = gray,
+  body/.store in      = \pig@body,
+  body                = piglight,
+  eyes/.store in      = \pig@eyes,
+  eyes                = gray,
+  eye/.forward to     = /pig/eyes,
+  tail/.store in      = \pig@tail,
+  tail                = pig@bodysat22,
+  mouth/.store in     = \pig@mouth,
+  mouth               = gray,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  openmouth/.code    = \pig@openmouthtrue,
+  openmouth/.code     = \pig@openmouthtrue,
   open mouth/.forward to = /pig/openmouth,
-  3D/.code           = \pig@threeDtrue
-                       \def\pig@mouth{gray!70!black},
-  back/.code         = \pig@backtrue,
-  contour/.code      = \pig@contourtrue
-                       \def\pig@contour{#1}
-                       \def\pig@mouth{#1}
-                       \def\pig@tail{#1},
-  contour/.default   = black,
+  3D/.code            = \pig@threeDtrue
+                        \def\pig@mouth{gray!70!black},
+  back/.code          = \pig@backtrue,
+  contour/.code       = \pig@contourtrue
+                        \def\pig@contour{#1}
+                        \def\pig@mouth{#1}
+                        \def\pig@tail{#1},
+  contour/.default    = black,
   outline/.forward to = /pig/contour,
+  debug/.code         = \pig@debugtrue,
 }
 
 \def\pig@draw{%
@@ -113,7 +115,7 @@
     \ifpig@contour
       \def\pig@part@draw[##1]{\draw[##1,\pig@contour,fill=white,line width=\scalingfactor*0.4pt]}
     \else% contour
-      \def\pig@part@draw[##1]{\fill[##1]}
+      \def\pig@part@draw[##1]{\fill[\ifpig@debug tikzlings debug\fi,##1]}
     \fi% contour
   \fi% 3D
   %

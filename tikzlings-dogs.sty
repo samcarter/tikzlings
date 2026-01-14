@@ -33,6 +33,7 @@
 \newif\ifdog@threeD
 \newif\ifdog@back
 \newif\ifdog@contour
+\newif\ifdog@debug
 
 \NewHook{tikzlings/dog/background}
 \NewHook{tikzlings/dog/belly}
@@ -52,23 +53,23 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.store in          = \dog@body,
-  body                    = brown!90!orange!70!white,
-  eyes/.store in          = \dog@eyes,
-  eyes                    = black!80!white,
-  eye/.forward to         = /dog/eyes,
-  paws/.store in          = \dog@paws,
-  paws                    = \dog@body!60!white,
-  paw/.forward to         = /dog/paws,
-  nose/.store in          = \dog@nose,
-  nose                    = black!80!white,
-  tail/.store in          = \dog@tail,
-  tail                    = \dog@body!60!white,
-  head/.store in          = \dog@head,
-  head                    = \dog@body!60!white,
-  ears/.store in          = \dog@ears,
-  ears                    = \dog@body,
-  ear/.forward to         = /dog/ears,
+  body/.store in      = \dog@body,
+  body                = brown!90!orange!70!white,
+  eyes/.store in      = \dog@eyes,
+  eyes                = black!80!white,
+  eye/.forward to     = /dog/eyes,
+  paws/.store in      = \dog@paws,
+  paws                = \dog@body!60!white,
+  paw/.forward to     = /dog/paws,
+  nose/.store in      = \dog@nose,
+  nose                = black!80!white,
+  tail/.store in      = \dog@tail,
+  tail                = \dog@body!60!white,
+  head/.store in      = \dog@head,
+  head                = \dog@body!60!white,
+  ears/.store in      = \dog@ears,
+  ears                = \dog@body,
+  ear/.forward to     = /dog/ears,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
@@ -86,6 +87,7 @@
                         \def\dog@whiskers{#1},
   contour/.default    = black,
   outline/.forward to = /dog/contour,
+  debug/.code         = \dog@debugtrue,
 }
 
 \def\dog@draw{%
@@ -121,7 +123,7 @@
     \ifdog@contour
       \def\dog@part@draw[##1]{\draw[##1,\dog@contour,fill=white,line width=\scalingfactor*0.4pt]}
     \else% contour
-      \def\dog@part@draw[##1]{\fill[##1]}
+      \def\dog@part@draw[##1]{\fill[\ifdog@debug tikzlings debug\fi,##1]}
     \fi% contour
   \fi% 3D
   %

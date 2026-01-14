@@ -36,6 +36,7 @@
 \newif\ifsquirrel@back
 \newif\ifsquirrel@contour
 \newif\ifsquirrel@openmouth
+\newif\ifsquirrel@debug
 
 \NewHook{tikzlings/squirrel/background}
 \NewHook{tikzlings/squirrel/belly}
@@ -55,34 +56,35 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.store in     = \squirrel@body,
-  body               = brown!40!gray!90!red,
-  eyes/.store in     = \squirrel@eyes,
-  eyes               = white,
-  eye/.forward to    = /squirrel/eyes,
-  pupils/.store in   = \squirrel@pupils,
-  pupils             = black,
-  pupil/.forward to  = /squirrel/pupils,
-  mouth/.store in    = \squirrel@mouth,
-  mouth              = \squirrel@body!70!brown!60!black,
+  body/.store in      = \squirrel@body,
+  body                = brown!40!gray!90!red,
+  eyes/.store in      = \squirrel@eyes,
+  eyes                = white,
+  eye/.forward to     = /squirrel/eyes,
+  pupils/.store in    = \squirrel@pupils,
+  pupils              = black,
+  pupil/.forward to   = /squirrel/pupils,
+  mouth/.store in     = \squirrel@mouth,
+  mouth               = \squirrel@body!70!brown!60!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  openmouth/.code    = \squirrel@openmouthtrue,
+  openmouth/.code     = \squirrel@openmouthtrue,
   open mouth/.forward to = /squirrel/openmouth,
-  3D/.code           = \squirrel@threeDtrue
-                       \def\squirrel@mouth{\squirrel@body!40!black},
-  leftstep/.code     = \squirrel@leftsteptrue,
+  3D/.code            = \squirrel@threeDtrue
+                        \def\squirrel@mouth{\squirrel@body!40!black},
+  leftstep/.code      = \squirrel@leftsteptrue,
   left step/.forward to = /squirrel/leftstep,
-  rightstep/.code    = \squirrel@rightsteptrue,
+  rightstep/.code     = \squirrel@rightsteptrue,
   right step/.forward to = /squirrel/rightstep,
-  back/.code         = \squirrel@backtrue,
-  contour/.code      = \squirrel@contourtrue
-                       \def\squirrel@contour{#1},
-  contour/.default   = black,
+  back/.code          = \squirrel@backtrue,
+  contour/.code       = \squirrel@contourtrue
+                        \def\squirrel@contour{#1},
+  contour/.default    = black,
   outline/.forward to = /squirrel/contour,
+  debug/.code         = \squirrel@debugtrue,
 }
 
 \def\squirrel@draw{%
@@ -115,7 +117,7 @@
     \ifsquirrel@contour
       \def\squirrel@part@draw[##1]{\draw[##1,\squirrel@contour,fill=white,line width=\scalingfactor*0.4pt]}
     \else% contour
-      \def\squirrel@part@draw[##1]{\fill[##1]}
+      \def\squirrel@part@draw[##1]{\fill[\ifsquirrel@debug tikzlings debug\fi,##1]}
     \fi% contour
   \fi% 3D
   %

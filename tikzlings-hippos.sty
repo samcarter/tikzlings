@@ -34,6 +34,7 @@
 \newif\ifhippo@back
 \newif\ifhippo@contour
 \newif\ifhippo@openmouth
+\newif\ifhippo@debug
 
 \NewHook{tikzlings/hippo/background}
 \NewHook{tikzlings/hippo/belly}
@@ -53,34 +54,35 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.store in     = \hippo@body,
-  body               = gray!55!white,
-  eyes/.store in     = \hippo@eyes,
-  eyes               = white,
-  eye/.forward to    = /hippo/eyes,
-  pupils/.store in   = \hippo@pupils,
-  pupils             = black,
-  pupil/.forward to  = /hippo/pupils,
-  toes/.store in     = \hippo@toes,
-  toes               = \hippo@body,
-  toe/.forward to    = /hippo/toes,
-  mouth/.store in    = \hippo@mouth,
-  mouth              = \hippo@body!50!black,
+  body/.store in      = \hippo@body,
+  body                = gray!55!white,
+  eyes/.store in      = \hippo@eyes,
+  eyes                = white,
+  eye/.forward to     = /hippo/eyes,
+  pupils/.store in    = \hippo@pupils,
+  pupils              = black,
+  pupil/.forward to   = /hippo/pupils,
+  toes/.store in      = \hippo@toes,
+  toes                = \hippo@body,
+  toe/.forward to     = /hippo/toes,
+  mouth/.store in     = \hippo@mouth,
+  mouth               = \hippo@body!50!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  openmouth/.code    = \hippo@openmouthtrue,
+  openmouth/.code     = \hippo@openmouthtrue,
   open mouth/.forward to = /hippo/openmouth,
-  3D/.code           = \hippo@threeDtrue
-                       \def\hippo@mouth{black},
-  back/.code         = \hippo@backtrue,
-  contour/.code      = \hippo@contourtrue
-                       \def\hippo@contour{#1}
-                       \def\hippo@mouth{#1},
-  contour/.default   = black,
+  3D/.code            = \hippo@threeDtrue
+                        \def\hippo@mouth{black},
+  back/.code          = \hippo@backtrue,
+  contour/.code       = \hippo@contourtrue
+                        \def\hippo@contour{#1}
+                        \def\hippo@mouth{#1},
+  contour/.default    = black,
   outline/.forward to = /hippo/contour,
+  debug/.code         = \hippo@debugtrue,
 }
 
 \def\hippo@draw{%
@@ -114,7 +116,7 @@
     \ifhippo@contour
       \def\hippo@part@draw[##1]{\draw[##1,\hippo@contour,fill=white,line width=\scalingfactor*0.4pt]}
     \else% contour
-      \def\hippo@part@draw[##1]{\fill[##1]}
+      \def\hippo@part@draw[##1]{\fill[\ifhippo@debug tikzlings debug\fi,##1]}
     \fi% contour
   \fi% 3D
   %

@@ -37,6 +37,7 @@
 \newif\ifbug@back
 \newif\ifbug@contour
 \newif\ifbug@openmouth
+\newif\ifbug@debug
 
 \NewHook{tikzlings/bug/background}
 \NewHook{tikzlings/bug/belly}
@@ -56,50 +57,51 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.store in     = \bug@body,
-  body               = black!90!white,
-  arms/.store in     = \bug@arms,
-  arms               = red!80!black,
-  arm/.forward to    = /bug/arms,
-  wings/.store in    = \bug@wings,
-  wings              = red!80!black,
-  wing/.forward to   = /bug/wings,
-  dots/.store in     = \bug@dots,
-  dots               = black!90!white,
-  dot/.forward to    = /bug/dots,
-  antennas/.store in = \bug@antennas,
-  antennas           = red!80!black,
+  body/.store in      = \bug@body,
+  body                = black!90!white,
+  arms/.store in      = \bug@arms,
+  arms                = red!80!black,
+  arm/.forward to     = /bug/arms,
+  wings/.store in     = \bug@wings,
+  wings               = red!80!black,
+  wing/.forward to    = /bug/wings,
+  dots/.store in      = \bug@dots,
+  dots                = black!90!white,
+  dot/.forward to     = /bug/dots,
+  antennas/.store in  = \bug@antennas,
+  antennas            = red!80!black,
   antenna/.forward to = /bug/antennas,
-  eyes/.store in     = \bug@eyes,
-  eyes               = white,
-  eye/.forward to    = /bug/eyes,
-  pupils/.store in   = \bug@pupils,
-  pupils             = black,
-  pupil/.forward to  = /bug/pupils,
-  mouth/.store in    = \bug@mouth,
-  mouth              = red,
-  feet/.store in     = \bug@feet,
-  feet               = red!80!black,
-  foot/.forward to   = /bug/feet,
+  eyes/.store in      = \bug@eyes,
+  eyes                = white,
+  eye/.forward to     = /bug/eyes,
+  pupils/.store in    = \bug@pupils,
+  pupils              = black,
+  pupil/.forward to   = /bug/pupils,
+  mouth/.store in     = \bug@mouth,
+  mouth               = red,
+  feet/.store in      = \bug@feet,
+  feet                = red!80!black,
+  foot/.forward to    = /bug/feet,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  3D/.code           = \bug@threeDtrue,
-  leftstep/.code     = \bug@leftsteptrue,
+  3D/.code            = \bug@threeDtrue,
+  leftstep/.code      = \bug@leftsteptrue,
   left step/.forward to = /bug/leftstep,
-  rightstep/.code    = \bug@rightsteptrue,
+  rightstep/.code     = \bug@rightsteptrue,
   right step/.forward to = /bug/rightstep,
-  openmouth/.code    = \bug@openmouthtrue,
+  openmouth/.code     = \bug@openmouthtrue,
   open mouth/.forward to = /bug/openmouth,
-  back/.code         = \bug@backtrue,
-  contour/.code      = \bug@contourtrue
-                       \def\bug@contour{#1}
-                       \def\bug@antennas{#1}
-                       \def\bug@mouth{#1},
-  contour/.default   = black,
+  back/.code          = \bug@backtrue,
+  contour/.code       = \bug@contourtrue
+                        \def\bug@contour{#1}
+                        \def\bug@antennas{#1}
+                        \def\bug@mouth{#1},
+  contour/.default    = black,
   outline/.forward to = /bug/contour,
+  debug/.code         = \bug@debugtrue,
 }
 
 \def\bug@draw{%
@@ -133,7 +135,7 @@
     \ifbug@contour
       \def\bug@part@draw[##1]{\draw[##1,\bug@contour,fill=white,line width=\scalingfactor*0.4pt]}
     \else% contour
-      \def\bug@part@draw[##1]{\fill[##1]}
+      \def\bug@part@draw[##1]{\fill[\ifbug@debug tikzlings debug\fi,##1]}
     \fi% contour
   \fi% 3D
   %

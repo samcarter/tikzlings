@@ -62,6 +62,7 @@
 \newif\ifmarmot@back
 \newif\ifmarmot@contour
 \newif\ifmarmot@openmouth
+\newif\ifmarmot@debug
 
 \NewHook{tikzlings/marmot/background}
 \NewHook{tikzlings/marmot/belly}
@@ -81,46 +82,47 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.store in     = \marmot@body,
-  body               = brown,
-  eyes/.store in     = \marmot@eyes,
-  eyes               = \marmot@body!50!black,
-  eye/.forward to    = /marmot/eyes,
-  mouth/.store in    = \marmot@mouth,
-  mouth              = \marmot@body!50!black,
+  body/.store in      = \marmot@body,
+  body                = brown,
+  eyes/.store in      = \marmot@eyes,
+  eyes                = \marmot@body!50!black,
+  eye/.forward to     = /marmot/eyes,
+  mouth/.store in     = \marmot@mouth,
+  mouth               = \marmot@body!50!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  blush/.code        = \marmot@blushtrue
-                       \def\marmot@blushcolor{#1},
-  blush/.default     = red,
-  whiskers/.code     = \marmot@whiskerstrue
-                       \def\marmot@whiskers{#1},
-  whiskers/.default  = gray,
+  blush/.code         = \marmot@blushtrue
+                        \def\marmot@blushcolor{#1},
+  blush/.default      = red,
+  whiskers/.code      = \marmot@whiskerstrue
+                        \def\marmot@whiskers{#1},
+  whiskers/.default   = gray,
   whisker/.forward to = /marmot/whiskers,
-  teeth/.code        = \marmot@teethtrue
-                       \def\marmot@teeth{#1},
-  teeth/.default     = white,
-  tooth/.forward to  = /marmot/teeth,
-  openmouth/.code    = \marmot@openmouthtrue,
+  teeth/.code         = \marmot@teethtrue
+                        \def\marmot@teeth{#1},
+  teeth/.default      = white,
+  tooth/.forward to   = /marmot/teeth,
+  openmouth/.code     = \marmot@openmouthtrue,
   open mouth/.forward to = /marmot/openmouth,
-  3D/.code           = \marmot@threeDtrue,
-  shadow/.code       = \marmot@shadowtrue,
-  askphil/.code      = \marmot@askphiltrue,
+  3D/.code            = \marmot@threeDtrue,
+  shadow/.code        = \marmot@shadowtrue,
+  askphil/.code       = \marmot@askphiltrue,
   ask phil/.forward to = /marmot/askphil,
-  leftstep/.code     = \marmot@leftsteptrue,
+  leftstep/.code      = \marmot@leftsteptrue,
   left step/.forward to = /marmot/leftstep,
-  rightstep/.code    = \marmot@rightsteptrue,
+  rightstep/.code     = \marmot@rightsteptrue,
   right step/.forward to = /marmot/rightstep,
-  back/.code         = \marmot@backtrue,
-  contour/.code      = \marmot@contourtrue
-                       \def\marmot@contour{#1}
-                       \def\marmot@blushcolor{#1}
-                       \def\marmot@mouth{#1},
-  contour/.default   = black,
+  back/.code          = \marmot@backtrue,
+  contour/.code       = \marmot@contourtrue
+                        \def\marmot@contour{#1}
+                        \def\marmot@blushcolor{#1}
+                        \def\marmot@mouth{#1},
+  contour/.default    = black,
   outline/.forward to = /marmot/contour,
+  debug/.code         = \marmot@debugtrue,
 }
 
 \def\marmot@draw{%
@@ -154,7 +156,7 @@
     \ifmarmot@contour
       \def\marmot@part@draw[##1]{\draw[##1,\marmot@contour,fill=white,line width=\scalingfactor*0.4pt]}
     \else% contour
-      \def\marmot@part@draw[##1]{\fill[##1]}
+      \def\marmot@part@draw[##1]{\fill[\ifmarmot@debug tikzlings debug\fi,##1]}
     \fi% contour
   \fi% 3D
   %

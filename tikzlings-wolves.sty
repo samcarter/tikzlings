@@ -38,6 +38,7 @@
 \newif\ifwolf@rightstep
 \newif\ifwolf@back
 \newif\ifwolf@contour
+\newif\ifwolf@debug
 
 \NewHook{tikzlings/wolf/background}
 \NewHook{tikzlings/wolf/belly}
@@ -57,33 +58,34 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.store in     = \wolf@body,
-  body               = gray!90!white,
-  eyes/.store in     = \wolf@eyes,
-  eyes               = white,
-  eye/.forward to    = /wolf/eyes,
-  pupils/.store in   = \wolf@pupils,
-  pupils             = black,
-  pupil/.forward to  = /wolf/pupils,
+  body/.store in      = \wolf@body,
+  body                = gray!90!white,
+  eyes/.store in      = \wolf@eyes,
+  eyes                = white,
+  eye/.forward to     = /wolf/eyes,
+  pupils/.store in    = \wolf@pupils,
+  pupils              = black,
+  pupil/.forward to   = /wolf/pupils,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  3D/.code           = \wolf@threeDtrue,
-  rotatearms/.code   = \wolf@rotatearmstrue
-                       \def\wolf@rotatearms{#1},
+  3D/.code            = \wolf@threeDtrue,
+  rotatearms/.code    = \wolf@rotatearmstrue
+                        \def\wolf@rotatearms{#1},
   rotate arms/.forward to = /wolf/rotatearms,
-  rotatearms         = -50,
-  leftstep/.code     = \wolf@leftsteptrue,
+  rotatearms          = -50,
+  leftstep/.code      = \wolf@leftsteptrue,
   left step/.forward to = /wolf/leftstep,
-  rightstep/.code    = \wolf@rightsteptrue,
+  rightstep/.code     = \wolf@rightsteptrue,
   right step/.forward to = /wolf/rightstep,
-  back/.code         = \wolf@backtrue,
-  contour/.code      = \wolf@contourtrue
-                       \def\wolf@contour{#1},
-  contour/.default   = black,
+  back/.code          = \wolf@backtrue,
+  contour/.code       = \wolf@contourtrue
+                        \def\wolf@contour{#1},
+  contour/.default    = black,
   outline/.forward to = /wolf/contour,
+  debug/.code         = \wolf@debugtrue,
 }
 
 \def\wolf@draw{%
@@ -117,7 +119,7 @@
     \ifwolf@contour
       \def\wolf@part@draw[##1]{\draw[##1,\wolf@contour,fill=white,line width=\scalingfactor*0.4pt]}
     \else% contour
-      \def\wolf@part@draw[##1]{\fill[##1]}
+      \def\wolf@part@draw[##1]{\fill[\ifwolf@debug tikzlings debug\fi,##1]}
     \fi% contour
   \fi% 3D
   %

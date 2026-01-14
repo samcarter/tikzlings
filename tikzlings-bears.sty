@@ -34,6 +34,7 @@
 \newif\ifbear@back
 \newif\ifbear@contour
 \newif\ifbear@openmouth
+\newif\ifbear@debug
 
 \NewHook{tikzlings/bear/background}
 \NewHook{tikzlings/bear/belly}
@@ -53,27 +54,28 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.store in     = \bear@body,
-  body               = brown!70!black,
-  eyes/.store in     = \bear@eyes,
-  eyes               = \bear@body!42!black,
-  eye/.forward to    = /bear/eyes,
-  mouth/.store in    = \bear@mouth,
-  mouth              = \bear@body!42!black,
+  body/.store in      = \bear@body,
+  body                = brown!70!black,
+  eyes/.store in      = \bear@eyes,
+  eyes                = \bear@body!42!black,
+  eye/.forward to     = /bear/eyes,
+  mouth/.store in     = \bear@mouth,
+  mouth               = \bear@body!42!black,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  openmouth/.code    = \bear@openmouthtrue,
+  openmouth/.code     = \bear@openmouthtrue,
   open mouth/.forward to = /bear/openmouth,
-  3D/.code           = \bear@threeDtrue,
-  back/.code         = \bear@backtrue,
-  contour/.code      = \bear@contourtrue
+  3D/.code            = \bear@threeDtrue,
+  back/.code          = \bear@backtrue,
+  contour/.code       = \bear@contourtrue
                        \def\bear@contour{#1}
                        \def\bear@mouth{#1},
-  contour/.default   = black,
+  contour/.default    = black,
   outline/.forward to = /bear/contour,
+  debug/.code         = \bear@debugtrue,
 }
 
 \def\bear@draw{%
@@ -107,7 +109,7 @@
     \ifbear@contour
       \def\bear@part@draw[##1]{\draw[##1,\bear@contour,fill=white,line width=\scalingfactor*0.4pt]}
     \else% contour
-      \def\bear@part@draw[##1]{\fill[##1]}
+      \def\bear@part@draw[##1]{\fill[\ifbear@debug tikzlings debug\fi,##1]}
     \fi% contour
   \fi% 3D
   %

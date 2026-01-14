@@ -34,6 +34,7 @@
 \newif\ifowl@threeD
 \newif\ifowl@back
 \newif\ifowl@contour
+\newif\ifowl@debug
 
 \NewHook{tikzlings/owl/background}
 \NewHook{tikzlings/owl/belly}
@@ -53,30 +54,31 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.store in     = \owl@body,
-  body               = brown!70!black,
-  eyes/.store in     = \owl@eyes,
-  eyes               = white!90!gray,
-  eye/.forward to    = /owl/eyes,
-  pupils/.store in   = \owl@pupils,
-  pupils             = brown!30!black,
-  pupil/.forward to  = /owl/pupils,
-  bill/.store in     = \owl@bill,
-  bill               = orange,
-  feet/.store in     = \owl@feet,
-  feet               = orange,
-  foot/.forward to   = /owl/feet,
+  body/.store in      = \owl@body,
+  body                = brown!70!black,
+  eyes/.store in      = \owl@eyes,
+  eyes                = white!90!gray,
+  eye/.forward to     = /owl/eyes,
+  pupils/.store in    = \owl@pupils,
+  pupils              = brown!30!black,
+  pupil/.forward to   = /owl/pupils,
+  bill/.store in      = \owl@bill,
+  bill                = orange,
+  feet/.store in      = \owl@feet,
+  feet                = orange,
+  foot/.forward to    = /owl/feet,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  3D/.code           = \owl@threeDtrue,
-  back/.code         = \owl@backtrue,
-  contour/.code      = \owl@contourtrue
-                       \def\owl@contour{#1},
-  contour/.default   = black,
+  3D/.code            = \owl@threeDtrue,
+  back/.code          = \owl@backtrue,
+  contour/.code       = \owl@contourtrue
+                        \def\owl@contour{#1},
+  contour/.default    = black,
   outline/.forward to = /owl/contour,
+  debug/.code         = \owl@debugtrue,
 }
 
 \def\owl@draw{%
@@ -110,7 +112,7 @@
     \ifowl@contour
       \def\owl@part@draw[##1]{\draw[##1,\owl@contour,fill=white,line width=\scalingfactor*0.4pt]}
     \else% contour
-      \def\owl@part@draw[##1]{\fill[##1]}
+      \def\owl@part@draw[##1]{\fill[\ifowl@debug tikzlings debug\fi,##1]}
     \fi% contour
   \fi% 3D
   %

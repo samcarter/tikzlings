@@ -61,6 +61,7 @@
 \newif\ifcat@back
 \newif\ifcat@contour
 \newif\ifcat@openmouth
+\newif\ifcat@debug
 
 \NewHook{tikzlings/cat/background}
 \NewHook{tikzlings/cat/belly}
@@ -80,49 +81,50 @@
   % body
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  body/.store in          = \cat@body,
-  body                    = gray!30!black,
-  whiskers/.store in      = \cat@whiskers,
-  whiskers                = gray!50!white,
-  whisker/.forward to     = /cat/whiskers,
-  eyes/.store in          = \cat@eyes,
-  eyes                    = yellow!80!orange,
-  eye/.forward to         = /cat/eyes,
-  pupils/.store in        = \cat@pupils,
-  pupils                  = black,
-  pupil/.forward to       = /cat/pupils,
-  pupilwidth/.code        = \def\cat@pupil@width{#1}
-                            \edef\cat@pupil@offset{\strip@pt\dimexpr#1pt/4},
+  body/.store in      = \cat@body,
+  body                = gray!30!black,
+  whiskers/.store in  = \cat@whiskers,
+  whiskers            = gray!50!white,
+  whisker/.forward to = /cat/whiskers,
+  eyes/.store in      = \cat@eyes,
+  eyes                = yellow!80!orange,
+  eye/.forward to     = /cat/eyes,
+  pupils/.store in    = \cat@pupils,
+  pupils              = black,
+  pupil/.forward to   = /cat/pupils,
+  pupilwidth/.code    = \def\cat@pupil@width{#1}
+                        \edef\cat@pupil@offset{\strip@pt\dimexpr#1pt/4},
   pupil width/.forward to = /cat/pupilwidth,
-  narrow pupils/.code     = \def\cat@pupil@width{0.005}
-                            \edef\cat@pupil@offset{\strip@pt\dimexpr 0.005pt/4},
-  medium pupils/.code     = \def\cat@pupil@width{0.015}
-                            \edef\cat@pupil@offset{\strip@pt\dimexpr 0.015pt/4},
-  wide pupils/.code       = \def\cat@pupil@width{0.025}
-                            \edef\cat@pupil@offset{\strip@pt\dimexpr 0.025pt/4},
+  narrow pupils/.code = \def\cat@pupil@width{0.005}
+                        \edef\cat@pupil@offset{\strip@pt\dimexpr 0.005pt/4},
+  medium pupils/.code = \def\cat@pupil@width{0.015}
+                        \edef\cat@pupil@offset{\strip@pt\dimexpr 0.015pt/4},
+  wide pupils/.code   = \def\cat@pupil@width{0.025}
+                        \edef\cat@pupil@offset{\strip@pt\dimexpr 0.025pt/4},
   very wide pupils/.code  = \def\cat@pupil@width{0.050}
-                            \edef\cat@pupil@offset{\strip@pt\dimexpr 0.050pt/4},
-  pupil width             = 0.015,
-  paws/.store in          = \cat@paws,
-  paws                    = \cat@body,
-  paw/.forward to         = /cat/paws,
-  nose/.store in          = \cat@nose,
-  nose                    = red!40!white!80!gray,
+                        \edef\cat@pupil@offset{\strip@pt\dimexpr 0.050pt/4},
+  pupil width         = 0.015,
+  paws/.store in      = \cat@paws,
+  paws                = \cat@body,
+  paw/.forward to     = /cat/paws,
+  nose/.store in      = \cat@nose,
+  nose                = red!40!white!80!gray,
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % options
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  schroedinger/.code = \cat@schroedingertrue,
-  openmouth/.code    = \cat@openmouthtrue,
+  schroedinger/.code  = \cat@schroedingertrue,
+  openmouth/.code     = \cat@openmouthtrue,
   open mouth/.forward to = /cat/openmouth,
-  3D/.code           = \cat@threeDtrue,
-  back/.code         = \cat@backtrue,
-  contour/.code      = \cat@contourtrue
-                       \def\cat@contour{#1}
-                       \def\cat@whiskers{#1},
-  contour/.default   = black,
+  3D/.code            = \cat@threeDtrue,
+  back/.code          = \cat@backtrue,
+  contour/.code       = \cat@contourtrue
+                        \def\cat@contour{#1}
+                        \def\cat@whiskers{#1},
+  contour/.default    = black,
   outline/.forward to = /cat/contour,
+  debug/.code         = \cat@debugtrue,
 }
 
 \def\cat@draw{%
@@ -157,7 +159,7 @@
     \ifcat@contour
       \def\cat@part@draw[##1]{\draw[##1,\cat@contour,fill=white,line width=\scalingfactor*0.4pt]}
     \else% contour
-      \def\cat@part@draw[##1]{\fill[##1]}
+      \def\cat@part@draw[##1]{\fill[\ifcat@debug tikzlings debug\fi,##1]}
     \fi% contour
   \fi% 3D
   %
