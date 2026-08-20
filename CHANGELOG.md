@@ -4,6 +4,9 @@
 
 ### New
 
+- adding `debug` option to all TikZlings to show curve handles (the tikz `decorations.pathreplacing` library is now loaded by default)
+- doc: added graphical overview of tikzlings
+
 ### Changed
 
 ### Fixed
@@ -14,7 +17,6 @@
 ### New
 
 - new accessories: present (many thanks to @CarLaTeX)
-- adding `debug` option to all TikZlings to show curve handles (the tikz `decorations.pathreplacing` library is now loaded by default)
 
 ### Changed
 
