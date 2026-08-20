@@ -4,6 +4,15 @@
 
 ### New
 
+### Changed
+
+### Fixed
+
+
+## [v2.6]
+
+### New
+
 - adding `debug` option to all TikZlings to show curve handles (the tikz `decorations.pathreplacing` library is now loaded by default)
 - doc: added graphical overview of tikzlings
 
@@ -207,7 +216,8 @@
 
 ------
 
-[Unreleased]: https://github.com/samcarter/tikzlings/compare/v2.5...HEAD
+[Unreleased]: https://github.com/samcarter/tikzlings/compare/v2.6...HEAD
+[v2.6]: https://github.com/samcarter/tikzlings/compare/v2.5...v2.6
 [v2.5]: https://github.com/samcarter/tikzlings/compare/v2.4...v2.5
 [v2.4]: https://github.com/samcarter/tikzlings/compare/v2.3...v2.4
 [v2.3]: https://github.com/samcarter/tikzlings/compare/v2.2...v2.3
